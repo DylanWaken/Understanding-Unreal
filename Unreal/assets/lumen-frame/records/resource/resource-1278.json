@@ -1,0 +1,448 @@
+{
+  "format": "PF_R8",
+  "version": 1,
+  "id": "resource-1278",
+  "nativeRecordId": "native-018290",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.ScreenProbeTraceMoving",
+  "uniqueName": "0004000002290e767440",
+  "displayLabel": "Lumen.ScreenProbeGather.ScreenProbeTraceMoving · instance 0004 · frame 292 · passes 788",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 788,
+    "last": 788
+  },
+  "allocation": [
+    640,
+    672
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": "probe-grid",
+    "allocation": [
+      640,
+      672
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 430080,
+  "extent": [
+    640,
+    672,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "UNORM8",
+    "bytesPerTexel": 1,
+    "formatNormalized": "R8",
+    "dumpFormat": "PF_R8",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.ScreenProbeTraceMoving",
+    "UniqueResourceName": "0004000002290e767440",
+    "ByteSize": 430080,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_R8",
+    "ExtentX": 640,
+    "ExtentY": 672,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02638",
+      "role": "resource",
+      "originalPath": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+      "bytes": 430080,
+      "sha256": "2b41252b7b779bf745185be8a7e97b7b4db9772d81b0821db794d26baf669a7a",
+      "version": "0004000002290e767c80",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1278",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "2b41252b7b779bf745185be8a7e97b7b4db9772d81b0821db794d26baf669a7a",
+          "offset": 0,
+          "length": 430080
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "0004000002290e767440",
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeTraceMoving",
+        "File": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 430080,
+        "RowPitchBytes": 640,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 430080,
+        "StagingByteSize": 430080
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 430080,
+          "ActualBytes": 430080,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 430080,
+        "actualBytes": 430080,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "0004000002290e767440",
+        "name": "Lumen.ScreenProbeGather.ScreenProbeTraceMoving",
+        "diagnosticResource": "0004000002290e767440"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 640,
+        "extentY": 672,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 430080,
+        "rowPitchBytes": 640,
+        "storageFormat": "PF_R8",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UNORM8",
+        "bytesPerTexel": 1,
+        "formatNormalized": "R8",
+        "dumpFormat": "PF_R8",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R8",
+        "viewFormat": "PF_R8",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "0004000002290e767c80",
+      "producerPassId": "pass-0789",
+      "producerPassName": "CompositeTraces",
+      "payloadIds": [
+        "payload-02638"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0789",
+        "name": "CompositeTraces",
+        "displayLabel": "CompositeTraces · LumenScreenProbeGather · frame 292 · pass 788",
+        "record": "records/pass/pass-0789.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0790",
+        "name": "CalculateMoving",
+        "displayLabel": "CalculateMoving · LumenScreenProbeGather · frame 292 · pass 789",
+        "record": "records/pass/pass-0790.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-02638",
+      "file": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+      "layout": {
+        "Resource": "0004000002290e767440",
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeTraceMoving",
+        "File": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 430080,
+        "RowPitchBytes": 640,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 430080,
+        "StagingByteSize": 430080
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 430080,
+          "ActualBytes": 430080,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 430080,
+        "actualBytes": 430080,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-02638",
+      "file": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002290e767440.mip0.v0004000002290e767c80.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 430080,
+          "ActualBytes": 430080,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 430080,
+        "actualBytes": 430080,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.screen-probe-trace-moving",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.ScreenProbeTraceMoving$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-gather-texel fraction of contributing tracing samples flagged as moving (input to ScreenProbeMoving)",
+      "units": "fraction in [0,1] as R8 UNORM",
+      "coordinateSpace": "per-probe gather octahedron texel",
+      "storage": {
+        "kind": "texture2d",
+        "format": "PF_R8",
+        "strideBytes": 1,
+        "extent": "ScreenProbeAtlasBufferSize * ScreenProbeGatherOctahedronResolution (captured 640x672)",
+        "mips": 1,
+        "flags": [
+          "ShaderResource",
+          "UAV"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGTextureDesc",
+            "type": "Texture2D",
+            "format": "PF_R8",
+            "extentX": 640,
+            "extentY": 672,
+            "depth": 1,
+            "arraySize": 1,
+            "numMips": 1,
+            "byteSize": 430080
+          }
+        ]
+      },
+      "actualFormat": "PF_R8",
+      "declaredFormat": "PF_R8",
+      "declaredFormatText": "PF_R8",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R8",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R8",
+      "payloadFormat": "PF_R8",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "accumulate",
+          "expression": "InterlockedAdd(SharedAccumulators[t][4], (bMoving?1:0)*SampleWeight*WeightQuantizeScale); WeightQuantizeScale = MaxValuePerThread",
+          "requires": [
+            "SampleWeight",
+            "MaxValuePerThread"
+          ],
+          "sourceRefs": [
+            "part2.spgf.tracemoving.write"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Written by FScreenProbeCompositeTracesWithScatterCS; the per-ray bMoving flag comes from DecodeProbeRayDistance(TraceHit).bMoving (LumenScreenProbeFiltering.usf:126-129)."
+      ],
+      "producerSources": [
+        "part2.spgf.cpp.tracemoving",
+        "part2.spgf.tracemoving.write"
+      ],
+      "consumerSources": [
+        "part2.spgf.moving.average"
+      ],
+      "gaps": [
+        "This is an intermediate: ScreenProbeMoving is the probe-level average of the same quantity."
+      ],
+      "fields": [
+        {
+          "name": "TexelMoving",
+          "type": "UNORM8",
+          "decode": "value = sum(bMoving ? SampleWeight*WeightQuantizeScale : 0) * InvWeightQuantizeScale, i.e. the moving sample weight fraction",
+          "units": "fraction",
+          "sourceRefs": [
+            "part2.spgf.tracemoving.write",
+            "part2.spgf.moving.average"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 8
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "TexelMoving"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

@@ -1,0 +1,275 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0183",
+  "nativeRecordId": "native-017188",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.DirectLighting.StandaloneLightIndices",
+  "uniqueName": "00010000022925076398",
+  "displayLabel": "Lumen.DirectLighting.StandaloneLightIndices · instance 0001 · frame 292",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.DirectLighting.StandaloneLightIndices",
+    "UniqueResourceName": "00010000022925076398",
+    "ByteSize": 4,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00722",
+      "role": "resource",
+      "originalPath": "Resources/00010000022925076398.v00000000000000000000.bin",
+      "bytes": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0183",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00010000022925076398",
+        "name": "Lumen.DirectLighting.StandaloneLightIndices",
+        "byteSize": 4
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00722"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0107",
+        "name": "ComputeLightTileOffsetsPerLight",
+        "displayLabel": "ComputeLightTileOffsetsPerLight · CullTiles 1 lights · frame 292 · pass 106",
+        "record": "records/pass/pass-0107.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00722",
+      "file": "Resources/00010000022925076398.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.direct-lighting-standalone-light-indices",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.DirectLighting\\.StandaloneLightIndices)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "ascending list of gathered-light indices that need a standalone (non-batched) shadow mask",
+      "units": "gathered light index",
+      "coordinateSpace": "FLumenDirectLightingTaskData::GatheredLights index space",
+      "storage": {
+        "kind": "structured-buffer (initial data)",
+        "format": "int32 per index (uploaded from TArray<int32>)",
+        "strideBytes": 4
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "int32 per index (uploaded from TArray<int32>)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "iterate",
+          "expression": "for BufferIndex in [0,NumStandaloneLights): LightIndex = StandaloneLightIndices[BufferIndex]",
+          "requires": [
+            "Lumen.DirectLighting.StandaloneLightIndices"
+          ],
+          "sourceRefs": [
+            "part1.cards_sli_iter",
+            "part1.cards_sli_count"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "capture capacity is 1 element; the live count is NumStandaloneLights (a pass parameter) and is not stored in this buffer",
+        "built in ascending GatheredLights order (loop over scene lights); uploaded only when bUseStandaloneLightIndices"
+      ],
+      "producerSources": [
+        "part1.cards_sli_add",
+        "part1.cards_sli_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_sli_iter",
+        "part1.cards_sli_use"
+      ],
+      "gaps": [
+        "The list is not a compacted list of all lights; batched lights are absent and represented by type slots instead."
+      ],
+      "fields": [
+        {
+          "name": "LightIndex",
+          "type": "int32",
+          "byteOffset": 0,
+          "decode": "gathered light index; iteration order defines the standalone part of LightTileOffsetsPerLight",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_sli_add",
+            "part1.cards_sli_iter"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "LightIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0134",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.DirectLighting.StandaloneLightIndices has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0183"
+    }
+  ]
+}

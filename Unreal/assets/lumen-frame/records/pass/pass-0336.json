@@ -1,0 +1,280 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0336",
+  "nativeRecordId": "native-015855",
+  "name": "Instance Compaction Phase 2",
+  "displayLabel": "Instance Compaction Phase 2 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 335",
+  "frameNumber": 292,
+  "graphPrefix": "BuildRenderingCommandsDeferred(Culling=On)",
+  "viewState": null,
+  "pointer": "000300000229355de8f0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000229355de7d0",
+  "parametersMetadataPointer": "000300007ffb892424b0",
+  "parentScopes": [
+    "BuildRenderingCommandsDeferred(Culling=On)",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "Instance Compaction Phase 2",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000229355de7d0",
+    "ParametersMetadata": "000300007ffb892424b0",
+    "Pointer": "000300000229355de8f0",
+    "Id": 335,
+    "ParentEventScopes": [
+      "BuildRenderingCommandsDeferred(Culling=On)",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000225ef67e850",
+      "000300000229355de680",
+      "000300000225ef67ea10",
+      "000300000229355ddc00"
+    ],
+    "OutputResources": [
+      "000300000229355d18b0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000225ef67e850",
+      "resourceId": "resource-0538",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00968"
+      ]
+    },
+    {
+      "uniqueName": "000300000229355de680",
+      "resourceId": "resource-0544",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01801"
+      ]
+    },
+    {
+      "uniqueName": "000300000225ef67ea10",
+      "resourceId": "resource-0539",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00969",
+        "payload-00970"
+      ]
+    },
+    {
+      "uniqueName": "000300000229355ddc00",
+      "resourceId": "resource-0543",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01800"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000229355d18b0",
+      "resourceId": "resource-0537",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01789",
+        "payload-01790",
+        "payload-01791"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06599",
+    "metadataPointer": "000300007ffb892424b0",
+    "bytes": 48,
+    "sha256": "5c709448fbf5c9e3529a137c2334fbcbc93214c264c4f5e8c471e547fbcb5600",
+    "chunks": [
+      {
+        "sha": "5c709448fbf5c9e3529a137c2334fbcbc93214c264c4f5e8c471e547fbcb5600",
+        "offset": 0,
+        "length": 48
+      }
+    ],
+    "originalPath": "Structures/000300000229355de7d0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\InstanceCulling\\InstanceCullingContext.cpp",
+    "FileLine": 480,
+    "Size": 48,
+    "Members": [
+      {
+        "Name": "DrawCommandCompactionData",
+        "ShaderType": "StructuredBuffer<FInstanceCullingContext::FCompactionData>",
+        "FileLine": 481,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "BlockDrawCommandIndices",
+        "ShaderType": "StructuredBuffer<uint32>",
+        "FileLine": 482,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "InstanceIdsBufferIn",
+        "ShaderType": "StructuredBuffer<uint32>",
+        "FileLine": 483,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "BlockDestInstanceOffsets",
+        "ShaderType": "StructuredBuffer<uint32>",
+        "FileLine": 484,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "InstanceIdsBufferOut",
+        "ShaderType": "RWStructuredBuffer<uint32>",
+        "FileLine": 486,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "InstanceIdsBufferOutMobile",
+        "ShaderType": "RWStructuredBuffer<float4>",
+        "FileLine": 487,
+        "Offset": 40,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000229355de8f0",
+      "Parameters": "000300000229355de7d0",
+      "Bindings": {
+        "DrawCommandCompactionData": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000225ef67e988",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "BlockDrawCommandIndices": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000229355de800",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "InstanceIdsBufferIn": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000229355de850",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "BlockDestInstanceOffsets": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000229355de8a0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "InstanceIdsBufferOut": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000229355d19e8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "InstanceIdsBufferOutMobile": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

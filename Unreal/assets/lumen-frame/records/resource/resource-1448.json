@@ -1,0 +1,312 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1448",
+  "nativeRecordId": "native-018461",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.BuildHashTableIndirectArgs",
+  "uniqueName": "000400000228d59030b8",
+  "displayLabel": "Lumen.BuildHashTableIndirectArgs · instance 0004 · frame 292 · passes 921",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 921,
+    "last": 921
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 12,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.BuildHashTableIndirectArgs",
+    "UniqueResourceName": "000400000228d59030b8",
+    "ByteSize": 12,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02447",
+      "role": "resource",
+      "originalPath": "Resources/000400000228d59030b8.v000400000228d5903268.bin",
+      "bytes": 12,
+      "sha256": "11047585fe102fbb5cadb42446612a578d88c6ef5ed076bb7ac360c4f9e4373d",
+      "version": "000400000228d5903268",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1448",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "11047585fe102fbb5cadb42446612a578d88c6ef5ed076bb7ac360c4f9e4373d",
+          "offset": 0,
+          "length": 12
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228d59030b8",
+        "name": "Lumen.BuildHashTableIndirectArgs",
+        "byteSize": 12
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228d5903268",
+      "producerPassId": "pass-0922",
+      "producerPassName": "Hash table indirect arguments",
+      "payloadIds": [
+        "payload-02447"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0922",
+        "name": "Hash table indirect arguments",
+        "displayLabel": "Hash table indirect arguments · Submit Lumen surface cache feedback · frame 292 · pass 921",
+        "record": "records/pass/pass-0922.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0923",
+        "name": "Build feedback hash table",
+        "displayLabel": "Build feedback hash table · Submit Lumen surface cache feedback · frame 292 · pass 922",
+        "record": "records/pass/pass-0923.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02447",
+      "file": "Resources/000400000228d59030b8.v000400000228d5903268.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.build-hashtable-indirect",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.BuildHashTableIndirectArgs)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "single dispatch-indirect record for the feedback hash-table build",
+      "units": "thread groups",
+      "coordinateSpace": "dispatch argument space",
+      "storage": {
+        "kind": "indirect-args-buffer",
+        "format": "FRHIDispatchIndirectParameters (3 x uint32, 12 B)",
+        "strideBytes": 12,
+        "formatAlternatives": [
+          "platform dispatch-argument padding: 16 B when PLATFORM_DISPATCH_INDIRECT_ARGUMENT_BOUNDARY_SIZE==64, 32 B when ==128 (RHI.h:551-557); 12 B on this desktop capture"
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters (3 x uint32, 12 B)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "platform dispatch-argument padding: 16 B when PLATFORM_DISPATCH_INDIRECT_ARGUMENT_BOUNDARY_SIZE==64, 32 B when ==128 (RHI.h:551-557); 12 B on this desktop capture"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "dispatch",
+          "expression": "GroupCount = ceil(min(Allocator[0], FeedbackBufferSize)/64); DispatchIndirect(shader, Buffer, 0)",
+          "requires": [
+            "Lumen.BuildHashTableIndirectArgs"
+          ],
+          "sourceRefs": [
+            "part1.cards_bhi_write",
+            "part1.cards_bhi_use"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "one 12-B record; the build shader's THREADGROUP_SIZE is 64",
+        "padding variants change the stride, not the field order"
+      ],
+      "producerSources": [
+        "part1.cards_bhi_write",
+        "part1.cards_bhi_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_bhi_use"
+      ],
+      "gaps": [
+        "The recorded X is a group count for a 64-thread group size; do not read it as an element count."
+      ],
+      "fields": [
+        {
+          "name": "ThreadGroupCountX",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "ceil(min(FeedbackAllocator[0], FeedbackBufferSize)/64)",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_bhi_write",
+            "part1.cards_fb_allocator_read"
+          ]
+        },
+        {
+          "name": "ThreadGroupCountY",
+          "type": "uint32",
+          "byteOffset": 4,
+          "decode": "1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_bhi_write"
+          ]
+        },
+        {
+          "name": "ThreadGroupCountZ",
+          "type": "uint32",
+          "byteOffset": 8,
+          "decode": "1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_bhi_write"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "ThreadGroupCountX",
+          "ThreadGroupCountY",
+          "ThreadGroupCountZ"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0884",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.BuildHashTableIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1448"
+    }
+  ]
+}

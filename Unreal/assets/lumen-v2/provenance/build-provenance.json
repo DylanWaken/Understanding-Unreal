@@ -1,0 +1,205 @@
+{
+ "schema": "unreal-understanding-capture-provenance-v1",
+ "engine_root": "D:\\UnrealEngine",
+ "engine_git_sha": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+ "engine_git_branch": "release",
+ "engine_version": "5.8.1-0+UE5",
+ "engine_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+ "instrumented_module": {
+  "path": "Engine\\Binaries\\Win64\\UnrealEditor-RenderCore.dll",
+  "sha256": "6F1BF96FAB9841F0D4793CB65ABC4DFBF459AA41EE4A8EE90D06D737CF32BF1D",
+  "bytes": 4779008,
+  "mtime_utc": "2026-11-12T15:33:53.4341000Z",
+  "repair_operation": "f6cfacb3-6cbc-45da-af8e-418fa5799ebb",
+  "note": "Capture used the linked module from the repair build (native-module-build-7.log), not the pre-repair #6 module and not the smoke 50135B... module."
+ },
+ "source_products": {
+  "Engine\\Binaries\\Win64\\UnrealEditor-RenderCore.dll": {
+   "sha256": "6F1BF96FAB9841F0D4793CB65ABC4DFBF459AA41EE4A8EE90D06D737CF32BF1D",
+   "bytes": 4779008,
+   "mtime_utc": "2026-11-12T15:33:53.4341000Z"
+  },
+  "Engine\\Source\\Runtime\\RenderCore\\Private\\DumpGPU.cpp": {
+   "sha256": "0DC2FFCBDC84C2B6EB3E3DEDDEAB3E48FE79C3DD4D30D15ACF4ACC751FDEEB4C",
+   "bytes": 224286,
+   "mtime_utc": "2026-11-12T15:33:27.6434435Z"
+  },
+  "Engine\\Shaders\\Private\\Tools\\DumpTexture.usf": {
+   "sha256": "8CAE461806D5F28931C9D57F03881CFCEA19F37DE6373F1DB2833816EF7EF887",
+   "bytes": 2988,
+   "mtime_utc": "2026-11-12T14:08:18.9909532Z"
+  },
+  "Engine\\Shaders\\Private\\Tools\\DumpBuffer.usf": {
+   "sha256": "79C934A53C055F6F85D449446D46AC3401BFA0421EE92A3F7B9EDB882BDD4B1C",
+   "bytes": 1814,
+   "mtime_utc": "2026-11-12T15:14:52.3705669Z"
+  },
+  "Engine\\Binaries\\Win64\\UnrealEditor.exe": {
+   "sha256": "DD2A31E9A3BABE48B56C49C54D85661F50D07A1254D09FAC64F50B85244D4833",
+   "bytes": 502272,
+   "mtime_utc": "2026-08-08T01:42:58.4613111Z"
+  }
+ },
+ "project_module": {
+  "path": "D:\\UnrealEngine\\UnrealUnderstandingCapture\\project\\UnrealLab\\Binaries\\Win64\\UnrealEditor-ArdaLabCapture.dll",
+  "sha256": "9D313D997FA704165B5C0B411250AB0A7BEBD8EA4F126F9BE85840BB2E7D4923",
+  "bytes": 115712,
+  "mtime_utc": "2026-11-12T13:30:51.7498705Z",
+  "module_name": "ArdaLabCapture",
+  "manifest_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+  "engine_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+  "manifest_matches_engine": true,
+  "note": "Prebuilt project module copied from the existing reference project; manifest BuildId aligned to the current instrumented engine BuildId so UnrealModuleManager loads it. No project module rebuild in this step."
+ },
+ "build_commands": [
+  "Engine\\Build\\BatchFiles\\Build.bat UnrealEditor Win64 Development -SingleFile=\"D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\DumpGPU.cpp\"",
+  "Engine\\Build\\BatchFiles\\Build.bat UnrealEditor Win64 Development"
+ ],
+ "build_logs": {
+  "final_single_file": "UnrealUnderstandingCapture/build/native-singlefile-11.log",
+  "final_module": "UnrealUnderstandingCapture/build/native-module-build-7.log",
+  "note": "See UnrealUnderstandingCapture/build/build-log.md and build-products.txt for the full sequence; the final link succeeded after the parameterless-pass repair."
+ },
+ "patch": {
+  "path": "D:\\UnrealEngine\\UnrealUnderstandingCapture\\patch\\ours-only.patch",
+  "sha256": "7194180a43eab6d8896633b950fa18bd40c89165006cac230c1749172bdc0963",
+  "bytes": 153559
+ },
+ "capture_command": "\"D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.exe\" \"D:\\UnrealEngine\\UnrealUnderstandingCapture\\project\\UnrealLab\\UnrealLab.uproject\" -ExecutePythonScript=\"D:\\UnrealEngine\\UnrealUnderstandingCapture\\capture\\scripts\\gpudump_capture.py\" -RenderOffscreen -unattended -nosplash -NoSound -NoSourceControl -dx12 -ResX=1280 -ResY=720 -ForceRes -stdout -FullStdOutLogOutput -ini:Engine:[ConsoleVariables]:r.RHI.UniformBufferContentMap.Enable=1",
+ "capture_settings": {
+  "root": "*",
+  "texture": 2,
+  "buffer": 2,
+  "pass_parameters": 1,
+  "console_variables": 1,
+  "native_uniform_buffer_textures": 1,
+  "buffer_skip_tracking": 1,
+  "startup_ini_cvar": "r.RHI.UniformBufferContentMap.Enable=1",
+  "resolution": [
+   1280,
+   720
+  ],
+  "rhi": "D3D12",
+  "shader_platform": "PCD3D_SM6",
+  "warmup_draws": 200,
+  "settle_draws": 90,
+  "dump_seconds": 26.75,
+  "wall_seconds": 72.1
+ },
+ "runtime_cvars_actual": {
+  "r.RHI.UniformBufferContentMap.Enable": {
+   "value": "true",
+   "type": "bool",
+   "set_by": "SystemSettingsIni"
+  },
+  "r.DumpGPU.Root": {
+   "value": "*",
+   "type": "FString",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.Texture": {
+   "value": "2",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.Buffer": {
+   "value": "2",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.MaxStagingSize": {
+   "value": "256",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.PassParameters": {
+   "value": "1",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.FrameCount": {
+   "value": "1",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.Stream": {
+   "value": "0",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.ConsoleVariables": {
+   "value": "1",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.Buffer.SkipTracking": {
+   "value": "1",
+   "type": "int32",
+   "set_by": "Console"
+  },
+  "r.DumpGPU.NativeUniformBufferTextures": {
+   "value": "1",
+   "type": "int32",
+   "set_by": "Console"
+  }
+ },
+ "dump": {
+  "path": "D:\\UnrealEngine\\UnrealUnderstandingCapture\\capture\\buffers\\gpudump\\binary-20261112-153914",
+  "status": "ok",
+  "total_bytes": 18570711246,
+  "deduplicated_bytes": 4857874112,
+  "files": 7912
+ },
+ "capture_process": {
+  "pid": 52848,
+  "exit_code": null,
+  "wall_seconds": 72.1,
+  "started_utc": "2026-11-12T15:38:36.8087058Z",
+  "finished_utc": "2026-11-12T15:39:48.8844661Z"
+ },
+ "disk": {
+  "free_gb_at_start": [
+   {
+    "name": "C",
+    "free_gb": 701.03,
+    "used_gb": 322.97
+   },
+   {
+    "name": "D",
+    "free_gb": 525.37,
+    "used_gb": 2176.65
+   }
+  ],
+  "free_gb_at_end": [
+   {
+    "name": "C",
+    "free_gb": 701.02,
+    "used_gb": 322.98
+   },
+   {
+    "name": "D",
+    "free_gb": 507.92,
+    "used_gb": 2194.09
+   }
+  ]
+ },
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 610.62, 97887 MiB, 93328 MiB",
+ "modified_engine_files_remaining": [
+  "Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp (modified)",
+  "Engine/Shaders/Private/Tools/DumpTexture.usf (modified)",
+  "Engine/Shaders/Private/Tools/DumpBuffer.usf (new untracked)"
+ ],
+ "restore_note": "No engine source was restored in this step. The patched source remains in place for other writers; the supervisor decides any ours-only restore after recording provenance.",
+ "original_file_sha256": {
+  "Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp": "0535B0D6588D04888047FF3C668832732A0D2881974CD4F34F61983DD1CD732D",
+  "Engine/Shaders/Private/Tools/DumpTexture.usf": "8622019BE98CE09400B7F400D08254FE901BEF171F2DC08C045CEDD03AAC11C1",
+  "Engine/Shaders/Private/Tools/DumpBuffer.usf": "ABSENT (new file; see backups/DumpBuffer.usf.20261112-215816.absent.txt)"
+ },
+ "current_file_sha256": {
+  "Engine\\Binaries\\Win64\\UnrealEditor-RenderCore.dll": "6F1BF96FAB9841F0D4793CB65ABC4DFBF459AA41EE4A8EE90D06D737CF32BF1D",
+  "Engine\\Source\\Runtime\\RenderCore\\Private\\DumpGPU.cpp": "0DC2FFCBDC84C2B6EB3E3DEDDEAB3E48FE79C3DD4D30D15ACF4ACC751FDEEB4C",
+  "Engine\\Shaders\\Private\\Tools\\DumpTexture.usf": "8CAE461806D5F28931C9D57F03881CFCEA19F37DE6373F1DB2833816EF7EF887",
+  "Engine\\Shaders\\Private\\Tools\\DumpBuffer.usf": "79C934A53C055F6F85D449446D46AC3401BFA0421EE92A3F7B9EDB882BDD4B1C",
+  "Engine\\Binaries\\Win64\\UnrealEditor.exe": "DD2A31E9A3BABE48B56C49C54D85661F50D07A1254D09FAC64F50B85244D4833"
+ }
+}

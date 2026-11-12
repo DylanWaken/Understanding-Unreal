@@ -1,0 +1,314 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0318",
+  "nativeRecordId": "native-015837",
+  "name": "ComputeWantedMips",
+  "displayLabel": "ComputeWantedMips · UpdateDistanceFieldAtlas · frame 292 · pass 317",
+  "frameNumber": 292,
+  "graphPrefix": "UpdateDistanceFieldAtlas",
+  "viewState": null,
+  "pointer": "00030000022880718838",
+  "parametersName": "FParameters",
+  "parametersPointer": "00030000022880717f90",
+  "parametersMetadataPointer": "000300007ffb8920a570",
+  "parentScopes": [
+    "UpdateDistanceFieldAtlas",
+    "\"DistanceFields\"",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ComputeWantedMips",
+    "ParametersName": "FParameters",
+    "Parameters": "00030000022880717f90",
+    "ParametersMetadata": "000300007ffb8920a570",
+    "Pointer": "00030000022880718838",
+    "Id": 317,
+    "ParentEventScopes": [
+      "UpdateDistanceFieldAtlas",
+      "\"DistanceFields\"",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228807180d0",
+      "00030000022880718610"
+    ],
+    "OutputResources": [
+      "000300000228807177d8",
+      "00030000022880717e48"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228807180d0",
+      "resourceId": "resource-0491",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01188"
+      ]
+    },
+    {
+      "uniqueName": "00030000022880718610",
+      "resourceId": "resource-0492",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01189"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000228807177d8",
+      "resourceId": "resource-0489",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01184",
+        "payload-01185"
+      ]
+    },
+    {
+      "uniqueName": "00030000022880717e48",
+      "resourceId": "resource-0490",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01186",
+        "payload-01187"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06342",
+    "metadataPointer": "000300007ffb8920a570",
+    "bytes": 176,
+    "sha256": "56de459e0a4749dbc92612e36cdae272522d46716104a39b8b8fa66a9f59493b",
+    "chunks": [
+      {
+        "sha": "56de459e0a4749dbc92612e36cdae272522d46716104a39b8b8fa66a9f59493b",
+        "offset": 0,
+        "length": 176
+      }
+    ],
+    "originalPath": "Structures/00030000022880717f90.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\DistanceFieldStreaming.cpp",
+    "FileLine": 246,
+    "Size": 176,
+    "Members": [
+      {
+        "Name": "RWDistanceFieldAssetWantedNumMips",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 247,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWDistanceFieldAssetStreamingRequests",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 248,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "DistanceFieldObjectBuffers",
+        "ShaderType": "FDistanceFieldObjectBufferParameters",
+        "FileLine": 249,
+        "Offset": 16,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb891e34e0"
+      },
+      {
+        "Name": "DebugForceNumMips",
+        "ShaderType": "",
+        "FileLine": 250,
+        "Offset": 64,
+        "BaseType": "UBMT_INT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "Mip1WorldTranslatedCenter",
+        "ShaderType": "",
+        "FileLine": 251,
+        "Offset": 80,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 3,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "Mip1WorldExtent",
+        "ShaderType": "",
+        "FileLine": 252,
+        "Offset": 96,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 3,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "Mip2WorldTranslatedCenter",
+        "ShaderType": "",
+        "FileLine": 253,
+        "Offset": 112,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 3,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "Mip2WorldExtent",
+        "ShaderType": "",
+        "FileLine": 254,
+        "Offset": 128,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 3,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "PreViewTranslationHigh",
+        "ShaderType": "",
+        "FileLine": 255,
+        "Offset": 144,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 3,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "PreViewTranslationLow",
+        "ShaderType": "",
+        "FileLine": 256,
+        "Offset": 160,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 3,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "00030000022880718838",
+      "Parameters": "00030000022880717f90",
+      "Bindings": {
+        "RWDistanceFieldAssetWantedNumMips": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022880718040",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWDistanceFieldAssetStreamingRequests": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022880718088",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "DistanceFieldObjectBuffers.SceneObjectBounds": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228807185c0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "DistanceFieldObjectBuffers.SceneObjectData": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022880718748",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "DistanceFieldObjectBuffers.SceneHeightfieldObjectBounds": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "DistanceFieldObjectBuffers.SceneHeightfieldObjectData": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 48,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

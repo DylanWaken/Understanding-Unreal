@@ -1,0 +1,316 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1157",
+  "nativeRecordId": "native-018168",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.DirectLighting.LightTilesPerCardTile",
+  "uniqueName": "000400000228bbbe7d58",
+  "displayLabel": "Lumen.DirectLighting.LightTilesPerCardTile · instance 0004 · frame 292 · passes 729",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 729,
+    "last": 729
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 529984,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 8,
+  "numElements": 66248,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 8,
+    "numElements": 66248
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.DirectLighting.LightTilesPerCardTile",
+    "UniqueResourceName": "000400000228bbbe7d58",
+    "ByteSize": 529984,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 8,
+    "NumElements": 66248,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02257",
+      "role": "resource",
+      "originalPath": "Resources/000400000228bbbe7d58.v000400000228bbbe8920.bin",
+      "bytes": 529984,
+      "sha256": "d7e4e96b7af373a3b821b8a67399f012793521e94ee00ddd5ef57cbf9cf6b2c6",
+      "version": "000400000228bbbe8920",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1157",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "d7e4e96b7af373a3b821b8a67399f012793521e94ee00ddd5ef57cbf9cf6b2c6",
+          "offset": 0,
+          "length": 529984
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228bbbe7d58",
+        "name": "Lumen.DirectLighting.LightTilesPerCardTile",
+        "byteSize": 529984
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228bbbe8920",
+      "producerPassId": "pass-0730",
+      "producerPassName": "CompactLightTiles",
+      "payloadIds": [
+        "payload-02257"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0730",
+        "name": "CompactLightTiles",
+        "displayLabel": "CompactLightTiles · CullTiles 1 lights · frame 292 · pass 729",
+        "record": "records/pass/pass-0730.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0733",
+        "name": "Batched lights",
+        "displayLabel": "Batched lights · Lights · frame 292 · pass 732",
+        "record": "records/pass/pass-0733.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02257",
+      "file": "Resources/000400000228bbbe7d58.v000400000228bbbe8920.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.direct-lighting-light-tiles-per-card-tile",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.DirectLighting\\.LightTilesPerCardTile)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-card-tile list of (light, view, shadow-mask index) entries addressed through LightTileOffsetNumPerCardTile",
+      "units": "indices",
+      "coordinateSpace": "per-card-tile light list",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint2 (8 B) per light entry; light-pass packing",
+        "strideBytes": 8
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint2 (8 B) per light entry; light-pass packing",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "address",
+          "expression": "Entry = LightTilesPerCardTile[ (LightTileOffsetNumPerCardTile[tile] & 0x00FFFFFF) + CulledLightIndex ]; ShadowMask = word1 != 0xFFFFFFFF ? word1 : none",
+          "requires": [
+            "Lumen.DirectLighting.LightTilesPerCardTile",
+            "Lumen.DirectLighting.LightTileOffsetNumPerCardTile"
+          ],
+          "sourceRefs": [
+            "part1.cards_ltp_offset",
+            "part1.cards_ltp_write",
+            "part1.cards_ltp_consume"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "8 B per entry",
+        "the buffer is indexed by a per-card-tile offset, not by a global light-tile index",
+        "capacity = MaxCulledCardTiles"
+      ],
+      "producerSources": [
+        "part1.cards_ltp_write",
+        "part1.cards_ltp_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_ltp_consume",
+        "part1.cards_ltp_unpack"
+      ],
+      "gaps": [
+        "Only entries referenced by a valid LightTileOffsetNumPerCardTile are meaningful; the rest of the capacity is stale."
+      ],
+      "fields": [
+        {
+          "name": "LightIndex",
+          "type": "uint28",
+          "byteOffset": 0,
+          "decode": "word0 bits[0:27]",
+          "units": "light index",
+          "sourceRefs": [
+            "part1.cards_ltp_pack_x",
+            "part1.cards_ltp_consume"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 28
+        },
+        {
+          "name": "ViewIndex",
+          "type": "uint4",
+          "byteOffset": 0,
+          "decode": "word0 bits[28:31]",
+          "units": "view origin index",
+          "sourceRefs": [
+            "part1.cards_ltp_pack_x",
+            "part1.cards_ltp_unpack"
+          ],
+          "bitOffset": 28,
+          "bitWidth": 4
+        },
+        {
+          "name": "ShadowMaskIndex",
+          "type": "uint32",
+          "byteOffset": 4,
+          "decode": "word1: index into ShadowMaskTiles, or 0xFFFFFFFF when the light has no shadow mask",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_ltp_pack_y",
+            "part1.cards_ltp_shadow"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "LightIndex",
+          "ViewIndex",
+          "ShadowMaskIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0730",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.DirectLighting.LightTilesPerCardTile has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1157"
+    }
+  ]
+}

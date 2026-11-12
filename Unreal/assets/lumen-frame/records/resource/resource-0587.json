@@ -1,0 +1,320 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0587",
+  "nativeRecordId": "native-017594",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.NextVirtualShadowMapData",
+  "uniqueName": "000300000225f048fbe8",
+  "displayLabel": "Shadow.Virtual.NextVirtualShadowMapData · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 131168,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 8198,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 8198
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.NextVirtualShadowMapData",
+    "UniqueResourceName": "000300000225f048fbe8",
+    "ByteSize": 131168,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 8198,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01049",
+      "role": "resource",
+      "originalPath": "Resources/000300000225f048fbe8.v00000000000000000000.bin",
+      "bytes": 131168,
+      "sha256": "51072e3bd73dea9058164af64df29bf5a6394b01466bfadccdb558d24fa8cb0c",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0587",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "51072e3bd73dea9058164af64df29bf5a6394b01466bfadccdb558d24fa8cb0c",
+          "offset": 0,
+          "length": 131168
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000225f048fbe8",
+        "name": "Shadow.Virtual.NextVirtualShadowMapData",
+        "byteSize": 131168
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01049"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0343",
+        "name": "FVirtualShadowMapArray::UpdatePhysicalPageAddresses",
+        "displayLabel": "FVirtualShadowMapArray::UpdatePhysicalPageAddresses · frame 292 · pass 342",
+        "record": "records/pass/pass-0343.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01049",
+      "file": "Resources/000300000225f048fbe8.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-next-virtual-shadow-map-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.NextVirtualShadowMapData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one 16-byte record per shadow-map data index mapping previous frame's page cache to this frame",
+      "units": "bit flags, shadow-map id, int2 page-coordinate offset",
+      "coordinateSpace": "VSM data index; PageAddressOffset in virtual page coordinates",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "FNextVirtualShadowMapData",
+        "strideBytes": 16,
+        "formatAlternatives": [
+          "C++/HLSL FNextVirtualShadowMapData (VirtualShadowMapDefinitions.h:170-175)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 16,
+          "numElements": 8198,
+          "byteSize": 131168
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FNextVirtualShadowMapData",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "C++/HLSL FNextVirtualShadowMapData (VirtualShadowMapDefinitions.h:170-175)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "keepPage",
+          "expression": "if ((Flags & KEEP_PAGE) && IsVirtualShadowMapPageAddressValid(Prev.PageAddress+Offset, Prev.MipLevel)) keep page under NextId",
+          "requires": [
+            "NextVirtualShadowMapData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.def.nextdata"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Struct fields are 4+4+8 = 16 bytes with no padding; mirrored by HLSL (VirtualShadowMapDefinitions.h:164-175).",
+        "Producer builds the array from cache-manager entries; the capture's 8198 records are runtime-sized."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.c.alloc.merge"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.dirtydec"
+      ],
+      "gaps": [
+        "The capture 8198 element count is runtime, not schema; Flags bit meanings are proven, other bits unused."
+      ],
+      "fields": [
+        {
+          "name": "Flags",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "bit0=VSM_NEXT_FLAG_KEEP_PAGE, bit1=VSM_NEXT_FLAG_ID_VALID",
+          "units": "bit flags",
+          "sourceRefs": [
+            "part3.visibility.vsm.def.nextdata",
+            "part3.visibility.vsm.def.nextflags"
+          ]
+        },
+        {
+          "name": "NextVirtualShadowMapId",
+          "type": "int32",
+          "byteOffset": 4,
+          "count": 1,
+          "decode": "replacement id for source data index (KEEP_PAGE)",
+          "units": "VSM id",
+          "sourceRefs": [
+            "part3.visibility.vsm.def.nextdata"
+          ]
+        },
+        {
+          "name": "PageAddressOffsetX",
+          "type": "int32",
+          "byteOffset": 8,
+          "count": 1,
+          "decode": "added to previous PageAddress.x (clipmap panning)",
+          "units": "pages",
+          "sourceRefs": [
+            "part3.visibility.vsm.def.nextdata"
+          ]
+        },
+        {
+          "name": "PageAddressOffsetY",
+          "type": "int32",
+          "byteOffset": 12,
+          "count": 1,
+          "decode": "added to previous PageAddress.y (clipmap panning)",
+          "units": "pages",
+          "sourceRefs": [
+            "part3.visibility.vsm.def.nextdata"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "Flags",
+          "NextVirtualShadowMapId",
+          "PageAddressOffsetX",
+          "PageAddressOffsetY"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0367",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.NextVirtualShadowMapData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0587"
+    }
+  ]
+}

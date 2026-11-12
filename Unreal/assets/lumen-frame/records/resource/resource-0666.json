@@ -1,0 +1,288 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0666",
+  "nativeRecordId": "native-017674",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.DirectLighting.LightInfluenceSpheres",
+  "uniqueName": "000300000228ba9eaf88",
+  "displayLabel": "Lumen.DirectLighting.LightInfluenceSpheres · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 256,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 16,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 16
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.DirectLighting.LightInfluenceSpheres",
+    "UniqueResourceName": "000300000228ba9eaf88",
+    "ByteSize": 256,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 16,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01267",
+      "role": "resource",
+      "originalPath": "Resources/000300000228ba9eaf88.v00000000000000000000.bin",
+      "bytes": 256,
+      "sha256": "c4d660bd0ab7d4368de56008f1b14198fe3a44c490a535aac39bbcf03a566dfb",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0666",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "c4d660bd0ab7d4368de56008f1b14198fe3a44c490a535aac39bbcf03a566dfb",
+          "offset": 0,
+          "length": 256
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228ba9eaf88",
+        "name": "Lumen.DirectLighting.LightInfluenceSpheres",
+        "byteSize": 256
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01267"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0418",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 417",
+        "record": "records/pass/pass-0418.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01267",
+      "file": "Resources/000300000228ba9eaf88.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.direct-lighting-influence-spheres",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.DirectLighting\\.LightInfluenceSpheres)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-light world-space influence sphere used for fast tile culling",
+      "units": "world units (cm)",
+      "coordinateSpace": "world space",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "float4 (center.xyz, radius.w), 16 B",
+        "strideBytes": 16
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4 (center.xyz, radius.w), 16 B",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "cull",
+          "expression": "CenterLocal = mul(Sphere.xyz - Card.Origin, Card.WorldToLocalRotation); bAffects = ComputeSquaredDistanceFromBoxToPoint(...) < Sphere.w^2",
+          "requires": [
+            "Lumen.DirectLighting.LightInfluenceSpheres",
+            "Lumen.Cards"
+          ],
+          "sourceRefs": [
+            "part1.cards_lis_use"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "16 B per light; capacity = RoundUpToPowerOfTwo(max(NumGatheredLights,16)) (16 in this capture)",
+        "radius is W (not the length of xyz)"
+      ],
+      "producerSources": [
+        "part1.cards_lis_fill",
+        "part1.cards_lis_set",
+        "part1.cards_lis_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_lis_use",
+        "part1.cards_lis_load"
+      ],
+      "gaps": [
+        "Capacity is not the light count; only the first NumGatheredLights entries are uploaded."
+      ],
+      "fields": [
+        {
+          "name": "Center",
+          "type": "float3",
+          "byteOffset": 0,
+          "decode": "light bounding-sphere center (world space, FVector3f)",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_lis_set",
+            "part1.cards_lis_load"
+          ]
+        },
+        {
+          "name": "Radius",
+          "type": "float32",
+          "byteOffset": 12,
+          "decode": "light bounding-sphere radius",
+          "units": "cm",
+          "sourceRefs": [
+            "part1.cards_lis_set",
+            "part1.cards_lis_load"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "Center",
+          "Radius"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0427",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.DirectLighting.LightInfluenceSpheres has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0666"
+    }
+  ]
+}

@@ -1,0 +1,460 @@
+{
+  "format": "PF_R16_UINT",
+  "version": 1,
+  "id": "resource-0719",
+  "nativeRecordId": "native-017728",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.AdaptiveProbePlacementMask",
+  "uniqueName": "000300000228c202cf38",
+  "displayLabel": "Lumen.ScreenProbeGather.AdaptiveProbePlacementMask · instance 0003 · frame 292 · passes 443",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 443,
+    "last": 443
+  },
+  "allocation": [
+    80,
+    56
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": "probe-grid",
+    "allocation": [
+      80,
+      56
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 8960,
+  "extent": [
+    80,
+    56,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "UINT16",
+    "bytesPerTexel": 2,
+    "formatNormalized": "R16_UINT",
+    "dumpFormat": "PF_R16_UINT",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.AdaptiveProbePlacementMask",
+    "UniqueResourceName": "000300000228c202cf38",
+    "ByteSize": 8960,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_R16_UINT",
+    "ExtentX": 80,
+    "ExtentY": 56,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01382",
+      "role": "resource",
+      "originalPath": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+      "bytes": 8960,
+      "sha256": "f50ab8c862a56f747526e711d37d6c294295b9a0d6a0682f8fc4d5658322cbc9",
+      "version": "000300000228c202d440",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0719",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "f50ab8c862a56f747526e711d37d6c294295b9a0d6a0682f8fc4d5658322cbc9",
+          "offset": 0,
+          "length": 8960
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000300000228c202cf38",
+        "Name": "Lumen.ScreenProbeGather.AdaptiveProbePlacementMask",
+        "File": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 80,
+        "ExtentY": 56,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 8960,
+        "RowPitchBytes": 160,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16_UINT",
+        "ViewFormat": "PF_R16_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16_UINT",
+        "StoredFormat": "PF_R16_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 8960,
+        "StagingByteSize": 8960
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 8960,
+          "ActualBytes": 8960,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 8960,
+        "actualBytes": 8960,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000300000228c202cf38",
+        "name": "Lumen.ScreenProbeGather.AdaptiveProbePlacementMask",
+        "diagnosticResource": "000300000228c202cf38"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 80,
+        "extentY": 56,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 8960,
+        "rowPitchBytes": 160,
+        "storageFormat": "PF_R16_UINT",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UINT16",
+        "bytesPerTexel": 2,
+        "formatNormalized": "R16_UINT",
+        "dumpFormat": "PF_R16_UINT",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R16_UINT",
+        "viewFormat": "PF_R16_UINT",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "UnsignedIntegerBits",
+        "bitExact": true,
+        "valuePreserving": true,
+        "bitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228c202d440",
+      "producerPassId": "pass-0444",
+      "producerPassName": "AdaptivePlacementMark 4x2",
+      "payloadIds": [
+        "payload-01382"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0444",
+        "name": "AdaptivePlacementMark 4x2",
+        "displayLabel": "AdaptivePlacementMark 4x2 · LumenScreenProbeGather · frame 292 · pass 443",
+        "record": "records/pass/pass-0444.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0445",
+        "name": "AdaptivePlacementSpawn",
+        "displayLabel": "AdaptivePlacementSpawn · LumenScreenProbeGather · frame 292 · pass 444",
+        "record": "records/pass/pass-0445.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-01382",
+      "file": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+      "layout": {
+        "Resource": "000300000228c202cf38",
+        "Name": "Lumen.ScreenProbeGather.AdaptiveProbePlacementMask",
+        "File": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 80,
+        "ExtentY": 56,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 8960,
+        "RowPitchBytes": 160,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16_UINT",
+        "ViewFormat": "PF_R16_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16_UINT",
+        "StoredFormat": "PF_R16_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 8960,
+        "StagingByteSize": 8960
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 8960,
+          "ActualBytes": 8960,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 8960,
+        "actualBytes": 8960,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-01382",
+      "file": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000300000228c202cf38.mip0.v000300000228c202d440.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 8960,
+          "ActualBytes": 8960,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 8960,
+        "actualBytes": 8960,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.adaptive-probe-placement-mask",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.AdaptiveProbePlacementMask$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per uniform screen-probe bitmask of the sample positions that need an adaptive probe spawned",
+      "units": "bit i = 1 if sample i (of NumSamplesPerUniformProbe) requires an adaptive probe; bits >= NumSamplesPerUniformProbe are 0",
+      "coordinateSpace": "screen-tile grid = ceil(SceneTextures extent / ScreenProbeDownsampleFactor); one texel per uniform probe",
+      "storage": {
+        "kind": "texture2d",
+        "format": "PF_R16_UINT",
+        "strideBytes": 2,
+        "extent": "ceil(SceneTextures.Config.Extent / ScreenProbeDownsampleFactor) (captured 80x56)",
+        "mips": 1,
+        "flags": [
+          "ShaderResource",
+          "UAV"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGTextureDesc",
+            "type": "Texture2D",
+            "format": "PF_R16_UINT",
+            "extentX": 80,
+            "extentY": 56,
+            "depth": 1,
+            "arraySize": 1,
+            "numMips": 1,
+            "byteSize": 8960
+          }
+        ]
+      },
+      "actualFormat": "PF_R16_UINT",
+      "declaredFormat": "PF_R16_UINT",
+      "declaredFormatText": "PF_R16_UINT",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R16_UINT",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R16_UINT",
+      "payloadFormat": "PF_R16_UINT",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "mark",
+          "expression": "SampleMask = 1 << SampleIndex; InterlockedOr into the group-shared mask, then sample 0 writes the texel",
+          "requires": [
+            "SampleIndex"
+          ],
+          "sourceRefs": [
+            "part2.spg.usf.mask.write",
+            "part2.spg.usf.mask.bit"
+          ]
+        },
+        {
+          "name": "test",
+          "expression": "if (mask & (1 << SampleIndex)) spawn a probe",
+          "requires": [
+            "SampleIndex"
+          ],
+          "sourceRefs": [
+            "part2.spg.usf.mask.test"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "MIN_PROBE_INTERPOLATION_WEIGHT = 0.01 (LumenScreenProbeGather.usf:36); NumSamplesPerUniformProbe is 4, 8 or 16 depending on the CVar r.Lumen.ScreenProbeGather.NumAdaptiveProbes clamped to [0,64] (LumenScreenProbeGather.cpp:2335).",
+        "Bits are written only when the adaptive-probe path is enabled; otherwise the texture is not created at all."
+      ],
+      "producerSources": [
+        "part2.spg.cpp.mask.create",
+        "part2.spg.usf.mask.write"
+      ],
+      "consumerSources": [
+        "part2.spg.usf.mask.test"
+      ],
+      "gaps": [
+        "The effective sample count is a permutation constant (FNumSamplesPerUniformProbe); the number of meaningful bits cannot be recovered from the texel alone."
+      ],
+      "fields": [
+        {
+          "name": "SampleMask",
+          "type": "uint16",
+          "decode": "bit i = needs probe; i = SampleIndex2D.x + NumSamplesPerUniformProbe2D.x*SampleIndex2D.y; sample is marked when interpolation coverage dot(Weights,1) < MIN_PROBE_INTERPOLATION_WEIGHT",
+          "units": "bitmask",
+          "sourceRefs": [
+            "part2.spg.usf.mask.write",
+            "part2.spg.usf.mask.bit"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 0,
+          "bitWidth": 16
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "SampleMask"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

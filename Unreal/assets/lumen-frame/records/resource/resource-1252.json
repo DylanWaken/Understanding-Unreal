@@ -1,0 +1,318 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1252",
+  "nativeRecordId": "native-018264",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.RadianceCacheHardwareRayTracingIndirectArgs",
+  "uniqueName": "000400000228baec88b0",
+  "displayLabel": "Lumen.RadianceCache.RadianceCacheHardwareRayTracingIndirectArgs · instance 0004 · frame 292 · passes 772",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 772,
+    "last": 772
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 72,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 6,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 6
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.RadianceCacheHardwareRayTracingIndirectArgs",
+    "UniqueResourceName": "000400000228baec88b0",
+    "ByteSize": 72,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 6,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02241",
+      "role": "resource",
+      "originalPath": "Resources/000400000228baec88b0.v000400000228baec8cd0.bin",
+      "bytes": 72,
+      "sha256": "4fced79a6f2fd3d4ffcfce0a978ac71073217d04a0c435cf7d0fd9b37b104fa7",
+      "version": "000400000228baec8cd0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1252",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "4fced79a6f2fd3d4ffcfce0a978ac71073217d04a0c435cf7d0fd9b37b104fa7",
+          "offset": 0,
+          "length": 72
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228baec88b0",
+        "name": "Lumen.RadianceCache.RadianceCacheHardwareRayTracingIndirectArgs",
+        "byteSize": 72
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228baec8cd0",
+      "producerPassId": "pass-0773",
+      "producerPassName": "SetupTraceFromProbesCS",
+      "payloadIds": [
+        "payload-02241"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0773",
+        "name": "SetupTraceFromProbesCS",
+        "displayLabel": "SetupTraceFromProbesCS · UpdateWorldRadianceCaches · frame 292 · pass 772",
+        "record": "records/pass/pass-0773.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02241",
+      "file": "Resources/000400000228baec88b0.v000400000228baec8cd0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.rc.radiance-cache-hardware-ray-tracing-indirect-args",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.RadianceCacheHardwareRayTracingIndirectArgs$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "indirect dispatch record emitted while setting up trace-from-probes for a potential ray-tracing dispatch (record 0 only)",
+      "units": "thread-group counts (x,y,z)",
+      "coordinateSpace": "2D trace-tile grid (x=64 tile-stride columns, y=tiles)",
+      "storage": {
+        "kind": "buffer",
+        "format": "FRHIDispatchIndirectParameters (3 x uint32)",
+        "strideBytes": 12,
+        "numElements": 6,
+        "capacity": "6 FRHIDispatchIndirectParameters records",
+        "usage": "IndirectArgs(UAV) | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 12,
+            "numElements": 6,
+            "byteSize": 72,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "DrawIndirect",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters (3 x uint32)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [
+        {
+          "name": "record0",
+          "expression": "x=64; y=ProbeTraceTileAllocator[0]; z=1",
+          "requires": [
+            "RADIANCE_CACHE_TRACE_TILE_SIZE_1D",
+            "ProbeTraceTileAllocator"
+          ],
+          "sourceRefs": [
+            "part2.rc.args.hwrt.write",
+            "part2.rc.rayalloc.write"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Written non-atomically (plain assignment) by SetupTraceFromProbesCS, unlike the atomic counters around it."
+      ],
+      "producerSources": [
+        "part2.rc.cpp.args.hwrt"
+      ],
+      "consumerSources": [],
+      "gaps": [
+        "No consumer of this RDG name exists in the scoped renderer sources: the HW RT radiance-cache pass creates its own Lumen.RadianceCache.HardwareRayTracing.IndirectArgsBuffer (1 record, LumenRadianceCacheHardwareRayTracing.cpp:583). The purpose of this 6-record buffer is unresolved and records 1..5 are never written.",
+        "Do not treat record 0 as a DispatchRays dimension without evidence: it is a thread-group-shaped triple, while the actual ray dispatch uses a separate 1-record buffer."
+      ],
+      "fields": [
+        {
+          "name": "X",
+          "type": "uint32",
+          "decode": "record[0].x = RADIANCE_CACHE_TRACE_TILE_SIZE_1D = 64",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.hwrt.write"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "Y",
+          "type": "uint32",
+          "decode": "record[0].y = NumProbeTraceTiles",
+          "units": "tiles",
+          "sourceRefs": [
+            "part2.rc.args.hwrt.write"
+          ],
+          "byteOffset": 4,
+          "bitWidth": 32
+        },
+        {
+          "name": "Z",
+          "type": "uint32",
+          "decode": "record[0].z = 1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.hwrt.write"
+          ],
+          "byteOffset": 8,
+          "bitWidth": 32
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0788",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadianceCache.RadianceCacheHardwareRayTracingIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1252"
+    }
+  ]
+}

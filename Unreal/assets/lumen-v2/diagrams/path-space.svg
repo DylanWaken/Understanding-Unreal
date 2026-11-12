@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+<title id="title">One path, two directions of reasoning</title><desc id="desc">A physical path goes from emitter x0 through scattering surfaces x1 and x2 to sensor x3. Camera sampling constructs the same path in reverse. Geometry, scattering, emission, and sensor response remain distinct.</desc>
+<defs><marker id="arrow-0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker><marker id="arrow-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker><marker id="arrow-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker><marker id="arrow-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker><marker id="arrow-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker></defs>
+<rect width="1200" height="650" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="36" y="48" font-size="30" fill="#22312d" font-weight="600" text-anchor="start">One path, two directions of reasoning</text>
+<circle cx="130" cy="205" r="12" fill="#286c56"/>
+<text x="130" y="164" font-size="32" fill="#22312d" font-weight="600" text-anchor="middle">x₀</text>
+<text x="130" y="247" font-size="21" fill="#22312d" font-weight="400" text-anchor="middle">Emitter</text>
+<circle cx="440" cy="205" r="12" fill="#286c56"/>
+<text x="440" y="164" font-size="32" fill="#22312d" font-weight="600" text-anchor="middle">x₁</text>
+<text x="440" y="247" font-size="21" fill="#22312d" font-weight="400" text-anchor="middle">Secondary surface</text>
+<circle cx="750" cy="205" r="12" fill="#286c56"/>
+<text x="750" y="164" font-size="32" fill="#22312d" font-weight="600" text-anchor="middle">x₂</text>
+<text x="750" y="247" font-size="21" fill="#22312d" font-weight="400" text-anchor="middle">Visible receiver</text>
+<circle cx="1060" cy="205" r="12" fill="#286c56"/>
+<text x="1060" y="164" font-size="32" fill="#22312d" font-weight="600" text-anchor="middle">x₃</text>
+<text x="1060" y="247" font-size="21" fill="#22312d" font-weight="400" text-anchor="middle">Sensor</text>
+<path d="M147 205L423 205" fill="none" stroke="#286c56" stroke-width="4" marker-end="url(#arrow-0)"/>
+<text x="285.0" y="296" font-size="21" fill="#22312d" font-weight="400" text-anchor="middle">G(x0 ↔ x1)</text>
+<path d="M457 205L733 205" fill="none" stroke="#286c56" stroke-width="4" marker-end="url(#arrow-0)"/>
+<text x="595.0" y="296" font-size="21" fill="#22312d" font-weight="400" text-anchor="middle">G(x1 ↔ x2)</text>
+<path d="M767 205L1043 205" fill="none" stroke="#286c56" stroke-width="4" marker-end="url(#arrow-0)"/>
+<text x="905.0" y="296" font-size="21" fill="#22312d" font-weight="400" text-anchor="middle">G(x2 ↔ x3)</text>
+<text x="565" y="110" font-size="18" fill="#286c56" font-weight="600" text-anchor="middle">PHYSICAL LIGHT FLOW</text>
+<rect x="40" y="340" width="210" height="118" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M52 341H238" stroke="#286c56" stroke-width="4"/>
+<text x="58" y="375" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Emission</text>
+<text x="58" y="409" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Lₑ(x₀ → x₁)</text>
+<rect x="285" y="340" width="280" height="118" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M297 341H553" stroke="#286c56" stroke-width="4"/>
+<text x="303" y="375" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Scattering at x₁</text>
+<text x="303" y="409" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">fₛ(x₀ → x₁ → x₂)</text>
+<rect x="600" y="340" width="280" height="118" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M612 341H868" stroke="#286c56" stroke-width="4"/>
+<text x="618" y="375" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Scattering at x₂</text>
+<text x="618" y="409" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">fₛ(x₁ → x₂ → x₃)</text>
+<rect x="915" y="340" width="245" height="118" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M927 341H1148" stroke="#286c56" stroke-width="4"/>
+<text x="933" y="375" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Sensor response</text>
+<text x="933" y="409" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Wₑ⁽ʲ⁾(x₂ → x₃)</text>
+<path d="M1060 520L130 520" fill="none" stroke="#286788" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arrow-1)"/>
+<text x="595" y="557" font-size="21" fill="#286788" font-weight="400" text-anchor="middle">Camera sampling begins at the sensor; the notation still follows light.</text>
+<text x="36" y="626" font-size="16" fill="#586760" font-weight="400" text-anchor="start">Original explanatory diagram; positions and colors are schematic.</text>
+</g></svg>

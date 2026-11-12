@@ -1,0 +1,195 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0482",
+  "nativeRecordId": "native-017489",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "SlateElementsVertexBuffer",
+  "uniqueName": "000200000225ebfa0230",
+  "displayLabel": "SlateElementsVertexBuffer · instance 0002 · frame 292",
+  "instancePrefix": "0002",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 128832,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 44,
+  "numElements": 2928,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 44,
+    "numElements": 2928
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "SlateElementsVertexBuffer",
+    "UniqueResourceName": "000200000225ebfa0230",
+    "ByteSize": 128832,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 44,
+    "NumElements": 2928,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Volatile",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00900",
+      "role": "resource",
+      "originalPath": "Resources/000200000225ebfa0230.v00000000000000000000.bin",
+      "bytes": 128832,
+      "sha256": "b3e87393e00e7090fec52bffe832f45dfb939790e3befbd8ae9416f635be8280",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0482",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "b3e87393e00e7090fec52bffe832f45dfb939790e3befbd8ae9416f635be8280",
+          "offset": 0,
+          "length": 128832
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000200000225ebfa0230",
+        "name": "SlateElementsVertexBuffer",
+        "byteSize": 128832
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00900"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0310",
+        "name": "ElementBatch",
+        "displayLabel": "ElementBatch · SlateUI Title = UnrealLab - Unreal Editor · frame 292 · pass 309",
+        "record": "records/pass/pass-0310.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00900",
+      "file": "Resources/000200000225ebfa0230.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0296",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer SlateElementsVertexBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0482"
+    },
+    {
+      "id": "gap-1978",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched SlateElementsVertexBuffer (000200000225ebfa0230). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0482"
+    }
+  ]
+}

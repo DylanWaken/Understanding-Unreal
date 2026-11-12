@@ -1,0 +1,445 @@
+{
+  "format": "PF_R16F",
+  "version": 1,
+  "id": "resource-1305",
+  "nativeRecordId": "native-018317",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.TranslucencyVolume.VolumeTraceHitDistance",
+  "uniqueName": "000400000228bd47a0e0",
+  "displayLabel": "Lumen.TranslucencyVolume.VolumeTraceHitDistance · instance 0004 · frame 292 · passes 803",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 803,
+    "last": 803
+  },
+  "allocation": [
+    120,
+    69,
+    26
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "volume-3d",
+    "classification": null,
+    "allocation": [
+      120,
+      69,
+      26
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 430560,
+  "extent": [
+    120,
+    69,
+    26
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "FLOAT16",
+    "bytesPerTexel": 2,
+    "formatNormalized": "R16F",
+    "dumpFormat": "PF_R16F",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.TranslucencyVolume.VolumeTraceHitDistance",
+    "UniqueResourceName": "000400000228bd47a0e0",
+    "ByteSize": 430560,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture3D",
+    "Format": "PF_R16F",
+    "ExtentX": 120,
+    "ExtentY": 69,
+    "Depth": 26,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02281",
+      "role": "resource",
+      "originalPath": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+      "bytes": 430560,
+      "sha256": "80aa8ec227852c0ceef0d0eae36fc8dc46d4543c1ea268e2c3befc1d607c78bc",
+      "version": "000400000228bd47a8f0",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1305",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "80aa8ec227852c0ceef0d0eae36fc8dc46d4543c1ea268e2c3befc1d607c78bc",
+          "offset": 0,
+          "length": 430560
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000228bd47a0e0",
+        "Name": "Lumen.TranslucencyVolume.VolumeTraceHitDistance",
+        "File": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 120,
+        "ExtentY": 69,
+        "Depth": 26,
+        "ZSliceCount": 26,
+        "ZSliceStrideBytes": 16560,
+        "RowPitchBytes": 240,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R16F",
+        "ViewFormat": "PF_R16F",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16F",
+        "StoredFormat": "PF_R16F",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 430560,
+        "StagingByteSize": 430560
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 430560,
+          "ActualBytes": 430560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 430560,
+        "actualBytes": 430560,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000228bd47a0e0",
+        "name": "Lumen.TranslucencyVolume.VolumeTraceHitDistance",
+        "diagnosticResource": "000400000228bd47a0e0"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 120,
+        "extentY": 69,
+        "depth": 26,
+        "zSliceCount": 26,
+        "zSliceStrideBytes": 16560,
+        "rowPitchBytes": 240,
+        "storageFormat": "PF_R16F",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "FLOAT16",
+        "bytesPerTexel": 2,
+        "formatNormalized": "R16F",
+        "dumpFormat": "PF_R16F",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R16F",
+        "viewFormat": "PF_R16F",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228bd47a8f0",
+      "producerPassId": "pass-0804",
+      "producerPassName": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+      "payloadIds": [
+        "payload-02281"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0804",
+        "name": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+        "displayLabel": "TraceGlobalSDFAndInterpolateRadianceCache 3x3 · TranslucencyVolumeLighting · frame 292 · pass 803",
+        "record": "records/pass/pass-0804.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-02281",
+      "file": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+      "layout": {
+        "Resource": "000400000228bd47a0e0",
+        "Name": "Lumen.TranslucencyVolume.VolumeTraceHitDistance",
+        "File": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 120,
+        "ExtentY": 69,
+        "Depth": 26,
+        "ZSliceCount": 26,
+        "ZSliceStrideBytes": 16560,
+        "RowPitchBytes": 240,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R16F",
+        "ViewFormat": "PF_R16F",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16F",
+        "StoredFormat": "PF_R16F",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 430560,
+        "StagingByteSize": 430560
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 430560,
+          "ActualBytes": 430560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 430560,
+        "actualBytes": 430560,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-02281",
+      "file": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228bd47a0e0.mip0.v000400000228bd47a8f0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 430560,
+          "ActualBytes": 430560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 430560,
+        "actualBytes": 430560,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.tv.volume-trace-hit-distance",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.TranslucencyVolume\\.VolumeTraceHitDistance$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "opaque hit distance of each translucency-volume trace direction (or the max trace distance when the ray missed)",
+      "units": "world-space distance (cm) along the cone; no separate hit flag is stored",
+      "coordinateSpace": "3D octahedral atlas: uint3(GridCoord.xy*TracingRes + TraceTexelCoord, GridCoord.z)",
+      "storage": {
+        "kind": "texture3d",
+        "format": "PF_R16F",
+        "strideBytes": 2,
+        "extent": "(TranslucencyGIGridSize.X*TracingRes, TranslucencyGIGridSize.Y*TracingRes, TranslucencyGIGridSize.Z) (captured 120x69x26)",
+        "mips": 1,
+        "flags": [
+          "ShaderResource",
+          "UAV"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGTextureDesc",
+            "type": "Texture3D",
+            "format": "PF_R16F",
+            "extentX": 120,
+            "extentY": 69,
+            "depth": 26,
+            "arraySize": 1,
+            "numMips": 1,
+            "byteSize": 430560
+          }
+        ]
+      },
+      "actualFormat": "PF_R16F",
+      "declaredFormat": "PF_R16F",
+      "declaredFormatText": "PF_R16F",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R16F",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R16F",
+      "payloadFormat": "PF_R16F",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "write",
+          "expression": "TraceHitDistance initialized to MaxTraceDistance; set from TraceResult.OpaqueHitDistance when Transparency <= 0.5; stored min(d,MaxHalfFloat)",
+          "requires": [
+            "MaxTraceDistance",
+            "TraceResult.OpaqueHitDistance"
+          ],
+          "sourceRefs": [
+            "part2.tv.usf.maxdist",
+            "part2.tv.usf.hit.write"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "A miss stores MaxTraceDistance (a large but legal distance), not 0 and not a NaN sentinel; the filter also uses it to weight neighbours.",
+        "The cone half-angle / direction for a texel comes from EquiAreaSphericalMapping((TexelCoord+0.5)/TracingRes)."
+      ],
+      "producerSources": [
+        "part2.tv.cpp.hit.create",
+        "part2.tv.usf.hit.write"
+      ],
+      "consumerSources": [
+        "part2.tv.usf.dir"
+      ],
+      "gaps": [
+        "The value is clamped by R16F storage only; distances above 65504 saturate, so a very large MaxTraceDistance is indistinguishable from a hit at 65504."
+      ],
+      "fields": [
+        {
+          "name": "HitDistance",
+          "type": "float16",
+          "decode": "value = min(TraceHitDistance, MaxHalfFloat); TraceHitDistance = MaxTraceDistance when nothing was hit, else TraceResult.OpaqueHitDistance",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.tv.usf.hit.write",
+            "part2.tv.usf.maxdist"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 16
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "HitDistance"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

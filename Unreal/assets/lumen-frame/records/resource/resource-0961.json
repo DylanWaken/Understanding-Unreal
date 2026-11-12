@@ -1,0 +1,208 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0961",
+  "nativeRecordId": "native-017971",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "VirtualTexture.BuildHashTableIndirectArgs",
+  "uniqueName": "0003000002287c12fba8",
+  "displayLabel": "VirtualTexture.BuildHashTableIndirectArgs · instance 0003 · frame 292 · passes 606",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 606,
+    "last": 606
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 12,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "VirtualTexture.BuildHashTableIndirectArgs",
+    "UniqueResourceName": "0003000002287c12fba8",
+    "ByteSize": 12,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01117",
+      "role": "resource",
+      "originalPath": "Resources/0003000002287c12fba8.v0003000002287c12fd58.bin",
+      "bytes": 12,
+      "sha256": "45adb8cb9992e0cbf88fa58318655bf3eff7d9c673c95a075084019c7bd36483",
+      "version": "0003000002287c12fd58",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0961",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "45adb8cb9992e0cbf88fa58318655bf3eff7d9c673c95a075084019c7bd36483",
+          "offset": 0,
+          "length": 12
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0003000002287c12fba8",
+        "name": "VirtualTexture.BuildHashTableIndirectArgs",
+        "byteSize": 12
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "0003000002287c12fd58",
+      "producerPassId": "pass-0607",
+      "producerPassName": "Hash table indirect arguments",
+      "payloadIds": [
+        "payload-01117"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0607",
+        "name": "Hash table indirect arguments",
+        "displayLabel": "Hash table indirect arguments · VirtualTextureUpdate · frame 292 · pass 606",
+        "record": "records/pass/pass-0607.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0608",
+        "name": "Build feedback hash table",
+        "displayLabel": "Build feedback hash table · VirtualTextureUpdate · frame 292 · pass 607",
+        "record": "records/pass/pass-0608.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01117",
+      "file": "Resources/0003000002287c12fba8.v0003000002287c12fd58.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0585",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer VirtualTexture.BuildHashTableIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0961"
+    },
+    {
+      "id": "gap-2150",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched VirtualTexture.BuildHashTableIndirectArgs (0003000002287c12fba8). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0961"
+    }
+  ]
+}

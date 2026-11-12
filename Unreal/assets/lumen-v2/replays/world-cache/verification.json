@@ -1,0 +1,261 @@
+{
+  "schema": "unreal-understanding-world-cache-verification-v1",
+  "passed": true,
+  "checks": [
+    {
+      "name": "stored_json_all_selfchecks",
+      "passed": true,
+      "evidence": {
+        "report": true,
+        "selfchecks": true,
+        "count": 22
+      }
+    },
+    {
+      "name": "stored_selfcheck_count",
+      "passed": true,
+      "evidence": 22
+    },
+    {
+      "name": "fresh_replay_matches_stored_report",
+      "passed": true,
+      "evidence": {
+        "freshSelfchecks": true,
+        "storedSelfchecks": true
+      }
+    },
+    {
+      "name": "fresh_replay_all_selfchecks",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "name": "selected_lane_is_actual_compacted_lane",
+      "passed": true,
+      "evidence": {
+        "lane": 190,
+        "probe": 676,
+        "traceTexel": [
+          2,
+          2
+        ],
+        "traceBuffer": [
+          290,
+          66
+        ]
+      }
+    },
+    {
+      "name": "selected_lane_below_allocator",
+      "passed": true,
+      "evidence": 82102
+    },
+    {
+      "name": "both_indirect_triples_are_ceil_of_allocator",
+      "passed": true,
+      "evidence": {
+        "N": 82102,
+        "div64": [
+          1283,
+          1,
+          1
+        ],
+        "div32": [
+          2566,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "eight_neighbors_thirty_two_taps",
+      "passed": true,
+      "evidence": {
+        "neighbors": 8,
+        "taps": 32
+      }
+    },
+    {
+      "name": "compacted_trace_texels_are_unique_and_selected_occurs_once",
+      "passed": true,
+      "evidence": {
+        "unique": 82102,
+        "allocator": 82102,
+        "selectedOccurrences": 1
+      }
+    },
+    {
+      "name": "tap_effective_weights_sum_to_one",
+      "passed": true,
+      "evidence": 1.000000011195062
+    },
+    {
+      "name": "accounted_offsets_are_half4",
+      "passed": true,
+      "evidence": {
+        "bytesPerElement": 8,
+        "numElements": 16384
+      }
+    },
+    {
+      "name": "stored_cache_depth_recomputes_from_eight_depths",
+      "passed": true,
+      "evidence": {
+        "recomputed": 394.431884765625,
+        "stored": 394.431884765625
+      }
+    },
+    {
+      "name": "cache_depth_matches_captured_trace_hit",
+      "passed": true,
+      "evidence": {
+        "replayed": 394.431884765625,
+        "captured": 394.431884765625
+      }
+    },
+    {
+      "name": "radiance_forward_consistency_is_within_storage_tolerance",
+      "passed": true,
+      "evidence": {
+        "absDiff": [
+          0.0005761981010437012,
+          0.0062599778175354,
+          0.00366818904876709
+        ],
+        "tolerance": [
+          0.011465606279671192,
+          0.01418441440910101,
+          0.02088146284222603
+        ]
+      }
+    },
+    {
+      "name": "no_final_radiance_equality_claim",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "name": "blue_noise_pointer_suffix_matches_uniform_byte_40",
+      "passed": true,
+      "evidence": {
+        "pointer": "0001000002299302b980",
+        "suffix16": "000002299302b980"
+      }
+    },
+    {
+      "name": "blue_noise_export_matches_binding_pointer",
+      "passed": true,
+      "evidence": "Resources/000100000225e8ce9630.linear.mip0.v000100000225e8ce68d0.bin"
+    },
+    {
+      "name": "all_input_files_rehash_to_recorded_sha256",
+      "passed": true,
+      "evidence": []
+    },
+    {
+      "name": "blue_noise_payload_rehashes",
+      "passed": true,
+      "evidence": "cd7286ea0fd5374282ac76deb74e47be42a0a175991a293468b506c4c5a19ad0"
+    },
+    {
+      "name": "referenced_structs_7_valid_1_null",
+      "passed": true,
+      "evidence": {
+        "records": 8,
+        "null": {
+          "HairStrandsVoxel": {
+            "Null": true,
+            "BaseType": "UBMT_RDG_UNIFORM_BUFFER",
+            "MemberOffset": 1088,
+            "ContentKind": "RDGUniformBufferUnbound",
+            "BindingFlags": "Shader"
+          }
+        }
+      }
+    },
+    {
+      "name": "permutation_evidence_structured_importance_and_cache",
+      "passed": true,
+      "evidence": {
+        "pass": "000100000228d58f3800",
+        "cvars": {
+          "r.Lumen.ThreadGroupSize32": {
+            "type": "int32",
+            "source": "Constructor",
+            "value": "1"
+          },
+          "r.Lumen.ScreenProbeGather.ReferenceMode": {
+            "type": "int32",
+            "source": "Constructor",
+            "value": "0"
+          },
+          "r.Lumen.ScreenProbeGather.ImportanceSample": {
+            "type": "int32",
+            "source": "Constructor",
+            "value": "1"
+          },
+          "r.Lumen.ScreenProbeGather.ImportanceSample.NumLevels": {
+            "type": "int32",
+            "source": "Constructor",
+            "value": "1"
+          },
+          "r.Lumen.ScreenProbeGather.RadianceCache": {
+            "type": "int32",
+            "source": "Constructor",
+            "value": "1"
+          },
+          "r.Lumen.HardwareRayTracing": {
+            "type": "int32",
+            "source": "Console",
+            "value": "0"
+          },
+          "r.Lumen.ScreenProbeGather.HardwareRayTracing": {
+            "type": "int32",
+            "source": "Constructor",
+            "value": "1"
+          }
+        }
+      }
+    },
+    {
+      "name": "md_states_depth_result_and_boundary",
+      "passed": true,
+      "evidence": {
+        "lines": 172
+      }
+    },
+    {
+      "name": "recorded_report_sha_matches_artifact",
+      "passed": true,
+      "evidence": "94b4108a3c532531c6ad439957f1043f6537c210f37516f0c6a26476e14df916"
+    },
+    {
+      "name": "recorded_markdown_sha_matches_artifact",
+      "passed": true,
+      "evidence": "bb8d74901b4fd992dc7f4d803e9ff15e593ff537ece86a4696052615dadbc73d"
+    },
+    {
+      "name": "source_evidence_has_15_entries",
+      "passed": true,
+      "evidence": 15
+    }
+  ],
+  "artifacts": {
+    "report": {
+      "file": "world-cache-replay.json",
+      "sha256": "94b4108a3c532531c6ad439957f1043f6537c210f37516f0c6a26476e14df916"
+    },
+    "markdown": {
+      "file": "world-cache-replay.md",
+      "sha256": "bb8d74901b4fd992dc7f4d803e9ff15e593ff537ece86a4696052615dadbc73d"
+    },
+    "blueNoiseExport": {
+      "file": "blue-noise-export.json",
+      "sha256": "77f0b5f351c68472d9dca1be04b0d77ca762aa27f794ebc972ddc592973bd2fd"
+    },
+    "permutationEvidence": {
+      "file": "permutation-evidence.json",
+      "sha256": "bdc98996c31036bcda9a68c82a63d957d24c4816920e4f2915758ce37eeb5211"
+    }
+  }
+}

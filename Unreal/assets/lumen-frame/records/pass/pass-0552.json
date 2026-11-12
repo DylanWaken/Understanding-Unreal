@@ -1,0 +1,239 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0552",
+  "nativeRecordId": "native-016071",
+  "name": "SetupCompactionIndirectArgs",
+  "displayLabel": "SetupCompactionIndirectArgs · LumenReflections · frame 292 · pass 551",
+  "frameNumber": 292,
+  "graphPrefix": "LumenReflections",
+  "viewState": null,
+  "pointer": "0003000002290e76b170",
+  "parametersName": "FParameters",
+  "parametersPointer": "0003000002290e76b060",
+  "parametersMetadataPointer": "000300007ffb8925ca10",
+  "parentScopes": [
+    "LumenReflections",
+    "DiffuseIndirectAndAO",
+    "RenderDeferredLighting",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "SetupCompactionIndirectArgs",
+    "ParametersName": "FParameters",
+    "Parameters": "0003000002290e76b060",
+    "ParametersMetadata": "000300007ffb8925ca10",
+    "Pointer": "0003000002290e76b170",
+    "Id": 551,
+    "ParentEventScopes": [
+      "LumenReflections",
+      "DiffuseIndirectAndAO",
+      "RenderDeferredLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228e88fab38"
+    ],
+    "OutputResources": [
+      "0003000002290e76aca0",
+      "0003000002290e76af10"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228e88fab38",
+      "resourceId": "resource-0893",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01504",
+        "payload-01505"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "0003000002290e76aca0",
+      "resourceId": "resource-0903",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01774",
+        "payload-01775"
+      ]
+    },
+    {
+      "uniqueName": "0003000002290e76af10",
+      "resourceId": "resource-0904",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01777"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06582",
+    "metadataPointer": "000300007ffb8925ca10",
+    "bytes": 48,
+    "sha256": "dff2f6d85bf5f605a05c2fe0ad6cfb9abb323412d2779bc0fd1d605ae62f9cdf",
+    "chunks": [
+      {
+        "sha": "dff2f6d85bf5f605a05c2fe0ad6cfb9abb323412d2779bc0fd1d605ae62f9cdf",
+        "offset": 0,
+        "length": 48
+      }
+    ],
+    "originalPath": "Structures/0003000002290e76b060.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenReflectionTracing.cpp",
+    "FileLine": 490,
+    "Size": 48,
+    "Members": [
+      {
+        "Name": "Substrate",
+        "ShaderType": "FSubstrateGlobalUniformParameters",
+        "FileLine": 491,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_UNIFORM_BUFFER",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb893240c0"
+      },
+      {
+        "Name": "RWCompactedTraceTexelAllocator",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 492,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWReflectionCompactionIndirectArgs",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 493,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ReflectionTracingTileIndirectArgs",
+        "ShaderType": "Buffer<uint>",
+        "FileLine": 494,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "CompactionThreadGroupSize",
+        "ShaderType": "",
+        "FileLine": 495,
+        "Offset": 40,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [
+    {
+      "Null": true,
+      "BaseType": "UBMT_RDG_UNIFORM_BUFFER",
+      "MemberOffset": 0,
+      "ContentKind": "RDGUniformBufferUnbound",
+      "BindingFlags": "Shader",
+      "member": "Substrate",
+      "contentPointer": null,
+      "metadataPointer": null,
+      "payloadId": null,
+      "status": "null-reference",
+      "metadata": null
+    }
+  ],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "0003000002290e76b170",
+      "Parameters": "0003000002290e76b060",
+      "Bindings": {
+        "RWCompactedTraceTexelAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002290e76b090",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWReflectionCompactionIndirectArgs": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002290e76b0d8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ReflectionTracingTileIndirectArgs": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002290e76b120",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-1112",
+      "kind": "referenced-struct-null",
+      "severity": "info",
+      "scope": "pass",
+      "message": "Referenced struct Substrate is recorded Null=true (RDGUniformBufferUnbound); there is no captured block because the source binding is explicitly null.",
+      "source": "Base/ReferencedStructs.json",
+      "passId": "pass-0552"
+    }
+  ]
+}

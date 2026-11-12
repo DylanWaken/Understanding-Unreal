@@ -1,0 +1,152 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0214",
+  "nativeRecordId": "native-015733",
+  "name": "ClearIndirectDispatchArgs",
+  "displayLabel": "ClearIndirectDispatchArgs · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 213",
+  "frameNumber": 292,
+  "graphPrefix": "FVirtualShadowMapArray::BuildPageAllocation",
+  "viewState": null,
+  "pointer": "000100000228b83056a8",
+  "parametersName": "FParameters",
+  "parametersPointer": "000100000228b8305630",
+  "parametersMetadataPointer": "000100007ffb892fb9c0",
+  "parentScopes": [
+    "FVirtualShadowMapArray::BuildPageAllocation",
+    "ShadowDepths",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearIndirectDispatchArgs",
+    "ParametersName": "FParameters",
+    "Parameters": "000100000228b8305630",
+    "ParametersMetadata": "000100007ffb892fb9c0",
+    "Pointer": "000100000228b83056a8",
+    "Id": 213,
+    "ParentEventScopes": [
+      "FVirtualShadowMapArray::BuildPageAllocation",
+      "ShadowDepths",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000100000228b83054e0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000100000228b83054e0",
+      "resourceId": "resource-0382",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00204",
+        "payload-00205"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-05931",
+    "metadataPointer": "000100007ffb892fb9c0",
+    "bytes": 48,
+    "sha256": "0c4a7f778cb60fa4159384089c949029e5277ffb7bd84c9cf92762d8beefa534",
+    "chunks": [
+      {
+        "sha": "0c4a7f778cb60fa4159384089c949029e5277ffb7bd84c9cf92762d8beefa534",
+        "offset": 0,
+        "length": 48
+      }
+    ],
+    "originalPath": "Structures/000100000228b8305630.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\RendererUtils.cpp",
+    "FileLine": 331,
+    "Size": 48,
+    "Members": [
+      {
+        "Name": "NumIndirectArgs",
+        "ShaderType": "",
+        "FileLine": 332,
+        "Offset": 0,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "IndirectArgStride",
+        "ShaderType": "",
+        "FileLine": 333,
+        "Offset": 4,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "DimClearValue",
+        "ShaderType": "",
+        "FileLine": 334,
+        "Offset": 16,
+        "BaseType": "UBMT_INT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 3,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "OutIndirectArgsBuffer",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 335,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000228b83056a8",
+      "Parameters": "000100000228b8305630",
+      "Bindings": {
+        "OutIndirectArgsBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228b8305660",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

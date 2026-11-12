@@ -1,0 +1,226 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0107",
+  "nativeRecordId": "native-015626",
+  "name": "ComputeLightTileOffsetsPerLight",
+  "displayLabel": "ComputeLightTileOffsetsPerLight · CullTiles 1 lights · frame 292 · pass 106",
+  "frameNumber": 292,
+  "graphPrefix": "CullTiles 1 lights",
+  "viewState": null,
+  "pointer": "00010000022925076520",
+  "parametersName": "FParameters",
+  "parametersPointer": "000100000229250762d0",
+  "parametersMetadataPointer": "000100007ffb89262900",
+  "parentScopes": [
+    "CullTiles 1 lights",
+    "DirectLighting",
+    "LumenSceneLighting",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ComputeLightTileOffsetsPerLight",
+    "ParametersName": "FParameters",
+    "Parameters": "000100000229250762d0",
+    "ParametersMetadata": "000100007ffb89262900",
+    "Pointer": "00010000022925076520",
+    "Id": 106,
+    "ParentEventScopes": [
+      "CullTiles 1 lights",
+      "DirectLighting",
+      "LumenSceneLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000100000229250704d8",
+      "00010000022925076398"
+    ],
+    "OutputResources": [
+      "00010000022925070610"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000100000229250704d8",
+      "resourceId": "resource-0176",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00716",
+        "payload-00717"
+      ]
+    },
+    {
+      "uniqueName": "00010000022925076398",
+      "resourceId": "resource-0183",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00722"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "00010000022925070610",
+      "resourceId": "resource-0182",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00718"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06177",
+    "metadataPointer": "000100007ffb89262900",
+    "bytes": 48,
+    "sha256": "444ffb6b01b730970ea4575c9c4b883279bc0d8d275ae161f1fa4077b2329ef0",
+    "chunks": [
+      {
+        "sha": "444ffb6b01b730970ea4575c9c4b883279bc0d8d275ae161f1fa4077b2329ef0",
+        "offset": 0,
+        "length": 48
+      }
+    ],
+    "originalPath": "Structures/000100000229250762d0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenSceneDirectLighting.cpp",
+    "FileLine": 581,
+    "Size": 48,
+    "Members": [
+      {
+        "Name": "RWLightTileOffsetsPerLight",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 582,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "LightTileAllocatorPerLight",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 583,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "StandaloneLightIndices",
+        "ShaderType": "StructuredBuffer<int>",
+        "FileLine": 584,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "NumLights",
+        "ShaderType": "",
+        "FileLine": 585,
+        "Offset": 24,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "NumViews",
+        "ShaderType": "",
+        "FileLine": 586,
+        "Offset": 28,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "NumStandaloneLights",
+        "ShaderType": "",
+        "FileLine": 587,
+        "Offset": 32,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "00010000022925076520",
+      "Parameters": "000100000229250762d0",
+      "Bindings": {
+        "RWLightTileOffsetsPerLight": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00010000022925076300",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "LightTileAllocatorPerLight": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00010000022925076348",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "StandaloneLightIndices": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000229250764d0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

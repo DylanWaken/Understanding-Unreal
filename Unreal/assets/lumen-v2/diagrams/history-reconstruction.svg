@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+<title id="title">A history sample is a conditional reconstruction</title><desc id="desc">Current lighting is combined with previous lighting only after reprojection, per-tap validity, exposure conversion and optional clamping. History count and moving-light state determine the blend; invalid current samples use a different rule.</desc>
+<defs><marker id="arrow-0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker><marker id="arrow-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker><marker id="arrow-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker><marker id="arrow-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker><marker id="arrow-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker></defs>
+<rect width="1200" height="780" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="36" y="48" font-size="30" fill="#22312d" font-weight="600" text-anchor="start">A history sample is a conditional reconstruction</text>
+<rect x="35" y="110" width="340" height="150" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M47 111H363" stroke="#286c56" stroke-width="4"/>
+<text x="53" y="145" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Current frame</text>
+<text x="53" y="179" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Lighting sample + validity</text>
+<text x="53" y="207" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Moving-light fraction</text>
+<text x="53" y="235" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Current normal / depth</text>
+<rect x="825" y="110" width="340" height="150" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M837 111H1153" stroke="#286788" stroke-width="4"/>
+<text x="843" y="145" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Previous frame</text>
+<text x="843" y="179" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Lighting + count + fast-update state</text>
+<text x="843" y="207" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Previous normal / depth</text>
+<text x="843" y="235" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Previous pre-exposure</text>
+<rect x="425" y="335" width="350" height="145" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M437 336H763" stroke="#286788" stroke-width="4"/>
+<text x="443" y="370" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Reproject and validate</text>
+<text x="443" y="404" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Previous coordinates and 2 × 2 taps</text>
+<text x="443" y="432" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Depth / normal tests + weights</text>
+<text x="443" y="460" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Reject invalid taps</text>
+<path d="M990 270L775 325" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<rect x="825" y="540" width="340" height="145" rx="8" fill="#fffdf8" stroke="#aa5343" stroke-width="1.5"/>
+<path d="M837 541H1153" stroke="#aa5343" stroke-width="4"/>
+<text x="843" y="575" font-size="23" fill="#aa5343" font-weight="600" text-anchor="start">Convert, clamp, blend</text>
+<text x="843" y="609" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Exposure ratio applies to history</text>
+<text x="843" y="637" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Optional neighborhood clamp</text>
+<text x="843" y="665" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">α = 1 / (1 + N′)</text>
+<rect x="35" y="540" width="340" height="145" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M47 541H363" stroke="#286c56" stroke-width="4"/>
+<text x="53" y="575" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Store the next history</text>
+<text x="53" y="609" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Lighting + effective count</text>
+<text x="53" y="637" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Fast-update state + validity</text>
+<text x="53" y="665" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Quantize to the actual format</text>
+<path d="M775 440L990 530" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<path d="M205 270L205 505" fill="none" stroke="#286c56" stroke-width="2"/>
+<path d="M205 505L800 505" fill="none" stroke="#286c56" stroke-width="2"/>
+<path d="M800 505L835 530" fill="none" stroke="#286c56" stroke-width="2" marker-end="url(#arrow-0)"/>
+<path d="M815 615L385 615" fill="none" stroke="#aa5343" stroke-width="2" marker-end="url(#arrow-3)"/>
+<text x="425" y="520" font-size="18" fill="#22312d" font-weight="400" text-anchor="start">N′ includes age cap and fast-update limits.</text>
+<text x="425" y="718" font-size="18" fill="#22312d" font-weight="400" text-anchor="start">No valid history: N′ = 0. Invalid current sample: the source may use α = 1 / (1 + 4N′).</text>
+<text x="36" y="756" font-size="16" fill="#586760" font-weight="400" text-anchor="start">Original explanatory diagram; positions and colors are schematic.</text>
+</g></svg>

@@ -1,0 +1,304 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0917",
+  "nativeRecordId": "native-016436",
+  "name": "Compact feedback hash table",
+  "displayLabel": "Compact feedback hash table · VirtualTextureUpdate · frame 292 · pass 916",
+  "frameNumber": 292,
+  "graphPrefix": "VirtualTextureUpdate",
+  "viewState": null,
+  "pointer": "000400000228d5901388",
+  "parametersName": "FParameters",
+  "parametersPointer": "000400000228d5901260",
+  "parametersMetadataPointer": "000400007ffb89218610",
+  "parentScopes": [
+    "VirtualTextureUpdate",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "Compact feedback hash table",
+    "ParametersName": "FParameters",
+    "Parameters": "000400000228d5901260",
+    "ParametersMetadata": "000400007ffb89218610",
+    "Pointer": "000400000228d5901388",
+    "Id": 916,
+    "ParentEventScopes": [
+      "VirtualTextureUpdate",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000400000228d53beed0",
+      "000400000228d53bf008",
+      "000400000228d53be5a0"
+    ],
+    "OutputResources": [
+      "000400000228d53be728"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000400000228d53beed0",
+      "resourceId": "resource-1444",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02436"
+      ]
+    },
+    {
+      "uniqueName": "000400000228d53bf008",
+      "resourceId": "resource-1441",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02437",
+        "payload-02438"
+      ]
+    },
+    {
+      "uniqueName": "000400000228d53be5a0",
+      "resourceId": "resource-1443",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02431"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000400000228d53be728",
+      "resourceId": "resource-1439",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02432",
+        "payload-02433"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06871",
+    "metadataPointer": "000400007ffb89218610",
+    "bytes": 64,
+    "sha256": "71e2e5a1829d37ca87e0b8f9eef1771ee00fab9540dc962b138c3cb38df5c9aa",
+    "chunks": [
+      {
+        "sha": "71e2e5a1829d37ca87e0b8f9eef1771ee00fab9540dc962b138c3cb38df5c9aa",
+        "offset": 0,
+        "length": 64
+      }
+    ],
+    "originalPath": "Structures/000400000228d5901260.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\GPUFeedbackCompaction.h",
+    "FileLine": 60,
+    "Size": 64,
+    "Members": [
+      {
+        "Name": "RWCompactedFeedbackBuffer",
+        "ShaderType": "RWStructuredBuffer<uint2>",
+        "FileLine": 61,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "CompactedFeedbackBufferSize",
+        "ShaderType": "",
+        "FileLine": 62,
+        "Offset": 8,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "CompactedFeedbackCountShiftBits",
+        "ShaderType": "",
+        "FileLine": 63,
+        "Offset": 12,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "HashTableElementIndices",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 64,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "HashTableElementCounts",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 65,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "HashTableSize",
+        "ShaderType": "",
+        "FileLine": 66,
+        "Offset": 32,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "HashTableIndexWrapMask",
+        "ShaderType": "",
+        "FileLine": 67,
+        "Offset": 36,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "FeedbackBufferAllocator",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 68,
+        "Offset": 40,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "FeedbackBuffer",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 69,
+        "Offset": 48,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "FeedbackBufferSize",
+        "ShaderType": "",
+        "FileLine": 70,
+        "Offset": 56,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000400000228d5901388",
+      "Parameters": "000400000228d5901260",
+      "Bindings": {
+        "RWCompactedFeedbackBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228d59012a0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "HashTableElementIndices": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228d59012e8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "HashTableElementCounts": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228d5901338",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FeedbackBufferAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FeedbackBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 48,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228d53be6d8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

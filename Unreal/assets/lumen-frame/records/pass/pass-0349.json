@@ -1,0 +1,301 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0349",
+  "nativeRecordId": "native-015868",
+  "name": "ReduceHZB(mips=[8;9] Closest) 4x2",
+  "displayLabel": "ReduceHZB(mips=[8;9] Closest) 4x2 · BuildHZB · frame 292 · pass 348",
+  "frameNumber": 292,
+  "graphPrefix": "BuildHZB",
+  "viewState": null,
+  "pointer": "000300000228ec03aff0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228ec03ae40",
+  "parametersMetadataPointer": "000300007ffb89300700",
+  "parentScopes": [
+    "BuildHZB",
+    "BuildHZB(ViewId=0)",
+    "HZB",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ReduceHZB(mips=[8;9] Closest) 4x2",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228ec03ae40",
+    "ParametersMetadata": "000300007ffb89300700",
+    "Pointer": "000300000228ec03aff0",
+    "Id": 348,
+    "ParentEventScopes": [
+      "BuildHZB",
+      "BuildHZB(ViewId=0)",
+      "HZB",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228ec0338e0.mip7"
+    ],
+    "OutputResources": [
+      "000300000228ec0338e0.mip8",
+      "000300000228ec0338e0.mip9"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228ec0338e0.mip7",
+      "resourceId": "resource-0589",
+      "version": null,
+      "mip": 7,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01744"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000228ec0338e0.mip8",
+      "resourceId": "resource-0589",
+      "version": null,
+      "mip": 8,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01745"
+      ]
+    },
+    {
+      "uniqueName": "000300000228ec0338e0.mip9",
+      "resourceId": "resource-0589",
+      "version": null,
+      "mip": 9,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01746"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06555",
+    "metadataPointer": "000300007ffb89300700",
+    "bytes": 272,
+    "sha256": "a1d08c5f505a169386fb0100e516b6d713321a9d0a9ff9b2a3f3d6e9411bd75d",
+    "chunks": [
+      {
+        "sha": "a1d08c5f505a169386fb0100e516b6d713321a9d0a9ff9b2a3f3d6e9411bd75d",
+        "offset": 0,
+        "length": 272
+      }
+    ],
+    "originalPath": "Structures/000300000228ec03ae40.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\SceneTextureReductions.cpp",
+    "FileLine": 77,
+    "Size": 272,
+    "Members": [
+      {
+        "Name": "Shared",
+        "ShaderType": "FSharedHZBParameters",
+        "FileLine": 78,
+        "Offset": 0,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb893004c0"
+      },
+      {
+        "Name": "FroxelBuilder",
+        "ShaderType": "Froxel::FBuilderParameters",
+        "FileLine": 79,
+        "Offset": 96,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb892ff8c0"
+      },
+      {
+        "Name": "FurthestHZBOutput",
+        "ShaderType": "RWTexture2D<float>",
+        "FileLine": 80,
+        "Offset": 208,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 4,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ClosestHZBOutput",
+        "ShaderType": "RWTexture2D<float>",
+        "FileLine": 81,
+        "Offset": 240,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 4,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228ec03aff0",
+      "Parameters": "000300000228ec03ae40",
+      "Bindings": {
+        "Shared.ParentTextureMip": {
+          "BaseType": "UBMT_RDG_TEXTURE_SRV",
+          "Offset": 72,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ec03ade0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Shared.ParentTextureMipSampler": {
+          "BaseType": "UBMT_SAMPLER",
+          "Offset": 80,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022615ec2bc0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Shared.VisBufferTexture": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 88,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FroxelBuilder.OutFroxels": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 192,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FroxelBuilder.OutFroxelArgs": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 200,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FurthestHZBOutput[0]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 208,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FurthestHZBOutput[1]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 216,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FurthestHZBOutput[2]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 224,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "FurthestHZBOutput[3]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 232,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ClosestHZBOutput[0]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 240,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ec03af50",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ClosestHZBOutput[1]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 248,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ec03afa0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ClosestHZBOutput[2]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 256,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ClosestHZBOutput[3]": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 264,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

@@ -1,0 +1,359 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0501",
+  "nativeRecordId": "native-016020",
+  "name": "ScatterUpload (Resource: Shadow.Virtual.ProjectionData)",
+  "displayLabel": "ScatterUpload (Resource: Shadow.Virtual.ProjectionData) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 500",
+  "frameNumber": 292,
+  "graphPrefix": "FVirtualShadowMapArray::BeginMarkPages",
+  "viewState": null,
+  "pointer": "0003000002287c169350",
+  "parametersName": "FParameters",
+  "parametersPointer": "0003000002287c1692d0",
+  "parametersMetadataPointer": "000300007ffba0d68980",
+  "parentScopes": [
+    "FVirtualShadowMapArray::BeginMarkPages",
+    "VirtualShadowMapMarkPages",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ScatterUpload (Resource: Shadow.Virtual.ProjectionData)",
+    "ParametersName": "FParameters",
+    "Parameters": "0003000002287c1692d0",
+    "ParametersMetadata": "000300007ffba0d68980",
+    "Pointer": "0003000002287c169350",
+    "Id": 500,
+    "ParentEventScopes": [
+      "FVirtualShadowMapArray::BeginMarkPages",
+      "VirtualShadowMapMarkPages",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "0003000002287c1690f0",
+      "0003000002287c168f68"
+    ],
+    "OutputResources": [
+      "0003000002287c168e30"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "0003000002287c1690f0",
+      "resourceId": "resource-0833",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01126"
+      ]
+    },
+    {
+      "uniqueName": "0003000002287c168f68",
+      "resourceId": "resource-0834",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01125"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "0003000002287c168e30",
+      "resourceId": "resource-0832",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01124"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06330",
+    "metadataPointer": "000300007ffba0d68980",
+    "bytes": 128,
+    "sha256": "8c5e21de49039b469300bd6c29a68a03ebeabc542bf7b8ab18062cf1fe60112d",
+    "chunks": [
+      {
+        "sha": "8c5e21de49039b469300bd6c29a68a03ebeabc542bf7b8ab18062cf1fe60112d",
+        "offset": 0,
+        "length": 128
+      }
+    ],
+    "originalPath": "Structures/0003000002287c1692d0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\UnifiedBuffer.cpp",
+    "FileLine": 252,
+    "Size": 128,
+    "Members": [
+      {
+        "Name": "Common",
+        "ShaderType": "FRDGByteBufferShader::FParameters",
+        "FileLine": 253,
+        "Offset": 0,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffba0d683c0"
+      },
+      {
+        "Name": "NumScatters",
+        "ShaderType": "",
+        "FileLine": 254,
+        "Offset": 64,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "UploadByteAddressBuffer",
+        "ShaderType": "ByteAddressBuffer",
+        "FileLine": 255,
+        "Offset": 72,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "UploadStructuredBuffer8x",
+        "ShaderType": "StructuredBuffer<FUint8>",
+        "FileLine": 256,
+        "Offset": 80,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "UploadStructuredBuffer4x",
+        "ShaderType": "StructuredBuffer<uint4>",
+        "FileLine": 257,
+        "Offset": 88,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "UploadStructuredBuffer2x",
+        "ShaderType": "StructuredBuffer<uint2>",
+        "FileLine": 258,
+        "Offset": 96,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "UploadStructuredBuffer1x",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 259,
+        "Offset": 104,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ScatterByteAddressBuffer",
+        "ShaderType": "ByteAddressBuffer",
+        "FileLine": 260,
+        "Offset": 112,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ScatterStructuredBuffer",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 261,
+        "Offset": 120,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "0003000002287c169350",
+      "Parameters": "0003000002287c1692d0",
+      "Bindings": {
+        "Common.DstBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Common.DstStructuredBuffer8x": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Common.DstStructuredBuffer4x": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Common.DstStructuredBuffer2x": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Common.DstStructuredBuffer1x": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 48,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Common.DstByteAddressBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 56,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002287c169278",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "UploadByteAddressBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 72,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002287c169228",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "UploadStructuredBuffer8x": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 80,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "UploadStructuredBuffer4x": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 88,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "UploadStructuredBuffer2x": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 96,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "UploadStructuredBuffer1x": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 104,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScatterByteAddressBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 112,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002287c1690a0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScatterStructuredBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 120,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

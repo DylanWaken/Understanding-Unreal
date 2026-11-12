@@ -1,0 +1,606 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0117",
+  "nativeRecordId": "native-017121",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.MeshCards",
+  "uniqueName": "000100000229250490e8",
+  "displayLabel": "Lumen.MeshCards · instance 0001 · frame 292",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 1024,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 64,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 64
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.MeshCards",
+    "UniqueResourceName": "000100000229250490e8",
+    "ByteSize": 1024,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 64,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00685",
+      "role": "resource",
+      "originalPath": "Resources/000100000229250490e8.v00000000000000000000.bin",
+      "bytes": 1024,
+      "sha256": "5efbc91743d3be9c7401fa3b9609e40414caeaea7b9d365aa8a1d4d232ad0267",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0117",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "5efbc91743d3be9c7401fa3b9609e40414caeaea7b9d365aa8a1d4d232ad0267",
+          "offset": 0,
+          "length": 1024
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000100000229250490e8",
+        "name": "Lumen.MeshCards",
+        "byteSize": 1024
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00685"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0046",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 45",
+        "record": "records/pass/pass-0046.json"
+      },
+      {
+        "id": "pass-0095",
+        "name": "BuildPageUpdatePriorityHistogram",
+        "displayLabel": "BuildPageUpdatePriorityHistogram · BuildCardUpdateContext · frame 292 · pass 94",
+        "record": "records/pass/pass-0095.json"
+      },
+      {
+        "id": "pass-0100",
+        "name": "SpliceCardPagesIntoTiles",
+        "displayLabel": "SpliceCardPagesIntoTiles · CullTiles 1 lights · frame 292 · pass 99",
+        "record": "records/pass/pass-0100.json"
+      },
+      {
+        "id": "pass-0102",
+        "name": "CalculateCardTileDepthRanges",
+        "displayLabel": "CalculateCardTileDepthRanges · CullTiles 1 lights · frame 292 · pass 101",
+        "record": "records/pass/pass-0102.json"
+      },
+      {
+        "id": "pass-0106",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 105",
+        "record": "records/pass/pass-0106.json"
+      },
+      {
+        "id": "pass-0111",
+        "name": "ShadowMaskFromLightAttenuationPass(LightType=3)",
+        "displayLabel": "ShadowMaskFromLightAttenuationPass(LightType=3) · Light Attenuation ShadowMask · frame 292 · pass 110",
+        "record": "records/pass/pass-0111.json"
+      },
+      {
+        "id": "pass-0112",
+        "name": "DistanceFieldShadowPass LightType=3",
+        "displayLabel": "DistanceFieldShadowPass LightType=3 · Offscreen shadows · frame 292 · pass 111",
+        "record": "records/pass/pass-0112.json"
+      },
+      {
+        "id": "pass-0113",
+        "name": "Batched lights",
+        "displayLabel": "Batched lights · Lights · frame 292 · pass 112",
+        "record": "records/pass/pass-0113.json"
+      },
+      {
+        "id": "pass-0114",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · DirectLighting · frame 292 · pass 113",
+        "record": "records/pass/pass-0114.json"
+      },
+      {
+        "id": "pass-0117",
+        "name": "BuildRadiosityTiles",
+        "displayLabel": "BuildRadiosityTiles · Radiosity · frame 292 · pass 116",
+        "record": "records/pass/pass-0117.json"
+      },
+      {
+        "id": "pass-0119",
+        "name": "DistanceFieldTracing 4x4 probes at 4 spacing",
+        "displayLabel": "DistanceFieldTracing 4x4 probes at 4 spacing · Radiosity · frame 292 · pass 118",
+        "record": "records/pass/pass-0119.json"
+      },
+      {
+        "id": "pass-0120",
+        "name": "SpatialFilterProbes",
+        "displayLabel": "SpatialFilterProbes · Radiosity · frame 292 · pass 119",
+        "record": "records/pass/pass-0120.json"
+      },
+      {
+        "id": "pass-0121",
+        "name": "ConvertToSH",
+        "displayLabel": "ConvertToSH · Radiosity · frame 292 · pass 120",
+        "record": "records/pass/pass-0121.json"
+      },
+      {
+        "id": "pass-0122",
+        "name": "Integrate",
+        "displayLabel": "Integrate · Radiosity · frame 292 · pass 121",
+        "record": "records/pass/pass-0122.json"
+      },
+      {
+        "id": "pass-0123",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · Radiosity · frame 292 · pass 122",
+        "record": "records/pass/pass-0123.json"
+      },
+      {
+        "id": "pass-0155",
+        "name": "TraceFromProbes Res=32x32 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=32x32 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 154",
+        "record": "records/pass/pass-0155.json"
+      },
+      {
+        "id": "pass-0156",
+        "name": "TraceFromProbes Res=8x8 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=8x8 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 155",
+        "record": "records/pass/pass-0156.json"
+      },
+      {
+        "id": "pass-0168",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 167",
+        "record": "records/pass/pass-0168.json"
+      },
+      {
+        "id": "pass-0184",
+        "name": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+        "displayLabel": "TraceGlobalSDFAndInterpolateRadianceCache 3x3 · TranslucencyVolumeLighting · frame 292 · pass 183",
+        "record": "records/pass/pass-0184.json"
+      },
+      {
+        "id": "pass-0243",
+        "name": "TraceVoxels(Scene)",
+        "displayLabel": "TraceVoxels(Scene) · LumenReflections · frame 292 · pass 242",
+        "record": "records/pass/pass-0243.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00685",
+      "file": "Resources/000100000229250490e8.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.lumen-meshcards",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.MeshCards)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-mesh-cards record: LWC world origin, world->local rotation rows, first card index, card count plus flags, and six axis card-lookup bitmasks",
+      "units": "world units (cm), rotation unitless, indices, bitmasks",
+      "coordinateSpace": "world space (double-float split) and mesh-cards local space",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "float4[6] per mesh-cards record (96 B/record); RDG allocation element 16 B",
+        "strideBytes": 96
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4[6] per mesh-cards record (96 B/record); RDG allocation element 16 B",
+      "formatProof": "descriptive-element-layout",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [
+        {
+          "name": "unpackMeshCards",
+          "expression": "BaseOffset = MeshCardsId*6; Origin = DFHackToFloat(MakeDFVector3(V0.xyz, float3(V1.w,V2.w,V3.w))); CardMask = OR over axes CardLookup[2*axis + sign]",
+          "requires": [
+            "Lumen.MeshCards"
+          ],
+          "sourceRefs": [
+            "part1.cards_ush_mc_get",
+            "part1.cards_mc_cons_lookup"
+          ]
+        },
+        {
+          "name": "unpackFlags",
+          "expression": "NumCards = V4.y & 0xFFFF; bHeightfield = (V4.y & 0x10000)!=0; bMostlyTwoSided = (V4.y & 0x20000)!=0",
+          "requires": [
+            "Lumen.MeshCards"
+          ],
+          "sourceRefs": [
+            "part1.cards_ush_mc_count",
+            "part1.cards_ush_mc_flags"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "6 float4 per mesh-cards record = 96 B semantic stride; capture capacity 64 float4 = 1024 B means at most floor(64/6)=10 complete records (NumMeshCards in [6,10] because RoundUpToPowerOfTwo(6*N)=64)",
+        "CardLookup bits index local card index: CardIndex = CardOffset + bitIndex",
+        "V4.y bits 18-31 are unused (only bit16 bHeightfield and bit17 bMostlyTwoSided are defined)"
+      ],
+      "producerSources": [
+        "part1.cards_mc_fill",
+        "part1.cards_mc_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_ush_mc_get",
+        "part1.cards_mc_cons_sampling",
+        "part1.cards_mc_cons_rot",
+        "part1.cards_mc_cons_lookup",
+        "part1.cards_mc_cons_offset"
+      ],
+      "gaps": [
+        "World origin uses the same unexpanded LWC DF high/low reconstruction as Lumen.Cards.",
+        "The capture capacity is an upper bound on record count, not the live NumMeshCards (the rounded tail is not initialized).",
+        "CardLookup bits are built with BitMask = 1 << LocalCardIndex (uint32); a local card index >= 32 cannot be represented in this mask, and the shift is undefined for >=32 (LumenMeshCards.cpp:1609-1610)."
+      ],
+      "fields": [
+        {
+          "name": "WorldOriginHigh",
+          "type": "float3",
+          "byteOffset": 0,
+          "decode": "V0.xyz; high part of the mesh-cards world origin",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_mc_fill",
+            "part1.cards_ush_mc_get"
+          ]
+        },
+        {
+          "name": "WorldToLocalRotationRow0",
+          "type": "float3",
+          "byteOffset": 16,
+          "decode": "V1.xyz",
+          "units": "unitless rotation",
+          "sourceRefs": [
+            "part1.cards_mc_fill",
+            "part1.cards_ush_mc_get"
+          ]
+        },
+        {
+          "name": "WorldOriginLowX",
+          "type": "float32",
+          "byteOffset": 28,
+          "decode": "V1.w",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_mc_fill",
+            "part1.cards_ush_mc_get"
+          ]
+        },
+        {
+          "name": "WorldToLocalRotationRow1",
+          "type": "float3",
+          "byteOffset": 32,
+          "decode": "V2.xyz",
+          "units": "unitless rotation",
+          "sourceRefs": [
+            "part1.cards_mc_fill",
+            "part1.cards_ush_mc_get"
+          ]
+        },
+        {
+          "name": "WorldOriginLowY",
+          "type": "float32",
+          "byteOffset": 44,
+          "decode": "V2.w",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_mc_fill",
+            "part1.cards_ush_mc_get"
+          ]
+        },
+        {
+          "name": "WorldToLocalRotationRow2",
+          "type": "float3",
+          "byteOffset": 48,
+          "decode": "V3.xyz",
+          "units": "unitless rotation",
+          "sourceRefs": [
+            "part1.cards_mc_fill",
+            "part1.cards_ush_mc_get"
+          ]
+        },
+        {
+          "name": "WorldOriginLowZ",
+          "type": "float32",
+          "byteOffset": 60,
+          "decode": "V3.w",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_mc_fill",
+            "part1.cards_ush_mc_get"
+          ]
+        },
+        {
+          "name": "CardOffset",
+          "type": "uint32",
+          "byteOffset": 64,
+          "decode": "V4.x = MeshCards.FirstCardIndex; first index into Lumen.Cards",
+          "units": "card index",
+          "sourceRefs": [
+            "part1.cards_mc_pack",
+            "part1.cards_ush_mc_offset"
+          ]
+        },
+        {
+          "name": "NumCards",
+          "type": "uint16",
+          "byteOffset": 68,
+          "decode": "V4.y bits[0:15]; number of cards",
+          "units": "cards",
+          "sourceRefs": [
+            "part1.cards_mc_pack",
+            "part1.cards_ush_mc_count"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 16
+        },
+        {
+          "name": "bHeightfield",
+          "type": "uint1",
+          "byteOffset": 68,
+          "decode": "V4.y bit16",
+          "units": "bool",
+          "sourceRefs": [
+            "part1.cards_mc_flags",
+            "part1.cards_ush_mc_flags"
+          ],
+          "bitOffset": 16,
+          "bitWidth": 1
+        },
+        {
+          "name": "bMostlyTwoSided",
+          "type": "uint1",
+          "byteOffset": 68,
+          "decode": "V4.y bit17",
+          "units": "bool",
+          "sourceRefs": [
+            "part1.cards_mc_twosided",
+            "part1.cards_ush_mc_get"
+          ],
+          "bitOffset": 17,
+          "bitWidth": 1
+        },
+        {
+          "name": "CardLookup0",
+          "type": "uint32",
+          "byteOffset": 72,
+          "decode": "V4.z; OR bitmask of local card indices whose card faces -X",
+          "units": "card bitmask",
+          "sourceRefs": [
+            "part1.cards_mc_lookup",
+            "part1.cards_ush_mc_lookup",
+            "part1.cards_mc_lookup_build",
+            "part1.cards_mc_lookup_or"
+          ]
+        },
+        {
+          "name": "CardLookup1",
+          "type": "uint32",
+          "byteOffset": 76,
+          "decode": "V4.w; cards facing +X",
+          "units": "card bitmask",
+          "sourceRefs": [
+            "part1.cards_mc_lookup",
+            "part1.cards_ush_mc_lookup"
+          ]
+        },
+        {
+          "name": "CardLookup2",
+          "type": "uint32",
+          "byteOffset": 80,
+          "decode": "V5.x; cards facing -Y",
+          "units": "card bitmask",
+          "sourceRefs": [
+            "part1.cards_mc_lookup2",
+            "part1.cards_ush_mc_lookup"
+          ]
+        },
+        {
+          "name": "CardLookup3",
+          "type": "uint32",
+          "byteOffset": 84,
+          "decode": "V5.y; cards facing +Y",
+          "units": "card bitmask",
+          "sourceRefs": [
+            "part1.cards_mc_lookup2",
+            "part1.cards_ush_mc_lookup"
+          ]
+        },
+        {
+          "name": "CardLookup4",
+          "type": "uint32",
+          "byteOffset": 88,
+          "decode": "V5.z; cards facing -Z",
+          "units": "card bitmask",
+          "sourceRefs": [
+            "part1.cards_mc_lookup2",
+            "part1.cards_ush_mc_lookup"
+          ]
+        },
+        {
+          "name": "CardLookup5",
+          "type": "uint32",
+          "byteOffset": 92,
+          "decode": "V5.w; cards facing +Z",
+          "units": "card bitmask",
+          "sourceRefs": [
+            "part1.cards_mc_lookup2",
+            "part1.cards_ush_mc_lookup"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 17,
+        "sourceEquationFields": [
+          "WorldOriginHigh",
+          "WorldToLocalRotationRow0",
+          "WorldOriginLowX",
+          "WorldToLocalRotationRow1",
+          "WorldOriginLowY",
+          "WorldToLocalRotationRow2",
+          "WorldOriginLowZ",
+          "CardOffset",
+          "NumCards",
+          "bHeightfield",
+          "bMostlyTwoSided",
+          "CardLookup0",
+          "CardLookup1",
+          "CardLookup2",
+          "CardLookup3",
+          "CardLookup4",
+          "CardLookup5"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0084",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.MeshCards has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0117"
+    }
+  ]
+}

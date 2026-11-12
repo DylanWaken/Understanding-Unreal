@@ -1,0 +1,112 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0622",
+  "nativeRecordId": "native-016141",
+  "name": "ClearGPUMessageBuffer",
+  "displayLabel": "ClearGPUMessageBuffer · frame 292 · pass 621",
+  "frameNumber": 292,
+  "graphPrefix": null,
+  "viewState": null,
+  "pointer": "000400000228bf730180",
+  "parametersName": "FParameters",
+  "parametersPointer": "000400000228bf730170",
+  "parametersMetadataPointer": "000400007ffba0d4cdd0",
+  "parentScopes": [
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearGPUMessageBuffer",
+    "ParametersName": "FParameters",
+    "Parameters": "000400000228bf730170",
+    "ParametersMetadata": "000400007ffba0d4cdd0",
+    "Pointer": "000400000228bf730180",
+    "Id": 621,
+    "ParentEventScopes": [
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000400000228ec3b89e8"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000400000228ec3b89e8",
+      "resourceId": "resource-0969",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02630",
+        "payload-02631",
+        "payload-02632",
+        "payload-02633"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06789",
+    "metadataPointer": "000400007ffba0d4cdd0",
+    "bytes": 16,
+    "sha256": "e920fef84bca8c2b054d9d79bb7c33e6e5c0b91b461b0dc248727a941f2383b4",
+    "chunks": [
+      {
+        "sha": "e920fef84bca8c2b054d9d79bb7c33e6e5c0b91b461b0dc248727a941f2383b4",
+        "offset": 0,
+        "length": 16
+      }
+    ],
+    "originalPath": "Structures/000400000228bf730170.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\GPUMessaging.cpp",
+    "FileLine": 19,
+    "Size": 16,
+    "Members": [
+      {
+        "Name": "GPUMessageDataBuffer",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 20,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000400000228bf730180",
+      "Parameters": "000400000228bf730170",
+      "Bindings": {
+        "GPUMessageDataBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228bf7300f0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

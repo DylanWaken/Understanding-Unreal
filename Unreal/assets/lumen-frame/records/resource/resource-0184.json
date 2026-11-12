@@ -1,0 +1,302 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0184",
+  "nativeRecordId": "native-017189",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.DirectLighting.DispatchLightTilesIndirectArgs",
+  "uniqueName": "00010000022925076d08",
+  "displayLabel": "Lumen.DirectLighting.DispatchLightTilesIndirectArgs · instance 0001 · frame 292 · passes 107",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 107,
+    "last": 107
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 24,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 2,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 2
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.DirectLighting.DispatchLightTilesIndirectArgs",
+    "UniqueResourceName": "00010000022925076d08",
+    "ByteSize": 24,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 2,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00723",
+      "role": "resource",
+      "originalPath": "Resources/00010000022925076d08.v00010000022925077278.bin",
+      "bytes": 24,
+      "sha256": "60efbde66d47197024c2953d8a357d7bb8e7f3300056319007c69f888cf8c719",
+      "version": "00010000022925077278",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0184",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "60efbde66d47197024c2953d8a357d7bb8e7f3300056319007c69f888cf8c719",
+          "offset": 0,
+          "length": 24
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00010000022925076d08",
+        "name": "Lumen.DirectLighting.DispatchLightTilesIndirectArgs",
+        "byteSize": 24
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00010000022925077278",
+      "producerPassId": "pass-0108",
+      "producerPassName": "InitializeLightTileIndirectArgs",
+      "payloadIds": [
+        "payload-00723"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0108",
+        "name": "InitializeLightTileIndirectArgs",
+        "displayLabel": "InitializeLightTileIndirectArgs · CullTiles 1 lights · frame 292 · pass 107",
+        "record": "records/pass/pass-0108.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0110",
+        "name": "CompactLightTiles",
+        "displayLabel": "CompactLightTiles · CullTiles 1 lights · frame 292 · pass 109",
+        "record": "records/pass/pass-0110.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00723",
+      "file": "Resources/00010000022925076d08.v00010000022925077278.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.direct-lighting-dispatch-light-tiles-indirect",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.DirectLighting\\.DispatchLightTilesIndirectArgs)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "two dispatch-indirect records over the global light-tile list",
+      "units": "thread groups",
+      "coordinateSpace": "dispatch argument space",
+      "storage": {
+        "kind": "indirect-args-buffer",
+        "format": "FRHIDispatchIndirectParameters[2] (24 B)",
+        "strideBytes": 12,
+        "formatAlternatives": [
+          "platform padding (RHI.h:551-557)"
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters[2] (24 B)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "platform padding (RHI.h:551-557)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "recordOffset",
+          "expression": "Record 0 = thread-per-tile; record 1 = 64-thread groups over the light-tile array; both from LightTileAllocator[0]",
+          "requires": [
+            "Lumen.DirectLighting.DispatchLightTilesIndirectArgs"
+          ],
+          "sourceRefs": [
+            "part1.cards_dlt_w0",
+            "part1.cards_dlt_w1",
+            "part1.cards_lta_read"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "2 records x 12 B",
+        "names Div1/Div64 describe the group size assumed by the consuming shader, not a division of the value"
+      ],
+      "producerSources": [
+        "part1.cards_dlt_alloc",
+        "part1.cards_dlt_w0",
+        "part1.cards_dlt_w1"
+      ],
+      "consumerSources": [
+        "part1.cards_dlt_use"
+      ],
+      "gaps": [
+        "Values are only meaningful for the frame/pass that wrote them; the buffer is not persistent."
+      ],
+      "fields": [
+        {
+          "name": "NumTilesDiv1_X",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "record 0 X = NumLightTiles; Y=Z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_dlt_w0"
+          ]
+        },
+        {
+          "name": "NumTilesDiv64_X",
+          "type": "uint32",
+          "byteOffset": 12,
+          "decode": "record 1 X = ceil(NumLightTiles/64); Y=Z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_dlt_w1"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "NumTilesDiv1_X",
+          "NumTilesDiv64_X"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0135",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.DirectLighting.DispatchLightTilesIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0184"
+    }
+  ]
+}

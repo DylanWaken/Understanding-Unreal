@@ -1,0 +1,559 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0548",
+  "nativeRecordId": "native-017555",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.PrevProjectionData",
+  "uniqueName": "00030000022880711740",
+  "displayLabel": "Shadow.Virtual.PrevProjectionData · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 3016864,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 754216,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 754216
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.PrevProjectionData",
+    "UniqueResourceName": "00030000022880711740",
+    "ByteSize": 3016864,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 754216,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "UnorderedAccess",
+      "ByteAddressBuffer",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01155",
+      "role": "resource",
+      "originalPath": "Resources/00030000022880711740.v00000000000000000000.bin",
+      "bytes": 3016864,
+      "sha256": "506f5abf2cd60beaa3a00691cc9655100107eab353768721e661aed9542f1012",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0548",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+          "offset": 1048576,
+          "length": 1048576
+        },
+        {
+          "sha": "bec5f12a97cdf9f77b127ed48605aed461fadf91ab3c51ebf7eee2ea1f390f0c",
+          "offset": 2097152,
+          "length": 919712
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00030000022880711740",
+        "name": "Shadow.Virtual.PrevProjectionData",
+        "byteSize": 3016864
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01155"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0339",
+        "name": "ProcessInvalidationQueueGPU",
+        "displayLabel": "ProcessInvalidationQueueGPU · Shadow.Virtual.ProcessInvalidationsGPU · frame 292 · pass 338",
+        "record": "records/pass/pass-0339.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01155",
+      "file": "Resources/00030000022880711740.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-projection-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.(Prev)?ProjectionData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one 368-byte byte-address record per shadow-map data index: 4 4x4 matrices, light/view/clipmap parameters, flags, depth-cull range",
+      "units": "mixed: float matrices, float3 world directions/translations, uint bitfields, int ids",
+      "coordinateSpace": "shadow view clip/UV matrices; PreViewTranslation and ClipmapWorldOriginOffset in translated world",
+      "storage": {
+        "kind": "byte-address-buffer",
+        "format": "FVirtualShadowMapProjectionShaderData",
+        "strideBytes": 368,
+        "formatAlternatives": [
+          "VSM_PSD_STRIDE = 16*23 = 368 (VirtualShadowMapDefinitions.h:113)",
+          "previous frame copy PrevProjectionData has identical layout"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "nativeBytesPerElement": 4,
+          "nativeNumElements": 754216,
+          "byteSize": 3016864,
+          "logicalStrideBytes": 368,
+          "logicalNumElements": 8198
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FVirtualShadowMapProjectionShaderData",
+      "formatProof": "descriptive-element-layout",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "VSM_PSD_STRIDE = 16*23 = 368 (VirtualShadowMapDefinitions.h:113)",
+        "previous frame copy PrevProjectionData has identical layout"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "decode",
+          "expression": "VSMOffset = DataIndex*368; sequential LoadAndIncrementOffset reads in the order listed; PreViewTranslation=MakeDFVector3(High,Low)",
+          "requires": [
+            "ProjectionData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "C++ sizeof(FVirtualShadowMapProjectionShaderData) is static_asserted equal to VSM_PSD_STRIDE=368 (VirtualShadowMapArray.h:144).",
+        "Byte offsets follow the C++ field order; the captured bytes confirm the tail: DynamicDepthCullRange=(0,FLT_MAX) at 356..363 and tail padding at 364.",
+        "VSM_PSD_OFFSET_LIGHT_TYPE=220 and VSM_PSD_OFFSET_RESOLUTION_LOD_BIAS=252 (VirtualShadowMapProjectionStructs.ush:10-11) are 48 bytes lower than the actual 268/300 field offsets implied by the struct order; the sequential decoder does not use them, but VirtualShadowMapThrottle.usf:74,86 does."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.c.alloc.projdata",
+        "part3.visibility.vsm.c.upload.projdata"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.projdecode",
+        "part3.visibility.vsm.s.throttlelod",
+        "part3.visibility.vsm.s.throttlelight"
+      ],
+      "gaps": [
+        "The two VSM_PSD_OFFSET_* macros disagree with the actual field offsets by 48 B and are used by VirtualShadowMapThrottle.usf (throttling path). This is recorded as a source inconsistency; no engine change was made.",
+        "Which of the 8198 data slots are valid is runtime state (cache-manager entries), not encoded in the buffer."
+      ],
+      "fields": [
+        {
+          "name": "ShadowViewToClipMatrix",
+          "type": "float4x4",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "4 x float4",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.vsm.h.projstruct",
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "TranslatedWorldToShadowUVMatrix",
+          "type": "float4x4",
+          "byteOffset": 64,
+          "count": 1,
+          "decode": "4 x float4",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.vsm.h.projstruct",
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "ShadowUVToTranslatedWorldMatrix",
+          "type": "float4x4",
+          "byteOffset": 128,
+          "count": 1,
+          "decode": "4 x float4",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.vsm.h.projstruct",
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "TranslatedWorldToShadowUVNormalMatrix",
+          "type": "float4x4",
+          "byteOffset": 192,
+          "count": 1,
+          "decode": "4 x float4",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.vsm.h.projstruct",
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "LightDirection",
+          "type": "float3",
+          "byteOffset": 256,
+          "count": 1,
+          "decode": "float3",
+          "units": "unit vector, translated world",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "LightType",
+          "type": "uint32",
+          "byteOffset": 268,
+          "count": 1,
+          "decode": "ELightComponentType (0=directional,1=point,2=spot,3=rect)",
+          "units": "enum",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "PreViewTranslationHigh",
+          "type": "float3",
+          "byteOffset": 272,
+          "count": 1,
+          "decode": "high part of DFVector pre-view translation",
+          "units": "world units",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "LightRadius",
+          "type": "float",
+          "byteOffset": 284,
+          "count": 1,
+          "decode": "float",
+          "units": "world units",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "PreViewTranslationLow",
+          "type": "float3",
+          "byteOffset": 288,
+          "count": 1,
+          "decode": "low part; PreViewTranslation = MakeDFVector3(High,Low)",
+          "units": "world units",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "ResolutionLodBias",
+          "type": "float",
+          "byteOffset": 300,
+          "count": 1,
+          "decode": "float; per-shadow resolution bias",
+          "units": "mip levels",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "ClipmapWorldOriginOffset",
+          "type": "float3",
+          "byteOffset": 304,
+          "count": 1,
+          "decode": "clipmap origin in shadow translated world",
+          "units": "world units",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "LightSourceRadius",
+          "type": "float",
+          "byteOffset": 316,
+          "count": 1,
+          "decode": "float",
+          "units": "world units",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "ClipmapCornerRelativeOffset",
+          "type": "int2",
+          "byteOffset": 320,
+          "count": 1,
+          "decode": "int2",
+          "units": "pages",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "ClipmapLevel_ClipmapLevelCountRemaining_Index",
+          "type": "uint32",
+          "byteOffset": 328,
+          "count": 1,
+          "decode": "low8=ClipmapLevelCountRemaining, bits8-15=ClipmapLevelIndex, bits16-31=ClipmapLevel+VSM_PACKED_CLIP_LEVEL_BIAS(1024); 0xFFFFFFFF = non-clipmap",
+          "units": "packed",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projclip"
+          ]
+        },
+        {
+          "name": "PackedCullingViewId",
+          "type": "uint32",
+          "byteOffset": 332,
+          "count": 1,
+          "decode": "SceneRendererPrimaryViewId=(P>>16)-1; PersistentViewId=(P&0xFFFF)-1",
+          "units": "packed view ids",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projcull"
+          ]
+        },
+        {
+          "name": "Flags",
+          "type": "uint32",
+          "byteOffset": 336,
+          "count": 1,
+          "decode": "VSM_PROJ_FLAG_* bits (CURRENT_DISTANT_LIGHT, UNCACHED, UNREFERENCED, IS_COARSE_CLIP_LEVEL, IS_FIRST_PERSON_SHADOW, USE_RECEIVER_MASK, FORCE_CACHE_DYNAMIC_COARSE, HAS_PREFILTERED_DISTANT)",
+          "units": "bit flags",
+          "sourceRefs": [
+            "part3.visibility.vsm.def.psdstride"
+          ]
+        },
+        {
+          "name": "ClipmapLevelWPODistanceDisableThresholdSquared",
+          "type": "float",
+          "byteOffset": 340,
+          "count": 1,
+          "decode": "float",
+          "units": "squared world distance",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "TexelDitherScale",
+          "type": "float",
+          "byteOffset": 344,
+          "count": 1,
+          "decode": "float",
+          "units": "texels",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "MinMipLevel",
+          "type": "uint32",
+          "byteOffset": 348,
+          "count": 1,
+          "decode": "uint; only valid for local lights",
+          "units": "mip level",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "LightId",
+          "type": "int32",
+          "byteOffset": 352,
+          "count": 1,
+          "decode": "int32 (default -1)",
+          "units": "light index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "DynamicDepthCullRange",
+          "type": "float2",
+          "byteOffset": 356,
+          "count": 1,
+          "decode": "float2 (default (0, FLT_MAX))",
+          "units": "world depth",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.projdecode"
+          ]
+        },
+        {
+          "name": "Padding",
+          "type": "uint32",
+          "byteOffset": 364,
+          "count": 1,
+          "decode": "4 bytes tail padding to the 16-byte struct alignment (sizeof=368)",
+          "units": "n/a",
+          "sourceRefs": [
+            "part3.visibility.vsm.h.psdassert"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 22,
+        "sourceEquationFields": [
+          "ShadowViewToClipMatrix",
+          "TranslatedWorldToShadowUVMatrix",
+          "ShadowUVToTranslatedWorldMatrix",
+          "TranslatedWorldToShadowUVNormalMatrix",
+          "LightDirection",
+          "LightType",
+          "PreViewTranslationHigh",
+          "PreViewTranslationLow",
+          "ResolutionLodBias",
+          "ClipmapWorldOriginOffset",
+          "ClipmapCornerRelativeOffset",
+          "ClipmapLevel_ClipmapLevelCountRemaining_Index",
+          "PackedCullingViewId",
+          "Flags",
+          "MinMipLevel",
+          "LightId",
+          "DynamicDepthCullRange",
+          "Padding"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [
+          "ShadowViewToClipMatrix",
+          "TranslatedWorldToShadowUVMatrix",
+          "ShadowUVToTranslatedWorldMatrix",
+          "TranslatedWorldToShadowUVNormalMatrix"
+        ],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0359",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.PrevProjectionData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0548"
+    }
+  ]
+}

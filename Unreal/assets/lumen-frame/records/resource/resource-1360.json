@@ -1,0 +1,282 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1360",
+  "nativeRecordId": "native-018372",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.VSMCullingBatchInfos",
+  "uniqueName": "000400000225fba08f58",
+  "displayLabel": "Shadow.Virtual.VSMCullingBatchInfos · instance 0004 · frame 292",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 8,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 8,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 8,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.VSMCullingBatchInfos",
+    "UniqueResourceName": "000400000225fba08f58",
+    "ByteSize": 8,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 8,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02075",
+      "role": "resource",
+      "originalPath": "Resources/000400000225fba08f58.v00000000000000000000.bin",
+      "bytes": 8,
+      "sha256": "20aef0af2bb62267e2f5c157abdc51d1ce6506e42478ae204f1fab5494907df1",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1360",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "20aef0af2bb62267e2f5c157abdc51d1ce6506e42478ae204f1fab5494907df1",
+          "offset": 0,
+          "length": 8
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000225fba08f58",
+        "name": "Shadow.Virtual.VSMCullingBatchInfos",
+        "byteSize": 8
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02075"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0843",
+        "name": "CullPerPageDrawCommands",
+        "displayLabel": "CullPerPageDrawCommands · CullingPasses · frame 292 · pass 842",
+        "record": "records/pass/pass-0843.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02075",
+      "file": "Resources/000400000225fba08f58.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-culling-batch-infos",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.VSMCullingBatchInfos$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one 8-byte batch record per batched VSM mesh pass: first primary view and count",
+      "units": "view index / view count",
+      "coordinateSpace": "scene-renderer primary view index range",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "FVSMCullingBatchInfo",
+        "strideBytes": 8,
+        "formatAlternatives": [
+          "FVSMCullingBatchInfo in VirtualShadowMapDefinitions.h:164-168"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 8,
+          "numElements": 1,
+          "byteSize": 8
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FVSMCullingBatchInfo",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "FVSMCullingBatchInfo in VirtualShadowMapDefinitions.h:164-168"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [],
+      "mathTerms": [
+        "Struct is 2 uints, 8 bytes; no padding (VirtualShadowMapDefinitions.h:164-168).",
+        "Consumed as VSMCullingBatchInfos[BatchInds[GroupId]] (DrawCommands:173)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.c.alloc.vsmbatchinfos"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.drawcmd_decl"
+      ],
+      "gaps": [],
+      "fields": [
+        {
+          "name": "FirstPrimaryView",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "first primary view in the batch",
+          "units": "view index",
+          "sourceRefs": [
+            "part3.visibility.vsm.def.cullingbatchinfo"
+          ]
+        },
+        {
+          "name": "NumPrimaryViews",
+          "type": "uint",
+          "byteOffset": 4,
+          "count": 1,
+          "decode": "number of consecutive primary views in the batch",
+          "units": "views",
+          "sourceRefs": [
+            "part3.visibility.vsm.def.cullingbatchinfo"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "FirstPrimaryView",
+          "NumPrimaryViews"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0844",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.VSMCullingBatchInfos has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1360"
+    }
+  ]
+}

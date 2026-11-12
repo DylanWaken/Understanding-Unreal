@@ -1,0 +1,380 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0262",
+  "nativeRecordId": "native-017268",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.ProbeWorldOffset",
+  "uniqueName": "000100000228ec1eedb0",
+  "displayLabel": "Lumen.RadianceCache.ProbeWorldOffset · instance 0001 · frame 292 · passes 142",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 142,
+    "last": 142
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 131072,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 8,
+  "numElements": 16384,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 8,
+    "numElements": 16384
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.ProbeWorldOffset",
+    "UniqueResourceName": "000100000228ec1eedb0",
+    "ByteSize": 131072,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 8,
+    "NumElements": 16384,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00656",
+      "role": "resource",
+      "originalPath": "Resources/000100000228ec1eedb0.v000100000225e8ccc458.bin",
+      "bytes": 131072,
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "version": "000100000225e8ccc458",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0262",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "offset": 0,
+          "length": 131072
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000100000228ec1eedb0",
+        "name": "Lumen.RadianceCache.ProbeWorldOffset",
+        "byteSize": 131072
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000225e8ccc458",
+      "producerPassId": "pass-0143",
+      "producerPassName": "AllocateUsedProbes",
+      "payloadIds": [
+        "payload-00656"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0143",
+        "name": "AllocateUsedProbes",
+        "displayLabel": "AllocateUsedProbes · UpdateWorldRadianceCaches · frame 292 · pass 142",
+        "record": "records/pass/pass-0143.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0155",
+        "name": "TraceFromProbes Res=32x32 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=32x32 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 154",
+        "record": "records/pass/pass-0155.json"
+      },
+      {
+        "id": "pass-0157",
+        "name": "FilterProbeRadiance Res=32x32",
+        "displayLabel": "FilterProbeRadiance Res=32x32 · UpdateWorldRadianceCaches · frame 292 · pass 156",
+        "record": "records/pass/pass-0157.json"
+      },
+      {
+        "id": "pass-0161",
+        "name": "ComputeLightingPDF",
+        "displayLabel": "ComputeLightingPDF · LumenScreenProbeGather · frame 292 · pass 160",
+        "record": "records/pass/pass-0161.json"
+      },
+      {
+        "id": "pass-0168",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 167",
+        "record": "records/pass/pass-0168.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00656",
+      "file": "Resources/000100000228ec1eedb0.v000100000225e8ccc458.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.rc.probe-world-offset",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.ProbeWorldOffset$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-probe world-space offset (parallax correction) added to the nominal probe center, plus an unused scalar",
+      "units": "xyz offset in translated world units (cm); w is not used",
+      "coordinateSpace": "translated world space offset",
+      "storage": {
+        "kind": "buffer",
+        "format": "RGBA16F",
+        "strideBytes": 8,
+        "numElements": "MaxNumProbes",
+        "capacity": "MaxNumProbes elements, 8 B each",
+        "usage": "UAV(PF_FloatRGBA) | SRV ",
+        "formatAlternatives": [
+          "PF_A32B32G32R32F (16 B/element) when PF_FloatRGBA lacks TypedUAVLoad+TypedUAVStore"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 8,
+            "numElements": 16384,
+            "byteSize": 131072,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "RGBA16F",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "PF_A32B32G32R32F (16 B/element) when PF_FloatRGBA lacks TypedUAVLoad+TypedUAVStore"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "apply",
+          "expression": "ProbeTranslatedWorldCenter = ProbeTraceData.xyz + ProbeWorldOffset[ProbeIndex].xyz",
+          "requires": [
+            "ProbeTraceData",
+            "ProbeWorldOffset"
+          ],
+          "sourceRefs": [
+            "part2.rc.i.worldoffset.read"
+          ]
+        },
+        {
+          "name": "format",
+          "expression": "stride = GPixelFormats[ProbeWorldOffsetFormat].BlockBytes; format = PF_FloatRGBA if RGBA16F typed UAV load+store is supported, else PF_A32B32G32R32F",
+          "requires": [
+            "ProbeWorldOffsetFormat"
+          ],
+          "sourceRefs": [
+            "part2.rc.cpp.worldoffset.fmt",
+            "part2.rc.cpp.worldoffset.alloc",
+            "part2.pf.rgba16f",
+            "part2.pf.table"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "PF_FloatRGBA is RGBA16F (PixelFormat.h:28); the HLSL declarations are Buffer<float4>/RWBuffer<float4>, but the SRV/UAV is created with ProbeWorldOffsetFormat, so the actual element is half4 (8 B) when the RGBA16F path is selected. The captured descriptor's BytesPerElement=8 corroborates the 8-byte path.",
+        "Exactly MaxNumProbes=ProbeAtlasResolutionInProbes.X*Y elements; unallocated probe indices are cleared to 0 when the buffer is created."
+      ],
+      "producerSources": [
+        "part2.rc.cpp.worldoffset.alloc",
+        "part2.rc.cpp.worldoffset.uav",
+        "part2.rc.i.worldoffset",
+        "part2.rc.worldoffset.write0",
+        "part2.rc.worldoffset.write1"
+      ],
+      "consumerSources": [
+        "part2.rc.i.worldoffset.read"
+      ],
+      "gaps": [
+        "Two storage variants exist and cannot be distinguished from the RDG name: 8 B RGBA16F or 16 B RGBA32F. The 16 B variant also changes the compute path, which is skipped unless the format has TypedUAVLoad+TypedUAVStore (LumenRadianceCache.cpp:2221-2224).",
+        "Offset w is written but not consumed; do not decode it as a confidence/valid flag."
+      ],
+      "fields": [
+        {
+          "name": "OffsetX",
+          "type": "float16",
+          "decode": "x = half offset.x (HLSL float4 typed to RGBA16F, not float32)",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.rc.cpp.worldoffset.fmt",
+            "part2.rc.worldoffset.decl",
+            "part2.rc.i.worldoffset.read"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 16
+        },
+        {
+          "name": "OffsetY",
+          "type": "float16",
+          "decode": "y",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.rc.i.worldoffset.read"
+          ],
+          "byteOffset": 2,
+          "bitWidth": 16
+        },
+        {
+          "name": "OffsetZ",
+          "type": "float16",
+          "decode": "z",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.rc.i.worldoffset.read"
+          ],
+          "byteOffset": 4,
+          "bitWidth": 16
+        },
+        {
+          "name": "UnusedW",
+          "type": "float16",
+          "decode": "producer-dependent and not consumed: 1.0 in the GBuffer offset path (LumenRadianceCache.usf:222), 0.0 in the nearest-surface path (:278) and in the adaptive-probe allocation path (LumenRadianceCacheUpdate.usf:372); consumers use only xyz",
+          "units": "n/a",
+          "sourceRefs": [
+            "part2.rc.worldoffset.write0",
+            "part2.rc.worldoffset.write1"
+          ],
+          "byteOffset": 6,
+          "bitWidth": 16
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "OffsetX",
+          "OffsetY",
+          "OffsetZ",
+          "UnusedW"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0176",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadianceCache.ProbeWorldOffset has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0262"
+    }
+  ]
+}

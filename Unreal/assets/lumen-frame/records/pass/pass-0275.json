@@ -1,0 +1,228 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0275",
+  "nativeRecordId": "native-015794",
+  "name": "HistogramEyeAdaptation (CS)",
+  "displayLabel": "HistogramEyeAdaptation (CS) · PostProcessing · frame 292 · pass 274",
+  "frameNumber": 292,
+  "graphPrefix": "PostProcessing",
+  "viewState": null,
+  "pointer": "000100000228c18360e8",
+  "parametersName": "FParameters",
+  "parametersPointer": "000100000228c1835fc0",
+  "parametersMetadataPointer": "000100007ffb892c1200",
+  "parentScopes": [
+    "PostProcessing",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "HistogramEyeAdaptation (CS)",
+    "ParametersName": "FParameters",
+    "Parameters": "000100000228c1835fc0",
+    "ParametersMetadata": "000100007ffb892c1200",
+    "Pointer": "000100000228c18360e8",
+    "Id": 274,
+    "ParentEventScopes": [
+      "PostProcessing",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000100000228d576ccc0.mip0",
+      "000100000229378794e0.mip0"
+    ],
+    "OutputResources": [
+      "000100000228c1835e78"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000100000228d576ccc0.mip0",
+      "resourceId": "resource-0083",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00496",
+        "payload-00497"
+      ]
+    },
+    {
+      "uniqueName": "000100000229378794e0.mip0",
+      "resourceId": "resource-0448",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00896"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000100000228c1835e78",
+      "resourceId": "resource-0454",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00288"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06014",
+    "metadataPointer": "000100007ffb892c1200",
+    "bytes": 224,
+    "sha256": "e20d28d78d0a5e54936b20473f67545d7d877f304835306ac85cb648897fcd1a",
+    "chunks": [
+      {
+        "sha": "e20d28d78d0a5e54936b20473f67545d7d877f304835306ac85cb648897fcd1a",
+        "offset": 0,
+        "length": 224
+      }
+    ],
+    "originalPath": "Structures/000100000228c1835fc0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\PostProcess\\PostProcessEyeAdaptation.cpp",
+    "FileLine": 1154,
+    "Size": 224,
+    "Members": [
+      {
+        "Name": "EyeAdaptation",
+        "ShaderType": "FEyeAdaptationParameters",
+        "FileLine": 1155,
+        "Offset": 0,
+        "BaseType": "UBMT_NESTED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000100007ffb892bae90"
+      },
+      {
+        "Name": "LocalExposure",
+        "ShaderType": "FLocalExposureParameters",
+        "FileLine": 1156,
+        "Offset": 160,
+        "BaseType": "UBMT_NESTED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000100007ffb892bafb0"
+      },
+      {
+        "Name": "HistogramTexture",
+        "ShaderType": "Texture2D",
+        "FileLine": 1157,
+        "Offset": 208,
+        "BaseType": "UBMT_RDG_TEXTURE",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWEyeAdaptationBuffer",
+        "ShaderType": "RWStructuredBuffer<float4>",
+        "FileLine": 1158,
+        "Offset": 216,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000228c18360e8",
+      "Parameters": "000100000228c1835fc0",
+      "Bindings": {
+        "EyeAdaptation.ExposureCompensationCurveLUT": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 128,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228d576ccc0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "EyeAdaptation.ExposureCompensationCurveSampler": {
+          "BaseType": "UBMT_SAMPLER",
+          "Offset": 136,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00010000022615ec2b20",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "EyeAdaptation.MeterMaskTexture": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 144,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "EyeAdaptation.MeterMaskSampler": {
+          "BaseType": "UBMT_SAMPLER",
+          "Offset": 152,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00010000022615ec2b20",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "HistogramTexture": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 208,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000229378794e0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWEyeAdaptationBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 216,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228c18360a0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

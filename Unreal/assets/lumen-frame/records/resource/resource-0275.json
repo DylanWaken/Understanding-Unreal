@@ -1,0 +1,377 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0275",
+  "nativeRecordId": "native-017281",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.GenerateProbeTraceTilesIndirectArgs",
+  "uniqueName": "000100000225e8ad12a0",
+  "displayLabel": "Lumen.RadianceCache.GenerateProbeTraceTilesIndirectArgs · instance 0001 · frame 292 · passes 149",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 149,
+    "last": 149
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 24,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 2,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 2
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.GenerateProbeTraceTilesIndirectArgs",
+    "UniqueResourceName": "000100000225e8ad12a0",
+    "ByteSize": 24,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 2,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00002",
+      "role": "resource",
+      "originalPath": "Resources/000100000225e8ad12a0.v000100000225e8ad1d70.bin",
+      "bytes": 24,
+      "sha256": "18fb99ce570d9b2ac4f2178289ada17d6991d2db1a15e0870a988c88ca9155d7",
+      "version": "000100000225e8ad1d70",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0275",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "18fb99ce570d9b2ac4f2178289ada17d6991d2db1a15e0870a988c88ca9155d7",
+          "offset": 0,
+          "length": 24
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000100000225e8ad12a0",
+        "name": "Lumen.RadianceCache.GenerateProbeTraceTilesIndirectArgs",
+        "byteSize": 24
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000225e8ad1d70",
+      "producerPassId": "pass-0150",
+      "producerPassName": "SetupProbeIndirectArgsCS",
+      "payloadIds": [
+        "payload-00002"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0150",
+        "name": "SetupProbeIndirectArgsCS",
+        "displayLabel": "SetupProbeIndirectArgsCS · UpdateWorldRadianceCaches · frame 292 · pass 149",
+        "record": "records/pass/pass-0150.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0152",
+        "name": "GenerateUniformProbeTraceTiles",
+        "displayLabel": "GenerateUniformProbeTraceTiles · UpdateWorldRadianceCaches · frame 292 · pass 151",
+        "record": "records/pass/pass-0152.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00002",
+      "file": "Resources/000100000225e8ad12a0.v000100000225e8ad1d70.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.rc.generate-probe-trace-tiles-indirect-args",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.GenerateProbeTraceTilesIndirectArgs$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "two dispatch records: (0) uniform trace-tile generation (1 group per probe) and (1) adaptive/uniform tile generation over the trace list; also reused as CalculateProbeIrradiance dispatch because record 0 has the same probe-per-group shape",
+      "units": "thread-group counts (x,y,z)",
+      "coordinateSpace": "z = probe trace index for record 0; x = flattened tile/probe groups for record 1",
+      "storage": {
+        "kind": "buffer",
+        "format": "FRHIDispatchIndirectParameters (3 x uint32)",
+        "strideBytes": 12,
+        "numElements": 2,
+        "capacity": "2 usable records (NumTraceTileTypes=2)",
+        "usage": "IndirectArgs(UAV|DrawIndirect) | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 12,
+            "numElements": 2,
+            "byteSize": 24,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "DrawIndirect",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters (3 x uint32)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "record0",
+          "expression": "x=1; y=1; z=min(ProbeTraceAllocator[0], MaxProbesToTrace)",
+          "requires": [
+            "ProbeTraceAllocator",
+            "MaxProbesToTrace"
+          ],
+          "sourceRefs": [
+            "part2.rc.args.gentiles0.write",
+            "part2.rc.setup.args"
+          ]
+        },
+        {
+          "name": "record1",
+          "expression": "x=ceil(NumProbesToTrace/GenerateUniformProbeTraceTilesGroupSize); y=1; z=1",
+          "requires": [
+            "NumProbesToTrace",
+            "GenerateUniformProbeTraceTilesGroupSize"
+          ],
+          "sourceRefs": [
+            "part2.rc.args.gentiles1.write"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Both records are written every frame by SetupProbeIndirectArgsCS; record 1 is dispatched at byte offset 12."
+      ],
+      "producerSources": [
+        "part2.rc.cpp.args.gentiles",
+        "part2.rc.args.gentiles0.write",
+        "part2.rc.args.gentiles1.write"
+      ],
+      "consumerSources": [
+        "part2.rc.dispatch.gentiles",
+        "part2.rc.dispatch.irradiance"
+      ],
+      "gaps": [
+        "The buffer is reused by CalculateProbeIrradiance (dispatch at offset 0) because only the record-0 shape (one group per probe in z) matters there; do not read record 0 as a 2D tile count."
+      ],
+      "fields": [
+        {
+          "name": "Record0.X",
+          "type": "uint32",
+          "decode": "x = 1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.gentiles0.write"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record0.Y",
+          "type": "uint32",
+          "decode": "y = 1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.gentiles0.write"
+          ],
+          "byteOffset": 4,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record0.Z",
+          "type": "uint32",
+          "decode": "z = NumProbesToTrace; used as one group per probe by ComputeProbeWorldOffsetsCS and CalculateProbeIrradianceCS",
+          "units": "probes",
+          "sourceRefs": [
+            "part2.rc.args.gentiles0.write",
+            "part2.rc.cpp.irradiance.reuse"
+          ],
+          "byteOffset": 8,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record1.X",
+          "type": "uint32",
+          "decode": "x = ceil(NumProbesToTrace/GenerateUniformProbeTraceTilesGroupSize)",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.gentiles1.write"
+          ],
+          "byteOffset": 12,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record1.Y",
+          "type": "uint32",
+          "decode": "y = 1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.gentiles1.write"
+          ],
+          "byteOffset": 16,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record1.Z",
+          "type": "uint32",
+          "decode": "z = 1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.gentiles1.write"
+          ],
+          "byteOffset": 20,
+          "bitWidth": 32
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 6,
+        "sourceEquationFields": [
+          "Record0.X",
+          "Record0.Y",
+          "Record0.Z",
+          "Record1.X",
+          "Record1.Y",
+          "Record1.Z"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0189",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadianceCache.GenerateProbeTraceTilesIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0275"
+    }
+  ]
+}

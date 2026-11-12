@@ -1,0 +1,377 @@
+{
+  "format": "PF_B8G8R8A8",
+  "version": 1,
+  "id": "resource-0704",
+  "nativeRecordId": "native-017713",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "DefaultNormal8Bit",
+  "uniqueName": "0003000002288071e570",
+  "displayLabel": "DefaultNormal8Bit · scene 0003 · frame 292 · View.StateFrameIndexMod8 0",
+  "instancePrefix": "0003",
+  "sceneInvocation": "0003",
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1
+  ],
+  "viewState": {
+    "member": "View.View",
+    "metadataPointer": "000300007ffb9ac979f0",
+    "contentPointer": "000300000228ec7dca80",
+    "payloadId": "payload-06575",
+    "frameIndexMod8": 0,
+    "frameIndex": 872,
+    "viewRect": {
+      "min": [
+        0,
+        0
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "source": "ViewRectMinAndSize (uint32 x 4)"
+    },
+    "source": "Base/ReferencedStructs.json View.View content read at StructuresMetadata member offsets"
+  },
+  "viewport": {
+    "applicability": "unknown-mapping",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": {
+      "min": [
+        0,
+        0
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "source": "ViewRectMinAndSize (uint32 x 4)"
+    },
+    "passId": "pass-0438",
+    "passName": "BasePassParallel",
+    "passPointer": "000300000229140278e0",
+    "passIsCameraPass": true,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "BasePassParallel (pass pass-0438) ViewRect retained as context only.",
+    "reason": "This resource is attached to a pass with a recorded ViewRect, but it is not a positively identified camera-pass screen-aligned target; padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 4,
+  "extent": [
+    1,
+    1,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "UNORM8",
+    "bytesPerTexel": 4,
+    "formatNormalized": "B8G8R8A8",
+    "dumpFormat": "PF_B8G8R8A8",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "DefaultNormal8Bit",
+    "UniqueResourceName": "0003000002288071e570",
+    "ByteSize": 4,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_B8G8R8A8",
+    "ExtentX": 1,
+    "ExtentY": 1,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01203",
+      "role": "resource",
+      "originalPath": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+      "bytes": 4,
+      "sha256": "79dfad351f79ef0e65a11fff0a9ed44bf628f9390ff06b92ee4ee5e2477616ea",
+      "version": "00000000000000000000",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0704",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "79dfad351f79ef0e65a11fff0a9ed44bf628f9390ff06b92ee4ee5e2477616ea",
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "0003000002288071e570",
+        "Name": "DefaultNormal8Bit",
+        "File": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1,
+        "ExtentY": 1,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4,
+        "RowPitchBytes": 4,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_B8G8R8A8",
+        "ViewFormat": "PF_B8G8R8A8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_B8G8R8A8",
+        "StoredFormat": "PF_B8G8R8A8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "ComputeThenCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4,
+        "StagingByteSize": 4
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4,
+          "ActualBytes": 4,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4,
+        "actualBytes": 4,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "0003000002288071e570",
+        "name": "DefaultNormal8Bit",
+        "diagnosticResource": "0003000002288071e570"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 1,
+        "extentY": 1,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 4,
+        "rowPitchBytes": 4,
+        "storageFormat": "PF_B8G8R8A8",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UNORM8",
+        "bytesPerTexel": 4,
+        "formatNormalized": "B8G8R8A8",
+        "dumpFormat": "PF_B8G8R8A8",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_B8G8R8A8",
+        "viewFormat": "PF_B8G8R8A8",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01203"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0438",
+        "name": "BasePassParallel",
+        "displayLabel": "BasePassParallel · BasePass · frame 292 · pass 437 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0438.json"
+      },
+      {
+        "id": "pass-0439",
+        "name": "EditorPrimitives: SDPG_World",
+        "displayLabel": "EditorPrimitives: SDPG_World · EditorPrimitives · frame 292 · pass 438 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0439.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-01203",
+      "file": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+      "layout": {
+        "Resource": "0003000002288071e570",
+        "Name": "DefaultNormal8Bit",
+        "File": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1,
+        "ExtentY": 1,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4,
+        "RowPitchBytes": 4,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_B8G8R8A8",
+        "ViewFormat": "PF_B8G8R8A8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_B8G8R8A8",
+        "StoredFormat": "PF_B8G8R8A8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "ComputeThenCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4,
+        "StagingByteSize": 4
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4,
+          "ActualBytes": 4,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4,
+        "actualBytes": 4,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-01203",
+      "file": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0003000002288071e570.mip0.v00000000000000000000.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4,
+          "ActualBytes": 4,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4,
+        "actualBytes": 4,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-2085",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched DefaultNormal8Bit (0003000002288071e570). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0704"
+    }
+  ]
+}

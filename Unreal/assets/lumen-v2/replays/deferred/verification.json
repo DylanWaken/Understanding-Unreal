@@ -1,0 +1,492 @@
+{
+  "schema": "deferred-replay-verification-v1",
+  "capture_id": "binary-20261112-153914",
+  "report": "report.json",
+  "checks": [
+    {
+      "name": "pass_identity",
+      "passed": true,
+      "evidence": {
+        "schema": "deferred-replay-final-v1",
+        "pass": 249,
+        "pointer": "000100000228e3a88880",
+        "graph": "0001"
+      }
+    },
+    {
+      "name": "graph_disambiguation",
+      "passed": true,
+      "evidence": [
+        {
+          "id": 249,
+          "pointer": "000100000228e3a88880",
+          "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+          "selected": true
+        },
+        {
+          "id": 561,
+          "pointer": "00030000022651f18880",
+          "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+          "selected": false
+        },
+        {
+          "id": 869,
+          "pointer": "000400000228bf788880",
+          "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+          "selected": false
+        }
+      ]
+    },
+    {
+      "name": "independent_rerun",
+      "passed": true,
+      "evidence": [
+        {
+          "field": "math.cpu_contribution",
+          "report": [
+            1.2399915952948766,
+            1.2399915952948766,
+            1.1766082762550512
+          ],
+          "rerun": [
+            1.2399915952948766,
+            1.2399915952948766,
+            1.1766082762550512
+          ]
+        },
+        {
+          "field": "math.observed_delta",
+          "report": [
+            1.2392578125,
+            1.2392578125,
+            1.1767578125
+          ],
+          "rerun": [
+            1.2392578125,
+            1.2392578125,
+            1.1767578125
+          ]
+        },
+        {
+          "field": "math.residual_ulps",
+          "report": [
+            0.7513935819536073,
+            0.7513935819536073,
+            -0.15312511482761693
+          ],
+          "rerun": [
+            0.7513935819536073,
+            0.7513935819536073,
+            -0.15312511482761693
+          ]
+        },
+        {
+          "field": "math.max_abs_residual_ulps",
+          "report": 0.7513935819536073,
+          "rerun": 0.7513935819536073
+        },
+        {
+          "field": "ltc.sampled.M",
+          "report": [
+            0.5856864200368056,
+            -0.28026741197201943,
+            0.5386638240830689,
+            0.5205275583148652
+          ],
+          "rerun": [
+            0.5856864200368056,
+            -0.28026741197201943,
+            0.5386638240830689,
+            0.5205275583148652
+          ]
+        },
+        {
+          "field": "ltc.sampled.A",
+          "report": [
+            0.7437171867090612,
+            0.02350480188822511
+          ],
+          "rerun": [
+            0.7437171867090612,
+            0.02350480188822511
+          ]
+        },
+        {
+          "field": "math.codeword_delta",
+          "report": [
+            1,
+            1,
+            0
+          ],
+          "rerun": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "field": "visibility.visibility",
+          "report": 1.0,
+          "rerun": 1.0
+        }
+      ]
+    },
+    {
+      "name": "producer_versions",
+      "passed": true,
+      "evidence": {
+        "SceneColor.before": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "SceneColor.after": {
+          "id": 249,
+          "pointer": "000100000228e3a88880",
+          "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+          "parametersName": "FRenderLightParameters",
+          "parentEventScopes": [
+            "LumenRoom.Ceiling area light",
+            "UnbatchedLights",
+            "DirectLighting",
+            "Lights",
+            "RenderDeferredLighting",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "SceneDepthZ": {
+          "id": 29,
+          "pointer": "000100000228d23fc770",
+          "event": "EditorPrimitives",
+          "parametersName": "FDepthPassParameters",
+          "parentEventScopes": [
+            "PrePass DDM_AllOpaqueNoVelocity (Forced by Nanite)",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "GBufferA": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "GBufferB": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "GBufferC": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "GBufferD": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "Shadow.Virtual.MaskBits": {
+          "id": 248,
+          "pointer": "000100000228e3a85210",
+          "event": "VirtualShadowMapProjection(Input:GBuffer)",
+          "parametersName": "FParameters",
+          "parentEventScopes": [
+            "VirtualShadowMapProjectionMaskBits",
+            "DirectLighting",
+            "Lights",
+            "RenderDeferredLighting",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        }
+      }
+    },
+    {
+      "name": "file_hashes",
+      "passed": true,
+      "evidence": {
+        "files": 28,
+        "failures": []
+      }
+    },
+    {
+      "name": "actual_ltc_formats",
+      "passed": true,
+      "evidence": {
+        "source": "actual-native-binding",
+        "mat": {
+          "name": "GGXLTCMat",
+          "storedFormat": "PF_FloatRGBA",
+          "nativeFormat": "PF_FloatRGBA",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": false,
+          "viewSRGB": false,
+          "extentX": 64,
+          "extentY": 64,
+          "depth": 1,
+          "rowPitchBytes": 512,
+          "zSliceStrideBytes": 32768,
+          "channels": 4,
+          "dtype": "<f2"
+        },
+        "amp": {
+          "name": "GGXLTCAmp",
+          "storedFormat": "PF_G16R16F",
+          "nativeFormat": "PF_G16R16F",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": false,
+          "viewSRGB": false,
+          "extentX": 64,
+          "extentY": 64,
+          "depth": 1,
+          "rowPitchBytes": 256,
+          "zSliceStrideBytes": 16384,
+          "channels": 2,
+          "dtype": "<f2"
+        }
+      }
+    },
+    {
+      "name": "ltc_sampler_interpretation",
+      "passed": true,
+      "evidence": {
+        "matPointer": "00010000022615ec2b20",
+        "ampPointer": "00010000022615ec2b20",
+        "sharedBilinearClampedPointer": "00010000022615ec2b20",
+        "sameObjectAsSharedBilinearClamped": true,
+        "stateCaptured": false,
+        "interpretation": "bilinear clamp, SampleLevel(...,0), 64x64, no mip chain",
+        "source": "SceneManagement.cpp:1277 TStaticSamplerState<SF_Bilinear, AM_Clamp, AM_Clamp, AM_Clamp>; RectLight.ush:14-16 uses View.SharedBilinearClampedSampler when SUPPORTS_INDEPENDENT_SAMPLERS"
+      }
+    },
+    {
+      "name": "ltc_matches_ltc_h",
+      "passed": true,
+      "evidence": {
+        "mat_mismatches": 0,
+        "amp_mismatches": 0
+      }
+    },
+    {
+      "name": "actual_view_ub",
+      "passed": true,
+      "evidence": {
+        "label": "PS.View",
+        "metadata": "000100007ffb9ac979f0",
+        "content": "00010000022880566180",
+        "structTypeName": "FViewUniformShaderParameters",
+        "size": 6752,
+        "metadataFile": {
+          "path": "StructuresMetadata/000100007ffb9ac979f0.json",
+          "bytes": 102382,
+          "sha256": "a8967122baefb6a1ab9778fd87a65d4bda8b34f3ca2ab7de5cd1c2006ac5b100"
+        },
+        "contentFile": {
+          "path": "Structures/00010000022880566180.bin",
+          "bytes": 6752,
+          "sha256": "0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944"
+        }
+      }
+    },
+    {
+      "name": "actual_deferred_light_ub",
+      "passed": true,
+      "evidence": {
+        "label": "PS.DeferredLight",
+        "metadata": "000100007ffb89247ae0",
+        "content": "000100000228e3a88830",
+        "structTypeName": "FDeferredLightUniformStruct",
+        "size": 192,
+        "metadataFile": {
+          "path": "StructuresMetadata/000100007ffb89247ae0.json",
+          "bytes": 2673,
+          "sha256": "8c42e611453c4db19f9adfbda9f5a058595c15093c4710a21526366c43867b7c"
+        },
+        "contentFile": {
+          "path": "Structures/000100000228e3a88830.bin",
+          "bytes": 192,
+          "sha256": "9378465b8ee730c068912c300545f01a976fc7d95795800985fb70e7a9e02019"
+        }
+      }
+    },
+    {
+      "name": "actual_deferred_light_values",
+      "passed": true,
+      "evidence": {
+        "translated_world_position": [
+          0.0,
+          670.0,
+          133.0
+        ],
+        "color": [
+          979.4150390625,
+          979.4150390625,
+          979.4150390625
+        ],
+        "inv_radius": 0.0010000000474974513,
+        "shadowed_bits": 3,
+        "shadow_map_channel_mask": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "b_affects_translucent_lighting": 1
+      }
+    },
+    {
+      "name": "exact_pre_exposure",
+      "passed": true,
+      "evidence": {
+        "pre_exposure": 0.0625,
+        "one_over": 16.0
+      }
+    },
+    {
+      "name": "vsm_boundary",
+      "passed": true,
+      "evidence": {
+        "producer": {
+          "id": 248,
+          "pointer": "000100000228e3a85210",
+          "event": "VirtualShadowMapProjection(Input:GBuffer)",
+          "parentEventScopes": [
+            "VirtualShadowMapProjectionMaskBits",
+            "DirectLighting",
+            "Lights",
+            "RenderDeferredLighting",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "mask": [
+          "0x0000000F",
+          "0x00000000"
+        ],
+        "visibility": 1.0,
+        "operand_keys": [
+          "AllocatedPageRectBounds",
+          "BilinearClampedSampler",
+          "CachePrimitiveAsDynamic",
+          "PageFlags",
+          "PageReceiverMasks",
+          "PageTable",
+          "PageTableSampler",
+          "PerViewData.DirectionalLightIds",
+          "PerViewData.LightGridData",
+          "PerViewData.NumCulledLightsGrid",
+          "PhysicalPagePool",
+          "ProjectionData",
+          "UncachedPageRectBounds"
+        ],
+        "boundary": "FINAL 4-bit quantized packed Shadow.Virtual.MaskBits, consumed by pass 249. The SMRT producer (pass 248) is NOT replayed; page/light/projection operands are retained only as evidence. No unquantized screen-space shadow factor is claimed."
+      }
+    },
+    {
+      "name": "observed_fp16_comparison",
+      "passed": true,
+      "evidence": {
+        "before": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "after": [
+          1.2392578125,
+          1.2392578125,
+          1.1767578125,
+          0.0
+        ],
+        "observed_bits": [
+          "0x3CF5",
+          "0x3CF5",
+          "0x3CB5"
+        ],
+        "predicted_bits": [
+          "0x3CF6",
+          "0x3CF6",
+          "0x3CB5"
+        ],
+        "codeword_delta": [
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "tolerance_pass",
+      "passed": true,
+      "evidence": {
+        "max_abs_residual_ulps": 0.7513935819536073,
+        "tolerance_ulps": 1.0,
+        "passed": true
+      }
+    },
+    {
+      "name": "report_self_checks",
+      "passed": true,
+      "evidence": {
+        "exact_final_scene_graph": true,
+        "exact_producer_versions": true,
+        "actual_view_uniform_buffer": true,
+        "actual_deferred_light_uniform_struct": true,
+        "actual_shader_bound_ltc_textures": true,
+        "actual_shadow_mask_values": true,
+        "exact_pre_exposure": true,
+        "observed_fp16_output_used": true,
+        "numerical_tolerance_pass": true,
+        "codeword_within_1_ulp": true
+      }
+    },
+    {
+      "name": "scene_graph_primary_view",
+      "passed": true,
+      "evidence": {
+        "graph": "0001",
+        "view_content": "00010000022880566180",
+        "view_metadata": "000100007ffb9ac979f0",
+        "bin_sha256": "0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944"
+      }
+    }
+  ],
+  "passed": true,
+  "failures": []
+}

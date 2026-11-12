@@ -1,0 +1,391 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0878",
+  "nativeRecordId": "native-017887",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.BatchInfos",
+  "uniqueName": "000300000228e2258da8",
+  "displayLabel": "Shadow.Virtual.BatchInfos · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 40,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 40,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 40,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.BatchInfos",
+    "UniqueResourceName": "000300000228e2258da8",
+    "ByteSize": 40,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 40,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01448",
+      "role": "resource",
+      "originalPath": "Resources/000300000228e2258da8.v00000000000000000000.bin",
+      "bytes": 40,
+      "sha256": "9db2be073d88bedf1be8de51c80e34fe7ecd969eb62121fe8a4a466047a8c274",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0878",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "9db2be073d88bedf1be8de51c80e34fe7ecd969eb62121fe8a4a466047a8c274",
+          "offset": 0,
+          "length": 40
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228e2258da8",
+        "name": "Shadow.Virtual.BatchInfos",
+        "byteSize": 40
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01448"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0535",
+        "name": "CullPerPageDrawCommands",
+        "displayLabel": "CullPerPageDrawCommands · CullingPasses · frame 292 · pass 534",
+        "record": "records/pass/pass-0535.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01448",
+      "file": "Resources/000300000228e2258da8.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-batch-infos",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.BatchInfos$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one 40-byte FContextBatchInfoPacked per instance-culling batch",
+      "units": "offsets/counts in element/word units, bitflags",
+      "coordinateSpace": "instance-culling merged context offsets (indirect args, instance data, payload, compaction, view ids)",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "FContextBatchInfoPacked",
+        "strideBytes": 40,
+        "formatAlternatives": [
+          "10 uints (InstanceCullingCommon.ush:38-52)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 40,
+          "numElements": 1,
+          "byteSize": 40
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FContextBatchInfoPacked",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "10 uints (InstanceCullingCommon.ush:38-52)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "batchLoad",
+          "expression": "BatchInfo = BatchInfos[BatchInds[GroupId]]; NumViewIds=NumViewIds_Flags>>2; bAllowOcclusionCulling=bit0; bDrawOnlySelected=bit1",
+          "requires": [
+            "BatchInfos",
+            "BatchInds"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchload"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Layout is exactly 10 consecutive uints, 40 bytes, matching the captured stride.",
+        "INSTANCE_CULLING_FLAGS_BITS=2 (InstanceCullingDefinitions.h:10-12)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.c.alloc.batchinfos"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.batchload"
+      ],
+      "gaps": [],
+      "fields": [
+        {
+          "name": "IndirectArgOffset",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "batch's first indirect-arg index",
+          "units": "index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "InstanceDataWriteOffset",
+          "type": "uint",
+          "byteOffset": 4,
+          "count": 1,
+          "decode": "write offset into instance data",
+          "units": "elements",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "PayloadOffset",
+          "type": "uint",
+          "byteOffset": 8,
+          "count": 1,
+          "decode": "offset into the payload buffer",
+          "units": "elements",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "CompactionDataOffset",
+          "type": "uint",
+          "byteOffset": 12,
+          "count": 1,
+          "decode": "offset into FDrawCommandCompactionData",
+          "units": "elements",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "ViewIdsOffset",
+          "type": "uint",
+          "byteOffset": 16,
+          "count": 1,
+          "decode": "offset into the view-id list",
+          "units": "elements",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "NumViewIds_Flags",
+          "type": "uint",
+          "byteOffset": 20,
+          "count": 1,
+          "decode": "NumViewIds = word >> INSTANCE_CULLING_FLAGS_BITS (2); bit0=ALLOW_OCCLUSION_CULLING, bit1=DRAW_ONLY_SELECTED",
+          "units": "bitfield",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchload",
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "DynamicInstanceIdOffset",
+          "type": "uint",
+          "byteOffset": 24,
+          "count": 1,
+          "decode": "base for dynamic instance data",
+          "units": "instance index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "DynamicInstanceIdMax",
+          "type": "uint",
+          "byteOffset": 28,
+          "count": 1,
+          "decode": "exclusive upper bound for dynamic instance data",
+          "units": "instance index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "ItemDataOffset0",
+          "type": "uint",
+          "byteOffset": 32,
+          "count": 1,
+          "decode": "load-balancer item data offset, processing mode 0",
+          "units": "elements",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        },
+        {
+          "name": "ItemDataOffset1",
+          "type": "uint",
+          "byteOffset": 36,
+          "count": 1,
+          "decode": "load-balancer item data offset, processing mode 1",
+          "units": "elements",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.batchpacked"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 10,
+        "sourceEquationFields": [
+          "IndirectArgOffset",
+          "InstanceDataWriteOffset",
+          "PayloadOffset",
+          "CompactionDataOffset",
+          "ViewIdsOffset",
+          "NumViewIds_Flags",
+          "DynamicInstanceIdOffset",
+          "DynamicInstanceIdMax",
+          "ItemDataOffset0",
+          "ItemDataOffset1"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0550",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.BatchInfos has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0878"
+    }
+  ]
+}

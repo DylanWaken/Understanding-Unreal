@@ -1,0 +1,346 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0004",
+  "nativeRecordId": "native-017008",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "DistanceFields.DFObjectBounds",
+  "uniqueName": "000100000228d57680d0",
+  "displayLabel": "DistanceFields.DFObjectBounds · instance 0001 · frame 292",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 384,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 24,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 24
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "DistanceFields.DFObjectBounds",
+    "UniqueResourceName": "000100000228d57680d0",
+    "ByteSize": 384,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 24,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00488",
+      "role": "resource",
+      "originalPath": "Resources/000100000228d57680d0.v00000000000000000000.bin",
+      "bytes": 384,
+      "sha256": "4e49dc236f5b08a73ef6f3985934e889151d90b0413cc3e6aa4c617596b0af01",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0004",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "4e49dc236f5b08a73ef6f3985934e889151d90b0413cc3e6aa4c617596b0af01",
+          "offset": 0,
+          "length": 384
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000100000228d57680d0",
+        "name": "DistanceFields.DFObjectBounds",
+        "byteSize": 384
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00488"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0006",
+        "name": "ComputeWantedMips",
+        "displayLabel": "ComputeWantedMips · UpdateDistanceFieldAtlas · frame 292 · pass 5",
+        "record": "records/pass/pass-0006.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00488",
+      "file": "Resources/000100000228d57680d0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.df-object-bounds",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^DistanceFields\\.DFObjectBounds$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one float4 element of a 48-byte per-object bounds record (3 float4): world center high/low, sphere radius, AABB extent, 6 flags",
+      "units": "world-space centimetres (UE units); flags unitless",
+      "coordinateSpace": "absolute world space stored as double-float High/Low; consumers subtract ViewOrigin to get translated world",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "float4",
+        "strideBytes": 16,
+        "formatAlternatives": [
+          "3 float4 per object (GDistanceFieldObjectBoundsStride=3)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 16,
+          "numElements": 24,
+          "byteSize": 384
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "3 float4 per object (GDistanceFieldObjectBoundsStride=3)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "center",
+          "expression": "CenterWorld = PositionHigh + PositionLow; TranslatedCenter = DFFastToTranslatedWorld(Center, PreViewTranslation)",
+          "requires": [
+            "DistanceFields.DFObjectBounds"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.bounds.center"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "3 float4 per object; bounds are primitive world bounds (center from PrimAndInst.Origin + WorldBoundsRelativeToOrigin, extent = GetExtent()).",
+        "Flags are packed from C++ booleans; only 6 bits used."
+      ],
+      "producerSources": [
+        "part3.visibility.df.bounds.alloc",
+        "part3.visibility.df.bounds.write",
+        "part3.visibility.df.bounds.flags.cpp"
+      ],
+      "consumerSources": [
+        "part3.visibility.df.bounds.load"
+      ],
+      "gaps": [
+        "Word0.w is written but unused; live object count is NumObjectsInBuffer (uniform), not stored in the buffer."
+      ],
+      "fields": [
+        {
+          "name": "PositionHigh",
+          "type": "float3",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "Center = MakeDFVector3(High,Low)",
+          "units": "cm",
+          "sourceRefs": [
+            "part3.visibility.df.bounds.load"
+          ]
+        },
+        {
+          "name": "PaddingW",
+          "type": "float",
+          "byteOffset": 12,
+          "count": 1,
+          "decode": "unused (FVector4f constructed from FVector3f gives 1.0)",
+          "units": "n/a",
+          "sourceRefs": [
+            "part3.visibility.df.bounds.write"
+          ]
+        },
+        {
+          "name": "PositionLow",
+          "type": "float3",
+          "byteOffset": 16,
+          "count": 1,
+          "decode": "low part of world center",
+          "units": "cm",
+          "sourceRefs": [
+            "part3.visibility.df.bounds.center"
+          ]
+        },
+        {
+          "name": "SphereRadius",
+          "type": "float",
+          "byteOffset": 28,
+          "count": 1,
+          "decode": "Vector1.w",
+          "units": "cm",
+          "sourceRefs": [
+            "part3.visibility.df.bounds.radius"
+          ]
+        },
+        {
+          "name": "BoxExtent",
+          "type": "float3",
+          "byteOffset": 32,
+          "count": 1,
+          "decode": "Vector2.xyz world AABB half-extent",
+          "units": "cm",
+          "sourceRefs": [
+            "part3.visibility.df.bounds.load"
+          ]
+        },
+        {
+          "name": "Flags",
+          "type": "uint32",
+          "byteOffset": 44,
+          "count": 1,
+          "decode": "bits0 OftenMoving,1 CastShadow,2 IsNaniteMesh,3 EmissiveLightSource,4 Visible,5 AffectIndirectLightingWhileHidden",
+          "units": "bit flags",
+          "sourceRefs": [
+            "part3.visibility.df.bounds.flags.ush",
+            "part3.visibility.df.bounds.flags.cpp"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 6,
+        "sourceEquationFields": [
+          "PositionHigh",
+          "PaddingW",
+          "PositionLow",
+          "SphereRadius",
+          "BoxExtent",
+          "Flags"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0006",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer DistanceFields.DFObjectBounds has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0004"
+    }
+  ]
+}

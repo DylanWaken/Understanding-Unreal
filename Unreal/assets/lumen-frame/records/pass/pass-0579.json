@@ -1,0 +1,116 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0579",
+  "nativeRecordId": "native-016098",
+  "name": "ClearTextureUint(Histogram.Scatter32 R32_UINT 128x1 Mip=0)",
+  "displayLabel": "ClearTextureUint(Histogram.Scatter32 R32_UINT 128x1 Mip=0) · Histogram · frame 292 · pass 578",
+  "frameNumber": 292,
+  "graphPrefix": "Histogram",
+  "viewState": null,
+  "pointer": "00030000022651f46cd0",
+  "parametersName": "FClearTextureUAVParameters",
+  "parametersPointer": "00030000022651f46cc0",
+  "parametersMetadataPointer": "000300007ffba0d5c1d0",
+  "parentScopes": [
+    "Histogram",
+    "PostProcessing",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearTextureUint(Histogram.Scatter32 R32_UINT 128x1 Mip=0)",
+    "ParametersName": "FClearTextureUAVParameters",
+    "Parameters": "00030000022651f46cc0",
+    "ParametersMetadata": "000300007ffba0d5c1d0",
+    "Pointer": "00030000022651f46cd0",
+    "Id": 578,
+    "ParentEventScopes": [
+      "Histogram",
+      "PostProcessing",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "00030000022651f46470.mip0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "00030000022651f46470.mip0",
+      "resourceId": "resource-0934",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01095",
+        "payload-01096"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06310",
+    "metadataPointer": "000300007ffba0d5c1d0",
+    "bytes": 16,
+    "sha256": "a0095405adacbae685cf487d2f60626834bef8dee963a6b876f4a4e72825dc80",
+    "chunks": [
+      {
+        "sha": "a0095405adacbae685cf487d2f60626834bef8dee963a6b876f4a4e72825dc80",
+        "offset": 0,
+        "length": 16
+      }
+    ],
+    "originalPath": "Structures/00030000022651f46cc0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FClearTextureUAVParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\RenderGraphUtils.cpp",
+    "FileLine": 453,
+    "Size": 16,
+    "Members": [
+      {
+        "Name": "TextureUAV",
+        "ShaderType": "RWTexture2D",
+        "FileLine": 454,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "00030000022651f46cd0",
+      "Parameters": "00030000022651f46cc0",
+      "Bindings": {
+        "TextureUAV": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022651f46950",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

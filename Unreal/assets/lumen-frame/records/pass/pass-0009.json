@@ -1,0 +1,113 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0009",
+  "nativeRecordId": "native-015528",
+  "name": "ClearBuffer(GlobalDistanceField.PageStatsBuffer Size=256bytes)",
+  "displayLabel": "ClearBuffer(GlobalDistanceField.PageStatsBuffer Size=256bytes) · \"GlobalDistanceFieldUpdate\" · frame 292 · pass 8",
+  "frameNumber": 292,
+  "graphPrefix": "\"GlobalDistanceFieldUpdate\"",
+  "viewState": null,
+  "pointer": "000100000228d576b000",
+  "parametersName": "FClearBufferUAVParameters",
+  "parametersPointer": "000100000228d576aff0",
+  "parametersMetadataPointer": "000100007ffba0d5c0b0",
+  "parentScopes": [
+    "\"GlobalDistanceFieldUpdate\"",
+    "\"DistanceFields\"",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearBuffer(GlobalDistanceField.PageStatsBuffer Size=256bytes)",
+    "ParametersName": "FClearBufferUAVParameters",
+    "Parameters": "000100000228d576aff0",
+    "ParametersMetadata": "000100007ffba0d5c0b0",
+    "Pointer": "000100000228d576b000",
+    "Id": 8,
+    "ParentEventScopes": [
+      "\"GlobalDistanceFieldUpdate\"",
+      "\"DistanceFields\"",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000100000228d576a630"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000100000228d576a630",
+      "resourceId": "resource-0007",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00490"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06070",
+    "metadataPointer": "000100007ffba0d5c0b0",
+    "bytes": 16,
+    "sha256": "f36d553578e2f9abb400dd13e68b548d5ddd21b43e24be602e0bb50cad8fd967",
+    "chunks": [
+      {
+        "sha": "f36d553578e2f9abb400dd13e68b548d5ddd21b43e24be602e0bb50cad8fd967",
+        "offset": 0,
+        "length": 16
+      }
+    ],
+    "originalPath": "Structures/000100000228d576aff0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FClearBufferUAVParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\RenderGraphUtils.cpp",
+    "FileLine": 415,
+    "Size": 16,
+    "Members": [
+      {
+        "Name": "BufferUAV",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 416,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000228d576b000",
+      "Parameters": "000100000228d576aff0",
+      "Bindings": {
+        "BufferUAV": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228d576af90",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

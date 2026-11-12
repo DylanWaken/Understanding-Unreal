@@ -1,0 +1,116 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0436",
+  "nativeRecordId": "native-015955",
+  "name": "ClearProbeIndirectionCS",
+  "displayLabel": "ClearProbeIndirectionCS · LumenScreenProbeGather · frame 292 · pass 435",
+  "frameNumber": 292,
+  "graphPrefix": "LumenScreenProbeGather",
+  "viewState": null,
+  "pointer": "00030000022914020340",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000229140202e0",
+  "parametersMetadataPointer": "000300007ffb892508a0",
+  "parentScopes": [
+    "LumenScreenProbeGather",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearProbeIndirectionCS",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000229140202e0",
+    "ParametersMetadata": "000300007ffb892508a0",
+    "Pointer": "00030000022914020340",
+    "Id": 435,
+    "ParentEventScopes": [
+      "LumenScreenProbeGather",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "00030000022914020010.mip0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "00030000022914020010.mip0",
+      "resourceId": "resource-0692",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01780",
+        "payload-01781",
+        "payload-01782",
+        "payload-01783"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06585",
+    "metadataPointer": "000300007ffb892508a0",
+    "bytes": 16,
+    "sha256": "afb70a13a3112b062a00cee713554797716e8dc021e1d802512a9143b0eb5afa",
+    "chunks": [
+      {
+        "sha": "afb70a13a3112b062a00cee713554797716e8dc021e1d802512a9143b0eb5afa",
+        "offset": 0,
+        "length": 16
+      }
+    ],
+    "originalPath": "Structures/000300000229140202e0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenRadianceCache.cpp",
+    "FileLine": 344,
+    "Size": 16,
+    "Members": [
+      {
+        "Name": "RWRadianceProbeIndirectionTexture",
+        "ShaderType": "RWTexture3D<uint>",
+        "FileLine": 345,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "00030000022914020340",
+      "Parameters": "000300000229140202e0",
+      "Bindings": {
+        "RWRadianceProbeIndirectionTexture": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000229140202f0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

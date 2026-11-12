@@ -1,0 +1,200 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0844",
+  "nativeRecordId": "native-017853",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "NanitePerformanceFeedback",
+  "uniqueName": "000300000225ef6933f8",
+  "displayLabel": "NanitePerformanceFeedback · instance 0003 · frame 292 · passes 506",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 506,
+    "last": 506
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 65592,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 16398,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 16398
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "NanitePerformanceFeedback",
+    "UniqueResourceName": "000300000225ef6933f8",
+    "ByteSize": 65592,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 16398,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00998",
+      "role": "resource",
+      "originalPath": "Resources/000300000225ef6933f8.v000300000225ef6935a0.bin",
+      "bytes": 65592,
+      "sha256": "fa01ce455443fd0f69381fb0411139a8d7d41652fafca9c80a6d0ab3ae55238e",
+      "version": "000300000225ef6935a0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0844",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "fa01ce455443fd0f69381fb0411139a8d7d41652fafca9c80a6d0ab3ae55238e",
+          "offset": 0,
+          "length": 65592
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000225ef6933f8",
+        "name": "NanitePerformanceFeedback",
+        "byteSize": 65592
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000225ef6935a0",
+      "producerPassId": "pass-0507",
+      "producerPassName": "ClearBuffer(NanitePerformanceFeedback Size=65592bytes)",
+      "payloadIds": [
+        "payload-00998"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0507",
+        "name": "ClearBuffer(NanitePerformanceFeedback Size=65592bytes)",
+        "displayLabel": "ClearBuffer(NanitePerformanceFeedback Size=65592bytes) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 506",
+        "record": "records/pass/pass-0507.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00998",
+      "file": "Resources/000300000225ef6933f8.v000300000225ef6935a0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0518",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer NanitePerformanceFeedback has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0844"
+    },
+    {
+      "id": "gap-2087",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched NanitePerformanceFeedback (000300000225ef6933f8). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0844"
+    }
+  ]
+}

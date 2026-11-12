@@ -1,0 +1,392 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1088",
+  "nativeRecordId": "native-018098",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.SceneInstanceIndexToMeshCardsIndexBuffer",
+  "uniqueName": "000400000229250793f8",
+  "displayLabel": "Lumen.SceneInstanceIndexToMeshCardsIndexBuffer · instance 0004 · frame 292",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4096,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1024,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1024
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.SceneInstanceIndexToMeshCardsIndexBuffer",
+    "UniqueResourceName": "000400000229250793f8",
+    "ByteSize": 4096,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1024,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ByteAddressBuffer",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02659",
+      "role": "resource",
+      "originalPath": "Resources/000400000229250793f8.v00000000000000000000.bin",
+      "bytes": 4096,
+      "sha256": "43b3ab15a9fe9a7169eec4c48975793b8b71d792a5847581d3b32a5de759e58c",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1088",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "43b3ab15a9fe9a7169eec4c48975793b8b71d792a5847581d3b32a5de759e58c",
+          "offset": 0,
+          "length": 4096
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000229250793f8",
+        "name": "Lumen.SceneInstanceIndexToMeshCardsIndexBuffer",
+        "byteSize": 4096
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02659"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0666",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 665",
+        "record": "records/pass/pass-0666.json"
+      },
+      {
+        "id": "pass-0715",
+        "name": "BuildPageUpdatePriorityHistogram",
+        "displayLabel": "BuildPageUpdatePriorityHistogram · BuildCardUpdateContext · frame 292 · pass 714",
+        "record": "records/pass/pass-0715.json"
+      },
+      {
+        "id": "pass-0720",
+        "name": "SpliceCardPagesIntoTiles",
+        "displayLabel": "SpliceCardPagesIntoTiles · CullTiles 1 lights · frame 292 · pass 719",
+        "record": "records/pass/pass-0720.json"
+      },
+      {
+        "id": "pass-0722",
+        "name": "CalculateCardTileDepthRanges",
+        "displayLabel": "CalculateCardTileDepthRanges · CullTiles 1 lights · frame 292 · pass 721",
+        "record": "records/pass/pass-0722.json"
+      },
+      {
+        "id": "pass-0726",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 725",
+        "record": "records/pass/pass-0726.json"
+      },
+      {
+        "id": "pass-0731",
+        "name": "ShadowMaskFromLightAttenuationPass(LightType=3)",
+        "displayLabel": "ShadowMaskFromLightAttenuationPass(LightType=3) · Light Attenuation ShadowMask · frame 292 · pass 730",
+        "record": "records/pass/pass-0731.json"
+      },
+      {
+        "id": "pass-0732",
+        "name": "DistanceFieldShadowPass LightType=3",
+        "displayLabel": "DistanceFieldShadowPass LightType=3 · Offscreen shadows · frame 292 · pass 731",
+        "record": "records/pass/pass-0732.json"
+      },
+      {
+        "id": "pass-0733",
+        "name": "Batched lights",
+        "displayLabel": "Batched lights · Lights · frame 292 · pass 732",
+        "record": "records/pass/pass-0733.json"
+      },
+      {
+        "id": "pass-0734",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · DirectLighting · frame 292 · pass 733",
+        "record": "records/pass/pass-0734.json"
+      },
+      {
+        "id": "pass-0737",
+        "name": "BuildRadiosityTiles",
+        "displayLabel": "BuildRadiosityTiles · Radiosity · frame 292 · pass 736",
+        "record": "records/pass/pass-0737.json"
+      },
+      {
+        "id": "pass-0739",
+        "name": "DistanceFieldTracing 4x4 probes at 4 spacing",
+        "displayLabel": "DistanceFieldTracing 4x4 probes at 4 spacing · Radiosity · frame 292 · pass 738",
+        "record": "records/pass/pass-0739.json"
+      },
+      {
+        "id": "pass-0740",
+        "name": "SpatialFilterProbes",
+        "displayLabel": "SpatialFilterProbes · Radiosity · frame 292 · pass 739",
+        "record": "records/pass/pass-0740.json"
+      },
+      {
+        "id": "pass-0741",
+        "name": "ConvertToSH",
+        "displayLabel": "ConvertToSH · Radiosity · frame 292 · pass 740",
+        "record": "records/pass/pass-0741.json"
+      },
+      {
+        "id": "pass-0742",
+        "name": "Integrate",
+        "displayLabel": "Integrate · Radiosity · frame 292 · pass 741",
+        "record": "records/pass/pass-0742.json"
+      },
+      {
+        "id": "pass-0743",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · Radiosity · frame 292 · pass 742",
+        "record": "records/pass/pass-0743.json"
+      },
+      {
+        "id": "pass-0775",
+        "name": "TraceFromProbes Res=32x32 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=32x32 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 774",
+        "record": "records/pass/pass-0775.json"
+      },
+      {
+        "id": "pass-0776",
+        "name": "TraceFromProbes Res=8x8 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=8x8 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 775",
+        "record": "records/pass/pass-0776.json"
+      },
+      {
+        "id": "pass-0788",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 787",
+        "record": "records/pass/pass-0788.json"
+      },
+      {
+        "id": "pass-0804",
+        "name": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+        "displayLabel": "TraceGlobalSDFAndInterpolateRadianceCache 3x3 · TranslucencyVolumeLighting · frame 292 · pass 803",
+        "record": "records/pass/pass-0804.json"
+      },
+      {
+        "id": "pass-0863",
+        "name": "TraceVoxels(Scene)",
+        "displayLabel": "TraceVoxels(Scene) · LumenReflections · frame 292 · pass 862",
+        "record": "records/pass/pass-0863.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02659",
+      "file": "Resources/000400000229250793f8.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.scene-instance-to-meshcards",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.SceneInstanceIndexToMeshCardsIndexBuffer)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-GPUScene-instance mapping to the mesh-cards record index used to resolve cards for SDF/HWRT surface-cache sampling",
+      "units": "mesh-cards index (0xFFFFFFFF invalid)",
+      "coordinateSpace": "GPUScene instance-index space",
+      "storage": {
+        "kind": "byteaddress-buffer",
+        "format": "uint32 per instance (4 B)",
+        "strideBytes": 4
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32 per instance (4 B)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "load",
+          "expression": "MeshCardsIndex = SceneInstanceIndexToMeshCardsIndexBuffer.Load(4 * SceneInstanceIndex)",
+          "requires": [
+            "Lumen.SceneInstanceIndexToMeshCardsIndexBuffer"
+          ],
+          "sourceRefs": [
+            "part1.cards_ush_si_load"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "capacity = max(RoundUpToPowerOfTwo(GPUScene.InstanceIdUpperBound),1024) elements",
+        "uploaded value = GetMeshCardsIndex(...) which returns -1 when the primitive has no Lumen primitive group, stored as 0xFFFFFFFF"
+      ],
+      "producerSources": [
+        "part1.cards_si_write",
+        "part1.cards_si_store",
+        "part1.cards_si_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_si_cons_hw",
+        "part1.cards_si_cons_sw"
+      ],
+      "gaps": [
+        "The capture capacity is 1024 elements, exactly the minimum; live instance count is not encoded in the descriptor.",
+        "Only the loaded uint is decoded; the producer's -1 -> 0xFFFFFFFF conversion is an int32 bit pattern, not a float."
+      ],
+      "fields": [
+        {
+          "name": "MeshCardsIndex",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "Load(4*SceneInstanceIndex); value 0xFFFFFFFF means the instance has no Lumen mesh cards; otherwise it is an index into Lumen.MeshCards",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_ush_si_get",
+            "part1.cards_ush_si_load",
+            "part1.cards_ush_invalid_mc"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "MeshCardsIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0677",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.SceneInstanceIndexToMeshCardsIndexBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1088"
+    }
+  ]
+}

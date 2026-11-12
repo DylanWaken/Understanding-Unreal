@@ -1,0 +1,298 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1257",
+  "nativeRecordId": "native-018269",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.HardwareRayTracing.RayAllocatorBuffer",
+  "uniqueName": "000400000228baec9de0",
+  "displayLabel": "Lumen.RadianceCache.HardwareRayTracing.RayAllocatorBuffer · instance 0004 · frame 292 · passes 773",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 773,
+    "last": 773
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.HardwareRayTracing.RayAllocatorBuffer",
+    "UniqueResourceName": "000400000228baec9de0",
+    "ByteSize": 4,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02246",
+      "role": "resource",
+      "originalPath": "Resources/000400000228baec9de0.v000400000228baeca0d0.bin",
+      "bytes": 4,
+      "sha256": "73cbe0362b796f4caf7cbbe451002d60b59be5fdccfda43a8755825975f46157",
+      "version": "000400000228baeca0d0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1257",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "73cbe0362b796f4caf7cbbe451002d60b59be5fdccfda43a8755825975f46157",
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228baec9de0",
+        "name": "Lumen.RadianceCache.HardwareRayTracing.RayAllocatorBuffer",
+        "byteSize": 4
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228baeca0d0",
+      "producerPassId": "pass-0774",
+      "producerPassName": "SetupTraceFromProbesCS",
+      "payloadIds": [
+        "payload-02246"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0774",
+        "name": "SetupTraceFromProbesCS",
+        "displayLabel": "SetupTraceFromProbesCS · UpdateWorldRadianceCaches · frame 292 · pass 773",
+        "record": "records/pass/pass-0774.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02246",
+      "file": "Resources/000400000228baec9de0.v000400000228baeca0d0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.rc.hwrt-ray-allocator-buffer",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.HardwareRayTracing\\.RayAllocatorBuffer$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "single uint ray counter (compacted trace texel allocator) for the radiance-cache hardware ray tracing pass",
+      "units": "ray count (probe texels to trace); 1 unit = 1 ray",
+      "coordinateSpace": "flat ray index into the compacted trace list",
+      "storage": {
+        "kind": "buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "numElements": 1,
+        "capacity": "1 element",
+        "usage": "IndirectArgs-source UAV | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 4,
+            "numElements": 1,
+            "byteSize": 4,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "numRays",
+          "expression": "NumProbeTraceTiles = ProbeTraceTileAllocator[0]; NumRays = NumProbeTraceTiles * RADIANCE_CACHE_TRACE_TILE_SIZE_1D (2D tile is 8x8, 1D = 64)",
+          "requires": [
+            "ProbeTraceTileAllocator",
+            "RADIANCE_CACHE_TRACE_TILE_SIZE_1D"
+          ],
+          "sourceRefs": [
+            "part2.rc.rayalloc.write",
+            "part2.rc.tc.tilesize1d",
+            "part2.rc.tc.tilesize2d"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "RADIANCE_CACHE_TRACE_TILE_SIZE_1D = 8*8 = 64 (LumenRadianceCacheTracingCommon.ush:4-5)",
+        "The buffer is bound as CompactedTraceTexelAllocator SRV to the HW RT pass (PF_R32_UINT)"
+      ],
+      "producerSources": [
+        "part2.rc.cpp.rayalloc.alloc",
+        "part2.rc.rayalloc.write",
+        "part2.rc.cpp.hwrt.call"
+      ],
+      "consumerSources": [
+        "part2.rc.cpp.rayalloc.srv"
+      ],
+      "gaps": [
+        "The counter is allocated per radiance cache (one buffer per cache in the InputArray) and is not persistent across frames."
+      ],
+      "fields": [
+        {
+          "name": "NumRays",
+          "type": "uint32",
+          "decode": "value = NumProbeTraceTiles * RADIANCE_CACHE_TRACE_TILE_SIZE_1D = ProbeTraceTileAllocator[0]*64",
+          "units": "rays",
+          "sourceRefs": [
+            "part2.rc.rayalloc.write",
+            "part2.rc.cpp.rayalloc.alloc"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "NumRays"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0793",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadianceCache.HardwareRayTracing.RayAllocatorBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1257"
+    }
+  ]
+}

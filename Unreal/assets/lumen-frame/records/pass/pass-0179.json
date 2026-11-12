@@ -1,0 +1,329 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0179",
+  "nativeRecordId": "native-015698",
+  "name": "ScreenProbeIntegrateClearUnusedTileData",
+  "displayLabel": "ScreenProbeIntegrateClearUnusedTileData · Integrate · frame 292 · pass 178",
+  "frameNumber": 292,
+  "graphPrefix": "Integrate",
+  "viewState": null,
+  "pointer": "000100000225fbca35e0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000100000225fbca3510",
+  "parametersMetadataPointer": "000100007ffb8926f2b0",
+  "parentScopes": [
+    "Integrate",
+    "LumenScreenProbeGather",
+    "DiffuseIndirectAndAO",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ScreenProbeIntegrateClearUnusedTileData",
+    "ParametersName": "FParameters",
+    "Parameters": "000100000225fbca3510",
+    "ParametersMetadata": "000100007ffb8926f2b0",
+    "Pointer": "000100000225fbca35e0",
+    "Id": 178,
+    "ParentEventScopes": [
+      "Integrate",
+      "LumenScreenProbeGather",
+      "DiffuseIndirectAndAO",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000100000225fbca0a28",
+      "000100000225e8cbe558"
+    ],
+    "OutputResources": [
+      "000100000225e8cbd8c0.[0].mip0",
+      "000100000225e8cbdb80.[0].mip0",
+      "000100000225e8cbde40.[0].mip0",
+      "000100000225e8cbe100.[0].mip0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000100000225fbca0a28",
+      "resourceId": "resource-0322",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00161"
+      ]
+    },
+    {
+      "uniqueName": "000100000225e8cbe558",
+      "resourceId": "resource-0320",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00041",
+        "payload-00042"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000100000225e8cbd8c0.[0].mip0",
+      "resourceId": "resource-0323",
+      "version": null,
+      "mip": 0,
+      "slice": 0,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00023",
+        "payload-00024",
+        "payload-00025",
+        "payload-00026"
+      ]
+    },
+    {
+      "uniqueName": "000100000225e8cbdb80.[0].mip0",
+      "resourceId": "resource-0324",
+      "version": null,
+      "mip": 0,
+      "slice": 0,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00027",
+        "payload-00028",
+        "payload-00029",
+        "payload-00030"
+      ]
+    },
+    {
+      "uniqueName": "000100000225e8cbde40.[0].mip0",
+      "resourceId": "resource-0325",
+      "version": null,
+      "mip": 0,
+      "slice": 0,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00031",
+        "payload-00032",
+        "payload-00033",
+        "payload-00034"
+      ]
+    },
+    {
+      "uniqueName": "000100000225e8cbe100.[0].mip0",
+      "resourceId": "resource-0326",
+      "version": null,
+      "mip": 0,
+      "slice": 0,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00035",
+        "payload-00036",
+        "payload-00037",
+        "payload-00038"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-05884",
+    "metadataPointer": "000100007ffb8926f2b0",
+    "bytes": 128,
+    "sha256": "5b7676dd4aa9b302f6ba11ec47dd89a0e22136572f49a7d6c9bdc9ce717e985e",
+    "chunks": [
+      {
+        "sha": "5b7676dd4aa9b302f6ba11ec47dd89a0e22136572f49a7d6c9bdc9ce717e985e",
+        "offset": 0,
+        "length": 128
+      }
+    ],
+    "originalPath": "Structures/000100000225fbca3510.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeGather.cpp",
+    "FileLine": 1069,
+    "Size": 128,
+    "Members": [
+      {
+        "Name": "RWDiffuseIndirect",
+        "ShaderType": "RWTexture2DArray<float3>",
+        "FileLine": 1070,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWLightIsMoving",
+        "ShaderType": "RWTexture2DArray<UNORM float>",
+        "FileLine": 1071,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWBackfaceDiffuseIndirect",
+        "ShaderType": "RWTexture2DArray<float3>",
+        "FileLine": 1072,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWRoughSpecularIndirect",
+        "ShaderType": "RWTexture2DArray<float3>",
+        "FileLine": 1073,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "UpsampleParameters",
+        "ShaderType": "FLumenUpsampleParameters",
+        "FileLine": 1074,
+        "Offset": 32,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000100007ffb89237d00"
+      },
+      {
+        "Name": "ClearUnusedIntegrateTileData",
+        "ShaderType": "Buffer<uint>",
+        "FileLine": 1075,
+        "Offset": 96,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "IndirectArgs",
+        "ShaderType": "",
+        "FileLine": 1076,
+        "Offset": 104,
+        "BaseType": "UBMT_RDG_BUFFER_ACCESS",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000225fbca35e0",
+      "Parameters": "000100000225fbca3510",
+      "Bindings": {
+        "RWDiffuseIndirect": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000225fbca33c0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWLightIsMoving": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000225fbca3410",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWBackfaceDiffuseIndirect": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000225fbca3460",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWRoughSpecularIndirect": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000225fbca34b0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "UpsampleParameters.DownsampledSceneDepth": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "UpsampleParameters.DownsampledSceneWorldNormal": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ClearUnusedIntegrateTileData": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 96,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000225fbca3590",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

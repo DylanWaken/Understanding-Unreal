@@ -1,0 +1,345 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1205",
+  "nativeRecordId": "native-018217",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.BRDFProbabilityDensityFunctionSH",
+  "uniqueName": "000400000228e9944bb0",
+  "displayLabel": "Lumen.ScreenProbeGather.BRDFProbabilityDensityFunctionSH · instance 0004 · frame 292 · passes 754",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 754,
+    "last": 754
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 120960,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 2,
+  "numElements": 60480,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 2,
+    "numElements": 60480
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.BRDFProbabilityDensityFunctionSH",
+    "UniqueResourceName": "000400000228e9944bb0",
+    "ByteSize": 120960,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 2,
+    "NumElements": 60480,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02536",
+      "role": "resource",
+      "originalPath": "Resources/000400000228e9944bb0.v000400000228e9945580.bin",
+      "bytes": 120960,
+      "sha256": "3d38d5afc9b55e616de827610c9b1d85fe837889ebce866bc375059f387e8603",
+      "version": "000400000228e9945580",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1205",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "3d38d5afc9b55e616de827610c9b1d85fe837889ebce866bc375059f387e8603",
+          "offset": 0,
+          "length": 120960
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228e9944bb0",
+        "name": "Lumen.ScreenProbeGather.BRDFProbabilityDensityFunctionSH",
+        "byteSize": 120960
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228e9945580",
+      "producerPassId": "pass-0755",
+      "producerPassName": "ScreenProbeGatherScreenData",
+      "payloadIds": [
+        "payload-02536"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0755",
+        "name": "ScreenProbeGatherScreenData",
+        "displayLabel": "ScreenProbeGatherScreenData · LumenScreenProbeGather · frame 292 · pass 754",
+        "record": "records/pass/pass-0755.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0782",
+        "name": "GenerateRays 8x8",
+        "displayLabel": "GenerateRays 8x8 · LumenScreenProbeGather · frame 292 · pass 781",
+        "record": "records/pass/pass-0782.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02536",
+      "file": "Resources/000400000228e9944bb0.v000400000228e9945580.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.brdf-probability-density-function-sh",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.BRDFProbabilityDensityFunctionSH$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "spherical-harmonic representation of the aggregated BRDF probability density over each probe's interpolation footprint",
+      "units": "9 SH coefficients (unitless density coefficients) per probe; stored as 16-bit floats",
+      "coordinateSpace": "per-probe SH basis: [V0.x, V0.y, V0.z, V0.w, V1.x, V1.y, V1.z, V1.w, V2.x]",
+      "storage": {
+        "kind": "buffer",
+        "format": "PF_R16F (half)",
+        "strideBytes": 2,
+        "numElements": "AtlasBufferSize.X * AtlasBufferSize.Y * 9",
+        "capacity": "ScreenProbeAtlasBufferSize.X*Y*NUM_PDF_SH_COEFFICIENTS(9) elements; valid count = same (every probe writes 9 coefficients)",
+        "usage": "UAV(PF_R16F) | SRV(PF_R16F)",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 2,
+            "numElements": 60480,
+            "byteSize": 120960,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": "PF_R16F",
+      "declaredFormatText": "PF_R16F (half)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "writeIndex",
+          "expression": "WriteIndex = (AtlasCoord.y*ScreenProbeAtlasViewSize.x + AtlasCoord.x) * 9 + ThreadIndex; value = SharedSphericalHarmonic[0][ThreadIndex] / SharedNumElements",
+          "requires": [
+            "ScreenProbeAtlasViewSize",
+            "SharedNumElements"
+          ],
+          "sourceRefs": [
+            "part2.spgd.sh.write",
+            "part2.spgd.sh.writeval"
+          ]
+        },
+        {
+          "name": "read",
+          "expression": "SHBaseIndex = probeIndex * NUM_PDF_SH_COEFFICIENTS; V0 = [c0,c1,c2,c3], V1 = [c4..c7], V2.x = c8",
+          "requires": [
+            "BRDFProbabilityDensityFunctionSH"
+          ],
+          "sourceRefs": [
+            "part2.spgi.brdf.read",
+            "part2.spgi.brdf.coefs"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "The buffer is declared Buffer<float> in HLSL but created with PF_R16F (2 B/element), so values are half-precision (LumenScreenProbeImportanceSamplingShared.ush:6; LumenScreenProbeImportanceSampling.cpp:283).",
+        "The SH is the average cosine-lobe transfer of the surface normals in the probe footprint, not the final light PDF; it is combined with the lighting PDF at sampling time."
+      ],
+      "producerSources": [
+        "part2.spgi.cpp.brdf.alloc",
+        "part2.spgd.sh.writeval"
+      ],
+      "consumerSources": [
+        "part2.spgi.brdf.read"
+      ],
+      "gaps": [
+        "If SharedNumElements is 0 the division is by 0 and no write occurs (guarded by the bAnySampleValid path); those probes keep uninitialized/stale coefficients.",
+        "The quantity is a normalized SH distribution, not radiance: its integral over the sphere is 1 for a valid probe."
+      ],
+      "fields": [
+        {
+          "name": "SHCoefficient0",
+          "type": "float16",
+          "decode": "element[probe*9 + 0] = average of CalcDiffuseTransferSH3(worldNormal).V0.x over accepted footprint pixels",
+          "units": "SH coefficient",
+          "sourceRefs": [
+            "part2.spgd.sh.order",
+            "part2.spgd.sh.write",
+            "part2.spgd.sh.writeval"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 16
+        },
+        {
+          "name": "SHCoefficient1to7",
+          "type": "float16[7]",
+          "decode": "elements[probe*9 + 1..7] = V0.y, V0.z, V0.w, V1.x, V1.y, V1.z, V1.w",
+          "units": "SH coefficient",
+          "sourceRefs": [
+            "part2.spgd.sh.order",
+            "part2.spgd.sh.write"
+          ],
+          "byteOffset": 2,
+          "bitWidth": 16,
+          "count": 7
+        },
+        {
+          "name": "SHCoefficient8",
+          "type": "float16",
+          "decode": "element[probe*9 + 8] = V2.x",
+          "units": "SH coefficient",
+          "sourceRefs": [
+            "part2.spgd.sh.order",
+            "part2.spgd.sh.write"
+          ],
+          "byteOffset": 16,
+          "bitWidth": 16
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "SHCoefficient0",
+          "SHCoefficient1to7",
+          "SHCoefficient8"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [
+          "SHCoefficient1to7"
+        ],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0745",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.ScreenProbeGather.BRDFProbabilityDensityFunctionSH has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1205"
+    }
+  ]
+}

@@ -1,0 +1,610 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1146",
+  "nativeRecordId": "native-018157",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.DirectLighting.Lights",
+  "uniqueName": "000400000228b830ae50",
+  "displayLabel": "Lumen.DirectLighting.Lights · instance 0004 · frame 292",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 2304,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 144,
+  "numElements": 16,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 144,
+    "numElements": 16
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.DirectLighting.Lights",
+    "UniqueResourceName": "000400000228b830ae50",
+    "ByteSize": 2304,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 144,
+    "NumElements": 16,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02220",
+      "role": "resource",
+      "originalPath": "Resources/000400000228b830ae50.v00000000000000000000.bin",
+      "bytes": 2304,
+      "sha256": "8048843a1292922712139bd8330e1b0fde0bd118a472c821d0452d4f17b85849",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1146",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "8048843a1292922712139bd8330e1b0fde0bd118a472c821d0452d4f17b85849",
+          "offset": 0,
+          "length": 2304
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228b830ae50",
+        "name": "Lumen.DirectLighting.Lights",
+        "byteSize": 2304
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02220"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0726",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 725",
+        "record": "records/pass/pass-0726.json"
+      },
+      {
+        "id": "pass-0731",
+        "name": "ShadowMaskFromLightAttenuationPass(LightType=3)",
+        "displayLabel": "ShadowMaskFromLightAttenuationPass(LightType=3) · Light Attenuation ShadowMask · frame 292 · pass 730",
+        "record": "records/pass/pass-0731.json"
+      },
+      {
+        "id": "pass-0732",
+        "name": "DistanceFieldShadowPass LightType=3",
+        "displayLabel": "DistanceFieldShadowPass LightType=3 · Offscreen shadows · frame 292 · pass 731",
+        "record": "records/pass/pass-0732.json"
+      },
+      {
+        "id": "pass-0733",
+        "name": "Batched lights",
+        "displayLabel": "Batched lights · Lights · frame 292 · pass 732",
+        "record": "records/pass/pass-0733.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02220",
+      "file": "Resources/000400000228b830ae50.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.direct-lighting-lights",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.DirectLighting\\.Lights)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-gathered-light packed 144-B record with LWC world position, light parameters, type, IES/light-function indices and shadow-mask flags",
+      "units": "world units (cm) for position/radius/length; linear light color; unitless scales; enum/indices",
+      "coordinateSpace": "world space (double-float high/low split); rect-light atlas UV space for the atlas fields",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "FLumenPackedLight = 9 x float4 = 144 B",
+        "strideBytes": 144,
+        "formatAlternatives": []
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FLumenPackedLight = 9 x float4 = 144 B",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [
+        {
+          "name": "pack",
+          "expression": "Word128 = (LightFunctionAtlasLightIndex & 0x1FFFFFFF) | (NeedsShadowMask ? 1<<31 : 0) | (!CanUseBatchedShadows ? 1<<30 : 0) | (bHasShadows ? 1<<29 : 0)",
+          "requires": [
+            "Lumen.DirectLighting.Lights"
+          ],
+          "sourceRefs": [
+            "part1.cards_lights_pack",
+            "part1.cards_lights_pack_index",
+            "part1.cards_lights_pack_shadowmask",
+            "part1.cards_lights_pack_standalone",
+            "part1.cards_lights_pack_shadows"
+          ]
+        },
+        {
+          "name": "decode",
+          "expression": "WorldPosition = DFHackToFloat(MakeDFVector3(High,Low)); DiffuseScale/SpecularScale = UnpackFloat2FromUInt(word60); bHasShadowMask = word128>>31; bIsStandalone = bit30; bHasShadows = bit29",
+          "requires": [
+            "Lumen.DirectLighting.Lights"
+          ],
+          "sourceRefs": [
+            "part1.cards_lights_df",
+            "part1.cards_lights_scales",
+            "part1.cards_lights_shadowbit",
+            "part1.cards_lights_standalonebit",
+            "part1.cards_lights_shadowedbit"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "144 B = 9 float4; every field is 4-B aligned except the packed word128",
+        "DiffuseAndSpecularScale is two fp16 values, not two unorm16",
+        "bHasShadowMask is bit31 and bIsStandalone is bit30; the shader reads >>31 and BitFieldExtract(...,1,30) respectively"
+      ],
+      "producerSources": [
+        "part1.cards_lights_alloc",
+        "part1.cards_lights_pack",
+        "part1.cards_lights_packrg"
+      ],
+      "consumerSources": [
+        "part1.cards_lights_load",
+        "part1.cards_lights_df",
+        "part1.cards_lights_indexmask"
+      ],
+      "gaps": [
+        "LWC high/low reconstruction is not byte-exact without the DF encode function.",
+        "IESAtlasIndex is stored in a float, so it is exact only up to float32 integer precision (small indices are exact).",
+        "Capture capacity 16 elements = RoundUpToPowerOfTwo(max(N,16)); it does not reveal NumGatheredLights, and elements >= N are uninitialized."
+      ],
+      "fields": [
+        {
+          "name": "WorldPositionHigh",
+          "type": "float3",
+          "byteOffset": 0,
+          "decode": "high part of the light world position (LWC)",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_lights_struct",
+            "part1.cards_lights_poshigh"
+          ]
+        },
+        {
+          "name": "LightingChannelMask",
+          "type": "uint32",
+          "byteOffset": 12,
+          "decode": "lighting-channel bitmask",
+          "units": "bitmask",
+          "sourceRefs": [
+            "part1.cards_lights_channel"
+          ]
+        },
+        {
+          "name": "WorldPositionLow",
+          "type": "float3",
+          "byteOffset": 16,
+          "decode": "low part of the light world position (LWC)",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_lights_poslow"
+          ]
+        },
+        {
+          "name": "InvRadius",
+          "type": "float32",
+          "byteOffset": 28,
+          "decode": "1 / light influence radius",
+          "units": "1/cm",
+          "sourceRefs": [
+            "part1.cards_lights_invradius"
+          ]
+        },
+        {
+          "name": "Color",
+          "type": "float3",
+          "byteOffset": 32,
+          "decode": "light color multiplied by the light's indirect lighting scale; exposure is applied later by InverseExposureLerp",
+          "units": "linear light color",
+          "sourceRefs": [
+            "part1.cards_lights_color"
+          ]
+        },
+        {
+          "name": "FalloffExponent",
+          "type": "float32",
+          "byteOffset": 44,
+          "decode": "falloff exponent; 0 means inverse-squared (bInverseSquared)",
+          "units": "unitless",
+          "sourceRefs": [
+            "part1.cards_lights_falloff"
+          ]
+        },
+        {
+          "name": "Direction",
+          "type": "float3",
+          "byteOffset": 48,
+          "decode": "light forward direction",
+          "units": "unit vector",
+          "sourceRefs": [
+            "part1.cards_lights_direction"
+          ]
+        },
+        {
+          "name": "DiffuseAndSpecularScale",
+          "type": "uint32",
+          "byteOffset": 60,
+          "decode": "two fp16 values: bits[0:15] diffuse scale, bits[16:31] specular scale (PackRG16 / UnpackFloat2FromUInt)",
+          "units": "fp16 pair",
+          "sourceRefs": [
+            "part1.cards_lights_scales",
+            "part1.cards_lights_packrg",
+            "part1.cards_lights_packrg_body",
+            "part1.cards_packunpack",
+            "part1.cards_packunpack_body"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "Tangent",
+          "type": "float3",
+          "byteOffset": 64,
+          "decode": "rect/spot tangent",
+          "units": "unit vector",
+          "sourceRefs": [
+            "part1.cards_lights_tangent"
+          ]
+        },
+        {
+          "name": "SourceRadius",
+          "type": "float32",
+          "byteOffset": 76,
+          "decode": "light source radius",
+          "units": "cm",
+          "sourceRefs": [
+            "part1.cards_lights_sourceradius"
+          ]
+        },
+        {
+          "name": "SpotAngles",
+          "type": "float2",
+          "byteOffset": 80,
+          "decode": "copied verbatim from FLightRenderParameters::SpotAngles (spot cos/sin pair as produced by the light proxy)",
+          "units": "unitless",
+          "sourceRefs": [
+            "part1.cards_lights_spot"
+          ]
+        },
+        {
+          "name": "SoftSourceRadius",
+          "type": "float32",
+          "byteOffset": 88,
+          "decode": "soft source radius",
+          "units": "cm",
+          "sourceRefs": [
+            "part1.cards_lights_soft"
+          ]
+        },
+        {
+          "name": "SourceLength",
+          "type": "float32",
+          "byteOffset": 92,
+          "decode": "rect light source length",
+          "units": "cm",
+          "sourceRefs": [
+            "part1.cards_lights_length"
+          ]
+        },
+        {
+          "name": "RectLightBarnCosAngle",
+          "type": "float32",
+          "byteOffset": 96,
+          "decode": "rect-light barn cos angle",
+          "units": "unitless",
+          "sourceRefs": [
+            "part1.cards_lights_barn"
+          ]
+        },
+        {
+          "name": "RectLightBarnLength",
+          "type": "float32",
+          "byteOffset": 100,
+          "decode": "rect-light barn length",
+          "units": "cm",
+          "sourceRefs": [
+            "part1.cards_lights_barnlen"
+          ]
+        },
+        {
+          "name": "RectLightAtlasMaxLevel",
+          "type": "float32",
+          "byteOffset": 104,
+          "decode": "max rect-light atlas mip level; clamped to >=0 before upload",
+          "units": "mip level",
+          "sourceRefs": [
+            "part1.cards_lights_atlasmax"
+          ]
+        },
+        {
+          "name": "LightType",
+          "type": "uint32",
+          "byteOffset": 108,
+          "decode": "ELumenLightType: 0 directional, 1 point, 2 spot, 3 rect",
+          "units": "enum",
+          "sourceRefs": [
+            "part1.cards_lights_type"
+          ]
+        },
+        {
+          "name": "SinCosConeAngleOrRectLightAtlasUVScale",
+          "type": "float2",
+          "byteOffset": 112,
+          "decode": "spot: (sin,cos) outer cone angle; rect: atlas UV scale",
+          "units": "unitless",
+          "sourceRefs": [
+            "part1.cards_lights_sincos"
+          ]
+        },
+        {
+          "name": "RectLightAtlasUVOffset",
+          "type": "float2",
+          "byteOffset": 120,
+          "decode": "rect-light atlas UV offset",
+          "units": "UV",
+          "sourceRefs": [
+            "part1.cards_lights_atlasuv"
+          ]
+        },
+        {
+          "name": "LightFunctionAtlasIndex",
+          "type": "uint29",
+          "byteOffset": 128,
+          "decode": "bits[0:28] of the packed word = light-function atlas index",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_lights_pack",
+            "part1.cards_lights_pack_index",
+            "part1.cards_lights_indexmask"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 29
+        },
+        {
+          "name": "bHasShadows",
+          "type": "uint1",
+          "byteOffset": 128,
+          "decode": "bit29: light casts dynamic shadows (used for DeferredLightData.ShadowedBits)",
+          "units": "bool",
+          "sourceRefs": [
+            "part1.cards_lights_pack_shadows",
+            "part1.cards_lights_shadowedbit"
+          ],
+          "bitOffset": 29,
+          "bitWidth": 1
+        },
+        {
+          "name": "bIsStandalone",
+          "type": "uint1",
+          "byteOffset": 128,
+          "decode": "bit30: !CanUseBatchedShadows(); selects the standalone shadow-mask path",
+          "units": "bool",
+          "sourceRefs": [
+            "part1.cards_lights_pack_standalone",
+            "part1.cards_lights_standalonebit"
+          ],
+          "bitOffset": 30,
+          "bitWidth": 1
+        },
+        {
+          "name": "bHasShadowMask",
+          "type": "uint1",
+          "byteOffset": 128,
+          "decode": "bit31: light needs a per-texel shadow mask",
+          "units": "bool",
+          "sourceRefs": [
+            "part1.cards_lights_pack_shadowmask",
+            "part1.cards_lights_shadowbit"
+          ],
+          "bitOffset": 31,
+          "bitWidth": 1
+        },
+        {
+          "name": "IESAtlasIndex",
+          "type": "float32",
+          "byteOffset": 132,
+          "decode": "IES atlas index stored as a float",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_lights_ies"
+          ]
+        },
+        {
+          "name": "InverseExposureBlend",
+          "type": "float32",
+          "byteOffset": 136,
+          "decode": "blend factor for InverseExposureLerp on the light color",
+          "units": "unitless",
+          "sourceRefs": [
+            "part1.cards_lights_exposure"
+          ]
+        },
+        {
+          "name": "Padding0",
+          "type": "float32",
+          "byteOffset": 140,
+          "decode": "explicitly set to 0",
+          "units": "unused",
+          "sourceRefs": [
+            "part1.cards_lights_padding"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 26,
+        "sourceEquationFields": [
+          "WorldPositionHigh",
+          "LightingChannelMask",
+          "WorldPositionLow",
+          "InvRadius",
+          "Color",
+          "FalloffExponent",
+          "Direction",
+          "DiffuseAndSpecularScale",
+          "Tangent",
+          "SourceRadius",
+          "SpotAngles",
+          "SoftSourceRadius",
+          "SourceLength",
+          "RectLightBarnCosAngle",
+          "RectLightBarnLength",
+          "RectLightAtlasMaxLevel",
+          "LightType",
+          "SinCosConeAngleOrRectLightAtlasUVScale",
+          "RectLightAtlasUVOffset",
+          "LightFunctionAtlasIndex",
+          "bHasShadows",
+          "bIsStandalone",
+          "bHasShadowMask",
+          "IESAtlasIndex",
+          "InverseExposureBlend",
+          "Padding0"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0719",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.DirectLighting.Lights has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1146"
+    }
+  ]
+}

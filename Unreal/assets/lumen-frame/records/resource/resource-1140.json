@@ -1,0 +1,335 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1140",
+  "nativeRecordId": "native-018151",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.CardTiles",
+  "uniqueName": "000400000228b830b2f8",
+  "displayLabel": "Lumen.CardTiles · instance 0004 · frame 292 · passes 719",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 719,
+    "last": 719
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 33124,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 8281,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 8281
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.CardTiles",
+    "UniqueResourceName": "000400000228b830b2f8",
+    "ByteSize": 33124,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 8281,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02224",
+      "role": "resource",
+      "originalPath": "Resources/000400000228b830b2f8.v000400000228b830bb10.bin",
+      "bytes": 33124,
+      "sha256": "d4e5be8c4f93ac4302c62b8fe03cc8ba4823290ef6003857cf51e860305a3f6d",
+      "version": "000400000228b830bb10",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1140",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "d4e5be8c4f93ac4302c62b8fe03cc8ba4823290ef6003857cf51e860305a3f6d",
+          "offset": 0,
+          "length": 33124
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228b830b2f8",
+        "name": "Lumen.CardTiles",
+        "byteSize": 33124
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228b830bb10",
+      "producerPassId": "pass-0720",
+      "producerPassName": "SpliceCardPagesIntoTiles",
+      "payloadIds": [
+        "payload-02224"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0720",
+        "name": "SpliceCardPagesIntoTiles",
+        "displayLabel": "SpliceCardPagesIntoTiles · CullTiles 1 lights · frame 292 · pass 719",
+        "record": "records/pass/pass-0720.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0722",
+        "name": "CalculateCardTileDepthRanges",
+        "displayLabel": "CalculateCardTileDepthRanges · CullTiles 1 lights · frame 292 · pass 721",
+        "record": "records/pass/pass-0722.json"
+      },
+      {
+        "id": "pass-0726",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 725",
+        "record": "records/pass/pass-0726.json"
+      },
+      {
+        "id": "pass-0730",
+        "name": "CompactLightTiles",
+        "displayLabel": "CompactLightTiles · CullTiles 1 lights · frame 292 · pass 729",
+        "record": "records/pass/pass-0730.json"
+      },
+      {
+        "id": "pass-0733",
+        "name": "Batched lights",
+        "displayLabel": "Batched lights · Lights · frame 292 · pass 732",
+        "record": "records/pass/pass-0733.json"
+      },
+      {
+        "id": "pass-0734",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · DirectLighting · frame 292 · pass 733",
+        "record": "records/pass/pass-0734.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02224",
+      "file": "Resources/000400000228b830b2f8.v000400000228b830bb10.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "resource.lumen-card-tiles",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.CardTiles$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "packed card-tile -> card-page index and tile coordinate list used by atlas update/lighting passes",
+      "units": "packed integer",
+      "coordinateSpace": "card tile grid within physical atlas",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "unpack",
+          "expression": "CardTile.CardPageIndex=Packed&0xFFFFFF; TileCoord=uint2((Packed>>24)&0xF,(Packed>>28)&0xF)",
+          "requires": [
+            "Lumen.CardTiles"
+          ],
+          "sourceRefs": [
+            "part0.LCC_tile"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "PackedTile = CardPageIndex | (TileCoord.x<<24) | (TileCoord.y<<28); 0xFFFFFFFF is the null tile"
+      ],
+      "producerSources": [
+        "part0.LCC_tile",
+        "part0.LCT_null"
+      ],
+      "consumerSources": [
+        "part0.LSL_tile",
+        "part0.LSDL_type"
+      ],
+      "gaps": [
+        "Buffer size is a max/allocation capacity, not a count of live tiles.",
+        "Lumen.CardTiles is a unique resource name; the direct-lighting pass is named \"Batched lights\" (LumenSceneDirectLighting.cpp:1270) and a passNameRegex would create a false negative, so only the resourceName selector is used."
+      ],
+      "fields": [
+        {
+          "name": "CardPageIndex",
+          "type": "uint24",
+          "decode": "page = bits[0:23]",
+          "units": "index",
+          "sourceRefs": [
+            "part0.LCC_tile",
+            "part0.LCC_tilepage"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 24
+        },
+        {
+          "name": "TileCoordX",
+          "type": "uint4",
+          "decode": "x = bits[24:27]",
+          "units": "tile index",
+          "sourceRefs": [
+            "part0.LCC_tile",
+            "part0.LCC_tilex"
+          ],
+          "bitOffset": 24,
+          "bitWidth": 4
+        },
+        {
+          "name": "TileCoordY",
+          "type": "uint4",
+          "decode": "y = bits[28:31]",
+          "units": "tile index",
+          "sourceRefs": [
+            "part0.LCC_tile",
+            "part0.LCC_tiley"
+          ],
+          "bitOffset": 28,
+          "bitWidth": 4
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "CardPageIndex",
+          "TileCoordX",
+          "TileCoordY"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0713",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.CardTiles has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1140"
+    }
+  ]
+}

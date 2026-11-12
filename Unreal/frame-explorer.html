@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Inspect every captured Unreal render-graph pass, resource, parameter block, binding, schema anchor and explicit decoding gap without fabricated bytes or formats.">
+<title>Unreal frame explorer · Understanding Unreal</title>
+<link rel="stylesheet" href="assets/frame-explorer.css">
+<script src="assets/frame-codec.js" defer></script>
+<script src="assets/frame-explorer.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to explorer</a>
+<header class="site-header">
+  <div class="site-header-text">
+    <p class="eyebrow">Unreal Engine 5 · captured computation</p>
+    <h1>Frame explorer</h1>
+    <p class="lede">Every captured pass, resource, parameter block, binding and gap. Raw bytes are read from the package on demand. Missing data is shown as missing, never as zero.</p>
+  </div>
+  <div class="header-actions">
+    <a class="button-link" href="../index.html">Understanding Unreal</a>
+    <button type="button" class="button-link" id="theme-toggle" aria-label="Switch colour theme">Theme</button>
+  </div>
+</header>
+
+<div id="package-banner" class="package-banner" role="status" aria-live="polite">
+  <span class="status-dot" aria-hidden="true"></span>
+  <span>Loading package manifest…</span>
+</div>
+
+<main id="main" tabindex="-1">
+  <section id="fatal-error" class="fatal" hidden aria-labelledby="fatal-title">
+    <h2 id="fatal-title">The package could not be loaded</h2>
+    <p id="fatal-message"></p>
+    <p>Expected a static package at <code>assets/lumen-frame/index.json</code>. The explorer does not invent records or bytes when that file is absent.</p>
+    <p>Generate one from a captured DumpGPU directory with <code>python tools/package_frame.py build --input &lt;dump&gt; --output site/assets/lumen-frame --schema &lt;source-schema.json&gt;</code>.</p>
+  </section>
+
+  <section class="controls" aria-label="Search and filters">
+    <div class="search-field">
+      <label for="search">Search all passes, resources, parameters, schema anchors and gaps</label>
+      <input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="e.g. Lumen.Scene, GBufferA, radiosity, R11G11B10, source path">
+    </div>
+    <div class="filter-field">
+      <label for="kind-filter">Resource kind</label>
+      <select id="kind-filter">
+        <option value="all">All kinds</option>
+        <option value="texture">Textures</option>
+        <option value="buffer">Buffers</option>
+        <option value="unknown">Unknown kind</option>
+      </select>
+    </div>
+    <div class="filter-field">
+      <label for="status-filter">Record status</label>
+      <select id="status-filter">
+        <option value="all">All records</option>
+        <option value="with-payload">Has captured payload</option>
+        <option value="missing-payload">No captured payload</option>
+        <option value="gaps">Has explicit gaps</option>
+        <option value="schema-matched">Schema matched</option>
+        <option value="schema-ambiguous">Schema ambiguous</option>
+        <option value="schema-unmatched">Schema unmatched</option>
+        <option value="decoding-unsupported">Unsupported decode</option>
+        <option value="params-only">Passes with parameter block</option>
+      </select>
+    </div>
+    <button type="button" id="clear-filters">Clear filters</button>
+    <p class="result-count" id="result-count" aria-live="polite">Loading…</p>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="Frame explorer views">
+    <button type="button" role="tab" id="tab-explore" aria-controls="panel-explore" aria-selected="true">Explore</button>
+    <button type="button" role="tab" id="tab-coverage" aria-controls="panel-coverage" aria-selected="false">Coverage &amp; gaps</button>
+    <button type="button" role="tab" id="tab-schema" aria-controls="panel-schema" aria-selected="false">Source schema</button>
+    <button type="button" role="tab" id="tab-capture" aria-controls="panel-capture" aria-selected="false">Capture</button>
+  </nav>
+
+  <section id="panel-explore" role="tabpanel" aria-labelledby="tab-explore" class="tab-panel">
+    <div class="explore-layout">
+      <aside class="list-pane" aria-label="Captured records">
+        <section class="list-section" aria-labelledby="passes-heading">
+          <div class="list-heading">
+            <h2 id="passes-heading">Passes</h2>
+            <span id="pass-count" class="count-pill">0</span>
+          </div>
+          <p class="list-note">Every captured pass. Search includes parameter member names.</p>
+          <ol id="pass-list" class="record-list" aria-live="off"></ol>
+          <button type="button" class="more-button" id="pass-more" hidden>Show more passes</button>
+        </section>
+        <section class="list-section" aria-labelledby="resources-heading">
+          <div class="list-heading">
+            <h2 id="resources-heading">Resources</h2>
+            <span id="resource-count" class="count-pill">0</span>
+          </div>
+          <p class="list-note">Every captured texture, buffer and unknown-kind resource.</p>
+          <ol id="resource-list" class="record-list" aria-live="off"></ol>
+          <button type="button" class="more-button" id="resource-more" hidden>Show more resources</button>
+        </section>
+      </aside>
+      <section class="detail-pane" id="detail" aria-label="Selected record detail" aria-live="polite">
+        <div class="empty-detail">
+          <h2>Select a pass or resource</h2>
+          <p>The detail view shows complete native metadata, producer/consumer links, views/mips/slices, schema joins, numeric probes and raw byte pages. Fetching is limited to the chunks that cover the requested range.</p>
+          <p class="muted">Nothing on this page is synthesized. If a field has no explicit format or offset basis, it stays raw and is counted as a gap.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="panel-coverage" role="tabpanel" aria-labelledby="tab-coverage" class="tab-panel" hidden>
+    <div id="coverage-content">
+      <p class="loading">Loading coverage…</p>
+    </div>
+  </section>
+
+  <section id="panel-schema" role="tabpanel" aria-labelledby="tab-schema" class="tab-panel" hidden>
+    <div id="schema-content">
+      <p class="loading">Loading source schema…</p>
+    </div>
+  </section>
+
+  <section id="panel-capture" role="tabpanel" aria-labelledby="tab-capture" class="tab-panel" hidden>
+    <div id="capture-content">
+      <p class="loading">Loading capture metadata…</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Static, dependency-free explorer. No CDN, analytics or installed frontend framework. <span id="footer-package"></span></p>
+  <p><a href="assets/lumen-frame/inventory.json">Download inventory.json</a> · <a href="assets/lumen-frame/coverage.json">Download coverage.json</a> · <a href="assets/lumen-frame/capture.json">Download capture.json</a></p>
+</footer>
+
+<noscript>
+  <p class="noscript">This explorer needs JavaScript to decode and lazily fetch raw chunks. The package JSON files and raw chunks remain downloadable without it.</p>
+</noscript>
+</body>
+</html>

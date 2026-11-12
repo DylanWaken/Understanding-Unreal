@@ -1,0 +1,193 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0226",
+  "nativeRecordId": "native-015745",
+  "name": "InitIndirectArgs1D",
+  "displayLabel": "InitIndirectArgs1D · CullingPasses · frame 292 · pass 225",
+  "frameNumber": 292,
+  "graphPrefix": "CullingPasses",
+  "viewState": null,
+  "pointer": "000100000228baebe9e8",
+  "parametersName": "FParameters",
+  "parametersPointer": "000100000228baebe930",
+  "parametersMetadataPointer": "000100007ffba0d5c930",
+  "parentScopes": [
+    "CullingPasses",
+    "Batched",
+    "RenderVirtualShadowMaps(Non-Nanite)",
+    "ShadowDepths",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "InitIndirectArgs1D",
+    "ParametersName": "FParameters",
+    "Parameters": "000100000228baebe930",
+    "ParametersMetadata": "000100007ffba0d5c930",
+    "Pointer": "000100000228baebe9e8",
+    "Id": 225,
+    "ParentEventScopes": [
+      "CullingPasses",
+      "Batched",
+      "RenderVirtualShadowMaps(Non-Nanite)",
+      "ShadowDepths",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000100000228baeb71d0"
+    ],
+    "OutputResources": [
+      "000100000228baebe7e8"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000100000228baeb71d0",
+      "resourceId": "resource-0384",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00214",
+        "payload-00215"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000100000228baebe7e8",
+      "resourceId": "resource-0398",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00230"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-05953",
+    "metadataPointer": "000100007ffba0d5c930",
+    "bytes": 32,
+    "sha256": "81fa6e46dc9a35629d838cc1e39420741989d5f15b98e25d68cfae99af92c068",
+    "chunks": [
+      {
+        "sha": "81fa6e46dc9a35629d838cc1e39420741989d5f15b98e25d68cfae99af92c068",
+        "offset": 0,
+        "length": 32
+      }
+    ],
+    "originalPath": "Structures/000100000228baebe930.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\RenderGraphUtils.cpp",
+    "FileLine": 868,
+    "Size": 32,
+    "Members": [
+      {
+        "Name": "InputCountBuffer",
+        "ShaderType": "StructuredBuffer< uint >",
+        "FileLine": 869,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "Multiplier",
+        "ShaderType": "",
+        "FileLine": 870,
+        "Offset": 8,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "Divisor",
+        "ShaderType": "",
+        "FileLine": 871,
+        "Offset": 12,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "InputCountOffset",
+        "ShaderType": "",
+        "FileLine": 872,
+        "Offset": 16,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "IndirectDispatchArgsOut",
+        "ShaderType": "RWBuffer< uint >",
+        "FileLine": 874,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000228baebe9e8",
+      "Parameters": "000100000228baebe930",
+      "Bindings": {
+        "InputCountBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228baebe950",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "IndirectDispatchArgsOut": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228baebe9a0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

@@ -1,0 +1,326 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0185",
+  "nativeRecordId": "native-017190",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.DirectLighting.DrawTilesPerLightIndirectArgs",
+  "uniqueName": "00010000022925076e40",
+  "displayLabel": "Lumen.DirectLighting.DrawTilesPerLightIndirectArgs · instance 0001 · frame 292 · passes 107",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 107,
+    "last": 107
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 64,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 4,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 4
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.DirectLighting.DrawTilesPerLightIndirectArgs",
+    "UniqueResourceName": "00010000022925076e40",
+    "ByteSize": 64,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 4,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00724",
+      "role": "resource",
+      "originalPath": "Resources/00010000022925076e40.v00010000022925077278.bin",
+      "bytes": 64,
+      "sha256": "b7877ce17b9ee4dcce5d9868f70ad036e74d54c0d3ea15b1d3af1abfa587ba1e",
+      "version": "00010000022925077278",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0185",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "b7877ce17b9ee4dcce5d9868f70ad036e74d54c0d3ea15b1d3af1abfa587ba1e",
+          "offset": 0,
+          "length": 64
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00010000022925076e40",
+        "name": "Lumen.DirectLighting.DrawTilesPerLightIndirectArgs",
+        "byteSize": 64
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00010000022925077278",
+      "producerPassId": "pass-0108",
+      "producerPassName": "InitializeLightTileIndirectArgs",
+      "payloadIds": [
+        "payload-00724"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0108",
+        "name": "InitializeLightTileIndirectArgs",
+        "displayLabel": "InitializeLightTileIndirectArgs · CullTiles 1 lights · frame 292 · pass 107",
+        "record": "records/pass/pass-0108.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0111",
+        "name": "ShadowMaskFromLightAttenuationPass(LightType=3)",
+        "displayLabel": "ShadowMaskFromLightAttenuationPass(LightType=3) · Light Attenuation ShadowMask · frame 292 · pass 110",
+        "record": "records/pass/pass-0111.json"
+      },
+      {
+        "id": "pass-0112",
+        "name": "DistanceFieldShadowPass LightType=3",
+        "displayLabel": "DistanceFieldShadowPass LightType=3 · Offscreen shadows · frame 292 · pass 111",
+        "record": "records/pass/pass-0112.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00724",
+      "file": "Resources/00010000022925076e40.v00010000022925077278.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.direct-lighting-draw-tiles-per-light-indirect",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.DirectLighting\\.DrawTilesPerLightIndirectArgs)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one draw-indirect record per (slot, view) to rasterize that light's compacted tiles",
+      "units": "vertices, instances",
+      "coordinateSpace": "draw argument space",
+      "storage": {
+        "kind": "indirect-args-buffer",
+        "format": "FRHIDrawIndirectParameters[NumLightsRoundedUp] (16 B each)",
+        "strideBytes": 16
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDrawIndirectParameters[NumLightsRoundedUp] (16 B each)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "perLight",
+          "expression": "Record(PerViewLightIndex) = (VertexCount, LightTileAllocatorPerLight[PerViewLightIndex], 0, 0)",
+          "requires": [
+            "Lumen.DirectLighting.DrawTilesPerLightIndirectArgs"
+          ],
+          "sourceRefs": [
+            "part1.cards_drawn_write0",
+            "part1.cards_drawn_write1"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "16 B per record",
+        "record count = NumLightsRoundedUp (4 in this capture)",
+        "records for slots with no tiles have InstanceCount=0"
+      ],
+      "producerSources": [
+        "part1.cards_drawn_alloc",
+        "part1.cards_drawn_write0",
+        "part1.cards_drawn_write1"
+      ],
+      "consumerSources": [
+        "part1.cards_drawn_use"
+      ],
+      "gaps": [
+        "Record count is NumLightsRoundedUp, not the number of gathered lights; extra records are zero-initialized by the indirect-buffer creation."
+      ],
+      "fields": [
+        {
+          "name": "VertexCountPerInstance",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "3 when GRHISupportsRectTopology, else 6",
+          "units": "vertices",
+          "sourceRefs": [
+            "part1.cards_drawn_write0",
+            "part1.cards_pi_vertex"
+          ]
+        },
+        {
+          "name": "InstanceCount",
+          "type": "uint32",
+          "byteOffset": 4,
+          "decode": "NumLightTilesPerLight for this slot/view",
+          "units": "instances (tiles)",
+          "sourceRefs": [
+            "part1.cards_drawn_write1"
+          ]
+        },
+        {
+          "name": "StartVertexLocation",
+          "type": "uint32",
+          "byteOffset": 8,
+          "decode": "0",
+          "units": "vertex index",
+          "sourceRefs": [
+            "part1.cards_drawn_write0"
+          ]
+        },
+        {
+          "name": "StartInstanceLocation",
+          "type": "uint32",
+          "byteOffset": 12,
+          "decode": "0",
+          "units": "instance index",
+          "sourceRefs": [
+            "part1.cards_drawn_write0"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "VertexCountPerInstance",
+          "InstanceCount",
+          "StartVertexLocation",
+          "StartInstanceLocation"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0136",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.DirectLighting.DrawTilesPerLightIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0185"
+    }
+  ]
+}

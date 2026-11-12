@@ -1,0 +1,607 @@
+{
+  "format": "PF_FloatRGBA",
+  "version": 1,
+  "id": "resource-0431",
+  "nativeRecordId": "native-017437",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "TranslucentVolumeAmbient",
+  "uniqueName": "000100000228e3a830c0",
+  "displayLabel": "TranslucentVolumeAmbient · instance 0001 · frame 292 · passes 247..251",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 247,
+    "last": 251
+  },
+  "allocation": [
+    64,
+    64,
+    64
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "volume-3d",
+    "classification": null,
+    "allocation": [
+      64,
+      64,
+      64
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 2097152,
+  "extent": [
+    64,
+    64,
+    64
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "FLOAT16",
+    "bytesPerTexel": 8,
+    "formatNormalized": "FLOATRGBA",
+    "dumpFormat": "PF_FLOATRGBA",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "TranslucentVolumeAmbient",
+    "UniqueResourceName": "000100000228e3a830c0",
+    "ByteSize": 2097152,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture3D",
+    "Format": "PF_FloatRGBA",
+    "ExtentX": 64,
+    "ExtentY": 64,
+    "Depth": 64,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "RenderTargetable",
+      "ShaderResource",
+      "Tiling3D",
+      "UAV",
+      "ReduceMemoryWithTilingMode"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00540",
+      "role": "resource",
+      "originalPath": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+      "bytes": 2097152,
+      "sha256": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+      "version": "000100000228e3a837b0",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0431",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+          "offset": 1048576,
+          "length": 1048576
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000100000228e3a830c0",
+        "Name": "TranslucentVolumeAmbient",
+        "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 64,
+        "ZSliceCount": 64,
+        "ZSliceStrideBytes": 32768,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_FloatRGBA",
+        "ViewFormat": "PF_FloatRGBA",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatRGBA",
+        "StoredFormat": "PF_FloatRGBA",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2097152,
+        "StagingByteSize": 2097152
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 2097152,
+          "ActualBytes": 2097152,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2097152,
+        "actualBytes": 2097152,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000100000228e3a830c0",
+        "name": "TranslucentVolumeAmbient",
+        "diagnosticResource": "000100000228e3a830c0"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 64,
+        "extentY": 64,
+        "depth": 64,
+        "zSliceCount": 64,
+        "zSliceStrideBytes": 32768,
+        "rowPitchBytes": 512,
+        "storageFormat": "PF_FloatRGBA",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "FLOAT16",
+        "bytesPerTexel": 8,
+        "formatNormalized": "FLOATRGBA",
+        "dumpFormat": "PF_FLOATRGBA",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_FloatRGBA",
+        "viewFormat": "PF_FloatRGBA",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    },
+    {
+      "id": "payload-00541",
+      "role": "resource",
+      "originalPath": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+      "bytes": 2097152,
+      "sha256": "6ffcc5f1d78f140c16f82d8769bd1aa6bfba7f43aa6100b7a0757f6523d012bb",
+      "version": "000100000228e3a8f8b0",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0431",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "38f4ef34529d9a160a51e7d79749c5d25ef89c9ad3fc69ef595032d5d7c1a2e5",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "662f75be7975a9d49826f5bedf3c8cd30e8844d8ecf0320b4972216fba23e467",
+          "offset": 1048576,
+          "length": 1048576
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000100000228e3a830c0",
+        "Name": "TranslucentVolumeAmbient",
+        "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 64,
+        "ZSliceCount": 64,
+        "ZSliceStrideBytes": 32768,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_FloatRGBA",
+        "ViewFormat": "PF_FloatRGBA",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatRGBA",
+        "StoredFormat": "PF_FloatRGBA",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2097152,
+        "StagingByteSize": 2097152
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 2097152,
+          "ActualBytes": 2097152,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2097152,
+        "actualBytes": 2097152,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000100000228e3a830c0",
+        "name": "TranslucentVolumeAmbient",
+        "diagnosticResource": "000100000228e3a830c0"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 64,
+        "extentY": 64,
+        "depth": 64,
+        "zSliceCount": 64,
+        "zSliceStrideBytes": 32768,
+        "rowPitchBytes": 512,
+        "storageFormat": "PF_FloatRGBA",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "FLOAT16",
+        "bytesPerTexel": 8,
+        "formatNormalized": "FLOATRGBA",
+        "dumpFormat": "PF_FLOATRGBA",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_FloatRGBA",
+        "viewFormat": "PF_FloatRGBA",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000228e3a837b0",
+      "producerPassId": "pass-0248",
+      "producerPassName": "ClearTranslucencyLightingVolumeCompute 64",
+      "payloadIds": [
+        "payload-00540"
+      ],
+      "previousVersion": null,
+      "nextVersion": "000100000228e3a8f8b0"
+    },
+    {
+      "version": "000100000228e3a8f8b0",
+      "producerPassId": "pass-0252",
+      "producerPassName": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=1,Max=32,VirtualShadowMap)",
+      "payloadIds": [
+        "payload-00541"
+      ],
+      "previousVersion": "000100000228e3a837b0",
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0248",
+        "name": "ClearTranslucencyLightingVolumeCompute 64",
+        "displayLabel": "ClearTranslucencyLightingVolumeCompute 64 · InitTranslucencyLightingVolumeTextures · frame 292 · pass 247",
+        "record": "records/pass/pass-0248.json"
+      },
+      {
+        "id": "pass-0252",
+        "name": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=1,Max=32,VirtualShadowMap)",
+        "displayLabel": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=1,Max=32,VirtualShadowMap) · InjectTranslucencyLightingVolume(View=0) · frame 292 · pass 251",
+        "record": "records/pass/pass-0252.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0253",
+        "name": "BarrierPass",
+        "displayLabel": "BarrierPass · FilterTranslucentVolume 64x64x64 Cascades:2 · frame 292 · pass 252",
+        "record": "records/pass/pass-0253.json"
+      },
+      {
+        "id": "pass-0255",
+        "name": "Spatial Filter Cascade:1",
+        "displayLabel": "Spatial Filter Cascade:1 · FilterTranslucentVolume 64x64x64 Cascades:2 · frame 292 · pass 254",
+        "record": "records/pass/pass-0255.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-00540",
+      "file": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+      "layout": {
+        "Resource": "000100000228e3a830c0",
+        "Name": "TranslucentVolumeAmbient",
+        "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 64,
+        "ZSliceCount": 64,
+        "ZSliceStrideBytes": 32768,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_FloatRGBA",
+        "ViewFormat": "PF_FloatRGBA",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatRGBA",
+        "StoredFormat": "PF_FloatRGBA",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2097152,
+        "StagingByteSize": 2097152
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 2097152,
+          "ActualBytes": 2097152,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2097152,
+        "actualBytes": 2097152,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-00541",
+      "file": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+      "layout": {
+        "Resource": "000100000228e3a830c0",
+        "Name": "TranslucentVolumeAmbient",
+        "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 64,
+        "ZSliceCount": 64,
+        "ZSliceStrideBytes": 32768,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_FloatRGBA",
+        "ViewFormat": "PF_FloatRGBA",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatRGBA",
+        "StoredFormat": "PF_FloatRGBA",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2097152,
+        "StagingByteSize": 2097152
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 2097152,
+          "ActualBytes": 2097152,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2097152,
+        "actualBytes": 2097152,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-00540",
+      "file": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a837b0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 2097152,
+          "ActualBytes": 2097152,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2097152,
+        "actualBytes": 2097152,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-00541",
+      "file": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e3a830c0.mip0.v000100000228e3a8f8b0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 2097152,
+          "ActualBytes": 2097152,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2097152,
+        "actualBytes": 2097152,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-1937",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched TranslucentVolumeAmbient (000100000228e3a830c0). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0431"
+    }
+  ]
+}

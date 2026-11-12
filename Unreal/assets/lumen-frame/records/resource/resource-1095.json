@@ -1,0 +1,893 @@
+{
+  "format": "PF_R8",
+  "version": 1,
+  "id": "resource-1095",
+  "nativeRecordId": "native-018105",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+  "uniqueName": "0004000002292507a910",
+  "displayLabel": "Lumen.Radiosity.NumFramesAccumulatedAtlas · instance 0004 · frame 292 · passes 710..741",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 710,
+    "last": 741
+  },
+  "allocation": [
+    512,
+    512
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": "atlas",
+    "allocation": [
+      512,
+      512
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 262144,
+  "extent": [
+    512,
+    512,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "UNORM8",
+    "bytesPerTexel": 1,
+    "formatNormalized": "R8",
+    "dumpFormat": "PF_R8",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+    "UniqueResourceName": "0004000002292507a910",
+    "ByteSize": 262144,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_R8",
+    "ExtentX": 512,
+    "ExtentY": 512,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "RenderTargetable",
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02677",
+      "role": "resource",
+      "originalPath": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+      "bytes": 262144,
+      "sha256": "cd3ef0bd89336e3df7f4524ac6960d48f568b81c00d4557643dd25c3967d93f6",
+      "version": "00000000000000000000",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1095",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "cd3ef0bd89336e3df7f4524ac6960d48f568b81c00d4557643dd25c3967d93f6",
+          "offset": 0,
+          "length": 262144
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "0004000002292507a910",
+        "Name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "File": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 512,
+        "ExtentY": 512,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 262144,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 262144,
+        "StagingByteSize": 262144
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "0004000002292507a910",
+        "name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "diagnosticResource": "0004000002292507a910"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 512,
+        "extentY": 512,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 262144,
+        "rowPitchBytes": 512,
+        "storageFormat": "PF_R8",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UNORM8",
+        "bytesPerTexel": 1,
+        "formatNormalized": "R8",
+        "dumpFormat": "PF_R8",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R8",
+        "viewFormat": "PF_R8",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    },
+    {
+      "id": "payload-02678",
+      "role": "resource",
+      "originalPath": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+      "bytes": 262144,
+      "sha256": "cd3ef0bd89336e3df7f4524ac6960d48f568b81c00d4557643dd25c3967d93f6",
+      "version": "000400000228c2029aa8",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1095",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "cd3ef0bd89336e3df7f4524ac6960d48f568b81c00d4557643dd25c3967d93f6",
+          "offset": 0,
+          "length": 262144
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "0004000002292507a910",
+        "Name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "File": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 512,
+        "ExtentY": 512,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 262144,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 262144,
+        "StagingByteSize": 262144
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "0004000002292507a910",
+        "name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "diagnosticResource": "0004000002292507a910"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 512,
+        "extentY": 512,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 262144,
+        "rowPitchBytes": 512,
+        "storageFormat": "PF_R8",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UNORM8",
+        "bytesPerTexel": 1,
+        "formatNormalized": "R8",
+        "dumpFormat": "PF_R8",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R8",
+        "viewFormat": "PF_R8",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    },
+    {
+      "id": "payload-02679",
+      "role": "resource",
+      "originalPath": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+      "bytes": 262144,
+      "sha256": "cd3ef0bd89336e3df7f4524ac6960d48f568b81c00d4557643dd25c3967d93f6",
+      "version": "000400000228e3a8a090",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1095",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "cd3ef0bd89336e3df7f4524ac6960d48f568b81c00d4557643dd25c3967d93f6",
+          "offset": 0,
+          "length": 262144
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "0004000002292507a910",
+        "Name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "File": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 512,
+        "ExtentY": 512,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 262144,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 262144,
+        "StagingByteSize": 262144
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "0004000002292507a910",
+        "name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "diagnosticResource": "0004000002292507a910"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 512,
+        "extentY": 512,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 262144,
+        "rowPitchBytes": 512,
+        "storageFormat": "PF_R8",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UNORM8",
+        "bytesPerTexel": 1,
+        "formatNormalized": "R8",
+        "dumpFormat": "PF_R8",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R8",
+        "viewFormat": "PF_R8",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228c2029aa8",
+      "producerPassId": "pass-0711",
+      "producerPassName": "CopyCardCaptureLightingToAtlas",
+      "payloadIds": [
+        "payload-02678"
+      ],
+      "previousVersion": null,
+      "nextVersion": "000400000228e3a8a090"
+    },
+    {
+      "version": "000400000228e3a8a090",
+      "producerPassId": "pass-0742",
+      "producerPassName": "Integrate",
+      "payloadIds": [
+        "payload-02679"
+      ],
+      "previousVersion": "000400000228c2029aa8",
+      "nextVersion": "00000000000000000000"
+    },
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02677"
+      ],
+      "previousVersion": "000400000228e3a8a090",
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0711",
+        "name": "CopyCardCaptureLightingToAtlas",
+        "displayLabel": "CopyCardCaptureLightingToAtlas · CopyCardsToSurfaceCache · frame 292 · pass 710",
+        "record": "records/pass/pass-0711.json"
+      },
+      {
+        "id": "pass-0742",
+        "name": "Integrate",
+        "displayLabel": "Integrate · Radiosity · frame 292 · pass 741",
+        "record": "records/pass/pass-0742.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0666",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 665",
+        "record": "records/pass/pass-0666.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-02677",
+      "file": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+      "layout": {
+        "Resource": "0004000002292507a910",
+        "Name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "File": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 512,
+        "ExtentY": 512,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 262144,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 262144,
+        "StagingByteSize": 262144
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02678",
+      "file": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+      "layout": {
+        "Resource": "0004000002292507a910",
+        "Name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "File": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 512,
+        "ExtentY": 512,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 262144,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 262144,
+        "StagingByteSize": 262144
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02679",
+      "file": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+      "layout": {
+        "Resource": "0004000002292507a910",
+        "Name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "File": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 512,
+        "ExtentY": 512,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 262144,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 262144,
+        "StagingByteSize": 262144
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-02677",
+      "file": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v00000000000000000000.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02678",
+      "file": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v000400000228c2029aa8.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02679",
+      "file": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/0004000002292507a910.mip0.v000400000228e3a8a090.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 262144,
+          "ActualBytes": 262144,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 262144,
+        "actualBytes": 262144,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "resource.lumen-radiosity-numframes",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.Radiosity\\.NumFramesAccumulatedAtlas$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "temporal accumulation frame count per radiosity card tile",
+      "units": "frames [0,255]",
+      "coordinateSpace": "card-tile grid (1 texel per card tile)",
+      "storage": {
+        "kind": "texture2d",
+        "format": "PF_R8",
+        "strideBytes": 1
+      },
+      "actualFormat": "PF_R8",
+      "declaredFormat": "PF_R8",
+      "declaredFormatText": "PF_R8",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R8",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R8",
+      "payloadFormat": "PF_R8",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "accumulate",
+          "expression": "N = min(round(code*255)+1, MaxFramesAccumulated); alpha = 1/(1+N)",
+          "requires": [
+            "Lumen.Radiosity.NumFramesAccumulatedAtlas"
+          ],
+          "sourceRefs": [
+            "part0.LRad_framesread",
+            "part0.LRad_frameswrite",
+            "part0.LRad_temporal"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "stored = N/255 (UNORM8)"
+      ],
+      "producerSources": [
+        "part0.LRad_frameswrite",
+        "part0.LSU_radframes"
+      ],
+      "consumerSources": [
+        "part0.LRad_temporal"
+      ],
+      "gaps": [
+        "Temporal accumulation can be disabled (TEMPORAL_ACCUMULATION), in which case the counter is not updated/used.",
+        "MaxFramesAccumulated is a runtime uniform/CVar input."
+      ],
+      "fields": [
+        {
+          "name": "EncodedFrames",
+          "type": "unorm8",
+          "decode": "frames = round(code/255*255) = code; shader reads texel*255, increments, clamps to MaxFramesAccumulated, writes frames/255",
+          "units": "frames",
+          "sourceRefs": [
+            "part0.LRad_framesread",
+            "part0.LRad_frameswrite",
+            "part0.LSU_radframes"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 8
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "EncodedFrames"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

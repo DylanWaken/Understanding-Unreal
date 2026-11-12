@@ -1,0 +1,429 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0605",
+  "nativeRecordId": "native-017612",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.Heightfield",
+  "uniqueName": "000300000228e99d9270",
+  "displayLabel": "Lumen.Heightfield · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 16,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.Heightfield",
+    "UniqueResourceName": "000300000228e99d9270",
+    "ByteSize": 16,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01536",
+      "role": "resource",
+      "originalPath": "Resources/000300000228e99d9270.v00000000000000000000.bin",
+      "bytes": 16,
+      "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0605",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "offset": 0,
+          "length": 16
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228e99d9270",
+        "name": "Lumen.Heightfield",
+        "byteSize": 16
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01536"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0358",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.027M texels · frame 292 · pass 357",
+        "record": "records/pass/pass-0358.json"
+      },
+      {
+        "id": "pass-0407",
+        "name": "BuildPageUpdatePriorityHistogram",
+        "displayLabel": "BuildPageUpdatePriorityHistogram · BuildCardUpdateContext · frame 292 · pass 406",
+        "record": "records/pass/pass-0407.json"
+      },
+      {
+        "id": "pass-0412",
+        "name": "SpliceCardPagesIntoTiles",
+        "displayLabel": "SpliceCardPagesIntoTiles · CullTiles 1 lights · frame 292 · pass 411",
+        "record": "records/pass/pass-0412.json"
+      },
+      {
+        "id": "pass-0414",
+        "name": "CalculateCardTileDepthRanges",
+        "displayLabel": "CalculateCardTileDepthRanges · CullTiles 1 lights · frame 292 · pass 413",
+        "record": "records/pass/pass-0414.json"
+      },
+      {
+        "id": "pass-0418",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 417",
+        "record": "records/pass/pass-0418.json"
+      },
+      {
+        "id": "pass-0423",
+        "name": "ShadowMaskFromLightAttenuationPass(LightType=3)",
+        "displayLabel": "ShadowMaskFromLightAttenuationPass(LightType=3) · Light Attenuation ShadowMask · frame 292 · pass 422",
+        "record": "records/pass/pass-0423.json"
+      },
+      {
+        "id": "pass-0424",
+        "name": "DistanceFieldShadowPass LightType=3",
+        "displayLabel": "DistanceFieldShadowPass LightType=3 · Offscreen shadows · frame 292 · pass 423",
+        "record": "records/pass/pass-0424.json"
+      },
+      {
+        "id": "pass-0425",
+        "name": "Batched lights",
+        "displayLabel": "Batched lights · Lights · frame 292 · pass 424",
+        "record": "records/pass/pass-0425.json"
+      },
+      {
+        "id": "pass-0426",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · DirectLighting · frame 292 · pass 425",
+        "record": "records/pass/pass-0426.json"
+      },
+      {
+        "id": "pass-0429",
+        "name": "BuildRadiosityTiles",
+        "displayLabel": "BuildRadiosityTiles · Radiosity · frame 292 · pass 428",
+        "record": "records/pass/pass-0429.json"
+      },
+      {
+        "id": "pass-0431",
+        "name": "DistanceFieldTracing 4x4 probes at 4 spacing",
+        "displayLabel": "DistanceFieldTracing 4x4 probes at 4 spacing · Radiosity · frame 292 · pass 430",
+        "record": "records/pass/pass-0431.json"
+      },
+      {
+        "id": "pass-0432",
+        "name": "SpatialFilterProbes",
+        "displayLabel": "SpatialFilterProbes · Radiosity · frame 292 · pass 431",
+        "record": "records/pass/pass-0432.json"
+      },
+      {
+        "id": "pass-0433",
+        "name": "ConvertToSH",
+        "displayLabel": "ConvertToSH · Radiosity · frame 292 · pass 432",
+        "record": "records/pass/pass-0433.json"
+      },
+      {
+        "id": "pass-0434",
+        "name": "Integrate",
+        "displayLabel": "Integrate · Radiosity · frame 292 · pass 433",
+        "record": "records/pass/pass-0434.json"
+      },
+      {
+        "id": "pass-0435",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · Radiosity · frame 292 · pass 434",
+        "record": "records/pass/pass-0435.json"
+      },
+      {
+        "id": "pass-0467",
+        "name": "TraceFromProbes Res=32x32 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=32x32 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 466",
+        "record": "records/pass/pass-0467.json"
+      },
+      {
+        "id": "pass-0468",
+        "name": "TraceFromProbes Res=8x8 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=8x8 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 467",
+        "record": "records/pass/pass-0468.json"
+      },
+      {
+        "id": "pass-0480",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 479",
+        "record": "records/pass/pass-0480.json"
+      },
+      {
+        "id": "pass-0496",
+        "name": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+        "displayLabel": "TraceGlobalSDFAndInterpolateRadianceCache 3x3 · TranslucencyVolumeLighting · frame 292 · pass 495",
+        "record": "records/pass/pass-0496.json"
+      },
+      {
+        "id": "pass-0555",
+        "name": "TraceVoxels(Scene)",
+        "displayLabel": "TraceVoxels(Scene) · LumenReflections · frame 292 · pass 554",
+        "record": "records/pass/pass-0555.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01536",
+      "file": "Resources/000300000228e99d9270.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.lumen-heightfield",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.Heightfield)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-heightfield world-space AABB (LWC center + extent) and the mesh-cards index that owns its single card",
+      "units": "world units (cm); mesh-cards index",
+      "coordinateSpace": "world space (double-float split)",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "float4[3] per heightfield (48 B/record); RDG allocation element 16 B",
+        "strideBytes": 48
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4[3] per heightfield (48 B/record); RDG allocation element 16 B",
+      "formatProof": "descriptive-element-layout",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [
+        {
+          "name": "unpackHeightfield",
+          "expression": "Center = MakeDFVector3(V0.xyz, V1.xyz); Extent = V2.xyz; bValid = MeshCardsIndex < NumMeshCards",
+          "requires": [
+            "Lumen.Heightfield"
+          ],
+          "sourceRefs": [
+            "part1.cards_ush_hf_get",
+            "part1.cards_ush_hf_center",
+            "part1.cards_ush_hf_extent",
+            "part1.cards_ush_hf_valid"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "3 float4 = 48 B per heightfield",
+        "Capture capacity is 16 B = one float4, which is less than one 48-B record, so the capture contains 0 valid heightfield records; this is the empty-buffer minimum (RoundUpToPowerOfTwo(0)=1)"
+      ],
+      "producerSources": [
+        "part1.cards_hf_fill",
+        "part1.cards_hf_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_ush_hf_get",
+        "part1.cards_hf_cons"
+      ],
+      "gaps": [
+        "LWC center reconstruction is not expanded (DFHackToFloat/MakeDFVector3).",
+        "bValid is derived from MeshCardsIndex < NumMeshCards; the buffer itself has no explicit valid flag.",
+        "Capture capacity 16 B cannot hold one record; do not read a heightfield from this capture."
+      ],
+      "fields": [
+        {
+          "name": "BoundsCenterHigh",
+          "type": "float3",
+          "byteOffset": 0,
+          "decode": "OutData[0].xyz; high part of world AABB center",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_hf_center_high",
+            "part1.cards_ush_hf_center"
+          ]
+        },
+        {
+          "name": "MeshCardsIndex",
+          "type": "uint32",
+          "byteOffset": 12,
+          "decode": "OutData[0].w reinterpreted as uint; 0xFFFFFFFF when Heightfield.MeshCardsIndex < 0",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_hf_mcindex",
+            "part1.cards_ush_hf_mc"
+          ]
+        },
+        {
+          "name": "BoundsCenterLow",
+          "type": "float3",
+          "byteOffset": 16,
+          "decode": "OutData[1].xyz; low part of world AABB center",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_hf_center_low",
+            "part1.cards_ush_hf_center"
+          ]
+        },
+        {
+          "name": "BoundsExtent",
+          "type": "float3",
+          "byteOffset": 32,
+          "decode": "OutData[2].xyz; world AABB extent",
+          "units": "world units (cm)",
+          "sourceRefs": [
+            "part1.cards_hf_extent",
+            "part1.cards_ush_hf_extent"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "BoundsCenterHigh",
+          "MeshCardsIndex",
+          "BoundsCenterLow",
+          "BoundsExtent"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0382",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.Heightfield has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0605"
+    }
+  ]
+}

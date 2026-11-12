@@ -1,0 +1,408 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0493",
+  "nativeRecordId": "native-017500",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "DistanceFields.AssetData",
+  "uniqueName": "000300000228807174d0",
+  "displayLabel": "DistanceFields.AssetData · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 144,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 9,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 9
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "DistanceFields.AssetData",
+    "UniqueResourceName": "000300000228807174d0",
+    "ByteSize": 144,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 9,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01183",
+      "role": "resource",
+      "originalPath": "Resources/000300000228807174d0.v00000000000000000000.bin",
+      "bytes": 144,
+      "sha256": "73f753c2cec272b46268fb504a54126a00366c681ec5f8302bc47b016d3e9e5e",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0493",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "73f753c2cec272b46268fb504a54126a00366c681ec5f8302bc47b016d3e9e5e",
+          "offset": 0,
+          "length": 144
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228807174d0",
+        "name": "DistanceFields.AssetData",
+        "byteSize": 144
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01183"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0319",
+        "name": "GenerateStreamingRequests",
+        "displayLabel": "GenerateStreamingRequests · UpdateDistanceFieldAtlas · frame 292 · pass 318",
+        "record": "records/pass/pass-0319.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01183",
+      "file": "Resources/000300000228807174d0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.df-asset-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^DistanceFields\\.AssetData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one float4 element of a 3-float4 per-(asset,reversed-mip) record; a full asset slot is 9 float4 = 144 B (3 mips x 3 float4)",
+      "units": "mixed: indirection dimensions in indirection voxels; IndirectionTableOffset in uint32 entries; VolumeToIndirection affine in volume->indirection-voxel units; DistanceFieldToVolumeScaleBias in volume units per UNORM",
+      "coordinateSpace": "per-mip virtual indirection space derived from normalized mesh volume space (mesh bounds scaled so the max extent maps to [-1,1])",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "float4",
+        "strideBytes": 16,
+        "formatAlternatives": [
+          "forced 16-byte structured stride; logical per-(asset,mip) record is 48 B and per-asset slot 144 B"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 16,
+          "numElements": 9,
+          "byteSize": 144
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "forced 16-byte structured stride; logical per-(asset,mip) record is 48 B and per-asset slot 144 B"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "recordIndex",
+          "expression": "base float4 = AssetIndex*9 + ReversedMipIndex*3",
+          "requires": [
+            "DistanceFields.AssetData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.asset.load.index"
+          ]
+        },
+        {
+          "name": "indirection",
+          "expression": "IndirectionPos = VolumePos*VolumeToIndirectionScale + VolumeToIndirectionAdd",
+          "requires": [
+            "DistanceFields.AssetData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.asset.decode.scale"
+          ]
+        },
+        {
+          "name": "distanceDecode",
+          "expression": "DistanceFieldVolume = EncodedDistance*DistanceFieldToVolumeScale + DistanceFieldToVolumeBias",
+          "requires": [
+            "DistanceFields.AssetData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.asset.decode"
+          ]
+        },
+        {
+          "name": "scaleBiasDefinition",
+          "expression": "DistanceFieldToVolumeScaleBias = (2*MaxDistanceForEncoding, -MaxDistanceForEncoding), MaxDistanceForEncoding = length(VolumeSpaceVoxelSize)*BandSizeInVoxels",
+          "requires": [
+            "DistanceFields.AssetData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.volume.scalebias"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "DistanceField::NumMips=3, AssetDataMipStrideFloat4s=3, DF_ASSET_DATA_STRIDE=9.",
+        "Indirection dimensions are 10 bits each, cap 1024; NumMips is 2 bits (top of word0).",
+        "Hand packed: C++ writes IntVector0[0..3] and the HLSL loader reads word0/1/2; there is no mirrored C++ struct or static_assert."
+      ],
+      "producerSources": [
+        "part3.visibility.df.asset.alloc",
+        "part3.visibility.df.asset.encode.pack",
+        "part3.visibility.df.asset.encode.scale",
+        "part3.visibility.df.asset.encode.add"
+      ],
+      "consumerSources": [
+        "part3.visibility.df.asset.load",
+        "part3.visibility.df.asset.decode"
+      ],
+      "gaps": [
+        "No GPU live count: dead asset slots have NumMips==0; the capture 144 B is one asset slot of capacity, not a count of live mips."
+      ],
+      "fields": [
+        {
+          "name": "Vector0.x",
+          "type": "uint32",
+          "byteOffset": 0,
+          "count": 1,
+          "bitOffset": 0,
+          "bitWidth": 32,
+          "decode": "low10 IndirectionDimensions.x, next10 .y, next10 .z, top2 NumMips",
+          "units": "voxels / count",
+          "sourceRefs": [
+            "part3.visibility.df.asset.encode.pack",
+            "part3.visibility.df.asset.decode.dims",
+            "part3.visibility.df.asset.decode.mips"
+          ]
+        },
+        {
+          "name": "Vector0.y",
+          "type": "uint32",
+          "byteOffset": 4,
+          "count": 1,
+          "decode": "IndirectionTableOffset in uint32 entries",
+          "units": "entries",
+          "sourceRefs": [
+            "part3.visibility.df.asset.decode.offset"
+          ]
+        },
+        {
+          "name": "Vector0.z",
+          "type": "uint32",
+          "byteOffset": 8,
+          "count": 1,
+          "decode": "written 0",
+          "units": "n/a",
+          "sourceRefs": [
+            "part3.visibility.df.asset.encode.pack"
+          ]
+        },
+        {
+          "name": "Vector0.w",
+          "type": "uint32",
+          "byteOffset": 12,
+          "count": 1,
+          "decode": "written 0",
+          "units": "n/a",
+          "sourceRefs": [
+            "part3.visibility.df.asset.encode.pack"
+          ]
+        },
+        {
+          "name": "Vector1.xyz",
+          "type": "float3",
+          "byteOffset": 16,
+          "count": 1,
+          "decode": "VolumeToIndirectionScale",
+          "units": "indirection voxels per volume unit",
+          "sourceRefs": [
+            "part3.visibility.df.asset.encode.scale",
+            "part3.visibility.df.asset.decode.scale"
+          ]
+        },
+        {
+          "name": "DistanceFieldToVolumeScale",
+          "type": "float",
+          "byteOffset": 28,
+          "count": 1,
+          "decode": "Vector1.w; DistanceFieldVolume = Encoded*scale + bias",
+          "units": "volume units",
+          "sourceRefs": [
+            "part3.visibility.df.asset.decode.scale"
+          ]
+        },
+        {
+          "name": "Vector2.xyz",
+          "type": "float3",
+          "byteOffset": 32,
+          "count": 1,
+          "decode": "VolumeToIndirectionAdd",
+          "units": "indirection voxels",
+          "sourceRefs": [
+            "part3.visibility.df.asset.encode.add",
+            "part3.visibility.df.asset.decode.add"
+          ]
+        },
+        {
+          "name": "DistanceFieldToVolumeBias",
+          "type": "float",
+          "byteOffset": 44,
+          "count": 1,
+          "decode": "Vector2.w",
+          "units": "volume units",
+          "sourceRefs": [
+            "part3.visibility.df.asset.decode.add"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 8,
+        "sourceEquationFields": [
+          "Vector0.x",
+          "Vector0.y",
+          "Vector0.z",
+          "Vector0.w",
+          "Vector1.xyz",
+          "DistanceFieldToVolumeScale",
+          "Vector2.xyz",
+          "DistanceFieldToVolumeBias"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0305",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer DistanceFields.AssetData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0493"
+    }
+  ]
+}

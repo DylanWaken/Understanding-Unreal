@@ -1,0 +1,307 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0836",
+  "nativeRecordId": "native-017845",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.PerPageBinIds",
+  "uniqueName": "0003000002287c16a038",
+  "displayLabel": "Shadow.Virtual.PerPageBinIds · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 24,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 6,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 6
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.PerPageBinIds",
+    "UniqueResourceName": "0003000002287c16a038",
+    "ByteSize": 24,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 6,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01127",
+      "role": "resource",
+      "originalPath": "Resources/0003000002287c16a038.v00000000000000000000.bin",
+      "bytes": 24,
+      "sha256": "08907ab6676339f1c74a972b380c66c0e2444a0bd0ba9da921829d3e377b1386",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0836",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "08907ab6676339f1c74a972b380c66c0e2444a0bd0ba9da921829d3e377b1386",
+          "offset": 0,
+          "length": 24
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0003000002287c16a038",
+        "name": "Shadow.Virtual.PerPageBinIds",
+        "byteSize": 24
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01127"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0503",
+        "name": "ClearPageTable(Shadow.Virtual.PageRequestFlags Size=8192x192 texels)",
+        "displayLabel": "ClearPageTable(Shadow.Virtual.PageRequestFlags Size=8192x192 texels) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 502",
+        "record": "records/pass/pass-0503.json"
+      },
+      {
+        "id": "pass-0508",
+        "name": "ClearPageTable(Shadow.Virtual.PageTable Size=8192x192 texels)",
+        "displayLabel": "ClearPageTable(Shadow.Virtual.PageTable Size=8192x192 texels) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 507",
+        "record": "records/pass/pass-0508.json"
+      },
+      {
+        "id": "pass-0509",
+        "name": "ClearPageTable(Shadow.Virtual.PageFlags Size=8192x192 texels)",
+        "displayLabel": "ClearPageTable(Shadow.Virtual.PageFlags Size=8192x192 texels) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 508",
+        "record": "records/pass/pass-0509.json"
+      },
+      {
+        "id": "pass-0523",
+        "name": "AllocateNewPageMappings",
+        "displayLabel": "AllocateNewPageMappings · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 522",
+        "record": "records/pass/pass-0523.json"
+      },
+      {
+        "id": "pass-0525",
+        "name": "PropagateMappedMips",
+        "displayLabel": "PropagateMappedMips · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 524",
+        "record": "records/pass/pass-0525.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01127",
+      "file": "Resources/0003000002287c16a038.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-per-page-bin-ids",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.PerPageBinIds$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one uint32 virtual-shadow-map id per entry, sorted by per-page dispatch bin (BinIndex 0..15) and grouped by MinMipLevel; consumed with an offset+count per bin",
+      "units": "VSM data id",
+      "coordinateSpace": "per-page shader dispatch: bin list is indexed by VirtualShadowMapIdsOffset + i",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "count varies per bin; capture shows 6-element and 1-element allocations for different bins"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 6,
+          "byteSize": 24
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "count varies per bin; capture shows 6-element and 1-element allocations for different bins"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "binSlice",
+          "expression": "bin start = Bins[BinIndex].VirtualShadowMapIdsOffset, count = Bins[BinIndex].NumVirtualShadowMapIds; only NumVirtualShadowMapIds entries are valid",
+          "requires": [
+            "PerPageBinIds"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.c.alloc.perpagebinids"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "FIdBinIndex is a 28-bit VirtualShadowMapId + 4-bit BinIndex; BinIndex is NOT stored in the output buffer (only used for the counting sort).",
+        "BinCount = 16; CalcBin(VSM id, MinMipLevel) chooses dispatch shape."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.c.alloc.perpagebinids"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.c.alloc.perpagebinids"
+      ],
+      "gaps": [
+        "The per-bin offset/count live in C++ FBin state, not in this buffer, so a dump alone cannot recover bin boundaries."
+      ],
+      "fields": [
+        {
+          "name": "VirtualShadowMapIds",
+          "type": "uint32",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "counting-sorted FIdBinIndex.VirtualShadowMapId (28-bit id stored as uint32)",
+          "units": "VSM id",
+          "sourceRefs": [
+            "part3.visibility.vsm.c.alloc.perpagebinids"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "VirtualShadowMapIds"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0512",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.PerPageBinIds has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0836"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0406",
+  "nativeRecordId": "native-015925",
+  "name": "ClearCardUpdateContext",
+  "displayLabel": "ClearCardUpdateContext · BuildCardUpdateContext · frame 292 · pass 405",
+  "frameNumber": 292,
+  "graphPrefix": "BuildCardUpdateContext",
+  "viewState": null,
+  "pointer": "000300000228ba9e3490",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228ba9e3460",
+  "parametersMetadataPointer": "000300007ffb89268300",
+  "parentScopes": [
+    "BuildCardUpdateContext",
+    "LumenSceneLighting",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearCardUpdateContext",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228ba9e3460",
+    "ParametersMetadata": "000300007ffb89268300",
+    "Pointer": "000300000228ba9e3490",
+    "Id": 405,
+    "ParentEventScopes": [
+      "BuildCardUpdateContext",
+      "LumenSceneLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000300000228ba9e23f0",
+      "000300000228ba9e28d0",
+      "000300000228ba9e2ee8",
+      "000300000228ba9e3020",
+      "000300000228ba9e2db0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000300000228ba9e23f0",
+      "resourceId": "resource-0647",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01250",
+        "payload-01251"
+      ]
+    },
+    {
+      "uniqueName": "000300000228ba9e28d0",
+      "resourceId": "resource-0648",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01255",
+        "payload-01256"
+      ]
+    },
+    {
+      "uniqueName": "000300000228ba9e2ee8",
+      "resourceId": "resource-0649",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01262",
+        "payload-01263"
+      ]
+    },
+    {
+      "uniqueName": "000300000228ba9e3020",
+      "resourceId": "resource-0650",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01264",
+        "payload-01265"
+      ]
+    },
+    {
+      "uniqueName": "000300000228ba9e2db0",
+      "resourceId": "resource-0651",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01260",
+        "payload-01261"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06353",
+    "metadataPointer": "000300007ffb89268300",
+    "bytes": 48,
+    "sha256": "c8bb22effe7b203afb704f7d2a265525a823d0d5a5cac3c7978ee23ac272a833",
+    "chunks": [
+      {
+        "sha": "c8bb22effe7b203afb704f7d2a265525a823d0d5a5cac3c7978ee23ac272a833",
+        "offset": 0,
+        "length": 48
+      }
+    ],
+    "originalPath": "Structures/000300000228ba9e3460.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenSceneLighting.cpp",
+    "FileLine": 318,
+    "Size": 48,
+    "Members": [
+      {
+        "Name": "RWDirectLightingCardPageIndexAllocator",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 319,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWIndirectLightingCardPageIndexAllocator",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 320,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWMaxUpdateBucket",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 321,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWCardPageTileAllocator",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 322,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWPriorityHistogram",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 323,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228ba9e3490",
+      "Parameters": "000300000228ba9e3460",
+      "Bindings": {
+        "RWDirectLightingCardPageIndexAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ba9e31f0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWIndirectLightingCardPageIndexAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ba9e3320",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWMaxUpdateBucket": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ba9e3158",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWCardPageTileAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ba9e3288",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWPriorityHistogram": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228ba9e33b8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

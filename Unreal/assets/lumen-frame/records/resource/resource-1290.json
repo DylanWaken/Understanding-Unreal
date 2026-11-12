@@ -1,0 +1,342 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1290",
+  "nativeRecordId": "native-018302",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.ClearUnusedIntegrateTileData",
+  "uniqueName": "000400000228bbcb0a28",
+  "displayLabel": "Lumen.ScreenProbeGather.ClearUnusedIntegrateTileData · instance 0004 · frame 292 · passes 797",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 797,
+    "last": 797
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 71040,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 17760,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 17760
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.ClearUnusedIntegrateTileData",
+    "UniqueResourceName": "000400000228bbcb0a28",
+    "ByteSize": 71040,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 17760,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02264",
+      "role": "resource",
+      "originalPath": "Resources/000400000228bbcb0a28.v000400000228bbcb0d20.bin",
+      "bytes": 71040,
+      "sha256": "eebabc1721fd54d7c3d916da1269cabe5c5ca656483d62faf625406f7d45e257",
+      "version": "000400000228bbcb0d20",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1290",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "eebabc1721fd54d7c3d916da1269cabe5c5ca656483d62faf625406f7d45e257",
+          "offset": 0,
+          "length": 71040
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228bbcb0a28",
+        "name": "Lumen.ScreenProbeGather.ClearUnusedIntegrateTileData",
+        "byteSize": 71040
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228bbcb0d20",
+      "producerPassId": "pass-0798",
+      "producerPassName": "TileClassificationBuildLists",
+      "payloadIds": [
+        "payload-02264"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0798",
+        "name": "TileClassificationBuildLists",
+        "displayLabel": "TileClassificationBuildLists · Integrate · frame 292 · pass 797",
+        "record": "records/pass/pass-0798.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0799",
+        "name": "ScreenProbeIntegrateClearUnusedTileData",
+        "displayLabel": "ScreenProbeIntegrateClearUnusedTileData · Integrate · frame 292 · pass 798",
+        "record": "records/pass/pass-0799.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02264",
+      "file": "Resources/000400000228bbcb0a28.v000400000228bbcb0d20.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.clear-unused-integrate-tile-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.ClearUnusedIntegrateTileData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "list of integrate tiles that are not integrated this frame but still contain stale radiance and must be cleared",
+      "units": "packed uint32 (12-bit tile x, 12-bit tile y, optional 3-bit closure)",
+      "coordinateSpace": "integrate-tile grid relative to the viewport",
+      "storage": {
+        "kind": "buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "numElements": "TileDataCount_Closure0 + TileDataCount_Closure1N",
+        "capacity": "(ceil(bufferX/8)*ceil(bufferY/8)) * MaxClosurePerPixel elements; valid count = ClearUnusedIntegrateTileIndirectArgs.x",
+        "usage": "UAV | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 4,
+            "numElements": 17760,
+            "byteSize": 71040,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "pack",
+          "expression": "value = PackTileCoord12bits(Coord) | ((ClosureIndex & 0x7) << 24 when Substrate closure format)",
+          "requires": [
+            "Coord",
+            "ClosureIndex"
+          ],
+          "sourceRefs": [
+            "part2.spg.usf.integrate.pack",
+            "part2.spg.usf.clearunused.write"
+          ]
+        },
+        {
+          "name": "read",
+          "expression": "TileData = UnpackScreenProbeIntegrateTileData(ClearUnusedIntegrateTileData[GroupId]); screen rect = (Coord+1)*INTEGRATE_TILE_SIZE / View.ViewResolutionFraction",
+          "requires": [
+            "ClearUnusedIntegrateTileData"
+          ],
+          "sourceRefs": [
+            "part2.spg.usf.clearunused.read"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Capacity excludes the per-mode factor of the IntegrateTileData buffer: ClearUnusedIntegrateTileData has (Closure0 + Closure1N) elements while IntegrateTileData has 3x that (one list per classification mode)."
+      ],
+      "producerSources": [
+        "part2.spg.cpp.clearunused.tiles",
+        "part2.spg.usf.clearunused.write",
+        "part2.spg.usf.integrate.pack"
+      ],
+      "consumerSources": [
+        "part2.spg.usf.clearunused.read",
+        "part2.spg.usf.integrate.unpack"
+      ],
+      "gaps": [
+        "Only [0, ClearUnusedIntegrateTileIndirectArgs.x) is written; the tail is uninitialized.",
+        "The list is produced by the tile-classification pass and only exists when tile classification is enabled."
+      ],
+      "fields": [
+        {
+          "name": "TileX",
+          "type": "uint12",
+          "decode": "value & 0xFFF",
+          "units": "tile index",
+          "sourceRefs": [
+            "part2.spg.usf.clearunused.write",
+            "part2.spg.usf.integrate.pack"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 0,
+          "bitWidth": 12
+        },
+        {
+          "name": "TileY",
+          "type": "uint12",
+          "decode": "(value >> 12) & 0xFFF",
+          "units": "tile index",
+          "sourceRefs": [
+            "part2.spg.usf.clearunused.write"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 12,
+          "bitWidth": 12
+        },
+        {
+          "name": "ClosureIndex",
+          "type": "uint3",
+          "decode": "(value >> 24) & 0x7 when SUBSTRATE_GBUFFER_FORMAT==1",
+          "units": "closure index",
+          "sourceRefs": [
+            "part2.spg.usf.integrate.unpack"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 24,
+          "bitWidth": 3
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "TileX",
+          "TileY",
+          "ClosureIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0800",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.ScreenProbeGather.ClearUnusedIntegrateTileData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1290"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0591",
+  "nativeRecordId": "native-016110",
+  "name": "GaussianBlur.BloomX 40x23 (PS, Static)",
+  "displayLabel": "GaussianBlur.BloomX 40x23 (PS, Static) · Bloom · frame 292 · pass 590",
+  "frameNumber": 292,
+  "graphPrefix": "Bloom",
+  "viewState": null,
+  "pointer": "000300000228d59daeb0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228d59da080",
+  "parametersMetadataPointer": "000300007ffb892d7c40",
+  "parentScopes": [
+    "Bloom",
+    "PostProcessing",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "GaussianBlur.BloomX 40x23 (PS, Static)",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228d59da080",
+    "ParametersMetadata": "000300007ffb892d7c40",
+    "Pointer": "000300000228d59daeb0",
+    "Id": 590,
+    "ParentEventScopes": [
+      "Bloom",
+      "PostProcessing",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228d59d1258.mip0"
+    ],
+    "OutputResources": [
+      "000300000228d59d9db0.mip0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228d59d1258.mip0",
+      "resourceId": "resource-0939",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01400"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000228d59d9db0.mip0",
+      "resourceId": "resource-0944",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01405"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06458",
+    "metadataPointer": "000300007ffb892d7c40",
+    "bytes": 3632,
+    "sha256": "eb67865f499734393604c8f340b9d63b2a0dda9b0a6ba7cd0f0746c715c621ab",
+    "chunks": [
+      {
+        "sha": "eb67865f499734393604c8f340b9d63b2a0dda9b0a6ba7cd0f0746c715c621ab",
+        "offset": 0,
+        "length": 3632
+      }
+    ],
+    "originalPath": "Structures/000300000228d59da080.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\PostProcess\\PostProcessWeightedSampleSum.cpp",
+    "FileLine": 266,
+    "Size": 3632,
+    "Members": [
+      {
+        "Name": "Filter",
+        "ShaderType": "FFilterParameters",
+        "FileLine": 267,
+        "Offset": 0,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb892d7b20"
+      },
+      {
+        "Name": "SvPositionToTextureUV",
+        "ShaderType": "",
+        "FileLine": 268,
+        "Offset": 3344,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 4,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ViewportUVToTextureUV",
+        "ShaderType": "",
+        "FileLine": 269,
+        "Offset": 3360,
+        "BaseType": "UBMT_FLOAT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 4,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RenderTargets",
+        "ShaderType": "",
+        "FileLine": 270,
+        "Offset": 3376,
+        "BaseType": "UBMT_RENDER_TARGET_BINDING_SLOTS",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228d59daeb0",
+      "Parameters": "000300000228d59da080",
+      "Bindings": {
+        "Filter.Filter.Texture": {
+          "BaseType": "UBMT_RDG_TEXTURE_SRV",
+          "Offset": 112,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228d59d3820",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Filter.Filter.Sampler": {
+          "BaseType": "UBMT_SAMPLER",
+          "Offset": 120,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022615ec35c0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Filter.Additive.Texture": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 240,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "Filter.Additive.Sampler": {
+          "BaseType": "UBMT_SAMPLER",
+          "Offset": 248,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

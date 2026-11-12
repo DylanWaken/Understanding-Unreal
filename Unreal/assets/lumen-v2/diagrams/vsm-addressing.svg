@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Virtual Shadow Map: from a receiver to visibility</title><desc id="desc">A receiver is projected into a light clipmap or mip. Its virtual page maps to a resident physical page containing depth. SMRT approximates finite-source visibility. Page allocation and invalidation are separate from BRDF evaluation.</desc>
+<defs><marker id="arrow-0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker><marker id="arrow-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker><marker id="arrow-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker><marker id="arrow-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker><marker id="arrow-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker></defs>
+<rect width="1200" height="820" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="36" y="48" font-size="30" fill="#22312d" font-weight="600" text-anchor="start">Virtual Shadow Map: from a receiver to visibility</text>
+<rect x="35" y="115" width="330" height="130" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M47 116H353" stroke="#286788" stroke-width="4"/>
+<text x="53" y="150" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Receiver and light</text>
+<text x="53" y="184" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">World position → light projection</text>
+<text x="53" y="212" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Select clipmap / mip</text>
+<rect x="435" y="115" width="330" height="130" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M447 116H753" stroke="#286788" stroke-width="4"/>
+<text x="453" y="150" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Virtual address</text>
+<text x="453" y="184" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Map ID + virtual page coordinate</text>
+<text x="453" y="212" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Local texel within 128 × 128 page</text>
+<rect x="835" y="115" width="330" height="130" rx="8" fill="#fffdf8" stroke="#93661e" stroke-width="1.5"/>
+<path d="M847 116H1153" stroke="#93661e" stroke-width="4"/>
+<text x="853" y="150" font-size="23" fill="#93661e" font-weight="600" text-anchor="start">Page-table lookup</text>
+<text x="853" y="184" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Resident physical address + flags</text>
+<text x="853" y="212" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Validity and cached-state metadata</text>
+<path d="M370 180L425 180" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<path d="M770 180L825 180" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<rect x="835" y="350" width="330" height="145" rx="8" fill="#fffdf8" stroke="#93661e" stroke-width="1.5"/>
+<path d="M847 351H1153" stroke="#93661e" stroke-width="4"/>
+<text x="853" y="385" font-size="23" fill="#93661e" font-weight="600" text-anchor="start">Physical depth</text>
+<text x="853" y="419" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Address physical page and texel</text>
+<text x="853" y="447" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Read light-space depth</text>
+<text x="853" y="475" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Bias / slope / validity conventions</text>
+<rect x="435" y="350" width="330" height="145" rx="8" fill="#fffdf8" stroke="#aa5343" stroke-width="1.5"/>
+<path d="M447 351H753" stroke="#aa5343" stroke-width="4"/>
+<text x="453" y="385" font-size="23" fill="#aa5343" font-weight="600" text-anchor="start">SMRT evaluation</text>
+<text x="453" y="419" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Samples a finite source footprint</text>
+<text x="453" y="447" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Marches approximate shadow rays</text>
+<text x="453" y="475" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Combines visible-ray estimates</text>
+<rect x="35" y="350" width="330" height="145" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M47 351H353" stroke="#286c56" stroke-width="4"/>
+<text x="53" y="385" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Direct-light contribution</text>
+<text x="53" y="419" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Visibility × light × material response</text>
+<text x="53" y="447" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">VSM changes the connection term</text>
+<text x="53" y="475" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">It does not replace the BRDF</text>
+<path d="M1000 250L1000 340" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
+<path d="M825 420L775 420" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
+<path d="M425 420L375 420" fill="none" stroke="#aa5343" stroke-width="2" marker-end="url(#arrow-3)"/>
+<rect x="35" y="565" width="1130" height="150" rx="8" fill="#edf3ee" stroke="#c4cec7" stroke-width="1.5"/>
+<text x="58" y="605" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Before projection: maintain the virtual representation</text>
+<text x="58" y="648" font-size="20" fill="#22312d" font-weight="400" text-anchor="start">Mark required pages → allocate or reuse → invalidate changed geometry → rasterize depth → build hierarchy</text>
+<text x="58" y="687" font-size="18" fill="#586760" font-weight="400" text-anchor="start">A missing or invalid page is state to handle; it is not automatically a physically unoccluded light connection.</text>
+<text x="36" y="796" font-size="16" fill="#586760" font-weight="400" text-anchor="start">Original explanatory diagram; positions and colors are schematic.</text>
+</g></svg>

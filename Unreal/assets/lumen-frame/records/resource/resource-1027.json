@@ -1,0 +1,300 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1027",
+  "nativeRecordId": "native-018037",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.CacheManager.ViewState",
+  "uniqueName": "000400000228bf734a88",
+  "displayLabel": "Shadow.Virtual.CacheManager.ViewState · instance 0004 · frame 292 · passes 645",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 645,
+    "last": 645
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4096,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1024,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1024
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.CacheManager.ViewState",
+    "UniqueResourceName": "000400000228bf734a88",
+    "ByteSize": 4096,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1024,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02309",
+      "role": "resource",
+      "originalPath": "Resources/000400000228bf734a88.v000400000228e99d0188.bin",
+      "bytes": 4096,
+      "sha256": "9e58ce00ed080de31997b3b44851c6b694daf7194e625041c5434dcaf398a3e2",
+      "version": "000400000228e99d0188",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1027",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "9e58ce00ed080de31997b3b44851c6b694daf7194e625041c5434dcaf398a3e2",
+          "offset": 0,
+          "length": 4096
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228bf734a88",
+        "name": "Shadow.Virtual.CacheManager.ViewState",
+        "byteSize": 4096
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228e99d0188",
+      "producerPassId": "pass-0646",
+      "producerPassName": "VSMUpdateViewInstanceState",
+      "payloadIds": [
+        "payload-02309"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0646",
+        "name": "VSMUpdateViewInstanceState",
+        "displayLabel": "VSMUpdateViewInstanceState · frame 292 · pass 645",
+        "record": "records/pass/pass-0646.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02309",
+      "file": "Resources/000400000228bf734a88.v000400000228e99d0188.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-cache-manager-view-state",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.CacheManager\\.ViewState$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per persistent view: 2 bit-plane words per 32 instances - cached-as-dynamic mask followed by tracked mask (StateWordStride words each)",
+      "units": "bit per instance",
+      "coordinateSpace": "GPUScene instance index; per persistent-view buffer",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "initial capacity 1024 words; resized to 2*ceil(NumInstances/32) (CacheManager.cpp:2134-2142)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 1024,
+          "byteSize": 4096
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "initial capacity 1024 words; resized to 2*ceil(NumInstances/32) (CacheManager.cpp:2134-2142)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "stateWordIndexing",
+          "expression": "WordIndex = InstanceId>>5; state bit = (word[WordIndex]>>(InstanceId&31))&1; tracked bit uses word[WordIndex+StateWordStride]",
+          "requires": [
+            "CacheManager.ViewState"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.invstate",
+            "part3.visibility.vsm.s.invstate2"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Constants: FViewData::NumBitsPerInstance=2, stored as two separate 1-bit-per-instance planes (VirtualShadowMapCacheManager.h:550-556).",
+        "Captured 4096 B / 1024 words is the initial TPersistentStructuredBuffer capacity, not the instance-count-derived size."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.invstate",
+        "part3.visibility.vsm.s.invstate2"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.cm.viewstate"
+      ],
+      "gaps": [
+        "The capture stale word-count 1024 is a pool/capacity value; treat StateWordStride as the authoritative stride."
+      ],
+      "fields": [
+        {
+          "name": "CachedAsDynamicMask",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 512,
+          "decode": "word[WordIndex] bit (InstanceId&31): 1 = instance was deforming last update",
+          "units": "bit",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.invstate"
+          ]
+        },
+        {
+          "name": "TrackedMask",
+          "type": "uint",
+          "byteOffset": 2048,
+          "count": 512,
+          "decode": "word[WordIndex+StateWordStride]: 1 = instance has a valid previous-state entry",
+          "units": "bit",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.invstate2"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "CachedAsDynamicMask",
+          "TrackedMask"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0650",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.CacheManager.ViewState has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1027"
+    }
+  ]
+}

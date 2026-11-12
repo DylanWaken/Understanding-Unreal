@@ -1,0 +1,128 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0667",
+  "nativeRecordId": "native-016186",
+  "name": "ClearIndirectArgInstanceCount",
+  "displayLabel": "ClearIndirectArgInstanceCount · BuildRenderingCommands(Culling=Off) · frame 292 · pass 666",
+  "frameNumber": 292,
+  "graphPrefix": "BuildRenderingCommands(Culling=Off)",
+  "viewState": null,
+  "pointer": "00040000022937860a78",
+  "parametersName": "FParameters",
+  "parametersPointer": "00040000022937860a20",
+  "parametersMetadataPointer": "000400007ffb89242b30",
+  "parentScopes": [
+    "BuildRenderingCommands(Culling=Off)",
+    "LumenSceneUpdate: 37 card captures 0.030M texels",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearIndirectArgInstanceCount",
+    "ParametersName": "FParameters",
+    "Parameters": "00040000022937860a20",
+    "ParametersMetadata": "000400007ffb89242b30",
+    "Pointer": "00040000022937860a78",
+    "Id": 666,
+    "ParentEventScopes": [
+      "BuildRenderingCommands(Culling=Off)",
+      "LumenSceneUpdate: 37 card captures 0.030M texels",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000400000229378605e0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000400000229378605e0",
+      "resourceId": "resource-1104",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02698",
+        "payload-02699"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-07006",
+    "metadataPointer": "000400007ffb89242b30",
+    "bytes": 16,
+    "sha256": "1b49f840879e630913eaf88027fa1db350c82948c89d615153ae7b8222d6f867",
+    "chunks": [
+      {
+        "sha": "1b49f840879e630913eaf88027fa1db350c82948c89d615153ae7b8222d6f867",
+        "offset": 0,
+        "length": 16
+      }
+    ],
+    "originalPath": "Structures/00040000022937860a20.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\InstanceCulling\\InstanceCullingContext.cpp",
+    "FileLine": 1386,
+    "Size": 16,
+    "Members": [
+      {
+        "Name": "DrawIndirectArgsBufferOut",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 1387,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "NumIndirectArgs",
+        "ShaderType": "",
+        "FileLine": 1388,
+        "Offset": 8,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "00040000022937860a78",
+      "Parameters": "00040000022937860a20",
+      "Bindings": {
+        "DrawIndirectArgsBufferOut": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00040000022937860a30",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

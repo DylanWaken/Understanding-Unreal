@@ -1,0 +1,367 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1275",
+  "nativeRecordId": "native-018287",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.CompactTracingIndirectArgs",
+  "uniqueName": "0004000002290e762760",
+  "displayLabel": "Lumen.ScreenProbeGather.CompactTracingIndirectArgs · instance 0004 · frame 292 · passes 786",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 786,
+    "last": 786
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 48,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 4,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 4
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.CompactTracingIndirectArgs",
+    "UniqueResourceName": "0004000002290e762760",
+    "ByteSize": 48,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 4,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02635",
+      "role": "resource",
+      "originalPath": "Resources/0004000002290e762760.v0004000002290e762a88.bin",
+      "bytes": 48,
+      "sha256": "16b744d97a675fe648ee9425a7ac354b8ac18f9ea6c453b461c358f6eac5fe29",
+      "version": "0004000002290e762a88",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1275",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "16b744d97a675fe648ee9425a7ac354b8ac18f9ea6c453b461c358f6eac5fe29",
+          "offset": 0,
+          "length": 48
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0004000002290e762760",
+        "name": "Lumen.ScreenProbeGather.CompactTracingIndirectArgs",
+        "byteSize": 48
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "0004000002290e762a88",
+      "producerPassId": "pass-0787",
+      "producerPassName": "SetupCompactedTracesIndirectArgs",
+      "payloadIds": [
+        "payload-02635"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0787",
+        "name": "SetupCompactedTracesIndirectArgs",
+        "displayLabel": "SetupCompactedTracesIndirectArgs · LumenScreenProbeGather · frame 292 · pass 786",
+        "record": "records/pass/pass-0787.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0788",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 787",
+        "record": "records/pass/pass-0788.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02635",
+      "file": "Resources/0004000002290e762760.v0004000002290e762a88.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.compact-tracing-indirect-args",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.CompactTracingIndirectArgs$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "four dispatch records for the screen-probe compacted-tracing post passes (64/32-thread variants for the main and light-sample lists)",
+      "units": "thread-group counts (x,y,z)",
+      "coordinateSpace": "flat compacted trace index / group size",
+      "storage": {
+        "kind": "buffer",
+        "format": "FRHIDispatchIndirectParameters (3 x uint32)",
+        "strideBytes": 12,
+        "numElements": 4,
+        "capacity": "4 records = ECompactedTracingIndirectArgs::MAX",
+        "usage": "IndirectArgs(UAV|DrawIndirect) | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 12,
+            "numElements": 4,
+            "byteSize": 48,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "DrawIndirect",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters (3 x uint32)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [
+        {
+          "name": "record0",
+          "expression": "x=ceil(n0/64); y=1; z=1",
+          "requires": [
+            "CompactedTraceTexelAllocator"
+          ],
+          "sourceRefs": [
+            "part2.spgt.args0"
+          ]
+        },
+        {
+          "name": "record1",
+          "expression": "x=ceil(n0/32); y=1; z=1",
+          "requires": [
+            "CompactedTraceTexelAllocator"
+          ],
+          "sourceRefs": [
+            "part2.spgt.args1"
+          ]
+        },
+        {
+          "name": "record2",
+          "expression": "x=ceil(n1/64); y=1; z=1 where n1=CompactedTraceTexelAllocator[1]",
+          "requires": [
+            "CompactedTraceTexelAllocator"
+          ],
+          "sourceRefs": [
+            "part2.spgt.args2"
+          ]
+        },
+        {
+          "name": "record3",
+          "expression": "x=ceil(n1/32); y=1; z=1",
+          "requires": [
+            "CompactedTraceTexelAllocator"
+          ],
+          "sourceRefs": [
+            "part2.spgt.args3"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Records 2/3 use allocator element [1] (the 'LightSample' compaction list), while the C++ allocation is one uint (LumenScreenProbeTracing.cpp:614)."
+      ],
+      "producerSources": [
+        "part2.spgt.cpp.args"
+      ],
+      "consumerSources": [
+        "part2.spg.dispatch.compact"
+      ],
+      "gaps": [
+        "Records 2 and 3 are computed from CompactedTraceTexelAllocator[1], but the allocator buffer is created with a single element and no shader in the scoped sources writes index 1. Their group counts therefore read out of the declared buffer (undefined/zero in practice) and cannot be source-decoded. Records 0/1 are exact."
+      ],
+      "fields": [
+        {
+          "name": "Record0",
+          "type": "uint32",
+          "decode": "x = ceil(CompactedTraceTexelAllocator[0]/64); y=1; z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spgt.args0",
+            "part2.spgt.args1"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record1",
+          "type": "uint32",
+          "decode": "x = ceil(CompactedTraceTexelAllocator[0]/32); y=1; z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spgt.args1"
+          ],
+          "byteOffset": 12,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record2",
+          "type": "uint32",
+          "decode": "x = ceil(CompactedTraceTexelAllocator[1]/64); y=1; z=1 (LightSample list)",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spgt.args2"
+          ],
+          "byteOffset": 24,
+          "bitWidth": 32
+        },
+        {
+          "name": "Record3",
+          "type": "uint32",
+          "decode": "x = ceil(CompactedTraceTexelAllocator[1]/32); y=1; z=1 (LightSample list)",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spgt.args3"
+          ],
+          "byteOffset": 36,
+          "bitWidth": 32
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "Record0",
+          "Record1",
+          "Record2",
+          "Record3"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0796",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.ScreenProbeGather.CompactTracingIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1275"
+    }
+  ]
+}

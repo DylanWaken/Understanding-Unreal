@@ -1,0 +1,317 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1135",
+  "nativeRecordId": "native-018146",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs",
+  "uniqueName": "000400000228b8302660",
+  "displayLabel": "Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs · instance 0004 · frame 292 · passes 717",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 717,
+    "last": 717
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 16,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs",
+    "UniqueResourceName": "000400000228b8302660",
+    "ByteSize": 16,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02207",
+      "role": "resource",
+      "originalPath": "Resources/000400000228b8302660.v000400000228b830a050.bin",
+      "bytes": 16,
+      "sha256": "698172b6a599948c3bc62716721056a62b47eca389531fec62a6bea168eb52f8",
+      "version": "000400000228b830a050",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1135",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "698172b6a599948c3bc62716721056a62b47eca389531fec62a6bea168eb52f8",
+          "offset": 0,
+          "length": 16
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228b8302660",
+        "name": "Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs",
+        "byteSize": 16
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228b830a050",
+      "producerPassId": "pass-0718",
+      "producerPassName": "SetCardPageIndexIndirectArgs",
+      "payloadIds": [
+        "payload-02207"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0718",
+        "name": "SetCardPageIndexIndirectArgs",
+        "displayLabel": "SetCardPageIndexIndirectArgs · BuildCardUpdateContext · frame 292 · pass 717",
+        "record": "records/pass/pass-0718.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02207",
+      "file": "Resources/000400000228b8302660.v000400000228b830a050.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.draw-card-page-indices",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.DirectLighting\\.DrawCardPageIndicesIndirectArgs|Lumen\\.IndirectLighting\\.DrawCardPageIndicesIndirectArgs)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "single draw-indirect record used to rasterize one quad per selected card page (resample/clear pass instances)",
+      "units": "vertices, instances",
+      "coordinateSpace": "draw argument space; separate direct/indirect contexts",
+      "storage": {
+        "kind": "indirect-args-buffer",
+        "format": "FRHIDrawIndirectParameters (4 x uint32, 16 B)",
+        "strideBytes": 16
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDrawIndirectParameters (4 x uint32, 16 B)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "draw",
+          "expression": "VertexCount = 3|6; Instances = NumPageIndices; draw the rect-rasterizer with the page-index buffer as instance data",
+          "requires": [
+            "Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs",
+            "Lumen.IndirectLighting.DrawCardPageIndicesIndirectArgs"
+          ],
+          "sourceRefs": [
+            "part1.cards_pi_draw_x",
+            "part1.cards_pi_draw_n",
+            "part1.cards_pi_vertex"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "one 16-B record per context",
+        "StartVertex/StartInstance are always 0 in source"
+      ],
+      "producerSources": [
+        "part1.cards_pi_draw_x",
+        "part1.cards_pi_draw_n",
+        "part1.cards_pi_draw_alloc",
+        "part1.cards_pi_ind_draw",
+        "part1.cards_pi_draw_alloc_i"
+      ],
+      "consumerSources": [
+        "part1.cards_pi_draw_use"
+      ],
+      "gaps": [
+        "The record is written by SetCardPageIndexIndirectArgsCS regardless of whether any page index exists; InstanceCount=0 means no draw."
+      ],
+      "fields": [
+        {
+          "name": "VertexCountPerInstance",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "3 when GRHISupportsRectTopology, else 6 (one/two triangles per rect)",
+          "units": "vertices",
+          "sourceRefs": [
+            "part1.cards_pi_draw_x",
+            "part1.cards_pi_vertex"
+          ]
+        },
+        {
+          "name": "InstanceCount",
+          "type": "uint32",
+          "byteOffset": 4,
+          "decode": "NumPageIndices = CardPageIndexAllocator[0]",
+          "units": "instances (pages)",
+          "sourceRefs": [
+            "part1.cards_pi_draw_n",
+            "part1.cards_pi_count"
+          ]
+        },
+        {
+          "name": "StartVertexLocation",
+          "type": "uint32",
+          "byteOffset": 8,
+          "decode": "0",
+          "units": "vertex index",
+          "sourceRefs": [
+            "part1.cards_pi_draw_x"
+          ]
+        },
+        {
+          "name": "StartInstanceLocation",
+          "type": "uint32",
+          "byteOffset": 12,
+          "decode": "0",
+          "units": "instance index",
+          "sourceRefs": [
+            "part1.cards_pi_draw_x"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "VertexCountPerInstance",
+          "InstanceCount",
+          "StartVertexLocation",
+          "StartInstanceLocation"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0708",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1135"
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0409",
+  "nativeRecordId": "native-017415",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.Reflections.ReflectionClearTileData",
+  "uniqueName": "000100000228bbbea790",
+  "displayLabel": "Lumen.Reflections.ReflectionClearTileData · instance 0001 · frame 292 · passes 234",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 234,
+    "last": 234
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 71040,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 17760,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 17760
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.Reflections.ReflectionClearTileData",
+    "UniqueResourceName": "000100000228bbbea790",
+    "ByteSize": 71040,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 17760,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00257",
+      "role": "resource",
+      "originalPath": "Resources/000100000228bbbea790.v000100000225fbc5b2a0.bin",
+      "bytes": 71040,
+      "sha256": "1d928694b5c64fb0d336471f495ed2b769a4178d7d135cc4f85761ba4534b3b3",
+      "version": "000100000225fbc5b2a0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0409",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "1d928694b5c64fb0d336471f495ed2b769a4178d7d135cc4f85761ba4534b3b3",
+          "offset": 0,
+          "length": 71040
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000100000228bbbea790",
+        "name": "Lumen.Reflections.ReflectionClearTileData",
+        "byteSize": 71040
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000225fbc5b2a0",
+      "producerPassId": "pass-0235",
+      "producerPassName": "TileClassificationBuildLists",
+      "payloadIds": [
+        "payload-00257"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0235",
+        "name": "TileClassificationBuildLists",
+        "displayLabel": "TileClassificationBuildLists · LumenReflections · frame 292 · pass 234",
+        "record": "records/pass/pass-0235.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0236",
+        "name": "ClearUnusedTraceTileData",
+        "displayLabel": "ClearUnusedTraceTileData · LumenReflections · frame 292 · pass 235",
+        "record": "records/pass/pass-0236.json"
+      },
+      {
+        "id": "pass-0244",
+        "name": "ClearEmptyTiles",
+        "displayLabel": "ClearEmptyTiles · LumenReflections · frame 292 · pass 243",
+        "record": "records/pass/pass-0244.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00257",
+      "file": "Resources/000100000228bbbea790.v000100000225fbc5b2a0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.refl.reflection-clear-tile-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.Reflections\\.ReflectionClearTileData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "list of 8x8 resolve tiles whose reflection output must be cleared (packed tile coordinate, optional closure index)",
+      "units": "packed uint32 (12-bit x, 12-bit y, optional 3-bit closure)",
+      "coordinateSpace": "resolve-tile grid relative to View.ViewRectMin",
+      "storage": {
+        "kind": "buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "numElements": "ResolveTileBufferDimensions.X*Y*TracedClosureCount",
+        "capacity": "NumResolveTiles elements = ceil(extent/8).X*Y*TracedClosureCount; valid count = ClearTileIndirectArgs.x",
+        "usage": "UAV | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 4,
+            "numElements": 17760,
+            "byteSize": 71040,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "pack",
+          "expression": "value = PackTileCoord12bits(Coord) | ((ClosureIndex & 0x7) << 24 when SUBSTRATE_GBUFFER_FORMAT==1)",
+          "requires": [
+            "Coord",
+            "ClosureIndex"
+          ],
+          "sourceRefs": [
+            "part2.refl.tile.pack",
+            "part2.pack.tile12"
+          ]
+        },
+        {
+          "name": "screenCoord",
+          "expression": "ScreenCoord = TileData.Coord * REFLECTION_THREADGROUP_SIZE_2D + ThreadIndex + View.ViewRectMin.xy",
+          "requires": [
+            "View.ViewRectMin"
+          ],
+          "sourceRefs": [
+            "part2.refl.tile.clearcoord"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "PackTileCoord12bits = (x & 0xFFF) | ((y & 0xFFF) << 12) (PackUnpack.ush:402,409).",
+        "The list is appended with wave prefix sums, so entries are in classification order, not sorted."
+      ],
+      "producerSources": [
+        "part2.refl.cpp.cleartile.alloc",
+        "part2.refl.cpp.numtiles",
+        "part2.refl.tile.type",
+        "part2.refl.tile.pack"
+      ],
+      "consumerSources": [
+        "part2.refl.tile.clearcoord"
+      ],
+      "gaps": [
+        "Only [0, ClearTileIndirectArgs.x) is written; the rest of the NumResolveTiles capacity is uninitialized.",
+        "When an external SingleLayerWater tiled-reflection list is used, this buffer is replaced by the external SRV (LumenReflections.cpp:1343)."
+      ],
+      "fields": [
+        {
+          "name": "TileX",
+          "type": "uint12",
+          "decode": "value & 0xFFF",
+          "units": "tile index",
+          "sourceRefs": [
+            "part2.refl.tile.pack",
+            "part2.pack.tile12"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 0,
+          "bitWidth": 12
+        },
+        {
+          "name": "TileY",
+          "type": "uint12",
+          "decode": "(value >> 12) & 0xFFF",
+          "units": "tile index",
+          "sourceRefs": [
+            "part2.refl.tile.unpack"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 12,
+          "bitWidth": 12
+        },
+        {
+          "name": "ClosureIndex",
+          "type": "uint3",
+          "decode": "(value >> 24) & 0x7; only when SUBSTRATE_GBUFFER_FORMAT==1",
+          "units": "closure index",
+          "sourceRefs": [
+            "part2.refl.tile.unpack"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 24,
+          "bitWidth": 3
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "TileX",
+          "TileY",
+          "ClosureIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0271",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.Reflections.ReflectionClearTileData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0409"
+    }
+  ]
+}

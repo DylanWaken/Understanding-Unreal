@@ -1,0 +1,222 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0581",
+  "nativeRecordId": "native-016100",
+  "name": "Histogram Convert",
+  "displayLabel": "Histogram Convert · Histogram · frame 292 · pass 580",
+  "frameNumber": 292,
+  "graphPrefix": "Histogram",
+  "viewState": null,
+  "pointer": "00030000022651f498e0",
+  "parametersName": "FParameters",
+  "parametersPointer": "00030000022651f497b0",
+  "parametersMetadataPointer": "000300007ffb892c45a0",
+  "parentScopes": [
+    "Histogram",
+    "PostProcessing",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "Histogram Convert",
+    "ParametersName": "FParameters",
+    "Parameters": "00030000022651f497b0",
+    "ParametersMetadata": "000300007ffb892c45a0",
+    "Pointer": "00030000022651f498e0",
+    "Id": 580,
+    "ParentEventScopes": [
+      "Histogram",
+      "PostProcessing",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000225e8aa4f80",
+      "00030000022651f46470.mip0"
+    ],
+    "OutputResources": [
+      "00030000022651f494e0.mip0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000225e8aa4f80",
+      "resourceId": "resource-0642",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00912"
+      ]
+    },
+    {
+      "uniqueName": "00030000022651f46470.mip0",
+      "resourceId": "resource-0934",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01095",
+        "payload-01096"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "00030000022651f494e0.mip0",
+      "resourceId": "resource-0935",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01097"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06311",
+    "metadataPointer": "000300007ffb892c45a0",
+    "bytes": 144,
+    "sha256": "8a5736f8d74cfe377908a303b1f4a9d300bce720656a465e4a95db7af1f787ec",
+    "chunks": [
+      {
+        "sha": "8a5736f8d74cfe377908a303b1f4a9d300bce720656a465e4a95db7af1f787ec",
+        "offset": 0,
+        "length": 144
+      }
+    ],
+    "originalPath": "Structures/00030000022651f497b0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\PostProcess\\PostProcessHistogram.cpp",
+    "FileLine": 211,
+    "Size": 144,
+    "Members": [
+      {
+        "Name": "Input",
+        "ShaderType": "FScreenPassTextureViewportParameters",
+        "FileLine": 212,
+        "Offset": 0,
+        "BaseType": "UBMT_NESTED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb891e3f00"
+      },
+      {
+        "Name": "EyeAdaptationBuffer",
+        "ShaderType": "StructuredBuffer<float4>",
+        "FileLine": 213,
+        "Offset": 112,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "HistogramScatter64Texture",
+        "ShaderType": "Texture2D",
+        "FileLine": 214,
+        "Offset": 120,
+        "BaseType": "UBMT_RDG_TEXTURE",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "HistogramScatter32Texture",
+        "ShaderType": "Texture2D",
+        "FileLine": 215,
+        "Offset": 128,
+        "BaseType": "UBMT_RDG_TEXTURE",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "HistogramOutput",
+        "ShaderType": "RWTexture2D<float4>",
+        "FileLine": 216,
+        "Offset": 136,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "00030000022651f498e0",
+      "Parameters": "00030000022651f497b0",
+      "Bindings": {
+        "EyeAdaptationBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 112,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022651f49840",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "HistogramScatter64Texture": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 120,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "HistogramScatter32Texture": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 128,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022651f46470",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "HistogramOutput": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 136,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00030000022651f49890",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

@@ -1,0 +1,322 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0060",
+  "nativeRecordId": "native-017064",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.GPUInvalidationQueue",
+  "uniqueName": "0001000002288072fea8",
+  "displayLabel": "Shadow.Virtual.GPUInvalidationQueue · instance 0001 · frame 292 · passes 25",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 25,
+    "last": 25
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 64,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 16,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 16
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.GPUInvalidationQueue",
+    "UniqueResourceName": "0001000002288072fea8",
+    "ByteSize": 64,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 16,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00203",
+      "role": "resource",
+      "originalPath": "Resources/0001000002288072fea8.v000100000225fb9f0188.bin",
+      "bytes": 64,
+      "sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+      "version": "000100000225fb9f0188",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0060",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+          "offset": 0,
+          "length": 64
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0001000002288072fea8",
+        "name": "Shadow.Virtual.GPUInvalidationQueue",
+        "byteSize": 64
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000225fb9f0188",
+      "producerPassId": "pass-0026",
+      "producerPassName": "VSMUpdateViewInstanceState",
+      "payloadIds": [
+        "payload-00203"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0026",
+        "name": "VSMUpdateViewInstanceState",
+        "displayLabel": "VSMUpdateViewInstanceState · frame 292 · pass 25",
+        "record": "records/pass/pass-0026.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0027",
+        "name": "ProcessInvalidationQueueGPU",
+        "displayLabel": "ProcessInvalidationQueueGPU · Shadow.Virtual.ProcessInvalidationsGPU · frame 292 · pass 26",
+        "record": "records/pass/pass-0027.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00203",
+      "file": "Resources/0001000002288072fea8.v000100000225fb9f0188.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-gpu-invalidation-queue",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.GPUInvalidationQueue$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one packed uint32 per queued (instance, view) invalidation; capacity NumInstances*NumViews",
+      "units": "bitfield: instance id (24b), primary-view id (7b), state-change flag (1b)",
+      "coordinateSpace": "indexed by atomic queue slot from GPUInvalidateInstancesArgs.w",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "worst-case allocation NumInstances*NumViews (transient)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 16,
+          "byteSize": 64
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "worst-case allocation NumInstances*NumViews (transient)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "unpackItem",
+          "expression": "InstanceId=P>>8; View=(P>>1)&0x7F; bStateChange=(P&1)!=0",
+          "requires": [
+            "GPUInvalidationQueue"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.invunpack"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Packed with (InstanceId<<8) | (ViewId<<1) | bStateChange; 8-bit flags/24-bit VSM-id split noted in VirtualShadowMapDefinitions.h:69-72 for invalidation payloads, but this queue uses its own 1+7+24 layout.",
+        "Producer appends only when a tracked instance transitions to deforming (InvalidationMask = StateChangeMask & IsDeformingMask)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.invpack",
+        "part3.visibility.vsm.s.invqueued"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.invconsume",
+        "part3.visibility.vsm.s.invunpack"
+      ],
+      "gaps": [
+        "Capacity is a worst-case NumInstances*NumViews; the valid count is GPUInvalidateInstancesArgs.w."
+      ],
+      "fields": [
+        {
+          "name": "bStateChange",
+          "type": "uint",
+          "bitOffset": 0,
+          "bitWidth": 1,
+          "decode": "Packed & 1u",
+          "units": "bit",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.invpack",
+            "part3.visibility.vsm.s.invunpack"
+          ]
+        },
+        {
+          "name": "SceneRendererPrimaryViewId",
+          "type": "uint",
+          "bitOffset": 1,
+          "bitWidth": 7,
+          "decode": "(Packed >> 1u) & 0x7Fu",
+          "units": "view index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.invpack",
+            "part3.visibility.vsm.s.invunpack"
+          ]
+        },
+        {
+          "name": "InstanceId",
+          "type": "uint",
+          "bitOffset": 8,
+          "bitWidth": 24,
+          "decode": "Packed >> 8u (check InstanceId < 1<<24)",
+          "units": "instance index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.invpack",
+            "part3.visibility.vsm.s.invunpack"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "bStateChange",
+          "SceneRendererPrimaryViewId",
+          "InstanceId"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0061",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.GPUInvalidationQueue has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0060"
+    }
+  ]
+}

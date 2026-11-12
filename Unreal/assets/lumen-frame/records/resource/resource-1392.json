@@ -1,0 +1,459 @@
+{
+  "format": "PF_R16F",
+  "version": 1,
+  "id": "resource-1392",
+  "nativeRecordId": "native-018404",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.Reflections.ResolvedSpecularIndirectDepth",
+  "uniqueName": "00040000022925034c40",
+  "displayLabel": "Lumen.Reflections.ResolvedSpecularIndirectDepth · instance 0004 · frame 292 · passes 864",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 864,
+    "last": 864
+  },
+  "allocation": [
+    1280,
+    888
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "array",
+    "classification": null,
+    "allocation": [
+      1280,
+      888
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 2273280,
+  "extent": [
+    1280,
+    888,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "FLOAT16",
+    "bytesPerTexel": 2,
+    "formatNormalized": "R16F",
+    "dumpFormat": "PF_R16F",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.Reflections.ResolvedSpecularIndirectDepth",
+    "UniqueResourceName": "00040000022925034c40",
+    "ByteSize": 2273280,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2DArray",
+    "Format": "PF_R16F",
+    "ExtentX": 1280,
+    "ExtentY": 888,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02645",
+      "role": "resource",
+      "originalPath": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+      "bytes": 2273280,
+      "sha256": "d03c3f9cc31991d98bc97f03c0674c4a38b91172f94de8470ca27c76783c5cb1",
+      "version": "00040000022925037bb0",
+      "mip": 0,
+      "slice": 0,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1392",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "e0db2c598d79b7c35b89e03d306802a4e5b97ec78c58939d18d2f532fe918fcc",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "b49668411776a2b417f70d0a4671e59a6c712a8af0fc528a8b45dc0ff44c5b72",
+          "offset": 1048576,
+          "length": 1048576
+        },
+        {
+          "sha": "6994c4e611f3a62048b780634ad6a71947b2145c102c1bc2ed9cf028bec04285",
+          "offset": 2097152,
+          "length": 176128
+        }
+      ],
+      "nativeKind": "Texture2DArray",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "00040000022925034c40",
+        "Name": "Lumen.Reflections.ResolvedSpecularIndirectDepth",
+        "File": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+        "Dimension": "Texture2DArray",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 1,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 2273280,
+        "RowPitchBytes": 2560,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16F",
+        "ViewFormat": "PF_R16F",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16F",
+        "StoredFormat": "PF_R16F",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "ComputeThenCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2273280,
+        "StagingByteSize": 2273280
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 2273280,
+          "ActualBytes": 2273280,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2273280,
+        "actualBytes": 2273280,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "00040000022925034c40",
+        "name": "Lumen.Reflections.ResolvedSpecularIndirectDepth",
+        "diagnosticResource": "00040000022925034c40"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2DArray",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 1,
+        "cubeFace": null,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 2273280,
+        "rowPitchBytes": 2560,
+        "storageFormat": "PF_R16F",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "FLOAT16",
+        "bytesPerTexel": 2,
+        "formatNormalized": "R16F",
+        "dumpFormat": "PF_R16F",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R16F",
+        "viewFormat": "PF_R16F",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "00040000022925037bb0",
+      "producerPassId": "pass-0865",
+      "producerPassName": "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:0",
+      "payloadIds": [
+        "payload-02645"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0865",
+        "name": "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:0",
+        "displayLabel": "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:0 · LumenReflections · frame 292 · pass 864",
+        "record": "records/pass/pass-0865.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0866",
+        "name": "TemporalAccumulation",
+        "displayLabel": "TemporalAccumulation · LumenReflections · frame 292 · pass 865",
+        "record": "records/pass/pass-0866.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-02645",
+      "file": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+      "layout": {
+        "Resource": "00040000022925034c40",
+        "Name": "Lumen.Reflections.ResolvedSpecularIndirectDepth",
+        "File": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+        "Dimension": "Texture2DArray",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 1,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 2273280,
+        "RowPitchBytes": 2560,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16F",
+        "ViewFormat": "PF_R16F",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16F",
+        "StoredFormat": "PF_R16F",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "ComputeThenCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2273280,
+        "StagingByteSize": 2273280
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 2273280,
+          "ActualBytes": 2273280,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2273280,
+        "actualBytes": 2273280,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-02645",
+      "file": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/00040000022925034c40.[0].mip0.v00040000022925037bb0.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 2273280,
+          "ActualBytes": 2273280,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2273280,
+        "actualBytes": 2273280,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.refl.resolved-specular-indirect-depth",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.Reflections\\.(?:FrontLayer\\.)?ResolvedSpecularIndirectDepth$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "minimum ray hit distance of the resolved reflection samples (used by the reflection denoiser for disocclusion/neighborhood rejection)",
+      "units": "world-space distance from the receiver along the ray (cm); large/Inf = no valid hit",
+      "coordinateSpace": "2D screen-space array slice per resolved closure",
+      "storage": {
+        "kind": "texture2darray",
+        "format": "PF_R16F",
+        "strideBytes": 2,
+        "extent": "EffectiveTextureResolution",
+        "arraySlices": "ResolvedClosureCount",
+        "mips": 1,
+        "flags": [
+          "ShaderResource",
+          "UAV"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGTextureDesc",
+            "type": "Texture2DArray",
+            "format": "PF_R16F",
+            "extentX": 1280,
+            "extentY": 888,
+            "depth": 1,
+            "arraySize": 1,
+            "numMips": 1,
+            "byteSize": 2273280
+          }
+        ]
+      },
+      "actualFormat": "PF_R16F",
+      "declaredFormat": "PF_R16F",
+      "declaredFormatText": "PF_R16F",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R16F",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R16F",
+      "payloadFormat": "PF_R16F",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "write",
+          "expression": "value = Center.MinRayHitT = min over samples of abs(EncodeRayDistance(HitDistance,bHit)); initialized to FLOAT_32_MAX",
+          "requires": [
+            "TraceHit"
+          ],
+          "sourceRefs": [
+            "part2.refl.resolve.sentinel",
+            "part2.refl.resolve.depthwrite"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "The value is a positive distance; the hit/miss flag is not stored here (TraceHit carries it).",
+        "Because FLOAT_32_MAX (~3.4e38) exceeds the R16F maximum (65504), the stored 'no hit' value is a saturated/overflowed encoding rather than an exact sentinel."
+      ],
+      "producerSources": [
+        "part2.refl.cpp.resolveddepth.create"
+      ],
+      "consumerSources": [
+        "part2.refl.resolve.depthwrite"
+      ],
+      "gaps": [
+        "The clear pass does not write this texture (LumenReflectionDenoiserClear.usf:32 writes RGB only), so texels outside the resolve tile set are uninitialized; consumers are dispatched over the same resolve tiles."
+      ],
+      "fields": [
+        {
+          "name": "MinRayHitT",
+          "type": "float16",
+          "decode": "minimum DecodeRayDistance() over accepted samples; FLOAT_32_MAX is written when no sample hit (R16F store saturates), so treat >=65504 or +Inf as 'no hit'",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.refl.resolve.depthwrite",
+            "part2.refl.resolve.sentinel"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 16
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "MinRayHitT"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

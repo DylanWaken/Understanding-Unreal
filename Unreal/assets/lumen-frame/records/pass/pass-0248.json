@@ -1,0 +1,224 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0248",
+  "nativeRecordId": "native-015767",
+  "name": "ClearTranslucencyLightingVolumeCompute 64",
+  "displayLabel": "ClearTranslucencyLightingVolumeCompute 64 · InitTranslucencyLightingVolumeTextures · frame 292 · pass 247",
+  "frameNumber": 292,
+  "graphPrefix": "InitTranslucencyLightingVolumeTextures",
+  "viewState": null,
+  "pointer": "000100000228e3a837b0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000100000228e3a83650",
+  "parametersMetadataPointer": "000100007ffb8932b480",
+  "parentScopes": [
+    "InitTranslucencyLightingVolumeTextures",
+    "RenderDeferredLighting",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearTranslucencyLightingVolumeCompute 64",
+    "ParametersName": "FParameters",
+    "Parameters": "000100000228e3a83650",
+    "ParametersMetadata": "000100007ffb8932b480",
+    "Pointer": "000100000228e3a837b0",
+    "Id": 247,
+    "ParentEventScopes": [
+      "InitTranslucencyLightingVolumeTextures",
+      "RenderDeferredLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000100000228e3a82b40.mip0",
+      "000100000228e3a82e00.mip0",
+      "000100000228e3a830c0.mip0",
+      "000100000228e3a83380.mip0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000100000228e3a82b40.mip0",
+      "resourceId": "resource-0429",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00536",
+        "payload-00537"
+      ]
+    },
+    {
+      "uniqueName": "000100000228e3a82e00.mip0",
+      "resourceId": "resource-0430",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00538",
+        "payload-00539"
+      ]
+    },
+    {
+      "uniqueName": "000100000228e3a830c0.mip0",
+      "resourceId": "resource-0431",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00540",
+        "payload-00541"
+      ]
+    },
+    {
+      "uniqueName": "000100000228e3a83380.mip0",
+      "resourceId": "resource-0432",
+      "version": null,
+      "mip": 0,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00542",
+        "payload-00543"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06093",
+    "metadataPointer": "000100007ffb8932b480",
+    "bytes": 32,
+    "sha256": "a4a6ea1f19b14c7c29ad24327f213ffe7d653f892550e8c02cacf2ad7e5ad333",
+    "chunks": [
+      {
+        "sha": "a4a6ea1f19b14c7c29ad24327f213ffe7d653f892550e8c02cacf2ad7e5ad333",
+        "offset": 0,
+        "length": 32
+      }
+    ],
+    "originalPath": "Structures/000100000228e3a83650.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\TranslucentLighting.cpp",
+    "FileLine": 1222,
+    "Size": 32,
+    "Members": [
+      {
+        "Name": "RWAmbient0",
+        "ShaderType": "RWTexture3D<float4>",
+        "FileLine": 1223,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWDirectional0",
+        "ShaderType": "RWTexture3D<float4>",
+        "FileLine": 1224,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWAmbient1",
+        "ShaderType": "RWTexture3D<float4>",
+        "FileLine": 1225,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWDirectional1",
+        "ShaderType": "RWTexture3D<float4>",
+        "FileLine": 1226,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_TEXTURE_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000228e3a837b0",
+      "Parameters": "000100000228e3a83650",
+      "Bindings": {
+        "RWAmbient0": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228e3a83670",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWDirectional0": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228e3a83710",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWAmbient1": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228e3a836c0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWDirectional1": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228e3a83760",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

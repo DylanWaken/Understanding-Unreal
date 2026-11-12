@@ -1,0 +1,374 @@
+{
+  "format": "PF_A2B10G10R10",
+  "version": 1,
+  "id": "resource-0469",
+  "nativeRecordId": "native-017476",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Tonemap",
+  "uniqueName": "000100000228e994a410",
+  "displayLabel": "Tonemap · instance 0001 · frame 292 · passes 288",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 288,
+    "last": 288
+  },
+  "allocation": [
+    1280,
+    888
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": null,
+    "allocation": [
+      1280,
+      888
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 4546560,
+  "extent": [
+    1280,
+    888,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "A2B10G10R10_UNORM",
+    "bytesPerTexel": 4,
+    "formatNormalized": "A2B10G10R10",
+    "dumpFormat": "PF_A2B10G10R10",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Tonemap",
+    "UniqueResourceName": "000100000228e994a410",
+    "ByteSize": 4546560,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_A2B10G10R10",
+    "ExtentX": 1280,
+    "ExtentY": 888,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "RenderTargetable",
+      "ShaderResource",
+      "FastVRAM"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00582",
+      "role": "resource",
+      "originalPath": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+      "bytes": 4546560,
+      "sha256": "4c99a8633634692cf03a2aec3f91834174900ed6fbcbd74db8e412dda029bc1f",
+      "version": "000100000228e994ae60",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0469",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "70f8cbb91ecf5548fbc3c4c0d20554b124b57336d4b16e291b7b86c861ff9f93",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "0c5d5bea25908f516d64ca98134df52fe402ebc71ad8e5615a9e27538eaf040b",
+          "offset": 1048576,
+          "length": 1048576
+        },
+        {
+          "sha": "36232443b54b8e82585a74c757e5cd5e58966cc7f7bb614c93d453955b4528f6",
+          "offset": 2097152,
+          "length": 1048576
+        },
+        {
+          "sha": "02a8a914e147b94c25f0da4414140106a888e31c669d017be7d59d150faa47d2",
+          "offset": 3145728,
+          "length": 1048576
+        },
+        {
+          "sha": "a8056dbc450e49002c5a6716ea9b799ef4ddadcf00f25eb53e6b6953b2b916be",
+          "offset": 4194304,
+          "length": 352256
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000100000228e994a410",
+        "Name": "Tonemap",
+        "File": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4546560,
+        "RowPitchBytes": 5120,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_A2B10G10R10",
+        "ViewFormat": "PF_A2B10G10R10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_A2B10G10R10",
+        "StoredFormat": "PF_A2B10G10R10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4546560,
+        "StagingByteSize": 4546560
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4546560,
+        "actualBytes": 4546560,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000100000228e994a410",
+        "name": "Tonemap",
+        "diagnosticResource": "000100000228e994a410"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 4546560,
+        "rowPitchBytes": 5120,
+        "storageFormat": "PF_A2B10G10R10",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "A2B10G10R10_UNORM",
+        "bytesPerTexel": 4,
+        "formatNormalized": "A2B10G10R10",
+        "dumpFormat": "PF_A2B10G10R10",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_A2B10G10R10",
+        "viewFormat": "PF_A2B10G10R10",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000228e994ae60",
+      "producerPassId": "pass-0289",
+      "producerPassName": "Tonemap 1280x720 (PS GammaOnly=0)",
+      "payloadIds": [
+        "payload-00582"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0289",
+        "name": "Tonemap 1280x720 (PS GammaOnly=0)",
+        "displayLabel": "Tonemap 1280x720 (PS GammaOnly=0) · PostProcessing · frame 292 · pass 288",
+        "record": "records/pass/pass-0289.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0290",
+        "name": "FXAA(Quality=4) 1280x720 PS",
+        "displayLabel": "FXAA(Quality=4) 1280x720 PS · FXAA · frame 292 · pass 289",
+        "record": "records/pass/pass-0290.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-00582",
+      "file": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+      "layout": {
+        "Resource": "000100000228e994a410",
+        "Name": "Tonemap",
+        "File": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4546560,
+        "RowPitchBytes": 5120,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_A2B10G10R10",
+        "ViewFormat": "PF_A2B10G10R10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_A2B10G10R10",
+        "StoredFormat": "PF_A2B10G10R10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4546560,
+        "StagingByteSize": 4546560
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4546560,
+        "actualBytes": 4546560,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-00582",
+      "file": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e994a410.mip0.v000100000228e994ae60.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4546560,
+        "actualBytes": 4546560,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-1970",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched Tonemap (000100000228e994a410). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0469"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0921",
+  "nativeRecordId": "native-017930",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "DefaultBuffer",
+  "uniqueName": "000300000229355d2818",
+  "displayLabel": "DefaultBuffer · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "DefaultBuffer",
+    "UniqueResourceName": "000300000229355d2818",
+    "ByteSize": 4,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01793",
+      "role": "resource",
+      "originalPath": "Resources/000300000229355d2818.v00000000000000000000.bin",
+      "bytes": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0921",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "nativeKind": "SkipTrackingBuffer",
+      "classification": "skip-tracking-buffer",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": {
+          "File": "Resources/000300000229355d2818.v00000000000000000000.bin",
+          "Kind": "SkipTrackingBuffer",
+          "ExpectedBytes": 4,
+          "ActualBytes": 4,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4,
+        "actualBytes": 4,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "SkipTrackingBuffer",
+        "reason": null
+      },
+      "identity": null,
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01793"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0562",
+        "name": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "displayLabel": "RenderLight Light::StandardDeferred: Ceiling area light · LumenRoom.Ceiling area light · frame 292 · pass 561",
+        "record": "records/pass/pass-0562.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01793",
+      "file": "Resources/000300000229355d2818.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": {
+          "File": "Resources/000300000229355d2818.v00000000000000000000.bin",
+          "Kind": "SkipTrackingBuffer",
+          "ExpectedBytes": 4,
+          "ActualBytes": 4,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4,
+        "actualBytes": 4,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "SkipTrackingBuffer",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0576",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer DefaultBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0921"
+    },
+    {
+      "id": "gap-2114",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched DefaultBuffer (000300000229355d2818). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0921"
+    }
+  ]
+}

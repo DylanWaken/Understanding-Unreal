@@ -1,0 +1,151 @@
+{
+  "capture": {
+    "path": "D:/UnrealEngine/UnrealUnderstandingCapture/capture/buffers/gpudump/binary-20261112-153914",
+    "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "rhi": "D3D12",
+    "engine": "5.8.1",
+    "dump_time": "2026.11.12-23.39.18",
+    "stream": 0,
+    "texture_cvar": 2,
+    "buffer_cvar": 2,
+    "native_uniform_buffer_textures": 1,
+    "buffer_skip_tracking": 1,
+    "status": "ok"
+  },
+  "source_hashes_sha256": {
+    "DumpGPU.cpp": "0DC2FFCBDC84C2B6EB3E3DEDDEAB3E48FE79C3DD4D30D15ACF4ACC751FDEEB4C",
+    "DumpTexture.usf": "8CAE461806D5F28931C9D57F03881CFCEA19F37DE6373F1DB2833816EF7EF887",
+    "DumpBuffer.usf": "79C934A53C055F6F85D449446D46AC3401BFA0421EE92A3F7B9EDB882BDD4B1C"
+  },
+  "traversal_phase": {
+    "owner_inserted_before_setup": "RenderGraphBuilder.inl:260-269",
+    "dump_traversal_call": "RenderGraphBuilder.cpp:2629-2630",
+    "immediate_mode_branch": "RenderGraphBuilder.cpp:2568-2625",
+    "scheduled_native_rows": 17622,
+    "source_state_proven_true_rows": 0,
+    "source_state_proven_false_rows": 17622,
+    "owner_execution_dependency_claimed_true_rows": 0,
+    "file_verified_false_rows": 17622
+  },
+  "registry_lifetime": {
+    "diagnostic_wrapper_registration": "DumpGPU.cpp:2389-2402",
+    "pooled_ref_held_by_rdg_texture": "RenderGraphBuilder.cpp:1113; RenderGraphResources.h:663-664",
+    "exact_value_guard_removal": "DumpGPU.cpp:5172-5183",
+    "per_graph_reset": "DumpGPU.cpp:4934-4935",
+    "registry_mutation_field": "hard-coded false at DumpGPU.cpp:3178/3251/3272; not evidence"
+  },
+  "native_texture_views": {
+    "export_rows": 14223,
+    "distinct_native_textures": 72,
+    "distinct_files": 72,
+    "scope_counts": {
+      "WholeNativeResource": 14223
+    },
+    "mip_first_0_rows": 14223,
+    "mip_count_1_rows": 14223,
+    "array_first_0_rows": 14223,
+    "array_count_1_rows": 14223,
+    "face_first_0_rows": 14223,
+    "face_count_1_rows": 14223,
+    "view_format_differs_from_native_rows": 0,
+    "srgb_true_rows": 309,
+    "cube_rows": 0,
+    "narrowed_srv_rows": 0
+  },
+  "gdf": {
+    "native_pointers": {
+      "page_atlas": "000100000228ec2dbd00",
+      "coverage_atlas": "000100000228ec2dc080",
+      "page_table": "000100000228ec2dc400",
+      "sdf_mips": "000100000228ec2dc780"
+    },
+    "first_export_graph1_pass": 28,
+    "first_export_event": "DepthPassParallel",
+    "consumer_graph1_pass": 167,
+    "consumer_event": "TraceGlobalSDFAndApplyRadianceCache",
+    "consumer_bindings": 4,
+    "consumer_status": "ScheduledByEarlierPass",
+    "consumer_reused": true,
+    "writer_ids": [],
+    "page_stats_clear_pass": 8,
+    "page_stats_buffer_id": "000100000228d576a630",
+    "gdf_update_scope_passes": [8, 320, 628],
+    "gdf_update_scope_atlas_writers": 0,
+    "persistent_owner_source": "GlobalDistanceField.cpp:922-943,2049-2095,3186-3214",
+    "same_version_label": "conditional"
+  },
+  "vt_feedback": {
+    "skipped_native_uav_rows": 309,
+    "skipped_per_graph": 103,
+    "skipped_binding_name_pattern": "VTFeedbackBuffer",
+    "skipped_status": "SkippedNativeUAVBindingStateNotObservable",
+    "native_uav_pointer_per_graph": [
+      "000100000228ec3a2940",
+      "000300000228ec3a2940",
+      "000400000228ec3a2940"
+    ],
+    "rdg_buffer_id_graph1": "000100000228e994e5a0",
+    "rdg_buffer_file": "Resources/000100000228e994e5a0.v00000000000000000000.bin",
+    "rdg_buffer_bytes": 35840,
+    "rdg_buffer_kind": "SkipTrackingBuffer",
+    "rdg_buffer_status": "Dumped",
+    "srv_passes": {
+      "294": "Hash table indirect arguments",
+      "295": "Build feedback hash table",
+      "296": "Compact feedback hash table",
+      "297": "VirtualTextureFeedbackCopy"
+    },
+    "source": "VirtualTextureFeedbackResource.cpp:97-100,112-141,186-252"
+  },
+  "null_uniforms": {
+    "referenced_struct_null_rows": 377,
+    "distinct_null_paths": 29,
+    "passes_with_null_rows": 278,
+    "content_kind_counts": {
+      "RDGUniformBufferUnbound": 312,
+      "RHIUniformBufferUnbound": 65
+    },
+    "parameter_bindings_null_pointer_rows": 4104
+  },
+  "completion": {
+    "completion_rows": 4919,
+    "distinct_files": 4610,
+    "status_counts": {
+      "Dumped": 4919
+    },
+    "expected_vs_actual_mismatch_rows": 0,
+    "file_missing_rows": 0,
+    "file_size_mismatch_rows": 0,
+    "kind_counts": {
+      "Texture": 1361,
+      "Texture3D": 135,
+      "Buffer": 3399,
+      "SkipTrackingBuffer": 24
+    },
+    "subresource_layout_rows": 1496,
+    "subresource_layout_missing_completion": 0,
+    "subresource_layout_size_mismatch": 0,
+    "duplicate_completion_rows": 309,
+    "duplicate_rows_all_16_byte_native_buffer": true,
+    "duplicate_native_buffer_ids": [
+      "00010000022615f54e00",
+      "00030000022615f54e00",
+      "00040000022615f54e00"
+    ],
+    "duplicate_native_buffer_name": "WhiteVertexBuffer",
+    "resource_files_on_disk": 5793,
+    "resource_binary_writes_logged": 6102,
+    "regular_rdg_buffer_files_without_completion": 1183,
+    "regular_rdg_buffer_bytes_without_completion": 653187484,
+    "all_unrecorded_files_are_frdg_buffer_desc": true,
+    "all_texture_subresources_verified": true
+  },
+  "limits": [
+    "GDF same-version at pass167 is conditional; capture samples at pass28 and contains no atlas producer pass.",
+    "No cube/cube-array or narrowed native SRV view is exercised in this capture.",
+    "309 native UAV bindings are unread by design; final VT feedback is the separate RDG SRV sample.",
+    "1,183 regular RDG buffer files have no completion record; DumpReadbackStatus is not a complete resource inventory.",
+    "RegistryMutation is hard-coded false and cannot be used as evidence of no registry mutation.",
+    "No GPU execution or source-state proof was performed in this review step."
+  ]
+}

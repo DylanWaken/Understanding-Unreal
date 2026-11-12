@@ -1,0 +1,344 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1274",
+  "nativeRecordId": "native-018286",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.CompactedTraceTexelData",
+  "uniqueName": "0004000002290e760010",
+  "displayLabel": "Lumen.ScreenProbeGather.CompactedTraceTexelData · instance 0004 · frame 292 · passes 785",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 785,
+    "last": 785
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 1720320,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 430080,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 430080
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.CompactedTraceTexelData",
+    "UniqueResourceName": "0004000002290e760010",
+    "ByteSize": 1720320,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 430080,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02634",
+      "role": "resource",
+      "originalPath": "Resources/0004000002290e760010.v0004000002290e760310.bin",
+      "bytes": 1720320,
+      "sha256": "db9506f441006361cd510d18605689aa3168b2f54d5a4c0283de4c5bd1db2eee",
+      "version": "0004000002290e760310",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1274",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "37c111b39b94551e79376207e0e7a4d7b27896a50bd6e4ab64a0d6da62fe83bd",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "fbfde89729c2bce74bf7b11f84d79af63af9d37f27e35386b016cae563131475",
+          "offset": 1048576,
+          "length": 671744
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0004000002290e760010",
+        "name": "Lumen.ScreenProbeGather.CompactedTraceTexelData",
+        "byteSize": 1720320
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "0004000002290e760310",
+      "producerPassId": "pass-0786",
+      "producerPassName": "CompactTraces WaveOps:1",
+      "payloadIds": [
+        "payload-02634"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0786",
+        "name": "CompactTraces WaveOps:1",
+        "displayLabel": "CompactTraces WaveOps:1 · LumenScreenProbeGather · frame 292 · pass 785",
+        "record": "records/pass/pass-0786.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0788",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 787",
+        "record": "records/pass/pass-0788.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02634",
+      "file": "Resources/0004000002290e760010.v0004000002290e760310.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.compacted-trace-texel-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.CompactedTraceTexelData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "compact list of screen-probe trace texels (probe index + tracing texel coordinate)",
+      "units": "packed uint32: 20-bit probe index, 5-bit x, 5-bit y",
+      "coordinateSpace": "screen-probe atlas index and tracing-octahedron texel coordinate",
+      "storage": {
+        "kind": "buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "numElements": "ScreenProbeTraceBufferSize.X * ScreenProbeTraceBufferSize.Y",
+        "capacity": "(ScreenProbeAtlasBufferSize * ScreenProbeTracingOctahedronResolution).X*Y elements; valid count = CompactedTraceTexelAllocator[0]",
+        "usage": "UAV | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 4,
+            "numElements": 430080,
+            "byteSize": 1720320,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "encode",
+          "expression": "value = (ScreenProbeIndex & 0xFFFFF) | ((x & 0x1F) << 20) | ((y & 0x1F) << 25)",
+          "requires": [
+            "ScreenProbeIndex",
+            "TraceTexelCoord"
+          ],
+          "sourceRefs": [
+            "part2.spg.ush.trace.encode",
+            "part2.spg.ush.trace.bits"
+          ]
+        },
+        {
+          "name": "decode",
+          "expression": "ScreenProbeIndex = value & 0xFFFFF; x = (value>>20)&0x1F; y = (value>>25)&0x1F",
+          "requires": [
+            "CompactedTraceTexelData"
+          ],
+          "sourceRefs": [
+            "part2.spg.ush.trace.decode"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "5-bit texel coordinates bound the tracing octahedron edge to 32 texels; the source supports up to 32x32 tracing resolution for this encoding."
+      ],
+      "producerSources": [
+        "part2.spgt.cpp.data",
+        "part2.spgt.data.write"
+      ],
+      "consumerSources": [
+        "part2.spg.ush.trace.decode"
+      ],
+      "gaps": [
+        "Only [0, CompactedTraceTexelAllocator[0]) is written; the buffer capacity is the full tracing-buffer texel count."
+      ],
+      "fields": [
+        {
+          "name": "ScreenProbeIndex",
+          "type": "uint20",
+          "decode": "value & 0xFFFFF",
+          "units": "probe index",
+          "sourceRefs": [
+            "part2.spg.ush.trace.encode",
+            "part2.spg.ush.trace.bits"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 0,
+          "bitWidth": 20
+        },
+        {
+          "name": "TraceTexelX",
+          "type": "uint5",
+          "decode": "(value >> 20) & 0x1F",
+          "units": "texel x",
+          "sourceRefs": [
+            "part2.spg.ush.trace.decode"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 20,
+          "bitWidth": 5
+        },
+        {
+          "name": "TraceTexelY",
+          "type": "uint5",
+          "decode": "(value >> 25) & 0x1F",
+          "units": "texel y",
+          "sourceRefs": [
+            "part2.spg.ush.trace.decode"
+          ],
+          "byteOffset": 0,
+          "bitOffset": 25,
+          "bitWidth": 5
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "ScreenProbeIndex",
+          "TraceTexelX",
+          "TraceTexelY"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0795",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.ScreenProbeGather.CompactedTraceTexelData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1274"
+    }
+  ]
+}

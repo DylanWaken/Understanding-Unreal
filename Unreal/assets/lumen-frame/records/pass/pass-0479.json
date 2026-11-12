@@ -1,0 +1,756 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0479",
+  "nativeRecordId": "native-015998",
+  "name": "SetupCompactedTracesIndirectArgs",
+  "displayLabel": "SetupCompactedTracesIndirectArgs · LumenScreenProbeGather · frame 292 · pass 478",
+  "frameNumber": 292,
+  "graphPrefix": "LumenScreenProbeGather",
+  "viewState": null,
+  "pointer": "000300000228d4dd2a88",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228d4dd28b0",
+  "parametersMetadataPointer": "000300007ffb89271b90",
+  "parentScopes": [
+    "LumenScreenProbeGather",
+    "DiffuseIndirectAndAO",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "SetupCompactedTracesIndirectArgs",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228d4dd28b0",
+    "ParametersMetadata": "000300007ffb89271b90",
+    "Pointer": "000300000228d4dd2a88",
+    "Id": 478,
+    "ParentEventScopes": [
+      "LumenScreenProbeGather",
+      "DiffuseIndirectAndAO",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228e3a8f930",
+      "000300000228c0f73e10",
+      "000300000225f048c150.linear.mip0",
+      "000300000228d58f9630.linear.mip0"
+    ],
+    "OutputResources": [
+      "000300000228d4dd2760"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228e3a8f930",
+      "resourceId": "resource-0792",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01489",
+        "payload-01490"
+      ]
+    },
+    {
+      "uniqueName": "000300000228c0f73e10",
+      "resourceId": "resource-0722",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01303"
+      ]
+    },
+    {
+      "uniqueName": "000300000225f048c150.linear.mip0",
+      "resourceId": "resource-0580",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01039"
+      ]
+    },
+    {
+      "uniqueName": "000300000228d58f9630.linear.mip0",
+      "resourceId": "resource-0682",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01399"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000228d4dd2760",
+      "resourceId": "resource-0794",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01384"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06440",
+    "metadataPointer": "000300007ffb89271b90",
+    "bytes": 320,
+    "sha256": "44b768ef124ffecde58f04bc151c7fb65f0d93b2514fe6561724e35faf586598",
+    "chunks": [
+      {
+        "sha": "44b768ef124ffecde58f04bc151c7fb65f0d93b2514fe6561724e35faf586598",
+        "offset": 0,
+        "length": 320
+      }
+    ],
+    "originalPath": "Structures/000300000228d4dd28b0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeTracing.cpp",
+    "FileLine": 333,
+    "Size": 320,
+    "Members": [
+      {
+        "Name": "RWScreenProbeCompactTracingIndirectArgs",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 334,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "CompactedTraceTexelAllocator",
+        "ShaderType": "Buffer<uint>",
+        "FileLine": 335,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ScreenProbeParameters",
+        "ShaderType": "FScreenProbeParameters",
+        "FileLine": 336,
+        "Offset": 16,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb8924db40"
+      }
+    ]
+  },
+  "referencedStructs": [
+    {
+      "Content": "000300000228ec086a80",
+      "Metadata": "000300007ffb891f16f0",
+      "ContentKind": "RHIUniformBufferContentMap",
+      "BaseType": "UBMT_REFERENCED_STRUCT",
+      "MemberBaseOffset": 288,
+      "MemberOffset": 288,
+      "ElementStrideBytes": 16,
+      "ArrayNumElements": 1,
+      "BindingFlags": "Shader",
+      "ByteSize": 48,
+      "Null": false,
+      "ContentAvailable": true,
+      "TraversalCycleDetected": false,
+      "CollectedDuringGraphBuildParameterTraversal": "True",
+      "member": "ScreenProbeParameters.BlueNoise",
+      "contentPointer": "000300000228ec086a80",
+      "metadataPointer": "000300007ffb891f16f0",
+      "payloadId": "payload-06558",
+      "payload": {
+        "id": "payload-06558",
+        "role": "parameter",
+        "originalPath": "Structures/000300000228ec086a80.bin",
+        "bytes": 48,
+        "sha256": "18472661c3f31cfcbe9c811fe47d46de2a3c128bd5e3b10d3109c5f080a96d0b",
+        "version": null,
+        "mip": null,
+        "slice": null,
+        "face": null,
+        "stencil": false,
+        "resourceId": null,
+        "passId": "pass-0494",
+        "chunks": [
+          {
+            "sha": "18472661c3f31cfcbe9c811fe47d46de2a3c128bd5e3b10d3109c5f080a96d0b",
+            "offset": 0,
+            "length": 48
+          }
+        ],
+        "nativeKind": "structure",
+        "classification": "parameter-or-structure-block",
+        "layout": null,
+        "completion": null,
+        "identity": null,
+        "diagnosticResource": null,
+        "subresource": null,
+        "decode": null
+      },
+      "metadata": {
+        "StructTypeName": "FBlueNoise",
+        "ShaderVariableName": "BlueNoise",
+        "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\BlueNoise.h",
+        "FileLine": 19,
+        "Size": 48,
+        "Members": [
+          {
+            "Name": "BlueNoise",
+            "ShaderType": "FBlueNoiseParameters",
+            "FileLine": 20,
+            "Offset": 0,
+            "BaseType": "UBMT_INCLUDED_STRUCT",
+            "Precision": 0,
+            "NumRows": 1,
+            "NumColumns": 1,
+            "NumElements": 0,
+            "StructMetadata": "000300007ffb891e41a0"
+          }
+        ]
+      }
+    }
+  ],
+  "nativeUniformBuffers": [
+    {
+      "nativeRecordId": "native-014418",
+      "raw": {
+        "Pass": "000300000228d4dd2a88",
+        "UniformBuffer": "000300000228ec086a80",
+        "LayoutName": "FBlueNoise",
+        "CPUCollectionTiming": "GraphBuildParameterTraversal",
+        "GPUReadbackOrdering": "InsertedAfterOwnerInRDGQueue",
+        "CollectionTiming": "GraphBuildParameterTraversal",
+        "OwnerPassExecutionDependencyClaimed": false,
+        "SourceStateProvenAtScheduling": false,
+        "TimingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+        "ReadbackCompletionFile": "Base/DumpReadbackStatus.json",
+        "ScheduledStatus": "ScheduledForReadback",
+        "DumpedStatusSource": "Base/DumpReadbackStatus.json after file verification",
+        "ReadOnlyBindingPolicy": "NoTransitionPrivateStagingOutput",
+        "MutableBindingPolicy": "NoBytesWhenWritableAliasOrUAVNotObservable",
+        "Bindings": {
+          "ScreenProbeParameters.BlueNoise.BlueNoise.ScalarTexture": {
+            "BaseType": "UBMT_TEXTURE",
+            "MemberBaseOffset": 32,
+            "MemberOffset": 32,
+            "ElementStrideBytes": 8,
+            "ArrayNumElements": 1,
+            "StateCaptured": false,
+            "Source": "ReferencedUniformBufferContentMap",
+            "ResourceKind": "Texture",
+            "Pointer": "0003000002299302b600",
+            "Null": false,
+            "NativeTextureName": "FastBlueNoise_scalar_128x128x64",
+            "NativeDimension": "Texture2D",
+            "NativeFormat": "PF_G8",
+            "NativeExtentX": 128,
+            "NativeExtentY": 8192,
+            "NativeDepth": 1,
+            "NativeArraySize": 1,
+            "NativeNumMips": 1,
+            "DumpedAs": "NativeTexture.0003000002299302b600.mip0_1.a0_1.f0_1.dim1.plane0",
+            "DiagnosticResource": "000300000225f048c150",
+            "NativePointer": "0003000002299302b600",
+            "NativeBindingPath": "ScreenProbeParameters.BlueNoise.BlueNoise.ScalarTexture",
+            "ExportSubresourceCount": 0,
+            "ExportFirstFile": "Resources/000300000225f048c150.linear.mip0.v000300000228e8ddef70.bin",
+            "ExportSRGB": false,
+            "ExportUsesWholeNativeResource": true,
+            "ExportScope": "WholeNativeResource",
+            "ExportRisk": "BindIsWholeTexture",
+            "ExportMipFirst": 0,
+            "ExportMipCount": 1,
+            "ExportArrayFirstInViewUnits": 0,
+            "ExportArrayCountInViewUnits": 1,
+            "ExportFaceFirst": 0,
+            "ExportFaceCount": 1,
+            "ExportViewFormat": "PF_G8",
+            "ReadStateBasis": "OwnerPassSRVBinding",
+            "OwnerPassExecutionDependencyClaimed": false,
+            "SourceStateProvenAtScheduling": false,
+            "TimingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+            "RegistryMutation": false,
+            "FileVerified": false,
+            "ReadbackStatusFile": "Base/DumpReadbackStatus.json",
+            "CrossUniformBufferAliasObservable": false,
+            "ReusedScheduledReadback": true,
+            "FirstScheduledByPass": "000300000228e8ddef70",
+            "DumpStatus": "ScheduledByEarlierPass"
+          },
+          "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture": {
+            "BaseType": "UBMT_TEXTURE",
+            "MemberBaseOffset": 40,
+            "MemberOffset": 40,
+            "ElementStrideBytes": 8,
+            "ArrayNumElements": 1,
+            "StateCaptured": false,
+            "Source": "ReferencedUniformBufferContentMap",
+            "ResourceKind": "Texture",
+            "Pointer": "0003000002299302b980",
+            "Null": false,
+            "NativeTextureName": "FastBlueNoise_vec2_128x128x64",
+            "NativeDimension": "Texture2D",
+            "NativeFormat": "PF_B8G8R8A8",
+            "NativeExtentX": 128,
+            "NativeExtentY": 8192,
+            "NativeDepth": 1,
+            "NativeArraySize": 1,
+            "NativeNumMips": 1,
+            "DumpedAs": "NativeTexture.0003000002299302b980.mip0_1.a0_1.f0_1.dim1.plane0",
+            "DiagnosticResource": "000300000228d58f9630",
+            "NativePointer": "0003000002299302b980",
+            "NativeBindingPath": "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture",
+            "ExportSubresourceCount": 0,
+            "ExportFirstFile": "Resources/000300000228d58f9630.linear.mip0.v000300000228d58f68d0.bin",
+            "ExportSRGB": false,
+            "ExportUsesWholeNativeResource": true,
+            "ExportScope": "WholeNativeResource",
+            "ExportRisk": "BindIsWholeTexture",
+            "ExportMipFirst": 0,
+            "ExportMipCount": 1,
+            "ExportArrayFirstInViewUnits": 0,
+            "ExportArrayCountInViewUnits": 1,
+            "ExportFaceFirst": 0,
+            "ExportFaceCount": 1,
+            "ExportViewFormat": "PF_B8G8R8A8",
+            "ReadStateBasis": "OwnerPassSRVBinding",
+            "OwnerPassExecutionDependencyClaimed": false,
+            "SourceStateProvenAtScheduling": false,
+            "TimingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+            "RegistryMutation": false,
+            "FileVerified": false,
+            "ReadbackStatusFile": "Base/DumpReadbackStatus.json",
+            "CrossUniformBufferAliasObservable": false,
+            "ReusedScheduledReadback": true,
+            "FirstScheduledByPass": "000300000228d58f68d0",
+            "DumpStatus": "ScheduledByEarlierPass"
+          }
+        }
+      },
+      "pass": "000300000228d4dd2a88",
+      "uniformBuffer": "000300000228ec086a80",
+      "layoutName": "FBlueNoise",
+      "cpuCollectionTiming": "GraphBuildParameterTraversal",
+      "gpuReadbackOrdering": "InsertedAfterOwnerInRDGQueue",
+      "collectionTiming": "GraphBuildParameterTraversal",
+      "ownerPassExecutionDependencyClaimed": false,
+      "sourceStateProvenAtScheduling": false,
+      "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+      "readOnlyBindingPolicy": "NoTransitionPrivateStagingOutput",
+      "mutableBindingPolicy": "NoBytesWhenWritableAliasOrUAVNotObservable",
+      "readbackCompletionFile": "Base/DumpReadbackStatus.json",
+      "scheduledStatus": "ScheduledForReadback",
+      "dumpedStatusSource": "Base/DumpReadbackStatus.json after file verification",
+      "uniformBufferPayload": {
+        "id": "payload-06558",
+        "role": "parameter",
+        "originalPath": "Structures/000300000228ec086a80.bin",
+        "bytes": 48,
+        "sha256": "18472661c3f31cfcbe9c811fe47d46de2a3c128bd5e3b10d3109c5f080a96d0b",
+        "version": null,
+        "mip": null,
+        "slice": null,
+        "face": null,
+        "stencil": false,
+        "resourceId": null,
+        "passId": "pass-0494",
+        "chunks": [
+          {
+            "sha": "18472661c3f31cfcbe9c811fe47d46de2a3c128bd5e3b10d3109c5f080a96d0b",
+            "offset": 0,
+            "length": 48
+          }
+        ],
+        "nativeKind": "structure",
+        "classification": "parameter-or-structure-block",
+        "layout": null,
+        "completion": null,
+        "identity": null,
+        "diagnosticResource": null,
+        "subresource": null,
+        "decode": null
+      },
+      "bindings": {
+        "ScreenProbeParameters.BlueNoise.BlueNoise.ScalarTexture": {
+          "BaseType": "UBMT_TEXTURE",
+          "MemberBaseOffset": 32,
+          "MemberOffset": 32,
+          "ElementStrideBytes": 8,
+          "ArrayNumElements": 1,
+          "StateCaptured": false,
+          "Source": "ReferencedUniformBufferContentMap",
+          "ResourceKind": "Texture",
+          "Pointer": "0003000002299302b600",
+          "Null": false,
+          "NativeTextureName": "FastBlueNoise_scalar_128x128x64",
+          "NativeDimension": "Texture2D",
+          "NativeFormat": "PF_G8",
+          "NativeExtentX": 128,
+          "NativeExtentY": 8192,
+          "NativeDepth": 1,
+          "NativeArraySize": 1,
+          "NativeNumMips": 1,
+          "DumpedAs": "NativeTexture.0003000002299302b600.mip0_1.a0_1.f0_1.dim1.plane0",
+          "DiagnosticResource": "000300000225f048c150",
+          "NativePointer": "0003000002299302b600",
+          "NativeBindingPath": "ScreenProbeParameters.BlueNoise.BlueNoise.ScalarTexture",
+          "ExportSubresourceCount": 0,
+          "ExportFirstFile": "Resources/000300000225f048c150.linear.mip0.v000300000228e8ddef70.bin",
+          "ExportSRGB": false,
+          "ExportUsesWholeNativeResource": true,
+          "ExportScope": "WholeNativeResource",
+          "ExportRisk": "BindIsWholeTexture",
+          "ExportMipFirst": 0,
+          "ExportMipCount": 1,
+          "ExportArrayFirstInViewUnits": 0,
+          "ExportArrayCountInViewUnits": 1,
+          "ExportFaceFirst": 0,
+          "ExportFaceCount": 1,
+          "ExportViewFormat": "PF_G8",
+          "ReadStateBasis": "OwnerPassSRVBinding",
+          "OwnerPassExecutionDependencyClaimed": false,
+          "SourceStateProvenAtScheduling": false,
+          "TimingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+          "RegistryMutation": false,
+          "FileVerified": false,
+          "ReadbackStatusFile": "Base/DumpReadbackStatus.json",
+          "CrossUniformBufferAliasObservable": false,
+          "ReusedScheduledReadback": true,
+          "FirstScheduledByPass": "000300000228e8ddef70",
+          "DumpStatus": "ScheduledByEarlierPass",
+          "completion": {
+            "scheduledStatus": "ScheduledForReadback",
+            "statusRecord": {
+              "File": "Resources/000300000225f048c150.linear.mip0.v000300000228e8ddef70.bin",
+              "Kind": "Texture",
+              "ExpectedBytes": 1048576,
+              "ActualBytes": 1048576,
+              "FileExists": true,
+              "FileSizeMatches": true,
+              "Status": "Dumped",
+              "Timing": "GPUReadbackCompleted"
+            },
+            "statusSource": "Base/DumpReadbackStatus.json",
+            "observed": true,
+            "dumped": true,
+            "timing": "GPUReadbackCompleted",
+            "expectedBytes": 1048576,
+            "actualBytes": 1048576,
+            "fileExists": true,
+            "fileSizeMatches": true,
+            "kind": "Texture",
+            "reason": null
+          },
+          "payloadIds": [
+            "payload-01039"
+          ]
+        },
+        "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture": {
+          "BaseType": "UBMT_TEXTURE",
+          "MemberBaseOffset": 40,
+          "MemberOffset": 40,
+          "ElementStrideBytes": 8,
+          "ArrayNumElements": 1,
+          "StateCaptured": false,
+          "Source": "ReferencedUniformBufferContentMap",
+          "ResourceKind": "Texture",
+          "Pointer": "0003000002299302b980",
+          "Null": false,
+          "NativeTextureName": "FastBlueNoise_vec2_128x128x64",
+          "NativeDimension": "Texture2D",
+          "NativeFormat": "PF_B8G8R8A8",
+          "NativeExtentX": 128,
+          "NativeExtentY": 8192,
+          "NativeDepth": 1,
+          "NativeArraySize": 1,
+          "NativeNumMips": 1,
+          "DumpedAs": "NativeTexture.0003000002299302b980.mip0_1.a0_1.f0_1.dim1.plane0",
+          "DiagnosticResource": "000300000228d58f9630",
+          "NativePointer": "0003000002299302b980",
+          "NativeBindingPath": "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture",
+          "ExportSubresourceCount": 0,
+          "ExportFirstFile": "Resources/000300000228d58f9630.linear.mip0.v000300000228d58f68d0.bin",
+          "ExportSRGB": false,
+          "ExportUsesWholeNativeResource": true,
+          "ExportScope": "WholeNativeResource",
+          "ExportRisk": "BindIsWholeTexture",
+          "ExportMipFirst": 0,
+          "ExportMipCount": 1,
+          "ExportArrayFirstInViewUnits": 0,
+          "ExportArrayCountInViewUnits": 1,
+          "ExportFaceFirst": 0,
+          "ExportFaceCount": 1,
+          "ExportViewFormat": "PF_B8G8R8A8",
+          "ReadStateBasis": "OwnerPassSRVBinding",
+          "OwnerPassExecutionDependencyClaimed": false,
+          "SourceStateProvenAtScheduling": false,
+          "TimingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+          "RegistryMutation": false,
+          "FileVerified": false,
+          "ReadbackStatusFile": "Base/DumpReadbackStatus.json",
+          "CrossUniformBufferAliasObservable": false,
+          "ReusedScheduledReadback": true,
+          "FirstScheduledByPass": "000300000228d58f68d0",
+          "DumpStatus": "ScheduledByEarlierPass",
+          "completion": {
+            "scheduledStatus": "ScheduledForReadback",
+            "statusRecord": {
+              "File": "Resources/000300000228d58f9630.linear.mip0.v000300000228d58f68d0.bin",
+              "Kind": "Texture",
+              "ExpectedBytes": 4194304,
+              "ActualBytes": 4194304,
+              "FileExists": true,
+              "FileSizeMatches": true,
+              "Status": "Dumped",
+              "Timing": "GPUReadbackCompleted"
+            },
+            "statusSource": "Base/DumpReadbackStatus.json",
+            "observed": true,
+            "dumped": true,
+            "timing": "GPUReadbackCompleted",
+            "expectedBytes": 4194304,
+            "actualBytes": 4194304,
+            "fileExists": true,
+            "fileSizeMatches": true,
+            "kind": "Texture",
+            "reason": null
+          },
+          "payloadIds": [
+            "payload-01399"
+          ]
+        }
+      }
+    }
+  ],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228d4dd2a88",
+      "Parameters": "000300000228d4dd28b0",
+      "Bindings": {
+        "RWScreenProbeCompactTracingIndirectArgs": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228d4dd29f0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "CompactedTraceTexelAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228d4dd2a38",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.NumAdaptiveScreenProbes": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 160,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.AdaptiveScreenProbeData": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 168,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ScreenTileAdaptiveProbeHeader": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 176,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ScreenTileAdaptiveProbeIndices": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 184,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.TraceRadiance": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 192,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.TraceHit": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 200,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ScreenProbeSceneDepth": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 208,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ScreenProbeWorldNormal": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 216,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ScreenProbeWorldSpeed": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 224,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 232,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ScreenProbeDisocclusion": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 240,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.RWTraceRadiance": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 248,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.RWTraceHit": {
+          "BaseType": "UBMT_RDG_TEXTURE_UAV",
+          "Offset": 256,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.ImportanceSampling.StructuredImportanceSampledRayInfosForTracing": {
+          "BaseType": "UBMT_RDG_TEXTURE",
+          "Offset": 280,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.BlueNoise.BlueNoise.ScalarTexture": {
+          "BaseType": "UBMT_TEXTURE",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002299302b600",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture": {
+          "BaseType": "UBMT_TEXTURE",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "0003000002299302b980",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-1538",
+      "kind": "owner-pass-execution-not-claimed",
+      "severity": "info",
+      "scope": "timing",
+      "message": "Native uniform bindings were collected during graph-build CPU traversal, not after owner-pass execution. File/hash completion is not evidence of owner-time value identity.",
+      "source": "Base/NativeUniformBufferBindings.json",
+      "passId": "pass-0479"
+    }
+  ]
+}
