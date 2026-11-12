@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" role="img" aria-labelledby="title desc"><title id="title">A valid cut through a shared dependency graph</title><desc id="desc">Two coarse clusters jointly replace four fine clusters. Both coarse clusters point to the same fine group. Either complete level shown is valid; mixing arbitrary subsets is not.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#2c7568"/></marker></defs><rect width="960" height="480" fill="#fcfaf5"/>
+<text x="32" y="40" fill="#24332e" font-family="Arial, sans-serif" font-size="25" text-anchor="start" font-weight="bold">Shared replacement dependencies form a DAG</text>
+<line x1="330" y1="157" x2="150" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="330" y1="157" x2="370" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="330" y1="157" x2="590" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="330" y1="157" x2="810" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="630" y1="157" x2="150" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="630" y1="157" x2="370" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="630" y1="157" x2="590" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="630" y1="157" x2="810" y2="284" stroke="#a7b7ad" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="245" y="82" width="170" height="75" rx="9" fill="#e0ece4" stroke="#2c7568" stroke-width="3"/>
+<text x="330" y="127" fill="#24332e" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="normal">Parent P</text>
+<rect x="545" y="82" width="170" height="75" rx="9" fill="#e0ece4" stroke="#2c7568" stroke-width="3"/>
+<text x="630" y="127" fill="#24332e" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="normal">Parent Q</text>
+<rect x="85" y="285" width="130" height="65" rx="8" fill="#eee6d8" stroke="#a87520" stroke-width="2"/>
+<text x="150" y="326" fill="#24332e" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="normal">A</text>
+<rect x="305" y="285" width="130" height="65" rx="8" fill="#eee6d8" stroke="#a87520" stroke-width="2"/>
+<text x="370" y="326" fill="#24332e" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="normal">B</text>
+<rect x="525" y="285" width="130" height="65" rx="8" fill="#eee6d8" stroke="#a87520" stroke-width="2"/>
+<text x="590" y="326" fill="#24332e" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="normal">C</text>
+<rect x="745" y="285" width="130" height="65" rx="8" fill="#eee6d8" stroke="#a87520" stroke-width="2"/>
+<text x="810" y="326" fill="#24332e" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="normal">D</text>
+<rect x="239" y="182" width="482" height="33" fill="#fcfaf5"/>
+<text x="480" y="207" fill="#24332e" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="normal">P and Q share the same finer replacement group</text>
+<rect x="65" y="70" width="820" height="98" rx="12" fill="none" stroke="#2c7568" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="65" y="273" width="820" height="89" rx="12" fill="none" stroke="#a87520" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="55" y="408" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="start" font-weight="normal">Valid coarse cut: P + Q     â€¢     Valid fine cut: A + B + C + D</text>
+<text x="55" y="437" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="start" font-weight="normal">An arbitrary mix can cover a region twice or leave a region uncovered.</text>
+</svg>

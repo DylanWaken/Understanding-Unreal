@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc"><title id="title">Three intersection representations</title><desc id="desc">Camera depth knows only visible surfaces, a sampled distance field knows approximate spatial distances, and acceleration structures organize explicit triangles. Different omissions demand different diagnosis.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#2c7568"/></marker></defs><rect width="960" height="540" fill="#fcfaf5"/>
+<text x="32" y="40" fill="#24332e" font-family="Arial, sans-serif" font-size="25" text-anchor="start" font-weight="bold">The ray sees the representation selected for it</text>
+<rect x="26" y="80" width="282" height="330" rx="7" fill="#f5f4ed" stroke="#b8c0b5" stroke-width="1"/>
+<rect x="339" y="80" width="282" height="330" rx="7" fill="#f5f4ed" stroke="#b8c0b5" stroke-width="1"/>
+<rect x="652" y="80" width="282" height="330" rx="7" fill="#f5f4ed" stroke="#b8c0b5" stroke-width="1"/>
+<text x="167" y="123" fill="#24332e" font-family="Arial, sans-serif" font-size="23" text-anchor="middle" font-weight="normal">Screen depth</text>
+<text x="480" y="123" fill="#24332e" font-family="Arial, sans-serif" font-size="23" text-anchor="middle" font-weight="normal">Distance field</text>
+<text x="793" y="123" fill="#24332e" font-family="Arial, sans-serif" font-size="23" text-anchor="middle" font-weight="normal">Triangle structure</text>
+<path d="M53 301 L75 301 L75 242 L120 242 L120 194 L180 194 L180 283 L279 283" fill="none" stroke="#3b657f" stroke-width="5"/>
+<line x1="64" y1="161" x2="206" y2="222" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="206" y1="222" x2="284" y2="253" stroke="#586960" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="167" y="350" fill="#24332e" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="normal">Visible front surfaces</text>
+<text x="167" y="379" fill="#24332e" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="normal">No off-screen guarantee</text>
+<rect x="388" y="147" width="184" height="184" rx="60" fill="none" stroke="#bcc9bf" stroke-width="2"/>
+<rect x="408" y="167" width="144" height="144" rx="40" fill="none" stroke="#8aa895" stroke-width="2"/>
+<rect x="428" y="187" width="104" height="104" rx="20" fill="none" stroke="#2c7568" stroke-width="2"/>
+<rect x="448" y="207" width="64" height="64" rx="0" fill="#bdc8ba" stroke="#2c7568" stroke-width="2"/>
+<line x1="363" y1="288" x2="439" y2="270" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="480" y="350" fill="#24332e" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="normal">Sampled spatial distance</text>
+<text x="480" y="379" fill="#24332e" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="normal">Thin detail can disappear</text>
+<rect x="680" y="157" width="226" height="153" rx="0" fill="none" stroke="#3b657f" stroke-width="2"/>
+<rect x="696" y="172" width="86" height="105" rx="0" fill="none" stroke="#586960" stroke-width="1"/>
+<rect x="795" y="185" width="95" height="108" rx="0" fill="none" stroke="#586960" stroke-width="1"/>
+<path d="M705 255 L737.5 190 L770 255 Z" fill="#c9dbe4" stroke="#3b657f" stroke-width="2"/>
+<path d="M809 273 L842.0 207 L875 273 Z" fill="#dfd7c3" stroke="#a87520" stroke-width="2"/>
+<line x1="670" y1="239" x2="706" y2="228" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="793" y="350" fill="#24332e" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="normal">Explicit triangle queries</text>
+<text x="793" y="379" fill="#24332e" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="normal">Build and update cost</text>
+<text x="480" y="465" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Matching the camera is a goal, not a property guaranteed by all three.</text>
+<text x="480" y="494" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">A missing hit and a hit with poor cached lighting are different failures.</text>
+</svg>

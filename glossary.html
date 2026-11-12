@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Definitions for graphics, computer science, mathematics, and Unreal Engine terminology used in Understanding Unreal, with comparative notes on the companion Ardashir project.">
+  <title>Glossary | Understanding Unreal</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/glossary-data.js" defer></script>
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-brand" href="index.html">Understanding Unreal</a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-navigation" aria-expanded="false">Menu</button>
+      <nav class="site-nav" id="site-navigation" data-site-nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="Unreal/scene-representation.html">Scene representation</a></li>
+          <li><a href="Unreal/nanite.html">Nanite</a></li>
+          <li><a href="Unreal/lumen.html">Lumen</a></li>
+          <li><a href="Unreal/material-compiler.html">Materials</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle>Dark theme</button>
+    </div>
+  </header>
+
+  <main class="site-main" id="main-content">
+    <div class="page-layout">
+      <aside class="sidebar" aria-labelledby="glossary-nav-title">
+        <h2 id="glossary-nav-title">Glossary</h2>
+        <ul>
+          <li><a href="#glossary-terms">All terms</a></li>
+          <li><a href="#using-glossary">Using the glossary</a></li>
+        </ul>
+      </aside>
+      <article class="page-content">
+        <header>
+          <p class="eyebrow">Shared vocabulary</p>
+          <h1>Global glossary</h1>
+          <p class="lede">Concise definitions for graphics, computer science, mathematics, and rendering terms used throughout Understanding Unreal. Entries marked &#x201C;In Ardashir&#x201D; preserve comparative notes from the companion project.</p>
+        </header>
+
+        <section id="using-glossary" aria-labelledby="using-heading">
+          <h2 id="using-heading">Using the glossary</h2>
+          <p>Every term has a stable address. Links marked with a term identifier remain normal links without JavaScript; when scripts are available, focusing or hovering them also shows the concise definition.</p>
+        </section>
+
+        <section id="glossary-terms" aria-labelledby="terms-heading">
+          <h2 id="terms-heading">Terms</h2>
+          <div class="glossary-controls">
+            <div class="field">
+              <label for="glossary-search">Search terms</label>
+              <input id="glossary-search" type="search" data-glossary-filter placeholder="Term, definition, or project meaning" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="glossary-category">Category</label>
+              <select id="glossary-category" data-glossary-category>
+                <option value="">All categories</option>
+              <option value="Computer science">Computer science</option>
+              <option value="Graphics">Graphics</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Project">Project</option>
+              <option value="Software architecture">Software architecture</option>
+              </select>
+            </div>
+            <p class="filter-status" data-glossary-count role="status" aria-live="polite">146 of 146 terms shown</p>
+          </div>
+          <p class="callout" data-glossary-empty hidden>No terms match the current filters.</p>
+          <div class="glossary-list">
+        <article class="glossary-entry" id="term-abi" data-glossary-entry data-category="Computer science" data-search="ABI Computer science Application binary interface: the calling, layout, and linkage rules shared by compiled components. Shader parameter layouts and native interop must preserve the ABI expected across CPU, shader, and library boundaries.">
+          <div class="glossary-entry__meta"><h3>ABI</h3><span class="category">Computer science</span></div>
+          <p>Application binary interface: the calling, layout, and linkage rules shared by compiled components.</p>
+          <p><strong>In Ardashir:</strong> Shader parameter layouts and native interop must preserve the ABI expected across CPU, shader, and library boundaries.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-api">API</a></li><li><a href="#term-parameter-metadata-reflection">Parameter metadata / reflection</a></li><li><a href="#term-format">Format</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-acceleration-structure" data-glossary-entry data-category="Graphics" data-search="Acceleration structure Graphics A hierarchy optimized for fast spatial intersection queries. ArdaBackend creates and builds bottom- and top-level structures used by ray-tracing commands.">
+          <div class="glossary-entry__meta"><h3>Acceleration structure</h3><span class="category">Graphics</span></div>
+          <p>A hierarchy optimized for fast spatial intersection queries.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend creates and builds bottom- and top-level structures used by ray-tracing commands.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-ray-tracing">Ray tracing</a></li><li><a href="#term-resource">Resource</a></li><li><a href="#term-barrier">Barrier</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-api" data-glossary-entry data-category="Computer science" data-search="API Computer science Application programming interface: the named operations and data contracts exposed to callers. ArdaBackend&#x27;s public headers form its source-level API over native and engine graphics integrations.">
+          <div class="glossary-entry__meta"><h3>API</h3><span class="category">Computer science</span></div>
+          <p>Application programming interface: the named operations and data contracts exposed to callers.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend&#x27;s public headers form its source-level API over native and engine graphics integrations.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-abi">ABI</a></li><li><a href="#term-backend">Backend</a></li><li><a href="#term-validation-layer">Validation layer</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-arda-render-graph" data-glossary-entry data-category="Project" data-search="ArdaDependencyGraph Project Ardashir&#x27;s system for declaring render passes, resources, and their dependencies before execution. The ArdaDependencyGraph module exposes FArdaDependencyGraph: a persistent typed graph compiled by ArdaInductor for graphics, CUDA, and copy work.">
+          <div class="glossary-entry__meta"><h3>ArdaDependencyGraph</h3><span class="category">Project</span></div>
+          <p>Ardashir&#x27;s system for declaring render passes, resources, and their dependencies before execution.</p>
+          <p><strong>In Ardashir:</strong> The ArdaDependencyGraph module exposes FArdaDependencyGraph: a persistent typed graph compiled by ArdaInductor for graphics, CUDA, and copy work.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-graph">Render graph</a></li><li><a href="#term-backend">Backend</a></li><li><a href="#term-pass">Pass</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-arena-allocator" data-glossary-entry data-category="Computer science" data-search="Arena allocator Computer science An allocator that serves many objects from larger blocks and releases them together, often running registered destructors at reset. An arena can serve temporary compiler data; the persistent graph owns immutable typed parameters and registered definitions through retained objects.">
+          <div class="glossary-entry__meta"><h3>Arena allocator</h3><span class="category">Computer science</span></div>
+          <p>An allocator that serves many objects from larger blocks and releases them together, often running registered destructors at reset.</p>
+          <p><strong>In Ardashir:</strong> An arena can serve temporary compiler data; the persistent graph owns immutable typed parameters and registered definitions through retained objects.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-registration-order">Registration order</a></li><li><a href="#term-raii">RAII</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-async-compute" data-glossary-entry data-category="Graphics" data-search="Async compute Graphics Compute work submitted to a compute-capable queue so it may overlap independent graphics work. ArdaInductor selects sufficiently long independent compute branches that can overlap graphics before a later join; memory serialization may change that choice.">
+          <div class="glossary-entry__meta"><h3>Async compute</h3><span class="category">Graphics</span></div>
+          <p>Compute work submitted to a compute-capable queue so it may overlap independent graphics work.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor selects sufficiently long independent compute branches that can overlap graphics before a later join; memory serialization may change that choice.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-queue">Queue</a></li><li><a href="#term-queue-dependency">Queue dependency</a></li><li><a href="#term-immediate-mode">Immediate mode</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-backend" data-glossary-entry data-category="Project" data-search="Backend Project The implementation layer that translates engine-facing operations to a lower-level system. ArdaBackend owns the graphics abstraction boundary, resource creation, shader integration, and pipeline setup.">
+          <div class="glossary-entry__meta"><h3>Backend</h3><span class="category">Project</span></div>
+          <p>The implementation layer that translates engine-facing operations to a lower-level system.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend owns the graphics abstraction boundary, resource creation, shader integration, and pipeline setup.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-rhi">RHI</a></li><li><a href="#term-backend-module">Backend module</a></li><li><a href="#term-native-import">Native import</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-backend-module" data-glossary-entry data-category="Project" data-search="Backend module Project A linkable implementation that satisfies ArdaBackend&#x27;s provider contract for device creation, RHI access, presentation, and shader compilation. Ardashir links native Vulkan and D3D12 modules today and can add an engine-RHI module without changing renderer-facing code.">
+          <div class="glossary-entry__meta"><h3>Backend module</h3><span class="category">Project</span></div>
+          <p>A linkable implementation that satisfies ArdaBackend&#x27;s provider contract for device creation, RHI access, presentation, and shader compilation.</p>
+          <p><strong>In Ardashir:</strong> Ardashir links native Vulkan and D3D12 modules today and can add an engine-RHI module without changing renderer-facing code.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-backend">Backend</a></li><li><a href="#term-provider-contract">Provider contract</a></li><li><a href="#term-link-time-registration">Link-time registration</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-barrier" data-glossary-entry data-category="Graphics" data-search="Barrier Graphics An ordering and visibility operation that makes resource usage transitions safe. ArdaBackend emits or tracks native barriers when resources change state or access pattern.">
+          <div class="glossary-entry__meta"><h3>Barrier</h3><span class="category">Graphics</span></div>
+          <p>An ordering and visibility operation that makes resource usage transitions safe.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend emits or tracks native barriers when resources change state or access pattern.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-resource-state">Resource state</a></li><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-command-list">Command list</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-binding-layout" data-glossary-entry data-category="Graphics" data-search="Binding layout Graphics A declaration of the resource slots and access types expected by shaders. ArdaBackend creates portable binding layouts that the active module translates to its RHI or native representation.">
+          <div class="glossary-entry__meta"><h3>Binding layout</h3><span class="category">Graphics</span></div>
+          <p>A declaration of the resource slots and access types expected by shaders.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend creates portable binding layouts that the active module translates to its RHI or native representation.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-descriptor">Descriptor</a></li><li><a href="#term-binding-set">Binding set</a></li><li><a href="#term-parameter-metadata-reflection">Parameter metadata / reflection</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-binding-set" data-glossary-entry data-category="Graphics" data-search="Binding set Graphics Concrete resources bound to the slots declared by a binding layout. ArdaBackend assembles portable binding sets that the active module translates for command recording and pipeline execution.">
+          <div class="glossary-entry__meta"><h3>Binding set</h3><span class="category">Graphics</span></div>
+          <p>Concrete resources bound to the slots declared by a binding layout.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend assembles portable binding sets that the active module translates for command recording and pipeline execution.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-binding-layout">Binding layout</a></li><li><a href="#term-srv">SRV</a></li><li><a href="#term-uav">UAV</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-bindless" data-glossary-entry data-category="Graphics" data-search="Bindless Graphics A resource-binding model where shaders index large descriptor collections dynamically. ArdaBackend can represent bindless layouts when the active module and device capabilities permit them.">
+          <div class="glossary-entry__meta"><h3>Bindless</h3><span class="category">Graphics</span></div>
+          <p>A resource-binding model where shaders index large descriptor collections dynamically.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend can represent bindless layouts when the active module and device capabilities permit them.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-descriptor">Descriptor</a></li><li><a href="#term-binding-layout">Binding layout</a></li><li><a href="#term-device">Device</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-blackboard" data-glossary-entry data-category="Project" data-search="Blackboard Project A graph-scoped store used to share named or typed values between otherwise separate setup code. Applications may keep shared CPU state in typed node parameters. The persistent graph has no separate blackboard authoring API.">
+          <div class="glossary-entry__meta"><h3>Blackboard</h3><span class="category">Project</span></div>
+          <p>A graph-scoped store used to share named or typed values between otherwise separate setup code.</p>
+          <p><strong>In Ardashir:</strong> Applications may keep shared CPU state in typed node parameters. The persistent graph has no separate blackboard authoring API.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-graph">Render graph</a></li><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-arena-allocator">Arena allocator</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-blas" data-glossary-entry data-category="Graphics" data-search="BLAS Graphics A bottom-level ray-tracing acceleration structure indexing geometry for efficient intersection queries. Rigid placements can share geometry structures; deformation requires an appropriate update or rebuild when that geometry is ray traced.">
+          <div class="glossary-entry__meta"><h3>BLAS</h3><span class="category">Graphics</span></div>
+          <p>A bottom-level ray-tracing acceleration structure indexing geometry for efficient intersection queries.</p>
+          <p><strong>In Ardashir:</strong> Rigid placements can share geometry structures; deformation requires an appropriate update or rebuild when that geometry is ray traced.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-tlas">TLAS</a></li><li><a href="#term-scene-asset">Scene asset</a></li><li><a href="#term-skinning">Skinning</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-camera-does-not-see-the-whole-lighting-problem">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-brdf" data-glossary-entry data-category="Graphics" data-search="BRDF Graphics A bidirectional reflectance distribution function describing how incoming light is reflected toward an outgoing direction at a surface. A material supplies surface parameters; light visibility and incoming radiance are additional inputs when evaluating reflected illumination.">
+          <div class="glossary-entry__meta"><h3>BRDF</h3><span class="category">Graphics</span></div>
+          <p>A bidirectional reflectance distribution function describing how incoming light is reflected toward an outgoing direction at a surface.</p>
+          <p><strong>In Ardashir:</strong> A material supplies surface parameters; light visibility and incoming radiance are additional inputs when evaluating reflected illumination.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader">Shader</a></li><li><a href="#term-global-illumination">Global illumination (GI)</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#a-material-is-a-surface-program">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-bytecode" data-glossary-entry data-category="Computer science" data-search="Bytecode Computer science A compiled, machine-consumable representation of a program. Shader bytecode enters ArdaBackend as DXIL or SPIR-V and is used to create native shader objects.">
+          <div class="glossary-entry__meta"><h3>Bytecode</h3><span class="category">Computer science</span></div>
+          <p>A compiled, machine-consumable representation of a program.</p>
+          <p><strong>In Ardashir:</strong> Shader bytecode enters ArdaBackend as DXIL or SPIR-V and is used to create native shader objects.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dxil">DXIL</a></li><li><a href="#term-spir-v">SPIR-V</a></li><li><a href="#term-shader">Shader</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-cache" data-glossary-entry data-category="Computer science" data-search="Cache Computer science Stored reusable results that avoid repeating expensive work. ArdaBackend caches pipeline state and other derived objects by stable descriptors or hashes.">
+          <div class="glossary-entry__meta"><h3>Cache</h3><span class="category">Computer science</span></div>
+          <p>Stored reusable results that avoid repeating expensive work.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend caches pipeline state and other derived objects by stable descriptors or hashes.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-lru">LRU</a></li><li><a href="#term-hash">Hash</a></li><li><a href="#term-pso">PSO</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-capability" data-glossary-entry data-category="Graphics" data-search="Capability Graphics A queried fact or limit that determines whether a device admits an operation. Arda separates graphics capability predicates, CUDA device support and per-allocation CUDA representations; none replaces state or lifetime validation.">
+          <div class="glossary-entry__meta"><h3>Capability</h3><span class="category">Graphics</span></div>
+          <p>A queried fact or limit that determines whether a device admits an operation.</p>
+          <p><strong>In Ardashir:</strong> Arda separates graphics capability predicates, CUDA device support and per-allocation CUDA representations; none replaces state or lifetime validation.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-device">Device</a></li><li><a href="#term-resource">Resource</a></li><li><a href="#term-queue">Queue</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-clobber" data-glossary-entry data-category="Project" data-search="Clobber Project A diagnostic overwrite with a conspicuous pattern used to expose code that relies on uninitialized or unexpectedly preserved data. A diagnostic overwrite is an application or backend technique. It is not a separate persistent graph execution mode.">
+          <div class="glossary-entry__meta"><h3>Clobber</h3><span class="category">Project</span></div>
+          <p>A diagnostic overwrite with a conspicuous pattern used to expose code that relies on uninitialized or unexpectedly preserved data.</p>
+          <p><strong>In Ardashir:</strong> A diagnostic overwrite is an application or backend technique. It is not a separate persistent graph execution mode.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-validation-layer">Validation layer</a></li><li><a href="#term-transient-resource">Transient resource</a></li><li><a href="#term-resource">Resource</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-command-list" data-glossary-entry data-category="Graphics" data-search="Command list Graphics A recorded sequence of GPU commands submitted together for execution. ArdaBackend records portable transitions, draws, dispatches, and copies that the active module implements on its command system.">
+          <div class="glossary-entry__meta"><h3>Command list</h3><span class="category">Graphics</span></div>
+          <p>A recorded sequence of GPU commands submitted together for execution.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend records portable transitions, draws, dispatches, and copies that the active module implements on its command system.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-queue">Queue</a></li><li><a href="#term-barrier">Barrier</a></li><li><a href="#term-resource-state">Resource state</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-compute-operand" data-glossary-entry data-category="Project" data-search="Compute operand Project A schedulable operation that selects one precompiled kernel using a shared parameter schema. Derive TArdaComputeOperand&lt;Parameters, Payload&gt;, implement BindKernelVariants and SelectKernel, and use framework-owned dispatch. RDG discovers logical dependencies before physical CUDA mappings are resolved.">
+          <div class="glossary-entry__meta"><h3>Compute operand</h3><span class="category">Project</span></div>
+          <p>A schedulable operation that selects one precompiled kernel using a shared parameter schema.</p>
+          <p><strong>In Ardashir:</strong> Derive TArdaComputeOperand&lt;Parameters, Payload&gt;, implement BindKernelVariants and SelectKernel, and use framework-owned dispatch. RDG discovers logical dependencies before physical CUDA mappings are resolved.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cuda">CUDA</a></li><li><a href="#term-capability">Capability</a></li><li><a href="#term-resource">Resource</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-constant-buffer" data-glossary-entry data-category="Graphics" data-search="Constant buffer Graphics A buffer that supplies small, read-only uniform values to shader invocations. ArdaBackend maps parameter data to constant-buffer bindings where push constants are unsuitable.">
+          <div class="glossary-entry__meta"><h3>Constant buffer</h3><span class="category">Graphics</span></div>
+          <p>A buffer that supplies small, read-only uniform values to shader invocations.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend maps parameter data to constant-buffer bindings where push constants are unsuitable.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-push-constants">Push constants</a></li><li><a href="#term-binding-set">Binding set</a></li><li><a href="#term-shader">Shader</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-consumer" data-glossary-entry data-category="Computer science" data-search="Consumer Computer science An operation that reads or otherwise depends on a value produced by earlier work. ArdaInductor derives scheduling, culling, cascade removal, and cross-queue synchronization from declared resource consumers.">
+          <div class="glossary-entry__meta"><h3>Consumer</h3><span class="category">Computer science</span></div>
+          <p>An operation that reads or otherwise depends on a value produced by earlier work.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor derives scheduling, culling, cascade removal, and cross-queue synchronization from declared resource consumers.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-producer">Producer</a></li><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-queue-dependency">Queue dependency</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-critical-path" data-glossary-entry data-category="Computer science" data-search="Critical path Computer science A dependency chain with the greatest total duration. Its duration is a lower bound on completion time when all dependency constraints must be respected. ArdaInductor computes each node&#x27;s estimated duration plus the longest successor tail and uses this priority in an efficiency seed. Queue contention, CUDA handoffs and added memory ordering also affect the final schedule cost.">
+          <div class="glossary-entry__meta"><h3>Critical path</h3><span class="category">Computer science</span></div>
+          <p>A dependency chain with the greatest total duration. Its duration is a lower bound on completion time when all dependency constraints must be respected.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor computes each node&#x27;s estimated duration plus the longest successor tail and uses this priority in an efficiency seed. Queue contention, CUDA handoffs and added memory ordering also affect the final schedule cost.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-list-scheduling">List scheduling</a></li><li><a href="#term-makespan">Makespan</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#seeds">Critical-path scheduling seeds</a></p>
+        </article>
+        <article class="glossary-entry" id="term-cuda" data-glossary-entry data-category="Graphics" data-search="CUDA Graphics NVIDIA&#x27;s parallel-compute platform and device instruction/launch model. Arda launches precompiled native kernels through D3D12 CiG capture, Vulkan CiG external compute queues or ordinary CUDA contexts, with provider-owned synchronization.">
+          <div class="glossary-entry__meta"><h3>CUDA</h3><span class="category">Graphics</span></div>
+          <p>NVIDIA&#x27;s parallel-compute platform and device instruction/launch model.</p>
+          <p><strong>In Ardashir:</strong> Arda launches precompiled native kernels through D3D12 CiG capture, Vulkan CiG external compute queues or ordinary CUDA contexts, with provider-owned synchronization.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cig">CUDA in Graphics (CiG)</a></li><li><a href="#term-ptx">PTX</a></li><li><a href="#term-command-list">Command list</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-cuda-array" data-glossary-entry data-category="Graphics" data-search="CUDA array Graphics Opaque image storage described by dimensions, channels and mip levels rather than a linear device pointer. Arda imports a compatible shared graphics texture as CUDA array storage with matching raw format and shape; this mapping performs no numerical color conversion.">
+          <div class="glossary-entry__meta"><h3>CUDA array</h3><span class="category">Graphics</span></div>
+          <p>Opaque image storage described by dimensions, channels and mip levels rather than a linear device pointer.</p>
+          <p><strong>In Ardashir:</strong> Arda imports a compatible shared graphics texture as CUDA array storage with matching raw format and shape; this mapping performs no numerical color conversion.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cuda">CUDA</a></li><li><a href="#term-cuda-surface">CUDA surface object</a></li><li><a href="#term-resource">Resource</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-cig" data-glossary-entry data-category="Graphics" data-search="CUDA in Graphics (CiG) Graphics CUDA execution integrated with graphics scheduling through a graphics-associated CUDA context. D3D12 uses command-list capture; Vulkan creates a CUDA context from an external compute queue&#x27;s opaque data. Both retain resources and native entries until completion.">
+          <div class="glossary-entry__meta"><h3>CUDA in Graphics (CiG)</h3><span class="category">Graphics</span></div>
+          <p>CUDA execution integrated with graphics scheduling through a graphics-associated CUDA context.</p>
+          <p><strong>In Ardashir:</strong> D3D12 uses command-list capture; Vulkan creates a CUDA context from an external compute queue&#x27;s opaque data. Both retain resources and native entries until completion.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cuda">CUDA</a></li><li><a href="#term-queue">Queue</a></li><li><a href="#term-lifetime">Lifetime</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-cuda-stream" data-glossary-entry data-category="Graphics" data-search="CUDA stream Graphics An ordered sequence of CUDA operations whose submission can return before GPU completion. The provider owns explicit streams and context selection for registered kernels, with graphics/CUDA GPU handoffs. Independent application-owned streams are outside the operand facade.">
+          <div class="glossary-entry__meta"><h3>CUDA stream</h3><span class="category">Graphics</span></div>
+          <p>An ordered sequence of CUDA operations whose submission can return before GPU completion.</p>
+          <p><strong>In Ardashir:</strong> The provider owns explicit streams and context selection for registered kernels, with graphics/CUDA GPU handoffs. Independent application-owned streams are outside the operand facade.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cuda">CUDA</a></li><li><a href="#term-queue">Queue</a></li><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-lifetime">Lifetime</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-cuda-surface" data-glossary-entry data-category="Graphics" data-search="CUDA surface object Graphics A CUDA handle for reading or writing compatible array storage through surface intrinsics; it is not a graphics descriptor or raw pointer. An Arda surface parameter becomes a provider-owned surface handle for one selected mip. For 2D surface intrinsics the X coordinate is in bytes: an RGBA8 pixel at X uses X times four. Keep the imported storage and object alive through GPU completion.">
+          <div class="glossary-entry__meta"><h3>CUDA surface object</h3><span class="category">Graphics</span></div>
+          <p>A CUDA handle for reading or writing compatible array storage through surface intrinsics; it is not a graphics descriptor or raw pointer.</p>
+          <p><strong>In Ardashir:</strong> An Arda surface parameter becomes a provider-owned surface handle for one selected mip. For 2D surface intrinsics the X coordinate is in bytes: an RGBA8 pixel at X uses X times four. Keep the imported storage and object alive through GPU completion.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cuda-array">CUDA array</a></li><li><a href="#term-cuda">CUDA</a></li><li><a href="#term-lifetime">Lifetime</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-culling" data-glossary-entry data-category="Computer science" data-search="Culling Computer science Removing work proven unable to affect any required output. ArdaInductor retains ancestors of observable work, including overwrite hazards; it does not eliminate overwritten stores. Edit-time removal instead cascades through consumers of the removed contents, excluding ordering-only edges.">
+          <div class="glossary-entry__meta"><h3>Culling</h3><span class="category">Computer science</span></div>
+          <p>Removing work proven unable to affect any required output.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor retains ancestors of observable work, including overwrite hazards; it does not eliminate overwritten stores. Edit-time removal instead cascades through consumers of the removed contents, excluding ordering-only edges.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-liveness">Liveness</a></li><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-immediate-mode">Immediate mode</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-d3d12" data-glossary-entry data-category="Graphics" data-search="D3D12 Graphics Direct3D 12, Microsoft&#x27;s explicit low-level graphics and compute API. The native D3D12 module creates or imports Direct3D resources behind Arda RHI objects.">
+          <div class="glossary-entry__meta"><h3>D3D12</h3><span class="category">Graphics</span></div>
+          <p>Direct3D 12, Microsoft&#x27;s explicit low-level graphics and compute API.</p>
+          <p><strong>In Ardashir:</strong> The native D3D12 module creates or imports Direct3D resources behind Arda RHI objects.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-rhi">RHI</a></li><li><a href="#term-dxil">DXIL</a></li><li><a href="#term-native-import">Native import</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-d3d12-pipeline-library" data-glossary-entry data-category="Graphics" data-search="D3D12 pipeline library Graphics A Direct3D 12 object that serializes and retrieves driver-compiled pipeline state by name. The native D3D12 module uses stable semantic keys as ID3D12PipelineLibrary names.">
+          <div class="glossary-entry__meta"><h3>D3D12 pipeline library</h3><span class="category">Graphics</span></div>
+          <p>A Direct3D 12 object that serializes and retrieves driver-compiled pipeline state by name.</p>
+          <p><strong>In Ardashir:</strong> The native D3D12 module uses stable semantic keys as ID3D12PipelineLibrary names.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-d3d12">D3D12</a></li><li><a href="#term-persistent-pipeline-cache">Persistent pipeline cache</a></li><li><a href="#term-stable-semantic-key">Stable semantic key</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-dag" data-glossary-entry data-category="Computer science" data-search="DAG Computer science Directed acyclic graph: vertices connected by one-way edges with no path that returns to its starting vertex. ArdaGraph permits arbitrary directed attachment order, detects cycles, and provides deterministic topological algorithms. Handle order never defines semantic dependencies.">
+          <div class="glossary-entry__meta"><h3>DAG</h3><span class="category">Computer science</span></div>
+          <p>Directed acyclic graph: vertices connected by one-way edges with no path that returns to its starting vertex.</p>
+          <p><strong>In Ardashir:</strong> ArdaGraph permits arbitrary directed attachment order, detects cycles, and provides deterministic topological algorithms. Handle order never defines semantic dependencies.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-topological-order">Topological order</a></li><li><a href="#term-registration-order">Registration order</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-dependency-edge" data-glossary-entry data-category="Computer science" data-search="Dependency edge Computer science A directed relation stating that one operation must precede another because of data flow or an explicit ordering constraint. ArdaInductor infers value dependencies and overwrite hazards from declared resource accesses. Explicit ordering constraints cannot contradict those edges.">
+          <div class="glossary-entry__meta"><h3>Dependency edge</h3><span class="category">Computer science</span></div>
+          <p>A directed relation stating that one operation must precede another because of data flow or an explicit ordering constraint.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor infers value dependencies and overwrite hazards from declared resource accesses. Explicit ordering constraints cannot contradict those edges.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-producer">Producer</a></li><li><a href="#term-consumer">Consumer</a></li><li><a href="#term-raw-war-waw-hazards">RAW / WAR / WAW hazards</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-descriptor" data-glossary-entry data-category="Graphics" data-search="Descriptor Graphics A small record that tells a GPU how a shader or pipeline may access a resource. ArdaBackend expresses descriptors through backend-neutral binding layouts and binding sets implemented by the active module.">
+          <div class="glossary-entry__meta"><h3>Descriptor</h3><span class="category">Graphics</span></div>
+          <p>A small record that tells a GPU how a shader or pipeline may access a resource.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend expresses descriptors through backend-neutral binding layouts and binding sets implemented by the active module.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-binding-layout">Binding layout</a></li><li><a href="#term-binding-set">Binding set</a></li><li><a href="#term-bindless">Bindless</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-device" data-glossary-entry data-category="Graphics" data-search="Device Graphics The logical interface to a GPU used to create resources, pipelines, and command contexts. FArdaRHIDeviceRef is ArdaBackend&#x27;s public device and the root for native allocations and capability queries.">
+          <div class="glossary-entry__meta"><h3>Device</h3><span class="category">Graphics</span></div>
+          <p>The logical interface to a GPU used to create resources, pipelines, and command contexts.</p>
+          <p><strong>In Ardashir:</strong> FArdaRHIDeviceRef is ArdaBackend&#x27;s public device and the root for native allocations and capability queries.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-queue">Queue</a></li><li><a href="#term-command-list">Command list</a></li><li><a href="#term-device-affinity">Device affinity</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-device-affinity" data-glossary-entry data-category="Graphics" data-search="Device affinity Graphics The association of work or data with one GPU in a multi-device system. ArdaBackend preserves device identity so resources and commands are used with the device that created them.">
+          <div class="glossary-entry__meta"><h3>Device affinity</h3><span class="category">Graphics</span></div>
+          <p>The association of work or data with one GPU in a multi-device system.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend preserves device identity so resources and commands are used with the device that created them.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-device">Device</a></li><li><a href="#term-resource">Resource</a></li><li><a href="#term-native-import">Native import</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-dxil" data-glossary-entry data-category="Graphics" data-search="DXIL Graphics DirectX Intermediate Language, the compiled shader representation used by modern Direct3D. The D3D12 path consumes DXIL shader bytecode.">
+          <div class="glossary-entry__meta"><h3>DXIL</h3><span class="category">Graphics</span></div>
+          <p>DirectX Intermediate Language, the compiled shader representation used by modern Direct3D.</p>
+          <p><strong>In Ardashir:</strong> The D3D12 path consumes DXIL shader bytecode.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-bytecode">Bytecode</a></li><li><a href="#term-d3d12">D3D12</a></li><li><a href="#term-spir-v">SPIR-V</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-engine-rhi" data-glossary-entry data-category="Graphics" data-search="Engine RHI Graphics A rendering hardware interface owned by a host engine rather than directly by an application library. An ArdaBackend module can adapt Unreal, Unity, Godot, or another host RHI by accepting named external objects and exposing Arda&#x27;s backend-neutral device facade.">
+          <div class="glossary-entry__meta"><h3>Engine RHI</h3><span class="category">Graphics</span></div>
+          <p>A rendering hardware interface owned by a host engine rather than directly by an application library.</p>
+          <p><strong>In Ardashir:</strong> An ArdaBackend module can adapt Unreal, Unity, Godot, or another host RHI by accepting named external objects and exposing Arda&#x27;s backend-neutral device facade.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-rhi">RHI</a></li><li><a href="#term-native-import">Native import</a></li><li><a href="#term-backend-module">Backend module</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-epilogue" data-glossary-entry data-category="Project" data-search="Epilogue Project A synthetic final graph node that anchors observable outputs and graph-exit state requirements. ArdaInductor generates exit transitions needed to restore persistent resource entry states for subsequent execution.">
+          <div class="glossary-entry__meta"><h3>Epilogue</h3><span class="category">Project</span></div>
+          <p>A synthetic final graph node that anchors observable outputs and graph-exit state requirements.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor generates exit transitions needed to restore persistent resource entry states for subsequent execution.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-prologue">Prologue</a></li><li><a href="#term-extraction">Extraction</a></li><li><a href="#term-liveness">Liveness</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-exponential-moving-average" data-glossary-entry data-category="Mathematics" data-search="Exponential moving average (EMA) Mathematics A smoothed estimate updated as previous estimate plus alpha times the difference between a new sample and that estimate. Older samples receive exponentially decreasing weight; this is not a fixed-size window average. ArdaInductor initializes each node estimate from its first completed timing sample, then updates it in collection order. The default alpha of 0.2 gives each new sample 20 percent weight. Adaptive scheduling can use these estimates, while raw timing history is stored separately with a bounded capacity.">
+          <div class="glossary-entry__meta"><h3>Exponential moving average (EMA)</h3><span class="category">Mathematics</span></div>
+          <p>A smoothed estimate updated as previous estimate plus alpha times the difference between a new sample and that estimate. Older samples receive exponentially decreasing weight; this is not a fixed-size window average.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor initializes each node estimate from its first completed timing sample, then updates it in collection order. The default alpha of 0.2 gives each new sample 20 percent weight. Adaptive scheduling can use these estimates, while raw timing history is stored separately with a bounded capacity.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-makespan">Makespan</a></li><li><a href="#term-queue">Queue</a></li><li><a href="#term-incumbent">Incumbent</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#adaptive">Timing estimates and adaptive scheduling</a></p>
+        </article>
+        <article class="glossary-entry" id="term-external-device-provider" data-glossary-entry data-category="Project" data-search="External device provider Project A host-owned adapter that supplies an existing native graphics device and queues to an abstraction layer. ArdaBackend copies the provider&#x27;s D3D12 or Vulkan descriptor and optional lifetime token during initialization; callbacks are serialized and non-reentrant.">
+          <div class="glossary-entry__meta"><h3>External device provider</h3><span class="category">Project</span></div>
+          <p>A host-owned adapter that supplies an existing native graphics device and queues to an abstraction layer.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend copies the provider&#x27;s D3D12 or Vulkan descriptor and optional lifetime token during initialization; callbacks are serialized and non-reentrant.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-native-import">Native import</a></li><li><a href="#term-lifetime-token">Lifetime token</a></li><li><a href="#term-queue-coordination">Queue coordination</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-extraction" data-glossary-entry data-category="Project" data-search="Extraction Project Publishing a graph-managed resource for use after graph execution, which makes that resource an observable output. The persistent graph marks observable values with Edit.Keep and publishes CPU results through readback nodes. Imported resources remain owned by their original application.">
+          <div class="glossary-entry__meta"><h3>Extraction</h3><span class="category">Project</span></div>
+          <p>Publishing a graph-managed resource for use after graph execution, which makes that resource an observable output.</p>
+          <p><strong>In Ardashir:</strong> The persistent graph marks observable values with Edit.Keep and publishes CPU results through readback nodes. Imported resources remain owned by their original application.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-epilogue">Epilogue</a></li><li><a href="#term-liveness">Liveness</a></li><li><a href="#term-fence">Fence</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-fence" data-glossary-entry data-category="Graphics" data-search="Fence Graphics A synchronization primitive the CPU can poll or wait on to observe GPU completion; native APIs provide binary and timeline forms. ArdaBackend&#x27;s GPU-fence facade tracks one outstanding signal at a time. Observe completion before reusing resources or resetting; signal again before waiting after a reset. Use a ring of fences for multiple outstanding frame slots.">
+          <div class="glossary-entry__meta"><h3>Fence</h3><span class="category">Graphics</span></div>
+          <p>A synchronization primitive the CPU can poll or wait on to observe GPU completion; native APIs provide binary and timeline forms.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend&#x27;s GPU-fence facade tracks one outstanding signal at a time. Observe completion before reusing resources or resetting; signal again before waiting after a reset. Use a ring of fences for multiple outstanding frame slots.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-queue">Queue</a></li><li><a href="#term-lifetime">Lifetime</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-first-use-compilation" data-glossary-entry data-category="Computer science" data-search="First-use compilation Computer science Deferred compilation performed when a result is requested for the first time rather than during startup. ArdaBackend OnDemand mode ensures bytecode and creates the RHI shader and layouts on the first lookup of a registered slot.">
+          <div class="glossary-entry__meta"><h3>First-use compilation</h3><span class="category">Computer science</span></div>
+          <p>Deferred compilation performed when a result is requested for the first time rather than during startup.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend OnDemand mode ensures bytecode and creates the RHI shader and layouts on the first lookup of a registered slot.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader-permutation">Shader permutation</a></li><li><a href="#term-shader-artifact-cache">Shader artifact cache</a></li><li><a href="#term-cache">Cache</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-format" data-glossary-entry data-category="Graphics" data-search="Format Graphics The component layout, bit width, and numeric interpretation of stored image or buffer data. ArdaBackend requires compatible formats across resources, views, framebuffers, and pipelines.">
+          <div class="glossary-entry__meta"><h3>Format</h3><span class="category">Graphics</span></div>
+          <p>The component layout, bit width, and numeric interpretation of stored image or buffer data.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend requires compatible formats across resources, views, framebuffers, and pipelines.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-target">Render target</a></li><li><a href="#term-framebuffer">Framebuffer</a></li><li><a href="#term-abi">ABI</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-framebuffer" data-glossary-entry data-category="Graphics" data-search="Framebuffer Graphics The set of image attachments targeted by a rendering pass. ArdaBackend framebuffer descriptions identify render targets and optional depth/stencil attachments.">
+          <div class="glossary-entry__meta"><h3>Framebuffer</h3><span class="category">Graphics</span></div>
+          <p>The set of image attachments targeted by a rendering pass.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend framebuffer descriptions identify render targets and optional depth/stencil attachments.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-target">Render target</a></li><li><a href="#term-format">Format</a></li><li><a href="#term-sample-count-msaa">Sample count / MSAA</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-gbuffer" data-glossary-entry data-category="Graphics" data-search="GBuffer Graphics Screen-space buffers encoding surface properties for later lighting evaluation. The Unreal deferred renderer consumes configured surface encodings; exact channels depend on renderer and Substrate configuration.">
+          <div class="glossary-entry__meta"><h3>GBuffer</h3><span class="category">Graphics</span></div>
+          <p>Screen-space buffers encoding surface properties for later lighting evaluation.</p>
+          <p><strong>In Ardashir:</strong> The Unreal deferred renderer consumes configured surface encodings; exact channels depend on renderer and Substrate configuration.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader">Shader</a></li><li><a href="#term-global-illumination">Global illumination (GI)</a></li><li><a href="#term-resource">Resource</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#a-visible-surface-becomes-a-lit-pixel">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-generational-handle" data-glossary-entry data-category="Computer science" data-search="Generational handle Computer science An identifier combining a reusable slot with a generation that distinguishes successive occupants. Proposed scene handles reject stale CPU references. Generation checks do not replace GPU completion or safe storage retirement.">
+          <div class="glossary-entry__meta"><h3>Generational handle</h3><span class="category">Computer science</span></div>
+          <p>An identifier combining a reusable slot with a generation that distinguishes successive occupants.</p>
+          <p><strong>In Ardashir:</strong> Proposed scene handles reject stale CPU references. Generation checks do not replace GPU completion or safe storage retirement.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-scene-instance">Scene instance</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#deriving-an-arda-scene-from-the-courtyard">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-geometry-cluster" data-glossary-entry data-category="Graphics" data-search="Geometry cluster Graphics A bounded group of geometry processed together for visibility, detail selection or storage. Nanite clusters are different from HISM instance clusters; their parent relationships describe different data.">
+          <div class="glossary-entry__meta"><h3>Geometry cluster</h3><span class="category">Graphics</span></div>
+          <p>A bounded group of geometry processed together for visibility, detail selection or storage.</p>
+          <p><strong>In Ardashir:</strong> Nanite clusters are different from HISM instance clusters; their parent relationships describe different data.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-culling">Culling</a></li><li><a href="#term-lod">Level of detail (LOD)</a></li><li><a href="#term-dag">DAG</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-courtyard-needs-more-than-static-meshes">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-global-illumination" data-glossary-entry data-category="Graphics" data-search="Global illumination (GI) Graphics Illumination that accounts for light arriving through interactions elsewhere in a scene, including indirect bounces. Lumen uses several scene representations and lighting caches. Arda&#x27;s proposed scene layer exposes data to GI consumers without requiring one GI algorithm.">
+          <div class="glossary-entry__meta"><h3>Global illumination (GI)</h3><span class="category">Graphics</span></div>
+          <p>Illumination that accounts for light arriving through interactions elsewhere in a scene, including indirect bounces.</p>
+          <p><strong>In Ardashir:</strong> Lumen uses several scene representations and lighting caches. Arda&#x27;s proposed scene layer exposes data to GI consumers without requiring one GI algorithm.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-surface-cache">Surface Cache</a></li><li><a href="#term-screen-trace">Screen trace</a></li><li><a href="#term-blas">BLAS</a></li><li><a href="#term-tlas">TLAS</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-camera-does-not-see-the-whole-lighting-problem">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-global-shader" data-glossary-entry data-category="Project" data-search="Global shader Project A shader type registered independently of a material or scene object. ArdaBackend global shaders use registered type information, virtual paths, and parameter metadata.">
+          <div class="glossary-entry__meta"><h3>Global shader</h3><span class="category">Project</span></div>
+          <p>A shader type registered independently of a material or scene object.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend global shaders use registered type information, virtual paths, and parameter metadata.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-virtual-shader-path">Virtual shader path</a></li><li><a href="#term-parameter-metadata-reflection">Parameter metadata / reflection</a></li><li><a href="#term-singleton">Singleton</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-gpu-scene" data-glossary-entry data-category="Graphics" data-search="GPU Scene Graphics Shader-addressable tables containing retained scene records, with updates for changed data. Unreal FGPUScene manages primitive, instance and optional payload data. It is not all mesh storage or every GI representation.">
+          <div class="glossary-entry__meta"><h3>GPU Scene</h3><span class="category">Graphics</span></div>
+          <p>Shader-addressable tables containing retained scene records, with updates for changed data.</p>
+          <p><strong>In Ardashir:</strong> Unreal FGPUScene manages primitive, instance and optional payload data. It is not all mesh storage or every GI representation.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-scene-primitive">Scene primitive</a></li><li><a href="#term-scene-instance">Scene instance</a></li><li><a href="#term-resource">Resource</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-scene-becomes-gpu-data">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-hash" data-glossary-entry data-category="Computer science" data-search="Hash Computer science A fixed-size value derived from data for fast lookup or change detection. ArdaBackend uses hashes as cache keys only when all state affecting the result is represented.">
+          <div class="glossary-entry__meta"><h3>Hash</h3><span class="category">Computer science</span></div>
+          <p>A fixed-size value derived from data for fast lookup or change detection.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend uses hashes as cache keys only when all state affecting the result is represented.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cache">Cache</a></li><li><a href="#term-immutable">Immutable</a></li><li><a href="#term-pso">PSO</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-heightfield" data-glossary-entry data-category="Graphics" data-search="Heightfield Graphics A surface described by one height sample at each position on a two-dimensional grid. Unreal Landscape uses height and layer-weight data; caves and overhangs require additional geometry rather than a second height at the same sample.">
+          <div class="glossary-entry__meta"><h3>Heightfield</h3><span class="category">Graphics</span></div>
+          <p>A surface described by one height sample at each position on a two-dimensional grid.</p>
+          <p><strong>In Ardashir:</strong> Unreal Landscape uses height and layer-weight data; caves and overhangs require additional geometry rather than a second height at the same sample.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-scene-asset">Scene asset</a></li><li><a href="#term-transform">Transform</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-courtyard-needs-more-than-static-meshes">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-homogeneous-coordinates" data-glossary-entry data-category="Mathematics" data-search="Homogeneous coordinates Mathematics A representation that adds a coordinate so translation and perspective can be expressed with matrix multiplication. Graphics shaders commonly use four-component positions and 4-by-4 transforms at the ArdaBackend parameter boundary.">
+          <div class="glossary-entry__meta"><h3>Homogeneous coordinates</h3><span class="category">Mathematics</span></div>
+          <p>A representation that adds a coordinate so translation and perspective can be expressed with matrix multiplication.</p>
+          <p><strong>In Ardashir:</strong> Graphics shaders commonly use four-component positions and 4-by-4 transforms at the ArdaBackend parameter boundary.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-matrix">Matrix</a></li><li><a href="#term-vector">Vector</a></li><li><a href="#term-viewport">Viewport</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-immediate-mode" data-glossary-entry data-category="Project" data-search="Immediate mode Project A correctness-oriented execution mode that favors simple serial behavior over normal scheduling and optimization. Direct RHI submission is available separately from persistent graph compilation. Execute on a dependency graph performs Submit followed by Wait.">
+          <div class="glossary-entry__meta"><h3>Immediate mode</h3><span class="category">Project</span></div>
+          <p>A correctness-oriented execution mode that favors simple serial behavior over normal scheduling and optimization.</p>
+          <p><strong>In Ardashir:</strong> Direct RHI submission is available separately from persistent graph compilation. Execute on a dependency graph performs Submit followed by Wait.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-culling">Culling</a></li><li><a href="#term-async-compute">Async compute</a></li><li><a href="#term-liveness">Liveness</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-immutable" data-glossary-entry data-category="Computer science" data-search="Immutable Computer science Unable to change after construction. Immutable descriptors and pipeline objects make cache identity and concurrent reuse easier to reason about.">
+          <div class="glossary-entry__meta"><h3>Immutable</h3><span class="category">Computer science</span></div>
+          <p>Unable to change after construction.</p>
+          <p><strong>In Ardashir:</strong> Immutable descriptors and pipeline objects make cache identity and concurrent reuse easier to reason about.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-pso">PSO</a></li><li><a href="#term-hash">Hash</a></li><li><a href="#term-threading">Threading</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-incumbent" data-glossary-entry data-category="Computer science" data-search="Incumbent Computer science The best feasible candidate found so far during an optimization search, measured under the chosen objective and constraints. ArdaInductor retains an accepted order and allocation plan while exploring alternatives, replacing it when a candidate improves the configured cost and memory comparison. A bounded search can return this best-known plan without proving global optimality.">
+          <div class="glossary-entry__meta"><h3>Incumbent</h3><span class="category">Computer science</span></div>
+          <p>The best feasible candidate found so far during an optimization search, measured under the chosen objective and constraints.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor retains an accepted order and allocation plan while exploring alternatives, replacing it when a candidate improves the configured cost and memory comparison. A bounded search can return this best-known plan without proving global optimality.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-list-scheduling">List scheduling</a></li><li><a href="#term-makespan">Makespan</a></li><li><a href="#term-resource-aliasing">Resource aliasing</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#search">Searching from the best accepted candidate</a></p>
+        </article>
+        <article class="glossary-entry" id="term-index-buffer" data-glossary-entry data-category="Graphics" data-search="Index buffer Graphics A buffer of indices selecting vertices for indexed drawing. ArdaBackend binds an index format and buffer before indexed draw commands.">
+          <div class="glossary-entry__meta"><h3>Index buffer</h3><span class="category">Graphics</span></div>
+          <p>A buffer of indices selecting vertices for indexed drawing.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend binds an index format and buffer before indexed draw commands.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-vertex-buffer">Vertex buffer</a></li><li><a href="#term-format">Format</a></li><li><a href="#term-command-list">Command list</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-intrusive-reference-counting" data-glossary-entry data-category="Computer science" data-search="Intrusive reference counting Computer science Shared ownership where the reference count is stored inside the managed object. Arda RHI objects use intrusive references; callers must retain handles for the required lifetime.">
+          <div class="glossary-entry__meta"><h3>Intrusive reference counting</h3><span class="category">Computer science</span></div>
+          <p>Shared ownership where the reference count is stored inside the managed object.</p>
+          <p><strong>In Ardashir:</strong> Arda RHI objects use intrusive references; callers must retain handles for the required lifetime.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-ownership">Ownership</a></li><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-raii">RAII</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-lod" data-glossary-entry data-category="Graphics" data-search="Level of detail (LOD) Graphics A choice of representation detail appropriate for a view, cost or quality target. Conventional Unreal meshes can select discrete LODs; Nanite selects compatible geometric detail through its hierarchy and residency constraints.">
+          <div class="glossary-entry__meta"><h3>Level of detail (LOD)</h3><span class="category">Graphics</span></div>
+          <p>A choice of representation detail appropriate for a view, cost or quality target.</p>
+          <p><strong>In Ardashir:</strong> Conventional Unreal meshes can select discrete LODs; Nanite selects compatible geometric detail through its hierarchy and residency constraints.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-geometry-cluster">Geometry cluster</a></li><li><a href="#term-culling">Culling</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-courtyard-needs-more-than-static-meshes">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-lifetime" data-glossary-entry data-category="Computer science" data-search="Lifetime Computer science The interval during which an object exists and may be safely accessed. GPU work can extend effective resource lifetime beyond the CPU call that submits it.">
+          <div class="glossary-entry__meta"><h3>Lifetime</h3><span class="category">Computer science</span></div>
+          <p>The interval during which an object exists and may be safely accessed.</p>
+          <p><strong>In Ardashir:</strong> GPU work can extend effective resource lifetime beyond the CPU call that submits it.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-ownership">Ownership</a></li><li><a href="#term-fence">Fence</a></li><li><a href="#term-raii">RAII</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-lifetime-token" data-glossary-entry data-category="Computer science" data-search="Lifetime token Computer science A shared ownership object retained to keep a separate host lifetime valid without owning the native handle directly. External Arda device and resource wrappers retain optional tokens; one native resource identity must use one canonical token ownership identity.">
+          <div class="glossary-entry__meta"><h3>Lifetime token</h3><span class="category">Computer science</span></div>
+          <p>A shared ownership object retained to keep a separate host lifetime valid without owning the native handle directly.</p>
+          <p><strong>In Ardashir:</strong> External Arda device and resource wrappers retain optional tokens; one native resource identity must use one canonical token ownership identity.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-ownership">Ownership</a></li><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-native-import">Native import</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-link-time-registration" data-glossary-entry data-category="Software architecture" data-search="Link-time registration Software architecture Build-generated wiring that references registration entry points from libraries selected by the link configuration. ArdaBackend generates calls from ARDASHIR_BACKEND_REGISTRATION_FUNCTIONS, preventing an otherwise unreferenced static backend library from being discarded.">
+          <div class="glossary-entry__meta"><h3>Link-time registration</h3><span class="category">Software architecture</span></div>
+          <p>Build-generated wiring that references registration entry points from libraries selected by the link configuration.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend generates calls from ARDASHIR_BACKEND_REGISTRATION_FUNCTIONS, preventing an otherwise unreferenced static backend library from being discarded.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-backend-module">Backend module</a></li><li><a href="#term-provider-contract">Provider contract</a></li><li><a href="#term-singleton">Singleton</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-list-scheduling" data-glossary-entry data-category="Computer science" data-search="List scheduling Computer science A scheduling heuristic that repeatedly selects a ready operation according to a priority rule. An operation becomes ready when its required predecessors have been selected. ArdaInductor constructs deterministic starting orders using critical-path priority or estimated memory released minus memory first needed. The allocator checks each completed seed against the memory constraints; the heuristic alone does not prove feasibility or the best schedule.">
+          <div class="glossary-entry__meta"><h3>List scheduling</h3><span class="category">Computer science</span></div>
+          <p>A scheduling heuristic that repeatedly selects a ready operation according to a priority rule. An operation becomes ready when its required predecessors have been selected.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor constructs deterministic starting orders using critical-path priority or estimated memory released minus memory first needed. The allocator checks each completed seed against the memory constraints; the heuristic alone does not prove feasibility or the best schedule.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-topological-order">Topological order</a></li><li><a href="#term-critical-path">Critical path</a></li><li><a href="#term-incumbent">Incumbent</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#seeds">Constructing scheduling seeds</a></p>
+        </article>
+        <article class="glossary-entry" id="term-liveness" data-glossary-entry data-category="Computer science" data-search="Liveness Computer science The property that work or data can still contribute to an observable result and therefore must be retained. ArdaInductor traces required predecessors from output resources and side-effect nodes, then plans storage for the surviving work.">
+          <div class="glossary-entry__meta"><h3>Liveness</h3><span class="category">Computer science</span></div>
+          <p>The property that work or data can still contribute to an observable result and therefore must be retained.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor traces required predecessors from output resources and side-effect nodes, then plans storage for the surviving work.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-culling">Culling</a></li><li><a href="#term-epilogue">Epilogue</a></li><li><a href="#term-transient-resource">Transient resource</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-logical-resource" data-glossary-entry data-category="Graphics" data-search="Logical resource Graphics A graph-level resource identity that describes intended data and usage without necessarily owning a unique GPU allocation. FArdaDependencyResourceHandle identifies a declared resource. Repeated writes to that handle reuse its storage; preserving old contents requires separate handles. Graph identity and generation prevent foreign or stale access.">
+          <div class="glossary-entry__meta"><h3>Logical resource</h3><span class="category">Graphics</span></div>
+          <p>A graph-level resource identity that describes intended data and usage without necessarily owning a unique GPU allocation.</p>
+          <p><strong>In Ardashir:</strong> FArdaDependencyResourceHandle identifies a declared resource. Repeated writes to that handle reuse its storage; preserving old contents requires separate handles. Graph identity and generation prevent foreign or stale access.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-physical-resource">Physical resource</a></li><li><a href="#term-transient-resource">Transient resource</a></li><li><a href="#term-extraction">Extraction</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-lru" data-glossary-entry data-category="Computer science" data-search="LRU Computer science Least recently used, an eviction policy that discards the item unused for the longest time. An LRU policy can bound ArdaBackend caches while favoring recently reused pipeline objects.">
+          <div class="glossary-entry__meta"><h3>LRU</h3><span class="category">Computer science</span></div>
+          <p>Least recently used, an eviction policy that discards the item unused for the longest time.</p>
+          <p><strong>In Ardashir:</strong> An LRU policy can bound ArdaBackend caches while favoring recently reused pipeline objects.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cache">Cache</a></li><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-hash">Hash</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-makespan" data-glossary-entry data-category="Computer science" data-search="Makespan Computer science The elapsed time from the start of a workload until its last operation finishes. With parallel execution, it differs from the sum of operation durations. ArdaInductor simulates queue availability and predecessor completion, then adds CUDA handoff and texture alias penalties to the maximum queue finish time. This cost uses relative hint units; it is not a direct measurement of frame latency or GPU utilization.">
+          <div class="glossary-entry__meta"><h3>Makespan</h3><span class="category">Computer science</span></div>
+          <p>The elapsed time from the start of a workload until its last operation finishes. With parallel execution, it differs from the sum of operation durations.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor simulates queue availability and predecessor completion, then adds CUDA handoff and texture alias penalties to the maximum queue finish time. This cost uses relative hint units; it is not a direct measurement of frame latency or GPU utilization.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-queue">Queue</a></li><li><a href="#term-critical-path">Critical path</a></li><li><a href="#term-exponential-moving-average">Exponential moving average (EMA)</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#cost">Estimating schedule cost</a></p>
+        </article>
+        <article class="glossary-entry" id="term-matrix" data-glossary-entry data-category="Mathematics" data-search="Matrix Mathematics A rectangular array of values used to represent linear mappings and related computations. ArdaBackend preserves matrix memory layout across C++ parameter metadata and shader ABI boundaries.">
+          <div class="glossary-entry__meta"><h3>Matrix</h3><span class="category">Mathematics</span></div>
+          <p>A rectangular array of values used to represent linear mappings and related computations.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend preserves matrix memory layout across C++ parameter metadata and shader ABI boundaries.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-vector">Vector</a></li><li><a href="#term-transform">Transform</a></li><li><a href="#term-parameter-metadata-reflection">Parameter metadata / reflection</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#motion-is-more-than-a-matrix">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-mesh-section" data-glossary-entry data-category="Graphics" data-search="Mesh section Graphics A geometry range associated with a material binding and rendering settings. Unreal mesh sections connect triangle/index ranges to material slots without requiring a separate gameplay object for each range.">
+          <div class="glossary-entry__meta"><h3>Mesh section</h3><span class="category">Graphics</span></div>
+          <p>A geometry range associated with a material binding and rendering settings.</p>
+          <p><strong>In Ardashir:</strong> Unreal mesh sections connect triangle/index ranges to material slots without requiring a separate gameplay object for each range.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-vertex-buffer">Vertex buffer</a></li><li><a href="#term-index-buffer">Index buffer</a></li><li><a href="#term-shader">Shader</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#a-triangle-becomes-an-object">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-mesh-shader" data-glossary-entry data-category="Graphics" data-search="Mesh shader Graphics A programmable geometry stage that emits mesh primitives without the traditional vertex-input pipeline. ArdaBackend exposes mesh-pipeline creation where the active backend supports it.">
+          <div class="glossary-entry__meta"><h3>Mesh shader</h3><span class="category">Graphics</span></div>
+          <p>A programmable geometry stage that emits mesh primitives without the traditional vertex-input pipeline.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend exposes mesh-pipeline creation where the active backend supports it.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader-stage">Shader stage</a></li><li><a href="#term-pipeline">Pipeline</a></li><li><a href="#term-vertex-buffer">Vertex buffer</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-mip-level" data-glossary-entry data-category="Graphics" data-search="Mip level Graphics One resolution level in a texture&#x27;s prefiltered image pyramid. ArdaBackend resource views select mip ranges for sampling, rendering, copies, and barriers.">
+          <div class="glossary-entry__meta"><h3>Mip level</h3><span class="category">Graphics</span></div>
+          <p>One resolution level in a texture&#x27;s prefiltered image pyramid.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend resource views select mip ranges for sampling, rendering, copies, and barriers.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-texture-array">Texture array</a></li><li><a href="#term-resource-state">Resource state</a></li><li><a href="#term-format">Format</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-module-identity" data-glossary-entry data-category="Software architecture" data-search="Module identity Software architecture A stable registry name that identifies one concrete backend implementation. FArdaBackendModuleDescriptor::mName is the only backend selection and routing identity; capabilities describe optional behavior.">
+          <div class="glossary-entry__meta"><h3>Module identity</h3><span class="category">Software architecture</span></div>
+          <p>A stable registry name that identifies one concrete backend implementation.</p>
+          <p><strong>In Ardashir:</strong> FArdaBackendModuleDescriptor::mName is the only backend selection and routing identity; capabilities describe optional behavior.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-backend-module">Backend module</a></li><li><a href="#term-backend">Backend</a></li><li><a href="#term-shader">Shader</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-native-import" data-glossary-entry data-category="Project" data-search="Native import Project Wrapping an externally created native graphics object for use through an abstraction layer. ArdaBackend imports selected D3D12 or Vulkan textures and buffers from truthful descriptors, retains optional lifetime tokens, and leaves host ownership and synchronization explicit.">
+          <div class="glossary-entry__meta"><h3>Native import</h3><span class="category">Project</span></div>
+          <p>Wrapping an externally created native graphics object for use through an abstraction layer.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend imports selected D3D12 or Vulkan textures and buffers from truthful descriptors, retains optional lifetime tokens, and leaves host ownership and synchronization explicit.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-d3d12">D3D12</a></li><li><a href="#term-vulkan">Vulkan</a></li><li><a href="#term-lifetime-token">Lifetime token</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-nvrtc" data-glossary-entry data-category="Graphics" data-search="NVRTC Graphics NVIDIA&#x27;s runtime compiler for device CUDA C++ code; it does not compile ordinary CPU host functions. Arda has removed its runtime compiler adapter. Its registered kernels are compiled by nvcc during project builds; no NVRTC runtime dependency is required.">
+          <div class="glossary-entry__meta"><h3>NVRTC</h3><span class="category">Graphics</span></div>
+          <p>NVIDIA&#x27;s runtime compiler for device CUDA C++ code; it does not compile ordinary CPU host functions.</p>
+          <p><strong>In Ardashir:</strong> Arda has removed its runtime compiler adapter. Its registered kernels are compiled by nvcc during project builds; no NVRTC runtime dependency is required.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cuda">CUDA</a></li><li><a href="#term-ptx">PTX</a></li><li><a href="#term-compute-operand">Compute operand</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-ownership" data-glossary-entry data-category="Computer science" data-search="Ownership Computer science The responsibility for retaining, releasing, or destroying an object. ArdaBackend APIs distinguish borrowed native handles, retained wrapper references, and newly created objects.">
+          <div class="glossary-entry__meta"><h3>Ownership</h3><span class="category">Computer science</span></div>
+          <p>The responsibility for retaining, releasing, or destroying an object.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend APIs distinguish borrowed native handles, retained wrapper references, and newly created objects.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-raii">RAII</a></li><li><a href="#term-intrusive-reference-counting">Intrusive reference counting</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-parameter-metadata-reflection" data-glossary-entry data-category="Project" data-search="Parameter metadata / reflection Project Structured information describing fields, types, offsets, and bindings without executing the program. ArdaBackend currently uses authored C++ parameter metadata to validate and construct bindings; binary shader reflection is not the runtime source of this layout and can only serve as an external validation technique.">
+          <div class="glossary-entry__meta"><h3>Parameter metadata / reflection</h3><span class="category">Project</span></div>
+          <p>Structured information describing fields, types, offsets, and bindings without executing the program.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend currently uses authored C++ parameter metadata to validate and construct bindings; binary shader reflection is not the runtime source of this layout and can only serve as an external validation technique.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-binding-layout">Binding layout</a></li><li><a href="#term-shader">Shader</a></li><li><a href="#term-abi">ABI</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-pass" data-glossary-entry data-category="Graphics" data-search="Pass Graphics A named unit of rendering or compute work with declared resource accesses and an execution callback. Persistent node definitions describe resources and pipeline stages; graphics callbacks record commands and CUDA callbacks prepare compiler-owned batch steps.">
+          <div class="glossary-entry__meta"><h3>Pass</h3><span class="category">Graphics</span></div>
+          <p>A named unit of rendering or compute work with declared resource accesses and an execution callback.</p>
+          <p><strong>In Ardashir:</strong> Persistent node definitions describe resources and pipeline stages; graphics callbacks record commands and CUDA callbacks prepare compiler-owned batch steps.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-graph">Render graph</a></li><li><a href="#term-raster-pass">Raster pass</a></li><li><a href="#term-culling">Culling</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-persistent-pipeline-cache" data-glossary-entry data-category="Graphics" data-search="Persistent pipeline cache Graphics Driver-native pipeline optimization data saved to disk and reused by later process executions. ArdaBackend stores backend-tagged D3D12 pipeline-library or Vulkan VkPipelineCache payloads separately from its in-memory PSO LRU.">
+          <div class="glossary-entry__meta"><h3>Persistent pipeline cache</h3><span class="category">Graphics</span></div>
+          <p>Driver-native pipeline optimization data saved to disk and reused by later process executions.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend stores backend-tagged D3D12 pipeline-library or Vulkan VkPipelineCache payloads separately from its in-memory PSO LRU.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-pso">PSO</a></li><li><a href="#term-d3d12-pipeline-library">D3D12 pipeline library</a></li><li><a href="#term-vk-pipeline-cache">VkPipelineCache</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-physical-resource" data-glossary-entry data-category="Graphics" data-search="Physical resource Graphics The concrete GPU object or memory allocation that realizes one or more logical resource identities. ArdaInductor compiles a logical memory plan, then materializes graph-owned buffers/textures and compatible heap placements on first submission. Imports retain existing native storage.">
+          <div class="glossary-entry__meta"><h3>Physical resource</h3><span class="category">Graphics</span></div>
+          <p>The concrete GPU object or memory allocation that realizes one or more logical resource identities.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor compiles a logical memory plan, then materializes graph-owned buffers/textures and compatible heap placements on first submission. Imports retain existing native storage.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-logical-resource">Logical resource</a></li><li><a href="#term-resource-aliasing">Resource aliasing</a></li><li><a href="#term-resource">Resource</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-pipeline" data-glossary-entry data-category="Graphics" data-search="Pipeline Graphics The configured sequence of GPU stages and fixed-function state used to process work. ArdaBackend describes graphics, compute, ray-tracing, and mesh pipelines through a backend-neutral contract implemented by the active module.">
+          <div class="glossary-entry__meta"><h3>Pipeline</h3><span class="category">Graphics</span></div>
+          <p>The configured sequence of GPU stages and fixed-function state used to process work.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend describes graphics, compute, ray-tracing, and mesh pipelines through a backend-neutral contract implemented by the active module.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-pso">PSO</a></li><li><a href="#term-shader-stage">Shader stage</a></li><li><a href="#term-framebuffer">Framebuffer</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-producer" data-glossary-entry data-category="Computer science" data-search="Producer Computer science An operation that creates or writes a value consumed by later work. A region with one writer orders its readers independently of attachment order. With multiple writers, each read consumes the preceding writer in original successful attachment order. Imported resources may supply initial contents.">
+          <div class="glossary-entry__meta"><h3>Producer</h3><span class="category">Computer science</span></div>
+          <p>An operation that creates or writes a value consumed by later work.</p>
+          <p><strong>In Ardashir:</strong> A region with one writer orders its readers independently of attachment order. With multiple writers, each read consumes the preceding writer in original successful attachment order. Imported resources may supply initial contents.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-consumer">Consumer</a></li><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-prologue">Prologue</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-prologue" data-glossary-entry data-category="Project" data-search="Prologue Project A synthetic first graph node representing state and dependencies entering a workload. ArdaInductor may generate native entry commands to establish imported resource states. They are execution details and are not authorable graph nodes.">
+          <div class="glossary-entry__meta"><h3>Prologue</h3><span class="category">Project</span></div>
+          <p>A synthetic first graph node representing state and dependencies entering a workload.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor may generate native entry commands to establish imported resource states. They are execution details and are not authorable graph nodes.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-epilogue">Epilogue</a></li><li><a href="#term-producer">Producer</a></li><li><a href="#term-registration-order">Registration order</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-provider-contract" data-glossary-entry data-category="Software architecture" data-search="Provider contract Software architecture The versioned interface a replaceable implementation must satisfy to participate in a host system. IArdaBackendModule and IArdaBackendRuntime define the contract between backend-neutral ArdaBackend core and a linked graphics implementation.">
+          <div class="glossary-entry__meta"><h3>Provider contract</h3><span class="category">Software architecture</span></div>
+          <p>The versioned interface a replaceable implementation must satisfy to participate in a host system.</p>
+          <p><strong>In Ardashir:</strong> IArdaBackendModule and IArdaBackendRuntime define the contract between backend-neutral ArdaBackend core and a linked graphics implementation.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-backend-module">Backend module</a></li><li><a href="#term-abi">ABI</a></li><li><a href="#term-rhi">RHI</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-pso" data-glossary-entry data-category="Graphics" data-search="PSO Graphics Pipeline state object: an immutable compiled bundle of shaders and fixed-function settings. ArdaBackend caches PSOs to avoid repeated expensive pipeline creation.">
+          <div class="glossary-entry__meta"><h3>PSO</h3><span class="category">Graphics</span></div>
+          <p>Pipeline state object: an immutable compiled bundle of shaders and fixed-function settings.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend caches PSOs to avoid repeated expensive pipeline creation.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-pipeline">Pipeline</a></li><li><a href="#term-cache">Cache</a></li><li><a href="#term-immutable">Immutable</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-ptx" data-glossary-entry data-category="Graphics" data-search="PTX Graphics NVIDIA&#x27;s virtual instruction-set representation for device kernels. Arda&#x27;s operand and provider paths no longer accept PTX. Kernel profiles contain only precompiled native images; missing architecture coverage requires a package rebuild.">
+          <div class="glossary-entry__meta"><h3>PTX</h3><span class="category">Graphics</span></div>
+          <p>NVIDIA&#x27;s virtual instruction-set representation for device kernels.</p>
+          <p><strong>In Ardashir:</strong> Arda&#x27;s operand and provider paths no longer accept PTX. Kernel profiles contain only precompiled native images; missing architecture coverage requires a package rebuild.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-cuda">CUDA</a></li><li><a href="#term-shader">Shader</a></li><li><a href="#term-binding-layout">Binding layout</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-push-constants" data-glossary-entry data-category="Graphics" data-search="Push constants Graphics A small block of values written directly into command state without a separate buffer binding. ArdaBackend maps compact per-dispatch or per-draw values through the active module to its supported native mechanism.">
+          <div class="glossary-entry__meta"><h3>Push constants</h3><span class="category">Graphics</span></div>
+          <p>A small block of values written directly into command state without a separate buffer binding.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend maps compact per-dispatch or per-draw values through the active module to its supported native mechanism.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-constant-buffer">Constant buffer</a></li><li><a href="#term-binding-layout">Binding layout</a></li><li><a href="#term-command-list">Command list</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-queue" data-glossary-entry data-category="Graphics" data-search="Queue Graphics An ordered GPU submission stream, commonly specialized for graphics, compute, or copy work. ArdaBackend submits command lists to queues exposed by its device integration.">
+          <div class="glossary-entry__meta"><h3>Queue</h3><span class="category">Graphics</span></div>
+          <p>An ordered GPU submission stream, commonly specialized for graphics, compute, or copy work.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend submits command lists to queues exposed by its device integration.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-command-list">Command list</a></li><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-fence">Fence</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-queue-coordination" data-glossary-entry data-category="Graphics" data-search="Queue coordination Graphics Host-side serialization that grants one integration an ordered, exclusive interval on a shared native submission queue. External Arda integrations must coordinate supplied queues around recording, submission, and retirement because no submission-hook API interleaves an independent host RHI thread.">
+          <div class="glossary-entry__meta"><h3>Queue coordination</h3><span class="category">Graphics</span></div>
+          <p>Host-side serialization that grants one integration an ordered, exclusive interval on a shared native submission queue.</p>
+          <p><strong>In Ardashir:</strong> External Arda integrations must coordinate supplied queues around recording, submission, and retirement because no submission-hook API interleaves an independent host RHI thread.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-queue">Queue</a></li><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-external-device-provider">External device provider</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-queue-dependency" data-glossary-entry data-category="Graphics" data-search="Queue dependency Graphics A dependency whose producer and consumer execute on different GPU queues and therefore requires an inter-queue wait or signal. Native queue dependencies preserve semantic edges and physical ownership or memory reuse constraints. Execution reports accepted cross-queue waits.">
+          <div class="glossary-entry__meta"><h3>Queue dependency</h3><span class="category">Graphics</span></div>
+          <p>A dependency whose producer and consumer execute on different GPU queues and therefore requires an inter-queue wait or signal.</p>
+          <p><strong>In Ardashir:</strong> Native queue dependencies preserve semantic edges and physical ownership or memory reuse constraints. Execution reports accepted cross-queue waits.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-producer">Producer</a></li><li><a href="#term-consumer">Consumer</a></li><li><a href="#term-synchronization">Synchronization</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-raii" data-glossary-entry data-category="Computer science" data-search="RAII Computer science Resource acquisition is initialization: C++ object lifetime controls resource ownership and cleanup. ArdaBackend wrappers use destructors and reference objects to release resources predictably.">
+          <div class="glossary-entry__meta"><h3>RAII</h3><span class="category">Computer science</span></div>
+          <p>Resource acquisition is initialization: C++ object lifetime controls resource ownership and cleanup.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend wrappers use destructors and reference objects to release resources predictably.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-ownership">Ownership</a></li><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-intrusive-reference-counting">Intrusive reference counting</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-raster-pass" data-glossary-entry data-category="Graphics" data-search="Raster pass Graphics A graphics pass that rasterizes primitives into color or depth/stencil attachments. Graphics nodes declare color/depth targets and shader contributions. ArdaInductor assigns compatible pipelines and framebuffers before recording.">
+          <div class="glossary-entry__meta"><h3>Raster pass</h3><span class="category">Graphics</span></div>
+          <p>A graphics pass that rasterizes primitives into color or depth/stencil attachments.</p>
+          <p><strong>In Ardashir:</strong> Graphics nodes declare color/depth targets and shader contributions. ArdaInductor assigns compatible pipelines and framebuffers before recording.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-pass">Pass</a></li><li><a href="#term-framebuffer">Framebuffer</a></li><li><a href="#term-render-target">Render target</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-rasterization" data-glossary-entry data-category="Graphics" data-search="Rasterization Graphics Determining the screen samples covered by projected geometry, typically followed by tests and shading work. Unreal&#x27;s conventional and Nanite raster paths organize this work differently. Rasterization is distinct from evaluating indirect illumination.">
+          <div class="glossary-entry__meta"><h3>Rasterization</h3><span class="category">Graphics</span></div>
+          <p>Determining the screen samples covered by projected geometry, typically followed by tests and shading work.</p>
+          <p><strong>In Ardashir:</strong> Unreal&#x27;s conventional and Nanite raster paths organize this work differently. Rasterization is distinct from evaluating indirect illumination.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-gbuffer">GBuffer</a></li><li><a href="#term-render-view">Rendering view</a></li><li><a href="#term-shader">Shader</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#from-a-proxy-to-a-draw">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-raw-war-waw-hazards" data-glossary-entry data-category="Computer science" data-search="RAW / WAR / WAW hazards Computer science Read-after-write, write-after-read, and write-after-write ordering conflicts that arise when operations access the same data. Regions with multiple distinct writer nodes order overlapping RAW, WAR and WAW hazards by original successful attachment order. Single-producer regions order readers after their producer; disjoint regions stay independent. Physical reuse adds synchronization, and duplicate native imports cannot hide hazards.">
+          <div class="glossary-entry__meta"><h3>RAW / WAR / WAW hazards</h3><span class="category">Computer science</span></div>
+          <p>Read-after-write, write-after-read, and write-after-write ordering conflicts that arise when operations access the same data.</p>
+          <p><strong>In Ardashir:</strong> Regions with multiple distinct writer nodes order overlapping RAW, WAR and WAW hazards by original successful attachment order. Single-producer regions order readers after their producer; disjoint regions stay independent. Physical reuse adds synchronization, and duplicate native imports cannot hide hazards.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-resource-state">Resource state</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-ray-tracing" data-glossary-entry data-category="Graphics" data-search="Ray tracing Graphics Rendering or computation based on tracing rays through geometric acceleration structures. ArdaBackend exposes ray-tracing pipelines, shader tables, and acceleration-structure operations when supported by the active module.">
+          <div class="glossary-entry__meta"><h3>Ray tracing</h3><span class="category">Graphics</span></div>
+          <p>Rendering or computation based on tracing rays through geometric acceleration structures.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend exposes ray-tracing pipelines, shader tables, and acceleration-structure operations when supported by the active module.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-acceleration-structure">Acceleration structure</a></li><li><a href="#term-pipeline">Pipeline</a></li><li><a href="#term-shader-stage">Shader stage</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-reachability" data-glossary-entry data-category="Computer science" data-search="Reachability Computer science Whether a directed path connects one vertex to another. In a dependency graph, a path from A to B requires A to precede B in every valid topological order. ArdaInductor uses graph reachability to prove that every previous user of aliased storage precedes its next first user. Candidate order alone is insufficient; a memory policy may instead add explicit ordering edges to make reuse safe.">
+          <div class="glossary-entry__meta"><h3>Reachability</h3><span class="category">Computer science</span></div>
+          <p>Whether a directed path connects one vertex to another. In a dependency graph, a path from A to B requires A to precede B in every valid topological order.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor uses graph reachability to prove that every previous user of aliased storage precedes its next first user. Candidate order alone is insufficient; a memory policy may instead add explicit ordering edges to make reuse safe.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-topological-order">Topological order</a></li><li><a href="#term-resource-aliasing">Resource aliasing</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#search">Legal search candidates and memory ordering</a></p>
+        </article>
+        <article class="glossary-entry" id="term-registration-order" data-glossary-entry data-category="Project" data-search="Registration order Project The sequence in which graph operation calls successfully record node instances. Operation call order fixes hazards on regions with repeated writers; single-producer regions remain independent of call order. Every invocation records a distinct operation. Canceling an edit restores its starting declarations and order; the next frame records its desired construction from scratch.">
+          <div class="glossary-entry__meta"><h3>Registration order</h3><span class="category">Project</span></div>
+          <p>The sequence in which graph operation calls successfully record node instances.</p>
+          <p><strong>In Ardashir:</strong> Operation call order fixes hazards on regions with repeated writers; single-producer regions remain independent of call order. Every invocation records a distinct operation. Canceling an edit restores its starting declarations and order; the next frame records its desired construction from scratch.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-topological-order">Topological order</a></li><li><a href="#term-dag">DAG</a></li><li><a href="#term-pass">Pass</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-render-graph" data-glossary-entry data-category="Graphics" data-search="Render graph Graphics A directed graph that models rendering work as passes and resource dependencies so an engine can analyze execution before recording commands. ArdaInductor compiles persistent typed nodes using resource dependencies and explicit ordering edges, then reuses the resulting program across frames.">
+          <div class="glossary-entry__meta"><h3>Render graph</h3><span class="category">Graphics</span></div>
+          <p>A directed graph that models rendering work as passes and resource dependencies so an engine can analyze execution before recording commands.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor compiles persistent typed nodes using resource dependencies and explicit ordering edges, then reuses the resulting program across frames.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-arda-render-graph">ArdaDependencyGraph</a></li><li><a href="#term-dag">DAG</a></li><li><a href="#term-dependency-edge">Dependency edge</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-render-proxy" data-glossary-entry data-category="Software architecture" data-search="Render proxy Software architecture A representation that makes the render-relevant state of an application object available under rendering ownership. Unreal mirrors component state through scene proxies; rendering callbacks must not freely read mutable gameplay objects.">
+          <div class="glossary-entry__meta"><h3>Render proxy</h3><span class="category">Software architecture</span></div>
+          <p>A representation that makes the render-relevant state of an application object available under rendering ownership.</p>
+          <p><strong>In Ardashir:</strong> Unreal mirrors component state through scene proxies; rendering callbacks must not freely read mutable gameplay objects.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-threading">Threading</a></li><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-scene-primitive">Scene primitive</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#crossing-the-thread-boundary">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-render-target" data-glossary-entry data-category="Graphics" data-search="Render target Graphics A texture view that receives output from a rendering operation. ArdaBackend describes render-target formats when creating framebuffers and graphics pipelines.">
+          <div class="glossary-entry__meta"><h3>Render target</h3><span class="category">Graphics</span></div>
+          <p>A texture view that receives output from a rendering operation.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend describes render-target formats when creating framebuffers and graphics pipelines.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-framebuffer">Framebuffer</a></li><li><a href="#term-texture-array">Texture array</a></li><li><a href="#term-format">Format</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-render-frame" data-glossary-entry data-category="Graphics" data-search="Rendering frame Graphics One execution that updates rendering state and produces images for its views. Frame-local visibility lists and temporary textures have different lifetimes from retained scene assets and instances.">
+          <div class="glossary-entry__meta"><h3>Rendering frame</h3><span class="category">Graphics</span></div>
+          <p>One execution that updates rendering state and produces images for its views.</p>
+          <p><strong>In Ardashir:</strong> Frame-local visibility lists and temporary textures have different lifetimes from retained scene assets and instances.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-view">Rendering view</a></li><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-render-graph">Render graph</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#deriving-an-arda-scene-from-the-courtyard">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-render-view" data-glossary-entry data-category="Graphics" data-search="Rendering view Graphics An observer description, including its position, projection and viewport, that asks which scene data contributes to an image. Camera and shadow views select work from retained scene state rather than owning copies of every asset.">
+          <div class="glossary-entry__meta"><h3>Rendering view</h3><span class="category">Graphics</span></div>
+          <p>An observer description, including its position, projection and viewport, that asks which scene data contributes to an image.</p>
+          <p><strong>In Ardashir:</strong> Camera and shadow views select work from retained scene state rather than owning copies of every asset.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-scene-instance">Scene instance</a></li><li><a href="#term-render-frame">Rendering frame</a></li><li><a href="#term-viewport">Viewport</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#a-triangle-becomes-an-object">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-resource" data-glossary-entry data-category="Graphics" data-search="Resource Graphics GPU-visible storage or an object that owns such storage, such as a buffer or texture. ArdaBackend resources carry descriptions, state, ownership, and native interoperability information.">
+          <div class="glossary-entry__meta"><h3>Resource</h3><span class="category">Graphics</span></div>
+          <p>GPU-visible storage or an object that owns such storage, such as a buffer or texture.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend resources carry descriptions, state, ownership, and native interoperability information.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-resource-state">Resource state</a></li><li><a href="#term-texture-array">Texture array</a></li><li><a href="#term-format">Format</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-resource-aliasing" data-glossary-entry data-category="Graphics" data-search="Resource aliasing Graphics Reusing the same physical memory for distinct logical resources whose live intervals do not overlap. ArdaInductor plans nonoverlapping physical storage reuse, orders all queue frontiers, and emits native activation barriers for aliased images.">
+          <div class="glossary-entry__meta"><h3>Resource aliasing</h3><span class="category">Graphics</span></div>
+          <p>Reusing the same physical memory for distinct logical resources whose live intervals do not overlap.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor plans nonoverlapping physical storage reuse, orders all queue frontiers, and emits native activation barriers for aliased images.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-logical-resource">Logical resource</a></li><li><a href="#term-physical-resource">Physical resource</a></li><li><a href="#term-transient-resource">Transient resource</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-resource-barrier" data-glossary-entry data-category="Graphics" data-search="Resource barrier Graphics A barrier that orders accesses to a resource or transitions it between declared usage states. ArdaBackend resource barriers make command-list state transitions explicit; see the broader barrier contract.">
+          <div class="glossary-entry__meta"><h3>Resource barrier</h3><span class="category">Graphics</span></div>
+          <p>A barrier that orders accesses to a resource or transitions it between declared usage states.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend resource barriers make command-list state transitions explicit; see the broader barrier contract.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-barrier">Barrier</a></li><li><a href="#term-resource-state">Resource state</a></li><li><a href="#term-command-list">Command list</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-resource-state" data-glossary-entry data-category="Graphics" data-search="Resource state Graphics The declared way a GPU resource is currently used, such as copy destination or shader resource. ArdaBackend state tracking ensures accesses are compatible and inserts required transitions.">
+          <div class="glossary-entry__meta"><h3>Resource state</h3><span class="category">Graphics</span></div>
+          <p>The declared way a GPU resource is currently used, such as copy destination or shader resource.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend state tracking ensures accesses are compatible and inserts required transitions.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-barrier">Barrier</a></li><li><a href="#term-resource">Resource</a></li><li><a href="#term-validation-layer">Validation layer</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-rhi" data-glossary-entry data-category="Graphics" data-search="RHI Graphics A rendering hardware interface: an abstraction over graphics APIs and GPU devices. Ardashir uses an RHI boundary so rendering code can target multiple native graphics APIs.">
+          <div class="glossary-entry__meta"><h3>RHI</h3><span class="category">Graphics</span></div>
+          <p>A rendering hardware interface: an abstraction over graphics APIs and GPU devices.</p>
+          <p><strong>In Ardashir:</strong> Ardashir uses an RHI boundary so rendering code can target multiple native graphics APIs.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-backend">Backend</a></li><li><a href="#term-backend-module">Backend module</a></li><li><a href="#term-device">Device</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-sample-count-msaa" data-glossary-entry data-category="Graphics" data-search="Sample count / MSAA Graphics The number of coverage samples stored per pixel; multisample anti-aliasing uses more than one. ArdaBackend keeps pipeline and framebuffer sample counts compatible.">
+          <div class="glossary-entry__meta"><h3>Sample count / MSAA</h3><span class="category">Graphics</span></div>
+          <p>The number of coverage samples stored per pixel; multisample anti-aliasing uses more than one.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend keeps pipeline and framebuffer sample counts compatible.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-framebuffer">Framebuffer</a></li><li><a href="#term-render-target">Render target</a></li><li><a href="#term-pipeline">Pipeline</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-scene-asset" data-glossary-entry data-category="Graphics" data-search="Scene asset Graphics Reusable content such as geometry, textures or a material program, independent of any one placement. The scene study separates shared asset resources from instance transforms and proposes that separation for a future Arda scene layer.">
+          <div class="glossary-entry__meta"><h3>Scene asset</h3><span class="category">Graphics</span></div>
+          <p>Reusable content such as geometry, textures or a material program, independent of any one placement.</p>
+          <p><strong>In Ardashir:</strong> The scene study separates shared asset resources from instance transforms and proposes that separation for a future Arda scene layer.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-scene-instance">Scene instance</a></li><li><a href="#term-resource">Resource</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#a-triangle-becomes-an-object">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-scene-instance" data-glossary-entry data-category="Graphics" data-search="Scene instance Graphics One placement or use of shared content, with its own transform and relevant per-instance state. Unreal GPU Scene can store many instance records associated with one scene primitive; an instance is not necessarily an actor or draw call.">
+          <div class="glossary-entry__meta"><h3>Scene instance</h3><span class="category">Graphics</span></div>
+          <p>One placement or use of shared content, with its own transform and relevant per-instance state.</p>
+          <p><strong>In Ardashir:</strong> Unreal GPU Scene can store many instance records associated with one scene primitive; an instance is not necessarily an actor or draw call.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-scene-asset">Scene asset</a></li><li><a href="#term-scene-primitive">Scene primitive</a></li><li><a href="#term-transform">Transform</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#a-triangle-becomes-an-object">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-scene-primitive" data-glossary-entry data-category="Graphics" data-search="Scene primitive Graphics A renderer-managed object participating in scene bookkeeping; distinct from a triangle, line or point primitive in a graphics API. An Unreal scene primitive may represent many triangles or instances. Actor, component, primitive and draw identities are not interchangeable.">
+          <div class="glossary-entry__meta"><h3>Scene primitive</h3><span class="category">Graphics</span></div>
+          <p>A renderer-managed object participating in scene bookkeeping; distinct from a triangle, line or point primitive in a graphics API.</p>
+          <p><strong>In Ardashir:</strong> An Unreal scene primitive may represent many triangles or instances. Actor, component, primitive and draw identities are not interchangeable.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-scene-instance">Scene instance</a></li><li><a href="#term-gpu-scene">GPU Scene</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-scene-becomes-gpu-data">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-scissor" data-glossary-entry data-category="Graphics" data-search="Scissor Graphics A rectangle that rejects rasterized fragments outside its bounds. ArdaBackend records scissor rectangles alongside viewport and raster state.">
+          <div class="glossary-entry__meta"><h3>Scissor</h3><span class="category">Graphics</span></div>
+          <p>A rectangle that rejects rasterized fragments outside its bounds.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend records scissor rectangles alongside viewport and raster state.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-viewport">Viewport</a></li><li><a href="#term-render-target">Render target</a></li><li><a href="#term-pipeline">Pipeline</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-screen-trace" data-glossary-entry data-category="Graphics" data-search="Screen trace Graphics A ray query against data already represented in the current screen view, such as depth. Screen traces can cover representation mismatches but cannot reliably supply off-screen or hidden geometry.">
+          <div class="glossary-entry__meta"><h3>Screen trace</h3><span class="category">Graphics</span></div>
+          <p>A ray query against data already represented in the current screen view, such as depth.</p>
+          <p><strong>In Ardashir:</strong> Screen traces can cover representation mismatches but cannot reliably supply off-screen or hidden geometry.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-view">Rendering view</a></li><li><a href="#term-global-illumination">Global illumination (GI)</a></li><li><a href="#term-gbuffer">GBuffer</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-camera-does-not-see-the-whole-lighting-problem">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-semaphore" data-glossary-entry data-category="Computer science" data-search="Semaphore Computer science A synchronization primitive used to signal availability or order work between execution contexts. Native backend integrations may use semaphores for queue-to-queue or presentation synchronization.">
+          <div class="glossary-entry__meta"><h3>Semaphore</h3><span class="category">Computer science</span></div>
+          <p>A synchronization primitive used to signal availability or order work between execution contexts.</p>
+          <p><strong>In Ardashir:</strong> Native backend integrations may use semaphores for queue-to-queue or presentation synchronization.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-fence">Fence</a></li><li><a href="#term-vulkan">Vulkan</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-shader" data-glossary-entry data-category="Graphics" data-search="Shader Graphics A program executed by a programmable GPU stage. ArdaBackend can compile registered permutations through external DXC or load deployed DXIL/SPIR-V, then creates device shader objects; binding metadata is authored in C++.">
+          <div class="glossary-entry__meta"><h3>Shader</h3><span class="category">Graphics</span></div>
+          <p>A program executed by a programmable GPU stage.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend can compile registered permutations through external DXC or load deployed DXIL/SPIR-V, then creates device shader objects; binding metadata is authored in C++.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader-stage">Shader stage</a></li><li><a href="#term-bytecode">Bytecode</a></li><li><a href="#term-global-shader">Global shader</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-shader-artifact-cache" data-glossary-entry data-category="Project" data-search="Shader artifact cache Project Persistent compiled shader bytecode paired with input identity metadata so reusable results can be validated. ArdaBackend stores DXIL or SPIR-V beside a .arda-key sidecar in the configured user cache and atomically republishes stale or missing artifacts when policy allows.">
+          <div class="glossary-entry__meta"><h3>Shader artifact cache</h3><span class="category">Project</span></div>
+          <p>Persistent compiled shader bytecode paired with input identity metadata so reusable results can be validated.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend stores DXIL or SPIR-V beside a .arda-key sidecar in the configured user cache and atomically republishes stale or missing artifacts when policy allows.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-bytecode">Bytecode</a></li><li><a href="#term-shader-permutation">Shader permutation</a></li><li><a href="#term-hash">Hash</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-shader-permutation" data-glossary-entry data-category="Graphics" data-search="Shader permutation Graphics One compiled variant selected from a Cartesian product of shader options. ArdaBackend encodes registered dimensions into a permutation identifier, filters variants per backend, and contributes deterministic defines to the artifact key.">
+          <div class="glossary-entry__meta"><h3>Shader permutation</h3><span class="category">Graphics</span></div>
+          <p>One compiled variant selected from a Cartesian product of shader options.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend encodes registered dimensions into a permutation identifier, filters variants per backend, and contributes deterministic defines to the artifact key.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader">Shader</a></li><li><a href="#term-shader-artifact-cache">Shader artifact cache</a></li><li><a href="#term-hash">Hash</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-shader-stage" data-glossary-entry data-category="Graphics" data-search="Shader stage Graphics A programmable phase of a graphics or compute pipeline, such as vertex, pixel, or compute. ArdaBackend carries project shader-stage declarations to the active module, which maps them to its RHI or native stages.">
+          <div class="glossary-entry__meta"><h3>Shader stage</h3><span class="category">Graphics</span></div>
+          <p>A programmable phase of a graphics or compute pipeline, such as vertex, pixel, or compute.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend carries project shader-stage declarations to the active module, which maps them to its RHI or native stages.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader">Shader</a></li><li><a href="#term-pipeline">Pipeline</a></li><li><a href="#term-mesh-shader">Mesh shader</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-singleton" data-glossary-entry data-category="Computer science" data-search="Singleton Computer science A design in which one globally accessible instance represents a service or registry. Some Ardashir registries use singleton-like access; initialization and shutdown order remain part of their contract.">
+          <div class="glossary-entry__meta"><h3>Singleton</h3><span class="category">Computer science</span></div>
+          <p>A design in which one globally accessible instance represents a service or registry.</p>
+          <p><strong>In Ardashir:</strong> Some Ardashir registries use singleton-like access; initialization and shutdown order remain part of their contract.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-lifetime">Lifetime</a></li><li><a href="#term-global-shader">Global shader</a></li><li><a href="#term-threading">Threading</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-skinning" data-glossary-entry data-category="Graphics" data-search="Skinning Graphics Deforming a surface using bone transforms and vertex influence weights. Skinning changes local vertex positions independently of the object&#x27;s world transform; previous deformation is relevant to velocity and temporal history.">
+          <div class="glossary-entry__meta"><h3>Skinning</h3><span class="category">Graphics</span></div>
+          <p>Deforming a surface using bone transforms and vertex influence weights.</p>
+          <p><strong>In Ardashir:</strong> Skinning changes local vertex positions independently of the object&#x27;s world transform; previous deformation is relevant to velocity and temporal history.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-transform">Transform</a></li><li><a href="#term-vertex-buffer">Vertex buffer</a></li><li><a href="#term-render-frame">Rendering frame</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#motion-is-more-than-a-matrix">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-spir-v" data-glossary-entry data-category="Graphics" data-search="SPIR-V Graphics A standardized intermediate language for graphics and compute shaders. The Vulkan path consumes SPIR-V shader bytecode.">
+          <div class="glossary-entry__meta"><h3>SPIR-V</h3><span class="category">Graphics</span></div>
+          <p>A standardized intermediate language for graphics and compute shaders.</p>
+          <p><strong>In Ardashir:</strong> The Vulkan path consumes SPIR-V shader bytecode.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-bytecode">Bytecode</a></li><li><a href="#term-vulkan">Vulkan</a></li><li><a href="#term-dxil">DXIL</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-srv" data-glossary-entry data-category="Graphics" data-search="SRV Graphics Shader resource view: a read-oriented interpretation of a buffer or texture for shaders. ArdaBackend exposes SRV bindings through portable descriptors and binding sets implemented by the active module.">
+          <div class="glossary-entry__meta"><h3>SRV</h3><span class="category">Graphics</span></div>
+          <p>Shader resource view: a read-oriented interpretation of a buffer or texture for shaders.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend exposes SRV bindings through portable descriptors and binding sets implemented by the active module.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-uav">UAV</a></li><li><a href="#term-descriptor">Descriptor</a></li><li><a href="#term-binding-set">Binding set</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-stable-semantic-key" data-glossary-entry data-category="Computer science" data-search="Stable semantic key Computer science A deterministic identifier derived from meaning-bearing content rather than process-local addresses. ArdaBackend hashes shader bytecode, layouts, formats, and fixed state to address native persistent pipeline entries across executions.">
+          <div class="glossary-entry__meta"><h3>Stable semantic key</h3><span class="category">Computer science</span></div>
+          <p>A deterministic identifier derived from meaning-bearing content rather than process-local addresses.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend hashes shader bytecode, layouts, formats, and fixed state to address native persistent pipeline entries across executions.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-hash">Hash</a></li><li><a href="#term-persistent-pipeline-cache">Persistent pipeline cache</a></li><li><a href="#term-immutable">Immutable</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-surface-cache" data-glossary-entry data-category="Graphics" data-search="Surface Cache Graphics Lumen&#x27;s parameterized surface samples used to retain material properties and reusable lighting. Cards describe capture coverage; missing coverage is distinct from absent ray-intersection geometry and from stale lighting.">
+          <div class="glossary-entry__meta"><h3>Surface Cache</h3><span class="category">Graphics</span></div>
+          <p>Lumen&#x27;s parameterized surface samples used to retain material properties and reusable lighting.</p>
+          <p><strong>In Ardashir:</strong> Cards describe capture coverage; missing coverage is distinct from absent ray-intersection geometry and from stale lighting.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-global-illumination">Global illumination (GI)</a></li><li><a href="#term-blas">BLAS</a></li><li><a href="#term-gbuffer">GBuffer</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-camera-does-not-see-the-whole-lighting-problem">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-surface-normal" data-glossary-entry data-category="Mathematics" data-search="Surface normal Mathematics A direction perpendicular to a surface, used to describe orientation and evaluate light reflection. Shading normals may differ from geometric normals. Non-uniform scale requires a suitable inverse-transpose normal transform, not the position transform.">
+          <div class="glossary-entry__meta"><h3>Surface normal</h3><span class="category">Mathematics</span></div>
+          <p>A direction perpendicular to a surface, used to describe orientation and evaluate light reflection.</p>
+          <p><strong>In Ardashir:</strong> Shading normals may differ from geometric normals. Non-uniform scale requires a suitable inverse-transpose normal transform, not the position transform.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-surface-tangent">Surface tangent</a></li><li><a href="#term-transform">Transform</a></li><li><a href="#term-brdf">BRDF</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#motion-is-more-than-a-matrix">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-surface-tangent" data-glossary-entry data-category="Mathematics" data-search="Surface tangent Mathematics A direction along a surface, often used with the normal to describe a local shading coordinate frame. A tangent basis lets normal-map samples be interpreted consistently with the mesh surface and its texture coordinates.">
+          <div class="glossary-entry__meta"><h3>Surface tangent</h3><span class="category">Mathematics</span></div>
+          <p>A direction along a surface, often used with the normal to describe a local shading coordinate frame.</p>
+          <p><strong>In Ardashir:</strong> A tangent basis lets normal-map samples be interpreted consistently with the mesh surface and its texture coordinates.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-surface-normal">Surface normal</a></li><li><a href="#term-uv-coordinates">UV coordinates</a></li><li><a href="#term-vector">Vector</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#motion-is-more-than-a-matrix">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-swap-chain" data-glossary-entry data-category="Graphics" data-search="Swap chain Graphics A sequence of presentable images exchanged between rendering and a display surface. ArdaBackend imports or wraps swap-chain images for rendering and presentation.">
+          <div class="glossary-entry__meta"><h3>Swap chain</h3><span class="category">Graphics</span></div>
+          <p>A sequence of presentable images exchanged between rendering and a display surface.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend imports or wraps swap-chain images for rendering and presentation.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-render-target">Render target</a></li><li><a href="#term-native-import">Native import</a></li><li><a href="#term-synchronization">Synchronization</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-synchronization" data-glossary-entry data-category="Computer science" data-search="Synchronization Computer science Coordination that establishes safe ordering and visibility between concurrent operations. ArdaBackend coordinates CPU work, queue submissions, and cross-queue resource use.">
+          <div class="glossary-entry__meta"><h3>Synchronization</h3><span class="category">Computer science</span></div>
+          <p>Coordination that establishes safe ordering and visibility between concurrent operations.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend coordinates CPU work, queue submissions, and cross-queue resource use.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-fence">Fence</a></li><li><a href="#term-semaphore">Semaphore</a></li><li><a href="#term-barrier">Barrier</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-texture-array" data-glossary-entry data-category="Graphics" data-search="Texture array Graphics A texture containing multiple same-sized image layers addressed by an array index. ArdaBackend views can select array slices and mip levels as render targets or shader resources.">
+          <div class="glossary-entry__meta"><h3>Texture array</h3><span class="category">Graphics</span></div>
+          <p>A texture containing multiple same-sized image layers addressed by an array index.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend views can select array slices and mip levels as render targets or shader resources.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-mip-level">Mip level</a></li><li><a href="#term-render-target">Render target</a></li><li><a href="#term-srv">SRV</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-threading" data-glossary-entry data-category="Computer science" data-search="Threading Computer science The division of work among independently scheduled execution threads. ArdaBackend contracts state which objects may be created, read, recorded, or submitted concurrently.">
+          <div class="glossary-entry__meta"><h3>Threading</h3><span class="category">Computer science</span></div>
+          <p>The division of work among independently scheduled execution threads.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend contracts state which objects may be created, read, recorded, or submitted concurrently.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-immutable">Immutable</a></li><li><a href="#term-synchronization">Synchronization</a></li><li><a href="#term-singleton">Singleton</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-tlas" data-glossary-entry data-category="Graphics" data-search="TLAS Graphics A top-level ray-tracing acceleration structure indexing placed instances of geometry structures. Changes to instance transforms affect placement in the ray scene independently of the main camera&#x27;s visible list.">
+          <div class="glossary-entry__meta"><h3>TLAS</h3><span class="category">Graphics</span></div>
+          <p>A top-level ray-tracing acceleration structure indexing placed instances of geometry structures.</p>
+          <p><strong>In Ardashir:</strong> Changes to instance transforms affect placement in the ray scene independently of the main camera&#x27;s visible list.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-blas">BLAS</a></li><li><a href="#term-scene-instance">Scene instance</a></li><li><a href="#term-transform">Transform</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#the-camera-does-not-see-the-whole-lighting-problem">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-topological-order" data-glossary-entry data-category="Computer science" data-search="Topological order Computer science A linear ordering of a directed acyclic graph in which the source of every edge appears before its destination. Independent nodes may appear in either order. ArdaInductor searches orders that respect resource dependencies and explicit edges. An order is an input to queue and memory planning; it does not require independent GPU queues to execute serially or follow node attachment order.">
+          <div class="glossary-entry__meta"><h3>Topological order</h3><span class="category">Computer science</span></div>
+          <p>A linear ordering of a directed acyclic graph in which the source of every edge appears before its destination. Independent nodes may appear in either order.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor searches orders that respect resource dependencies and explicit edges. An order is an input to queue and memory planning; it does not require independent GPU queues to execute serially or follow node attachment order.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dag">DAG</a></li><li><a href="#term-registration-order">Registration order</a></li><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-list-scheduling">List scheduling</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#objectives">Compilation objectives and legal orders</a></p>
+        </article>
+        <article class="glossary-entry" id="term-transform" data-glossary-entry data-category="Mathematics" data-search="Transform Mathematics A mapping that changes coordinates between spaces, commonly represented by a matrix. Rendering shaders consume transforms prepared by higher-level systems; layout and multiplication convention must agree.">
+          <div class="glossary-entry__meta"><h3>Transform</h3><span class="category">Mathematics</span></div>
+          <p>A mapping that changes coordinates between spaces, commonly represented by a matrix.</p>
+          <p><strong>In Ardashir:</strong> Rendering shaders consume transforms prepared by higher-level systems; layout and multiplication convention must agree.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-matrix">Matrix</a></li><li><a href="#term-vector">Vector</a></li><li><a href="#term-constant-buffer">Constant buffer</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#motion-is-more-than-a-matrix">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-transient-resource" data-glossary-entry data-category="Graphics" data-search="Transient resource Graphics A temporary resource whose storage is needed only for a bounded interval of one workload or frame. ArdaInductor assigns frame-local storage to transient values, using compatible placed heaps or committed objects and explicit waits before overlapping reuse.">
+          <div class="glossary-entry__meta"><h3>Transient resource</h3><span class="category">Graphics</span></div>
+          <p>A temporary resource whose storage is needed only for a bounded interval of one workload or frame.</p>
+          <p><strong>In Ardashir:</strong> ArdaInductor assigns frame-local storage to transient values, using compatible placed heaps or committed objects and explicit waits before overlapping reuse.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-liveness">Liveness</a></li><li><a href="#term-resource-aliasing">Resource aliasing</a></li><li><a href="#term-physical-resource">Physical resource</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-uav" data-glossary-entry data-category="Graphics" data-search="UAV Graphics Unordered access view: a resource view that permits shader reads and writes without fixed ordering. ArdaBackend exposes UAV bindings through portable descriptors and binding sets implemented by the active module.">
+          <div class="glossary-entry__meta"><h3>UAV</h3><span class="category">Graphics</span></div>
+          <p>Unordered access view: a resource view that permits shader reads and writes without fixed ordering.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend exposes UAV bindings through portable descriptors and binding sets implemented by the active module.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-srv">SRV</a></li><li><a href="#term-constant-buffer">Constant buffer</a></li><li><a href="#term-barrier">Barrier</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-uv-coordinates" data-glossary-entry data-category="Graphics" data-search="UV coordinates Graphics Two-dimensional coordinates identifying locations in a texture domain for surface samples. A texture seam can require distinct attribute vertices at one geometric position; position count alone does not determine vertex-buffer size.">
+          <div class="glossary-entry__meta"><h3>UV coordinates</h3><span class="category">Graphics</span></div>
+          <p>Two-dimensional coordinates identifying locations in a texture domain for surface samples.</p>
+          <p><strong>In Ardashir:</strong> A texture seam can require distinct attribute vertices at one geometric position; position count alone does not determine vertex-buffer size.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-vertex-buffer">Vertex buffer</a></li><li><a href="#term-surface-tangent">Surface tangent</a></li><li><a href="#term-mesh-section">Mesh section</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#a-triangle-becomes-an-object">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-validation-layer" data-glossary-entry data-category="Graphics" data-search="Validation layer Graphics A diagnostic layer that checks API usage and reports contract violations. D3D12 debug and Vulkan validation layers help diagnose incorrect states, descriptors, and synchronization around ArdaBackend.">
+          <div class="glossary-entry__meta"><h3>Validation layer</h3><span class="category">Graphics</span></div>
+          <p>A diagnostic layer that checks API usage and reports contract violations.</p>
+          <p><strong>In Ardashir:</strong> D3D12 debug and Vulkan validation layers help diagnose incorrect states, descriptors, and synchronization around ArdaBackend.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-d3d12">D3D12</a></li><li><a href="#term-vulkan">Vulkan</a></li><li><a href="#term-resource-state">Resource state</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-vector" data-glossary-entry data-category="Mathematics" data-search="Vector Mathematics An ordered set of components representing a direction, displacement, or point. Shaders pass vectors through parameter layouts and interpret them in an explicitly chosen coordinate space.">
+          <div class="glossary-entry__meta"><h3>Vector</h3><span class="category">Mathematics</span></div>
+          <p>An ordered set of components representing a direction, displacement, or point.</p>
+          <p><strong>In Ardashir:</strong> Shaders pass vectors through parameter layouts and interpret them in an explicitly chosen coordinate space.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-matrix">Matrix</a></li><li><a href="#term-transform">Transform</a></li><li><a href="#term-abi">ABI</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-vertex-buffer" data-glossary-entry data-category="Graphics" data-search="Vertex buffer Graphics A buffer containing per-vertex or per-instance input data for drawing. ArdaBackend binds vertex buffers according to pipeline input layout and draw parameters.">
+          <div class="glossary-entry__meta"><h3>Vertex buffer</h3><span class="category">Graphics</span></div>
+          <p>A buffer containing per-vertex or per-instance input data for drawing.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend binds vertex buffers according to pipeline input layout and draw parameters.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-index-buffer">Index buffer</a></li><li><a href="#term-resource">Resource</a></li><li><a href="#term-command-list">Command list</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-vertex-factory" data-glossary-entry data-category="Graphics" data-search="Vertex factory Graphics Unreal&#x27;s geometry-access abstraction that tells mesh shaders how to fetch and interpret vertex and instance data. It joins geometry-specific shader code with material and pass variants; it is not a mesh shader or an asset factory.">
+          <div class="glossary-entry__meta"><h3>Vertex factory</h3><span class="category">Graphics</span></div>
+          <p>Unreal&#x27;s geometry-access abstraction that tells mesh shaders how to fetch and interpret vertex and instance data.</p>
+          <p><strong>In Ardashir:</strong> It joins geometry-specific shader code with material and pass variants; it is not a mesh shader or an asset factory.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader">Shader</a></li><li><a href="#term-vertex-buffer">Vertex buffer</a></li><li><a href="#term-shader-permutation">Shader permutation</a></li></ul></div>
+          <p><strong>Read more:</strong> <a href="Unreal/scene-representation.html#from-a-proxy-to-a-draw">Scene Representation in Unreal Engine</a></p>
+        </article>
+        <article class="glossary-entry" id="term-viewport" data-glossary-entry data-category="Graphics" data-search="Viewport Graphics A transform that maps normalized device coordinates into a rectangular render-target region. ArdaBackend records viewport state with graphics commands and pipeline-compatible dimensions.">
+          <div class="glossary-entry__meta"><h3>Viewport</h3><span class="category">Graphics</span></div>
+          <p>A transform that maps normalized device coordinates into a rectangular render-target region.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend records viewport state with graphics commands and pipeline-compatible dimensions.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-scissor">Scissor</a></li><li><a href="#term-render-target">Render target</a></li><li><a href="#term-pipeline">Pipeline</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-virtual-shader-path" data-glossary-entry data-category="Project" data-search="Virtual shader path Project A stable logical shader location resolved independently of a physical filesystem path. ArdaBackend maps virtual shader roots to source directories so includes and shader identities remain portable.">
+          <div class="glossary-entry__meta"><h3>Virtual shader path</h3><span class="category">Project</span></div>
+          <p>A stable logical shader location resolved independently of a physical filesystem path.</p>
+          <p><strong>In Ardashir:</strong> ArdaBackend maps virtual shader roots to source directories so includes and shader identities remain portable.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-shader">Shader</a></li><li><a href="#term-global-shader">Global shader</a></li><li><a href="#term-cache">Cache</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-vk-pipeline-cache" data-glossary-entry data-category="Graphics" data-search="VkPipelineCache Graphics A Vulkan object carrying implementation-specific data that may accelerate pipeline creation. The native Vulkan module validates, loads, and persists VkPipelineCache bytes.">
+          <div class="glossary-entry__meta"><h3>VkPipelineCache</h3><span class="category">Graphics</span></div>
+          <p>A Vulkan object carrying implementation-specific data that may accelerate pipeline creation.</p>
+          <p><strong>In Ardashir:</strong> The native Vulkan module validates, loads, and persists VkPipelineCache bytes.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-vulkan">Vulkan</a></li><li><a href="#term-persistent-pipeline-cache">Persistent pipeline cache</a></li><li><a href="#term-stable-semantic-key">Stable semantic key</a></li></ul></div>
+        </article>
+        <article class="glossary-entry" id="term-vulkan" data-glossary-entry data-category="Graphics" data-search="Vulkan Graphics A cross-platform explicit graphics and compute API from the Khronos Group. The native Vulkan module creates or imports Vulkan resources behind Arda RHI objects.">
+          <div class="glossary-entry__meta"><h3>Vulkan</h3><span class="category">Graphics</span></div>
+          <p>A cross-platform explicit graphics and compute API from the Khronos Group.</p>
+          <p><strong>In Ardashir:</strong> The native Vulkan module creates or imports Vulkan resources behind Arda RHI objects.</p>
+          <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-rhi">RHI</a></li><li><a href="#term-spir-v">SPIR-V</a></li><li><a href="#term-native-import">Native import</a></li></ul></div>
+        </article>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Understanding Unreal · independent Unreal Engine rendering studies</p>
+      <p><a href="index.html">Home</a> · <a href="https://dylanwaken.github.io/Ardashir/">Companion Ardashir project</a></p>
+    </div>
+  </footer>
+</body>
+</html>

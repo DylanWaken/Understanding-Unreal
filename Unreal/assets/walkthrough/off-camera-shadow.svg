@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1040 710" role="img" aria-labelledby="title desc"><title id="title">A room block can leave a view while still shadowing its floor</title><desc id="desc">An XZ section through the actual room at Y equals 270 centimeters uses the baseline matte block bounds, a point on the ceiling area light and a floor sample at X155. A teaching camera crops the floor, excluding the block; the light-to-floor segment still intersects the block.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#237665"/></marker></defs>
+<rect width="1040" height="710" fill="#fcfaf5"/>
+<text x="30" y="40" font-family="Arial, sans-serif" font-size="26" fill="#263a36" text-anchor="start" font-weight="bold">A room block can leave a view while still shadowing its floor</text>
+<text x="32" y="88" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="start" font-weight="normal">Section at Y = 270 cm; X →, Z ↑</text>
+<line x1="80" y1="500.0" x2="600" y2="500.0" stroke="#53665f" stroke-width="3"/>
+<polygon points="520.00,357.00 440.00,500.00 540.00,500.00" fill="#e3eee4" stroke="#237665" stroke-width="2"/>
+<rect x="220" y="384.5" width="190" height="115.5" rx="0" fill="#d6c7a7" stroke="#a74834" stroke-width="3"/>
+<text x="317" y="448" font-family="Arial, sans-serif" font-size="21" fill="#a74834" text-anchor="middle" font-weight="normal">Matte block</text>
+<circle cx="160" cy="172.2" r="11" fill="#eacf78" stroke="#ac7420" stroke-width="2"/>
+<text x="155" y="139" font-family="Arial, sans-serif" font-size="21" fill="#ac7420" text-anchor="middle" font-weight="normal">Ceiling source sample</text>
+<circle cx="520" cy="357.0" r="10" fill="#326f96" stroke="#326f96" stroke-width="2"/>
+<text x="548" y="334" font-family="Arial, sans-serif" font-size="19" fill="#326f96" text-anchor="middle" font-weight="normal">Crop camera</text>
+<line x1="160" y1="172.2" x2="470" y2="500.0" stroke="#ac7420" stroke-width="3"/>
+<line x1="520" y1="357.0" x2="470" y2="500.0" stroke="#326f96" stroke-width="2" marker-end="url(#arrow)"/>
+<circle cx="360.7718120805369" cy="384.5" r="9" fill="none" stroke="#a74834" stroke-width="3"/>
+<circle cx="470" cy="500.0" r="7" fill="#a74834" stroke="#a74834" stroke-width="2"/>
+<text x="480" y="538" font-family="Arial, sans-serif" font-size="20" fill="#a74834" text-anchor="middle" font-weight="normal">P: floor sample</text>
+<text x="650" y="145" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Actual room coordinates (cm):</text>
+<text x="650" y="177" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Source sample L = (0,270,298)</text>
+<text x="650" y="209" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Floor point P = (155,270,0)</text>
+<text x="650" y="272" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Matte block at this section:</text>
+<text x="650" y="304" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">X ∈ [30,125]; Z ∈ [0,105]</text>
+<text x="650" y="336" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">L → P crosses its top at</text>
+<text x="650" y="368" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">X = 155 × 193 / 298 = 100.39</text>
+<text x="650" y="435" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">The crop sees P, not the block.</text>
+<text x="650" y="467" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">The light query must retain it.</text>
+<text x="32" y="596" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Teaching camera and section drawing; no claim that this crop was captured from Unreal.</text>
+<text x="32" y="625" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">The ceiling RectLight is extended: this line tests one source sample, not the complete soft shadow.</text>
+<text x="32" y="654" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Main-view culling can discard draw work without deleting the primitive from the persistent scene.</text>
+</svg>

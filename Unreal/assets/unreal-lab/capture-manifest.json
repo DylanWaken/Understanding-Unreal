@@ -1,0 +1,586 @@
+{
+  "engine_build": {
+    "MajorVersion": 5,
+    "MinorVersion": 8,
+    "PatchVersion": 1,
+    "Changelist": 0,
+    "CompatibleChangelist": 55116800,
+    "IsLicenseeVersion": 0,
+    "IsPromotedBuild": 0,
+    "BranchName": "UE5"
+  },
+  "render_api": "Direct3D 12",
+  "shader_platform": "PCD3D_SM6",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "capture_date_utc": "2026-10-15",
+  "camera_screenshots": 46,
+  "gpu_array_displays": 7,
+  "origin": "Locally executed source-built Unreal editor renderer. No generative imagery. Raw GPU array displays use documented decoding, crop and tone mapping.",
+  "limitations": [
+    "Editor captures, not packaged gameplay or performance benchmarks.",
+    "Draw-request warm-up does not prove temporal convergence; stochastic lighting noise remains.",
+    "One asset shared by seven strongly scaled cube components; mesh-distance fields approximate nonuniform scales.",
+    "The room has only uniform screen probes in the captured placement view (3600 uniform; 0 adaptive).",
+    "Surface-cache compression was disabled only for GPU atlas readback; each radiance atlas has an independent display exposure.",
+    "The source-built checkout reports changelist 0; do not infer a released engine revision from that value."
+  ],
+  "figures": [
+    {
+      "file": "lumen-lit.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d5374ec9ba7a4e80f737f15fde51560534fd5ceb353545e0c7fc8bbdcd7cca37"
+    },
+    {
+      "file": "lumen-scene.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a29ba14c1134f7c2a2749fc341a75bfe0eef043ad6d55fa78aa4ab8bb6f610b7"
+    },
+    {
+      "file": "lumen-surface-cache.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "cd2da5efc3bc89b61372be9b97d6a54ad8680f5d0dd6d143ac659a4cb62df289"
+    },
+    {
+      "file": "lumen-cache-albedo.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "45890a54988d81fe50684d793cebb374e536e5eb1df414b8b501e984e65eaed3"
+    },
+    {
+      "file": "lumen-cache-normals.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a263fdf99cc6955e41f83dfcd2ea4120ab47e8e7f2774d81223166e5fd32a111"
+    },
+    {
+      "file": "lumen-cache-direct.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "fc5c8743f3246a21aedfe56563add2f0d59683055257f76f0f75cce52eeb8299"
+    },
+    {
+      "file": "lumen-cache-indirect.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a4b31b13d48d4ac42df9ee8cde9fc8b0b03399f83ac7ba0badcd18d167cd0d12"
+    },
+    {
+      "file": "lumen-reflection-view.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "13f9b6d5c0661b4075d7904d67bb552b5435eddf881f912febead948157a906b"
+    },
+    {
+      "file": "lumen-cards.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8f977b3a635f0bef4d15c30869a4129659c651366b19a8be3e37b47486d77c91"
+    },
+    {
+      "file": "lumen-mesh-sdf.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a09f03e862cc4b9821a463fa6b4be417ad9ec6b2c9b805129457c4d4d3bf4207"
+    },
+    {
+      "file": "lumen-global-sdf.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d355a7a68e294957b24b4b7c6b2b518a185341c40befe3367f4629fae9a98bd7"
+    },
+    {
+      "file": "lumen-screen-probes.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "9ab662e0f94519b5e0acb27634246a11846fd81dda910e6e772019d97f60f0ab"
+    },
+    {
+      "file": "lumen-probe-traces.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1267f35825d1d8ea544721579591784f61bf25e450a73e7b96ddcc4d1a9dd77d"
+    },
+    {
+      "file": "lumen-radiance-cache.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8fad5217b1cf26ea0ef7e8ada6f023f460c4e2992f60ff25dee5ecb0a9c5ba3b"
+    },
+    {
+      "file": "lumen-radiosity-probes.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "91072d90723efc2bb5cc9c29272b0016b226cb6e53b4c262f25307c8d81c6771"
+    },
+    {
+      "file": "lumen-no-screen-traces.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "6e7fe9608435106848bef4406625de15758200a2c4ccbc39637fb9ec4f9d6ac5"
+    },
+    {
+      "file": "lumen-hardware-tracing.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "001bc22f1c098490b5170ebd9118256312a52f85bcb34db69122ca05e99cf05f"
+    },
+    {
+      "file": "lumen-direct-only.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "be49726aea3b37d01c88c96fccbbdc130629b7438b4a1f0e152f6d7b6248ec42"
+    },
+    {
+      "file": "scene-lit.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "824ebe9b3c01d2ad7911b1362d77051aa9ec7fb04934d9ea13b4a3fa727a9ec6"
+    },
+    {
+      "file": "scene-base-color.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1f25049aff7de58e8f41f3fa88fb43b90ddecffda299aaad910c69b2c34e7f51"
+    },
+    {
+      "file": "scene-world-normal.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5f538df555c079cdac08d1b952693b430746501ed1f66e237086a1e053964f57"
+    },
+    {
+      "file": "scene-roughness.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e7daf6f489f60469e9af387bef677ba61f761455277fa0422ec637a5cdcb709e"
+    },
+    {
+      "file": "scene-metallic.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ab9e208900ff8fbeac9799d912a8e9d7c05f35a194879a98346660c59c5c2708"
+    },
+    {
+      "file": "scene-depth.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8b707a74176d69a728dd172706a6934146a823b511fde5e798b24dc179845a51"
+    },
+    {
+      "file": "scene-wireframe.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a5c80155f928eab349dc7c06856291c0893106c64c02c4cf0218fdabb1d1de01"
+    },
+    {
+      "file": "scene-bounds.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "70c67df6d4aaad05dcadaa1b8b09deebdb5b11e250951e77fefed11ec291dd83"
+    },
+    {
+      "file": "scene-moved-box.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "6814b66271a78af61e30ab964db83f8b4054d082b2d9a9f934b7a1878cb5856e"
+    },
+    {
+      "file": "scene-changed-light.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "71f3bc93e72ba5a7479e69563b0426d221b51f6e09c8caf368dcfe1f2b5bb95f"
+    },
+    {
+      "file": "nanite-lit-near.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "743e47cdf383eb0784dd722c265f10592e0f2324e9f0dda2f8f183bf2d182254"
+    },
+    {
+      "file": "nanite-triangles-near.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "be317147e5bbe357dba120ae526dbe58aa49047303cbb2323d695deeb95c418c"
+    },
+    {
+      "file": "nanite-clusters-near.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "9ff5de1af7862fd19d386bf9ff1f39e8d0102de7ef6b12d7392ad9b57bc9d12d"
+    },
+    {
+      "file": "nanite-groups-near.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1a29a4582f78b8cfe2eb3d75e2f9d12e6eeade4f05cc53f0c752002559e4fede"
+    },
+    {
+      "file": "nanite-pages.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e58765a93aa782e3f264b2e44242a2da7ec37c9cdb8c486faca13d2dd108d2d4"
+    },
+    {
+      "file": "nanite-hierarchy.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "113391707e3cf27d1932e52cd5c5cf5ff53f33c27f7d69e0ca2aa9c41af35ea1"
+    },
+    {
+      "file": "nanite-raster-mode.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b876d982290431f3d6c16c1be8299ac3887b59dd55103641b56f76e724737f14"
+    },
+    {
+      "file": "nanite-raster-bins.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "36ab294b9c5dc22d924ea784fcbd9cec053089f72f25a3dfac196c21afc6d9dc"
+    },
+    {
+      "file": "nanite-shading-bins.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b42aa2f7d38920a3b39d64cf2ff614346261c875e1bf1f24b53e211a3a4eee71"
+    },
+    {
+      "file": "nanite-overdraw.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ad0e5f0a0df0f9779edb32090e335cfd3122cdfbe8fb24f2071e9fb3eec66837"
+    },
+    {
+      "file": "nanite-triangles-far.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ca2996d1016b6b93e80e59133d109501632ed4451b5b0243ba894a2f01ecc86a"
+    },
+    {
+      "file": "nanite-clusters-far.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "bc5ef40e13ad98626f398c0655389de7c9dc497cea0757944d20501fb963ecf2"
+    },
+    {
+      "file": "nanite-groups-far.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "9b05a8dd2deea0fd08115f4d59d01d833c41b65a37cab1696c4c10f0a742403f"
+    },
+    {
+      "file": "nanite-lit-far.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1d6e9cbb7f8f3ca0c32ff238712401976e5ea944e70b30143cec2929635cfaa4"
+    },
+    {
+      "file": "nanite-tessellation-lit.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8ea02902a91f36c6b3a921b746ab5b61b5e0d50ddbb207d0859022fa0453844c"
+    },
+    {
+      "file": "nanite-tessellation-patches.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "7f8299bb04137e9bc222f3919c86b49543103f2dfe24bbabe455bf79ab56976a"
+    },
+    {
+      "file": "nanite-tessellation-triangles.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b96c4dec2a2f40c74cff0c593aff17fecde035176d1086e764b33ab02360ab16"
+    },
+    {
+      "file": "nanite-tessellation-mask.png",
+      "kind": "Unreal editor viewport screenshot",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e8bfaa64eee47e4116d8a53591940690ae3878e4d6f134c874360dc9efbd99aa"
+    },
+    {
+      "file": "gpu-surface-albedo.png",
+      "kind": "Measured GPU array display; see gpu-atlas-report.json",
+      "size": [
+        1156,
+        132
+      ],
+      "sha256": "53990524a8d80ada2369064ab4cd5dbcdb418fef6f3c97789a1c580c47cf35da"
+    },
+    {
+      "file": "gpu-surface-normal.png",
+      "kind": "Measured GPU array display; see gpu-atlas-report.json",
+      "size": [
+        1156,
+        132
+      ],
+      "sha256": "5a3c52576b263778a083cf5d79488233e2eee30884ce98f34b296de49642b55a"
+    },
+    {
+      "file": "gpu-surface-depth.png",
+      "kind": "Measured GPU array display; see gpu-atlas-report.json",
+      "size": [
+        1156,
+        132
+      ],
+      "sha256": "e3f8c6bdd97f45358d39d27aaac16a7d68ce68ebbdd9bdc39859770976e23c06"
+    },
+    {
+      "file": "gpu-surface-lighting.png",
+      "kind": "Measured GPU array display; see gpu-atlas-report.json",
+      "size": [
+        1156,
+        132
+      ],
+      "sha256": "8dc8159195835e846e13556cec826983709572bfa0f09a7c71dc83234e5fcd76"
+    },
+    {
+      "file": "gpu-radiance-cache.png",
+      "kind": "Measured GPU array display; see gpu-atlas-report.json",
+      "size": [
+        4349,
+        72
+      ],
+      "sha256": "5f64a96cf5ff0881423774f4eb11057fc502d5cf91287a68718655cf2c10675f"
+    },
+    {
+      "file": "gpu-screen-trace-radiance.png",
+      "kind": "Measured GPU array display; see gpu-atlas-report.json",
+      "size": [
+        640,
+        644
+      ],
+      "sha256": "83f844aa9424016684af262351d0be8461c828177fcb97f01ea38155703fc78f"
+    },
+    {
+      "file": "gpu-screen-filtered-radiance.png",
+      "kind": "Measured GPU array display; see gpu-atlas-report.json",
+      "size": [
+        496,
+        364
+      ],
+      "sha256": "9d692c2096cb67a355e50e8669a04e7ccfadef96e5afebbeb8e9bf854e29442b"
+    }
+  ],
+  "engine_source_landmarks": [
+    {
+      "file": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenVisualize.cpp",
+      "sha256": "d64192910f11f4847bde3ceb3267bf90c70957c9e18e4e529405578447a300d0"
+    },
+    {
+      "file": "Engine/Shaders/Private/DistanceFieldVisualization.usf",
+      "sha256": "420cbf0b2c4ec365752d2e429650054e25b6b1f16237176543562d022c95174c"
+    },
+    {
+      "file": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp",
+      "sha256": "d063b5662cdc4a03f46b9cfb53ad35e7da8e83fd2bcf9653eb94787cc3047b2e"
+    },
+    {
+      "file": "Engine/Source/Runtime/Engine/Public/Rendering/NaniteResources.h",
+      "sha256": "247f4e859607d5a1c08d05ef1610bcd5fe7879de70a1e1e0d7825705e42bccf2"
+    },
+    {
+      "file": "Engine/Source/Runtime/Engine/Private/NaniteVisualizationData.cpp",
+      "sha256": "2c78aa054fd12173928258eeb076ca89084f06de43d19c0f4110866906d4645f"
+    },
+    {
+      "file": "Engine/Source/Runtime/RenderCore/Private/RenderGraphTrace.cpp",
+      "sha256": "71168cf19d3772681cddeaf68f3c87b41675a99cbfd7b2877c5db2e440382e72"
+    }
+  ],
+  "reproduction_sources": [
+    {
+      "file": "capture.py",
+      "sha256": "b526553e4409c0bc4eb2dd1de9f9d3e798ec96f38dbd9380acfa698a1c5db4c7"
+    },
+    {
+      "file": "capture_bunny.py",
+      "sha256": "52d10d156879fc0dd1088531680b23dd2d9e468a43bd4e4b8ece24ad0c33f5e8"
+    },
+    {
+      "file": "capture_gpu.py",
+      "sha256": "6192ac9b2c486c3ea30e9178acacd9ebf760c994a692b84055253899510cdae1"
+    },
+    {
+      "file": "DefaultEngine.ini",
+      "sha256": "8eb6b32811ab9a23e5e6376e744ea26faa5c40be93aabbe3be9704de4cfd26d5"
+    },
+    {
+      "file": "export_atlases.py",
+      "sha256": "6af456c6e91a58b1844af0a69af31c2f76a75904b9c77affa228d595513bb7a3"
+    },
+    {
+      "file": "publish_captures.py",
+      "sha256": "fa2adf2ca055a392c551cd9907b30ac967807b0ba1c950fe524122510bbfc9ad"
+    },
+    {
+      "file": "README.md",
+      "sha256": "cb5cd5c058213ef3b21219ff6633a7d72594a771bc510599f4ef04e25364f3a0"
+    },
+    {
+      "file": "run.ps1",
+      "sha256": "63355cc7bf31d2db10a5a19875531be307756687aa09466c020527b473556476"
+    },
+    {
+      "file": "Source/ArdaLabCapture/ArdaLabCapture.Build.cs",
+      "sha256": "587e7f1af33282aacd9012233fedfe5faaf4afef366695b07b4c82eda5a0c90b"
+    },
+    {
+      "file": "Source/ArdaLabCapture/ArdaLabCapture.cpp",
+      "sha256": "6c9add55e6f7a02f677bbf547d123d5a434def28096e1fb66ea2dd2f838d0f7c"
+    },
+    {
+      "file": "Source/ArdaLabCapture/ArdaLabCapture.h",
+      "sha256": "14b625ee8d35c36fa8b1e7bfe6622070d6a3909c39f07744a7dc43743e1a0ed1"
+    },
+    {
+      "file": "Source/UnrealLabEditor.Target.cs",
+      "sha256": "85bf92e5ffe2afdcef9e6b3faaaaf5eac0fcf5f173e2a4357277835eeb05e0d8"
+    },
+    {
+      "file": "UnrealLab.uproject",
+      "sha256": "9f5a6c6e5a6bd2da2c78f23dee5a97a07e14d71447178cd74ce1448314e483ee"
+    }
+  ]
+}

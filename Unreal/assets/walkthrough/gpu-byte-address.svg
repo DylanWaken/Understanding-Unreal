@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1040 650" role="img" aria-labelledby="title desc"><title id="title">Room planter instances: bytes plus an indexing rule</title><desc id="desc">Four 64-byte planter instance records occupy a contiguous buffer. Record three has three 16-byte transform rows followed by a 16-byte tint field. Arithmetic computes the exact tint address.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#237665"/></marker></defs>
+<rect width="1040" height="650" fill="#fcfaf5"/>
+<text x="30" y="40" font-family="Arial, sans-serif" font-size="26" fill="#263a36" text-anchor="start" font-weight="bold">Room planter instances: bytes plus an indexing rule</text>
+<text x="31" y="88" font-family="Arial, sans-serif" font-size="22" fill="#263a36" text-anchor="start" font-weight="normal">Teaching planter instance layout: stride = 64 bytes, base address = 0x1000</text>
+<rect x="50" y="141" width="230" height="86" rx="0" fill="#dbe7de" stroke="#237665" stroke-width="2"/>
+<text x="165" y="177" font-family="Arial, sans-serif" font-size="23" fill="#263a36" text-anchor="middle" font-weight="normal">instance[0]</text>
+<text x="165" y="210" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="middle" font-weight="normal">0x1000</text>
+<rect x="292" y="141" width="230" height="86" rx="0" fill="#dbe7de" stroke="#237665" stroke-width="2"/>
+<text x="407" y="177" font-family="Arial, sans-serif" font-size="23" fill="#263a36" text-anchor="middle" font-weight="normal">instance[1]</text>
+<text x="407" y="210" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="middle" font-weight="normal">0x1040</text>
+<rect x="534" y="141" width="230" height="86" rx="0" fill="#dbe7de" stroke="#237665" stroke-width="2"/>
+<text x="649" y="177" font-family="Arial, sans-serif" font-size="23" fill="#263a36" text-anchor="middle" font-weight="normal">instance[2]</text>
+<text x="649" y="210" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="middle" font-weight="normal">0x1080</text>
+<rect x="776" y="141" width="230" height="86" rx="0" fill="#e5d5bd" stroke="#ac7420" stroke-width="2"/>
+<text x="891" y="177" font-family="Arial, sans-serif" font-size="23" fill="#263a36" text-anchor="middle" font-weight="normal">instance[3]</text>
+<text x="891" y="210" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="middle" font-weight="normal">0x10c0</text>
+<text x="50" y="277" font-family="Arial, sans-serif" font-size="23" fill="#263a36" text-anchor="start" font-weight="bold">Zoom into instance[3]</text>
+<rect x="50" y="309" width="230" height="99" rx="0" fill="#cddfd9" stroke="#53665f" stroke-width="1"/>
+<text x="165" y="348" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">transform row 0</text>
+<text x="165" y="377" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">offset +0 … +15</text>
+<rect x="292" y="309" width="230" height="99" rx="0" fill="#d7e3ce" stroke="#53665f" stroke-width="1"/>
+<text x="407" y="348" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">transform row 1</text>
+<text x="407" y="377" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">offset +16 … +31</text>
+<rect x="534" y="309" width="230" height="99" rx="0" fill="#d4e1eb" stroke="#53665f" stroke-width="1"/>
+<text x="649" y="348" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">transform row 2</text>
+<text x="649" y="377" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">offset +32 … +47</text>
+<rect x="776" y="309" width="230" height="99" rx="0" fill="#eed598" stroke="#53665f" stroke-width="1"/>
+<text x="891" y="348" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">tint RGBA</text>
+<text x="891" y="377" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="middle" font-weight="normal">offset +48 … +63</text>
+<path d="M891 230 L891 263 L899 300" stroke="#237665" fill="none" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="50" y="467" font-family="Arial, sans-serif" font-size="25" fill="#263a36" text-anchor="start" font-weight="normal">address(tint of instance 3)</text>
+<text x="50" y="506" font-family="Arial, sans-serif" font-size="25" fill="#263a36" text-anchor="start" font-weight="normal">= base + instanceID × stride + fieldOffset</text>
+<text x="50" y="545" font-family="Arial, sans-serif" font-size="25" fill="#263a36" text-anchor="start" font-weight="normal">= 0x1000 + 3 × 64 + 48 = 0x10F0</text>
+<text x="31" y="610" font-family="Arial, sans-serif" font-size="22" fill="#263a36" text-anchor="start" font-weight="normal">The shader and uploader must agree on stride, field offsets, alignment, and meaning.</text>
+</svg>
