@@ -1,0 +1,359 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1165",
+  "nativeRecordId": "native-018176",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadiosityIndirectArgs",
+  "uniqueName": "000400000225fbc562b0",
+  "displayLabel": "Lumen.RadiosityIndirectArgs · instance 0004 · frame 292 · passes 737",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 737,
+    "last": 737
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 48,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 4,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 4
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadiosityIndirectArgs",
+    "UniqueResourceName": "000400000225fbc562b0",
+    "ByteSize": 48,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 4,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02089",
+      "role": "resource",
+      "originalPath": "Resources/000400000225fbc562b0.v000400000225fbc59dd0.bin",
+      "bytes": 48,
+      "sha256": "e2b7d8d90d0f6d4d1d3c69534943b51955c0b0c96fb98ed6233e23abb7de14d7",
+      "version": "000400000225fbc59dd0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1165",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "e2b7d8d90d0f6d4d1d3c69534943b51955c0b0c96fb98ed6233e23abb7de14d7",
+          "offset": 0,
+          "length": 48
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000225fbc562b0",
+        "name": "Lumen.RadiosityIndirectArgs",
+        "byteSize": 48
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000225fbc59dd0",
+      "producerPassId": "pass-0738",
+      "producerPassName": "IndirectArgs",
+      "payloadIds": [
+        "payload-02089"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0738",
+        "name": "IndirectArgs",
+        "displayLabel": "IndirectArgs · Radiosity · frame 292 · pass 737",
+        "record": "records/pass/pass-0738.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0739",
+        "name": "DistanceFieldTracing 4x4 probes at 4 spacing",
+        "displayLabel": "DistanceFieldTracing 4x4 probes at 4 spacing · Radiosity · frame 292 · pass 738",
+        "record": "records/pass/pass-0739.json"
+      },
+      {
+        "id": "pass-0740",
+        "name": "SpatialFilterProbes",
+        "displayLabel": "SpatialFilterProbes · Radiosity · frame 292 · pass 739",
+        "record": "records/pass/pass-0740.json"
+      },
+      {
+        "id": "pass-0741",
+        "name": "ConvertToSH",
+        "displayLabel": "ConvertToSH · Radiosity · frame 292 · pass 740",
+        "record": "records/pass/pass-0741.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02089",
+      "file": "Resources/000400000225fbc562b0.v000400000225fbc59dd0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.radiosity-indirect-args",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.RadiosityIndirectArgs)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "four dispatch-indirect records per view origin: trace/thread-per-probe counts for the radiosity trace, filter and SH passes",
+      "units": "thread groups",
+      "coordinateSpace": "dispatch argument space; each view origin owns 4 consecutive records",
+      "storage": {
+        "kind": "indirect-args-buffer",
+        "format": "FRHIDispatchIndirectParameters[4*NumViewOrigins] (48 B for 1 view)",
+        "strideBytes": 12,
+        "formatAlternatives": [
+          "platform padding (RHI.h:551-557); the capture is 4 x 12 B = 48 B, so no padding here"
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters[4*NumViewOrigins] (48 B for 1 view)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "platform padding (RHI.h:551-557); the capture is 4 x 12 B = 48 B, so no padding here"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "recordOffset",
+          "expression": "Base = ViewIndex*4; record i at Base+i (i=0..3): NumTracesDiv64, NumTracesDiv32, ThreadPerProbe, HardwareRayTracingThreadPerTrace",
+          "requires": [
+            "Lumen.RadiosityIndirectArgs"
+          ],
+          "sourceRefs": [
+            "part1.cards_ria_enum",
+            "part1.cards_ria_w0",
+            "part1.cards_ria_w1",
+            "part1.cards_ria_w2",
+            "part1.cards_ria_w3"
+          ]
+        },
+        {
+          "name": "counts",
+          "expression": "NumProbes = RadiosityTileAllocator[View] * RadiosityTileSizeInProbes^2; NumTraces = NumProbes * NumTracesPerProbe",
+          "requires": [
+            "Lumen.RadiosityIndirectArgs",
+            "Lumen.RadiosityTileAllocator"
+          ],
+          "sourceRefs": [
+            "part1.cards_ria_w0",
+            "part1.cards_rta_add"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "4 records x 12 B per view origin",
+        "record 3 is not a plain 1D dispatch: GetRayTracingThreadCountWrapped rewrites X/Y/Z for >4096 groups",
+        "record 0/1 differ only by assumed thread-group size (64/32)"
+      ],
+      "producerSources": [
+        "part1.cards_ria_alloc",
+        "part1.cards_ria_w0",
+        "part1.cards_ria_w1",
+        "part1.cards_ria_w2",
+        "part1.cards_ria_w3"
+      ],
+      "consumerSources": [
+        "part1.cards_ria_use"
+      ],
+      "gaps": [
+        "Record 3's wrapped dimensions cannot be inverted to a 1D trace count without knowing HardwareRayTracingThreadGroupSize and the wrap rule."
+      ],
+      "fields": [
+        {
+          "name": "NumTracesDiv64_X",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "record 0: ceil(NumTraces/64) groups; Y=Z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_ria_enum",
+            "part1.cards_ria_w0"
+          ]
+        },
+        {
+          "name": "NumTracesDiv32_X",
+          "type": "uint32",
+          "byteOffset": 12,
+          "decode": "record 1: ceil(NumTraces/32) groups; Y=Z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_ria_enum",
+            "part1.cards_ria_w1"
+          ]
+        },
+        {
+          "name": "ThreadPerProbe_X",
+          "type": "uint32",
+          "byteOffset": 24,
+          "decode": "record 2: ceil(NumProbes/64) groups; Y=Z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_ria_enum",
+            "part1.cards_ria_w2"
+          ]
+        },
+        {
+          "name": "HardwareRayTracing_X",
+          "type": "uint32",
+          "byteOffset": 36,
+          "decode": "record 3: 2D/3D wrapped hardware-RT dispatch: X=ceil(NumTraces/HRTGroupSize) unless >4096, then X=HRTGroupSize and Y=ceil(X/HRTGroupSize), etc.; Y/Z then carry the wrap",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part1.cards_ria_enum",
+            "part1.cards_ria_w3",
+            "part1.cards_ria_wrap",
+            "part1.cards_ria_wrap_y"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "NumTracesDiv64_X",
+          "NumTracesDiv32_X",
+          "ThreadPerProbe_X",
+          "HardwareRayTracing_X"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0737",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadiosityIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1165"
+    }
+  ]
+}

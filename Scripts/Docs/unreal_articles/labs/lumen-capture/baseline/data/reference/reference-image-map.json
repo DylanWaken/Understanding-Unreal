@@ -1,0 +1,119 @@
+{
+  "schema": "publication-reference-image-map-v1",
+  "reference_run_engine": {
+    "version": "5.8.1-0+UE5",
+    "build_version": {
+      "MajorVersion": 5,
+      "MinorVersion": 8,
+      "PatchVersion": 1,
+      "Changelist": 0,
+      "CompatibleChangelist": 55116800,
+      "IsLicenseeVersion": 0,
+      "IsPromotedBuild": 0,
+      "BranchName": "UE5"
+    },
+    "git_sha": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+    "git_branch": "release",
+    "root": "EXTERNAL_ENGINE_ROOT",
+    "executable": "EXTERNAL_ENGINE_ROOT/Engine/Binaries/Win64/UnrealEditor.exe"
+  },
+  "capture_procedure": "Hidden editor viewport, 1280x720, SDR display-referred PNG; not Movie Render Queue and not a linear EXR.",
+  "images": [
+    {
+      "figure": "figures/reference/lumen-lit.png",
+      "sha256": "6b9c1132fc882d65812f4c769be0e14dc5ce82af0bb5e3b61178a7d5448e5076",
+      "bytes": 823905,
+      "width": 1280,
+      "height": 720,
+      "renderer": "Lumen software tracing, VMI_Lit",
+      "capture_engine_frame": 291,
+      "viewport_draw": 291
+    },
+    {
+      "figure": "figures/reference/pathtracer-256spp-8bounces.png",
+      "sha256": "1d73c08b47f05df95894c4b506528cc2d31ab86f0cd0080dbd37b4d6b39de051",
+      "bytes": 1194328,
+      "width": 1280,
+      "height": 720,
+      "renderer": "Unreal path tracer, VMI_PathTracing",
+      "samples_per_pixel_engine_index": 256,
+      "sample_count_reported": 256,
+      "max_bounces": 8,
+      "denoiser": 0,
+      "capture_engine_frame": 442,
+      "capture_viewport_draw": 443
+    },
+    {
+      "figure": "figures/reference/pathtracer-1024spp-8bounces.png",
+      "sha256": "94186451033da3a52890aeb2cbce1000c0af86da1d9b25b8e4c81c0b01b135c3",
+      "bytes": 963516,
+      "width": 1280,
+      "height": 720,
+      "renderer": "Unreal path tracer, VMI_PathTracing",
+      "samples_per_pixel_engine_index": 1024,
+      "sample_count_reported": 1024,
+      "max_bounces": 8,
+      "denoiser": 0,
+      "capture_draw": 698
+    }
+  ],
+  "scene": {
+    "map": "/Game/Labs/LumenRoom",
+    "map_sha256": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818",
+    "rect_light": {
+      "actor": "Ceiling area light",
+      "location_cm": [
+        0.0,
+        270.0,
+        298.0
+      ],
+      "rotation_degrees": {
+        "pitch": -90.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "intensity_lumens": 2400.0,
+      "intensity_units": "<LightUnits.LUMENS: 2>",
+      "source_width_cm": 130.0,
+      "source_height_cm": 120.0,
+      "attenuation_radius_cm": 1000.0,
+      "light_color_raw_fcolor_0_255": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "light_color_linear": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "light_color_note": "The Python light_color property returns FColor 0-255; the authored light color is white."
+    },
+    "exposure": {
+      "effective_method": "histogram metering pinned to EV100 4 by min=max=4 and bias=0; not manual mode",
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+      "ev100": 4.0,
+      "min_brightness": 4.0,
+      "max_brightness": 4.0,
+      "bias": 0.0
+    }
+  },
+  "wording_corrections": [
+    "Exposure is histogram AEM_HISTOGRAM pinned by min_brightness == max_brightness == EV100 4; it is not manual exposure mode.",
+    "Draw request counts are not path-tracer sample counts. The engine path-tracing sample index proves 256 and 1024 samples; 256 samples accumulated across about 86 draw requests.",
+    "The 8-bounce truncation and the unoverridden engine path-intensity clamp (PathTracing.MaxPathIntensity 24.0) can bias the path-traced reference; it is a finite reference, not ground truth.",
+    "The SDR PNG is display-referred 8-bit output, not a linear EXR and not a transport-error metric."
+  ],
+  "limitations": [
+    "Editor viewport capture, not Movie Render Queue or a packaged build.",
+    "The editor viewport is SDR (GetSceneHDREnabled false), so the capture path writes display-referred 8-bit PNG; no linear EXR is produced by this procedure.",
+    "Path-tracer sample accumulation is not one sample per viewport draw: 256 samples accumulated across about 86 explicit draw requests (sample reset/first sample at draw 357, nonzero progression from draw 358, capture draw 443). The engine GetPathTracingSampleIndex() is authoritative; this is not a timing or performance benchmark.",
+    "Lumen screen-probe/radiosity temporal state is warmed but not proven converged; stochastic noise is expected.",
+    "The saved room keeps its recorded RectLight attenuation radius (1000 cm), even though the original builder requested 2000 cm.",
+    "Path tracing was rendered through the editor viewport on one GPU; multi-GPU and Movie Render Queue were not used.",
+    "The RTPSO fallback warning appears once during the discarded warm-up; no fallback was logged after the forced reset.",
+    "The engine NNEDenoiser plugin was instantiated by the project defaults, but r.PathTracing.Denoiser 0 prevented use of a denoise pass.",
+    "The 256 spp image still contains Monte Carlo noise; no convergence metric or performance benchmark is claimed.",
+    "The published original Lumen image is used only as a cross-check of room, camera and capture procedure."
+  ]
+}

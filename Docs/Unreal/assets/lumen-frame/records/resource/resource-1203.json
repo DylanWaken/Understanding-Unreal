@@ -1,0 +1,474 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1203",
+  "nativeRecordId": "native-018215",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.ScreenProbeIndirectArgs",
+  "uniqueName": "000400000228e9943e10",
+  "displayLabel": "Lumen.ScreenProbeGather.ScreenProbeIndirectArgs · instance 0004 · frame 292 · passes 753",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 753,
+    "last": 753
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 72,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 6,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 6
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.ScreenProbeIndirectArgs",
+    "UniqueResourceName": "000400000228e9943e10",
+    "ByteSize": 72,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 6,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02535",
+      "role": "resource",
+      "originalPath": "Resources/000400000228e9943e10.v000400000228e99440e8.bin",
+      "bytes": 72,
+      "sha256": "f52fdc061d661cc6d99dca547d9fbef4a4c129c0aada8957a469ea4464a4f4d5",
+      "version": "000400000228e99440e8",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1203",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "f52fdc061d661cc6d99dca547d9fbef4a4c129c0aada8957a469ea4464a4f4d5",
+          "offset": 0,
+          "length": 72
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228e9943e10",
+        "name": "Lumen.ScreenProbeGather.ScreenProbeIndirectArgs",
+        "byteSize": 72
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228e99440e8",
+      "producerPassId": "pass-0754",
+      "producerPassName": "SetupAdaptiveProbeIndirectArgs",
+      "payloadIds": [
+        "payload-02535"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0754",
+        "name": "SetupAdaptiveProbeIndirectArgs",
+        "displayLabel": "SetupAdaptiveProbeIndirectArgs · LumenScreenProbeGather · frame 292 · pass 753",
+        "record": "records/pass/pass-0754.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0755",
+        "name": "ScreenProbeGatherScreenData",
+        "displayLabel": "ScreenProbeGatherScreenData · LumenScreenProbeGather · frame 292 · pass 754",
+        "record": "records/pass/pass-0755.json"
+      },
+      {
+        "id": "pass-0757",
+        "name": "MarkRadianceProbes(ScreenProbes) 80x67",
+        "displayLabel": "MarkRadianceProbes(ScreenProbes) 80x67 · UpdateWorldRadianceCaches · frame 292 · pass 756",
+        "record": "records/pass/pass-0757.json"
+      },
+      {
+        "id": "pass-0781",
+        "name": "ComputeLightingPDF",
+        "displayLabel": "ComputeLightingPDF · LumenScreenProbeGather · frame 292 · pass 780",
+        "record": "records/pass/pass-0781.json"
+      },
+      {
+        "id": "pass-0782",
+        "name": "GenerateRays 8x8",
+        "displayLabel": "GenerateRays 8x8 · LumenScreenProbeGather · frame 292 · pass 781",
+        "record": "records/pass/pass-0782.json"
+      },
+      {
+        "id": "pass-0783",
+        "name": "ClearTraces 8x8",
+        "displayLabel": "ClearTraces 8x8 · LumenScreenProbeGather · frame 292 · pass 782",
+        "record": "records/pass/pass-0783.json"
+      },
+      {
+        "id": "pass-0784",
+        "name": "TraceScreen(Scene)",
+        "displayLabel": "TraceScreen(Scene) · LumenScreenProbeGather · frame 292 · pass 783",
+        "record": "records/pass/pass-0784.json"
+      },
+      {
+        "id": "pass-0786",
+        "name": "CompactTraces WaveOps:1",
+        "displayLabel": "CompactTraces WaveOps:1 · LumenScreenProbeGather · frame 292 · pass 785",
+        "record": "records/pass/pass-0786.json"
+      },
+      {
+        "id": "pass-0787",
+        "name": "SetupCompactedTracesIndirectArgs",
+        "displayLabel": "SetupCompactedTracesIndirectArgs · LumenScreenProbeGather · frame 292 · pass 786",
+        "record": "records/pass/pass-0787.json"
+      },
+      {
+        "id": "pass-0788",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 787",
+        "record": "records/pass/pass-0788.json"
+      },
+      {
+        "id": "pass-0789",
+        "name": "CompositeTraces",
+        "displayLabel": "CompositeTraces · LumenScreenProbeGather · frame 292 · pass 788",
+        "record": "records/pass/pass-0789.json"
+      },
+      {
+        "id": "pass-0790",
+        "name": "CalculateMoving",
+        "displayLabel": "CalculateMoving · LumenScreenProbeGather · frame 292 · pass 789",
+        "record": "records/pass/pass-0790.json"
+      },
+      {
+        "id": "pass-0791",
+        "name": "FilterRadianceWithGather",
+        "displayLabel": "FilterRadianceWithGather · LumenScreenProbeGather · frame 292 · pass 790",
+        "record": "records/pass/pass-0791.json"
+      },
+      {
+        "id": "pass-0792",
+        "name": "FilterRadianceWithGather",
+        "displayLabel": "FilterRadianceWithGather · LumenScreenProbeGather · frame 292 · pass 791",
+        "record": "records/pass/pass-0792.json"
+      },
+      {
+        "id": "pass-0793",
+        "name": "FilterRadianceWithGather",
+        "displayLabel": "FilterRadianceWithGather · LumenScreenProbeGather · frame 292 · pass 792",
+        "record": "records/pass/pass-0793.json"
+      },
+      {
+        "id": "pass-0794",
+        "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+        "displayLabel": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0 · LumenScreenProbeGather · frame 292 · pass 793",
+        "record": "records/pass/pass-0794.json"
+      },
+      {
+        "id": "pass-0795",
+        "name": "FixupBorders",
+        "displayLabel": "FixupBorders · LumenScreenProbeGather · frame 292 · pass 794",
+        "record": "records/pass/pass-0795.json"
+      },
+      {
+        "id": "pass-0800",
+        "name": "ScreenProbeIntegrate SimpleDiffuse DownsampleFactor:1",
+        "displayLabel": "ScreenProbeIntegrate SimpleDiffuse DownsampleFactor:1 · Integrate · frame 292 · pass 799",
+        "record": "records/pass/pass-0800.json"
+      },
+      {
+        "id": "pass-0801",
+        "name": "ScreenProbeIntegrate SupportImportanceSampleBRDF DownsampleFactor:1",
+        "displayLabel": "ScreenProbeIntegrate SupportImportanceSampleBRDF DownsampleFactor:1 · Integrate · frame 292 · pass 800",
+        "record": "records/pass/pass-0801.json"
+      },
+      {
+        "id": "pass-0802",
+        "name": "ScreenProbeIntegrate SupportAll DownsampleFactor:1",
+        "displayLabel": "ScreenProbeIntegrate SupportAll DownsampleFactor:1 · Integrate · frame 292 · pass 801",
+        "record": "records/pass/pass-0802.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02535",
+      "file": "Resources/000400000228e9943e10.v000400000228e99440e8.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.screen-probe-indirect-args",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.ScreenProbeIndirectArgs$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "six dispatch records used by the screen-probe passes: group-per-probe, thread-per-probe, trace compaction, thread-per-trace, thread-per-gather, thread-per-gather-with-border",
+      "units": "thread-group counts (x,y,z)",
+      "coordinateSpace": "screen-probe atlas grid in probes and octahedron texels",
+      "storage": {
+        "kind": "buffer",
+        "format": "FRHIDispatchIndirectParameters (3 x uint32)",
+        "strideBytes": 12,
+        "numElements": 6,
+        "capacity": "6 records = EScreenProbeIndirectArgs::Max",
+        "usage": "IndirectArgs(UAV|DrawIndirect) | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 12,
+            "numElements": 6,
+            "byteSize": 72,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "DrawIndirect",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters (3 x uint32)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "setup",
+          "expression": "AtlasSizeInProbes = uint2(ScreenProbeAtlasViewSize.x, ceil(GetNumScreenProbes()/ScreenProbeAtlasViewSize.x)); WriteArgs2D(index, GroupSize, AtlasSizeInProbes * Resolution)",
+          "requires": [
+            "ScreenProbeAtlasViewSize",
+            "ScreenProbeGatherOctahedronResolution",
+            "ScreenProbeTracingOctahedronResolution"
+          ],
+          "sourceRefs": [
+            "part2.spg.usf.setupargs",
+            "part2.spg.usf.args.gpp",
+            "part2.spg.tc.threadgroup2d"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "PROBE_THREADGROUP_SIZE_2D = 8 is the group edge for records 0/1/3/4/5; record 2 (compaction) uses group size 16 (LumenScreenProbeGather.usf:328).",
+        "Each WriteArgs2D(Index, GroupSize, ThreadCount) writes (ceil(ThreadCount.x/GroupSize), ceil(ThreadCount.y/GroupSize), 1)."
+      ],
+      "producerSources": [
+        "part2.spg.cpp.spargs"
+      ],
+      "consumerSources": [
+        "part2.spg.dispatch.probe"
+      ],
+      "gaps": [
+        "The atlas view size includes the adaptive-probe reserve rows (LumenScreenProbeGather.cpp:2225-2229), so the dispatch can cover unspawned probe slots; GetNumScreenProbes() clamps actual work."
+      ],
+      "fields": [
+        {
+          "name": "GroupPerProbe",
+          "type": "uint32",
+          "decode": "x = AtlasSizeInProbes.x; y = AtlasSizeInProbes.y; z=1 (one 8x8 group per probe)",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spg.usf.args.gpp",
+            "part2.spg.hdr.indirectenum"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "ThreadPerProbe",
+          "type": "uint32",
+          "decode": "x = ceil(AtlasSizeInProbes.x/8); y = ceil(AtlasSizeInProbes.y/8); z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spg.usf.args.tpp"
+          ],
+          "byteOffset": 12,
+          "bitWidth": 32
+        },
+        {
+          "name": "TraceCompaction",
+          "type": "uint32",
+          "decode": "x = ceil(AtlasSizeInProbes.x*TracingRes/16); y = ceil(AtlasSizeInProbes.y*TracingRes/16); z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spg.usf.args.tc"
+          ],
+          "byteOffset": 24,
+          "bitWidth": 32
+        },
+        {
+          "name": "ThreadPerTrace",
+          "type": "uint32",
+          "decode": "x = ceil(AtlasSizeInProbes.x*TracingRes/8); y = ceil(AtlasSizeInProbes.y*TracingRes/8); z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spg.usf.args.tpt"
+          ],
+          "byteOffset": 36,
+          "bitWidth": 32
+        },
+        {
+          "name": "ThreadPerGather",
+          "type": "uint32",
+          "decode": "x = ceil(AtlasSizeInProbes.x*GatherRes/8); y = ceil(AtlasSizeInProbes.y*GatherRes/8); z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spg.usf.args.tpg"
+          ],
+          "byteOffset": 48,
+          "bitWidth": 32
+        },
+        {
+          "name": "ThreadPerGatherWithBorder",
+          "type": "uint32",
+          "decode": "x = ceil(AtlasSizeInProbes.x*GatherResWithBorder/8); y = ceil(AtlasSizeInProbes.y*GatherResWithBorder/8); z=1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.spg.usf.args.tpgb"
+          ],
+          "byteOffset": 60,
+          "bitWidth": 32
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 6,
+        "sourceEquationFields": [
+          "GroupPerProbe",
+          "ThreadPerProbe",
+          "TraceCompaction",
+          "ThreadPerTrace",
+          "ThreadPerGather",
+          "ThreadPerGatherWithBorder"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0744",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.ScreenProbeGather.ScreenProbeIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1203"
+    }
+  ]
+}

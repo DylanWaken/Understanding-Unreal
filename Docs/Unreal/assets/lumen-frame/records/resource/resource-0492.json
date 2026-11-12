@@ -1,0 +1,479 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0492",
+  "nativeRecordId": "native-017499",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "DistanceFields.DFObjectData",
+  "uniqueName": "00030000022880718610",
+  "displayLabel": "DistanceFields.DFObjectData · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 1280,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 80,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 80
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "DistanceFields.DFObjectData",
+    "UniqueResourceName": "00030000022880718610",
+    "ByteSize": 1280,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 80,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01189",
+      "role": "resource",
+      "originalPath": "Resources/00030000022880718610.v00000000000000000000.bin",
+      "bytes": 1280,
+      "sha256": "91cde504753ee2d9bbdf56189993ace16041283d3e4ec76f5212237d8c386475",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0492",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "91cde504753ee2d9bbdf56189993ace16041283d3e4ec76f5212237d8c386475",
+          "offset": 0,
+          "length": 1280
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00030000022880718610",
+        "name": "DistanceFields.DFObjectData",
+        "byteSize": 1280
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01189"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0318",
+        "name": "ComputeWantedMips",
+        "displayLabel": "ComputeWantedMips · UpdateDistanceFieldAtlas · frame 292 · pass 317",
+        "record": "records/pass/pass-0318.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01189",
+      "file": "Resources/00030000022880718610.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.df-object-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^DistanceFields\\.DFObjectData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one float4 element of a 160-byte per-object record (10 float4): position high, world<->volume affine matrices, volume extent/bias, draw distances, GPU instance index, volume scale, asset index",
+      "units": "volume space is dimensionless (max mesh extent maps to [-1,1]); VolumeToWorldScale is cm per volume unit; SelfShadowBias is world cm (converted by 1/max(VolumeToWorldScale) at DistanceFieldShadowingShared.ush:121); MinMaxDrawDistance2 is cm^2",
+      "coordinateSpace": "volume space = mesh local space scaled by 1/max(extent); matrices relative to translated world",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "float4",
+        "strideBytes": 16,
+        "formatAlternatives": [
+          "10 float4 per object (GDistanceFieldObjectDataStride=10)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 16,
+          "numElements": 80,
+          "byteSize": 1280
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "10 float4 per object (GDistanceFieldObjectDataStride=10)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "volumeToWorld",
+          "expression": "TranslatedWorldPos = VolumePos*VolumeToRelativeWorld.3x3 + M[3].xyz + PositionHigh + PreViewTranslation",
+          "requires": [
+            "DistanceFields.DFObjectData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.obj.toWorld"
+          ]
+        },
+        {
+          "name": "worldToVolume",
+          "expression": "VolumePos = (TranslatedWorldPos - PositionHigh) * RelativeWorldToVolume",
+          "requires": [
+            "DistanceFields.DFObjectData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.obj.toVol"
+          ]
+        },
+        {
+          "name": "distanceToWorld",
+          "expression": "DistanceToNearestSurface = SDF(ClampedVolumePos)*VolumeScale + max(0, DistanceToBoxVolume*VolumeToWorldScale)",
+          "requires": [
+            "DistanceFields.DFObjectData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.df.obj.volscale"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "10 float4 = 160 B per object; VolumeScale is derived as min(VolumeToWorldScale.xyz) and is not stored.",
+        "HLSL FDFObjectData declaration order is NOT the buffer layout; readers use explicit word indices.",
+        "SelfShadowBias is converted to volume units by 1/max(VolumeToWorldScale) in the shadowing shader."
+      ],
+      "producerSources": [
+        "part3.visibility.df.obj.alloc",
+        "part3.visibility.df.obj.write",
+        "part3.visibility.df.obj.write.matrix",
+        "part3.visibility.df.obj.write.word4",
+        "part3.visibility.df.obj.write.word5",
+        "part3.visibility.df.obj.write.word9"
+      ],
+      "consumerSources": [
+        "part3.visibility.df.obj.load",
+        "part3.visibility.df.obj.selfshadow"
+      ],
+      "gaps": [
+        "bMostlyTwoSided is encoded only as the sign of word4.w; if ExpandSurfaceDistance==0 the bit would be lost (not guarded).",
+        "Live object count is NumObjectsInBuffer (uniform), not stored."
+      ],
+      "fields": [
+        {
+          "name": "PositionHigh",
+          "type": "float3",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "PreTranslation of the FDF inverse matrix",
+          "units": "cm",
+          "sourceRefs": [
+            "part3.visibility.df.obj.load"
+          ]
+        },
+        {
+          "name": "PositionHighW",
+          "type": "float",
+          "byteOffset": 12,
+          "count": 1,
+          "decode": "unused (FVector4f constructed from FVector3f gives 1.0)",
+          "units": "n/a",
+          "sourceRefs": [
+            "part3.visibility.df.obj.load"
+          ]
+        },
+        {
+          "name": "RelativeWorldToVolume0",
+          "type": "float4",
+          "byteOffset": 16,
+          "count": 1,
+          "decode": "row0 (xyz, w=translation); M=transpose(float4x4(V0,V1,V2,(0,0,0,1)))",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.df.obj.matrix"
+          ]
+        },
+        {
+          "name": "RelativeWorldToVolume1",
+          "type": "float4",
+          "byteOffset": 32,
+          "count": 1,
+          "decode": "row1",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.df.obj.matrix"
+          ]
+        },
+        {
+          "name": "RelativeWorldToVolume2",
+          "type": "float4",
+          "byteOffset": 48,
+          "count": 1,
+          "decode": "row2",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.df.obj.matrix"
+          ]
+        },
+        {
+          "name": "VolumePositionExtent",
+          "type": "float3",
+          "byteOffset": 64,
+          "count": 1,
+          "decode": "Vector3.xyz",
+          "units": "volume units",
+          "sourceRefs": [
+            "part3.visibility.df.obj.word4"
+          ]
+        },
+        {
+          "name": "VolumeSurfaceBiasAndTwoSided",
+          "type": "float",
+          "byteOffset": 76,
+          "count": 1,
+          "decode": "abs(w)=VolumeSurfaceBias; w<0 => bMostlyTwoSided",
+          "units": "volume units / bit",
+          "sourceRefs": [
+            "part3.visibility.df.obj.word4"
+          ]
+        },
+        {
+          "name": "MinMaxDrawDistance2",
+          "type": "float2",
+          "byteOffset": 80,
+          "count": 1,
+          "decode": "(MinDrawDistance^2, (MaxCullDistance*ViewDistanceScale)^2)",
+          "units": "cm^2",
+          "sourceRefs": [
+            "part3.visibility.df.obj.word5"
+          ]
+        },
+        {
+          "name": "SelfShadowBias",
+          "type": "float",
+          "byteOffset": 88,
+          "count": 1,
+          "decode": "Vector4.z; world cm",
+          "units": "cm",
+          "sourceRefs": [
+            "part3.visibility.df.obj.selfshadow"
+          ]
+        },
+        {
+          "name": "GPUSceneInstanceIndex",
+          "type": "uint32",
+          "byteOffset": 92,
+          "count": 1,
+          "decode": "asuint(Vector4.w)",
+          "units": "instance index",
+          "sourceRefs": [
+            "part3.visibility.df.obj.word5"
+          ]
+        },
+        {
+          "name": "VolumeToRelativeWorld0",
+          "type": "float4",
+          "byteOffset": 96,
+          "count": 1,
+          "decode": "row0; M=transpose(float4x4(V0,V1,V2,(0,0,0,1)))",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.df.obj.world"
+          ]
+        },
+        {
+          "name": "VolumeToRelativeWorld1",
+          "type": "float4",
+          "byteOffset": 112,
+          "count": 1,
+          "decode": "row1",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.df.obj.world"
+          ]
+        },
+        {
+          "name": "VolumeToRelativeWorld2",
+          "type": "float4",
+          "byteOffset": 128,
+          "count": 1,
+          "decode": "row2",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.df.obj.world"
+          ]
+        },
+        {
+          "name": "VolumeToWorldScale",
+          "type": "float3",
+          "byteOffset": 144,
+          "count": 1,
+          "decode": "Vector8.xyz = VolumeToRelativeWorld.GetScaleVector()",
+          "units": "cm per volume unit",
+          "sourceRefs": [
+            "part3.visibility.df.obj.word9"
+          ]
+        },
+        {
+          "name": "AssetIndex",
+          "type": "uint32",
+          "byteOffset": 156,
+          "count": 1,
+          "decode": "asuint(Vector8.w), index into DistanceFields.AssetData",
+          "units": "asset index",
+          "sourceRefs": [
+            "part3.visibility.df.obj.word9"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 15,
+        "sourceEquationFields": [
+          "PositionHigh",
+          "PositionHighW",
+          "RelativeWorldToVolume0",
+          "RelativeWorldToVolume1",
+          "RelativeWorldToVolume2",
+          "VolumePositionExtent",
+          "VolumeSurfaceBiasAndTwoSided",
+          "MinMaxDrawDistance2",
+          "SelfShadowBias",
+          "GPUSceneInstanceIndex",
+          "VolumeToRelativeWorld0",
+          "VolumeToRelativeWorld1",
+          "VolumeToRelativeWorld2",
+          "VolumeToWorldScale",
+          "AssetIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0304",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer DistanceFields.DFObjectData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0492"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "schema": "unreal-active-frame-gpudump-session-v1",
+  "mode": "metadata",
+  "run_id": "20261112-133307",
+  "pid": 34644,
+  "started_utc": "2026-11-12T13:33:07Z",
+  "started_monotonic": 88340.015,
+  "engine_version": "5.8.1-0+UE5",
+  "project": "reproduce/UnrealLab",
+  "map": "/Game/Labs/LumenRoom",
+  "resolution": [
+    1280,
+    720
+  ],
+  "lumen_commands": [
+    "r.ScreenPercentage 100",
+    "r.AntiAliasingMethod 2",
+    "r.MotionBlurQuality 0",
+    "r.Lumen.HardwareRayTracing 0",
+    "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+    "r.Lumen.Reflections.ScreenTraces 1",
+    "r.DynamicGlobalIlluminationMethod 1",
+    "r.ReflectionMethod 1",
+    "r.Lumen.Visualize 0",
+    "r.LumenScene.SurfaceCache.AtlasSize 4096",
+    "showflag.BillboardSprites 0",
+    "showflag.Grid 0",
+    "showflag.Selection 0",
+    "showflag.SelectionOutline 0",
+    "showflag.ModeWidgets 0",
+    "showflag.Bounds 0"
+  ],
+  "warmup_draws": 200,
+  "settle_draws": 90,
+  "dump_directory": null,
+  "status": "error",
+  "limitations": [
+    "DumpGPU captures RDG-visible resources only; resources never referenced by an RDG pass, or resources flagged SkipTracking/memoryless, are absent and are listed as unsupported.",
+    "Shader-local intermediate registers and values inside shader invocations are not DumpGPU resources; shader source mapping is evidence, not a memory capture.",
+    "r.DumpGPU.RedumpInputs=0 keeps the producer version of in-place-modified resources; the version linkage is recorded in Passes.json rather than forcing per-read duplicates."
+  ],
+  "camera": {
+    "actor": "CameraActor",
+    "location_cm": [
+      0.0,
+      -400.0,
+      165.0
+    ],
+    "rotation_degrees": {
+      "pitch": -2.105514188856035,
+      "yaw": 90.00000000000006,
+      "roll": 2.5614055970807246e-08
+    },
+    "target_cm": [
+      0.0,
+      280.0,
+      140.0
+    ],
+    "vertical_fov_degrees": 43.0,
+    "component_field_of_view_degrees": 70.0059814453125
+  },
+  "exposure": {
+    "effective_method": "histogram (AEM_HISTOGRAM) with min_brightness == max_brightness == EV100 4",
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+    "override_auto_exposure_method": "False",
+    "ev100": 4.0,
+    "min_brightness": 4.0,
+    "max_brightness": 4.0,
+    "bias": 0.0,
+    "postprocess_values_after_set": {
+      "override_auto_exposure_min_brightness": "True",
+      "auto_exposure_min_brightness": "4.0",
+      "override_auto_exposure_max_brightness": "True",
+      "auto_exposure_max_brightness": "4.0",
+      "override_auto_exposure_bias": "True",
+      "auto_exposure_bias": "0.0",
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+      "override_auto_exposure_method": "False",
+      "override_path_tracing_samples_per_pixel": "False",
+      "path_tracing_samples_per_pixel": "2048",
+      "override_path_tracing_max_bounces": "False",
+      "path_tracing_max_bounces": "32",
+      "override_path_tracing_enable_denoiser": "False",
+      "path_tracing_enable_denoiser": "True"
+    },
+    "note": "Not manual exposure. The unbound PostProcessVolume leaves AEM_HISTOGRAM active; min=max=4 locks the histogram-derived exposure to EV100 4."
+  },
+  "light": {
+    "actor": "Ceiling area light",
+    "location_cm": [
+      0.0,
+      270.0,
+      298.0
+    ],
+    "rotation_degrees": {
+      "pitch": -90.0,
+      "yaw": 0.0,
+      "roll": 0.0
+    },
+    "intensity_lumens": 2400.0,
+    "intensity_units": "<LightUnits.LUMENS: 2>",
+    "source_width_cm": 130.0,
+    "source_height_cm": 120.0,
+    "attenuation_radius_cm": 1000.0,
+    "light_color": [
+      255.0,
+      255.0,
+      255.0
+    ]
+  },
+  "light_label": "Ceiling area light",
+  "pp_values": {
+    "override_auto_exposure_min_brightness": "True",
+    "auto_exposure_min_brightness": "4.0",
+    "override_auto_exposure_max_brightness": "True",
+    "auto_exposure_max_brightness": "4.0",
+    "override_auto_exposure_bias": "True",
+    "auto_exposure_bias": "0.0",
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+    "override_auto_exposure_method": "False",
+    "override_path_tracing_samples_per_pixel": "False",
+    "path_tracing_samples_per_pixel": "2048",
+    "override_path_tracing_max_bounces": "False",
+    "path_tracing_max_bounces": "32",
+    "override_path_tracing_enable_denoiser": "False",
+    "path_tracing_enable_denoiser": "True"
+  },
+  "scene_file": "data/native/scene.json",
+  "phase": "warmup",
+  "error": "Traceback (most recent call last):\n  File \"reproduce/scripts/gpudump_capture.py\", line 848, in tick\n    raise RuntimeError('Unhandled phase ' + str(STATE['phase']))\nRuntimeError: Unhandled phase setup\n",
+  "finished_utc": "2026-11-12T13:33:07Z",
+  "elapsed_seconds": 0.5939999999973224,
+  "draws": 1,
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged."
+}

@@ -1,0 +1,214 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1422",
+  "nativeRecordId": "native-018435",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "EyeAdaptationBuffer",
+  "uniqueName": "00040000022925865e78",
+  "displayLabel": "EyeAdaptationBuffer · instance 0004 · frame 292 · passes 894",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 894,
+    "last": 894
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 32,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 2,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 2
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "EyeAdaptationBuffer",
+    "UniqueResourceName": "00040000022925865e78",
+    "ByteSize": 32,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 2,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "SourceCopy",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02690",
+      "role": "resource",
+      "originalPath": "Resources/00040000022925865e78.v000400000229258660e8.bin",
+      "bytes": 32,
+      "sha256": "912d72ec1c32d327702bff6bc7248afac7e7ddaf5c9acc39ec15c9ce753af139",
+      "version": "000400000229258660e8",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1422",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "912d72ec1c32d327702bff6bc7248afac7e7ddaf5c9acc39ec15c9ce753af139",
+          "offset": 0,
+          "length": 32
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00040000022925865e78",
+        "name": "EyeAdaptationBuffer",
+        "byteSize": 32
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000229258660e8",
+      "producerPassId": "pass-0895",
+      "producerPassName": "HistogramEyeAdaptation (CS)",
+      "payloadIds": [
+        "payload-02690"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0895",
+        "name": "HistogramEyeAdaptation (CS)",
+        "displayLabel": "HistogramEyeAdaptation (CS) · PostProcessing · frame 292 · pass 894",
+        "record": "records/pass/pass-0895.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0896",
+        "name": "EnqueueCopy(EyeAdaptationBuffer)",
+        "displayLabel": "EnqueueCopy(EyeAdaptationBuffer) · PostProcessing · frame 292 · pass 895",
+        "record": "records/pass/pass-0896.json"
+      },
+      {
+        "id": "pass-0909",
+        "name": "Tonemap 1280x720 (PS GammaOnly=0)",
+        "displayLabel": "Tonemap 1280x720 (PS GammaOnly=0) · PostProcessing · frame 292 · pass 908",
+        "record": "records/pass/pass-0909.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02690",
+      "file": "Resources/00040000022925865e78.v000400000229258660e8.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0873",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer EyeAdaptationBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1422"
+    },
+    {
+      "id": "gap-2300",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched EyeAdaptationBuffer (00040000022925865e78). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1422"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1342",
+  "nativeRecordId": "native-018354",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "InstanceCulling.DrawCommandCompactionData",
+  "uniqueName": "0004000002287c12f6b0",
+  "displayLabel": "InstanceCulling.DrawCommandCompactionData · instance 0004 · frame 292",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 20,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 20,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 20,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "InstanceCulling.DrawCommandCompactionData",
+    "UniqueResourceName": "0004000002287c12f6b0",
+    "ByteSize": 20,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 20,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02164",
+      "role": "resource",
+      "originalPath": "Resources/0004000002287c12f6b0.v00000000000000000000.bin",
+      "bytes": 20,
+      "sha256": "de47c9b27eb8d300dbb5f2c353e632c393262cf06340c4fa7f1b40c4cbd36f90",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1342",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "de47c9b27eb8d300dbb5f2c353e632c393262cf06340c4fa7f1b40c4cbd36f90",
+          "offset": 0,
+          "length": 20
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0004000002287c12f6b0",
+        "name": "InstanceCulling.DrawCommandCompactionData",
+        "byteSize": 20
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02164"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0823",
+        "name": "CullInstances(UnCulled). Bin 0",
+        "displayLabel": "CullInstances(UnCulled). Bin 0 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 822",
+        "record": "records/pass/pass-0823.json"
+      },
+      {
+        "id": "pass-0824",
+        "name": "CullInstances(Generic). Bin 1",
+        "displayLabel": "CullInstances(Generic). Bin 1 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 823",
+        "record": "records/pass/pass-0824.json"
+      },
+      {
+        "id": "pass-0825",
+        "name": "Instance Compaction Phase 1",
+        "displayLabel": "Instance Compaction Phase 1 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 824",
+        "record": "records/pass/pass-0825.json"
+      },
+      {
+        "id": "pass-0826",
+        "name": "Instance Compaction Phase 2",
+        "displayLabel": "Instance Compaction Phase 2 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 825",
+        "record": "records/pass/pass-0826.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02164",
+      "file": "Resources/0004000002287c12f6b0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0826",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer InstanceCulling.DrawCommandCompactionData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1342"
+    },
+    {
+      "id": "gap-2269",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched InstanceCulling.DrawCommandCompactionData (0004000002287c12f6b0). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1342"
+    }
+  ]
+}

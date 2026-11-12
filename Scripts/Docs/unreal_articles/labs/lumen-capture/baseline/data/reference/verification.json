@@ -1,0 +1,192 @@
+{
+  "schema": "unreal-reference-verification-v1",
+  "status": "ok",
+  "checks": {
+    "lumen_image_1280x720": true,
+    "pt_image_1280x720": true,
+    "lumen_nonblank": true,
+    "pt_nonblank": true,
+    "lumen_red_wall_on_left": true,
+    "lumen_green_wall_on_right": true,
+    "pt_red_wall_on_left": true,
+    "pt_green_wall_on_right": true,
+    "same_room_new_lumen_matches_published": true,
+    "same_camera_lumen_vs_pt": true,
+    "images_not_identical": true,
+    "room_matches_original_inventory": true,
+    "map_byte_identical_to_original": true,
+    "pt_samples_256": true,
+    "pt_sample_count_256": true,
+    "pt_bounces_8": true,
+    "pt_denoiser_off": true,
+    "pt_view_mode_confirmed": true,
+    "pt_forced_reset_after_pso_warmup": true,
+    "no_pso_fallback_after_reset": true,
+    "pt_100_percent_progress_logged": true,
+    "lumen_warmup_200_plus_90": true,
+    "histogram_exposure_ev100_4": true,
+    "screenshot_logged_1280x720": true
+  },
+  "failed_checks": [],
+  "image_stats": {
+    "lumen_lit": {
+      "file": "figures/reference/lumen-lit.png",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_rgb": [
+        132.57192491319444,
+        128.7106467013889,
+        111.537900390625
+      ],
+      "mean_luminance": 128.2916821655816,
+      "std_luminance": 93.6284936225084,
+      "min_luminance": 0.0,
+      "max_luminance": 252.0682,
+      "unique_rgb_colors": 67211,
+      "near_black_fraction": 0.2680479600694444,
+      "near_white_fraction": 0.0,
+      "nonblack_fraction_lum_gt_8": 0.6982009548611111,
+      "left_wall_rgb": [
+        231.09480657640233,
+        137.7874081237911,
+        118.00907156673114
+      ],
+      "right_wall_rgb": [
+        142.9025126646403,
+        215.12765957446808,
+        150.4568085106383
+      ],
+      "room_center_rgb": [
+        219.6980586080586,
+        218.08130036630035,
+        211.70150183150184
+      ],
+      "border_rgb": [
+        0.17172453703703705,
+        0.0,
+        0.0
+      ]
+    },
+    "path_tracer_256spp_8bounces": {
+      "file": "figures/reference/pathtracer-256spp-8bounces.png",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_rgb": [
+        133.4962109375,
+        129.50939995659724,
+        112.0415625
+      ],
+      "mean_luminance": 129.09581810677082,
+      "std_luminance": 93.788770269129,
+      "min_luminance": 0.0,
+      "max_luminance": 251.0682,
+      "unique_rgb_colors": 110317,
+      "near_black_fraction": 0.2887272135416667,
+      "near_white_fraction": 0.0,
+      "nonblack_fraction_lum_gt_8": 0.6871592881944445,
+      "left_wall_rgb": [
+        230.81220502901354,
+        140.6836073500967,
+        119.05806576402321
+      ],
+      "right_wall_rgb": [
+        145.1490780141844,
+        214.14555217831813,
+        149.80490374873352
+      ],
+      "room_center_rgb": [
+        211.4127197802198,
+        209.7360989010989,
+        203.23933150183151
+      ],
+      "border_rgb": [
+        0.16674768518518518,
+        0.0,
+        0.0
+      ]
+    },
+    "published_original_lumen_lit": {
+      "file": "external://source-reference/published-lumen-lit.png (optional, not included)",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_rgb": [
+        132.60716688368055,
+        128.77588216145833,
+        111.58884114583333
+      ],
+      "mean_luminance": 128.34950893207466,
+      "std_luminance": 93.59151259899933,
+      "min_luminance": 0.0,
+      "max_luminance": 252.0682,
+      "unique_rgb_colors": 67527,
+      "near_black_fraction": 0.26846137152777777,
+      "near_white_fraction": 0.0,
+      "nonblack_fraction_lum_gt_8": 0.6995453559027778,
+      "left_wall_rgb": [
+        231.08286266924566,
+        137.78830754352032,
+        118.00671179883946
+      ],
+      "right_wall_rgb": [
+        142.92707193515704,
+        215.15830800405269,
+        150.4822695035461
+      ],
+      "room_center_rgb": [
+        219.71760073260074,
+        218.10660256410256,
+        211.72716117216117
+      ],
+      "border_rgb": [
+        0.170625,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "comparisons": {
+    "new_lumen_vs_new_path_tracer": {
+      "mean_absolute_rgb_difference_0_255": 4.692626591436015,
+      "fraction_pixels_rgb_difference_gt_8": 0.12878472222222223,
+      "luminance_pearson_correlation": 0.9931351343774287
+    },
+    "new_lumen_vs_published_original_lumen": {
+      "mean_absolute_rgb_difference_0_255": 0.4394498697914301,
+      "fraction_pixels_rgb_difference_gt_8": 0.0035666232638888887,
+      "luminance_pearson_correlation": 0.9999111088143231
+    }
+  },
+  "log_proof": {
+    "cvar_echoes": [
+      "r.PathTracing.SamplesPerPixel = \"256\"",
+      "r.PathTracing.MaxBounces = \"8\"",
+      "r.PathTracing.Denoiser = \"0\"",
+      "r.PathTracing.ProgressDisplay = \"false\"",
+      "r.PathTracing.FilterWidth = \"3\"",
+      "r.PathTracing.MISMode = \"2\"",
+      "r.PathTracing.EnableEmissive = \"1\"",
+      "r.PathTracing.EnableReferenceDOF = \"0\"",
+      "r.PathTracing.VisibleLights = \"0\"",
+      "r.PathTracing.SamplesPerPixel = \"255\"",
+      "r.PathTracing.SamplesPerPixel = \"256\""
+    ],
+    "pt_sample_lines": [
+      "ARDA_REFERENCE_PT_SAMPLE 4/256 draw=358",
+      "ARDA_REFERENCE_PT_SAMPLE 256/256 draw=442"
+    ],
+    "pso_fallback_lines_before_reset": [
+      "[2026.11.12-13.17.05:650][295]LogRenderer: Ray Tracing PSO is not ready yet, using fallback."
+    ],
+    "pso_fallback_frames": [
+      295
+    ],
+    "pso_fallback_after_reset": [],
+    "reset_engine_frame": 356,
+    "lumen_capture_engine_frame": 291,
+    "pt_capture_engine_frame": 442
+  },
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged."
+}

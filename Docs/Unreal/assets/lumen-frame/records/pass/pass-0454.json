@@ -1,0 +1,299 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0454",
+  "nativeRecordId": "native-015973",
+  "name": "ClearRadianceCacheUpdateResources",
+  "displayLabel": "ClearRadianceCacheUpdateResources · UpdateWorldRadianceCaches · frame 292 · pass 453",
+  "frameNumber": 292,
+  "graphPrefix": "UpdateWorldRadianceCaches",
+  "viewState": null,
+  "pointer": "000300000228b830ace0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228b83091c0",
+  "parametersMetadataPointer": "000300007ffb89250e60",
+  "parentScopes": [
+    "UpdateWorldRadianceCaches",
+    "LumenScreenProbeGather",
+    "DiffuseIndirectAndAO",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearRadianceCacheUpdateResources",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228b83091c0",
+    "ParametersMetadata": "000300007ffb89250e60",
+    "Pointer": "000300000228b830ace0",
+    "Id": 453,
+    "ParentEventScopes": [
+      "UpdateWorldRadianceCaches",
+      "LumenScreenProbeGather",
+      "DiffuseIndirectAndAO",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000300000228b8308120",
+      "000300000228b83082a0",
+      "000300000228b8308e08",
+      "000300000228b8308f40",
+      "000300000228b8309078",
+      "000300000228b8308cd0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000300000228b8308120",
+      "resourceId": "resource-0741",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01232",
+        "payload-01233"
+      ]
+    },
+    {
+      "uniqueName": "000300000228b83082a0",
+      "resourceId": "resource-0742",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01234",
+        "payload-01235"
+      ]
+    },
+    {
+      "uniqueName": "000300000228b8308e08",
+      "resourceId": "resource-0743",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01239",
+        "payload-01240"
+      ]
+    },
+    {
+      "uniqueName": "000300000228b8308f40",
+      "resourceId": "resource-0744",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01241",
+        "payload-01242"
+      ]
+    },
+    {
+      "uniqueName": "000300000228b8309078",
+      "resourceId": "resource-0745",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01243",
+        "payload-01244"
+      ]
+    },
+    {
+      "uniqueName": "000300000228b8308cd0",
+      "resourceId": "resource-0746",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01236",
+        "payload-01237",
+        "payload-01238"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06349",
+    "metadataPointer": "000300007ffb89250e60",
+    "bytes": 48,
+    "sha256": "453a34618bc0734cc1653e8a1f523a4165a9e10826a849c8a86b0687f23d62b1",
+    "chunks": [
+      {
+        "sha": "453a34618bc0734cc1653e8a1f523a4165a9e10826a849c8a86b0687f23d62b1",
+        "offset": 0,
+        "length": 48
+      }
+    ],
+    "originalPath": "Structures/000300000228b83091c0.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenRadianceCache.cpp",
+    "FileLine": 419,
+    "Size": 48,
+    "Members": [
+      {
+        "Name": "RWProbeTraceAllocator",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 420,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWPriorityHistogram",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 421,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWMaxUpdateBucket",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 422,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWMaxTracesFromMaxUpdateBucket",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 423,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWProbesToUpdateTraceCost",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 424,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWMinNewProbeTraceCost",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 425,
+        "Offset": 40,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228b830ace0",
+      "Parameters": "000300000228b83091c0",
+      "Bindings": {
+        "RWProbeTraceAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228b8308258",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWPriorityHistogram": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228b83091f0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWMaxUpdateBucket": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228b8309238",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWMaxTracesFromMaxUpdateBucket": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228b8309280",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWProbesToUpdateTraceCost": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228b830ac50",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWMinNewProbeTraceCost": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228b830ac98",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

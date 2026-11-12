@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "fixture": true,
+  "notice": "Synthetic demonstration schema only. Not produced by the source-schema producer and not attached to a runtime capture.",
+  "resourceSchemas": [
+    {
+      "id": "demo.synthetic.direct-texel",
+      "selectors": [
+        {
+          "resourceNameRegex": "Lumen\\.Synthetic\\.DirectLighting",
+          "passNameRegex": "Lumen\\.Synthetic"
+        }
+      ],
+      "quantity": "synthetic half-float RG channels",
+      "units": "arbitrary (fixture)",
+      "coordinateSpace": "texel",
+      "storage": "texel",
+      "fields": [
+        {
+          "name": "topLeftRG",
+          "type": "float16",
+          "byteOffset": 0,
+          "count": 2,
+          "decode": "half",
+          "units": "arbitrary",
+          "sourceRefs": ["demo.source"]
+        },
+        {
+          "name": "unsafeExpression",
+          "type": "uint32",
+          "byteOffset": 4,
+          "decode": "__import__('os').system('echo this must never run')",
+          "sourceRefs": ["demo.source"]
+        }
+      ],
+      "transforms": [
+        {
+          "id": "demo.display",
+          "name": "Demonstration display transform",
+          "equation": "display = clamp(value, 0, 1)",
+          "sourceRefs": ["demo.source"]
+        }
+      ],
+      "mathTerms": [
+        {
+          "id": "demo.E",
+          "term": "E",
+          "definition": "Synthetic irradiance-like demonstration term; not runtime evidence.",
+          "sourceRefs": ["demo.source"]
+        }
+      ],
+      "producerSources": ["demo.source"],
+      "consumerSources": [],
+      "decodingStatus": "partial: demo only",
+      "gaps": ["Synthetic fixture. No runtime claim."]
+    }
+  ],
+  "parameterSchemas": [
+    {
+      "id": "demo.synthetic.direct-pass",
+      "selectors": [{"passNameRegex": "DirectLighting"}],
+      "quantity": "synthetic parameter block",
+      "fields": [
+        {
+          "name": "LightingMode",
+          "type": "float32",
+          "byteOffset": 0,
+          "decode": "float",
+          "sourceRefs": ["demo.source"]
+        },
+        {
+          "name": "LightDirection",
+          "type": "float32",
+          "byteOffset": 8,
+          "count": 3,
+          "decode": "float",
+          "sourceRefs": ["demo.source"]
+        }
+      ],
+      "decodingStatus": "partial: demo only"
+    }
+  ],
+  "transforms": [
+    {
+      "id": "demo.display.global",
+      "name": "Global demonstration display transform",
+      "equation": "srgb(display) = 1.055 * display^(1/2.4) - 0.055 for display > 0.0031308",
+      "sourceRefs": ["demo.source"]
+    }
+  ],
+  "mathTerms": [
+    {
+      "id": "demo.L",
+      "term": "L_o",
+      "definition": "Synthetic outgoing-radiance label for the demonstration only.",
+      "sourceRefs": ["demo.source"]
+    }
+  ],
+  "sourceRefs": [
+    {
+      "id": "demo.source",
+      "path": "SyntheticShaders.usf",
+      "line": 42,
+      "symbol": "SyntheticDirectLighting",
+      "claim": "Synthetic demonstration anchor. Not a real engine source reference."
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0211",
+  "nativeRecordId": "native-017217",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "DUMMYLocalFogVolumeGPUInstanceDataBuffer",
+  "uniqueName": "00010000022925048808",
+  "displayLabel": "DUMMYLocalFogVolumeGPUInstanceDataBuffer · scene 0001 · frame 292 · View.StateFrameIndexMod8 7",
+  "instancePrefix": "0001",
+  "sceneInvocation": "0001",
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": {
+    "member": "View.View",
+    "metadataPointer": "000100007ffb9ac979f0",
+    "contentPointer": "00010000022880566180",
+    "payloadId": "payload-05915",
+    "frameIndexMod8": 7,
+    "frameIndex": 871,
+    "viewRect": {
+      "min": [
+        0,
+        0
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "source": "ViewRectMinAndSize (uint32 x 4)"
+    },
+    "source": "Base/ReferencedStructs.json View.View content read at StructuresMetadata member offsets"
+  },
+  "viewport": {
+    "applicability": "other-domain",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": {
+      "min": [
+        0,
+        0
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "source": "ViewRectMinAndSize (uint32 x 4)"
+    },
+    "passId": "pass-0126",
+    "passName": "BasePassParallel",
+    "passPointer": "000100000228dcc278e0",
+    "passIsCameraPass": true,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "BasePassParallel (pass pass-0126) ViewRect retained as context only.",
+    "reason": "Buffers have no 2D screen-texel domain; the recorded pass ViewRect is context only and no screen padding is inferred.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 48,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 3,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 3
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "DUMMYLocalFogVolumeGPUInstanceDataBuffer",
+    "UniqueResourceName": "00010000022925048808",
+    "ByteSize": 48,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 3,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00683",
+      "role": "resource",
+      "originalPath": "Resources/00010000022925048808.v00000000000000000000.bin",
+      "bytes": 48,
+      "sha256": "17b0761f87b081d5cf10757ccc89f12be355c70e2e29df288b65b30710dcbcd1",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0211",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "17b0761f87b081d5cf10757ccc89f12be355c70e2e29df288b65b30710dcbcd1",
+          "offset": 0,
+          "length": 48
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00010000022925048808",
+        "name": "DUMMYLocalFogVolumeGPUInstanceDataBuffer",
+        "byteSize": 48
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00683"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0126",
+        "name": "BasePassParallel",
+        "displayLabel": "BasePassParallel · BasePass · frame 292 · pass 125 · View.StateFrameIndexMod8 7",
+        "record": "records/pass/pass-0126.json"
+      },
+      {
+        "id": "pass-0127",
+        "name": "EditorPrimitives: SDPG_World",
+        "displayLabel": "EditorPrimitives: SDPG_World · EditorPrimitives · frame 292 · pass 126 · View.StateFrameIndexMod8 7",
+        "record": "records/pass/pass-0127.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00683",
+      "file": "Resources/00010000022925048808.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0150",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer DUMMYLocalFogVolumeGPUInstanceDataBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0211"
+    },
+    {
+      "id": "gap-1904",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched DUMMYLocalFogVolumeGPUInstanceDataBuffer (00010000022925048808). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0211"
+    }
+  ]
+}

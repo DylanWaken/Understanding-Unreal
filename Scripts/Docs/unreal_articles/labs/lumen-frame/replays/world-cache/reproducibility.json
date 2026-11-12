@@ -1,0 +1,30 @@
+{
+  "schema": "unreal-understanding-world-cache-reproducibility-v1",
+  "python": "3.14.6",
+  "numpy": "2.5.4",
+  "captureId": "binary-20261112-153914",
+  "passId": 167,
+  "byteIdentical": {
+    "world-cache-replay.json": true,
+    "blue-noise-export.json": true,
+    "permutation-evidence.json": true,
+    "selfchecks.json": true,
+    "world-cache-replay.md": true,
+    "world-cache-flow.svg": true
+  },
+  "sha256": {
+    "world-cache-replay.json": "94b4108a3c532531c6ad439957f1043f6537c210f37516f0c6a26476e14df916",
+    "blue-noise-export.json": "77f0b5f351c68472d9dca1be04b0d77ca762aa27f794ebc972ddc592973bd2fd",
+    "permutation-evidence.json": "bdc98996c31036bcda9a68c82a63d957d24c4816920e4f2915758ce37eeb5211",
+    "selfchecks.json": "8e0a1a58d0315a4d83b542a2844bb5f717013d728fa9f0ed1965e9297cd98847",
+    "world-cache-replay.md": "bb8d74901b4fd992dc7f4d803e9ff15e593ff537ece86a4696052615dadbc73d",
+    "world-cache-flow.svg": "3f4254d8d78148b3bcfaf567f12fb92eb313605b37b21670cfaa8fb818528ad3"
+  },
+  "commands": [
+    "python -m pip install -r requirements.txt",
+    "python replay_world_cache.py --capture <DumpGPU-directory> --output ./rerun --pass-id 167",
+    "python write_world_chapter.py --output ./rerun",
+    "python draw_world_flow.py --report ./rerun/world-cache-replay.json --output ./rerun/world-cache-flow.svg",
+    "python verify_world_replay.py --capture <DumpGPU-directory> --output ./rerun/verification.json"
+  ]
+}

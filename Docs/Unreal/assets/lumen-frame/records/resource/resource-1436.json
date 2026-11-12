@@ -1,0 +1,345 @@
+{
+  "format": "PF_A2B10G10R10",
+  "version": 1,
+  "id": "resource-1436",
+  "nativeRecordId": "native-018449",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "CombineLUTs",
+  "uniqueName": "000400000228d4d9cec8",
+  "displayLabel": "CombineLUTs · instance 0004 · frame 292",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    32,
+    32,
+    32
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "volume-3d",
+    "classification": null,
+    "allocation": [
+      32,
+      32,
+      32
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 131072,
+  "extent": [
+    32,
+    32,
+    32
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "A2B10G10R10_UNORM",
+    "bytesPerTexel": 4,
+    "formatNormalized": "A2B10G10R10",
+    "dumpFormat": "PF_A2B10G10R10",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "CombineLUTs",
+    "UniqueResourceName": "000400000228d4d9cec8",
+    "ByteSize": 131072,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture3D",
+    "Format": "PF_A2B10G10R10",
+    "ExtentX": 32,
+    "ExtentY": 32,
+    "Depth": 32,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02413",
+      "role": "resource",
+      "originalPath": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+      "bytes": 131072,
+      "sha256": "e18dd0612ae4f8dcb4860a42d3e90386829bc1198cb8749b543c2693b36e24d6",
+      "version": "00000000000000000000",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1436",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "e18dd0612ae4f8dcb4860a42d3e90386829bc1198cb8749b543c2693b36e24d6",
+          "offset": 0,
+          "length": 131072
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000228d4d9cec8",
+        "Name": "CombineLUTs",
+        "File": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 32,
+        "ExtentY": 32,
+        "Depth": 32,
+        "ZSliceCount": 32,
+        "ZSliceStrideBytes": 4096,
+        "RowPitchBytes": 128,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_A2B10G10R10",
+        "ViewFormat": "PF_A2B10G10R10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_A2B10G10R10",
+        "StoredFormat": "PF_A2B10G10R10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 131072,
+        "StagingByteSize": 131072
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 131072,
+          "ActualBytes": 131072,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 131072,
+        "actualBytes": 131072,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000228d4d9cec8",
+        "name": "CombineLUTs",
+        "diagnosticResource": "000400000228d4d9cec8"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 32,
+        "extentY": 32,
+        "depth": 32,
+        "zSliceCount": 32,
+        "zSliceStrideBytes": 4096,
+        "rowPitchBytes": 128,
+        "storageFormat": "PF_A2B10G10R10",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "A2B10G10R10_UNORM",
+        "bytesPerTexel": 4,
+        "formatNormalized": "A2B10G10R10",
+        "dumpFormat": "PF_A2B10G10R10",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_A2B10G10R10",
+        "viewFormat": "PF_A2B10G10R10",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02413"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0909",
+        "name": "Tonemap 1280x720 (PS GammaOnly=0)",
+        "displayLabel": "Tonemap 1280x720 (PS GammaOnly=0) · PostProcessing · frame 292 · pass 908",
+        "record": "records/pass/pass-0909.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-02413",
+      "file": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+      "layout": {
+        "Resource": "000400000228d4d9cec8",
+        "Name": "CombineLUTs",
+        "File": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 32,
+        "ExtentY": 32,
+        "Depth": 32,
+        "ZSliceCount": 32,
+        "ZSliceStrideBytes": 4096,
+        "RowPitchBytes": 128,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_A2B10G10R10",
+        "ViewFormat": "PF_A2B10G10R10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_A2B10G10R10",
+        "StoredFormat": "PF_A2B10G10R10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 131072,
+        "StagingByteSize": 131072
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 131072,
+          "ActualBytes": 131072,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 131072,
+        "actualBytes": 131072,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-02413",
+      "file": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228d4d9cec8.mip0.v00000000000000000000.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 131072,
+          "ActualBytes": 131072,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 131072,
+        "actualBytes": 131072,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-2314",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched CombineLUTs (000400000228d4d9cec8). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1436"
+    }
+  ]
+}

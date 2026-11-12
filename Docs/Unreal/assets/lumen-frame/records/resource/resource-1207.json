@@ -1,0 +1,1158 @@
+{
+  "format": "PF_R32_UINT",
+  "version": 1,
+  "id": "resource-1207",
+  "nativeRecordId": "native-018219",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+  "uniqueName": "000400000228e9949790",
+  "displayLabel": "Lumen.RadianceCache.RadianceProbeIndirectionTexture · instance 0004 · frame 292 · passes 755..763",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 755,
+    "last": 763
+  },
+  "allocation": [
+    72,
+    24,
+    24
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "volume-3d",
+    "classification": "probe-grid",
+    "allocation": [
+      72,
+      24,
+      24
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 165888,
+  "extent": [
+    72,
+    24,
+    24
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "UINT32",
+    "bytesPerTexel": 4,
+    "formatNormalized": "R32_UINT",
+    "dumpFormat": "PF_R32_UINT",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+    "UniqueResourceName": "000400000228e9949790",
+    "ByteSize": 165888,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture3D",
+    "Format": "PF_R32_UINT",
+    "ExtentX": 72,
+    "ExtentY": 24,
+    "Depth": 24,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "Tiling3D",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02549",
+      "role": "resource",
+      "originalPath": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+      "bytes": 165888,
+      "sha256": "ef75ef19968a1c9f159a40a62175f1f545cb4be27647f29a1c8dfe6587b65373",
+      "version": "0004000002287c163630",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1207",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "ef75ef19968a1c9f159a40a62175f1f545cb4be27647f29a1c8dfe6587b65373",
+          "offset": 0,
+          "length": 165888
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000228e9949790",
+        "name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "diagnosticResource": "000400000228e9949790"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 72,
+        "extentY": 24,
+        "depth": 24,
+        "zSliceCount": 24,
+        "zSliceStrideBytes": 6912,
+        "rowPitchBytes": 288,
+        "storageFormat": "PF_R32_UINT",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UINT32",
+        "bytesPerTexel": 4,
+        "formatNormalized": "R32_UINT",
+        "dumpFormat": "PF_R32_UINT",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R32_UINT",
+        "viewFormat": "PF_R32_UINT",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "UnsignedIntegerBits",
+        "bitExact": true,
+        "valuePreserving": true,
+        "bitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "srgbViewUsedForReadback": false
+      }
+    },
+    {
+      "id": "payload-02550",
+      "role": "resource",
+      "originalPath": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+      "bytes": 165888,
+      "sha256": "21cb2a0d45de930993d8843f49653715cb7bcfbccc34d9df69d14a74df9a8c3b",
+      "version": "0004000002287c16fda8",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1207",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "21cb2a0d45de930993d8843f49653715cb7bcfbccc34d9df69d14a74df9a8c3b",
+          "offset": 0,
+          "length": 165888
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000228e9949790",
+        "name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "diagnosticResource": "000400000228e9949790"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 72,
+        "extentY": 24,
+        "depth": 24,
+        "zSliceCount": 24,
+        "zSliceStrideBytes": 6912,
+        "rowPitchBytes": 288,
+        "storageFormat": "PF_R32_UINT",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UINT32",
+        "bytesPerTexel": 4,
+        "formatNormalized": "R32_UINT",
+        "dumpFormat": "PF_R32_UINT",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R32_UINT",
+        "viewFormat": "PF_R32_UINT",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "UnsignedIntegerBits",
+        "bitExact": true,
+        "valuePreserving": true,
+        "bitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "srgbViewUsedForReadback": false
+      }
+    },
+    {
+      "id": "payload-02551",
+      "role": "resource",
+      "originalPath": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+      "bytes": 165888,
+      "sha256": "53457e1dd28ed2ced6dafc2c4f0620ef7ba7ca144157585e050d176a1948ee39",
+      "version": "000400000228e9949ac0",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1207",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "53457e1dd28ed2ced6dafc2c4f0620ef7ba7ca144157585e050d176a1948ee39",
+          "offset": 0,
+          "length": 165888
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000228e9949790",
+        "name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "diagnosticResource": "000400000228e9949790"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 72,
+        "extentY": 24,
+        "depth": 24,
+        "zSliceCount": 24,
+        "zSliceStrideBytes": 6912,
+        "rowPitchBytes": 288,
+        "storageFormat": "PF_R32_UINT",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UINT32",
+        "bytesPerTexel": 4,
+        "formatNormalized": "R32_UINT",
+        "dumpFormat": "PF_R32_UINT",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R32_UINT",
+        "viewFormat": "PF_R32_UINT",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "UnsignedIntegerBits",
+        "bitExact": true,
+        "valuePreserving": true,
+        "bitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "srgbViewUsedForReadback": false
+      }
+    },
+    {
+      "id": "payload-02552",
+      "role": "resource",
+      "originalPath": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+      "bytes": 165888,
+      "sha256": "78da9db1892d440c85770f432de7614e5bccd5c07b764732909b86c68d2164d4",
+      "version": "000400000228e994c8f0",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1207",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "78da9db1892d440c85770f432de7614e5bccd5c07b764732909b86c68d2164d4",
+          "offset": 0,
+          "length": 165888
+        }
+      ],
+      "nativeKind": "Texture3D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000228e9949790",
+        "name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "diagnosticResource": "000400000228e9949790"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture3D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 72,
+        "extentY": 24,
+        "depth": 24,
+        "zSliceCount": 24,
+        "zSliceStrideBytes": 6912,
+        "rowPitchBytes": 288,
+        "storageFormat": "PF_R32_UINT",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UINT32",
+        "bytesPerTexel": 4,
+        "formatNormalized": "R32_UINT",
+        "dumpFormat": "PF_R32_UINT",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R32_UINT",
+        "viewFormat": "PF_R32_UINT",
+        "storedBytesAreNativeStorage": false,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "UnsignedIntegerBits",
+        "bitExact": true,
+        "valuePreserving": true,
+        "bitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228e9949ac0",
+      "producerPassId": "pass-0756",
+      "producerPassName": "ClearProbeIndirectionCS",
+      "payloadIds": [
+        "payload-02551"
+      ],
+      "previousVersion": null,
+      "nextVersion": "000400000228e994c8f0"
+    },
+    {
+      "version": "000400000228e994c8f0",
+      "producerPassId": "pass-0758",
+      "producerPassName": "MarkRadianceProbesUsedByTranslucencyVolume",
+      "payloadIds": [
+        "payload-02552"
+      ],
+      "previousVersion": "000400000228e9949ac0",
+      "nextVersion": "0004000002287c163630"
+    },
+    {
+      "version": "0004000002287c163630",
+      "producerPassId": "pass-0760",
+      "producerPassName": "UpdateCacheForUsedProbes",
+      "payloadIds": [
+        "payload-02549"
+      ],
+      "previousVersion": "000400000228e994c8f0",
+      "nextVersion": "0004000002287c16fda8"
+    },
+    {
+      "version": "0004000002287c16fda8",
+      "producerPassId": "pass-0764",
+      "producerPassName": "AllocateUsedProbes",
+      "payloadIds": [
+        "payload-02550"
+      ],
+      "previousVersion": "0004000002287c163630",
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0756",
+        "name": "ClearProbeIndirectionCS",
+        "displayLabel": "ClearProbeIndirectionCS · UpdateWorldRadianceCaches · frame 292 · pass 755",
+        "record": "records/pass/pass-0756.json"
+      },
+      {
+        "id": "pass-0758",
+        "name": "MarkRadianceProbesUsedByTranslucencyVolume",
+        "displayLabel": "MarkRadianceProbesUsedByTranslucencyVolume · UpdateWorldRadianceCaches · frame 292 · pass 757",
+        "record": "records/pass/pass-0758.json"
+      },
+      {
+        "id": "pass-0760",
+        "name": "UpdateCacheForUsedProbes",
+        "displayLabel": "UpdateCacheForUsedProbes · UpdateWorldRadianceCaches · frame 292 · pass 759",
+        "record": "records/pass/pass-0760.json"
+      },
+      {
+        "id": "pass-0764",
+        "name": "AllocateUsedProbes",
+        "displayLabel": "AllocateUsedProbes · UpdateWorldRadianceCaches · frame 292 · pass 763",
+        "record": "records/pass/pass-0764.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0768",
+        "name": "AllocateProbeTraces",
+        "displayLabel": "AllocateProbeTraces · UpdateWorldRadianceCaches · frame 292 · pass 767",
+        "record": "records/pass/pass-0768.json"
+      },
+      {
+        "id": "pass-0778",
+        "name": "FilterProbeRadiance Res=8x8",
+        "displayLabel": "FilterProbeRadiance Res=8x8 · UpdateWorldRadianceCaches · frame 292 · pass 777",
+        "record": "records/pass/pass-0778.json"
+      },
+      {
+        "id": "pass-0804",
+        "name": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+        "displayLabel": "TraceGlobalSDFAndInterpolateRadianceCache 3x3 · TranslucencyVolumeLighting · frame 292 · pass 803",
+        "record": "records/pass/pass-0804.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-02549",
+      "file": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02550",
+      "file": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02551",
+      "file": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02552",
+      "file": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+      "layout": {
+        "Resource": "000400000228e9949790",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 72,
+        "ExtentY": 24,
+        "Depth": 24,
+        "ZSliceCount": 24,
+        "ZSliceStrideBytes": 6912,
+        "RowPitchBytes": 288,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 165888,
+        "StagingByteSize": 165888
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-02549",
+      "file": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v0004000002287c163630.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02550",
+      "file": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v0004000002287c16fda8.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02551",
+      "file": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v000400000228e9949ac0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    },
+    {
+      "payloadId": "payload-02552",
+      "file": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228e9949790.mip0.v000400000228e994c8f0.bin",
+          "Kind": "Texture3D",
+          "ExpectedBytes": 165888,
+          "ActualBytes": 165888,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 165888,
+        "actualBytes": 165888,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture3D",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "resource.radiancecache-indirection",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.RadianceProbeIndirectionTexture$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "3D probe -> allocated probe index + adaptive probe count",
+      "units": "probe index / count",
+      "coordinateSpace": "3D clipmap indirection (x includes clipmap offset)",
+      "storage": {
+        "kind": "texture3d",
+        "format": "PF_R32_UINT",
+        "strideBytes": 4
+      },
+      "actualFormat": "PF_R32_UINT",
+      "declaredFormat": "PF_R32_UINT",
+      "declaredFormatText": "PF_R32_UINT",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R32_UINT",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R32_UINT",
+      "payloadFormat": "PF_R32_UINT",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "decode",
+          "expression": "valid = value != 0xFFFFFFFF; probeIndex = value & 0xFFFF; numAdaptive = (value>>16)&0x7",
+          "requires": [
+            "RadianceProbeIndirectionTexture"
+          ],
+          "sourceRefs": [
+            "part0.LRCI_inddec",
+            "part0.LRCI_indenc"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "encoded = (ProbeIndex & 0xFFFF) | (NumAdaptiveProbes << 16); invalid = 0xFFFFFFFF"
+      ],
+      "producerSources": [
+        "part0.LRC_indfmt",
+        "part0.LRCI_indenc"
+      ],
+      "consumerSources": [
+        "part0.LRCI_inddec"
+      ],
+      "gaps": [
+        "Texture X coordinate is ProbeCoord.x + ClipmapIndex*RadianceProbeClipmapResolution (LumenRadianceCacheInterpolation.ush:320-329).",
+        "NumAdaptiveProbes is 3 bits and only valid for adaptive-probe caches."
+      ],
+      "fields": [
+        {
+          "name": "ProbeIndex",
+          "type": "uint16",
+          "decode": "bits[0:15]; 0xFFFFFFFF means invalid/unmapped",
+          "units": "index",
+          "sourceRefs": [
+            "part0.LRC_indfmt",
+            "part0.LRCI_inddec",
+            "part0.LRCI_invalid"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 16
+        },
+        {
+          "name": "NumAdaptiveProbes",
+          "type": "uint3",
+          "decode": "bits[16:18]",
+          "units": "count",
+          "sourceRefs": [
+            "part0.LRCI_indenc",
+            "part0.LRCI_inddec"
+          ],
+          "bitOffset": 16,
+          "bitWidth": 3
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "ProbeIndex",
+          "NumAdaptiveProbes"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

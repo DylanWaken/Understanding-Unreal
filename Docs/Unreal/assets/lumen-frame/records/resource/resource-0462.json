@@ -1,0 +1,355 @@
+{
+  "format": "PF_FloatRGB",
+  "version": 1,
+  "id": "resource-0462",
+  "nativeRecordId": "native-017469",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "BloomY",
+  "uniqueName": "000100000228e99420f8",
+  "displayLabel": "BloomY · instance 0001 · frame 292 · passes 283",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 283,
+    "last": 283
+  },
+  "allocation": [
+    160,
+    111
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": null,
+    "allocation": [
+      160,
+      111
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 71040,
+  "extent": [
+    160,
+    111,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "R11G11B10_FLOAT",
+    "bytesPerTexel": 4,
+    "formatNormalized": "FLOATRGB",
+    "dumpFormat": "PF_FLOATRGB",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "BloomY",
+    "UniqueResourceName": "000100000228e99420f8",
+    "ByteSize": 71040,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_FloatRGB",
+    "ExtentX": 160,
+    "ExtentY": 111,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "RenderTargetable",
+      "ShaderResource",
+      "FastVRAM",
+      "NoFastClear"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00577",
+      "role": "resource",
+      "originalPath": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+      "bytes": 71040,
+      "sha256": "ab0370d7e350fe780eee350f707653007c09838c87e27d1e1983a89d2aecfa61",
+      "version": "000100000228e9943200",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0462",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "ab0370d7e350fe780eee350f707653007c09838c87e27d1e1983a89d2aecfa61",
+          "offset": 0,
+          "length": 71040
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000100000228e99420f8",
+        "Name": "BloomY",
+        "File": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 160,
+        "ExtentY": 111,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 71040,
+        "RowPitchBytes": 640,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatRGB",
+        "ViewFormat": "PF_FloatRGB",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatRGB",
+        "StoredFormat": "PF_FloatRGB",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 71040,
+        "StagingByteSize": 71040
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 71040,
+          "ActualBytes": 71040,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 71040,
+        "actualBytes": 71040,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000100000228e99420f8",
+        "name": "BloomY",
+        "diagnosticResource": "000100000228e99420f8"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 160,
+        "extentY": 111,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 71040,
+        "rowPitchBytes": 640,
+        "storageFormat": "PF_FloatRGB",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "R11G11B10_FLOAT",
+        "bytesPerTexel": 4,
+        "formatNormalized": "FLOATRGB",
+        "dumpFormat": "PF_FLOATRGB",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_FloatRGB",
+        "viewFormat": "PF_FloatRGB",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000228e9943200",
+      "producerPassId": "pass-0284",
+      "producerPassName": "GaussianBlur.BloomY 160x90 (PS, Static)",
+      "payloadIds": [
+        "payload-00577"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0284",
+        "name": "GaussianBlur.BloomY 160x90 (PS, Static)",
+        "displayLabel": "GaussianBlur.BloomY 160x90 (PS, Static) · Bloom · frame 292 · pass 283",
+        "record": "records/pass/pass-0284.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0286",
+        "name": "GaussianBlur.BloomY 320x180 (PS, Static)",
+        "displayLabel": "GaussianBlur.BloomY 320x180 (PS, Static) · Bloom · frame 292 · pass 285",
+        "record": "records/pass/pass-0286.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-00577",
+      "file": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+      "layout": {
+        "Resource": "000100000228e99420f8",
+        "Name": "BloomY",
+        "File": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 160,
+        "ExtentY": 111,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 71040,
+        "RowPitchBytes": 640,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatRGB",
+        "ViewFormat": "PF_FloatRGB",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatRGB",
+        "StoredFormat": "PF_FloatRGB",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 71040,
+        "StagingByteSize": 71040
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 71040,
+          "ActualBytes": 71040,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 71040,
+        "actualBytes": 71040,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-00577",
+      "file": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228e99420f8.mip0.v000100000228e9943200.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 71040,
+          "ActualBytes": 71040,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 71040,
+        "actualBytes": 71040,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-1963",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched BloomY (000100000228e99420f8). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0462"
+    }
+  ]
+}

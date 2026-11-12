@@ -1,96 +1,582 @@
-<p>Place a ceiling light in a small room with a red wall, a green wall, and two boxes. Direct illumination tells us which surfaces see the light. It does not explain the red tint that reaches the floor, light in a shadowed corner, or the room visible in a glossy reflection. Those effects depend on light arriving from other surfaces. Lumen organizes and approximates those connections so they can be updated while a game is running.</p>
-<p>We will use one specified indoor room throughout: first as geometric surfaces and material parameters, then as surface-cache texels, traced intersections, directional radiance, probes, and a temporally reconstructed image. A runnable CPU reference implementation calculates the intermediate data. A separate Unreal project renders the same layout with the real Lumen system. These are complementary experiments: the CPU version makes the equations inspectable; the Unreal captures reveal the actual engine's representations and their limitations. Neither a hand-drawn arrow nor a CPU image is labeled an Unreal capture.</p>
-<p>This essay starts with the rendering equation, derives the sampling estimators, and carries their units and assumptions into an implementation. It then maps each mechanism to Unreal Engine 5.8.1 source at <code>71fe36aac5a8df5ccd66c763ffc902b29b6a9c43</code>. The <a href="https://advances.realtimerendering.com/s2022/SIGGRAPH2022-Advances-Lumen-Wright%20et%20al.pdf">Lumen team's SIGGRAPH presentation</a> supplies the design context. The reduced renderer is a learning implementation, not a reproduction of all Lumen shaders or its scheduling heuristics. The independent <a href="nanite.html">Nanite essay</a> explains virtual geometry; understanding its builder is not a prerequisite for implementing the transport machinery here.</p>
-
+<p>One room is enough to expose the problem: light leaves a ceiling emitter, scatters from colored walls and objects, and reaches a camera. A path tracer estimates those paths directly. Lumen spends a bounded amount of work on a set of representations that share and reuse lighting. This essay derives their common transport problem, identifies exactly what the real-time method approximates, and follows the actual engine data through a frame.</p>
+<p>The argument has three parts: <a href="#light-quantities">the path integral and a working renderer</a>; <a href="#lumen-approximation">the mathematical approximation and its cost</a>; and <a href="#deferred-frame">deferred shading, shadows, and the complete Lumen pipeline</a>. The scene comparisons are actual Unreal renders. The smaller CPU reference is separately identified. Numerical resource inspection complements the images: a colored atlas alone cannot expose an address, PDF, history weight, or invalid bit.</p>
+<p>This chapter first derives a surface path tracer, then uses that derivation to describe what a cached real-time renderer changes. The mathematical reference is stationary, unpolarized geometric optics in vacuum, with opaque surfaces unless an extension is explicitly introduced. These assumptions describe the reference problem; they do not describe every feature of Unreal Engine.</p>
+<p>The path notation follows the light-to-sensor convention of Eric Veach's thesis. In particular, the arrow in the three-point notation follows <strong>light</strong>, even in a sensor-response expression: \(W_e^{(j)}(x\to x&#x27;)\) is importance emitted from the sensor at \(x&#x27;\) toward \(x\). Veach defines this explicitly in §8.1, printed pp. 220–222. The derivations and numerical examples below are original explanations using that convention. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, full thesis</a></p><section class="chapter" id="light-quantities">
+<h2>Part I · Fix the quantities before tracing a ray</h2>
+<p>Let \(\mathcal M\) be the union of <strong>all</strong> participating surface domains, including emitters and the sensor. An emitter can also scatter light; it is not removed from \(\mathcal M\). The emitted-radiance function \(L_e\) is zero where there is no emission, and the sensor response \(W_e^{(j)}\) is zero outside the sensor domain for measurement \(j\).</p>
+<div class="table-scroll"><table class="data-table">
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning and convention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\(x,y\in\mathcal M\)</td>
+<td>Surface positions; distances use metres in the derivation.</td>
+</tr>
+<tr>
+<td>\(\omega_i,\omega_o\)</td>
+<td>Unit directions pointing <strong>away</strong> from a scattering point, toward the incident source and outgoing receiver respectively.</td>
+</tr>
+<tr>
+<td>\(\mathbf n_g,\mathbf n_s\)</td>
+<td>Geometric and shading normals. The reference example initially uses \(\mathbf n_g=\mathbf n_s\).</td>
+</tr>
+<tr>
+<td>\(dA,d\sigma,d\sigma_x^\perp\)</td>
+<td>Surface area, solid angle, and projected solid angle; \(d\sigma_x^\perp=|\mathbf n_g(x)\cdot\omega|d\sigma\).</td>
+</tr>
+<tr>
+<td>\(L_e,L_i,L_o\)</td>
+<td>Emitted, incident, and outgoing radiance. \(L(x\to y)\) is outgoing radiance at \(x\), toward \(y\).</td>
+</tr>
+<tr>
+<td>\(f_s(x;\omega_i\to\omega_o)\)</td>
+<td>BSDF expressed relative to the stated projected-solid-angle measure.</td>
+</tr>
+<tr>
+<td>\(V(x\leftrightarrow y)\)</td>
+<td>Visibility of the open segment, 0 or 1 in the opaque reference.</td>
+</tr>
+<tr>
+<td>\(G(x\leftrightarrow y)\)</td>
+<td>Visibility times the two geometric cosines divided by squared distance.</td>
+</tr>
+<tr>
+<td>\(\bar x=(x_0,\ldots,x_k)\)</td>
+<td>A path with \(k\) edges, ordered from emitter \(x_0\) to sensor \(x_k\).</td>
+</tr>
+<tr>
+<td>\(\Omega_k,\Omega,\mu_k,\mu\)</td>
+<td>Length-specific path space, their disjoint union, and area-product measures.</td>
+</tr>
+<tr>
+<td>\(I_j,f_j,W_e^{(j)}\)</td>
+<td>Sensor measurement, path contribution function, and sensor response.</td>
+</tr>
+<tr>
+<td>\(p_A,p_\sigma\)</td>
+<td>Densities per unit area and per unit solid angle. A discrete light-selection probability is written \(P_\ell\).</td>
+</tr>
+<tr>
+<td>\(\beta\)</td>
+<td>Running camera-path weight; not a radiance buffer.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Radiant energy \(Q\) has units joules, and radiant flux is \(\Phi=dQ/dt\), in watts. Irradiance is incoming flux per surface area, \(E=d\Phi/dA\). Radiance is the density of flux in projected area and solid angle:</p>
+\[
+d\Phi=L(x,\omega)|\mathbf n_g(x)\cdot\omega|\,dA(x)\,d\sigma(\omega).
+\tag{M01}
+\]
+<p>Thus radiance has units \(\mathrm{W\,m^{-2}\,sr^{-1}}\); irradiance has units \(\mathrm{W\,m^{-2}}\). An irradiance buffer and a radiance buffer cannot be interchanged merely because each has three floating-point channels.</p>
+<p>A diffuse emitter with constant radiance \(10\ \mathrm{W\,m^{-2}\,sr^{-1}}\) and emitting area \(0.02\ \mathrm{m^2}\) sends total power</p>
+\[
+\Phi=A L\int_{H^2}\cos\theta\,d\sigma=A L\pi=0.628318531\ \mathrm W.
+\tag{M02}
+\]
+<p>For a cone of solid angle \(\Delta\sigma\) around direction \(\omega_0\), replacing every cosine by \(c_0=\mathbf n_g\cdot\omega_0\) gives the <strong>small-cone approximation</strong> \(\Phi\approx A L c_0\Delta\sigma\). With \(c_0=0.8\) and \(\Delta\sigma=0.5\ \mathrm{sr}\), that approximation is \(0.08\ \mathrm W\), or 80 mW. For a circular cone wholly above the emitting horizon, its exact cosine integral is \(c_0\pi\sin^2\alpha\), where \(\Delta\sigma=2\pi(1-\cos\alpha)\). The exact answer is consequently</p>
+\[
+\Phi=A L c_0\Delta\sigma\left(1-\frac{\Delta\sigma}{4\pi}\right)
+=0.076816901\ \mathrm W.
+\tag{M03}
+\]
+<p>This example distinguishes a differential relation from a finite-region approximation rather than treating a representative cosine as an exact integral.</p>
+</section>
 <section class="chapter" id="light-transport">
-<h2>Indirect illumination starts with an integral, not a light list</h2>
-<p>A surface looks bright because radiance leaves it toward the camera. Radiance describes directional light transport: both the position and the direction matter. At an opaque surface, outgoing radiance consists of emitted light plus reflected incoming light. A compact expression of that relationship is the rendering equation:</p>
-\[L_o(x,\omega_o)=L_e(x,\omega_o)+\int_{\Omega^+}f_r(x,\omega_i,\omega_o)L_i(x,\omega_i)\max(0,n\cdot\omega_i)\,d\omega_i.\]
-<p>Here <var>x</var> is the surface point, <var>n</var> its normal, <var>ωₒ</var> the direction toward the observer, and <var>ωᵢ</var> a direction from which light arrives. <var>Lₑ</var> is emission. The bidirectional reflectance distribution function, or BRDF, is <var>fᵣ</var>; it describes how the surface redistributes incoming light into the outgoing direction. The cosine factor accounts for the projected area that incoming light sees. The integral sums the contributions of directions over the relevant hemisphere.</p>
-<p>This formula is short because it hides the world in <var>Lᵢ</var>. Follow an incoming direction from the floor and it may reach the matte block. The radiance leaving the block depends on light arriving at the block. Some of that may have come from the wall, and some from the ceiling light. Thus even the floor's illumination can depend on surfaces invisible to the camera and on repeated interactions. A direct-light list evaluates only selected, simpler connections within this larger problem.</p>
-<p>For a perfectly diffuse teaching surface with reflectance <var>ρ</var>, the BRDF is <var>ρ / π</var>. The remaining cosine-weighted integral is irradiance, <var>E</var>, giving outgoing diffuse radiance <var>ρE / π</var>. This makes a useful distinction: the incoming illumination can be shared across similar nearby receivers, while each receiver still applies its own reflectance. A red wall does not merely receive “red lighting”; it changes the spectrum of the light it subsequently reflects into the room.</p>
-<figure><img src="assets/nanite-lumen/transport.svg" alt="A ceiling light illuminates a matte block directly. The block reflects some light toward the stone wall, and the wall reflects some toward the camera. Each surface response and each visibility segment changes the result." loading="lazy" width="960" height="480"><figcaption>A two-bounce path through the room. Geometry determines whether each segment is open. Materials determine how much light is redirected. A cache may approximate a segment's radiance, but it must still correspond to the right surface and direction.</figcaption></figure>
-<p>A brute-force numerical solution traces many paths and averages their contributions. Monte Carlo integration estimates an integral by sampling directions. For directions drawn with probability density <var>p(ω)</var>, each sample is weighted by the integrand divided by that density. More samples reduce random error, but convergence is slow: for ordinary independent sampling, standard deviation decreases roughly with the square root of sample count. Halving noise therefore tends to demand about four times as many samples, not twice.</p>
-<p>At 1920 by 1080, the camera has a little over two million pixels. Even one independent ray per pixel is millions of ray queries per frame, before multiple bounces, reflections, transparency, or shadows. One ray also gives a very unstable estimate of a broad directional integral. Real-time GI therefore cannot be understood only as “use a fast ray-tracing API.” It needs a strategy for choosing queries, sharing their results, limiting representation cost, and reconstructing a stable image from incomplete information.</p>
-<p>Lumen makes several separations to enable that strategy. The representation used to intersect a ray can differ from the representation used to retrieve material and lighting at the intersection. Expensive incoming-light estimates can be stored at selected spatial locations rather than recomputed independently for every final pixel. Lighting information can persist across frames, while validity tests decide where history is reusable. Each separation introduces approximation and a possible failure mode, but also removes work that otherwise repeats.</p>
-<p>The rest of the article will keep three questions distinct. Where does a ray hit? What radiance is available at that hit? How should sparse radiance samples be reconstructed into illumination at the camera's visible surface? Distance fields or triangle acceleration structures help with the first. Surface caches and hit lighting help with the second. Screen probes, radiance caches, integration, and temporal filtering help with the third. Lumen is the coordinated system that connects these answers; none of the individual structures is “the GI” by itself.</p>
+<h2>Derive the local rendering equation</h2>
+<p>The BSDF converts irradiance arriving from a differential range of directions into outgoing radiance:</p>
+\[
+dL_o(x,\omega_o)=f_s(x;\omega_i\to\omega_o)L_i(x,\omega_i)
+|\mathbf n_g(x)\cdot\omega_i|\,d\sigma(\omega_i).
+\tag{M04}
+\]
+<p>Its units are inverse steradians. Integration, plus local emission, gives</p>
+\[
+L_o(x,\omega_o)=L_e(x,\omega_o)+
+\int_{S^2}f_s(x;\omega_i\to\omega_o)L_i(x,\omega_i)\,d\sigma_x^\perp(\omega_i).
+\tag{M05}
+\]
+<p>For an opaque one-sided reflector, \(f_s\) is zero on unsupported direction pairs, so the integral reduces to the incident hemisphere. The sphere notation also accommodates transmission when its BSDF and medium conventions have been specified. Absolute cosines by themselves do not make a one-sided material two-sided.</p>
+<p>In vacuum, radiance remains constant along an unobstructed ray. If \(y\) is the first intersection from \(x\) in direction \(\omega_i\), then</p>
+\[
+L_i(x,\omega_i)=L_o(y,-\omega_i).
+\tag{M06}
+\]
+<p>There is no inverse-square factor in (M06). Inverse-square dilution appears when a finite source area is converted into the solid angle it occupies, not when evaluating radiance along one ray. A miss returns the environment radiance. For the surface-only derivation, an environment can be represented by an enclosing emitting boundary and a limiting construction; practical code uses a separate directional endpoint.</p>
+<p>For a Lambertian reflector with reflectance \(\rho\), \(f_s=\rho/\pi\). Under a prescribed constant incident radiance \(L_0\),</p>
+\[
+L_o-L_e=\frac{\rho}{\pi}\int_{H^2}L_0\cos\theta\,d\sigma=\rho L_0.
+\tag{M07}
+\]
+<p>For \(\rho=0.8\) and \(L_0=2\), the reflected radiance is exactly \(1.6\ \mathrm{W\,m^{-2}\,sr^{-1}}\). This is a local constant-environment check. It does not assert that an arbitrary enclosed interreflection scene has the same incident field.</p>
+<h3>The normal used by the material is not the geometric normal</h3>
+<p>Surface area, visibility, and the solid-angle Jacobian depend on \(\mathbf n_g\). A normal map changes the angular scattering model. Suppose a renderer wants a reciprocal local shading-frame function \(b_s\) multiplied by \(|\mathbf n_s\cdot\omega_i|\). It can express that convention using the geometric measure in (M05) by defining an effective radiance BSDF</p>
+\[
+f_s^{\rm eff}(\omega_i\to\omega_o)=
+b_s(\omega_i\to\omega_o)
+\frac{|\mathbf n_s\cdot\omega_i|}{|\mathbf n_g\cdot\omega_i|},
+\tag{M08}
+\]
+<p>on valid direction pairs with nonzero denominator. The product \(f_s^{\rm eff}|\mathbf n_g\cdot\omega_i|\) then reproduces the intended shading cosine. This is an algebraic description of a shading-normal convention, <strong>not</strong> a proof that the resulting model conserves energy. Geometric-hemisphere tests and grazing-angle handling still matter; normal mapping can break reciprocity and energy conservation.</p>
+<p>A camera path solves outgoing radiance toward the camera. At a surface with known camera-side direction \(\omega_o\), it samples a new light-side direction \(\omega_i\) and evaluates \(f_s(\omega_i\to\omega_o)\). Sampling the path in reverse order does <strong>not</strong> authorize transposing this BSDF. Adjoint operators are needed when transporting importance through nonsymmetric scattering, as in the complementary light-tracing formulation. One must state the transported quantity and measure before applying a correction; the blanket instruction “camera tracing uses the adjoint BSDF” is unsafe. Veach's discussion of shading normals and adjoint transport is in chapters 4–5. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapters 4–5</a></p>
 </section>
-
-<section class="chapter" id="tracing-representations">
-<h2>Choose what the ray is allowed to see</h2>
-<p>A ray consists of an origin, a direction, and an interval along that direction. The basic intersection question asks for the first relevant surface inside that interval. To answer it cheaply, Lumen can use information already available in the camera's image, distance-field representations of world geometry, or hardware-accelerated triangle intersections. These routes differ in what geometry they know about and how accurately they represent it.</p>
-<p>A screen trace walks against the depth representation of the current camera image. It is attractive because visible depth and shading already exist, including fine detail and deformation represented in that image. But the screen is a limited window into the world. It contains no general information about the backs of visible objects, fully hidden surfaces, or geometry outside the view. A ray that leaves the screen or cannot establish a valid hit needs another representation. A screen-space result cannot become a complete world-space visibility solution simply by taking more steps.</p>
-<p>This limitation explains a characteristic artifact. Put a bright emissive sign just outside the camera view but in a position that should illuminate the block. If the sign is represented only through screen information, its contribution can change when the camera turns toward it even though the sign and block did not move. That view dependence identifies missing or inadequate world-space representation. Disabling screen traces temporarily can reveal the underlying gap, but removing a useful first tracing stage is a diagnostic experiment rather than a universal quality improvement.</p>
-<p>The inspected screen-probe code initializes screen traces and hierarchical depth traversal to enabled. It then compacts unresolved work for later tracing stages. In software-tracing configurations, relevant passes trace mesh signed distance fields and heightfields, followed by remaining global-field and radiance-cache work. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeTracing.cpp#L13-L40">screen-trace controls</a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeTracing.cpp#L711-L921">trace scheduling</a> show both the layered approach and the fact that hardware and software choices are conditional. It would be inaccurate to say that every Lumen ray always traverses every representation in a fixed sequence.</p>
-<p>A signed distance field stores a spatial function whose value approximates distance to a surface, with sign distinguishing inside from outside when the representation supports that distinction. A ray can advance by a distance estimated to be safe rather than test every triangle. The field trades exact triangle geometry for a sampled volume. Thin features, small gaps, and highly nonuniform scaling challenge that representation because finite spatial resolution can erase or distort them. Object fields retain local detail, while a global field combines information over a larger surrounding region at a different resolution and update cost.</p>
-<figure><img src="assets/nanite-lumen/tracing-layers.svg" alt="A screen trace sees only camera-visible depth, a distance field approximates surface distance in space, and a triangle acceleration structure tests explicit triangles. The three representations answer related visibility queries with different omissions." loading="lazy" width="960" height="540"><figcaption>A mismatch between representations is expected; an unexplained mismatch is a debugging problem. Camera detail, field resolution, and ray-tracing geometry should be inspected separately.</figcaption></figure>
-<p>Hardware ray tracing uses acceleration structures to skip groups of triangles efficiently. A bottom-level acceleration structure, or BLAS, organizes geometry, while a top-level acceleration structure, or TLAS, organizes instances and their transforms. Reusing one mesh in many places can reuse its geometric structure while adding instances above it. Deforming the geometry can require rebuilding or updating its lower-level representation. Hardware support accelerates traversal and intersection; it does not eliminate the cost of constructing and maintaining the scene that rays traverse.</p>
-<p>Nanite adds a particularly important version-dependent choice. In this 5.8.1 checkout, <code>r.RayTracing.Nanite.Mode</code> initializes to zero: fallback mesh. Mode one selects a streamed-out mesh path. Mode two selects cluster acceleration structures, or CLAS, and falls back when the device does not support the required cluster operations. These <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Engine/Private/Rendering/NaniteResources.cpp#L192-L267">modes and capability checks</a> mean that neither “Lumen always traces the exact visible Nanite triangles” nor “hardware tracing can only ever use the old fallback mesh” is correct for the inspected engine.</p>
-<p>If the camera displays fine Nanite stone chips while the selected ray-tracing representation is smoother, an indirect or reflection ray can hit a surface at a slightly different place. Screen traces may conceal some differences for visible regions, but cannot repair all off-screen cases. A useful comparison is therefore the visible mesh against the actual tracing representation in the active configuration. The correct fix depends on whether the error comes from coarse fallback geometry, field resolution, deformation support, or biased ray starts, rather than from a single generic “Lumen quality” setting.</p>
+<section class="chapter" id="path-geometry">
+<h2>Convert directions into surface points</h2>
+<p>Let \(\omega_{xy}=(y-x)/r\), with \(r=\|y-x\|\). A small surface patch at \(y\) subtends solid angle at \(x\)</p>
+\[
+d\sigma_x(\omega_{xy})=
+\frac{|\mathbf n_g(y)\cdot(-\omega_{xy})|}{r^2}\,dA(y).
+\tag{M09}
+\]
+<p>The cosine is at the <strong>target</strong> whose area is being projected. Multiplying by the cosine at the receiving surface and restricting to visible first intersections yields</p>
+\[
+G(x\leftrightarrow y)=V(x\leftrightarrow y)
+\frac{|\mathbf n_g(x)\cdot\omega_{xy}|\,
+|\mathbf n_g(y)\cdot(-\omega_{xy})|}{r^2}.
+\tag{M10}
+\]
+<p>For visible surface elements, \(d\sigma_x^\perp=G(x\leftrightarrow y)dA(y)\). Extending the integration over all scene surfaces requires the visibility factor to avoid counting surfaces behind the first intersection.</p>
+<p>Writing the BSDF at \(x\) as \(f_s(y\to x\to z)\) gives the three-point equation</p>
+\[
+L(x\to z)=L_e(x\to z)+
+\int_{\mathcal M}L(y\to x)f_s(y\to x\to z)G(y\leftrightarrow x)\,dA(y).
+\tag{M11}
+\]
+<p>The sensor measurement is</p>
+\[
+I_j=\int_{\mathcal M\times\mathcal M}
+W_e^{(j)}(x\to y)L(x\to y)G(x\leftrightarrow y)\,dA(x)dA(y).
+\tag{M12}
+\]
+<p>Although the arrow is \(x\to y\), sensor importance in this expression originates at \(y\). The arrow continues to identify physical light flow.</p>
+<p><strong>A patch calculation.</strong> Two tiny mutually visible patches, each \(10^{-4}\ \mathrm{m^2}\), face one another at distance 2 m. To the differential-patch approximation, \(G=1/4\ \mathrm{m^{-2}}\). If the first emits radiance \(L=5\), the power received by the second is</p>
+\[
+d\Phi=L G\,dA_1dA_2=1.25\times10^{-8}\ \mathrm W.
+\tag{M13}
+\]
+<p>There is <strong>no BSDF</strong> in this incident-power calculation. The incident irradiance is \(L G dA_1=1.25\times10^{-4}\ \mathrm{W\,m^{-2}}\). If the receiving BSDF toward a selected outgoing direction is \(0.2\ \mathrm{sr^{-1}}\), the outgoing radiance due to this source patch is \(2.5\times10^{-5}\ \mathrm{W\,m^{-2}\,sr^{-1}}\). A further outgoing direction or receiver must be integrated before that radiance becomes outgoing power.</p>
 </section>
-
-<section class="chapter" id="surface-cache">
-<h2>A hit position is not yet a lighting answer</h2>
-<p>Suppose a ray from the floor intersects the block. The intersection gives a position and some identity, but the GI calculation needs light leaving that position. Re-evaluating the complete material and lighting there for every ray is expensive. Lumen's Surface Cache provides reusable surface information so many queries can obtain an approximation without independently reconstructing every material and every lighting interaction.</p>
-<p>The cache begins with parameterization: a way to map portions of a mesh surface into storage that can be sampled. Lumen uses cards, which are oriented capture regions associated with the mesh. From a card's view, the engine captures surface properties into textures. The card is not a replacement billboard that the camera renders as the object. It is an addressable view of the surface for another rendering task. Several cards are needed because one direction cannot observe every side or every concavity.</p>
-<p>For the block, imagine captures looking toward its front, back, top, and sides. A ray hit on the front can project into the suitable card and sample the captured surface properties. A deep recess that no selected card can see lacks good coverage even though the ray intersection itself was correct. More rays toward that recess will not create missing card coverage. This is the first reason to separate intersection quality from hit-lighting quality.</p>
-<figure><img src="assets/nanite-lumen/cards-and-light.svg" alt="An object is captured from several card directions into material atlas pages. Separate lighting updates fill reusable illumination data. A ray intersection maps to the relevant card and samples the cached result." loading="lazy" width="960" height="510"><figcaption>Capture establishes surface properties. Lighting updates establish illumination. A ray hit identifies where to sample. Each stage can be correct or stale independently.</figcaption></figure>
-<p>The physical textures form atlases divided into pages. A logical card can need different resolution depending on its importance and the views sampling it. Requests, mappings, and budgets decide which physical pages exist and which are refreshed. This is another virtualized representation, distinct from Nanite geometry pages and shadow pages. All three use pages because bounded demand-driven storage is useful, but the payload, validity rules, and consumers differ.</p>
-<p>The current <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneCardCapture.cpp#L20-L90">card capture implementation</a> contains both mesh material shader paths and Nanite-aware capture behavior. It has separate LOD controls for static meshes and Nanite captures. This is one real technical connection between Nanite and Lumen: efficient geometry selection and multi-view rendering can make repeated material captures affordable. Lumen does not require that every surface be rendered by Nanite, and Nanite does not intrinsically calculate global illumination. They cooperate through capture work and shared scene information.</p>
-<p>After material data is available, the cache's lighting can be updated on a different schedule. Changing the ceiling light's intensity should change illumination even if the block's wood texture remains identical. Changing the wood's albedo can require material recapture and then lighting updates even if the block's position remains fixed. The current <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneRendering.cpp#L104-L142">capture controls</a> limit pages and texels captured per frame and allocate part of the budget to refreshing existing material captures. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneLighting.cpp#L17-L60">scene lighting controls</a> independently govern direct-lighting and radiosity update budgets. These are multiple queues of work, not one instantaneous “rebuild GI” operation.</p>
-<p>Radiosity is the diffuse exchange part of this cached lighting story. A surface lit by the ceiling light becomes a source of reflected light for other surfaces; those surfaces can in turn illuminate more surfaces. Repeatedly updating an estimate of that exchange propagates additional diffuse bounces without starting a long independent path at every camera pixel. The current <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenRadiosity.cpp#L20-L65">Lumen radiosity implementation</a> explicitly describes a Surface Cache gather for multibounce diffuse and exposes probe spacing, angular sampling, and filtering controls. This is separate from the final screen-probe gather: it improves the reusable lighting that later queries can find at surfaces.</p>
-<p>Iteration and caching explain both an advantage and a limitation. A wall's computed indirect illumination can serve many camera and reflection queries, amortizing its cost. After the ceiling light changes, however, the surfaces that depended on its old contribution must receive fresh estimates before all later bounces agree. Filtering suppresses noise but can spread energy across insufficiently separated surfaces; limited updates preserve frame time but delay convergence. Increasing the number of rays in the final gather cannot by itself accelerate every upstream exchange that those rays sample.</p>
-<figure><img src="assets/reference/lumen-surface-cache.png" alt="Epic's Surface Cache visualization of an interior mesh, with bright pink strips on doorway sides and along wall regions that lack sufficient card coverage." loading="lazy" width="1200" height="926"><figcaption>Pink identifies missing Surface Cache coverage in this Epic documentation example. Notice the narrow recessed and differently oriented surfaces around openings. This is a coverage diagnostic, not a missing-texture checkerboard. Image © Epic Games, documentation image indexed for UE5.7; <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/lumen-technical-details-in-unreal-engine#surfacecache">Lumen technical details</a>.</figcaption></figure>
-<p>Asset structure affects coverage. A single mesh containing an entire room, furniture, and recessed passages is harder to parameterize usefully than modular surfaces with understandable orientation and extent. Increasing card count may help, but it spends memory and capture work and cannot make every pathological asset equally good. The practical question is whether the important surfaces that secondary rays hit have appropriate cached data. A visually perfect main-camera mesh can still be poor input for that requirement.</p>
-<p>Material view dependence also becomes visible here. A graph that uses the current camera direction to change base appearance may behave differently when evaluated from a card capture direction. The cached result needs an interpretation suitable for off-camera lighting queries. It is possible to provide a simpler or alternate evaluation for an auxiliary rendering context, but that is an authored approximation that should be understood. The Surface Cache is not a promise to replay arbitrary camera-dependent material behavior exactly for every future ray direction.</p>
+<section class="chapter" id="path-space">
+<h2>Expand transport into a path integral</h2>
+<p>Define the transport operator \(T\) as the integral on the right of (M11), excluding emission. Then</p>
+\[
+L=L_e+TL.
+\tag{M14}
+\]
+<p>Repeated substitution gives</p>
+\[
+L=L_e+TL_e+T^2L_e+\cdots.
+\tag{M15}
+\]
+<p>Each application of \(T\) adds one scattering event. A sufficient convergence condition is \(\|T\|&lt;1\) in a suitable norm. Absorption and escape can provide it; an enclosed, perfectly reflecting system with continuously injected energy need not have a finite steady solution. Convergence assumptions are part of the model, not a consequence of writing an infinite sum.</p>
+<p>Insert (M15) into (M12). For \(\bar x=(x_0,\ldots,x_k)\), set</p>
+\[
+\begin{aligned}
+f_j(\bar x)={}&amp;L_e(x_0\to x_1)
+\left[\prod_{i=0}^{k-1}G(x_i\leftrightarrow x_{i+1})\right]\\
+&amp;\times\left[\prod_{i=1}^{k-1}f_s(x_{i-1}\to x_i\to x_{i+1})\right]
+W_e^{(j)}(x_{k-1}\to x_k),\\
+d\mu_k(\bar x)={}&amp;dA(x_0)\cdots dA(x_k).
+\end{aligned}
+\tag{M16}
+\]
+<p>The empty BSDF product for \(k=1\) is 1. That term is emission seen directly by the sensor. \(k=2\) has one scattering event, and \(k=3\) has two. The sensor is not counted as a material-scattering event here.</p>
+<p>Let \(\Omega\) be the disjoint union of the \(\Omega_k\), and define \(\mu(D)=\sum_k\mu_k(D\cap\Omega_k)\). The final expression is</p>
+\[
+I_j=\sum_{k=1}^{\infty}\int_{\Omega_k}f_j(\bar x)\,d\mu_k(\bar x)
+=\int_\Omega f_j(\bar x)\,d\mu(\bar x).
+\tag{M17}
+\]
+<p>This is a reorganization of the rendering equation, not a new physical model. It exposes every factor that a renderer can approximate: emission, geometry and visibility, scattering, and sensor response. The ordering and contribution-function construction correspond to Veach §8.2. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapter 8</a></p>
+<p>The dimensions also provide a check. Ignoring the dimensionless SI angle unit, \(L_e\) contributes \(\mathrm{W/m^2}\), the \(k\) geometric factors contribute \(\mathrm{m^{-2k}}\), and the area measure contributes \(\mathrm{m^{2(k+1)}}\); their product is watts. \(W_e^{(j)}\) converts that power to the desired measurement unit. Its units are a chosen sensor convention, not universally “inverse watts.” If steradians are retained as bookkeeping labels, each angular integration supplies the angle factor that its BSDF density requires.</p>
+<h3>Singular paths require their own measures</h3>
+<p>The ordinary area-product expression is simplest for finite-area endpoints and nonsingular scattering. A pinhole camera, point light, or ideal mirror introduces a delta constraint. A delta is not an enormous finite BSDF or a tiny area with an arbitrary PDF. It is a different measure component, with probability mass or a constrained sampling map.</p>
+<p>A camera tracer can sample a glossy or diffuse receiver, follow a specular reflection, and hit a <strong>finite-area</strong> emitter with nonzero probability. Therefore “camera path tracing cannot render caustics” is too broad. A configuration requiring a continuously sampled direction to hit a mathematical point emitter after an exact specular constraint can instead have zero probability under that sampler. The practical test is support: can this sampler generate the contributing family under its appropriate measure? Specialized connections, bidirectional methods, or manifold methods can expand support; more samples cannot repair exactly zero support.</p>
 </section>
-
-<section class="chapter" id="screen-probes">
-<h2>Gather light sparsely, then reconstruct it where the camera needs it</h2>
-<p>The Surface Cache can make a ray hit cheaper to shade, but millions of independently traced directional integrals are still too expensive. Lumen's screen-probe gather shares work across nearby visible surfaces. A probe is a sampling location with a compact directional description of incoming radiance. A screen probe obtains its spatial position from the camera's depth information, traces a set of directions, and stores the resulting directional samples for later filtering and integration.</p>
-<p>The screen-space arrangement is useful because it allocates work where the camera needs a result. A coarse grid covers the image, and adaptive logic can add sampling where interpolation would otherwise fail around depth changes or small surfaces. The base downsample factor in this checkout initializes to 16: a nominal screen tile is 16 by 16 pixels before quality-dependent adjustments. This is not the assertion that every 256 pixels always share exactly one probe. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp#L86-L155">placement and interpolation controls</a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp#L479-L510">quality-dependent sizing</a> show why the actual sampling layout is more nuanced.</p>
-<p>Picture a probe located on the floor beside the block. Some directions reach the opening, some see the illuminated wall, and some see the block's underside. That directional distribution is valuable to several nearby floor pixels. However, it should not be freely blended onto the top of the block across a depth discontinuity. Similar image coordinates do not guarantee similar world-space illumination. Reconstruction weights therefore use geometry information to decide which samples are relevant.</p>
-<figure><img src="assets/nanite-lumen/probe-gather.svg" alt="Sparse screen probes sit on visible floor and block surfaces. Each stores incoming directions. Geometry-aware interpolation reconstructs per-pixel illumination without mixing the floor's samples freely across the block boundary." loading="lazy" width="960" height="520"><figcaption>There are two resolutions: where probes are placed, and how many directions each probe represents. Raising one does not automatically fix errors caused by the other.</figcaption></figure>
-<p>Sampling direction matters as much as placing probes. Uniformly spending directions on empty or dim regions is wasteful when a small subset contributes most of the energy. Importance sampling distributes work according to information about likely lighting contributions and surface response. The estimator must still account for the sampling distribution. A biased guess that simply points every ray at the brightest previously observed region can miss newly important directions and lose energy elsewhere.</p>
-<p>World-space radiance caching supplies another layer of sharing. Nearby screen probes may ask similar questions about distant illumination. Instead of retracing the full distant scene for each one, the system can interpolate radiance information maintained at selected world-space probe locations. Clipmaps organize these locations at multiple spatial scales around relevant views. Nearer regions can receive finer spacing, while farther regions use coarser spatial sampling. The cache stores directional lighting, not the material properties captured in surface cards.</p>
-<p>That last distinction prevents a common conceptual collapse. A Surface Cache entry is tied to a surface parameterization: it tells us about a represented object surface. A radiance-cache probe is a sample of light in space used to help answer incoming-light queries. A screen probe is positioned according to the visible image and helps reconstruct the final gather. All are caches or probes in an everyday sense, but they differ in location, contents, update schedule, and the error they introduce.</p>
-<p>The current <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp#L602-L632">screen-probe radiance-cache controls</a> specify clipmap organization and a tracing budget. The update budget is then scaled by lighting update speed and editing state. Meanwhile, <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeTracing.cpp#L711-L921">the tracing code</a> applies radiance-cache information in the appropriate remaining trace work. These details matter because “increase GI samples” could mean increasing probe density, directional resolution, distant-cache updates, or temporal responsiveness. The chosen setting should match the missing information.</p>
-<p>Finally, directional radiance is integrated against the receiver's response. Diffuse illumination averages a broad range of directions; rough specular illumination averages a narrower distribution; a very smooth reflection is sensitive to a much more precise direction. This difference will determine how far the screen-probe result can be reused. It also explains why a floor can have stable diffuse bounce lighting while a mirror in the same scene exposes much more obvious tracing or cache errors.</p>
+<section class="chapter" id="monte-carlo">
+<h2>Monte Carlo estimates and the camera-path weight</h2>
+<p>For a path density \(p\) with respect to \(\mu\), the elementary estimator is</p>
+\[
+\widehat I_j=\frac1N\sum_{n=1}^N\frac{f_j(\bar X_n)}{p(\bar X_n)},\qquad
+\bar X_n\sim p.
+\tag{M18}
+\]
+<p>Its expectation is \(I_j\) because integrating \(f_j/p\) against \(p\,d\mu\) cancels the sampling density. This requires integrability and sampling support wherever the contribution is nonzero, up to measure-zero sets. Finite variance is an additional requirement for the usual variance-over-\(N\) error formula. Independence is convenient for that variance formula; unbiasedness follows from the expectation of each correctly weighted sample.</p>
+<p>If complete paths are sampled by first choosing length \(k\), the length PMF is part of \(p\). A practical path tracer instead reuses one random walk to estimate contributions at several lengths. Linearity of expectation permits this reuse; those contributions need not be independent.</p>
+<p>At a surface \(x\), fix the outgoing direction \(\omega_o\) toward the already constructed camera subpath. Sample the incident direction from a solid-angle density \(p_\sigma(\omega_i\mid x,\omega_o)\). Equation (M05) yields the throughput update</p>
+\[
+\beta_{\rm next}=\beta\,
+\frac{f_s(x;\omega_i\to\omega_o)|\mathbf n_g(x)\cdot\omega_i|}
+{p_\sigma(\omega_i\mid x,\omega_o)}.
+\tag{M19}
+\]
+<p>The new ray finds the next vertex, thereby sampling visibility through first intersection. To compare this construction with the area-product path density, the corresponding next-vertex density is</p>
+\[
+p_A(y\mid x)=p_\sigma(\omega_{xy}\mid x)\,
+\frac{|\mathbf n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2}.
+\tag{M20}
+\]
+<p>In \(f_j/p\), the target cosine and inverse-square factor in \(G\) cancel those in (M20), leaving precisely the receiving cosine in (M19). This cancellation explains why an ordinary ray-path loop does not explicitly multiply \(1/r^2\) at every bounce.</p>
+<p>Cosine sampling is obtained from \(u,v\) uniform on \([0,1)^2\):</p>
+\[
+\omega_i=\left(\sqrt u\cos(2\pi v),\sqrt u\sin(2\pi v),\sqrt{1-u}\right),
+\qquad p_\sigma(\omega_i)=\frac{\cos\theta}{\pi}.
+\tag{M21}
+\]
+<p>Rotate this local direction into the surface frame. For Lambertian scattering with matching normals, (M19) simplifies to \(\beta_{\rm next}=\beta\rho\). In the constant-environment example, every sample returns \(0.8\times2=1.6\); the local directional estimator has zero variance. A visible emitter occupying a small part of the hemisphere is a different integrand and will not have zero variance.</p>
+<h3>What does a unit-weight pinhole ray measure?</h3>
+<p>A physical sensor integrates optical power over aperture, pixel area, wavelength, and time. Its weighting belongs in \(W_e^{(j)}\). A common teaching renderer deliberately uses a simpler normalized measurement:</p>
+\[
+\overline I_j=\frac1{|P_j|}\int_{P_j}L_{\rm ray}(u,v)\,du\,dv,
+\tag{M22}
+\]
+<p>where \(P_j\) is the pixel's film-coordinate footprint and \(L_{\rm ray}\) is radiance arriving along its pinhole ray. Uniform subpixel sampling then permits \(\beta=1\). The camera position is conditioned on; it is not assigned a finite ordinary area PDF. This specialization avoids dividing by a fictitious “pinhole area.”</p>
+<p>For a vertical field of view \(\theta_v\), aspect \(a=W/H\), camera forward \(\mathbf f\), right \(\mathbf r\), and up \(\mathbf u\), a jittered pixel \((i,j)\) gives</p>
+\[
+\begin{aligned}
+s_x&amp;=\left(2\frac{i+\xi_x}{W}-1\right)a\tan(\theta_v/2),\\
+s_y&amp;=\left(1-2\frac{j+\xi_y}{H}\right)\tan(\theta_v/2),\\
+\omega&amp;=\operatorname{normalize}(\mathbf f+s_x\mathbf r+s_y\mathbf u).
+\end{aligned}
+\tag{M23}
+\]
+<p>Each pixel must include its own \(i,j\); sampling \(\xi_x,\xi_y\) over the entire image for every pixel produces an image of the scene's average rather than a camera image. In a right-handed convention, \(\mathbf r=\operatorname{normalize}(\mathbf f\times\mathbf u_{world})\) and \(\mathbf u=\mathbf r\times\mathbf f\).</p>
+<p>To see why (M22) is not automatically physical sensor irradiance, consider a small planar aperture of area \(A_l\), parallel to a film at axial distance \(f\). At film angle \(\theta\), its solid angle is approximately \(A_l\cos\theta/r^2\). Multiplying by the film receiving cosine and using \(r=f/\cos\theta\) gives</p>
+\[
+E_{film}\simeq L\frac{A_l}{f^2}\cos^4\theta.
+\tag{M24}
+\]
+<p>This is the small-aperture geometric construction, before lens transmission and other optical effects. With \(L=10\), aperture radius 5 mm, \(f=50\) mm, and \(\theta=0\), \(E_{film}=0.314159265\ \mathrm{W/m^2}\). A 5 µm square pixel receives \(7.85398163\times10^{-12}\ \mathrm W\). Focal length and pixel pitch alone cannot determine this power: aperture area is essential. The normalized radiance image remains useful, but its measurement definition must be stated.</p>
 </section>
+<section class="chapter" id="sampling-and-mis">
+<h2>Direct light sampling, MIS, and termination</h2>
+<p>Waiting for a randomly continued path to hit a small emitter is inefficient. Next-event estimation (NEE) samples that final connection explicitly. At \(x\), choose light \(\ell\) with probability \(P_\ell(x)\), then sample emitter point \(y\) with conditional density \(p_A(y\mid\ell,x)\). The combined area density is \(P_\ell p_A\). In solid angle at \(x\),</p>
+\[
+p_{L,\sigma}(\omega_{xy})=P_\ell(x)p_A(y\mid\ell,x)
+\frac{r^2}{|\mathbf n_g(y)\cdot(-\omega_{xy})|}.
+\tag{M25}
+\]
+<p>With \(c_x=|\mathbf n_g(x)\cdot\omega_{xy}|\), the unweighted light-sampled contribution is</p>
+\[
+C_L=\beta\,
+\frac{f_s(x;\omega_{xy}\to\omega_o)L_e(y\to x)V(x\leftrightarrow y)c_x}
+{p_{L,\sigma}(\omega_{xy})}.
+\tag{M26}
+\]
+<p>Equivalently, use \(\beta f_s L_e G/(P_\ell p_A)\) in area measure. Mixing the denominator of one form with the numerator of the other is an error.</p>
+<p><strong>A numerical NEE sample.</strong> There is one uniformly sampled emitter of area \(0.25\ \mathrm{m^2}\), so \(P_\ell=1\), \(p_A=4\ \mathrm{m^{-2}}\). A selected sample is 2 m directly above the receiving point with both cosines 1. Then \(p_{L,\sigma}=16\ \mathrm{sr^{-1}}\). For \(\rho=0.8\), \(L_e=10\), visibility 1, and \(\beta=1\),</p>
+\[
+C_L=\frac{(0.8/\pi)10}{16}=\frac1{2\pi}=0.159154943.
+\tag{M27}
+\]
+<p>This is one sample's contribution, not the exact integral over the finite emitter. Other sampled points have different distance and cosines. If this same light is selected with probability \(1/2\) among two lights, its selected-sample value doubles; it is selected half as often. Omitting \(P_\ell\) changes the expected result.</p>
+<p>The BSDF continuation can also hit this emitter. Adding both complete direct-light estimates doubles the same path family. Multiple importance sampling combines them. For one light sample and one BSDF sample, a useful choice is the power heuristic</p>
+\[
+w_L(\omega)=\frac{p_L(\omega)^2}{p_L(\omega)^2+p_B(\omega)^2},
+\qquad
+w_B(\omega)=\frac{p_B(\omega)^2}{p_L(\omega)^2+p_B(\omega)^2}.
+\tag{M28}
+\]
+<p>Both PDFs must use the same measure and the same receiver context. The emitter-hit PDF includes the probability of selecting <strong>that emitter</strong> from the previous scattering point. With \(n_L,n_B\) samples, replace each \(p\) by \(np\) inside the weights and average each technique's samples by its own sample count.</p>
+<p>Why does this work? For the direct integrand \(F\),</p>
+\[
+\mathbb E\!\left[w_L(X_L)\frac{F(X_L)}{p_L(X_L)}+
+w_B(X_B)\frac{F(X_B)}{p_B(X_B)}\right]
+=\int(w_L+w_B)F\,d\sigma=\int F\,d\sigma.
+\tag{M29}
+\]
+<p>This proof is the important part: the weights partition the contribution. Where a technique has zero support its weight must be zero, and where only one technique can generate the path its weight is one. MIS is described generally in Veach chapter 9; the exponent-two choice here is one instance, not the only valid combination. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapter 9</a></p>
+<h3>Delta events and mixtures</h3>
+<p>An ideal mirror selects one deterministic reflected direction. Its discrete probability mass cannot be compared numerically with a density per steradian. A BSDF sample interface should return a transport weight, the applicable PDF or mass, and whether the sampled event is delta. A mirror event contributes its reflection factor divided by its branch-selection probability; its distributional BSDF must not be inserted as a finite number into (M19).</p>
+<p>For a diffuse-plus-glossy <strong>continuous</strong> mixture, evaluate the full continuous BSDF and its actual mixture density \(p_B=\sum_b P_b p_b\). If a delta branch is selected, use the corresponding discrete contribution and branch PMF. A mixed material can still have a continuous part worth sampling by NEE; skip NEE only when there is no connectable continuous component. An emitter reached through a previous delta event receives weight one against ordinary continuous emitter sampling. A very narrow but finite glossy lobe is not automatically a delta.</p>
+<h3>Russian roulette removes work without deleting the tail in expectation</h3>
+<p>After local contributions, continue with probability \(q\in(0,1]\). On survival divide the future weight by \(q\). Conditional on the current history and any sampled variables used to choose \(q\),</p>
+\[
+\mathbb E\left[\mathbf1_{survive}\frac{Y}{q}\right]=Y.
+\tag{M30}
+\]
+<p>For a scalar future contribution 0.2 and \(q=0.25\), the randomized result is 0.8 with probability 0.25, otherwise zero; its mean is 0.2. Its variance is 0.12. Roulette can increase variance per path while reducing cost enough to improve efficiency per second. It is not a free variance reduction.</p>
+<p>A finite maximum scattering depth \(D\) is different: it deterministically removes a nonzero tail. If \(\|T\|\le a&lt;1\), truncating (M15) after \(T^D L_e\) gives the sufficient bound</p>
+\[
+\left\|L-\sum_{m=0}^{D}T^mL_e\right\|
+\le\frac{a^{D+1}}{1-a}\|L_e\|.
+\tag{M31}
+\]
+<p>This bound may be loose; it is not a measured error for an Unreal frame. Finite-depth path-traced images and denoised images must be identified accordingly rather than called exact ground truth.</p>
+<h3>A complete endpoint sequence</h3>
+<p>The following algorithm evaluates emitted light at a newly reached endpoint <strong>before</strong> applying the scattering-depth cap. This permits the BSDF partner of the last allowed NEE sample to reach its emitter. Weighting NEE against a BSDF strategy that the loop never evaluates would undercount even the retained direct term.</p>
+<pre><code class="language-text">ray, beta = sample_normalized_pixel_camera(pixel, rng)
+result = 0
+scatter_count = 0
+previous = none
 
-<section class="chapter" id="reflections-and-hit-lighting">
-<h2>A mirror exposes information that diffuse lighting can average away</h2>
-<p>A diffuse wall integrates light from a broad hemisphere. If one incoming direction is slightly wrong, neighboring directions may soften the visible error. A smooth mirror is much less forgiving. Its outgoing direction corresponds to a narrow set of incoming directions, so it preserves spatial detail and reveals errors in the reflected scene. The distinction is mathematical before it becomes an engine feature: different reflectance distributions require different angular information.</p>
-<p>The glossy block in the room sits between these extremes. At high roughness, its broad reflection can reuse coarser directional lighting effectively. As roughness falls, the reflection becomes sensitive to individual off-screen surfaces and highlights. Lumen therefore has dedicated reflection work and controls for which roughness range receives it. The inspected <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenReflections.cpp#L29-L140">reflection implementation</a> also includes optional radiance-cache reuse for rough reflections, with that reuse control initialized to zero. It would be inaccurate to infer that every reflection always uses the screen-probe radiance cache merely because the option exists.</p>
-<p>Reflection intersection and reflection lighting remain separate. A hardware ray can intersect the correct triangle yet obtain an overly simplified light value from a cache. Conversely, detailed hit lighting cannot shade the correct surface if the ray intersected an inaccurate fallback mesh. This distinction is especially useful when a mirror shows the wall in the correct place but omits a sharp ceiling light highlight. The geometry answer may already be adequate; the lighting answer may need a richer evaluation.</p>
-<p>In the current source, <code>r.Lumen.HardwareRayTracing.LightingMode</code> initializes to zero, selecting Surface Cache hit lighting. The same control documents a mode that evaluates lighting at hits for GI and reflections, and another that evaluates hit lighting for reflections while retaining cached GI behavior. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenHardwareRayTracingCommon.cpp#L16-L99">mode definitions</a> explicitly retain the Surface Cache for secondary contributions even when hit lighting is selected. “Hit lighting” therefore does not mean that the frame has become an unbiased full path tracer.</p>
-<p>Why does full hit evaluation cost more? A ray hit may require material shader execution, texture reads, a shading normal, direct-light selection, and shadow rays. Adjacent rays can hit different materials and unrelated memory, reducing the coherence that makes ordinary surface shading efficient. Masked geometry can require opacity tests during traversal. The current source exposes controls for hit-lighting shadows and opacity handling because these choices change both quality and cost. More accurate illumination at an intersection is a substantial rendering job, not a free switch in the intersection instruction.</p>
-<p>Now place a glass pane in front of the glossy block. The camera may need reflection from the glass, transmission through it, reflection from the glossy block, and possibly another surface behind that. An opaque GBuffer stores a single frontmost surface and cannot describe this layered transport by itself. Unreal provides separate translucency-related paths and feature gates; the Lumen card shader compiler in this checkout conditionally allows translucent material captures for supported ray-traced refraction behavior. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneCardCapture.cpp#L20-L90">capture eligibility logic</a> is more precise than a blanket claim that all glass is either fully supported or absent.</p>
-<p>For production diagnosis, begin with a simple opaque mirror, then add roughness, then add glass. If the opaque mirror already sees the wrong block silhouette, investigate tracing geometry. If it sees the correct silhouette but inadequate highlights, compare Surface Cache lighting and the appropriate hit-lighting mode. If the problem appears only after glass is introduced, inspect the configured translucency and refraction path. Increasing a global quality scalar before separating these cases can spend a large amount of GPU time without changing the missing information.</p>
-<p>Temporal and spatial denoising still matter even after choosing the correct tracing and lighting paths. A rough reflection samples a directional distribution, so sparse rays create noise. Reconstruction tries to reduce that noise while preserving edges and motion. The reflection source has its own temporal controls and accumulation limits. It should not be assumed to share every history policy with diffuse GI. A stable diffuse result beside a noisy reflection is compatible with both systems operating as designed under different information requirements.</p>
+loop:
+    hit = intersect_first(ray)
+    if hit is absent:
+        # Reconstruct the environment-light PDF at the previous receiver
+        # if that environment was also in its NEE light distribution.
+        weight = endpoint_mis(previous, environment, ray.direction)
+        result += beta * weight * environment_radiance(ray.direction)
+        break
+
+    x = hit.position
+    wo = -ray.direction
+    if hit emits toward wo:
+        # First camera hit or previous delta: weight 1.
+        # Otherwise use the BSDF-vs-light power weight in one common measure.
+        weight = endpoint_mis(previous, hit.emitter, x)
+        result += beta * weight * Le(hit, wo)
+
+    if scatter_count &gt;= MAX_SCATTER or hit has no scattering:
+        break
+
+    if hit has a connectable continuous BSDF component:
+        light_sample = sample_one_light(x, rng)  # includes selection PMF
+        if light_sample has valid positive density or mass, and nonzero contribution:
+            wi = light_sample.direction
+            if segment is visible and BSDF direction pair is valid:
+                if light_sample.is_delta_direction:
+                    # Point: E_perp = radiant_intensity_toward_x / distance^2.
+                    # Directional: E_perp is the specified beam irradiance.
+                    # P_light is a discrete light-selection probability.
+                    result += beta * fs(x, wi -&gt; wo) * E_perp * cosine_g / P_light
+                else:
+                    pL = light_sample.solid_angle_pdf
+                    pB = continuous_bsdf_pdf(x, wo, wi)
+                    wL = power_weight(pL, pB)
+                    result += beta * wL * fs(x, wi -&gt; wo) * Li * cosine_g / pL
+
+    sample = sample_bsdf(x, wo, rng)
+    if sample is invalid or has zero transport weight:
+        break
+    # Continuous: weight = fs(wi -&gt; wo) * cosine_g / actual mixture PDF.
+    # Delta: weight is derived using the discrete event mass.
+    beta *= sample.transport_weight
+    previous = { unoffset_x: x, continuous_pdf: sample.pdf,
+                 sampled_delta: sample.is_delta, light_sampling_context }
+    scatter_count += 1
+
+    if roulette_is_enabled(scatter_count):
+        q = choose_positive_survival_probability(beta)
+        if uniform() &gt;= q: break
+        beta /= q
+
+    ray = robust_spawn_ray(x, sample.direction, hit.geometric_normal)
+
+return result</code></pre>
+<p>Here <code>endpoint_mis</code> returns one when there is no competing NEE technique. A delta-direction light sample carries a discrete selection mass and an integrated incident strength, not an ordinary solid-angle PDF; its NEE weight is one against a continuous BSDF directional sampler. Continuous light and BSDF weights use complementary conditional sampling PDFs before roulette; survival compensation is applied to the continuation. Other choices are possible, but a survival probability must not be inserted into one weight and omitted from its complement. Ray-origin offsets change numerical intersection behavior; PDFs and geometry are evaluated at the logical, unoffset vertices. For transmissive paths, the offset side follows the sampled direction.</p>
 </section>
-
-<section class="chapter" id="time-and-invalidation">
-<h2>Reusing last frame's light requires evidence that it still belongs here</h2>
-<p>Real-time rendering gains enormous efficiency from temporal coherence: most of the world changes only a little between adjacent frames. A wall that received useful GI samples a moment ago probably does not need to begin with no information now. But history is associated with surfaces and lighting states, not merely with pixel coordinates. If the camera moves, the same pixel can show a different point. If the block moves away, a pixel that showed wood can now show stone.</p>
-<p>Reprojection maps a current surface point toward where it appeared in the previous frame. Motion vectors are one useful carrier of that relationship. They require appropriate current and previous transforms, camera matrices, and deformation state. Keeping only the current bone pose can make an animated guard appear to have incorrect motion even if its current geometry is visually correct. The GI filter then receives misleading evidence about where history should be fetched.</p>
-<p>Fetched history must be validated. Depth disagreement can indicate a newly exposed surface. A normal disagreement can indicate a different orientation. Lighting-change heuristics can reduce reliance on old samples around moving contributors. Neighborhood constraints can prevent a stale value from surviving far outside the range supported by current observations. Every rejection restores responsiveness but discards useful samples; every acceptance improves stability but risks carrying old light into a new situation.</p>
-<figure><img src="assets/nanite-lumen/history-validity.svg" alt="As a block moves away, one pixel continues to track the block and can reproject its history, while a newly revealed floor pixel must reject the block's old lighting history. Separate cache ages can delay the floor's new illumination." loading="lazy" width="960" height="470"><figcaption>History belongs to a surface observation, not to an unchanged screen address. Disocclusion is a mandatory reason to reassess reuse.</figcaption></figure>
-<p>The inspected screen-probe gather initializes its maximum accumulated frame control to ten, with faster-update behavior for moving-lighting situations and several rejection controls. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp#L171-L245">C++ comments and values</a> state the tradeoff between responsiveness and noise. This does not guarantee a fixed ten-frame visual delay: histories can be rejected, update weights vary, and separate caches have their own schedules. Treat the value as part of a filter policy, not as a stopwatch for the whole GI system.</p>
-<p>The shader side makes the retained state tangible. <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Shaders/Private/Lumen/LumenScreenProbeGatherTemporal.usf#L80-L110">LumenScreenProbeGatherTemporal.usf</a> declares histories for diffuse indirect, backface diffuse, rough specular, short-range terms, and accumulation state. This is more than a blur applied at the end. It is a set of evolving estimates whose meaning depends on correct geometry correspondence and current sampling evidence. When changing the scene representation, those histories become clients of its identity, motion, and lifetime contracts.</p>
-<p>There are also histories before the final image filter. Surface cards may contain older material captures. Direct-lighting atlas regions may not yet have been refreshed after the ceiling light changes. Radiosity and world-space radiance probes may still reflect earlier illumination. Even a final filter configured for immediate response cannot invent updated input that its upstream caches have not produced. Conversely, forcing every upstream cache to update every frame can remove latency at a prohibitive cost without addressing a bad reprojection vector.</p>
-<p>The correct experiment for a ceiling light toggle is therefore staged. Hold the camera and geometry still. Toggle only the light and observe both the scene-lighting representation and the final image. If the cache itself responds slowly, examine its update budget. If the cache changes quickly but the final image trails, inspect gather and reflection history. Then repeat with a moving block to add geometric invalidation. These experiments isolate where stale information enters the chain.</p>
-<p>A temporal design must also define discontinuities. Teleporting the camera, replacing a mesh, changing topology, or switching the rendering path can invalidate assumptions more severely than ordinary motion. Preserving history blindly makes the first few frames look smooth but wrong. Clearing everything on every small change makes them responsive but noisy. The engineering task is to describe which representation revisions invalidate which estimates, and to supply enough information for each consumer to make that decision.</p>
+<section class="chapter" id="pbr-math">
+<h2>Put material evaluation in the same integral</h2>
+<p>Rasterizing a material does not itself integrate illumination. It produces the parameters used to evaluate \(f_s\). A basic opaque model may have diffuse and microfacet components,</p>
+\[
+f_s=f_d+f_g,\qquad
+f_d=\frac{\rho_d}{\pi},\qquad
+f_g(\omega_i,\omega_o)=
+\frac{D(\mathbf h)F(\omega_i\cdot\mathbf h)G_2(\omega_i,\omega_o)}
+{4(\mathbf n_s\cdot\omega_i)(\mathbf n_s\cdot\omega_o)},
+\tag{M32}
+\]
+<p>where \(\mathbf h=\operatorname{normalize}(\omega_i+\omega_o)\) for reflection in one medium. \(D\) describes microfacet orientations, \(F\) their Fresnel reflection, and \(G_2\) masking and shadowing. The formula assumes a valid reflection pair; it is not a prescription for dividing by zero at the horizon.</p>
+<p>For an isotropic GGX distribution with width \(\alpha\),</p>
+\[
+D(\mathbf h)=\frac{\alpha^2}{\pi\left[(\mathbf n_s\cdot\mathbf h)^2(\alpha^2-1)+1\right]^2}.
+\tag{M33}
+\]
+<p>Many material models map an artist's perceptual roughness \(r\) to \(\alpha=r^2\). The exact remaps, minimum roughness, masking approximation, energy compensation, and layer rules are implementation choices that must be checked in the shader being analyzed. A simplified Schlick Fresnel is \(F=F_0+(1-F_0)(1-|\omega_i\cdot\mathbf h|)^5\). The historical Epic shading notes explain this family of choices; the engineering chapter checks the installed engine rather than treating a 2013 model as every current shader. <a href="https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf">Karis, Real Shading in Unreal Engine 4</a></p>
+<p>Sampling the half vector is not the same as sampling a reflected ray. The reflection mapping has Jacobian</p>
+\[
+p_\sigma(\omega_i)=\frac{p_h(\mathbf h)}{4|\omega_o\cdot\mathbf h|}.
+\tag{M34}
+\]
+<p>For a visible-normal sampler, \(p_h\) includes visibility from \(\omega_o\), not merely \(D\). Whatever sampler is selected, (M19) divides by its <strong>actual</strong> directional PDF. Material energy conservation also concerns the sum of lobes: adding a full-strength Lambertian term and an arbitrary full-strength specular term can reflect more incident power than arrives. Metallic workflow, Fresnel coupling, multiple scattering, and layered models determine how Unreal allocates that energy.</p>
 </section>
+<section class="chapter" id="reference-scene">
+<h2>Working examples and the matched Unreal scene</h2>
+<p>The educational CPU program demonstrates ray intersections, normalized camera sampling, Lambertian BSDF sampling, NEE, complementary MIS, roulette, linear output, and explicit finite-depth truncation. It is not an implementation of every Unreal material model, and its images must be labeled separately from genuine Unreal captures. The Unreal path-traced reference uses the same Unreal scene, camera, and assets as the Lumen experiment; its finite samples, depth, denoiser, exposure, and post-processing belong in the capture manifest.</p>
+<p>Numerical comparison should use matching scene-linear quantities. Display PNGs are useful for reading shape and artifacts, but differences after exposure and tone mapping are not radiance error. For independent samples of a fixed reference scene, Monte Carlo variance decreases with sample count; a Lumen difference may include representation bias, finite sampling, filtering, lighting lag, and a mismatched reference configuration. Each explanation needs the corresponding evidence.</p>
+<p>Spectral transport would carry \(L_\lambda\), wavelength-dependent BSDFs, and sensor integration \(\int s_j(\lambda)L_\lambda\,d\lambda\). Independent RGB channels are a chosen approximation to that process. Transmission requires consistent refractive-index factors and delta/continuous measures; volumes add transmittance and volume scattering integrals. These extensions do not invalidate the surface derivation, but they cannot be implemented correctly by merely renaming an opaque BSDF or adding an “ambient” term.</p>
+<p>The connection to the engineering chapter is now explicit: depth and G-buffer data identify the primary vertex and its material; shadow evaluation approximates selected source visibility; cached surface lighting approximates secondary outgoing radiance; probes sample and reconstruct incoming radiance; material integration weights that field into diffuse and glossy outgoing light; and composition applies the chosen path/source partition before exposure and display transforms.</p>
+<h3>Run the reference</h3>
+<p>The <a href="https://github.com/DylanWaken/Understanding-Unreal/tree/main/Scripts/Docs/unreal_articles/labs/lumen-pathtracer/reference">reference program</a> uses only Python's standard library. Run these commands from the cloned repository:</p>
+<pre><code class="language-powershell">cd Scripts/Docs/unreal_articles/labs/lumen-pathtracer
+python reference/check_chapter_math.py
+python reference/test_estimators.py --seed 20240601 --samples 200000
+python reference/path_tracer.py --width 280 --height 200 --samples 64 --seed 20240601 --max-depth 8 --exposure 0.6</code></pre>
+<p>The published image has 280 × 200 pixels, 64 samples per pixel, a maximum of eight surface vertices, and seed 20240601. Its Lambertian scene makes the estimator visible without introducing the production material system. The associated linear PFM is the numerical output; exposure and the display curve affect only the PNG. The checked-in tests exercise the estimators against independently evaluated integrals, including direct-light MIS and terminal environment handling.</p>
+<figure><img src="assets/lumen-v2/reference_render.png" width="280" height="200" loading="lazy" alt="Labeled educational CPU path trace of a red and green room with two blocks and a ceiling emitter"><figcaption>Educational CPU path tracer, 64 samples per pixel. The right block is Lambertian here; it is glossy in the Unreal experiment. This image demonstrates the estimator and is not the matched Unreal reference. <a href="assets/lumen-v2/reference_linear.pfm">Linear RGB PFM</a> · <a href="assets/lumen-v2/cpu-reference-manifest.json">Recorded configuration and hashes</a> · <a href="assets/lumen-v2/estimator-checks.json">Twelve numerical checks</a>.</figcaption></figure>
 
-<section class="chapter" id="moving-and-large-worlds">
-<h2>Deformation and large worlds test every approximation at once</h2>
-<p>A moving rigid block can reuse its mesh topology while its instance transform changes. An animated guard changes vertex positions relative to the instance. A spline-deformed pipe bends a static source mesh along a curve. A wind material displaces leaves according to time and position. These cases can all produce moving triangles on screen, but their auxiliary representations may have very different update mechanisms.</p>
-<p>Hardware ray tracing can represent skinned geometry when the project and platform support the path, at the cost of maintaining the corresponding acceleration structures. Software distance fields generally do not become an exact animated copy simply because a vertex shader moved the mesh. A build-time field may describe the rest shape rather than the current pose. Thus support must be specified per consumer: main-view rasterization, shadow rendering, ray intersection, material capture, and temporal history can each have a different answer.</p>
-<p>This checkout provides an important correction to older Lumen summaries. <code>r.MeshCardRepresentation.SkeletalMesh</code> initializes to one, and the helper permits card generation on supported Lumen platforms. The Nanite skinned proxy builds cards from its pre-skinned bounds and marks the representation for more permissive sampling because animation can disagree with the capture. See the <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Engine/Private/SkeletalMeshSceneProxy.cpp#L73-L86">enable and platform check</a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Engine/Private/Rendering/NaniteResources.cpp#L3343-L3369">bounds-based card construction</a>. This establishes that a skeletal card representation exists; it does not establish perfect pose-matched GI or exact software intersection.</p>
-<p>Spline meshes show the same separation in another form. The Nanite spline proxy explicitly disables its distance-field representation and has code to construct a card representation. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Engine/Private/SplineMeshSceneProxy.cpp#L488-L503">spline proxy</a> and <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Engine/Private/SplineMeshSceneProxy.cpp#L568-L610">card creation branch</a> therefore prove two different facts: the surface can participate in one representation while being unavailable through another. In the dynamic ray-tracing path, the current Nanite source notes that spline or WPO geometry still uses fallback behavior rather than the stream-out route in that branch. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Engine/Private/Rendering/NaniteResources.cpp#L2107-L2144">implementation restriction</a> should qualify any claim about tracing the visible Nanite geometry.</p>
-<p>Large worlds introduce scale and coverage instead of only deformation. A renderer cannot keep its finest fields, cards, shadow maps, and radiance probes uniformly dense across an arbitrarily large map. It concentrates detail around relevant views and manages more distant information through coarser or separate representations. As the camera moves, newly important regions need requests, captures, and lighting updates. Fast movement exposes the latency of all of these queues at once.</p>
-<p>Far Field is a configurable hardware-tracing extension rather than an automatic property of every Lumen setup. Public documentation connects it to appropriate world-partition HLOD content. Here the exact distance default demonstrates why source versioning matters: this checkout initializes <code>r.LumenScene.FarField</code> to zero and <code>r.LumenScene.FarField.MaxTraceDistance</code> to <code>1.0e6</code> Unreal units. With the usual centimeter convention, that distance is ten kilometers, while <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/lumen-technical-details-in-unreal-engine#farfield">public documentation text</a> describes a one-kilometer default. The <a href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/Lumen/LumenScene.cpp#L85-L117">local source values</a> are the baseline used here; project configuration can differ.</p>
-<p>Extending the maximum ray distance alone does not supply all missing far geometry or lighting. The acceleration structure must include a suitable representation, culling distances must agree with the intended coverage, and hit lighting must have something meaningful to sample. A gap between near-scene coverage and far-scene coverage can produce missing occlusion even when both regions are individually configured to work. These are boundaries between representations, so diagnosing them requires visualizing both sides of the boundary.</p>
-<p>The room makes a useful small-scale version of the problem. First move slowly around the matte block, then teleport to the opposite wall. The slow walk lets caches evolve with demand. The teleport asks every subsystem to discover a new visible set at once. If Nanite detail refines first, shadow pages update next, and indirect illumination settles afterward, the sequence is understandable from their different representations and budgets. It should be measured and designed, not hidden behind the claim that the scene is simply either loaded or unloaded.</p>
+<h3>The matched Unreal reference</h3>
+<p>The same Unreal level, camera, assets, material parameters, and exposure settings are rendered below using Lumen and the engine's path tracer. The path-tracer comparison accumulates 1,024 samples per pixel with eight bounces and denoising disabled. These display-referred images show the scene and visible differences; they are not a scene-linear error metric. The <a href="assets/lumen-v2/reference-image-map.json">reference record</a> identifies the exact images, camera, light and exposure; the <a href="https://github.com/DylanWaken/Understanding-Unreal/tree/main/Scripts/Docs/unreal_articles/labs/lumen-capture/baseline">portable Unreal project and capture scripts</a> reproduce the experiment.</p>
+<p>This is a finite production path-tracer reference. Its path-intensity setting was not overridden: the recorded console value of −1 selects the finalized post-process setting, whose recorded value is 24. That is source-backed configuration evidence rather than a direct readback of the path-tracing shader constant. The clamp and eight-bounce limit can introduce bias; increasing sample count alone does not remove it. The code selects this fallback in <a class="source-anchor" href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/PathTracing.cpp#L1029-L1035"><code>Engine/Source/Runtime/Renderer/Private/PathTracing.cpp:1029-1035</code></a>.</p>
+<figure><img src="assets/lumen-v2/lumen-lit.png" width="1280" height="720" loading="lazy" alt="Actual Unreal Lumen rendering of the controlled room"><figcaption>Actual Unreal Engine Lumen rendering. The camera and scene are shared with the following path-traced image. Histogram exposure is locked with minimum and maximum EV100 both set to 4.</figcaption></figure>
+<figure><img src="assets/lumen-v2/pathtracer-1024spp-8bounces.png" width="1280" height="720" loading="lazy" alt="Actual Unreal path-traced rendering of the identical controlled room at 1024 samples per pixel"><figcaption>Actual Unreal path tracer: 1,024 samples per pixel, eight bounces, denoiser disabled. The live accumulation counter was checked before and after the screenshot. Finite sampling and finite path length remain approximations to the reference integral.</figcaption></figure>
+</section>
+<section class="chapter" id="lumen-approximation">
+<h2>Part II · The exact partition and the real-time approximation</h2>
+<p>At the camera-visible surface, physical path classes can be partitioned into emission, single-scattering source connections, and paths with further scattering. Engine passes partition the workload differently. In particular, Lumen can provide primary-surface sky illumination and illumination from emissive meshes, which are physically direct source connections. It is therefore incorrect to equate “all Lumen output” with “at least two material bounces.”</p>
+<p>A useful engineering partition chooses a set \(\mathcal A\) of explicitly handled analytical/local lights. Define \(L_{i,\mathcal A}\) as their direct incident field, and \(L_{i,\mathcal R}\) as the remaining incoming field: environment and other emitter endpoints, plus reflected light from surfaces. Then, for the chosen opaque BSDF,</p>
+\[
+L_o=L_e+
+\int(f_d+f_g)L_{i,\mathcal A}\,d\sigma_x^\perp+
+\int f_dL_{i,\mathcal R}\,d\sigma_x^\perp+
+\int f_gL_{i,\mathcal R}\,d\sigma_x^\perp.
+\tag{M35}
+\]
+<p>This is an exact bookkeeping identity <strong>after the source sets are defined</strong>. A deferred local-light pass approximately evaluates the second term. Lumen diffuse gathering, reflection tracing, and the engine's selected sky/reflection paths approximate parts of the last two. The actual flags determine ownership; (M35) does not assert that every engine configuration uses identical passes.</p>
+<p>If an emissive rectangle and an analytical rectangular light both represent the same intended physical lamp, enabling both as independent sources changes the scene's emitted energy unless there is an explicit sampling/representation partition. This is different from adding the same estimator twice. Conversely, the analytical light illuminating a secondary wall, followed by light reflected from that wall toward the primary surface, is a genuinely different path from that light directly illuminating the primary surface.</p>
+<h3>What deferred rendering changes</h3>
+<p>For the selected camera samples, rasterization supplies the first visible geometry and material attributes. A G-buffer caches that primary surface state so many lights and secondary-light estimators can reuse it. This changes how visibility and material work are organized, not the radiance integral. Coverage, rasterized geometry, depth precision, stored material precision, and normal encoding are possible approximations.</p>
+<p>An exact direct-light estimator would use geometric visibility \(V\) in (M26). Unreal <strong>Virtual Shadow Maps</strong> store virtualized light-space depth, and their shadow evaluations approximate this visibility and finite-source integration. This VSM is not Variance Shadow Mapping and has no implied Chebyshev-moment formula. Paging, depth rasterization, bias, filtering, and Shadow Map Ray Tracing (SMRT) are separate engineering steps examined with the actual buffers in the engineering chapter. Their common mathematical role is to replace an exact light-connection evaluation with an approximate one.</p>
+<h3>The diffuse Surface Cache has a concrete mathematical meaning</h3>
+<p>The installed-engine source audit identifies <code>CombineFinalLighting</code> in <code>Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCache.ush</code>: decoded albedo multiplies the sum of direct and indirect irradiance by \(1/\pi\), then emission is added. In the scene-linear notation of this chapter,</p>
+\[
+\widetilde L_{cache}(y)=L_e(y)+
+\frac{\rho(y)}{\pi}\left[\widetilde E_{direct}(y)+\widetilde E_{indirect}(y)\right].
+\tag{M36}
+\]
+<p>This is a source-audited statement for the pinned engine version, distinct from the abstract model below. The represented final quantity is diffuse outgoing radiance, whereas the two input lighting quantities are irradiance. Their stored numbers also carry a pre-exposure scale. Define \(e_c=\text{CachedLightingPreExposure}\) and use a superscript to distinguish stored values from scene-linear values:</p>
+\[
+L_{cache}^{\mathrm{pre},c}=e_c\widetilde L_{cache},\qquad
+E_{direct}^{\mathrm{pre},c}=e_c\widetilde E_{direct},\qquad
+E_{indirect}^{\mathrm{pre},c}=e_c\widetilde E_{indirect},\qquad
+L_e^{\mathrm{pre},c}=e_cL_e.
+\]
+<p>The combine shader applies (M36) to those consistently pre-exposed terms. The sampling shader multiplies the sampled atlas values by \(1/e_c\) before returning scene-linear radiance (<a class="source-anchor" href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCacheSampling.ush#L314-L325"><code>Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCacheSampling.ush:314-325</code></a>). Thus a raw final-lighting texel is not yet the \(\widetilde L_{cache}\) used by the transport integral. Here \(\rho\) means the cache's effective albedo: the card material pass folds a fully rough specular approximation into its diffuse color before encoding it. It is therefore not always the original material's diffuse albedo, particularly for metallic materials. The representation omits the full outgoing directional dependence of a general glossy BSDF.</p>
+<p>The screen-probe integration output has a different normalization. In the audited baseline, LumenScreenProbeGather.usf multiplies integrated diffuse lighting by Diffuse_Lambert(1) before writing the diffuse-indirect output. Its physical quantity is a unit-albedo diffuse response, \(E/\pi\); its stored value carries the view pre-exposure \(e_v=\text{View.PreExposure}\), so \(D^{\mathrm{pre},v}=e_vE/\pi\). The trace has already applied this view scale, and DiffuseIndirectComposite.usf later multiplies the response by the receiver's diffuse color. Dividing it by \(\pi\) again, or applying \(e_v\) a second time in the composite, would be an error. The card irradiance atlases, card final radiance, and screen \(E/\pi\) response therefore need distinct quantity and exposure labels in every visualization.</p>
+<p>Suppose a visible diffuse point \(x\) gathers the cached analytical direct lighting at a secondary point \(y\). Its contribution includes</p>
+\[
+\frac{\rho(x)}{\pi}
+\int \left[\frac{\rho(y)}{\pi}\widetilde E_{direct}(y)\right]
+G(x\leftrightarrow y)\,dA(y).
+\tag{M37}
+\]
+<p>Equation (M37) uses scene-linear \(\widetilde E_{direct}=E_{direct}^{\mathrm{pre},c}/e_c\); substituting the raw pre-exposed atlas value would introduce an extra scale. There are two scattering factors, one at \(y\) and one at \(x\). Subtracting the secondary cache's direct lighting as a duplicate of the primary deferred direct pass would delete legitimate bounced light. In contrast, sky or emitter radiance reached directly from \(x\) has only the primary scattering factor. These examples distinguish path classification from buffer names.</p>
+<h3>An original operator model for cache approximation</h3>
+<p>The next equations are an explanatory model of discretization and reuse, <strong>not a claim that Epic implements a literal global matrix solve</strong>. Let \(P\) project a radiance field to finite cache coefficients and \(R\) reconstruct a field, with \(PR=I\) on coefficient space. Let \(T_h\) be an approximate transport operator using represented geometry, materials, and visibility. Define</p>
+\[
+K=P T_h R,\qquad b_c=P b_h,\qquad c=b_c+Kc,\qquad \widetilde L=Rc.
+\tag{M38}
+\]
+<p>The reduced coefficients can represent card texels, probe directional bins, or another explicitly chosen basis. Direction-independent diffuse cards and directional probes are different bases; they must not be silently identified. Relative to exact \(L^*=b+TL^*\), define reconstructed source \(\widetilde b=R b_c\), operator \(\widetilde T=RKP\), and current residual</p>
+\[
+\widetilde r=\widetilde b+\widetilde T\widetilde L-\widetilde L.
+\tag{M39}
+\]
+<p>Subtracting the current approximate state from the exact fixed-point equation gives</p>
+\[
+(I-T)(L^*-\widetilde L)
+=(b-\widetilde b)+(T-\widetilde T)\widetilde L+\widetilde r.
+\tag{M40}
+\]
+<p>If \(\|T\|&lt;1\),</p>
+\[
+\|L^*-\widetilde L\|
+\le\frac{\|b-\widetilde b\|+
+\|(T-\widetilde T)\widetilde L\|+\|\widetilde r\|}{1-\|T\|}.
+\tag{M41}
+\]
+<p>The three terms separate source representation error, transport/representation error, and an unfinished or stale solve. More ray samples can reduce stochastic noise without making coarse cards, missing geometry, or stale history exact. Nonlinear clipping, adaptive scheduling, and view-dependent reconstruction require additional analysis; they are not covered by pretending that (M38) is the entire production renderer.</p>
+<p><strong>A two-patch transport example.</strong> With dimensionless coupling matrix and source radiances</p>
+\[
+T=\begin{bmatrix}0&amp;0.2\\0.3&amp;0\end{bmatrix},\qquad
+b=\begin{bmatrix}1\\0\end{bmatrix},
+\tag{M42}
+\]
+<p>the exact solution is \(L^*=(1,0.3)^T/0.94=(1.063829787,0.319148936)^T\). Starting at \(b\), repeated substitution produces \((1,0)\), \((1,0.3)\), \((1.06,0.3)\), \((1.06,0.318)\), and so on. If a material/transport approximation changes the second coupling to 0.25, its converged solution is \((1,0.25)^T/0.95=(1.052631579,0.263157895)^T\). Infinite iterations remove its residual but do not remove its difference from the original scene. This small algebraic example demonstrates approximation error; it is not an Unreal measurement or a speed benchmark.</p>
+<h3>Reconstruction and the cost that is actually removed</h3>
+<p>Sparse gathering replaces per-pixel directional integration with samples at selected probe positions. A generic reconstruction is</p>
+\[
+\widetilde L_i(x,\omega)=\sum_m a_m(x)\widehat L_i(x_m,\omega),
+\qquad \sum_m a_m(x)=1.
+\tag{M43}
+\]
+<p>Normalization preserves a constant field, but does not prove that a field varying across depth discontinuities is reconstructed correctly. The samples are taken at different positions. Similarly, an exponential history update</p>
+\[
+H_t=(1-\alpha)H_{t-1}^{reprojected}+\alpha\widehat L_t
+\tag{M44}
+\]
+<p>can preserve the mean of a stationary correctly reprojected field while retaining lag after lighting changes. Disocclusion, clamping, and invalid-history rejection change its behavior. Temporal reuse is not intrinsically biased in every static case; production reuse and reconstruction can nevertheless introduce persistent spatial and temporal error.</p>
+<p>A simple reference path tracer costs approximately \(N_{pixels}N_{samples}\bar d\) continuation intersections, plus shadow connections, material evaluations, and acceleration-structure work. A sparse gather uses roughly \(N_{probes}N_{directions}\) initial queries plus its cache updates, filtering, and reconstruction. Reusing a secondary hit's cached material/lighting also avoids repeating the full material and light evaluation for every ray. These are the mechanisms of reduced work. Counts alone are not a speedup measurement: screen hits, compacted misses, distance-field steps, hardware traversal, cache misses, and asynchronous work have different costs. The captured dispatch sizes and timings must establish the actual savings.</p>
+<p>The diffuse and glossy terms of (M35) also require different angular detail. A rough glossy lobe can reuse a low-frequency incident-radiance representation; a narrow lobe needs more directional detail or a dedicated ray. If two routes approximate the same glossy term, an exclusive selection or a defined blend \(wC_1+(1-w)C_2\) avoids simply adding that term twice. A roughness threshold does not by itself turn a finite glossy BRDF into a physical delta distribution. Source inspection must determine whether a threshold selects a representation, blends estimators, clamps a lobe, or actually changes the BSDF.</p>
+<h3>Every reconstructed value has an input record</h3>
+<p>A picture of RGB output cannot explain the computation by itself. Each captured probe, cache texel, or output pixel should be traceable to the following fields. The engineering inventory names the actual source buffers and shader expressions; this table states their mathematical roles.</p>
+<div class="table-scroll"><table class="data-table">
+<thead>
+<tr>
+<th>Input or state</th>
+<th>Mathematical role</th>
+<th>Required diagnostic information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receiver position and depth</td>
+<td>\(x\), the domain of the transport query</td>
+<td>Coordinate frame, depth convention, reconstruction matrix, logical position and any ray offset.</td>
+</tr>
+<tr>
+<td>Geometric/shading normal and material</td>
+<td>Measure in (M05), BSDF in (M19), diffuse color in (M36)</td>
+<td>Decoded values, normal frame, validity, roughness and lobe-selection data; do not substitute an encoded normal byte for a direction.</td>
+</tr>
+<tr>
+<td>Ray direction and sample identifier</td>
+<td>\(\omega\) and the mapping from random variables to the sampled domain</td>
+<td>Unit direction, directional bin or octahedral coordinates, random seed/frame index, and whether the sample is continuous or delta.</td>
+</tr>
+<tr>
+<td>Directional sampling weight</td>
+<td>\(p_\sigma\), discrete branch probability, or cell quadrature weight</td>
+<td>Which measure the stored number uses. An angular-cell weight is not automatically a BSDF PDF.</td>
+</tr>
+<tr>
+<td>Intersection and visibility</td>
+<td>\(y,V,G\) or their approximations</td>
+<td>Hit distance, hit/miss/uncertain state, selected tracing representation, thickness/bias, normal, and fallback reason.</td>
+</tr>
+<tr>
+<td>Light data and source lookup</td>
+<td>\(L_e\), \(E_\perp\), \(P_\ell\), cache response</td>
+<td>Light identifier, selection PMF if sampled, units, emitter/sky ownership, atlas page and UV, and missing-page state.</td>
+</tr>
+<tr>
+<td>Gather accumulator</td>
+<td>Sum of weighted incident samples</td>
+<td>Radiance sum, weight sum, number of valid samples, rejected samples, clamp state, and whether the stored value is \(L\), \(E\), or \(E/\pi\).</td>
+</tr>
+<tr>
+<td>Reconstruction neighbors</td>
+<td>\(x_m,a_m(x)\) in (M43)</td>
+<td>Neighbor indices, spatial/depth/normal weights before normalization, validity masks, denominator, and zero-denominator fallback.</td>
+</tr>
+<tr>
+<td>Temporal reprojection</td>
+<td>\(H_{t-1}^{reprojected}\) in (M44)</td>
+<td>Previous pixel/probe coordinates, motion/matrix inputs, previous depth/normal, disocclusion test, history validity, exposure ratio.</td>
+</tr>
+<tr>
+<td>History blend and nonlinear operations</td>
+<td>\(\alpha\), rejection, clipping or clamping</td>
+<td>Current and previous values, effective history length/confidence, clamp bounds, blend weight, and reset reason.</td>
+</tr>
+<tr>
+<td>Final material/composite factors</td>
+<td>The separate terms of (M35)</td>
+<td>Diffuse color, integrated specular-BRDF factor, AO, energy preservation, roughness blend, pre-exposure, and branch/permutation.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For example, a generic normalized bilateral reconstruction can be written</p>
+\[
+\widetilde L_i(x,\omega)=
+\frac{\sum_m \chi_m(x)\,b_m(x)\,\widehat L_i(x_m,\omega)}
+{\sum_m \chi_m(x)\,b_m(x)},\qquad
+b_m=w_{space,m}w_{depth,m}w_{normal,m}.
+\tag{M45}
+\]
+<p>Here \(\chi_m\) is a validity mask; the individual \(w\)'s are nonnegative factors. This equation defines an illustrative reconstruction, not Epic's exact kernel. To reproduce an actual pass, replace each factor by that shader's expression and record the value it used, including its zero-weight fallback. An all-invalid neighborhood is not “black lighting” unless that is explicitly the algorithm's chosen fallback. Similarly, history blending is only reproducible when the reprojected sample, rejection tests, exposure conversion, clamp bounds, and effective weight are available. These are computational inputs, not decorative debug overlays.</p>
 </section>

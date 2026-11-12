@@ -1,0 +1,798 @@
+{
+  "schema": "unreal-lumen-reference-scene-v1",
+  "captured_utc": "2026-11-12T13:17:01Z",
+  "engine_version": "5.8.1-0+UE5",
+  "project": "reproduce/UnrealLab",
+  "map": "/Game/Labs/LumenRoom",
+  "map_sha256": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818",
+  "room_source": "copied saved map /Game/Labs/LumenRoom from the original laboratory run",
+  "coordinate_mapping": "UE centimeters = (-100*CPU x, 100*CPU y, 100*CPU z)",
+  "capture_resolution": [
+    1280,
+    720
+  ],
+  "camera": {
+    "actor": "CameraActor",
+    "location_cm": [
+      0.0,
+      -400.0,
+      165.0
+    ],
+    "rotation_degrees": {
+      "pitch": -2.105514188856035,
+      "yaw": 90.00000000000006,
+      "roll": 2.5614055970807246e-08
+    },
+    "target_cm": [
+      0.0,
+      280.0,
+      140.0
+    ],
+    "vertical_fov_degrees": 43.0,
+    "component_field_of_view_degrees": 70.0059814453125,
+    "note": "Camera component FOV is Unreal horizontal FOV; 43 deg vertical at 16:9 yields this value."
+  },
+  "exposure": {
+    "method": "histogram (AEM_HISTOGRAM) with min_brightness == max_brightness == EV100 4",
+    "effective_method": "histogram metering pinned to EV100 4 by min=max=4 and bias=0; not manual mode",
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+    "pre_exposure": 0.0625,
+    "one_over_pre_exposure": 16.0,
+    "eye_adaptation_exposure_scale": 0.0625,
+    "eye_adaptation_average_scene_luminance": 8.370248794555664,
+    "runtime_evidence": "buffers/runtime-actual.json",
+    "ev100": 4.0,
+    "min_brightness": 4.0,
+    "max_brightness": 4.0,
+    "bias": 0.0,
+    "postprocess_values_after_set": {
+      "override_auto_exposure_min_brightness": "True",
+      "auto_exposure_min_brightness": "4.0",
+      "override_auto_exposure_max_brightness": "True",
+      "auto_exposure_max_brightness": "4.0",
+      "override_auto_exposure_bias": "True",
+      "auto_exposure_bias": "0.0",
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+      "override_auto_exposure_method": "False",
+      "override_path_tracing_samples_per_pixel": "False",
+      "path_tracing_samples_per_pixel": "2048",
+      "override_path_tracing_max_bounces": "False",
+      "path_tracing_max_bounces": "32",
+      "override_path_tracing_enable_denoiser": "False",
+      "path_tracing_enable_denoiser": "True",
+      "override_path_tracing_max_path_intensity": "False",
+      "path_tracing_max_path_intensity": "24.0"
+    },
+    "note": "Auto-exposure method remains histogram, but min=max=4 EV100 and bias=0 pin the exposure. The same PostProcessVolume is used for both images.",
+    "postprocess_path_tracing_note": "The PostProcessVolume PathTracing* fields remain engine defaults (2048 spp, 32 bounces, denoiser enabled); the capture overrides them with r.PathTracing.SamplesPerPixel 256, r.PathTracing.MaxBounces 8 and r.PathTracing.Denoiser 0. Effective values are in effective_renderer.path_tracer and capture-manifest.json."
+  },
+  "lighting": {
+    "rect_light": {
+      "actor": "Ceiling area light",
+      "location_cm": [
+        0.0,
+        270.0,
+        298.0
+      ],
+      "rotation_degrees": {
+        "pitch": -90.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "intensity_lumens": 2400.0,
+      "intensity_units": "<LightUnits.LUMENS: 2>",
+      "source_width_cm": 130.0,
+      "source_height_cm": 120.0,
+      "attenuation_radius_cm": 1000.0,
+      "light_color_raw_fcolor_0_255": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "light_color_linear": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "light_color_note": "The Python light_color property returns FColor 0-255; the authored light color is white."
+    },
+    "sky": "none authored; engine defaults retained",
+    "lumen": "software tracing; hardware ray tracing disabled"
+  },
+  "render_settings_ini": "[/Script/Engine.RendererSettings]\nr.DynamicGlobalIlluminationMethod=1\nr.ReflectionMethod=1\nr.GenerateMeshDistanceFields=True\nr.RayTracing=True\nr.SkinCache.CompileShaders=1\nr.Lumen.HardwareRayTracing=False\nr.SupportSkyAtmosphere=True\nr.Shadow.Virtual.Enable=1\nr.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange=True\nr.AllowStaticLighting=False\n\n[/Script/WindowsTargetPlatform.WindowsTargetSettings]\nDefaultGraphicsRHI=DefaultGraphicsRHI_DX12\n-D3D12TargetedShaderFormats=PCD3D_SM5\n+D3D12TargetedShaderFormats=PCD3D_SM6\n\n[/Script/Engine.Engine]\nbSmoothFrameRate=False\n\n[ConsoleVariables]\nr.ForceDebugViewModes=1\nr.Nanite.AllowTessellation=1\nr.Nanite.Tessellation=1\nr.Lumen.HardwareRayTracing=0\n\n[/Script/AndroidFileServerEditor.AndroidFileServerRuntimeSettings]\nbEnablePlugin=True\nbAllowNetworkConnection=True\nSecurityToken=REDACTED_FOR_PUBLICATION\nbIncludeInShipping=False\nbAllowExternalStartInShipping=False\nbCompileAFSProject=False\nbUseCompression=False\nbLogFiles=False\nbReportStats=False\nConnectionType=USBOnly\nbUseManualIPAddress=False\nManualIPAddress=\n\n",
+  "lumen_commands": [
+    "r.ScreenPercentage 100",
+    "r.AntiAliasingMethod 2",
+    "r.MotionBlurQuality 0",
+    "r.Lumen.HardwareRayTracing 0",
+    "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+    "r.Lumen.Reflections.ScreenTraces 1",
+    "r.DynamicGlobalIlluminationMethod 1",
+    "r.ReflectionMethod 1",
+    "r.Lumen.Visualize 0",
+    "r.LumenScene.SurfaceCache.AtlasSize 4096",
+    "showflag.BillboardSprites 0",
+    "showflag.Grid 0",
+    "showflag.Selection 0",
+    "showflag.SelectionOutline 0",
+    "showflag.ModeWidgets 0",
+    "showflag.Bounds 0"
+  ],
+  "actors": [
+    {
+      "label": "Floor",
+      "class": "StaticMeshActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_0",
+      "location_cm": [
+        0.0,
+        250.0,
+        -5.0
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        4.0,
+        5.0,
+        0.1
+      ],
+      "components": [
+        {
+          "class": "StaticMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_0.StaticMeshComponent0",
+          "location_cm": [
+            0.0,
+            250.0,
+            -5.0
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            4.0,
+            5.0,
+            0.1
+          ],
+          "materials": [
+            "/Game/Labs/Materials/Neutral.Neutral"
+          ],
+          "bounds_origin_cm": [
+            0.0,
+            250.0,
+            -5.0
+          ],
+          "bounds_extent_cm": [
+            200.0,
+            250.0,
+            5.0
+          ],
+          "bounds_sphere_radius_cm": 320.19525146484375,
+          "mesh": "/Engine/BasicShapes/Cube.Cube"
+        }
+      ]
+    },
+    {
+      "label": "Ceiling",
+      "class": "StaticMeshActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_1",
+      "location_cm": [
+        0.0,
+        250.0,
+        305.0
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        4.0,
+        5.0,
+        0.10000000000000009
+      ],
+      "components": [
+        {
+          "class": "StaticMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_1.StaticMeshComponent0",
+          "location_cm": [
+            0.0,
+            250.0,
+            305.0
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            4.0,
+            5.0,
+            0.10000000000000009
+          ],
+          "materials": [
+            "/Game/Labs/Materials/Neutral.Neutral"
+          ],
+          "bounds_origin_cm": [
+            0.0,
+            250.0,
+            305.0
+          ],
+          "bounds_extent_cm": [
+            200.0,
+            250.0,
+            5.000000000000004
+          ],
+          "bounds_sphere_radius_cm": 320.19525146484375,
+          "mesh": "/Engine/BasicShapes/Cube.Cube"
+        }
+      ]
+    },
+    {
+      "label": "Left red wall",
+      "class": "StaticMeshActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_2",
+      "location_cm": [
+        205.0,
+        250.0,
+        150.0
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        0.10000000000000009,
+        5.0,
+        3.0
+      ],
+      "components": [
+        {
+          "class": "StaticMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_2.StaticMeshComponent0",
+          "location_cm": [
+            205.0,
+            250.0,
+            150.0
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            0.10000000000000009,
+            5.0,
+            3.0
+          ],
+          "materials": [
+            "/Game/Labs/Materials/Red.Red"
+          ],
+          "bounds_origin_cm": [
+            205.0,
+            250.0,
+            150.0
+          ],
+          "bounds_extent_cm": [
+            5.000000000000004,
+            250.0,
+            150.0
+          ],
+          "bounds_sphere_radius_cm": 291.5904541015625,
+          "mesh": "/Engine/BasicShapes/Cube.Cube"
+        }
+      ]
+    },
+    {
+      "label": "Right green wall",
+      "class": "StaticMeshActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_3",
+      "location_cm": [
+        -205.0,
+        250.0,
+        150.0
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        0.10000000000000009,
+        5.0,
+        3.0
+      ],
+      "components": [
+        {
+          "class": "StaticMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_3.StaticMeshComponent0",
+          "location_cm": [
+            -205.0,
+            250.0,
+            150.0
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            0.10000000000000009,
+            5.0,
+            3.0
+          ],
+          "materials": [
+            "/Game/Labs/Materials/Green.Green"
+          ],
+          "bounds_origin_cm": [
+            -205.0,
+            250.0,
+            150.0
+          ],
+          "bounds_extent_cm": [
+            5.000000000000004,
+            250.0,
+            150.0
+          ],
+          "bounds_sphere_radius_cm": 291.5904541015625,
+          "mesh": "/Engine/BasicShapes/Cube.Cube"
+        }
+      ]
+    },
+    {
+      "label": "Back wall",
+      "class": "StaticMeshActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_4",
+      "location_cm": [
+        0.0,
+        505.0,
+        150.0
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        4.0,
+        0.09999999999999964,
+        3.0
+      ],
+      "components": [
+        {
+          "class": "StaticMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_4.StaticMeshComponent0",
+          "location_cm": [
+            0.0,
+            505.0,
+            150.0
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            4.0,
+            0.09999999999999964,
+            3.0
+          ],
+          "materials": [
+            "/Game/Labs/Materials/Neutral.Neutral"
+          ],
+          "bounds_origin_cm": [
+            0.0,
+            505.0,
+            150.0
+          ],
+          "bounds_extent_cm": [
+            200.0,
+            4.999999999999982,
+            150.0
+          ],
+          "bounds_sphere_radius_cm": 250.04998779296875,
+          "mesh": "/Engine/BasicShapes/Cube.Cube"
+        }
+      ]
+    },
+    {
+      "label": "Matte block",
+      "class": "StaticMeshActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_5",
+      "location_cm": [
+        77.5,
+        284.99999999999994,
+        52.5
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        0.95,
+        1.1,
+        1.05
+      ],
+      "components": [
+        {
+          "class": "StaticMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_5.StaticMeshComponent0",
+          "location_cm": [
+            77.5,
+            284.99999999999994,
+            52.5
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            0.95,
+            1.1,
+            1.05
+          ],
+          "materials": [
+            "/Game/Labs/Materials/Matte.Matte"
+          ],
+          "bounds_origin_cm": [
+            77.5,
+            284.99999999999994,
+            52.5
+          ],
+          "bounds_extent_cm": [
+            47.5,
+            55.00000000000001,
+            52.5
+          ],
+          "bounds_sphere_radius_cm": 89.65210723876953,
+          "mesh": "/Engine/BasicShapes/Cube.Cube"
+        }
+      ]
+    },
+    {
+      "label": "Glossy block",
+      "class": "StaticMeshActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_6",
+      "location_cm": [
+        -75.0,
+        380.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        0.8999999999999999,
+        1.0,
+        1.8
+      ],
+      "components": [
+        {
+          "class": "StaticMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.StaticMeshActor_6.StaticMeshComponent0",
+          "location_cm": [
+            -75.0,
+            380.0,
+            90.0
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            0.8999999999999999,
+            1.0,
+            1.8
+          ],
+          "materials": [
+            "/Game/Labs/Materials/Glossy.Glossy"
+          ],
+          "bounds_origin_cm": [
+            -75.0,
+            380.0,
+            90.0
+          ],
+          "bounds_extent_cm": [
+            44.99999999999999,
+            50.0,
+            90.0
+          ],
+          "bounds_sphere_radius_cm": 112.36102294921875,
+          "mesh": "/Engine/BasicShapes/Cube.Cube"
+        }
+      ]
+    },
+    {
+      "label": "Ceiling area light",
+      "class": "RectLight",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.RectLight_0",
+      "location_cm": [
+        0.0,
+        270.0,
+        298.0
+      ],
+      "rotation_degrees": {
+        "pitch": -90.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "components": [
+        {
+          "class": "BillboardComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.RectLight_0.BillboardComponent_0",
+          "location_cm": [
+            0.0,
+            270.0,
+            298.0
+          ],
+          "rotation_degrees": {
+            "pitch": -90.0,
+            "yaw": -0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "materials": [],
+          "bounds_origin_cm": [
+            0.0,
+            270.0,
+            298.0
+          ],
+          "bounds_extent_cm": [
+            128.0,
+            128.0,
+            128.0
+          ],
+          "bounds_sphere_radius_cm": 221.70249938964844
+        }
+      ]
+    },
+    {
+      "label": "PostProcessVolume",
+      "class": "PostProcessVolume",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.PostProcessVolume_0",
+      "location_cm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_degrees": {
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "components": [
+        {
+          "class": "BrushComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.PostProcessVolume_0.BrushComponent0",
+          "location_cm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation_degrees": {
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "roll": 0.0
+          },
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [],
+          "bounds_origin_cm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "bounds_extent_cm": [
+            100.0,
+            100.0,
+            100.0
+          ],
+          "bounds_sphere_radius_cm": 173.205078125
+        }
+      ]
+    },
+    {
+      "label": "CameraActor",
+      "class": "CameraActor",
+      "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.CameraActor_0",
+      "location_cm": [
+        0.0,
+        -400.0,
+        165.0
+      ],
+      "rotation_degrees": {
+        "pitch": -2.105514188856035,
+        "yaw": 90.00000000000006,
+        "roll": 2.5614055970807246e-08
+      },
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "components": [
+        {
+          "class": "CameraProxyMeshComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.CameraActor_0.CameraProxyMeshComponent_0",
+          "location_cm": [
+            0.0,
+            -400.0,
+            165.0
+          ],
+          "rotation_degrees": {
+            "pitch": -2.105514188856035,
+            "yaw": 90.00000000000006,
+            "roll": 2.5614055970807246e-08
+          },
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [
+            "/Engine/EditorMaterials/MatineeCam_mat.MatineeCam_mat"
+          ],
+          "bounds_origin_cm": [
+            9.528685921157747e-07,
+            -447.23933333627326,
+            168.54036706432055
+          ],
+          "bounds_extent_cm": [
+            24.012367260497413,
+            48.76066002172155,
+            28.496561547701074
+          ],
+          "bounds_sphere_radius_cm": 57.15544509887695,
+          "mesh": "/Engine/EditorMeshes/MatineeCam_SM.MatineeCam_SM"
+        },
+        {
+          "class": "DrawFrustumComponent",
+          "path": "/Game/Labs/LumenRoom.LumenRoom:PersistentLevel.CameraActor_0.DrawFrustumComponent_0",
+          "location_cm": [
+            0.0,
+            -400.0,
+            165.0
+          ],
+          "rotation_degrees": {
+            "pitch": -2.105514188856035,
+            "yaw": 90.00000000000006,
+            "roll": 2.5614055970807246e-08
+          },
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "materials": [],
+          "bounds_origin_cm": [
+            0.0,
+            -400.0,
+            165.0
+          ],
+          "bounds_extent_cm": [
+            1010.0,
+            1010.0,
+            1010.0
+          ],
+          "bounds_sphere_radius_cm": 1010.0
+        }
+      ]
+    }
+  ],
+  "verification_vs_original_scene_inventory": {
+    "available": true,
+    "source": "source-reference/scene-inventory.json",
+    "actor_count_expected": 10,
+    "actor_count_actual": 10,
+    "matched": true,
+    "problems": []
+  },
+  "engine_build": {
+    "MajorVersion": 5,
+    "MinorVersion": 8,
+    "PatchVersion": 1,
+    "Changelist": 0,
+    "CompatibleChangelist": 55116800,
+    "IsLicenseeVersion": 0,
+    "IsPromotedBuild": 0,
+    "BranchName": "UE5"
+  },
+  "engine_git_sha": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+  "engine_git_branch": "release",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 610.62, 97887 MiB",
+  "original_map_sha256": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818",
+  "map_byte_identical_to_original": true,
+  "effective_renderer": {
+    "lumen": {
+      "dynamic_global_illumination_method": 1,
+      "reflection_method": 1,
+      "hardware_ray_tracing": 0,
+      "screen_probe_gather_screen_traces": 1,
+      "reflection_screen_traces": 1,
+      "visualize": 0,
+      "surface_cache_atlas_size": 4096,
+      "temporal_defaults_not_overridden": {
+        "r.Lumen.ScreenProbeGather.Temporal": 1,
+        "r.Lumen.ScreenProbeGather.Temporal.MaxFramesAccumulated": 10,
+        "r.Lumen.ScreenProbeGather.Temporal.MaxRayDirections": 8,
+        "r.LumenScene.Radiosity.Temporal": 1,
+        "r.LumenScene.Radiosity.Temporal.MaxFramesAccumulated": 4,
+        "r.Lumen.Reflections.Temporal": 1,
+        "r.Lumen.Reflections.Temporal.MaxFramesAccumulated": 12
+      },
+      "warmup": {
+        "initial_viewport_draws": 200,
+        "settle_viewport_draws": 90,
+        "note": "same draw-request warm-up as the original capture.py; not a convergence claim"
+      }
+    },
+    "path_tracer": {
+      "samples_per_pixel": 256,
+      "max_bounces": 8,
+      "denoiser": 0,
+      "denoiser_note": "r.PathTracing.Denoiser 0; the engine NNEDenoiser plugin was instantiated but no denoise pass was selected.",
+      "filter_width": 3.0,
+      "mis_mode": 2,
+      "progress_display": 0,
+      "visible_lights": 0,
+      "enable_emissive": 1,
+      "enable_reference_dof": 0,
+      "pso_warmup_viewport_draws": 64,
+      "forced_sample_reset": "r.PathTracing.SamplesPerPixel 255 then 256 after PSO warm-up",
+      "sample_index_at_capture": 256,
+      "sample_count": 256
+    }
+  },
+  "source_provenance": {
+    "isolated_project": "reproduce/UnrealLab",
+    "original_capture_scripts": {
+      "source-reference\\capture.py": "b526553e4409c0bc4eb2dd1de9f9d3e798ec96f38dbd9380acfa698a1c5db4c7",
+      "source-reference\\capture_scene_room.py": "4eb159801012cf76dbfdf0427dd9e079eec5c4f2e5e52fa3609b4cf7103012d2",
+      "source-reference\\run.ps1": "e44dd7838ee98764d091ee482960bd5690bb7db15944d1875d40e20761c836bf"
+    },
+    "original_module": {
+      "source-reference\\original_project\\Source\\ArdaLabCapture\\ArdaLabCapture.cpp": "41d26d515f092ea4160d84bbf4acc50ddf1e5cadb7eab1059e3356c7fa6c58f5",
+      "source-reference\\original_project\\Source\\ArdaLabCapture\\ArdaLabCapture.h": "3ba19a81d2841eac8fbfbd435ce756420cf5f7ac76d025ca658579a7d91f1e8e",
+      "source-reference\\original_project\\Source\\ArdaLabCapture\\ArdaLabCapture.Build.cs": "587e7f1af33282aacd9012233fedfe5faaf4afef366695b07b4c82eda5a0c90b",
+      "source-reference\\original_project\\Source\\UnrealLabEditor.Target.cs": "85bf92e5ffe2afdcef9e6b3faaaaf5eac0fcf5f173e2a4357277835eeb05e0d8",
+      "source-reference\\original_project\\UnrealLab.uproject": "9f5a6c6e5a6bd2da2c78f23dee5a97a07e14d71447178cd74ce1448314e483ee",
+      "source-reference\\original_project\\DefaultEngine.ini": "8eb6b32811ab9a23e5e6376e744ea26faa5c40be93aabbe3be9704de4cfd26d5"
+    },
+    "original_evidence": {
+      "source-reference\\scene-inventory.json": "b91a7a1e2b5e3dc1b22fd05a321720f48fffae622294141cf6b412bdd94c6d8d",
+      "source-reference\\lumen-capture-report.json": "ebf023decd5ef7b79483a5a960b2f093e3b560f9e4ff1798bf763386646e73a3",
+      "source-reference\\capture-manifest.json": "20e0fc5784cc83588b9f111f72018f25d595c07efd17a61c8ee50052687946a9"
+    }
+  },
+  "capture_status": "ok",
+  "render_settings_ini_original": "[/Script/Engine.RendererSettings]\nr.DynamicGlobalIlluminationMethod=1\nr.ReflectionMethod=1\nr.GenerateMeshDistanceFields=True\nr.RayTracing=True\nr.SkinCache.CompileShaders=1\nr.Lumen.HardwareRayTracing=False\nr.SupportSkyAtmosphere=True\nr.Shadow.Virtual.Enable=1\nr.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange=True\nr.AllowStaticLighting=False\n\n[/Script/WindowsTargetPlatform.WindowsTargetSettings]\nDefaultGraphicsRHI=DefaultGraphicsRHI_DX12\n-D3D12TargetedShaderFormats=PCD3D_SM5\n+D3D12TargetedShaderFormats=PCD3D_SM6\n\n[/Script/Engine.Engine]\nbSmoothFrameRate=False\n\n[ConsoleVariables]\nr.ForceDebugViewModes=1\nr.Nanite.AllowTessellation=1\nr.Nanite.Tessellation=1\nr.Lumen.HardwareRayTracing=0\n\n",
+  "render_settings_ini_note": "The live isolated project ini gained an unrelated AndroidFileServerEditor section on first launch. All renderer/RHI entries are unchanged; the original copied file is preserved at source-reference/original_project/DefaultEngine.ini.",
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged.",
+  "security_note": "The non-rendering AndroidFileServer SecurityToken in the embedded ini text was redacted for publication; renderer/RHI entries are unchanged."
+}

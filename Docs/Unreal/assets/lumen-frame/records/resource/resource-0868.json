@@ -1,0 +1,299 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0868",
+  "nativeRecordId": "native-017877",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.PhysicalPageLists",
+  "uniqueName": "000300000228dcc79238",
+  "displayLabel": "Shadow.Virtual.PhysicalPageLists · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 65552,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 16388,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 16388
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.PhysicalPageLists",
+    "UniqueResourceName": "000300000228dcc79238",
+    "ByteSize": 65552,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 16388,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01438",
+      "role": "resource",
+      "originalPath": "Resources/000300000228dcc79238.v00000000000000000000.bin",
+      "bytes": 65552,
+      "sha256": "d464e2a27d6d8a8f5d6d86f2f47d064ada640664fae4088c453da8759792efa0",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0868",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "d464e2a27d6d8a8f5d6d86f2f47d064ada640664fae4088c453da8759792efa0",
+          "offset": 0,
+          "length": 65552
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228dcc79238",
+        "name": "Shadow.Virtual.PhysicalPageLists",
+        "byteSize": 65552
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01438"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0519",
+        "name": "UpdatePhysicalPages",
+        "displayLabel": "UpdatePhysicalPages · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 518",
+        "record": "records/pass/pass-0519.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01438",
+      "file": "Resources/000300000228dcc79238.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-physical-page-lists",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.PhysicalPageLists$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "4 int32 lists, each MaxPhysicalPages entries followed by one int32 count; LRU, available, empty, requested",
+      "units": "physical page linear index; trailing element is an element count",
+      "coordinateSpace": "physical page pool linear index = y<<PhysicalPageRowShift + x (page, not texel)",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "int32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "items are int32; INDEX_NONE (-1) marks removed LRU slots"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 16388,
+          "byteSize": 65552
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "int32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "items are int32; INDEX_NONE (-1) marks removed LRU slots"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "listBases",
+          "expression": "base(PageList) = PageList*(MaxPhysicalPages+1); indices 0..3 = LRU, AVAILABLE, EMPTY, REQUESTED",
+          "requires": [
+            "PhysicalPageLists"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.lists",
+            "part3.visibility.vsm.s.listids"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "PUSH at the tail via atomic count increment; POP from the tail (count-1). Overflow is prevented by refusing pushes at count==MaxPhysicalPages (PushPhysicalPageList:71-87, PopPhysicalPageList:90-105).",
+        "Initialized with LRU count=MaxPhysicalPages and other lists count=0 (InitPageRectBounds:134-143)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.lists",
+        "part3.visibility.vsm.s.listpush",
+        "part3.visibility.vsm.s.listpop"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.lists",
+        "part3.visibility.vsm.s.pop"
+      ],
+      "gaps": [
+        "Capture size 16388 = 4*(4096+1) proves MaxPhysicalPages=4096 for this capture; the schema value is runtime-sized (GetMaxPhysicalPages)."
+      ],
+      "fields": [
+        {
+          "name": "ListItem",
+          "type": "int32",
+          "byteOffset": 0,
+          "count": 4096,
+          "decode": "list[PageList][i] for i in [0,Count); value = physical page index or -1 in LRU holes",
+          "units": "physical page index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.lists"
+          ]
+        },
+        {
+          "name": "ListCount",
+          "type": "int32",
+          "byteOffset": 16384,
+          "count": 1,
+          "decode": "list[PageList][MaxPhysicalPages] = current count; per list base = PageList*(MaxPhysicalPages+1)",
+          "units": "elements",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.lists"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "ListItem",
+          "ListCount"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0540",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.PhysicalPageLists has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0868"
+    }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0194",
+  "nativeRecordId": "native-017199",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadiosityTiles",
+  "uniqueName": "000100000225e8ce5b08",
+  "displayLabel": "Lumen.RadiosityTiles · instance 0001 · frame 292 · passes 116",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 116,
+    "last": 116
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 65536,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 16384,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 16384
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadiosityTiles",
+    "UniqueResourceName": "000100000225e8ce5b08",
+    "ByteSize": 65536,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 16384,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00077",
+      "role": "resource",
+      "originalPath": "Resources/000100000225e8ce5b08.v000100000225e8ce68d0.bin",
+      "bytes": 65536,
+      "sha256": "c66fffe5a9c77e194e6b54c85355a01c67ce4e21f196bdc9e45527dd7d29605f",
+      "version": "000100000225e8ce68d0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0194",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "c66fffe5a9c77e194e6b54c85355a01c67ce4e21f196bdc9e45527dd7d29605f",
+          "offset": 0,
+          "length": 65536
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000100000225e8ce5b08",
+        "name": "Lumen.RadiosityTiles",
+        "byteSize": 65536
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000225e8ce68d0",
+      "producerPassId": "pass-0117",
+      "producerPassName": "BuildRadiosityTiles",
+      "payloadIds": [
+        "payload-00077"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0117",
+        "name": "BuildRadiosityTiles",
+        "displayLabel": "BuildRadiosityTiles · Radiosity · frame 292 · pass 116",
+        "record": "records/pass/pass-0117.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0119",
+        "name": "DistanceFieldTracing 4x4 probes at 4 spacing",
+        "displayLabel": "DistanceFieldTracing 4x4 probes at 4 spacing · Radiosity · frame 292 · pass 118",
+        "record": "records/pass/pass-0119.json"
+      },
+      {
+        "id": "pass-0120",
+        "name": "SpatialFilterProbes",
+        "displayLabel": "SpatialFilterProbes · Radiosity · frame 292 · pass 119",
+        "record": "records/pass/pass-0120.json"
+      },
+      {
+        "id": "pass-0121",
+        "name": "ConvertToSH",
+        "displayLabel": "ConvertToSH · Radiosity · frame 292 · pass 120",
+        "record": "records/pass/pass-0121.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00077",
+      "file": "Resources/000100000225e8ce5b08.v000100000225e8ce68d0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.radiosity-tiles",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.RadiosityTiles)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-view compact list of radiosity tiles (card page + tile coordinate) selected for tracing",
+      "units": "card page index; tile coords",
+      "coordinateSpace": "card page tile grid, scaled by RadiosityTileSizeInProbes/ProbeSpacing when spacing==4",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32 per tile (MaxRadiosityTiles per view origin)",
+        "strideBytes": 4
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32 per tile (MaxRadiosityTiles per view origin)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "pack",
+          "expression": "Packed = CardPageIndex | (TileX<<22) | (TileY<<27); index = ViewIndex*MaxRadiosityTiles + NextTileIndex",
+          "requires": [
+            "Lumen.RadiosityTiles"
+          ],
+          "sourceRefs": [
+            "part1.cards_rtiles_pack",
+            "part1.cards_rtiles_pack_x",
+            "part1.cards_rtiles_pack_y",
+            "part1.cards_rtiles_write"
+          ]
+        },
+        {
+          "name": "unpack",
+          "expression": "CardPageIndex = Packed & 0x3FFFFF; TileX = (Packed>>22)&0x1F; TileY = (Packed>>27)&0x1F",
+          "requires": [
+            "Lumen.RadiosityTiles"
+          ],
+          "sourceRefs": [
+            "part1.cards_rtiles_unpack",
+            "part1.cards_rtiles_unpack_page"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "4 B per tile; capacity = MaxRadiosityTiles*NumViewOrigins (16,384 in this capture)",
+        "MaxRadiosityTiles = MaxCardTiles * (CardTileSize/RadiosityTileSize)^2; when ProbeSpacing==4 a radiosity tile is one probe and TileCoord is scaled by CardTileSizeInProbes",
+        "the 22-bit page index caps pages at 4,194,304 (far above the 128-texel page atlas)"
+      ],
+      "producerSources": [
+        "part1.cards_rtiles_write",
+        "part1.cards_rtiles_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_rtiles_read",
+        "part1.cards_rtiles_count"
+      ],
+      "gaps": [
+        "Valid count is RadiosityTileAllocator[ViewIndex] (per view), not stored in this buffer; the rest of each view's MaxRadiosityTiles slice is stale."
+      ],
+      "fields": [
+        {
+          "name": "CardPageIndex",
+          "type": "uint22",
+          "byteOffset": 0,
+          "decode": "bits[0:21]",
+          "units": "card page index",
+          "sourceRefs": [
+            "part1.cards_rtiles_pack",
+            "part1.cards_rtiles_unpack_page"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 22
+        },
+        {
+          "name": "TileCoordX",
+          "type": "uint5",
+          "byteOffset": 0,
+          "decode": "bits[22:26]",
+          "units": "tile X",
+          "sourceRefs": [
+            "part1.cards_rtiles_pack_x",
+            "part1.cards_rtiles_unpack"
+          ],
+          "bitOffset": 22,
+          "bitWidth": 5
+        },
+        {
+          "name": "TileCoordY",
+          "type": "uint5",
+          "byteOffset": 0,
+          "decode": "bits[27:31]",
+          "units": "tile Y",
+          "sourceRefs": [
+            "part1.cards_rtiles_pack_y",
+            "part1.cards_rtiles_unpack"
+          ],
+          "bitOffset": 27,
+          "bitWidth": 5
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "CardPageIndex",
+          "TileCoordX",
+          "TileCoordY"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0145",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadiosityTiles has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0194"
+    }
+  ]
+}

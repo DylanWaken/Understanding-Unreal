@@ -1,0 +1,186 @@
+{
+  "schema": "lumen-educational-reference-manifest/1",
+  "artifact_kind": "educational CPU reference render",
+  "disclaimer": "This is an original educational CPU path-traced image that reconstructs the essay's 4 x 5 x 3 m reference room with Lambertian-only materials. It is NOT an Unreal Engine scene, NOT an Unreal Engine capture, and is not a substitute for the user's requested identical Unreal scene. The tall right block's Unreal glossy/metallic BRDF is not reproduced.",
+  "scene": {
+    "description": "CPU-lab reconstruction of the essay's 4 x 5 x 3 m room: red wall at x=-2, green wall at x=+2, neutral floor at z=0, ceiling at z=3, back wall at y=5, open front at y=0 with black environment. A 1.3 x 1.2 m emitter at (0,2.7,2.98) emits downward. A short matte block is on the left; the tall right block uses the same placement as the essay's glossy block but a neutral Lambertian albedo, because this renderer has no metallic/GGX lobe.",
+    "coordinate_system": "CPU-lab metres, x right, y depth (front to back), z up; Unreal centimetres map as (x_u,y_u,z_u)=(-100x,100y,100z)",
+    "geometry": "five room rectangles (open front) + two axis-aligned boxes; Lambertian two-sided BSDF",
+    "units": "metres (radiance and emission in arbitrary linear units)",
+    "walls": {
+      "left_red": "x=-2, albedo (0.72,0.09,0.07)",
+      "right_green": "x=+2, albedo (0.12,0.62,0.12)",
+      "floor": "z=0, albedo (0.74,0.74,0.71)",
+      "ceiling": "z=3, albedo (0.78,0.78,0.75)",
+      "back": "y=5, albedo (0.76,0.76,0.73)",
+      "front": "open at y=0; rays escape to the black environment"
+    },
+    "emitter": {
+      "center": [
+        0.0,
+        2.7,
+        2.98
+      ],
+      "width_x": 1.3,
+      "height_y": 1.2,
+      "normal": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "radiance_rgb": [
+        16.0,
+        14.0,
+        11.0
+      ]
+    },
+    "blocks": [
+      {
+        "name": "matte-block-left",
+        "bounds_min": [
+          -1.25,
+          2.3,
+          0.0
+        ],
+        "bounds_max": [
+          -0.3,
+          3.4,
+          1.05
+        ],
+        "albedo_rgb": [
+          0.66,
+          0.63,
+          0.58
+        ],
+        "note": "short matte block; Lambertian"
+      },
+      {
+        "name": "glossy-block-right-lambertian",
+        "bounds_min": [
+          0.3,
+          3.3,
+          0.0
+        ],
+        "bounds_max": [
+          1.2,
+          4.3,
+          1.8
+        ],
+        "albedo_rgb": [
+          0.52,
+          0.55,
+          0.6
+        ],
+        "note": "essay's tall glossy block placement; rendered here as neutral Lambertian only. The Unreal metallic/roughness 0.85/0.12 BRDF is NOT reproduced."
+      }
+    ],
+    "camera": {
+      "position": [
+        0.0,
+        -4.0,
+        1.65
+      ],
+      "look_at": [
+        0.0,
+        2.8,
+        1.4
+      ],
+      "vertical_fov_degrees": 43.0,
+      "aspect": "1.4 (560x400 essay reference; CPU artifact uses a smaller same-aspect image)"
+    },
+    "alignment_note": "Room dimensions, camera, emitter and block placements are aligned with the essay's CPU lab. This is still a separate educational CPU render with Lambertian-only materials, not an identical Unreal scene, not an Unreal capture, and not a reproduction of the glossy block's Unreal BRDF."
+  },
+  "command_line": "python 'C:\\Users\\Administrator\\AppData\\Local\\Temp\\UnrealUnderstanding-Math\\reference\\path_tracer.py' --width 280 --height 200 --samples 64 --seed 20240601 --exposure 0.6 --max-depth 8 --rr-start 3 --rr-min 0.05",
+  "argv": [
+    "C:\\Users\\Administrator\\AppData\\Local\\Temp\\UnrealUnderstanding-Math\\reference\\path_tracer.py",
+    "--width",
+    "280",
+    "--height",
+    "200",
+    "--samples",
+    "64",
+    "--seed",
+    "20240601",
+    "--exposure",
+    "0.6",
+    "--max-depth",
+    "8",
+    "--rr-start",
+    "3",
+    "--rr-min",
+    "0.05"
+  ],
+  "executable": "C:\\Users\\Administrator\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+  "options": {
+    "width": 280,
+    "height": 200,
+    "samples": 64,
+    "seed": 20240601,
+    "max_depth": 8,
+    "rr_start": 3,
+    "rr_min": 0.05,
+    "exposure": 0.6,
+    "nee": "every non-emissive diffuse vertex",
+    "bsdf": "cosine-weighted Lambertian",
+    "mis": "power heuristic beta=2 (light vs BSDF strategy)",
+    "russian_roulette": "throughput-compensated, survival=max(rr_min,min(0.95,max(T)))",
+    "environment": "black; the front at y=0 is open",
+    "outputs": "PFM raw linear radiance (bottom-up float32) + 8-bit sRGB PNG"
+  },
+  "timing": {
+    "started_utc": "2026-11-12T13:34:40Z",
+    "finished_utc": "2026-11-12T13:36:27Z",
+    "render_seconds": 107.245749,
+    "total_seconds": 107.322476,
+    "primary_paths": 3584000
+  },
+  "cpu": {
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+    "processor_identifier": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+    "system": "Windows",
+    "release": "11",
+    "python": "3.14.6",
+    "implementation": "CPython",
+    "logical_cores": 32
+  },
+  "files": {
+    "source": {
+      "path": "reference/path_tracer.py",
+      "bytes": 41971,
+      "sha256": "eeb21a540698098fb5844994e10d6c034422713b9161f36f5ce2a74c1a89f70c"
+    },
+    "linear_pfm": {
+      "path": "reference/out/reference_linear.pfm",
+      "bytes": 672016,
+      "sha256": "2c6b8f8ca490d449c581d65c8c9834a0808169dbd17128d9004cd3e31c2a514e"
+    },
+    "display_png": {
+      "path": "reference/out/reference_render.png",
+      "bytes": 110234,
+      "sha256": "b98d08d9db3130c7bb84e7a2c19165846a69bfe8e809bef90b55f016adb32a6c"
+    },
+    "readme": {
+      "path": "reference/README.md",
+      "bytes": 12846,
+      "sha256": "26ca5c57a0872092bae4f1d7eac6c421afd05144a33155a11bd20b87bf810303"
+    }
+  },
+  "labels": {
+    "png_overlay": [
+      "EDUCATIONAL CPU REFERENCE",
+      "NOT AN UNREAL CAPTURE",
+      "SEED 20240601  SPP 64"
+    ],
+    "report": "reports/reference-report.md",
+    "notes": "reference/README.md"
+  },
+  "estimator_checks": {
+    "file": {
+      "path": "reference/out/checks.json",
+      "bytes": 8165,
+      "sha256": "d9e974629a246087bf5d76b06ed9deefcbd0b5193f77c2193929813e2739a959"
+    },
+    "status": "see reference/test_estimators.py output"
+  }
+}

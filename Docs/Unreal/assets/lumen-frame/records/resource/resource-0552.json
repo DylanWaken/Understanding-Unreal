@@ -1,0 +1,329 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0552",
+  "nativeRecordId": "native-017559",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.PrevAllocatedPageRectBounds",
+  "uniqueName": "00030000022880712408",
+  "displayLabel": "Shadow.Virtual.PrevAllocatedPageRectBounds · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 2097152,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 131072,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 131072
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.PrevAllocatedPageRectBounds",
+    "UniqueResourceName": "00030000022880712408",
+    "ByteSize": 2097152,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 131072,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01165",
+      "role": "resource",
+      "originalPath": "Resources/00030000022880712408.v00000000000000000000.bin",
+      "bytes": 2097152,
+      "sha256": "071753519e6ce986884e94693bb533f493a33f0f3e7ab619e9051766ebe46a95",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0552",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "ac7d759a87be429b197ac0dff7df13edb7201ab2abb261c3607a06c8c4e5ed32",
+          "offset": 1048576,
+          "length": 1048576
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00030000022880712408",
+        "name": "Shadow.Virtual.PrevAllocatedPageRectBounds",
+        "byteSize": 2097152
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01165"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0339",
+        "name": "ProcessInvalidationQueueGPU",
+        "displayLabel": "ProcessInvalidationQueueGPU · Shadow.Virtual.ProcessInvalidationsGPU · frame 292 · pass 338",
+        "record": "records/pass/pass-0339.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01165",
+      "file": "Resources/00030000022880712408.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-page-rect-bounds",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.(AllocatedPageRectBounds|PageRectBounds|PrevAllocatedPageRectBounds|PrevUncachedPageRectBounds)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one uint4 inclusive page rectangle per (shadow-map data index, mip level); 4 names are the current allocation, current uncached-render set, and their previous-frame copies",
+      "units": "virtual page coordinates (1 page = 128 texels)",
+      "coordinateSpace": "per shadow map, page space of the level: valid range [0, 128>>mipLevel)",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint4",
+        "strideBytes": 16,
+        "formatAlternatives": [
+          "FIntVector4 on the C++ side (sizeof 16)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 16,
+          "numElements": 131072,
+          "byteSize": 2097152
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint4",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "FIntVector4 on the C++ side (sizeof 16)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "rectLayout",
+          "expression": "Index = VirtualShadowMap.GetDataIndex()*VSM_MAX_MIP_LEVELS + MipLevel; rect is inclusive (Min<=Max); empty rect = (128,128,0,0)",
+          "requires": [
+            "AllocatedPageRectBounds"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.genrect",
+            "part3.visibility.vsm.s.initrect"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "NumPageRects = GetNumShadowMapSlots() * VSM_MAX_MIP_LEVELS; allocation rounded up to a power of two (VSMARRAY_C:2796-2799).",
+        "Cleared to uint4(VSM_LEVEL0_DIM_PAGES_XY, VSM_LEVEL0_DIM_PAGES_XY, 0, 0) = (128,128,0,0) so InterlockedMin/Max are valid (InitPageRectBounds:129-131).",
+        "Allocated includes mapped+cached pages; Uncached/PageRectBounds only pages with VSM_FLAG_ANY_UNCACHED (GenerateHierarchicalPageFlags:203-210)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.genrect",
+        "part3.visibility.vsm.s.initrect"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.h.maxphysicalpages",
+        "part3.visibility.vsm.c.alloc.pageallocrects"
+      ],
+      "gaps": [
+        "The capture distinguishes 131072 elements = 16384 slots x 8 mips; per-capture slot count is runtime data, not a schema constant.",
+        "PrevAllocatedPageRectBounds/PrevUncachedPageRectBounds are re-registered previous-frame buffers; their producer is the same pass in the prior frame."
+      ],
+      "fields": [
+        {
+          "name": "MinX",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "Rect.x",
+          "units": "pages",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.genrect"
+          ]
+        },
+        {
+          "name": "MinY",
+          "type": "uint",
+          "byteOffset": 4,
+          "count": 1,
+          "decode": "Rect.y",
+          "units": "pages",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.genrect"
+          ]
+        },
+        {
+          "name": "MaxX",
+          "type": "uint",
+          "byteOffset": 8,
+          "count": 1,
+          "decode": "Rect.z",
+          "units": "pages",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.genrect"
+          ]
+        },
+        {
+          "name": "MaxY",
+          "type": "uint",
+          "byteOffset": 12,
+          "count": 1,
+          "decode": "Rect.w",
+          "units": "pages",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.genrect"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "MinX",
+          "MinY",
+          "MaxX",
+          "MaxY"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0360",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.PrevAllocatedPageRectBounds has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0552"
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1314",
+  "nativeRecordId": "native-018326",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.ProjectionData.UploadBuffer",
+  "uniqueName": "00040000022651f490f0",
+  "displayLabel": "Shadow.Virtual.ProjectionData.UploadBuffer · instance 0004 · frame 292",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4096,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1024,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1024
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.ProjectionData.UploadBuffer",
+    "UniqueResourceName": "00040000022651f490f0",
+    "ByteSize": 4096,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1024,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "ByteAddressBuffer",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02099",
+      "role": "resource",
+      "originalPath": "Resources/00040000022651f490f0.v00000000000000000000.bin",
+      "bytes": 4096,
+      "sha256": "23a079ed7db9bd9552b5999409b6f4b13b9099175cfa7d3f6e7ae42740d23ad5",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1314",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "23a079ed7db9bd9552b5999409b6f4b13b9099175cfa7d3f6e7ae42740d23ad5",
+          "offset": 0,
+          "length": 4096
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00040000022651f490f0",
+        "name": "Shadow.Virtual.ProjectionData.UploadBuffer",
+        "byteSize": 4096
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02099"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0809",
+        "name": "ScatterUpload (Resource: Shadow.Virtual.ProjectionData)",
+        "displayLabel": "ScatterUpload (Resource: Shadow.Virtual.ProjectionData) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 808",
+        "record": "records/pass/pass-0809.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02099",
+      "file": "Resources/00040000022651f490f0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-projection-data-upload",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.ProjectionData\\.UploadBuffer$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "transient scatter-upload staging for ProjectionData: a uint32 scatter-offset buffer and a byte-address payload buffer, each element 368 bytes at destination slot scatter[i]",
+      "units": "destination record index / raw projection record bytes",
+      "coordinateSpace": "destination ProjectionData data index",
+      "storage": {
+        "kind": "byte-address-buffer",
+        "format": "upload staging (16-byte uint4 thread granularity)",
+        "strideBytes": 368,
+        "formatAlternatives": [
+          "FRDGScatterUploadBuffer::Init(GraphBuilder, GetNumShadowMaps(), 368, false, ...)",
+          "capture shows additional pooled allocations with 4-byte descriptor stride (4096 B and 32 B); those are allocator rounding, not record strides"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 1024,
+          "byteSize": 4096
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "upload staging (16-byte uint4 thread granularity)",
+      "formatProof": "descriptive-element-layout",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "FRDGScatterUploadBuffer::Init(GraphBuilder, GetNumShadowMaps(), 368, false, ...)",
+        "capture shows additional pooled allocations with 4-byte descriptor stride (4096 B and 32 B); those are allocator rounding, not record strides"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [
+        {
+          "name": "scatterCopy",
+          "expression": "DstIndex(uint4) = ScatterStructuredBuffer[i]*23 + threadInScatter[0..22]; payload = UploadByteAddressBuffer.Load4(threadId*16)",
+          "requires": [
+            "ProjectionData.UploadBuffer",
+            "ProjectionData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.scatterCS"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "368 bytes / 16 = 23 uint4 per record; GetScatterUploadConfig uses 16-byte granularity when NumBytesPerElement%16==0 (UnifiedBuffer.cpp:659-671).",
+        "Non-float4 staging uses a byte-address buffer and a separate uint32 scatter-offset buffer (UnifiedBuffer.cpp:839-847)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.c.upload.projdata"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.scatterCS"
+      ],
+      "gaps": [
+        "The exact RDG allocation that owns the captured name (scatter-offset buffer vs payload buffer) cannot be distinguished from ResourceDescs.json alone; validation of staging contents requires the instrumented capture.",
+        "The two captured sizes 4096 B / 32 B are not 23-uint4 multiples, so they are treated as pooled allocator sizes; do not decode them as records."
+      ],
+      "fields": [
+        {
+          "name": "StagingWords",
+          "type": "uint32 (scatter-offset allocation) or uint4 (payload allocation)",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "two distinct RDG allocations share this debug name: the scatter-offset buffer stores one uint32 destination index per record at offset 0; the payload buffer stores 23 uint4 (368 B) per record at offset 0. They are different buffers, not overlapping views of one buffer.",
+          "units": "index / bytes",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.scatterCS",
+            "part3.visibility.vsm.s.scatterCfg"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "StagingWords"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [
+          "StagingWords"
+        ],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0802",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.ProjectionData.UploadBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1314"
+    }
+  ]
+}

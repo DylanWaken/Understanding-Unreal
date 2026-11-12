@@ -1,0 +1,35 @@
+{
+  "format": "unreal-frame-explorer-read-path-expectation",
+  "version": 1,
+  "provenance": "Expected bytes were read directly with Python from the candidate payload file at the stated byte offsets, independently of the package chunk path.",
+  "sourceCandidate": "binary-20261112-133826",
+  "resourceId": "resource-0185",
+  "resourceName": "GBufferA",
+  "payloadId": "payload-00549",
+  "payloadPath": "Resources/0001000001b5c4c33720.mip0.v0001000001b603077e80.bin",
+  "format": "PF_A2B10G10R10",
+  "width": 1280,
+  "height": 888,
+  "bytesPerTexel": 4,
+  "cases": [
+    {
+      "name": "actual final GBufferA (640,500)",
+      "x": 640,
+      "y": 500,
+      "byteOffset": 2562560,
+      "length": 4,
+      "hex": "fffdf77f",
+      "crossesChunkBoundary": false
+    },
+    {
+      "name": "small two-texel read crossing the 1 MiB chunk boundary",
+      "x": 1023,
+      "y": 204,
+      "byteOffset": 1048572,
+      "length": 8,
+      "hex": "fffff75ffffff75f",
+      "crossesChunkBoundary": true,
+      "chunkBoundary": 1048576
+    }
+  ]
+}

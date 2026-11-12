@@ -1,0 +1,122 @@
+{
+  "schema": "publication-package-report-v1",
+  "generated_utc": "2026-11-12T14:48:16Z",
+  "status": "ok",
+  "package": {
+    "root_label": "publication",
+    "payload_file_count": 1930,
+    "payload_bytes": 24197023,
+    "figures": {
+      "total_pngs": 21,
+      "reference": 3,
+      "decoded": 13,
+      "vsm": 4,
+      "native_screenshot": 1
+    },
+    "raw_binaries_included": false,
+    "build_products_included": false,
+    "logs_included": false
+  },
+  "acceptance_checks": [
+    {
+      "check": "Existing reference, VSM and decoded images copied with verified hashes",
+      "status": "pass",
+      "evidence": "3 reference PNGs, 13 decoded native PNGs, 3 VSM visualizations + lit baseline and 1 native screenshot; all sizes and SHA-256 values match their manifests."
+    },
+    {
+      "check": "Portable project and capture scripts packaged without build products or private logs",
+      "status": "pass",
+      "evidence": "Minimal UnrealLab .uproject/Config/Source/map/materials plus 9 Python and 2 PowerShell portable scripts; no Binaries, Intermediate, DerivedDataCache, Saved, stdout/stderr or UnrealLab.log; EngineRoot is a mandatory parameter."
+    },
+    {
+      "check": "Native resource inventory and known gaps retained honestly",
+      "status": "pass",
+      "evidence": "All 1389 resources, 928 passes and 2481 resource-file records retained (14,517,078,510 bytes); 105 descriptor-only records, 78 Texture3D, 3 TextureCube, 24 SkipTracking warnings and the LumenCardScene RDG UB mapping gap are explicit."
+    }
+  ],
+  "native": {
+    "status": "ok",
+    "engine_frame": 292,
+    "counts": {
+      "resources_total": 1389,
+      "resources_captured": 1284,
+      "resources_partial": 0,
+      "resources_descriptor_only": 105,
+      "texture3d_total": 78,
+      "texture3d_captured": 0,
+      "texturecube_total": 3,
+      "texturecube_captured": 0,
+      "resource_binary_files": 2481,
+      "passes_total": 928,
+      "passes_without_parameter_payload": 0,
+      "skipped_descriptor_warning_lines": 24,
+      "resource_binary_bytes": 14517078510
+    },
+    "known_gaps": [
+      {
+        "gap": "Texture3D payloads absent",
+        "count": 78,
+        "detail": "All 78 Texture3D resources are descriptor-only. DumpGPU's TranslateSubresourceDumpDesc fills extents only for Texture2D, so no 3D texture bytes exist in Resources/. Descriptors remain in inventory.json."
+      },
+      {
+        "gap": "TextureCube payloads absent",
+        "count": 3,
+        "detail": "All 3 TextureCube resources are descriptor-only for the same IsTexture2D gate. Descriptors remain in inventory.json; face bytes are not present."
+      },
+      {
+        "gap": "SkipTracking default/dummy buffers",
+        "count": 24,
+        "detail": "24 warning lines record DefaultStructuredBuffer, DefaultByteAddressBuffer, DefaultBuffer and VirtualTexture_FeedbackBuffer skipped because of ERDGBufferFlags::SkipTracking. Exact warning lines are retained in missing-coverage.json."
+      },
+      {
+        "gap": "RDG uniform-buffer payload mappings (LumenCardScene)",
+        "detail": "This export retains pass parameter payloads and StructuresMetadata for shader structures including LumenCardScene, but it does not provide an exact mapping from every RDG uniform-buffer payload to the corresponding RDG resource. Source instrumentation is expected to close this in later data. No such mapping is claimed here."
+      },
+      {
+        "gap": "Non-RDG / never-viewed resources",
+        "detail": "Only resources referenced by an RDG pass are discoverable. RHI-external resources, never-viewed resources, swapchain/backbuffer state and driver-private allocations are absent."
+      },
+      {
+        "gap": "Shader-local registers",
+        "detail": "DumpGPU captures resources and pass parameter payloads, not registers or values local to a shader invocation. Shader source mapping is evidence, not a memory capture."
+      },
+      {
+        "gap": "RHI descriptor views",
+        "detail": "Passes.json names resource versions bound to passes; it is not a full descriptor-heap or SRV/UAV view dump."
+      },
+      {
+        "gap": "RedumpInputs=0",
+        "detail": "When a resource is modified in place, later passes link to the one dumped producer version rather than per-read duplicates. Passes.json preserves the version linkage."
+      },
+      {
+        "gap": "Depth/stencil preprocessing",
+        "detail": "Depth/stencil and sub-4-byte textures are copied through a staging preprocess; stored bytes are the postprocessed format, not native RHI layout."
+      },
+      {
+        "gap": "Upload/Explore disabled",
+        "detail": "r.DumpGPU.Upload=0 and r.DumpGPU.Explore=0; nothing was uploaded or opened. Raw dump path is external and not included."
+      }
+    ],
+    "coverage_statement": "This package retains the complete DumpGPU resource/pass inventory for the native attempt, but makes no claim of exhaustive computational coverage. The known omissions above remain."
+  },
+  "reference": {
+    "images": "lumen-lit.png, pathtracer-256spp-8bounces.png and pathtracer-1024spp-8bounces.png, all 1280x720 display-referred PNGs with manifest hashes.",
+    "sample_indices": "256 spp / 8 bounces / denoiser 0 and 1024 spp / 8 bounces / denoiser 0; engine sample index and reported count both equal 256 or 1024. 256 samples accumulated across about 86 draw requests.",
+    "light": "Ceiling area light, 2400 lumens, 130x120 cm, attenuation radius 1000 cm (saved map value; the old 2000 cm request was not rebuilt).",
+    "exposure": "histogram AEM_HISTOGRAM pinned by min_brightness == max_brightness == EV100 4 and bias 0; not manual exposure mode.",
+    "map_sha256": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818"
+  },
+  "verification": {
+    "command": "python reproduce/scripts/verify_package.py",
+    "status": "ok",
+    "checks_total": 6001,
+    "checks_passed": 6001,
+    "failed_checks": []
+  },
+  "exclusions": [
+    "raw Resources/ binaries (14.5 GB)",
+    "Binaries/, Intermediate/, DerivedDataCache/, Saved/",
+    "stdout/stderr logs and native Base/UnrealLab.log",
+    "published original image and original source-reference tree (optional, not required)"
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0096",
+  "nativeRecordId": "native-017100",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "DefaultStructuredBuffer",
+  "uniqueName": "000100000228d5765fb8",
+  "displayLabel": "DefaultStructuredBuffer · instance 0001 · frame 292",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 16,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "DefaultStructuredBuffer",
+    "UniqueResourceName": "000100000228d5765fb8",
+    "ByteSize": 16,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00481",
+      "role": "resource",
+      "originalPath": "Resources/000100000228d5765fb8.v00000000000000000000.bin",
+      "bytes": 16,
+      "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0096",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "offset": 0,
+          "length": 16
+        }
+      ],
+      "nativeKind": "SkipTrackingBuffer",
+      "classification": "skip-tracking-buffer",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": {
+          "File": "Resources/000100000228d5765fb8.v00000000000000000000.bin",
+          "Kind": "SkipTrackingBuffer",
+          "ExpectedBytes": 16,
+          "ActualBytes": 16,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 16,
+        "actualBytes": 16,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "SkipTrackingBuffer",
+        "reason": null
+      },
+      "identity": null,
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00481"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0031",
+        "name": "FVirtualShadowMapArray::UpdatePhysicalPageAddresses",
+        "displayLabel": "FVirtualShadowMapArray::UpdatePhysicalPageAddresses · frame 292 · pass 30",
+        "record": "records/pass/pass-0031.json"
+      },
+      {
+        "id": "pass-0046",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 45",
+        "record": "records/pass/pass-0046.json"
+      },
+      {
+        "id": "pass-0095",
+        "name": "BuildPageUpdatePriorityHistogram",
+        "displayLabel": "BuildPageUpdatePriorityHistogram · BuildCardUpdateContext · frame 292 · pass 94",
+        "record": "records/pass/pass-0095.json"
+      },
+      {
+        "id": "pass-0100",
+        "name": "SpliceCardPagesIntoTiles",
+        "displayLabel": "SpliceCardPagesIntoTiles · CullTiles 1 lights · frame 292 · pass 99",
+        "record": "records/pass/pass-0100.json"
+      },
+      {
+        "id": "pass-0102",
+        "name": "CalculateCardTileDepthRanges",
+        "displayLabel": "CalculateCardTileDepthRanges · CullTiles 1 lights · frame 292 · pass 101",
+        "record": "records/pass/pass-0102.json"
+      },
+      {
+        "id": "pass-0106",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 105",
+        "record": "records/pass/pass-0106.json"
+      },
+      {
+        "id": "pass-0111",
+        "name": "ShadowMaskFromLightAttenuationPass(LightType=3)",
+        "displayLabel": "ShadowMaskFromLightAttenuationPass(LightType=3) · Light Attenuation ShadowMask · frame 292 · pass 110",
+        "record": "records/pass/pass-0111.json"
+      },
+      {
+        "id": "pass-0112",
+        "name": "DistanceFieldShadowPass LightType=3",
+        "displayLabel": "DistanceFieldShadowPass LightType=3 · Offscreen shadows · frame 292 · pass 111",
+        "record": "records/pass/pass-0112.json"
+      },
+      {
+        "id": "pass-0113",
+        "name": "Batched lights",
+        "displayLabel": "Batched lights · Lights · frame 292 · pass 112",
+        "record": "records/pass/pass-0113.json"
+      },
+      {
+        "id": "pass-0114",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · DirectLighting · frame 292 · pass 113",
+        "record": "records/pass/pass-0114.json"
+      },
+      {
+        "id": "pass-0117",
+        "name": "BuildRadiosityTiles",
+        "displayLabel": "BuildRadiosityTiles · Radiosity · frame 292 · pass 116",
+        "record": "records/pass/pass-0117.json"
+      },
+      {
+        "id": "pass-0119",
+        "name": "DistanceFieldTracing 4x4 probes at 4 spacing",
+        "displayLabel": "DistanceFieldTracing 4x4 probes at 4 spacing · Radiosity · frame 292 · pass 118",
+        "record": "records/pass/pass-0119.json"
+      },
+      {
+        "id": "pass-0120",
+        "name": "SpatialFilterProbes",
+        "displayLabel": "SpatialFilterProbes · Radiosity · frame 292 · pass 119",
+        "record": "records/pass/pass-0120.json"
+      },
+      {
+        "id": "pass-0121",
+        "name": "ConvertToSH",
+        "displayLabel": "ConvertToSH · Radiosity · frame 292 · pass 120",
+        "record": "records/pass/pass-0121.json"
+      },
+      {
+        "id": "pass-0122",
+        "name": "Integrate",
+        "displayLabel": "Integrate · Radiosity · frame 292 · pass 121",
+        "record": "records/pass/pass-0122.json"
+      },
+      {
+        "id": "pass-0123",
+        "name": "CombineLighting CS",
+        "displayLabel": "CombineLighting CS · Radiosity · frame 292 · pass 122",
+        "record": "records/pass/pass-0123.json"
+      },
+      {
+        "id": "pass-0155",
+        "name": "TraceFromProbes Res=32x32 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=32x32 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 154",
+        "record": "records/pass/pass-0155.json"
+      },
+      {
+        "id": "pass-0156",
+        "name": "TraceFromProbes Res=8x8 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=8x8 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 155",
+        "record": "records/pass/pass-0156.json"
+      },
+      {
+        "id": "pass-0168",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 167",
+        "record": "records/pass/pass-0168.json"
+      },
+      {
+        "id": "pass-0184",
+        "name": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+        "displayLabel": "TraceGlobalSDFAndInterpolateRadianceCache 3x3 · TranslucencyVolumeLighting · frame 292 · pass 183",
+        "record": "records/pass/pass-0184.json"
+      },
+      {
+        "id": "pass-0191",
+        "name": "ClearPageTable(Shadow.Virtual.PageRequestFlags Size=8192x192 texels)",
+        "displayLabel": "ClearPageTable(Shadow.Virtual.PageRequestFlags Size=8192x192 texels) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 190",
+        "record": "records/pass/pass-0191.json"
+      },
+      {
+        "id": "pass-0192",
+        "name": "ClearPageTableDir(Shadow.Virtual.PageReceiverMasks Size=256x384 texels)",
+        "displayLabel": "ClearPageTableDir(Shadow.Virtual.PageReceiverMasks Size=256x384 texels) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 191",
+        "record": "records/pass/pass-0192.json"
+      },
+      {
+        "id": "pass-0194",
+        "name": "InitPageRectBounds",
+        "displayLabel": "InitPageRectBounds · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 193",
+        "record": "records/pass/pass-0194.json"
+      },
+      {
+        "id": "pass-0196",
+        "name": "ClearPageTable(Shadow.Virtual.PageTable Size=8192x192 texels)",
+        "displayLabel": "ClearPageTable(Shadow.Virtual.PageTable Size=8192x192 texels) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 195",
+        "record": "records/pass/pass-0196.json"
+      },
+      {
+        "id": "pass-0197",
+        "name": "ClearPageTable(Shadow.Virtual.PageFlags Size=8192x192 texels)",
+        "displayLabel": "ClearPageTable(Shadow.Virtual.PageFlags Size=8192x192 texels) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 196",
+        "record": "records/pass/pass-0197.json"
+      },
+      {
+        "id": "pass-0198",
+        "name": "PruneLightGrid(Min=0,Max=1)",
+        "displayLabel": "PruneLightGrid(Min=0,Max=1) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 197",
+        "record": "records/pass/pass-0198.json"
+      },
+      {
+        "id": "pass-0199",
+        "name": "MarkCoarsePages",
+        "displayLabel": "MarkCoarsePages · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 198",
+        "record": "records/pass/pass-0199.json"
+      },
+      {
+        "id": "pass-0200",
+        "name": "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=6,{80,45})",
+        "displayLabel": "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=6,{80,45}) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 199",
+        "record": "records/pass/pass-0200.json"
+      },
+      {
+        "id": "pass-0207",
+        "name": "UpdatePhysicalPages",
+        "displayLabel": "UpdatePhysicalPages · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 206",
+        "record": "records/pass/pass-0207.json"
+      },
+      {
+        "id": "pass-0208",
+        "name": "PackAvailablePages",
+        "displayLabel": "PackAvailablePages · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 207",
+        "record": "records/pass/pass-0208.json"
+      },
+      {
+        "id": "pass-0209",
+        "name": "AppendPhysicalPageList",
+        "displayLabel": "AppendPhysicalPageList · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 208",
+        "record": "records/pass/pass-0209.json"
+      },
+      {
+        "id": "pass-0210",
+        "name": "AppendPhysicalPageList(Counts)",
+        "displayLabel": "AppendPhysicalPageList(Counts) · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 209",
+        "record": "records/pass/pass-0210.json"
+      },
+      {
+        "id": "pass-0211",
+        "name": "AllocateNewPageMappings",
+        "displayLabel": "AllocateNewPageMappings · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 210",
+        "record": "records/pass/pass-0211.json"
+      },
+      {
+        "id": "pass-0212",
+        "name": "GenerateHierarchicalPageFlags",
+        "displayLabel": "GenerateHierarchicalPageFlags · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 211",
+        "record": "records/pass/pass-0212.json"
+      },
+      {
+        "id": "pass-0213",
+        "name": "PropagateMappedMips",
+        "displayLabel": "PropagateMappedMips · FVirtualShadowMapArray::BuildPageAllocation · frame 292 · pass 212",
+        "record": "records/pass/pass-0213.json"
+      },
+      {
+        "id": "pass-0215",
+        "name": "SelectPagesToInitialize",
+        "displayLabel": "SelectPagesToInitialize · InitializePhysicalPages · frame 292 · pass 214",
+        "record": "records/pass/pass-0215.json"
+      },
+      {
+        "id": "pass-0216",
+        "name": "InitializePhysicalMemoryIndirect",
+        "displayLabel": "InitializePhysicalMemoryIndirect · InitializePhysicalPages · frame 292 · pass 215",
+        "record": "records/pass/pass-0216.json"
+      },
+      {
+        "id": "pass-0243",
+        "name": "TraceVoxels(Scene)",
+        "displayLabel": "TraceVoxels(Scene) · LumenReflections · frame 292 · pass 242",
+        "record": "records/pass/pass-0243.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00481",
+      "file": "Resources/000100000228d5765fb8.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": {
+          "File": "Resources/000100000228d5765fb8.v00000000000000000000.bin",
+          "Kind": "SkipTrackingBuffer",
+          "ExpectedBytes": 16,
+          "ActualBytes": 16,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 16,
+        "actualBytes": 16,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "SkipTrackingBuffer",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0067",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer DefaultStructuredBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0096"
+    },
+    {
+      "id": "gap-1883",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched DefaultStructuredBuffer (000100000228d5765fb8). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0096"
+    }
+  ]
+}

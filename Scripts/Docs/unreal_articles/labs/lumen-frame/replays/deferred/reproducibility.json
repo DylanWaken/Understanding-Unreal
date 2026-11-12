@@ -1,0 +1,35 @@
+{
+  "schema": "deferred-replay-reproducibility-v1",
+  "capture_id": "binary-20261112-153914",
+  "report_sha256": "4dacc34ac987e31ab212108d4e94eacd996a9de66c101a8badce2b3d38674fde",
+  "verification_sha256": "abddacbdbc66e0d9d92dc120c3987ae3cd3e1846f48d02dd651fb4515fa00246",
+  "verification_passed": true,
+  "verification_checks": 17,
+  "contract_sha256": "85abd30b0d26d5457a0122c13f1aee2cf21cb1a06945d8a1a8c351b67eb90e48",
+  "contract_md_sha256": "be3be1fcae4b9aa7dc42e6ffa7b5f575ac5cbe308c1a6f9794f5f829fb8ba440",
+  "numerical_report_sha256": "73bf60252624cbc09ace218f379cb624fc884ca764e0430e57d7e932b2bc02ba",
+  "readme_sha256": "55b0bde1e85e01e1da6217645d69143a9766974b3f452d38a6090265c4d2da7d",
+  "requirements_sha256": "cdcf8855b8a1634d4fabfddee8f703257ef142e28416dabd55bb5331909d6b51",
+  "replay_script_sha256": "617a0d50fe02d5ed6c686460284774cafe49e91d33100733eb7be65389e073d2",
+  "verify_script_sha256": "fdfc7d51aa8c6e583245dc6359804e5257c292e654d639eb571e26c08b52236e",
+  "write_contract_sha256": "2829aa534ab9ffd5679c307d2c9a6e5cc8fcb448037b4431a47d4c382f54a593",
+  "python": "3.14 (tested)",
+  "numpy": "2.5.4 (tested)",
+  "requirements": "numpy",
+  "no_gpu_work": true,
+  "no_engine_or_evidence_edits": true,
+  "commands": {
+    "install": "python -m pip install -r analysis/deferred-replay/requirements.txt",
+    "replay": "python analysis/deferred-replay/replay_cpu.py --capture <capture-root> --output analysis/deferred-replay/report.json",
+    "verify": "python analysis/deferred-replay/verify_replay.py --capture <capture-root> --report analysis/deferred-replay/report.json --output analysis/deferred-replay/verification.json --ltc-header <engine>/Engine/Source/Runtime/Renderer/Private/LTC.h --final-dir <final>",
+    "contract": "python analysis/deferred-replay/write_contract.py --report analysis/deferred-replay/report.json --verification analysis/deferred-replay/verification.json --out-dir analysis/deferred-replay --scene-graphs <final>/scene-graphs.json"
+  },
+  "gaps": [
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5",
+    "G6"
+  ]
+}

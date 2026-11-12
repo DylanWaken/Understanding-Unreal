@@ -1,0 +1,272 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0773",
+  "nativeRecordId": "native-016292",
+  "name": "SetupTraceFromProbesCS",
+  "displayLabel": "SetupTraceFromProbesCS · UpdateWorldRadianceCaches · frame 292 · pass 772",
+  "frameNumber": 292,
+  "graphPrefix": "UpdateWorldRadianceCaches",
+  "viewState": null,
+  "pointer": "000400000228baec8cd0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000400000228baec8b30",
+  "parametersMetadataPointer": "000400007ffb89252e00",
+  "parentScopes": [
+    "UpdateWorldRadianceCaches",
+    "LumenScreenProbeGather",
+    "DiffuseIndirectAndAO",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "SetupTraceFromProbesCS",
+    "ParametersName": "FParameters",
+    "Parameters": "000400000228baec8b30",
+    "ParametersMetadata": "000400007ffb89252e00",
+    "Pointer": "000400000228baec8cd0",
+    "Id": 772,
+    "ParentEventScopes": [
+      "UpdateWorldRadianceCaches",
+      "LumenScreenProbeGather",
+      "DiffuseIndirectAndAO",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000400000228dcc7ecd0"
+    ],
+    "OutputResources": [
+      "000400000228baec8640",
+      "000400000228baec8778",
+      "000400000228baec88b0",
+      "000400000228baec89e8"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000400000228dcc7ecd0",
+      "resourceId": "resource-1238",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02492",
+        "payload-02493"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000400000228baec8640",
+      "resourceId": "resource-1250",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02239"
+      ]
+    },
+    {
+      "uniqueName": "000400000228baec8778",
+      "resourceId": "resource-1251",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02240"
+      ]
+    },
+    {
+      "uniqueName": "000400000228baec88b0",
+      "resourceId": "resource-1252",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02241"
+      ]
+    },
+    {
+      "uniqueName": "000400000228baec89e8",
+      "resourceId": "resource-1253",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-02242"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06755",
+    "metadataPointer": "000400007ffb89252e00",
+    "bytes": 48,
+    "sha256": "08f406b4f8943f16508e172f34579c602af24eb5a32029f429f34c79cbeb7a10",
+    "chunks": [
+      {
+        "sha": "08f406b4f8943f16508e172f34579c602af24eb5a32029f429f34c79cbeb7a10",
+        "offset": 0,
+        "length": 48
+      }
+    ],
+    "originalPath": "Structures/000400000228baec8b30.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenRadianceCache.cpp",
+    "FileLine": 878,
+    "Size": 48,
+    "Members": [
+      {
+        "Name": "RWTraceProbesIndirectArgs",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 879,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWSortProbeTraceTilesIndirectArgs",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 880,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWRadianceCacheHardwareRayTracingIndirectArgs",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 881,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWHardwareRayTracingRayAllocatorBuffer",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 882,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ProbeTraceTileAllocator",
+        "ShaderType": "Buffer<uint>",
+        "FileLine": 883,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "SortTraceTilesGroupSize",
+        "ShaderType": "",
+        "FileLine": 884,
+        "Offset": 40,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000400000228baec8cd0",
+      "Parameters": "000400000228baec8b30",
+      "Bindings": {
+        "RWTraceProbesIndirectArgs": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228baec8b60",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWSortProbeTraceTilesIndirectArgs": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228baec8ba8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWRadianceCacheHardwareRayTracingIndirectArgs": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228baec8bf0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWHardwareRayTracingRayAllocatorBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228baec8c38",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ProbeTraceTileAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000400000228baec8c80",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

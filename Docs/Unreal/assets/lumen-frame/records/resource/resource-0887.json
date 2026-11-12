@@ -1,0 +1,304 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0887",
+  "nativeRecordId": "native-017896",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.PageInfoBuffer",
+  "uniqueName": "000300000228e225e6b0",
+  "displayLabel": "Shadow.Virtual.PageInfoBuffer · instance 0003 · frame 292 · passes 538",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 538,
+    "last": 538
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 1344,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 336,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 336
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.PageInfoBuffer",
+    "UniqueResourceName": "000300000228e225e6b0",
+    "ByteSize": 1344,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 336,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01454",
+      "role": "resource",
+      "originalPath": "Resources/000300000228e225e6b0.v000300000228e225f0e0.bin",
+      "bytes": 1344,
+      "sha256": "1440c5090c3bf4f98f04db612ac14c8cda19d794355c399490c774b8b1d75f0f",
+      "version": "000300000228e225f0e0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0887",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "1440c5090c3bf4f98f04db612ac14c8cda19d794355c399490c774b8b1d75f0f",
+          "offset": 0,
+          "length": 1344
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228e225e6b0",
+        "name": "Shadow.Virtual.PageInfoBuffer",
+        "byteSize": 1344
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228e225f0e0",
+      "producerPassId": "pass-0539",
+      "producerPassName": "OutputCommandInstanceListsCs",
+      "payloadIds": [
+        "payload-01454"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0539",
+        "name": "OutputCommandInstanceListsCs",
+        "displayLabel": "OutputCommandInstanceListsCs · CullingPasses · frame 292 · pass 538",
+        "record": "records/pass/pass-0539.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0540",
+        "name": "RasterPasses",
+        "displayLabel": "RasterPasses · Batched · frame 292 · pass 539",
+        "record": "records/pass/pass-0540.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01454",
+      "file": "Resources/000300000228e225e6b0.v000300000228e225f0e0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-page-info-buffer",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.PageInfoBuffer$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one packed uint32 page info per visible instance slot (parallel to InstanceIdsBuffer)",
+      "units": "bitfield: 16-bit mip-view id, 1-bit static-page flag",
+      "coordinateSpace": "mip view id = MipLevel*TotalPrimaryViews + PrimaryViewId",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "same capacity as VisibleInstances"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 336,
+          "byteSize": 1344
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "same capacity as VisibleInstances"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "unpack",
+          "expression": "ViewId=P&0xFFFF; bStaticPage=((P>>16)&1)!=0",
+          "requires": [
+            "PageInfoBuffer"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.pageinfodec"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "MipViewId = MipLevel*TotalPrimaryViews + PrimaryViewId (DrawCommands:295).",
+        "Bits 17..31 of each word are unused; the captured values are 0 there.",
+        "PackPageInfo/UnpackPageInfo is the authoritative codec; bits 17..31 are unused."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.outcmd"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.pageinfodec"
+      ],
+      "gaps": [],
+      "fields": [
+        {
+          "name": "ViewId",
+          "type": "uint",
+          "bitOffset": 0,
+          "bitWidth": 16,
+          "decode": "P & 0xFFFF",
+          "units": "mip view index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.pageinfo"
+          ]
+        },
+        {
+          "name": "bStaticPage",
+          "type": "uint",
+          "bitOffset": 16,
+          "bitWidth": 1,
+          "decode": "((P>>16)&1) != 0",
+          "units": "bit",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.pageinfodec"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "ViewId",
+          "bStaticPage"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0559",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.PageInfoBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0887"
+    }
+  ]
+}

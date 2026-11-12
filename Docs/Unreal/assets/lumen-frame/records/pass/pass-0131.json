@@ -1,0 +1,116 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0131",
+  "nativeRecordId": "native-015650",
+  "name": "ClearBuffer(Lumen.ScreenProbeGather.NumAdaptiveScreenProbes Size=4bytes)",
+  "displayLabel": "ClearBuffer(Lumen.ScreenProbeGather.NumAdaptiveScreenProbes Size=4bytes) · LumenScreenProbeGather · frame 292 · pass 130",
+  "frameNumber": 292,
+  "graphPrefix": "LumenScreenProbeGather",
+  "viewState": null,
+  "pointer": "000100000228e8dfca70",
+  "parametersName": "FClearBufferUAVParameters",
+  "parametersPointer": "000100000228e8dfca60",
+  "parametersMetadataPointer": "000100007ffba0d5c0b0",
+  "parentScopes": [
+    "LumenScreenProbeGather",
+    "DiffuseIndirectAndAO",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearBuffer(Lumen.ScreenProbeGather.NumAdaptiveScreenProbes Size=4bytes)",
+    "ParametersName": "FClearBufferUAVParameters",
+    "Parameters": "000100000228e8dfca60",
+    "ParametersMetadata": "000100007ffba0d5c0b0",
+    "Pointer": "000100000228e8dfca70",
+    "Id": 130,
+    "ParentEventScopes": [
+      "LumenScreenProbeGather",
+      "DiffuseIndirectAndAO",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "000100000228e8dfbb30"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "000100000228e8dfbb30",
+      "resourceId": "resource-0231",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00569",
+        "payload-00570"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06113",
+    "metadataPointer": "000100007ffba0d5c0b0",
+    "bytes": 16,
+    "sha256": "f63c362afa463894568df9518fefdfc4481ba705085d5f571fd593c69b8b80c8",
+    "chunks": [
+      {
+        "sha": "f63c362afa463894568df9518fefdfc4481ba705085d5f571fd593c69b8b80c8",
+        "offset": 0,
+        "length": 16
+      }
+    ],
+    "originalPath": "Structures/000100000228e8dfca60.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FClearBufferUAVParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\RenderGraphUtils.cpp",
+    "FileLine": 415,
+    "Size": 16,
+    "Members": [
+      {
+        "Name": "BufferUAV",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 416,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000228e8dfca70",
+      "Parameters": "000100000228e8dfca60",
+      "Bindings": {
+        "BufferUAV": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228e8dfca00",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

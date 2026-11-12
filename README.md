@@ -1,15 +1,17 @@
 # Understanding Unreal
 
-Independent, source-backed essays on Unreal Engine rendering. The site source lives in [`Docs/`](Docs/); the standalone Pages workflow is configured to publish it at `https://dylanwaken.github.io/Understanding-Unreal/` once GitHub Pages is enabled.
+Independent, source-backed essays on Unreal Engine rendering. The site source lives in [`Docs/`](Docs/) and is published at [Understanding Unreal](https://dylanwaken.github.io/Understanding-Unreal/).
 
 The collection contains four standalone long-form articles:
 
 - **Scene Representation in Unreal Engine** — one room from shared assets and components through render proxies, GPU Scene, animation, raster passes and lighting representations.
 - **Nanite: From a Scanned Bunny to Visible Pixels** — a measured replacement hierarchy, streaming, visibility, rasterization and shading, with a computed Stanford bunny laboratory and real engine captures.
-- **Lumen: Following Light Through a Room** — surface caches, distance-field tracing, probes, diffuse GI, reflections and temporal reuse, with computed intermediate states and real Lumen captures.
+- **Lumen: From the Path Integral to a Frame** — a path-space derivation and working renderer, the mathematical real-time approximation, and deferred shading, shadows, surface caches, probes, reflections and temporal reconstruction, with actual Unreal captures.
 - **How Unreal Compiles a Material Graph** — graph analysis, HLSL translation, shader compilation, permutations, caching and GPU material programs.
 
 A shared [graphics glossary](Docs/glossary.html), the site shell and the old combined-essay redirect are published alongside them. The legacy `nanite-and-lumen.html` page preserves old chapter bookmarks by forwarding to the independent essays.
+
+The Lumen essay includes a [frame explorer](https://dylanwaken.github.io/Understanding-Unreal/Unreal/frame-explorer.html) for the instrumented capture: 928 pass records, 1,449 resource identities and 7,024 binary payloads. Its lossless chunk package reconstructs 18.5 GB of exported binary data. Stored-format values, packed fields, parameters, subresources and provenance are inspectable; the coverage ledger distinguishes missing semantic metadata and unproved native-resource timing from missing bytes. See the [capture and replay instructions](Scripts/Docs/unreal_articles/labs/lumen-frame/README.md).
 
 ## Repository layout
 
@@ -49,6 +51,9 @@ python Scripts/Docs/unreal_articles/validate.py
 
 # Validate frozen laboratory outputs, hashes, PNG integrity and numerical evidence without a GPU.
 python Scripts/Docs/unreal_articles/validate_labs.py
+
+# Validate the rewritten Lumen derivation, diagrams and portable Unreal reference package.
+python Scripts/Docs/unreal_articles/validate_lumen_v2.py
 ```
 
 The same checks run in CI before the `Docs/` artifact is uploaded:
@@ -57,6 +62,7 @@ The same checks run in CI before the `Docs/` artifact is uploaded:
 python Scripts/Docs/unreal_articles/build.py --check
 python Scripts/Docs/unreal_articles/math_typesetting.py --check --node node
 python Scripts/Docs/unreal_articles/validate_labs.py
+python Scripts/Docs/unreal_articles/validate_lumen_v2.py
 python Scripts/Docs/unreal_articles/validate.py
 ```
 

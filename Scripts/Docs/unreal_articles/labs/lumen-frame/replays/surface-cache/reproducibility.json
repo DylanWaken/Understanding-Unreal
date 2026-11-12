@@ -1,0 +1,38 @@
+{
+  "python": "3.14.6",
+  "numpy": "2.5.4",
+  "captureId": "binary-20261112-153914",
+  "passId": 113,
+  "outputs": [
+    {
+      "file": "cache-texel-replay.json",
+      "bytes": 305188,
+      "primarySha256": "495987ae0843020b25fc718b6ae2c50aef0642f4aa8233c0532b1681ab0394b2",
+      "reproSha256": "495987ae0843020b25fc718b6ae2c50aef0642f4aa8233c0532b1681ab0394b2",
+      "identical": true
+    },
+    {
+      "file": "cache-texel-replay.md",
+      "bytes": 12480,
+      "primarySha256": "2999d22cc83490288e90b838f3cb7b5f93ff1b2e132c4b17af70865772a1e237",
+      "reproSha256": "2999d22cc83490288e90b838f3cb7b5f93ff1b2e132c4b17af70865772a1e237",
+      "identical": true
+    },
+    {
+      "file": "cache-texel-flow.svg",
+      "bytes": 3713,
+      "primarySha256": "017a82022b4fe3e9ed48afe4305dadbe5c893e24f1d184e3cdced30e044a6bef",
+      "reproSha256": "017a82022b4fe3e9ed48afe4305dadbe5c893e24f1d184e3cdced30e044a6bef",
+      "identical": true
+    }
+  ],
+  "verificationChecks": 85,
+  "verificationFailures": 0,
+  "commands": [
+    "python -m pip install -r requirements.txt",
+    "python replay_cache_texel.py --capture <DumpGPU-directory> --output ./rerun --pass-id 113",
+    "python write_replay_chapter.py ./rerun",
+    "python draw_replay_flow.py ./rerun",
+    "python verify_replay.py --capture <DumpGPU-directory> --output ./rerun/verification.json"
+  ]
+}

@@ -1,0 +1,3519 @@
+{
+ "schema": "unreal-understanding-gdf-march-v1",
+ "scope": "CPU replay of the captured global-SDF ray preceding one radiance-cache lookup",
+ "capture": {
+  "root": "D:\\UnrealEngine\\UnrealUnderstandingCapture\\capture\\buffers\\gpudump\\binary-20261112-153914",
+  "graph": "0001",
+  "passId": 167,
+  "passPointer": "000100000228d58f3800",
+  "eventName": "TraceGlobalSDFAndApplyRadianceCache"
+ },
+ "engine": {
+  "root": "D:\\UnrealEngine"
+ },
+ "selection": {
+  "lane": 190,
+  "allocator": 82102,
+  "compactedWord": 69206692,
+  "screenProbeIndex": 676,
+  "probeAtlasXY": [
+   36,
+   8
+  ],
+  "traceTexelXY": [
+   2,
+   2
+  ],
+  "traceBufferXY": [
+   290,
+   66
+  ]
+ },
+ "query": {
+  "translatedWorldPosition": [
+   36.360939025878906,
+   676.7451171875,
+   134.9954376220703
+  ],
+  "direction": [
+   -0.5315276384353638,
+   -0.4322027862071991,
+   -0.7284772396087646
+  ],
+  "coneHalfAngle": 0.08842656016349792,
+  "originSource": "GetTranslatedWorldPositionFromScreenUV(ScreenUV, SceneDepth) via LumenPosition.ush; same captured bytes as the world-cache replay"
+ },
+ "queryWitness": {
+  "dispatchIndex": 190,
+  "packedCompactedTraceWord": 69206692,
+  "screenProbeIndex": 676,
+  "probeAtlasXY": [
+   36,
+   8
+  ],
+  "uniformScreenTileXY": [
+   36,
+   8
+  ],
+  "traceTexelXY": [
+   2,
+   2
+  ],
+  "traceBufferXY": [
+   290,
+   66
+  ],
+  "screenTemporalIndex": 7,
+  "tileJitter": [
+   14,
+   14
+  ],
+  "screenXY": [
+   590,
+   142
+  ],
+  "screenXYClamped": [
+   590.0,
+   142.0
+  ],
+  "screenUV": [
+   0.4613281190395355,
+   0.16047297418117523
+  ],
+  "packedSceneDepth": 1143461126,
+  "sceneDepth": 671.3284912109375,
+  "screenPosition": [
+   -0.07734376192092896,
+   0.6041666865348816
+  ],
+  "homogeneousPosition": [
+   -51.923072814941406,
+   405.59429931640625,
+   671.3284912109375,
+   1.0
+  ],
+  "screenToTranslatedWorld": [
+   [
+    -0.7002853751182556,
+    -3.06219476442493e-08,
+    -3.1285093959887433e-10,
+    0.0
+   ],
+   [
+    -8.086986080790837e-10,
+    0.01447222474962473,
+    0.3936445116996765,
+    0.0
+   ],
+   [
+    -4.368187944692181e-08,
+    0.9993248581886292,
+    -0.036739885807037354,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "blueNoiseFrameIndex": 7,
+  "blueNoiseDimensions": [
+   128,
+   128,
+   64
+  ],
+  "blueNoiseModuloMasks": [
+   127,
+   127,
+   63
+  ],
+  "blueNoiseWrappedXYZ": [
+   36,
+   8,
+   7
+  ],
+  "blueNoiseTextureXY": [
+   36,
+   904
+  ],
+  "blueNoiseRawBGRA": [
+   0,
+   91,
+   207,
+   255
+  ],
+  "blueNoiseShaderRG": [
+   207.0,
+   91.0
+  ],
+  "blueNoiseDecoded": [
+   0.8117647171020508,
+   0.35686275362968445
+  ],
+  "rayInfoPacked": 129,
+  "angularRay": {
+   "packedRayInfo": 129,
+   "structuredImportance": true,
+   "cell": [
+    1,
+    2
+   ],
+   "level": 0,
+   "cellResolution": 16,
+   "jitter": [
+    0.8117647171020508,
+    0.35686275362968445
+   ],
+   "uv": [
+    0.11323529481887817,
+    0.14730392396450043
+   ],
+   "direction": [
+    -0.5315276384353638,
+    -0.4322027862071991,
+    -0.7284772396087646
+   ],
+   "coneHalfAngle": 0.08842656016349792,
+   "angularCellSolidAngle": 0.04908738521234052,
+   "coneSolidAngleFromApproximateAngle": 0.024548916464480607
+  }
+ },
+ "cacheBoundary": {
+  "selectedClipmap": 0,
+  "clipmapCornerTWSAndCellSize": [
+   -2552.083251953125,
+   -2568.75,
+   -2612.91650390625
+  ],
+  "cellSize": 104.16666412353516,
+  "minimumLocalTraceDistance": 360.8439025878906,
+  "cacheRadiance": [
+   11.7407808303833,
+   14.524840354919434,
+   10.691308975219727
+  ],
+  "cacheTraceHitDistance": 394.431884765625,
+  "coordFloat": [
+   2588.444091796875,
+   3245.4951171875,
+   2747.911865234375
+  ],
+  "fractionalWeights": [
+   0.3490638732910156,
+   0.6567535400390625,
+   0.8799552917480469
+  ],
+  "neighborCount": 8,
+  "taps": 32,
+  "source": "GetRadianceCacheCoverage -> GetRadianceProbeTMin + cellSize*sqrt(3)"
+ },
+ "previousTraceHit": {
+  "resource": "000100000225fb913620",
+  "version": "000100000225fb91bf20",
+  "writer": {
+   "Id": 163,
+   "Pointer": "000100000225fb91bf20",
+   "EventName": "TraceScreen(Scene)"
+  },
+  "exportFile": "Resources\\000100000225fb913620.mip0.v000100000225fb91bf20.bin",
+  "word": 3283464324,
+  "wordHex": "0xc3b5b084",
+  "distance": 363.3790283203125,
+  "flags": {
+   "bHit": false,
+   "bMoving": false,
+   "bReachedRadianceCache": true
+  },
+  "payload": {
+   "path": "Resources\\000100000225fb913620.mip0.v000100000225fb91bf20.bin",
+   "bytes": 1720320,
+   "sha256": "2487a2863e2d912fa10a04a2714f1c072c2f5f7a14a55ee63f26ea930c3dd773"
+  }
+ },
+ "normalBias": {
+  "encodedBytes": [
+   0,
+   0
+  ],
+  "octahedral": [
+   -1.0,
+   -1.0
+  ],
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "twoSided": false,
+  "source": "GetScreenProbeWorldNormal -> OctahedronToUnitVector"
+ },
+ "gdfVolumes": {
+  "pageAtlas": {
+   "bindingPath": "TracingParameters.View.GlobalDistanceFieldPageAtlasTexture",
+   "bindingPointer": "000100000228ec2dbd00",
+   "nativePointer": "000100000228ec2dbd00",
+   "nativeTextureName": "GlobalDistanceField.PageAtlas",
+   "nativeFormat": "PF_R8",
+   "nativeExtent": [
+    1024,
+    1024,
+    56
+   ],
+   "nativeNumMips": 1,
+   "diagnosticResource": "000100000228d576b738",
+   "dumpedAs": "NativeTexture.000100000228ec2dbd00.mip0_1.a0_1.f0_1.dim5.plane0",
+   "exportFile": "Resources/000100000228d576b738.linear.mip0.v000100000225fb9fef70.bin",
+   "exportViewFormat": "PF_R8",
+   "exportSRGB": false,
+   "exportUsesWholeNativeResource": true,
+   "exportSubresourceCount": 0,
+   "firstScheduledByPass": "000100000225fb9fef70",
+   "firstScheduledByPassId": 28,
+   "firstScheduledByPassEvent": "DepthPassParallel",
+   "dumpStatus": "ScheduledByEarlierPass",
+   "readStateBasis": "OwnerPassSRVBinding",
+   "ownerPassExecutionDependencyClaimed": false,
+   "sourceStateProvenAtScheduling": false,
+   "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+   "reusedScheduledReadback": true,
+   "layout": {
+    "Resource": "000100000228d576b738",
+    "Name": "GlobalDistanceField.PageAtlas",
+    "File": "Resources/000100000228d576b738.linear.mip0.v000100000225fb9fef70.bin",
+    "Dimension": "Texture3D",
+    "MipLevel": 0,
+    "ExtentX": 1024,
+    "ExtentY": 1024,
+    "Depth": 56,
+    "ZSliceCount": 56,
+    "ZSliceStrideBytes": 1048576,
+    "RowPitchBytes": 1024,
+    "ZSliceOrder": "ascending z, tightly packed",
+    "NativeFormat": "PF_R8",
+    "ViewFormat": "PF_R8",
+    "StoredFormat": "PF_R8",
+    "NativeSRGB": false,
+    "ViewSRGB": false,
+    "SRGBOverride": "ForceDisable",
+    "StoredBytesAreNativeStorage": false,
+    "NativeValueInterpretation": "DecodedFloat",
+    "ValuePreserving": true,
+    "Readback": "SynchronousComputePerSlice",
+    "DumpStatus": "ScheduledForReadback",
+    "ByteSize": 58720256,
+    "StagingByteSize": 58720256
+   },
+   "readbackStatus": {
+    "File": "Resources/000100000228d576b738.linear.mip0.v000100000225fb9fef70.bin",
+    "Kind": "Texture3D",
+    "ExpectedBytes": 58720256,
+    "ActualBytes": 58720256,
+    "FileExists": true,
+    "FileSizeMatches": true,
+    "Status": "Dumped",
+    "Timing": "GPUReadbackCompleted"
+   },
+   "payload": {
+    "path": "Resources\\000100000228d576b738.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 58720256,
+    "sha256": "88977356fd6d2d9a0ed1063693cf3e3dcc23fa667fd7a375bf97926fb55e1718"
+   },
+   "recordedWritersOnBindingPointer": [],
+   "recordedWritersOnDiagnosticResource": []
+  },
+  "coverageAtlas": {
+   "bindingPath": "TracingParameters.View.GlobalDistanceFieldCoverageAtlasTexture",
+   "bindingPointer": "000100000228ec2dc080",
+   "nativePointer": "000100000228ec2dc080",
+   "nativeTextureName": "GlobalDistanceField.CoverageAtlas",
+   "nativeFormat": "PF_R8",
+   "nativeExtent": [
+    512,
+    512,
+    28
+   ],
+   "nativeNumMips": 1,
+   "diagnosticResource": "000100000228d576ba00",
+   "dumpedAs": "NativeTexture.000100000228ec2dc080.mip0_1.a0_1.f0_1.dim5.plane0",
+   "exportFile": "Resources/000100000228d576ba00.linear.mip0.v000100000225fb9fef70.bin",
+   "exportViewFormat": "PF_R8",
+   "exportSRGB": false,
+   "exportUsesWholeNativeResource": true,
+   "exportSubresourceCount": 0,
+   "firstScheduledByPass": "000100000225fb9fef70",
+   "firstScheduledByPassId": 28,
+   "firstScheduledByPassEvent": "DepthPassParallel",
+   "dumpStatus": "ScheduledByEarlierPass",
+   "readStateBasis": "OwnerPassSRVBinding",
+   "ownerPassExecutionDependencyClaimed": false,
+   "sourceStateProvenAtScheduling": false,
+   "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+   "reusedScheduledReadback": true,
+   "layout": {
+    "Resource": "000100000228d576ba00",
+    "Name": "GlobalDistanceField.CoverageAtlas",
+    "File": "Resources/000100000228d576ba00.linear.mip0.v000100000225fb9fef70.bin",
+    "Dimension": "Texture3D",
+    "MipLevel": 0,
+    "ExtentX": 512,
+    "ExtentY": 512,
+    "Depth": 28,
+    "ZSliceCount": 28,
+    "ZSliceStrideBytes": 262144,
+    "RowPitchBytes": 512,
+    "ZSliceOrder": "ascending z, tightly packed",
+    "NativeFormat": "PF_R8",
+    "ViewFormat": "PF_R8",
+    "StoredFormat": "PF_R8",
+    "NativeSRGB": false,
+    "ViewSRGB": false,
+    "SRGBOverride": "ForceDisable",
+    "StoredBytesAreNativeStorage": false,
+    "NativeValueInterpretation": "DecodedFloat",
+    "ValuePreserving": true,
+    "Readback": "SynchronousComputePerSlice",
+    "DumpStatus": "ScheduledForReadback",
+    "ByteSize": 7340032,
+    "StagingByteSize": 7340032
+   },
+   "readbackStatus": {
+    "File": "Resources/000100000228d576ba00.linear.mip0.v000100000225fb9fef70.bin",
+    "Kind": "Texture3D",
+    "ExpectedBytes": 7340032,
+    "ActualBytes": 7340032,
+    "FileExists": true,
+    "FileSizeMatches": true,
+    "Status": "Dumped",
+    "Timing": "GPUReadbackCompleted"
+   },
+   "payload": {
+    "path": "Resources\\000100000228d576ba00.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 7340032,
+    "sha256": "9eb8c695067839e3ecf7cd86cd9d5bc90ea3128aac48932844f60637741de208"
+   },
+   "recordedWritersOnBindingPointer": [],
+   "recordedWritersOnDiagnosticResource": []
+  },
+  "pageTable": {
+   "bindingPath": "TracingParameters.View.GlobalDistanceFieldPageTableTexture",
+   "bindingPointer": "000100000228ec2dc400",
+   "nativePointer": "000100000228ec2dc400",
+   "nativeTextureName": "GlobalDistanceField.PageTableCombined",
+   "nativeFormat": "PF_R32_UINT",
+   "nativeExtent": [
+    36,
+    36,
+    144
+   ],
+   "nativeNumMips": 1,
+   "diagnosticResource": "000100000228d576bdf8",
+   "dumpedAs": "NativeTexture.000100000228ec2dc400.mip0_1.a0_1.f0_1.dim5.plane0",
+   "exportFile": "Resources/000100000228d576bdf8.linear.mip0.v000100000225fb9fef70.bin",
+   "exportViewFormat": "PF_R32_UINT",
+   "exportSRGB": false,
+   "exportUsesWholeNativeResource": true,
+   "exportSubresourceCount": 0,
+   "firstScheduledByPass": "000100000225fb9fef70",
+   "firstScheduledByPassId": 28,
+   "firstScheduledByPassEvent": "DepthPassParallel",
+   "dumpStatus": "ScheduledByEarlierPass",
+   "readStateBasis": "OwnerPassSRVBinding",
+   "ownerPassExecutionDependencyClaimed": false,
+   "sourceStateProvenAtScheduling": false,
+   "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+   "reusedScheduledReadback": true,
+   "layout": {
+    "Resource": "000100000228d576bdf8",
+    "Name": "GlobalDistanceField.PageTableCombined",
+    "File": "Resources/000100000228d576bdf8.linear.mip0.v000100000225fb9fef70.bin",
+    "Dimension": "Texture3D",
+    "MipLevel": 0,
+    "ExtentX": 36,
+    "ExtentY": 36,
+    "Depth": 144,
+    "ZSliceCount": 144,
+    "ZSliceStrideBytes": 5184,
+    "RowPitchBytes": 144,
+    "ZSliceOrder": "ascending z, tightly packed",
+    "NativeFormat": "PF_R32_UINT",
+    "ViewFormat": "PF_R32_UINT",
+    "StoredFormat": "PF_R32_UINT",
+    "NativeSRGB": false,
+    "ViewSRGB": false,
+    "SRGBOverride": "ForceDisable",
+    "StoredBytesAreNativeStorage": false,
+    "NativeValueInterpretation": "UnsignedIntegerBits",
+    "ValuePreserving": true,
+    "Readback": "SynchronousComputePerSlice",
+    "DumpStatus": "ScheduledForReadback",
+    "ByteSize": 746496,
+    "StagingByteSize": 746496
+   },
+   "readbackStatus": {
+    "File": "Resources/000100000228d576bdf8.linear.mip0.v000100000225fb9fef70.bin",
+    "Kind": "Texture3D",
+    "ExpectedBytes": 746496,
+    "ActualBytes": 746496,
+    "FileExists": true,
+    "FileSizeMatches": true,
+    "Status": "Dumped",
+    "Timing": "GPUReadbackCompleted"
+   },
+   "payload": {
+    "path": "Resources\\000100000228d576bdf8.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 746496,
+    "sha256": "1cf800687e84badf35c92e2ad009fcc4bb189daa9dea373f21568a19cffd3c0c"
+   },
+   "recordedWritersOnBindingPointer": [],
+   "recordedWritersOnDiagnosticResource": []
+  },
+  "mip": {
+   "bindingPath": "TracingParameters.View.GlobalDistanceFieldMipTexture",
+   "bindingPointer": "000100000228ec2dc780",
+   "nativePointer": "000100000228ec2dc780",
+   "nativeTextureName": "GlobalDistanceField.SDFMips",
+   "nativeFormat": "PF_R8",
+   "nativeExtent": [
+    63,
+    63,
+    252
+   ],
+   "nativeNumMips": 1,
+   "diagnosticResource": "000100000228d576c0c0",
+   "dumpedAs": "NativeTexture.000100000228ec2dc780.mip0_1.a0_1.f0_1.dim5.plane0",
+   "exportFile": "Resources/000100000228d576c0c0.linear.mip0.v000100000225fb9fef70.bin",
+   "exportViewFormat": "PF_R8",
+   "exportSRGB": false,
+   "exportUsesWholeNativeResource": true,
+   "exportSubresourceCount": 0,
+   "firstScheduledByPass": "000100000225fb9fef70",
+   "firstScheduledByPassId": 28,
+   "firstScheduledByPassEvent": "DepthPassParallel",
+   "dumpStatus": "ScheduledByEarlierPass",
+   "readStateBasis": "OwnerPassSRVBinding",
+   "ownerPassExecutionDependencyClaimed": false,
+   "sourceStateProvenAtScheduling": false,
+   "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+   "reusedScheduledReadback": true,
+   "layout": {
+    "Resource": "000100000228d576c0c0",
+    "Name": "GlobalDistanceField.SDFMips",
+    "File": "Resources/000100000228d576c0c0.linear.mip0.v000100000225fb9fef70.bin",
+    "Dimension": "Texture3D",
+    "MipLevel": 0,
+    "ExtentX": 63,
+    "ExtentY": 63,
+    "Depth": 252,
+    "ZSliceCount": 252,
+    "ZSliceStrideBytes": 3969,
+    "RowPitchBytes": 63,
+    "ZSliceOrder": "ascending z, tightly packed",
+    "NativeFormat": "PF_R8",
+    "ViewFormat": "PF_R8",
+    "StoredFormat": "PF_R8",
+    "NativeSRGB": false,
+    "ViewSRGB": false,
+    "SRGBOverride": "ForceDisable",
+    "StoredBytesAreNativeStorage": false,
+    "NativeValueInterpretation": "DecodedFloat",
+    "ValuePreserving": true,
+    "Readback": "SynchronousComputePerSlice",
+    "DumpStatus": "ScheduledForReadback",
+    "ByteSize": 1000188,
+    "StagingByteSize": 1000188
+   },
+   "readbackStatus": {
+    "File": "Resources/000100000228d576c0c0.linear.mip0.v000100000225fb9fef70.bin",
+    "Kind": "Texture3D",
+    "ExpectedBytes": 1000188,
+    "ActualBytes": 1000188,
+    "FileExists": true,
+    "FileSizeMatches": true,
+    "Status": "Dumped",
+    "Timing": "GPUReadbackCompleted"
+   },
+   "payload": {
+    "path": "Resources\\000100000228d576c0c0.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 1000188,
+    "sha256": "15ddbe672ab39e63d0e92545b1b69527706e541fa8b99fe6797623803b1230ce"
+   },
+   "recordedWritersOnBindingPointer": [],
+   "recordedWritersOnDiagnosticResource": []
+  }
+ },
+ "gdfParameters": {
+  "NumGlobalSDFClipmaps": 4,
+  "GlobalVolumeTranslatedCenterAndExtent": [
+   [
+    0.0,
+    -16.666656494140625,
+    -26.111114501953125,
+    2500.0
+   ],
+   [
+    0.0,
+    122.22222900390625,
+    112.77777099609375,
+    5000.0
+   ],
+   [
+    0.0,
+    -155.5555419921875,
+    -165.0,
+    10000.0
+   ],
+   [
+    0.0,
+    400.0,
+    -165.0,
+    20000.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "GlobalVolumeTranslatedWorldToUVAddAndMul": [
+   [
+    0.5,
+    0.503333330154419,
+    0.5052222013473511,
+    0.00019999999494757503
+   ],
+   [
+    0.5,
+    0.4877777695655823,
+    0.4887222349643707,
+    9.999999747378752e-05
+   ],
+   [
+    0.5,
+    0.507777750492096,
+    0.5082499980926514,
+    4.999999873689376e-05
+   ],
+   [
+    0.5,
+    0.49000000953674316,
+    0.5041249990463257,
+    2.499999936844688e-05
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "GlobalDistanceFieldMipTranslatedWorldToUVScale": [
+   [
+    0.00019999999494757503,
+    0.00019999999494757503,
+    4.999999873689376e-05,
+    0.0019841270986944437
+   ],
+   [
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    2.499999936844688e-05,
+    0.2519841194152832
+   ],
+   [
+    4.999999873689376e-05,
+    4.999999873689376e-05,
+    1.249999968422344e-05,
+    0.5019841194152832
+   ],
+   [
+    2.499999936844688e-05,
+    2.499999936844688e-05,
+    6.24999984211172e-06,
+    0.7519841194152832
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "GlobalDistanceFieldMipTranslatedWorldToUVBias": [
+   [
+    0.5,
+    0.503333330154419,
+    0.12630555033683777,
+    0.2480158656835556
+   ],
+   [
+    0.5,
+    0.4877777695655823,
+    0.3721805512905121,
+    0.4980158805847168
+   ],
+   [
+    0.5,
+    0.507777750492096,
+    0.6270624995231628,
+    0.7480158805847168
+   ],
+   [
+    0.5,
+    0.49000000953674316,
+    0.8760312795639038,
+    0.9980158805847168
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "GlobalDistanceFieldMipFactor": 4.0,
+  "GlobalDistanceFieldMipTransition": 0.625,
+  "GlobalDistanceFieldClipmapSizeInPages": 36,
+  "GlobalDistanceFieldInvPageAtlasSize": [
+   0.0009765625,
+   0.0009765625,
+   0.01785714365541935
+  ],
+  "GlobalDistanceFieldInvCoverageAtlasSize": [
+   0.001953125,
+   0.001953125,
+   0.0357142873108387
+  ],
+  "GlobalVolumeDimension": 252.0,
+  "GlobalVolumeTexelSize": 0.003968254197388887,
+  "CoveredExpandSurfaceScale": 1.0,
+  "NotCoveredExpandSurfaceScale": 0.6000000238418579,
+  "NotCoveredMinStepScale": 4.0,
+  "DitheredTransparencyStepThreshold": 0.5,
+  "DitheredTransparencyTraceThreshold": 0.8999999761581421,
+  "MinTraceDistance": 0.009999999776482582,
+  "MaxTraceDistance": 20000.0,
+  "SurfaceBias": 5.0,
+  "StepFactor": 1.0,
+  "MinSDFStepFactor": 1.0,
+  "VoxelSizeRelativeBias": 0.0,
+  "VoxelSizeRelativeRayEndBias": 0.0,
+  "bDitheredTransparency": true,
+  "DitherScreenCoord": [
+   290,
+   66
+  ],
+  "StateFrameIndexMod8": 7
+ },
+ "interval": {
+  "translatedWorldPosition": [
+   36.360939025878906,
+   676.7451171875,
+   134.9954376220703
+  ],
+  "gdfOrigin": [
+   33.70330047607422,
+   674.5841064453125,
+   126.35305786132812
+  ],
+  "direction": [
+   -0.5315276384353638,
+   -0.4322027862071991,
+   -0.7284772396087646
+  ],
+  "surfaceBias": 5.0,
+  "previousTraceHit": 363.3790283203125,
+  "previousTraceHitWord": 3283464324,
+  "previousTraceHitFlags": {
+   "bHit": false,
+   "bMoving": false,
+   "bReachedRadianceCache": true
+  },
+  "minTraceDistanceParameter": 0.009999999776482582,
+  "maxTraceDistanceParameter": 20000.0,
+  "cacheBound": 360.8439025878906,
+  "gdfMinTraceDistance": 353.3790283203125,
+  "gdfMaxTraceDistance": 360.8439025878906,
+  "gdfIntervalLength": 7.464874267578125,
+  "maxDistanceUsedByGDFIsCacheBound": true,
+  "separation": "20000 UU is the ray maximum; the cache's minimum interpolation distance (360.8439 UU) is the actual GDF MaxTraceDistance. The GDF min distance is the previous TraceHit distance minus 2*SurfaceBias."
+ },
+ "trace": {
+  "hit": false,
+  "hitTime": -1.0,
+  "hitClipmapIndex": 0,
+  "totalStepsTaken": 0,
+  "expandSurfaceAmount": 0.0,
+  "minClipmapIndex": 0,
+  "iterations": [
+   {
+    "clipmap": {
+     "clipmapIndex": 0,
+     "center": [
+      0.0,
+      -16.666656494140625,
+      -26.111114501953125
+     ],
+     "extent": 2500.0,
+     "voxelExtent": 9.920635223388672,
+     "influenceRange": 79.36508178710938,
+     "boxHalfExtent": 2490.079345703125,
+     "rayLength": 360.8439025878906,
+     "rawBoxTimes": [
+      0.0,
+      1.0
+     ],
+     "scaledBoxTimes": [
+      353.3790283203125,
+      360.8439025878906
+     ],
+     "minRayTime": 353.3790283203125
+    },
+    "stepIndex": 0,
+    "sampleRayTime": 353.3790283203125,
+    "position": [
+     -154.12741088867188,
+     521.8527221679688,
+     -131.07553100585938
+    ],
+    "volumeUV": [
+     0.46917450428009033,
+     0.6077038645744324,
+     0.4790070950984955
+    ],
+    "mipUV": [
+     0.46917450428009033,
+     0.6077038645744324,
+     0.11975177377462387
+    ],
+    "mipValue": 0.5493404865264893,
+    "mipSampling": {
+     "texel": [
+      29.057992935180664,
+      37.785343170166016,
+      29.677446365356445
+     ],
+     "fraction": [
+      0.05799293518066406,
+      0.7853431701660156,
+      0.6774463653564453
+     ],
+     "taps": [
+      {
+       "xyz": [
+        29,
+        37,
+        29
+       ],
+       "raw": 131,
+       "decoded": 0.5137255191802979,
+       "weight": 0.06522300839424133
+      },
+      {
+       "xyz": [
+        30,
+        37,
+        29
+       ],
+       "raw": 131,
+       "decoded": 0.5137255191802979,
+       "weight": 0.004015334881842136
+      },
+      {
+       "xyz": [
+        29,
+        38,
+        29
+       ],
+       "raw": 131,
+       "decoded": 0.5137255191802979,
+       "weight": 0.23862481117248535
+      },
+      {
+       "xyz": [
+        30,
+        38,
+        29
+       ],
+       "raw": 131,
+       "decoded": 0.5137255191802979,
+       "weight": 0.014690497890114784
+      },
+      {
+       "xyz": [
+        29,
+        37,
+        30
+       ],
+       "raw": 144,
+       "decoded": 0.5647059082984924,
+       "weight": 0.13698524236679077
+      },
+      {
+       "xyz": [
+        30,
+        37,
+        30
+       ],
+       "raw": 151,
+       "decoded": 0.5921568870544434,
+       "weight": 0.008433245122432709
+      },
+      {
+       "xyz": [
+        29,
+        38,
+        30
+       ],
+       "raw": 144,
+       "decoded": 0.5647059082984924,
+       "weight": 0.5011740326881409
+      },
+      {
+       "xyz": [
+        30,
+        38,
+        30
+       ],
+       "raw": 151,
+       "decoded": 0.5921568870544434,
+       "weight": 0.030853858217597008
+      }
+     ]
+    },
+    "distanceFieldFromMip": 31.327293395996094,
+    "pageTableCoord": [
+     16,
+     21,
+     17
+    ],
+    "pageTablePacked": {
+     "pageIndex": 93,
+     "coverageBit": false,
+     "valid": true,
+     "rawHex": "0x0000005d"
+    },
+    "pageAtlasOffset": [
+     93.0,
+     0.0,
+     0.0
+    ],
+    "volumePageUV": [
+     0.8902816772460938,
+     0.8773384094238281,
+     0.24425506591796875
+    ],
+    "pageAtlasUV": [
+     0.7331367135047913,
+     0.0064857117831707,
+     0.03946045786142349
+    ],
+    "coveragePageUV": [
+     0.7327555418014526,
+     0.006117217242717743,
+     0.044027332216501236
+    ],
+    "pageSampled": true,
+    "pageValue": 0.7126005291938782,
+    "pageSampling": {
+     "texel": [
+      750.2319946289062,
+      6.141368865966797,
+      1.7097856998443604
+     ],
+     "fraction": [
+      0.23199462890625,
+      0.14136886596679688,
+      0.7097856998443604
+     ],
+     "taps": [
+      {
+       "xyz": [
+        750,
+        6,
+        1
+       ],
+       "raw": 159,
+       "decoded": 0.6235294342041016,
+       "weight": 0.1913769692182541
+      },
+      {
+       "xyz": [
+        751,
+        6,
+        1
+       ],
+       "raw": 159,
+       "decoded": 0.6235294342041016,
+       "weight": 0.05781005322933197
+      },
+      {
+       "xyz": [
+        750,
+        7,
+        1
+       ],
+       "raw": 159,
+       "decoded": 0.6235294342041016,
+       "weight": 0.0315091609954834
+      },
+      {
+       "xyz": [
+        751,
+        7,
+        1
+       ],
+       "raw": 159,
+       "decoded": 0.6235294342041016,
+       "weight": 0.009518105536699295
+      },
+      {
+       "xyz": [
+        750,
+        6,
+        2
+       ],
+       "raw": 191,
+       "decoded": 0.7490196228027344,
+       "weight": 0.468056321144104
+      },
+      {
+       "xyz": [
+        751,
+        6,
+        2
+       ],
+       "raw": 191,
+       "decoded": 0.7490196228027344,
+       "weight": 0.14138776063919067
+      },
+      {
+       "xyz": [
+        750,
+        7,
+        2
+       ],
+       "raw": 191,
+       "decoded": 0.7490196228027344,
+       "weight": 0.07706288993358612
+      },
+      {
+       "xyz": [
+        751,
+        7,
+        2
+       ],
+       "raw": 191,
+       "decoded": 0.7490196228027344,
+       "weight": 0.02327871322631836
+      }
+     ]
+    },
+    "coverageSampled": false,
+    "coverageValue": null,
+    "coverageSampling": null,
+    "coverage": 1.0,
+    "coverageDefaultedToOne": true,
+    "coverageSource": "page coverage bit clear -> shader default Coverage=1",
+    "mipTransition": 0.625,
+    "mipFactor": 4.0,
+    "distanceField": 33.746116638183594,
+    "maxDistance": 33.746116638183594,
+    "expandSurfaceTime": 353.3790283203125,
+    "expandSurfaceScale": 1.0,
+    "expandSurfaceAmount": 9.920635223388672,
+    "stepNoise": 0.20782852172851562,
+    "traceNoise": 0.7761611938476562,
+    "bDitheredTransparency": true,
+    "ditheredStepThreshold": 0.5,
+    "ditheredTraceThreshold": 0.8999999761581421,
+    "ditheredPass": true,
+    "hitTestDistanceLessThanExpand": false,
+    "hit": false,
+    "localMinStepSize": 9.920635223388672,
+    "stepDistance": 33.746116638183594,
+    "nextSampleRayTime": 387.1251525878906,
+    "exitReason": "sampleRayTime > intersectionTimes.y after step"
+   },
+   {
+    "clipmap": {
+     "clipmapIndex": 1,
+     "center": [
+      0.0,
+      122.22222900390625,
+      112.77777099609375
+     ],
+     "extent": 5000.0,
+     "voxelExtent": 19.841270446777344,
+     "influenceRange": 158.73016357421875,
+     "boxHalfExtent": 4980.15869140625,
+     "rayLength": 360.8439025878906,
+     "rawBoxTimes": [
+      0.0,
+      1.0
+     ],
+     "scaledBoxTimes": [
+      360.8439025878906,
+      360.8439025878906
+     ],
+     "minRayTime": 360.8439025878906,
+     "skipped": true,
+     "reason": "intersectionTimes.x >= intersectionTimes.y"
+    }
+   },
+   {
+    "clipmap": {
+     "clipmapIndex": 2,
+     "center": [
+      0.0,
+      -155.5555419921875,
+      -165.0
+     ],
+     "extent": 10000.0,
+     "voxelExtent": 39.68254089355469,
+     "influenceRange": 317.4603271484375,
+     "boxHalfExtent": 9960.3173828125,
+     "rayLength": 360.8439025878906,
+     "rawBoxTimes": [
+      0.0,
+      1.0
+     ],
+     "scaledBoxTimes": [
+      360.8439025878906,
+      360.8439025878906
+     ],
+     "minRayTime": 360.8439025878906,
+     "skipped": true,
+     "reason": "intersectionTimes.x >= intersectionTimes.y"
+    }
+   },
+   {
+    "clipmap": {
+     "clipmapIndex": 3,
+     "center": [
+      0.0,
+      400.0,
+      -165.0
+     ],
+     "extent": 20000.0,
+     "voxelExtent": 79.36508178710938,
+     "influenceRange": 634.920654296875,
+     "boxHalfExtent": 19920.634765625,
+     "rayLength": 360.8439025878906,
+     "rawBoxTimes": [
+      0.0,
+      1.0
+     ],
+     "scaledBoxTimes": [
+      360.8439025878906,
+      360.8439025878906
+     ],
+     "minRayTime": 360.8439025878906,
+     "skipped": true,
+     "reason": "intersectionTimes.x >= intersectionTimes.y"
+    }
+   }
+  ],
+  "iterationCount": 1,
+  "exitReason": "sampleRayTime > intersectionTimes.y after step",
+  "inputBasis": "GDF volumes are the pass-28 native exports linked to the pass-167 bindings by DiagnosticResource; see timingCaveat."
+ },
+ "comparison": {
+  "capturedHitWord": 1136998216,
+  "capturedHitWordHex": "0x43c53748",
+  "capturedDistance": 394.431884765625,
+  "capturedFlags": {
+   "bHit": false,
+   "bMoving": false,
+   "bReachedRadianceCache": false
+  },
+  "cacheDepth": 394.431884765625,
+  "expectedHitWordFromCacheDepth": 1136998216,
+  "traceHitWordExact": true,
+  "traceRadianceWord": 1927130014,
+  "traceRadianceDecoded": [
+   0.734375,
+   0.9140625,
+   0.671875
+  ],
+  "radianceModel": [
+   0.7337988018989563,
+   0.9078025221824646,
+   0.6682068109512329
+  ],
+  "radianceModelRawWord": 1927127966,
+  "radianceModelRawWordHex": "0x72dda39e",
+  "radianceModelRawCodes": [
+   926,
+   948,
+   459
+  ],
+  "radianceModelDitherWord": 1931324319,
+  "radianceModelDitherWordHex": "0x731dab9f",
+  "radianceModelDitherCodes": [
+   927,
+   949,
+   460
+  ],
+  "ditherModel": [
+   0.7403910756111145,
+   0.9143947958946228,
+   0.6813913583755493
+  ],
+  "ditherE": 0.84381103515625,
+  "ditherRandom16": [
+   55300,
+   25757,
+   62822
+  ],
+  "ditherCoord": [
+   290,
+   66,
+   7
+  ],
+  "preExposure": 0.0625,
+  "storeFormat": "PF_FloatR11G11B10",
+  "traces": {
+   "rawWordMatchesCaptured": false,
+   "ditherWordMatchesCaptured": false,
+   "rawCodeDeltaToCaptured": [
+    0,
+    -1,
+    0
+   ],
+   "ditherCodeDeltaToCaptured": [
+    1,
+    0,
+    1
+   ]
+  },
+  "claim": "GDF miss and the bHit=false / cache-overwrite branch are reproduced. TraceHit is exact at the cache boundary. TraceRadiance is structurally explained (GDF adds zero; cache radiance * PreExposure; R11G11B10 store with dither) but not claimed bit-exact because the cache radiance is a CPU replay of GPU interpolation. Residual is <= 1 store ULP per channel."
+ },
+ "branch": {
+  "gdfHit": false,
+  "gdfLighting": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gdfTransparency": 1.0,
+  "gdfOpaqueHitDistance": 360.8439025878906,
+  "voxelHitBranchTaken": false,
+  "cacheValid": true,
+  "cacheLighting": [
+   11.7407808303833,
+   14.524840354919434,
+   10.691308975219727
+  ],
+  "cacheTransparency": 0.0,
+  "traceHitDistanceAfterCache": 394.431884765625,
+  "preExposureApplied": 0.0625,
+  "finalLightingBeforeStore": [
+   0.7337988018989563,
+   0.9078025221824646,
+   0.6682068109512329
+  ],
+  "skylightLeaking": 0.0,
+  "fogOnGI": 0.0,
+  "cardAddressLightingOperands": null,
+  "cardAddressLightingNote": "not applicable: the GDF ray missed, so there is no near-field surface/card address to shade from this trace. The radiance-cache operands retained by the preceding world replay remain the lighting source."
+ },
+ "timingCaveat": {
+  "graph": "0001",
+  "recordedGraphWritersOnFourBindingPointers": {
+   "pageAtlas": [],
+   "coverageAtlas": [],
+   "pageTable": [],
+   "mip": []
+  },
+  "recordedGraphWritersOnDiagnosticResources": {
+   "pageAtlas": [],
+   "coverageAtlas": [],
+   "pageTable": [],
+   "mip": []
+  },
+  "gdfRelatedGraphPasses": [
+   {
+    "Id": 8,
+    "Pointer": "000100000228d576b000",
+    "EventName": "ClearBuffer(GlobalDistanceField.PageStatsBuffer Size=256bytes)"
+   },
+   {
+    "Id": 167,
+    "Pointer": "000100000228d58f3800",
+    "EventName": "TraceGlobalSDFAndApplyRadianceCache"
+   },
+   {
+    "Id": 183,
+    "Pointer": "0001000002291402a8f0",
+    "EventName": "TraceGlobalSDFAndInterpolateRadianceCache 3x3"
+   }
+  ],
+  "producerValidation": "No graph-0001 pass outputs any of the four GDF volume IDs or their diagnostic resources. The only GDF-named graph pass that writes a GDF resource is the GlobalDistanceField.PageStatsBuffer clear. The four volumes are external/persistent native resources; their producer is outside the captured graph and is not proven by DumpGPU.",
+  "firstNativeExportPass": "000100000225fb9fef70 (DepthPassParallel pass 28)",
+  "firstNativeExportPassResolved": {
+   "pageAtlas": {
+    "Id": 28,
+    "EventName": "DepthPassParallel",
+    "Pointer": "000100000225fb9fef70"
+   },
+   "coverageAtlas": {
+    "Id": 28,
+    "EventName": "DepthPassParallel",
+    "Pointer": "000100000225fb9fef70"
+   },
+   "pageTable": {
+    "Id": 28,
+    "EventName": "DepthPassParallel",
+    "Pointer": "000100000225fb9fef70"
+   },
+   "mip": {
+    "Id": 28,
+    "EventName": "DepthPassParallel",
+    "Pointer": "000100000225fb9fef70"
+   }
+  },
+  "exportSubresourceCount": {
+   "pageAtlas": 0,
+   "coverageAtlas": 0,
+   "pageTable": 0,
+   "mip": 0
+  },
+  "ownerPassExecutionDependencyClaimed": {
+   "pageAtlas": false,
+   "coverageAtlas": false,
+   "pageTable": false,
+   "mip": false
+  },
+  "sourceStateProvenAtScheduling": {
+   "pageAtlas": false,
+   "coverageAtlas": false,
+   "pageTable": false,
+   "mip": false
+  },
+  "timingRisk": {
+   "pageAtlas": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+   "coverageAtlas": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+   "pageTable": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+   "mip": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency"
+  },
+  "statement": "The four pass-167 GDF textures are external native resources. Their payloads were scheduled at pass 28 and the pass-167 binding record names the same native pointer / diagnostic resource. No graph-0001 write on those IDs is recorded. This does not prove the bytes were unchanged between pass 28 and pass 167 (no RDG execution dependency / source-state proof), so the replay reports a timing caveat and does not assert general mutable-input equivalence."
+ },
+ "sourceEvidence": {
+  "GlobalDistanceFieldUtils.ush": {
+   "label": "RayTraceGlobalDistanceField",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\DistanceField\\GlobalDistanceFieldUtils.ush",
+   "sha256": "0ccd9fbc7f07042cbfbb7ce97e694c9a90b42f8506bd2a56a5b057deec61f08e",
+   "lines": [
+    {
+     "line": 90,
+     "text": "FGlobalSDFTraceResult RayTraceGlobalDistanceField(FGlobalSDFTraceInput TraceInput)"
+    },
+    {
+     "line": 91,
+     "text": "{"
+    },
+    {
+     "line": 92,
+     "text": "\tFGlobalSDFTraceResult TraceResult;"
+    },
+    {
+     "line": 93,
+     "text": "\tTraceResult.HitTime = -1.0f;"
+    },
+    {
+     "line": 94,
+     "text": "\tTraceResult.HitClipmapIndex = 0;"
+    },
+    {
+     "line": 95,
+     "text": "\tTraceResult.TotalStepsTaken = 0;"
+    },
+    {
+     "line": 96,
+     "text": "\tTraceResult.ExpandSurfaceAmount = 0;"
+    },
+    {
+     "line": 97,
+     "text": ""
+    },
+    {
+     "line": 98,
+     "text": "\tfloat TraceNoise = InterleavedGradientNoise(TraceInput.DitherScreenCoord.xy, View.StateFrameIndexMod8);"
+    },
+    {
+     "line": 99,
+     "text": "\tuint MinClipmapIndex = ComputeGlobalDistanceFieldClipmapIndex(TraceInput.TranslatedWorldRayStart + TraceInput.MinTraceDistance * TraceInput.WorldRayDirection);"
+    },
+    {
+     "line": 100,
+     "text": "\tfloat MaxDistance = TraceInput.InitialMaxDistance;"
+    },
+    {
+     "line": 101,
+     "text": "\tfloat MinRayTime = TraceInput.MinTraceDistance;"
+    },
+    {
+     "line": 102,
+     "text": ""
+    },
+    {
+     "line": 103,
+     "text": "\tLOOP"
+    },
+    {
+     "line": 104,
+     "text": "\tfor (uint ClipmapIndex = MinClipmapIndex; ClipmapIndex < NumGlobalSDFClipmaps && TraceResult.HitTime < 0.0f; ++ClipmapIndex)"
+    },
+    {
+     "line": 105,
+     "text": "\t{"
+    },
+    {
+     "line": 106,
+     "text": "\t\tfloat ClipmapVoxelExtent = GlobalVolumeTranslatedCenterAndExtent[ClipmapIndex].w * GlobalVolumeTexelSize;"
+    },
+    {
+     "line": 107,
+     "text": "\t\tfloat MinStepSize = TraceInput.MinStepFactor * ClipmapVoxelExtent;"
+    },
+    {
+     "line": 108,
+     "text": "\t\tfloat ExpandSurfaceDistance = ClipmapVoxelExtent;"
+    },
+    {
+     "line": 109,
+     "text": "\t\tfloat ClipmapRayBias = ClipmapVoxelExtent * TraceInput.VoxelSizeRelativeBias;"
+    },
+    {
+     "line": 110,
+     "text": "\t\tfloat ClipmapRayLength = TraceInput.MaxTraceDistance - ClipmapVoxelExtent * TraceInput.VoxelSizeRelativeRayEndBias;"
+    },
+    {
+     "line": 111,
+     "text": ""
+    },
+    {
+     "line": 112,
+     "text": "\t\tfloat3 GlobalVolumeTranslatedCenter = GlobalVolumeTranslatedCenterAndExtent[ClipmapIndex].xyz;"
+    },
+    {
+     "line": 113,
+     "text": "\t\tfloat GlobalVolumeExtent = GlobalVolumeTranslatedCenterAndExtent[ClipmapIndex].w - ClipmapVoxelExtent;"
+    },
+    {
+     "line": 114,
+     "text": "\t\tfloat3 TranslatedWorldRayEnd = TraceInput.TranslatedWorldRayStart + TraceInput.WorldRayDirection * ClipmapRayLength;"
+    },
+    {
+     "line": 115,
+     "text": "\t\tfloat2 IntersectionTimes = LineBoxIntersect(TraceInput.TranslatedWorldRayStart, TranslatedWorldRayEnd, GlobalVolumeTranslatedCenter - GlobalVolumeExtent.xxx, GlobalVolumeTranslatedCenter + GlobalVolumeExtent.xxx);"
+    },
+    {
+     "line": 116,
+     "text": "\t\tIntersectionTimes.xy *= ClipmapRayLength;"
+    },
+    {
+     "line": 117,
+     "text": "\t\tIntersectionTimes.x = max(IntersectionTimes.x, MinRayTime);"
+    },
+    {
+     "line": 118,
+     "text": "\t\tIntersectionTimes.x = max(IntersectionTimes.x, ClipmapRayBias);"
+    },
+    {
+     "line": 119,
+     "text": ""
+    },
+    {
+     "line": 120,
+     "text": "\t\tif (IntersectionTimes.x < IntersectionTimes.y)"
+    },
+    {
+     "line": 121,
+     "text": "\t\t{"
+    },
+    {
+     "line": 122,
+     "text": "\t\t\t// Update the trace start for the next clipmap"
+    },
+    {
+     "line": 123,
+     "text": "\t\t\tMinRayTime = IntersectionTimes.y;"
+    },
+    {
+     "line": 124,
+     "text": ""
+    },
+    {
+     "line": 125,
+     "text": "\t\t\tfloat SampleRayTime = IntersectionTimes.x;"
+    },
+    {
+     "line": 126,
+     "text": "\t\t\tconst float ClipmapInfluenceRange = GLOBAL_DISTANCE_FIELD_INFLUENCE_RANGE_IN_VOXELS * 2.0f * GlobalVolumeTranslatedCenterAndExtent[ClipmapIndex].w * GlobalVolumeTexelSize;"
+    },
+    {
+     "line": 127,
+     "text": ""
+    },
+    {
+     "line": 128,
+     "text": "\t\t\tuint StepIndex = 0;"
+    },
+    {
+     "line": 129,
+     "text": "\t\t\tconst uint MaxSteps = 256;"
+    },
+    {
+     "line": 130,
+     "text": ""
+    },
+    {
+     "line": 131,
+     "text": "\t\t\tLOOP"
+    },
+    {
+     "line": 132,
+     "text": "\t\t\tfor (; StepIndex < MaxSteps; ++StepIndex)"
+    },
+    {
+     "line": 133,
+     "text": "\t\t\t{"
+    },
+    {
+     "line": 134,
+     "text": "\t\t\t\tfloat3 SampleTranslatedWorldPosition = TraceInput.TranslatedWorldRayStart + TraceInput.WorldRayDirection * SampleRayTime;"
+    },
+    {
+     "line": 135,
+     "text": ""
+    },
+    {
+     "line": 136,
+     "text": "\t\t\t\tfloat3 ClipmapVolumeUV = ComputeGlobalUV(SampleTranslatedWorldPosition, ClipmapIndex);"
+    },
+    {
+     "line": 137,
+     "text": "\t\t\t\tfloat3 MipUV = ComputeGlobalMipUV(SampleTranslatedWorldPosition, ClipmapIndex);"
+    },
+    {
+     "line": 138,
+     "text": ""
+    },
+    {
+     "line": 139,
+     "text": "\t\t\t\tfloat DistanceFieldMipValue = Texture3DSampleLevel(GlobalDistanceFieldMipTexture, GlobalDistanceFieldMipTextureSampler, MipUV, 0).x;"
+    },
+    {
+     "line": 140,
+     "text": "\t\t\t\tfloat DistanceField = DecodeGlobalDistanceFieldPageDistance(DistanceFieldMipValue, GlobalDistanceFieldMipFactor * ClipmapInfluenceRange);"
+    },
+    {
+     "line": 141,
+     "text": "\t\t\t\tfloat Coverage = 1;"
+    },
+    {
+     "line": 142,
+     "text": "\t\t\t\tFGlobalDistanceFieldPage Page = GetGlobalDistanceFieldPage(ClipmapVolumeUV, ClipmapIndex);"
+    },
+    {
+     "line": 143,
+     "text": ""
+    },
+    {
+     "line": 144,
+     "text": "\t\t\t\tif (Page.bValid && DistanceFieldMipValue < GlobalDistanceFieldMipTransition)"
+    },
+    {
+     "line": 145,
+     "text": "\t\t\t\t{"
+    },
+    {
+     "line": 146,
+     "text": "\t\t\t\t\tfloat3 PageUV = ComputeGlobalDistanceFieldPageUV(ClipmapVolumeUV, Page);"
+    },
+    {
+     "line": 147,
+     "text": ""
+    },
+    {
+     "line": 148,
+     "text": "\t\t\t\t\t#if GLOBALSDF_USE_COVERAGE_BASED_EXPAND"
+    },
+    {
+     "line": 149,
+     "text": "\t\t\t\t\tif (Page.bCoverage)"
+    },
+    {
+     "line": 150,
+     "text": "\t\t\t\t\t{"
+    },
+    {
+     "line": 151,
+     "text": "\t\t\t\t\t#if GLOBALSDF_SIMPLE_COVERAGE_BASED_EXPAND"
+    },
+    {
+     "line": 152,
+     "text": "\t\t\t\t\t\tCoverage = 0;"
+    },
+    {
+     "line": 153,
+     "text": "\t\t\t\t\t#else"
+    },
+    {
+     "line": 154,
+     "text": "\t\t\t\t\t\tfloat3 CoveragePageUV;"
+    },
+    {
+     "line": 155,
+     "text": "\t\t\t\t\t\tComputeGlobalDistanceFieldPageUV(ClipmapVolumeUV, Page, PageUV, CoveragePageUV);"
+    },
+    {
+     "line": 156,
+     "text": "\t\t\t\t\t\tCoverage = Texture3DSampleLevel(GlobalDistanceFieldCoverageAtlasTexture, GlobalDistanceFieldCoverageAtlasTextureSampler, CoveragePageUV, 0).x;"
+    },
+    {
+     "line": 157,
+     "text": "\t\t\t\t\t#endif"
+    },
+    {
+     "line": 158,
+     "text": "\t\t\t\t\t}"
+    },
+    {
+     "line": 159,
+     "text": "\t\t\t\t\t#endif"
+    },
+    {
+     "line": 160,
+     "text": ""
+    },
+    {
+     "line": 161,
+     "text": "\t\t\t\t\tfloat DistanceFieldValue = Texture3DSampleLevel(GlobalDistanceFieldPageAtlasTexture, GlobalDistanceFieldPageAtlasTextureSampler, PageUV, 0).x;"
+    },
+    {
+     "line": 162,
+     "text": "\t\t\t\t\tDistanceField = DecodeGlobalDistanceFieldPageDistance(DistanceFieldValue, ClipmapInfluenceRange);"
+    },
+    {
+     "line": 163,
+     "text": "\t\t\t\t}"
+    },
+    {
+     "line": 164,
+     "text": ""
+    },
+    {
+     "line": 165,
+     "text": "\t\t\t\tMaxDistance = max(DistanceField, MaxDistance);"
+    },
+    {
+     "line": 166,
+     "text": ""
+    },
+    {
+     "line": 167,
+     "text": "\t\t\t\tfloat ExpandSurfaceTime = TraceInput.bExpandSurfaceUsingRayTimeInsteadOfMaxDistance ? SampleRayTime - ClipmapRayBias : MaxDistance;"
+    },
+    {
+     "line": 168,
+     "text": "\t\t\t\tfloat ExpandSurfaceScale = lerp(NotCoveredExpandSurfaceScale, CoveredExpandSurfaceScale, Coverage);"
+    },
+    {
+     "line": 169,
+     "text": ""
+    },
+    {
+     "line": 170,
+     "text": "\t\t\t\tconst float ExpandSurfaceFalloff = 2.0f * ExpandSurfaceDistance;"
+    },
+    {
+     "line": 171,
+     "text": "\t\t\t\tconst float ExpandSurfaceAmount = ExpandSurfaceDistance * saturate(ExpandSurfaceTime / ExpandSurfaceFalloff) * ExpandSurfaceScale;"
+    },
+    {
+     "line": 172,
+     "text": ""
+    },
+    {
+     "line": 173,
+     "text": "\t\t\t\tfloat StepNoise = InterleavedGradientNoise(TraceInput.DitherScreenCoord.xy, View.StateFrameIndexMod8 * MaxSteps + StepIndex);"
+    },
+    {
+     "line": 174,
+     "text": ""
+    },
+    {
+     "line": 175,
+     "text": "\t\t\t\tif (DistanceField < ExpandSurfaceAmount "
+    },
+    {
+     "line": 176,
+     "text": "\t\t\t\t\t&& (!TraceInput.bDitheredTransparency || (StepNoise * (1 - Coverage) <= DitheredTransparencyStepThreshold && TraceNoise * (1 - Coverage) <= DitheredTransparencyTraceThreshold)))"
+    },
+    {
+     "line": 177,
+     "text": "\t\t\t\t{"
+    },
+    {
+     "line": 178,
+     "text": "\t\t\t\t\tTraceResult.HitTime = max(SampleRayTime + DistanceField - ExpandSurfaceAmount, 0.0f);"
+    },
+    {
+     "line": 179,
+     "text": "\t\t\t\t\tTraceResult.HitClipmapIndex = ClipmapIndex;"
+    },
+    {
+     "line": 180,
+     "text": "\t\t\t\t\tTraceResult.ExpandSurfaceAmount = ExpandSurfaceAmount;"
+    },
+    {
+     "line": 181,
+     "text": "\t\t\t\t\tbreak;"
+    },
+    {
+     "line": 182,
+     "text": "\t\t\t\t}"
+    },
+    {
+     "line": 183,
+     "text": ""
+    },
+    {
+     "line": 184,
+     "text": "\t\t\t\tfloat LocalMinStepSize = MinStepSize * lerp(NotCoveredMinStepScale, 1.0f, Coverage);"
+    },
+    {
+     "line": 185,
+     "text": "\t\t\t\tfloat StepDistance = max(DistanceField * TraceInput.StepFactor, LocalMinStepSize);"
+    },
+    {
+     "line": 186,
+     "text": "\t\t\t\tSampleRayTime += StepDistance;"
+    },
+    {
+     "line": 187,
+     "text": ""
+    },
+    {
+     "line": 188,
+     "text": "\t\t\t\t// Terminate the trace if we went past the end of the ray or achieved enough occlusion"
+    },
+    {
+     "line": 189,
+     "text": "\t\t\t\tif (SampleRayTime > IntersectionTimes.y || TraceResult.HitTime >= 0.0f)"
+    },
+    {
+     "line": 190,
+     "text": "\t\t\t\t{"
+    },
+    {
+     "line": 191,
+     "text": "\t\t\t\t\tbreak;"
+    },
+    {
+     "line": 192,
+     "text": "\t\t\t\t}"
+    },
+    {
+     "line": 193,
+     "text": "\t\t\t}"
+    },
+    {
+     "line": 194,
+     "text": ""
+    },
+    {
+     "line": 195,
+     "text": "\t\t\tTraceResult.TotalStepsTaken += StepIndex;"
+    },
+    {
+     "line": 196,
+     "text": "\t\t}"
+    },
+    {
+     "line": 197,
+     "text": "\t}"
+    },
+    {
+     "line": 198,
+     "text": ""
+    },
+    {
+     "line": 199,
+     "text": "\treturn TraceResult;"
+    },
+    {
+     "line": 200,
+     "text": "}"
+    }
+   ]
+  },
+  "GlobalDistanceFieldShared.ush": {
+   "label": "atlas layout, page lookup, decode, UVs",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\DistanceField\\GlobalDistanceFieldShared.ush",
+   "sha256": "d928e7af88319251d9c7eb5241f60de12e1ddb6e478afa733216ad8c57be01fb",
+   "lines": [
+    {
+     "line": 89,
+     "text": "#define GLOBAL_DISTANCE_FIELD_PAGE_BORDER 0.5f"
+    },
+    {
+     "line": 90,
+     "text": "#define GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION_IN_ATLAS 8 // Includes 0.5 texel trilinear filter margin"
+    },
+    {
+     "line": 91,
+     "text": "#define GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION (GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION_IN_ATLAS - 1)"
+    },
+    {
+     "line": 92,
+     "text": "#define GLOBAL_DISTANCE_FIELD_PAGE_ATLAS_SIZE_IN_PAGES_X 128"
+    },
+    {
+     "line": 93,
+     "text": "#define GLOBAL_DISTANCE_FIELD_PAGE_ATLAS_SIZE_IN_PAGES_Y 128"
+    },
+    {
+     "line": 94,
+     "text": "#define GLOBAL_DISTANCE_FIELD_INFLUENCE_RANGE_IN_VOXELS 4"
+    },
+    {
+     "line": 95,
+     "text": "#define GLOBAL_DISTANCE_FIELD_INVALID_PAGE_ID 0xFFFFFFFF"
+    },
+    {
+     "line": 96,
+     "text": ""
+    },
+    {
+     "line": 97,
+     "text": "#define GLOBAL_DISTANCE_FIELD_PAGE_COVERAGE_BIT 0x80000000"
+    },
+    {
+     "line": 98,
+     "text": ""
+    },
+    {
+     "line": 99,
+     "text": "// Coverage is a payload layer alongside the SDF"
+    },
+    {
+     "line": 100,
+     "text": "#define GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION_IN_ATLAS 4 // Includes 0.5 texel trilinear filter margin"
+    },
+    {
+     "line": 101,
+     "text": "#define GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION (GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION_IN_ATLAS - 1)"
+    },
+    {
+     "line": 102,
+     "text": "#define GLOBAL_DISTANCE_FIELD_COVERAGE_DOWNSAMPLE_FACTOR (GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION_IN_ATLAS / GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION_IN_ATLAS)"
+    },
+    {
+     "line": 103,
+     "text": ""
+    },
+    {
+     "line": 104,
+     "text": "struct FGlobalDistanceFieldPage"
+    },
+    {
+     "line": 105,
+     "text": "{"
+    },
+    {
+     "line": 106,
+     "text": "\tuint PageIndex;"
+    },
+    {
+     "line": 107,
+     "text": "\tbool bValid;"
+    },
+    {
+     "line": 108,
+     "text": "\tbool bCoverage;"
+    },
+    {
+     "line": 109,
+     "text": "};"
+    },
+    {
+     "line": 110,
+     "text": ""
+    },
+    {
+     "line": 111,
+     "text": "uint3 GlobalDistanceFieldPageLinearIndexToPageAtlasOffset(FGlobalDistanceFieldPage Page)"
+    },
+    {
+     "line": 112,
+     "text": "{"
+    },
+    {
+     "line": 113,
+     "text": "\tuint3 PageAtlasOffset;"
+    },
+    {
+     "line": 114,
+     "text": "\t//PageAtlasOffset.x = (Page.PageIndex % GLOBAL_DISTANCE_FIELD_PAGE_ATLAS_SIZE_IN_PAGES_X);"
+    },
+    {
+     "line": 115,
+     "text": "\t//PageAtlasOffset.y = ((Page.PageIndex / GLOBAL_DISTANCE_FIELD_PAGE_ATLAS_SIZE_IN_PAGES_X) % GLOBAL_DISTANCE_FIELD_PAGE_ATLAS_SIZE_IN_PAGES_Y);"
+    },
+    {
+     "line": 116,
+     "text": "\t//PageAtlasOffset.z = ((Page.PageIndex / GLOBAL_DISTANCE_FIELD_PAGE_ATLAS_SIZE_IN_PAGES_X) / GLOBAL_DISTANCE_FIELD_PAGE_ATLAS_SIZE_IN_PAGES_Y);"
+    },
+    {
+     "line": 117,
+     "text": ""
+    },
+    {
+     "line": 118,
+     "text": "\t// Same as above, but with bit operations"
+    },
+    {
+     "line": 119,
+     "text": "\tPageAtlasOffset.x = Page.PageIndex & 0x7F;"
+    },
+    {
+     "line": 120,
+     "text": "\tPageAtlasOffset.y = (Page.PageIndex >> 7) & 0x7F;"
+    },
+    {
+     "line": 121,
+     "text": "\tPageAtlasOffset.z = Page.PageIndex >> 14;"
+    },
+    {
+     "line": 122,
+     "text": ""
+    },
+    {
+     "line": 123,
+     "text": "\treturn PageAtlasOffset;"
+    },
+    {
+     "line": 124,
+     "text": "}"
+    },
+    {
+     "line": 125,
+     "text": ""
+    },
+    {
+     "line": 126,
+     "text": "uint PackGlobalDistanceFieldPage(FGlobalDistanceFieldPage Page)"
+    },
+    {
+     "line": 127,
+     "text": "{"
+    },
+    {
+     "line": 128,
+     "text": "\tuint PackedPage = GLOBAL_DISTANCE_FIELD_INVALID_PAGE_ID;"
+    },
+    {
+     "line": 129,
+     "text": "\tif (Page.bValid)"
+    },
+    {
+     "line": 130,
+     "text": "\t{"
+    },
+    {
+     "line": 131,
+     "text": "\t\tPackedPage = Page.PageIndex & 0x00FFFFFF;"
+    },
+    {
+     "line": 132,
+     "text": "\t\tPackedPage |= Page.bCoverage ? GLOBAL_DISTANCE_FIELD_PAGE_COVERAGE_BIT : 0;"
+    },
+    {
+     "line": 133,
+     "text": "\t}"
+    },
+    {
+     "line": 134,
+     "text": "\treturn PackedPage;"
+    },
+    {
+     "line": 135,
+     "text": "}"
+    },
+    {
+     "line": 136,
+     "text": ""
+    },
+    {
+     "line": 137,
+     "text": "FGlobalDistanceFieldPage UnpackGlobalDistanceFieldPage(uint PackedPage)"
+    },
+    {
+     "line": 138,
+     "text": "{"
+    },
+    {
+     "line": 139,
+     "text": "\tFGlobalDistanceFieldPage Page;"
+    },
+    {
+     "line": 140,
+     "text": "\tPage.PageIndex = PackedPage & 0x00FFFFFF;"
+    },
+    {
+     "line": 141,
+     "text": "\tPage.bCoverage = PackedPage & GLOBAL_DISTANCE_FIELD_PAGE_COVERAGE_BIT;"
+    },
+    {
+     "line": 142,
+     "text": "\tPage.bValid = PackedPage < GLOBAL_DISTANCE_FIELD_INVALID_PAGE_ID;"
+    },
+    {
+     "line": 143,
+     "text": "\treturn Page;"
+    },
+    {
+     "line": 144,
+     "text": "}"
+    },
+    {
+     "line": 145,
+     "text": ""
+    },
+    {
+     "line": 146,
+     "text": "FGlobalDistanceFieldPage GetGlobalDistanceFieldPage(float3 VolumeUV, uint ClipmapIndex)"
+    },
+    {
+     "line": 147,
+     "text": "{"
+    },
+    {
+     "line": 148,
+     "text": "\tint4 PageTableCoord = int4(saturate(VolumeUV) * GlobalDistanceFieldClipmapSizeInPages + int3(0, 0, ClipmapIndex * GlobalDistanceFieldClipmapSizeInPages), 0);"
+    },
+    {
+     "line": 149,
+     "text": "\tuint PackedPage = GlobalDistanceFieldPageTableTexture.Load(PageTableCoord);"
+    },
+    {
+     "line": 150,
+     "text": "\treturn UnpackGlobalDistanceFieldPage(PackedPage);"
+    },
+    {
+     "line": 151,
+     "text": "}"
+    },
+    {
+     "line": 152,
+     "text": ""
+    },
+    {
+     "line": 153,
+     "text": "void ComputeGlobalDistanceFieldPageUV(float3 VolumeUV, FGlobalDistanceFieldPage Page, out float3 OutPageUV, out float3 OutCoveragePageUV)"
+    },
+    {
+     "line": 154,
+     "text": "{"
+    },
+    {
+     "line": 155,
+     "text": "\tuint3 PageAtlasOffset = GlobalDistanceFieldPageLinearIndexToPageAtlasOffset(Page);"
+    },
+    {
+     "line": 156,
+     "text": "\tfloat3 VolumePageUV = frac(VolumeUV * GlobalDistanceFieldClipmapSizeInPages);"
+    },
+    {
+     "line": 157,
+     "text": ""
+    },
+    {
+     "line": 158,
+     "text": "\tfloat3 PageAtlasCoord = PageAtlasOffset * GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION_IN_ATLAS + VolumePageUV * GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION + 0.5f;"
+    },
+    {
+     "line": 159,
+     "text": "\tOutPageUV = PageAtlasCoord * GlobalDistanceFieldInvPageAtlasSize;"
+    },
+    {
+     "line": 160,
+     "text": ""
+    },
+    {
+     "line": 161,
+     "text": "\tfloat3 CoveragePageAtlasCoord = PageAtlasOffset * GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION_IN_ATLAS + VolumePageUV * GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION + 0.5f;"
+    },
+    {
+     "line": 162,
+     "text": "\tOutCoveragePageUV = CoveragePageAtlasCoord * GlobalDistanceFieldInvCoverageAtlasSize;"
+    },
+    {
+     "line": 163,
+     "text": "}"
+    },
+    {
+     "line": 164,
+     "text": ""
+    },
+    {
+     "line": 165,
+     "text": "float3 ComputeGlobalDistanceFieldPageUV(float3 VolumeUV, FGlobalDistanceFieldPage Page)"
+    },
+    {
+     "line": 166,
+     "text": "{"
+    },
+    {
+     "line": 167,
+     "text": "\tuint3 PageAtlasOffset = GlobalDistanceFieldPageLinearIndexToPageAtlasOffset(Page);"
+    },
+    {
+     "line": 168,
+     "text": "\tfloat3 VolumePageUV = frac(VolumeUV * GlobalDistanceFieldClipmapSizeInPages);"
+    },
+    {
+     "line": 169,
+     "text": "\tfloat3 PageAtlasCoord = PageAtlasOffset * GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION_IN_ATLAS + VolumePageUV * GLOBAL_DISTANCE_FIELD_PAGE_RESOLUTION + 0.5f;"
+    },
+    {
+     "line": 170,
+     "text": "\tfloat3 PageUV = PageAtlasCoord * GlobalDistanceFieldInvPageAtlasSize;"
+    },
+    {
+     "line": 171,
+     "text": "\treturn PageUV;"
+    },
+    {
+     "line": 172,
+     "text": "}"
+    },
+    {
+     "line": 173,
+     "text": ""
+    },
+    {
+     "line": 174,
+     "text": "float3 ComputeGlobalDistanceFieldCoveragePageUV(float3 VolumeUV, FGlobalDistanceFieldPage Page)"
+    },
+    {
+     "line": 175,
+     "text": "{"
+    },
+    {
+     "line": 176,
+     "text": "\tuint3 PageAtlasOffset = GlobalDistanceFieldPageLinearIndexToPageAtlasOffset(Page);"
+    },
+    {
+     "line": 177,
+     "text": "\tfloat3 VolumePageUV = frac(VolumeUV * GlobalDistanceFieldClipmapSizeInPages);"
+    },
+    {
+     "line": 178,
+     "text": "\tfloat3 CoveragePageAtlasCoord = PageAtlasOffset * GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION_IN_ATLAS + VolumePageUV * GLOBAL_DISTANCE_FIELD_COVERAGE_PAGE_RESOLUTION + 0.5f;"
+    },
+    {
+     "line": 179,
+     "text": "\tfloat3 CoveragePageUV = CoveragePageAtlasCoord * GlobalDistanceFieldInvCoverageAtlasSize;"
+    },
+    {
+     "line": 180,
+     "text": "\treturn CoveragePageUV;"
+    },
+    {
+     "line": 181,
+     "text": "}"
+    },
+    {
+     "line": 182,
+     "text": ""
+    },
+    {
+     "line": 183,
+     "text": "float EncodeGlobalDistanceFieldPageDistance(float Distance, float ClipmapInfluenceRange)"
+    },
+    {
+     "line": 184,
+     "text": "{"
+    },
+    {
+     "line": 185,
+     "text": "\treturn saturate(Distance / (2.0f * ClipmapInfluenceRange) + 0.5f);"
+    },
+    {
+     "line": 186,
+     "text": "}"
+    },
+    {
+     "line": 187,
+     "text": ""
+    },
+    {
+     "line": 188,
+     "text": "float DecodeGlobalDistanceFieldPageDistance(float EncodedDistance, float ClipmapInfluenceRange)"
+    },
+    {
+     "line": 189,
+     "text": "{"
+    },
+    {
+     "line": 190,
+     "text": "\treturn (EncodedDistance * 2.0f - 1.0f) * ClipmapInfluenceRange;"
+    },
+    {
+     "line": 191,
+     "text": "}"
+    },
+    {
+     "line": 192,
+     "text": ""
+    },
+    {
+     "line": 193,
+     "text": "float3 ComputeGlobalUV(float3 TranslatedWorldPosition, uint ClipmapIndex)"
+    },
+    {
+     "line": 194,
+     "text": "{"
+    },
+    {
+     "line": 195,
+     "text": "\t//return ((TranslatedWorldPosition - GlobalVolumeTranslatedCenterAndExtent[ClipmapIndex].xyz + GlobalVolumeScollOffset[ClipmapIndex].xyz) / (GlobalVolumeTranslatedCenterAndExtent[ClipmapIndex].w * 2) + .5f);"
+    },
+    {
+     "line": 196,
+     "text": "\tfloat4 TranslatedWorldToUVAddAndMul = GlobalVolumeTranslatedWorldToUVAddAndMul[ClipmapIndex];"
+    },
+    {
+     "line": 197,
+     "text": "\tfloat3 UV = frac(TranslatedWorldPosition * TranslatedWorldToUVAddAndMul.www + TranslatedWorldToUVAddAndMul.xyz); // wraparound addressing"
+    },
+    {
+     "line": 198,
+     "text": "\tUV = frac(UV); // apply frac twice to prevent UV == 1.0f because frac(-0.00...001f) = 1.0f"
+    },
+    {
+     "line": 199,
+     "text": "\treturn UV;"
+    },
+    {
+     "line": 200,
+     "text": "}"
+    },
+    {
+     "line": 201,
+     "text": ""
+    },
+    {
+     "line": 202,
+     "text": "float3 ComputeGlobalMipUV(float3 TranslatedWorldPosition, uint ClipmapIndex)"
+    },
+    {
+     "line": 203,
+     "text": "{"
+    },
+    {
+     "line": 204,
+     "text": "\tfloat3 MipUV = saturate(TranslatedWorldPosition * GlobalDistanceFieldMipTranslatedWorldToUVScale[ClipmapIndex].xyz + GlobalDistanceFieldMipTranslatedWorldToUVBias[ClipmapIndex].xyz);"
+    },
+    {
+     "line": 205,
+     "text": ""
+    },
+    {
+     "line": 206,
+     "text": "\t// Clamp MipUV.z to a valid bilinear region to prevent filtering across clipmaps"
+    },
+    {
+     "line": 207,
+     "text": "\tfloat MipUVMinZ = GlobalDistanceFieldMipTranslatedWorldToUVScale[ClipmapIndex].w;"
+    },
+    {
+     "line": 208,
+     "text": "\tfloat MipUVMaxZ = GlobalDistanceFieldMipTranslatedWorldToUVBias[ClipmapIndex].w;"
+    },
+    {
+     "line": 209,
+     "text": "\tMipUV.z = clamp(MipUV.z, MipUVMinZ, MipUVMaxZ);"
+    },
+    {
+     "line": 210,
+     "text": ""
+    },
+    {
+     "line": 211,
+     "text": "\treturn MipUV;"
+    },
+    {
+     "line": 212,
+     "text": "}"
+    }
+   ]
+  },
+  "LumenScreenProbeTracing.usf": {
+   "label": "TraceVoxels and ScreenProbeTraceVoxelsCS",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeTracing.usf",
+   "sha256": "397de6574bd4a8d38413834953ea4b175fe24e25b1b4ca9414e826378497b49f",
+   "lines": [
+    {
+     "line": 714,
+     "text": "void TraceVoxels("
+    },
+    {
+     "line": 719,
+     "text": "\tuint2 ScreenProbeScreenPosition = GetScreenProbeScreenPosition(ScreenProbeIndex);"
+    },
+    {
+     "line": 722,
+     "text": "\tuint2 TraceBufferCoord = GetTraceBufferCoord(ScreenProbeAtlasCoord, TraceTexelCoord);"
+    },
+    {
+     "line": 724,
+     "text": "\tfloat TraceHitDistance = DecodeProbeRayDistance(RWTraceHit[TraceBufferCoord]).HitDistance;"
+    },
+    {
+     "line": 728,
+     "text": "\t\tfloat2 ScreenUV = GetScreenUVFromScreenProbePosition(ScreenProbeScreenPosition);"
+    },
+    {
+     "line": 729,
+     "text": "\t\tfloat SceneDepth = GetScreenProbeDepth(ScreenProbeAtlasCoord);"
+    },
+    {
+     "line": 734,
+     "text": "\t\t\tfloat3 TranslatedWorldPosition = GetTranslatedWorldPositionFromScreenUV(ScreenUV, SceneDepth);"
+    },
+    {
+     "line": 737,
+     "text": "\t\t\tfloat TraceDistance = MaxTraceDistance;"
+    },
+    {
+     "line": 740,
+     "text": "\t\t\tGetScreenProbeTexelRay("
+    },
+    {
+     "line": 749,
+     "text": "\t\t\tfloat3 TranslatedSamplePosition = TranslatedWorldPosition + SurfaceBias * RayWorldDirection;"
+    },
+    {
+     "line": 750,
+     "text": "\t\t\tTranslatedSamplePosition += SurfaceBias * GetScreenProbeNormalForBiasing(ScreenProbeAtlasCoord, RayWorldDirection);"
+    },
+    {
+     "line": 754,
+     "text": "\t\t\tFRadianceCacheCoverage Coverage;"
+    },
+    {
+     "line": 756,
+     "text": "#if RADIANCE_CACHE"
+    },
+    {
+     "line": 757,
+     "text": "\t\t\tCoverage = GetRadianceCacheCoverage(TranslatedWorldPosition, RayWorldDirection, 0);"
+    },
+    {
+     "line": 759,
+     "text": "\t\t\tif (Coverage.bValid)"
+    },
+    {
+     "line": 761,
+     "text": "\t\t\t\tTraceDistance = min(TraceDistance, Coverage.MinTraceDistanceBeforeInterpolation);"
+    },
+    {
+     "line": 765,
+     "text": "\t\t\tFConeTraceInput TraceInput;"
+    },
+    {
+     "line": 766,
+     "text": "\t\t\tTraceInput.Setup(SamplePosition, TranslatedSamplePosition, RayWorldDirection, ConeHalfAngle, MinSampleRadius, MinTraceDistance, TraceDistance, StepFactor);"
+    },
+    {
+     "line": 767,
+     "text": "\t\t\tTraceInput.VoxelTraceStartDistance = max(MinTraceDistance, TraceHitDistance - SurfaceBias * 2);"
+    },
+    {
+     "line": 768,
+     "text": "\t\t\tTraceInput.bDitheredTransparency = true;"
+    },
+    {
+     "line": 769,
+     "text": "\t\t\tTraceInput.DitherScreenCoord = ScreenTileCoord * ProbeTracingResolution + TraceTexelCoord;"
+    },
+    {
+     "line": 771,
+     "text": "\t\t\tFConeTraceResult TraceResult = (FConeTraceResult)0;"
+    },
+    {
+     "line": 776,
+     "text": "\t\t\t#if TRACE_VOXELS"
+    },
+    {
+     "line": 777,
+     "text": "\t\t\t\tConeTraceLumenSceneVoxels(TraceInput, TraceResult);"
+    },
+    {
+     "line": 811,
+     "text": "\t\t\tif (TraceResult.Transparency <= .5f)"
+    },
+    {
+     "line": 812,
+     "text": "\t\t\t{"
+    },
+    {
+     "line": 821,
+     "text": "\t\t\t\tTraceHitDistance = TraceResult.OpaqueHitDistance;"
+    },
+    {
+     "line": 822,
+     "text": "\t\t\t\tbHit = true;"
+    },
+    {
+     "line": 825,
+     "text": "#if RADIANCE_CACHE"
+    },
+    {
+     "line": 826,
+     "text": "\t\t\tif (Coverage.bValid)"
+    },
+    {
+     "line": 831,
+     "text": "\t\t\t\tSampleRadianceCacheAndApply(Coverage, TranslatedWorldPosition, RayWorldDirection, ConeHalfAngle, /*RandomScalarForStochasticIterpolation*/ 0.5f, TraceResult.Lighting, TraceResult.Transparency, RadianceCacheHitDistance);"
+    },
+    {
+     "line": 833,
+     "text": "\t\t\t\tif (TransparencyBeforeRadianceCache > 0.0f)"
+    },
+    {
+     "line": 835,
+     "text": "\t\t\t\t\tTraceHitDistance = TraceHitDistanceForSpatialFiltering = RadianceCacheHitDistance;"
+    },
+    {
+     "line": 849,
+     "text": "\t\t\tTraceResult.Lighting += GetSkylightLeaking(RayWorldDirection, TraceHitDistance);"
+    },
+    {
+     "line": 851,
+     "text": "\t\t\tTraceResult.Lighting *= View.PreExposure;"
+    },
+    {
+     "line": 861,
+     "text": "\t\t\t\tRWTraceRadiance[TraceBufferCoord] = QuantizeForFloatRenderTarget(TraceResult.Lighting, int3(TraceBufferCoord, View.StateFrameIndexMod8));"
+    },
+    {
+     "line": 870,
+     "text": "\t\tWriteTraceHit(TraceBufferCoord, TraceHitDistanceForSpatialFiltering, bHit, false, /*bReachedRadianceCache*/ false);"
+    },
+    {
+     "line": 880,
+     "text": "\tif (DispatchThreadId.x < CompactedTraceTexelAllocator[0])"
+    },
+    {
+     "line": 882,
+     "text": "\t\tuint ScreenProbeIndex;"
+    },
+    {
+     "line": 884,
+     "text": "\t\tReadTraceTexel(DispatchThreadId.x, ScreenProbeIndex, TraceTexelCoord);"
+    },
+    {
+     "line": 886,
+     "text": "\t\tuint2 ScreenProbeAtlasCoord = uint2(ScreenProbeIndex % ScreenProbeAtlasViewSize.x, ScreenProbeIndex / ScreenProbeAtlasViewSize.x);"
+    },
+    {
+     "line": 887,
+     "text": "\t\tTraceVoxels(ScreenProbeAtlasCoord, TraceTexelCoord, ScreenProbeIndex);"
+    }
+   ]
+  },
+  "LumenSoftwareRayTracing.ush": {
+   "label": "ConeTraceLumenSceneVoxels / RayTraceGlobalDistanceField",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenSoftwareRayTracing.ush",
+   "sha256": "0c0e4a5b6b1b2e6dccb668e33ced60f14360b90a419676c865588b5af346bbdc",
+   "lines": [
+    {
+     "line": 70,
+     "text": "\tvoid Setup("
+    },
+    {
+     "line": 89,
+     "text": "\t\tStepFactor = InStepFactor;"
+    },
+    {
+     "line": 92,
+     "text": "\t\tSDFStepFactor = 1.0f;"
+    },
+    {
+     "line": 93,
+     "text": "\t\tMinSDFStepFactor = 1.0f;"
+    },
+    {
+     "line": 96,
+     "text": "\t\tbExpandSurfaceUsingRayTimeInsteadOfMaxDistance = true;"
+    },
+    {
+     "line": 97,
+     "text": "\t\tInitialMaxDistance = 0;"
+    },
+    {
+     "line": 99,
+     "text": "\t\tbDitheredTransparency = false;"
+    },
+    {
+     "line": 102,
+     "text": "\t\tbCalculateHitVelocity = false;"
+    },
+    {
+     "line": 776,
+     "text": "\t\tFGlobalSDFTraceInput SDFTraceInput = SetupGlobalSDFTraceInput(TraceInput.ConeTranslatedOrigin, TraceInput.ConeDirection, TraceInput.MinTraceDistance, TraceInput.MaxTraceDistance, TraceInput.SDFStepFactor, TraceInput.MinSDFStepFactor);"
+    },
+    {
+     "line": 777,
+     "text": "\t\tSDFTraceInput.bDitheredTransparency = TraceInput.bDitheredTransparency;"
+    },
+    {
+     "line": 778,
+     "text": "\t\tSDFTraceInput.DitherScreenCoord = TraceInput.DitherScreenCoord;"
+    },
+    {
+     "line": 779,
+     "text": "\t\tSDFTraceInput.bExpandSurfaceUsingRayTimeInsteadOfMaxDistance = TraceInput.bExpandSurfaceUsingRayTimeInsteadOfMaxDistance;"
+    },
+    {
+     "line": 780,
+     "text": "\t\tSDFTraceInput.InitialMaxDistance = TraceInput.InitialMaxDistance;"
+    },
+    {
+     "line": 782,
+     "text": "\t\tSDFTraceResult = RayTraceGlobalDistanceField(SDFTraceInput);"
+    },
+    {
+     "line": 792,
+     "text": "\tif (GlobalSDFTraceResultIsHit(SDFTraceResult))"
+    },
+    {
+     "line": 793,
+     "text": "\t{"
+    },
+    {
+     "line": 794,
+     "text": "\t\tEvaluateGlobalDistanceFieldHit(TraceInput, SDFTraceResult, OutResult);"
+    },
+    {
+     "line": 862,
+     "text": "void ConeTraceLumenSceneVoxels("
+    },
+    {
+     "line": 866,
+     "text": "\tif (TraceInput.VoxelTraceStartDistance < TraceInput.MaxTraceDistance)"
+    },
+    {
+     "line": 867,
+     "text": "\t{"
+    },
+    {
+     "line": 868,
+     "text": "\t\tFConeTraceInput VoxelTraceInput = TraceInput;"
+    },
+    {
+     "line": 869,
+     "text": "\t\tVoxelTraceInput.MinTraceDistance = TraceInput.VoxelTraceStartDistance;"
+    },
+    {
+     "line": 870,
+     "text": "\t\tFConeTraceResult VoxelTraceResult;"
+    },
+    {
+     "line": 871,
+     "text": "\t\tRayTraceGlobalDistanceField(VoxelTraceInput, VoxelTraceResult);"
+    },
+    {
+     "line": 873,
+     "text": "\t\tOutResult.Lighting += VoxelTraceResult.Lighting * OutResult.Transparency;"
+    },
+    {
+     "line": 874,
+     "text": "\t\tOutResult.Transparency *= VoxelTraceResult.Transparency;"
+    },
+    {
+     "line": 875,
+     "text": "\t\tOutResult.NumSteps += VoxelTraceResult.NumSteps;"
+    },
+    {
+     "line": 876,
+     "text": "\t\tOutResult.OpaqueHitDistance = min(OutResult.OpaqueHitDistance, VoxelTraceResult.OpaqueHitDistance);"
+    },
+    {
+     "line": 877,
+     "text": "\t\tOutResult.GeometryWorldNormal = VoxelTraceResult.GeometryWorldNormal;"
+    }
+   ]
+  },
+  "LumenScreenProbeTracingCommon.ush": {
+   "label": "ray construction and normal bias",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeTracingCommon.ush",
+   "sha256": "e00eb28a810241c1b9349e736c1c83bf0fbe50e34e832e72fc05fbf994c668d9",
+   "lines": [
+    {
+     "line": 122,
+     "text": "void GetScreenProbeTexelRay("
+    },
+    {
+     "line": 130,
+     "text": "{"
+    },
+    {
+     "line": 132,
+     "text": "\tGetProbeTracingUV(TraceBufferCoord, TraceTexelCoord, GetProbeTexelCenter(ScreenTileCoord), 1, ProbeUV, ConeHalfAngle);"
+    },
+    {
+     "line": 134,
+     "text": "\tRayDirection = EquiAreaSphericalMapping(ProbeUV);"
+    },
+    {
+     "line": 137,
+     "text": "float3 GetScreenProbeNormalForBiasing(uint2 ScreenProbeAtlasCoord, float3 RayWorldDirection, out bool bBackfaceRay)"
+    },
+    {
+     "line": 140,
+     "text": "\tfloat3 SceneNormal = GetScreenProbeNormal(ScreenProbeAtlasCoord);"
+    },
+    {
+     "line": 142,
+     "text": "\tif (GetScreenProbeIsTwoSidedFoliage(ScreenProbeAtlasCoord))"
+    },
+    {
+     "line": 144,
+     "text": "\t\tbBackfaceRay = dot(SceneNormal, RayWorldDirection) < 0.0f;"
+    },
+    {
+     "line": 152,
+     "text": "\treturn SceneNormal;"
+    },
+    {
+     "line": 161,
+     "text": "void WriteTraceHit(uint2 TraceBufferCoord, float HitDistance, bool bHit, bool bFastMoving, bool bReachedRadianceCache)"
+    },
+    {
+     "line": 163,
+     "text": "\tRWTraceHit[TraceBufferCoord] = EncodeProbeRayDistance(HitDistance, bHit, bFastMoving, bReachedRadianceCache);"
+    }
+   ]
+  },
+  "LumenScreenProbeCommon.ush": {
+   "label": "normal decode and TraceHit encoding",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeCommon.ush",
+   "sha256": "7da63b360f9c5e9c540d21a5e32a1374324cfcba4c171694e2779aec50a0a84e",
+   "lines": [
+    {
+     "line": 89,
+     "text": "float3 GetScreenProbeNormal(uint2 ScreenProbeAtlasCoord)"
+    },
+    {
+     "line": 91,
+     "text": "\treturn OctahedronToUnitVector(ScreenProbeWorldNormal[ScreenProbeAtlasCoord] * 2.0 - 1.0);"
+    },
+    {
+     "line": 174,
+     "text": "bool GetScreenProbeIsTwoSidedFoliage(uint2 ScreenProbeAtlasCoord)"
+    },
+    {
+     "line": 176,
+     "text": "\tuint Encoded = ScreenProbeWorldSpeed.Load(int3(ScreenProbeAtlasCoord, 0));"
+    },
+    {
+     "line": 177,
+     "text": "\treturn (Encoded & 0x8000) != 0;"
+    },
+    {
+     "line": 239,
+     "text": "uint EncodeProbeRayDistance(float HitDistance, bool bHit, bool bMoving, bool bReachedRadianceCache)"
+    },
+    {
+     "line": 246,
+     "text": "\tEncodedRay = asuint(HitDistance) & 0x7FFFFFFC;"
+    },
+    {
+     "line": 247,
+     "text": "\tEncodedRay |= bHit ? (1 << 0) : 0;"
+    },
+    {
+     "line": 248,
+     "text": "\tEncodedRay |= bMoving ? (1 << 1) : 0;"
+    },
+    {
+     "line": 249,
+     "text": "\tEncodedRay |= bReachedRadianceCache ? (1 << 31) : 0;"
+    },
+    {
+     "line": 262,
+     "text": "FProbeRayDistance DecodeProbeRayDistance(uint Encoded)"
+    },
+    {
+     "line": 268,
+     "text": "\tProbeRayDistance.HitDistance = asfloat(Encoded & 0x7FFFFFFC);"
+    }
+   ]
+  },
+  "LumenRadianceCacheInterpolation.ush": {
+   "label": "coverage bound and cache apply",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenRadianceCacheInterpolation.ush",
+   "sha256": "16db4c628da14c6277d3b06c03b01dfb90f60493f9a35ef01315e07be2e39ed6",
+   "lines": [
+    {
+     "line": 156,
+     "text": "struct FRadianceCacheCoverage"
+    },
+    {
+     "line": 161,
+     "text": "\tfloat MinTraceDistanceBeforeInterpolation;"
+    },
+    {
+     "line": 179,
+     "text": "FRadianceCacheCoverage GetRadianceCacheCoverage(float3 TranslatedRayOrigin, float3 RayDirection, float ClipmapDitherRandom)"
+    },
+    {
+     "line": 183,
+     "text": "\tCoverage.ClipmapIndex = GetRadianceProbeClipmap(TranslatedRayOrigin, ClipmapDitherRandom);"
+    },
+    {
+     "line": 185,
+     "text": "\tif (Coverage.ClipmapIndex < NumRadianceProbeClipmaps)"
+    },
+    {
+     "line": 187,
+     "text": "\t\tCoverage.bValid = true;"
+    },
+    {
+     "line": 189,
+     "text": "\t\tfloat CellOcclusionDistance = GetRadianceProbeClipmapCellSize(Coverage.ClipmapIndex) * sqrt(3.0f);"
+    },
+    {
+     "line": 190,
+     "text": "\t\tCoverage.MinTraceDistanceBeforeInterpolation = GetRadianceProbeTMin(Coverage.ClipmapIndex) + CellOcclusionDistance;"
+    },
+    {
+     "line": 499,
+     "text": "void SampleRadianceCacheAndApply(FRadianceCacheCoverage Coverage, float3 TranslatedWorldSpacePosition, float3 WorldSpaceDirection, float ConeHalfAngle, float RandomScalarForStochasticInterpolation, inout float3 Lighting, inout float Transparency, inout float TraceHitDistance)"
+    },
+    {
+     "line": 501,
+     "text": "\tif (Transparency > 0.0f)"
+    },
+    {
+     "line": 503,
+     "text": "\t\tFRadianceCacheSample RadianceCacheSample = SampleRadianceCacheInterpolated(Coverage, TranslatedWorldSpacePosition, WorldSpaceDirection, ConeHalfAngle, RandomScalarForStochasticInterpolation);"
+    },
+    {
+     "line": 505,
+     "text": "\t\tif (ShowBlackRadianceCacheLighting == 0)"
+    },
+    {
+     "line": 507,
+     "text": "\t\t\tLighting += RadianceCacheSample.Radiance * Transparency;"
+    },
+    {
+     "line": 510,
+     "text": "\t\tTraceHitDistance = RadianceCacheSample.TraceHitDistance;"
+    },
+    {
+     "line": 511,
+     "text": "\t\tTransparency = 0.0f;"
+    }
+   ]
+  },
+  "LumenScreenProbeTracing.cpp": {
+   "label": "permutation and dispatch",
+   "file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeTracing.cpp",
+   "sha256": "055092f459232272767a267aa8a9b6861859b92109f1aa7645e6a7eeb3388dc4",
+   "lines": [
+    {
+     "line": 887,
+     "text": "\tauto TraceVoxels = [&]()"
+    },
+    {
+     "line": 889,
+     "text": "\t\tconst bool bRadianceCache = LumenScreenProbeGather::UseRadianceCache();"
+    },
+    {
+     "line": 891,
+     "text": "\t\tFScreenProbeTraceVoxelsCS::FParameters* PassParameters = GraphBuilder.AllocParameters<FScreenProbeTraceVoxelsCS::FParameters>();"
+    },
+    {
+     "line": 903,
+     "text": "\t\tFScreenProbeTraceVoxelsCS::FPermutationDomain PermutationVector;"
+    },
+    {
+     "line": 904,
+     "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FThreadGroupSize32 >(Lumen::UseThreadGroupSize32());"
+    },
+    {
+     "line": 905,
+     "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FRadianceCache >(bRadianceCache);"
+    },
+    {
+     "line": 906,
+     "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FScreenProbeExtraAO >(LumenScreenProbeGather::UseScreenProbeExtraAO());"
+    },
+    {
+     "line": 907,
+     "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FStructuredImportanceSampling >(LumenScreenProbeGather::UseImportanceSampling(View));"
+    },
+    {
+     "line": 908,
+     "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FHairStrands>(bNeedTraceHairVoxel);"
+    },
+    {
+     "line": 909,
+     "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FTraceVoxels>(!bUseHardwareRayTracing && Lumen::UseGlobalSDFTracing(View.Family->EngineShowFlags));"
+    },
+    {
+     "line": 910,
+     "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FSimpleCoverageBasedExpand>(PermutationVector.Get<FScreenProbeTraceVoxelsCS::FTraceVoxels>() && Lumen::UseGlobalSDFSimpleCoverageBasedExpand());"
+    },
+    {
+     "line": 911,
+     "text": "\t\tPermutationVector = FScreenProbeTraceVoxelsCS::RemapPermutation(PermutationVector);"
+    },
+    {
+     "line": 912,
+     "text": "\t\tauto ComputeShader = View.ShaderMap->GetShader<FScreenProbeTraceVoxelsCS>(PermutationVector);"
+    },
+    {
+     "line": 914,
+     "text": "\t\tECompactedTracingIndirectArgs IndirectArgsOffset = Lumen::UseThreadGroupSize32() ? ECompactedTracingIndirectArgs::NumTracesDiv32 : ECompactedTracingIndirectArgs::NumTracesDiv64;"
+    },
+    {
+     "line": 916,
+     "text": "\t\tFComputeShaderUtils::AddPass("
+    },
+    {
+     "line": 918,
+     "text": "\t\t\tbNeedTraceHairVoxel ? RDG_EVENT_NAME(\"TraceGlobalSDFAndApplyRadianceCache and HairStrands\") : RDG_EVENT_NAME(\"TraceGlobalSDFAndApplyRadianceCache\"),"
+    },
+    {
+     "line": 927,
+     "text": "\tTraceVoxels();"
+    }
+   ]
+  },
+  "Quantization.ush": {
+   "label": "QuantizeFloatColor",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Quantization.ush",
+   "sha256": "771412055c5842435e3c960638067553580612660668c2d5201a207239ebfc66",
+   "lines": [
+    {
+     "line": 13,
+     "text": "float3 QuantizeFloatColor(in float3 Color, in float3 QuantizationError, in float E)"
+    },
+    {
+     "line": 14,
+     "text": "{"
+    },
+    {
+     "line": 15,
+     "text": "\tfloat3 Error = Color * QuantizationError;"
+    },
+    {
+     "line": 16,
+     "text": ""
+    },
+    {
+     "line": 17,
+     "text": "\tError[0] = asfloat(asuint(Error[0]) & ~0x007FFFFF);"
+    },
+    {
+     "line": 18,
+     "text": "\tError[1] = asfloat(asuint(Error[1]) & ~0x007FFFFF);"
+    },
+    {
+     "line": 19,
+     "text": "\tError[2] = asfloat(asuint(Error[2]) & ~0x007FFFFF);"
+    },
+    {
+     "line": 20,
+     "text": "\t"
+    },
+    {
+     "line": 21,
+     "text": "\treturn Color + Error * E;"
+    },
+    {
+     "line": 22,
+     "text": "}"
+    }
+   ]
+  },
+  "RandomPCG.ush": {
+   "label": "Rand3DPCG16 / Rand16ToFloat",
+   "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\RandomPCG.ush",
+   "sha256": "3251d897cc0d1f6a59896c3b55471d4fd999796da3d86ea565f3fac88c259e32",
+   "lines": [
+    {
+     "line": 12,
+     "text": "uint3 Rand3DPCG16(int3 p)"
+    },
+    {
+     "line": 13,
+     "text": "{"
+    },
+    {
+     "line": 14,
+     "text": "\t// taking a signed int then reinterpreting as unsigned gives good behavior for negatives"
+    },
+    {
+     "line": 15,
+     "text": "\tuint3 v = uint3(p);"
+    },
+    {
+     "line": 16,
+     "text": ""
+    },
+    {
+     "line": 17,
+     "text": "\t// Linear congruential step. These LCG constants are from Numerical Recipies"
+    },
+    {
+     "line": 18,
+     "text": "\t// For additional #'s, PCG would do multiple LCG steps and scramble each on output"
+    },
+    {
+     "line": 19,
+     "text": "\t// So v here is the RNG state"
+    },
+    {
+     "line": 20,
+     "text": "\tv = v * 1664525u + 1013904223u;"
+    },
+    {
+     "line": 21,
+     "text": ""
+    },
+    {
+     "line": 22,
+     "text": "\t// PCG uses xorshift for the final shuffle, but it is expensive (and cheap"
+    },
+    {
+     "line": 23,
+     "text": "\t// versions of xorshift have visible artifacts). Instead, use simple MAD Feistel steps"
+    },
+    {
+     "line": 24,
+     "text": "\t//"
+    },
+    {
+     "line": 25,
+     "text": "\t// Feistel ciphers divide the state into separate parts (usually by bits)"
+    },
+    {
+     "line": 26,
+     "text": "\t// then apply a series of permutation steps one part at a time. The permutations"
+    },
+    {
+     "line": 27,
+     "text": "\t// use a reversible operation (usually ^) to part being updated with the result of"
+    },
+    {
+     "line": 28,
+     "text": "\t// a permutation function on the other parts and the key."
+    },
+    {
+     "line": 29,
+     "text": "\t//"
+    },
+    {
+     "line": 30,
+     "text": "\t// In this case, I'm using v.x, v.y and v.z as the parts, using + instead of ^ for"
+    },
+    {
+     "line": 31,
+     "text": "\t// the combination function, and just multiplying the other two parts (no key) for "
+    },
+    {
+     "line": 32,
+     "text": "\t// the permutation function."
+    },
+    {
+     "line": 33,
+     "text": "\t//"
+    },
+    {
+     "line": 34,
+     "text": "\t// That gives a simple mad per round."
+    },
+    {
+     "line": 35,
+     "text": "\tv.x += v.y*v.z;"
+    },
+    {
+     "line": 36,
+     "text": "\tv.y += v.z*v.x;"
+    },
+    {
+     "line": 37,
+     "text": "\tv.z += v.x*v.y;"
+    },
+    {
+     "line": 38,
+     "text": "\tv.x += v.y*v.z;"
+    },
+    {
+     "line": 39,
+     "text": "\tv.y += v.z*v.x;"
+    },
+    {
+     "line": 40,
+     "text": "\tv.z += v.x*v.y;"
+    },
+    {
+     "line": 41,
+     "text": ""
+    },
+    {
+     "line": 42,
+     "text": "\t// only top 16 bits are well shuffled"
+    },
+    {
+     "line": 43,
+     "text": "\treturn v >> 16u;"
+    },
+    {
+     "line": 44,
+     "text": "}"
+    },
+    {
+     "line": 106,
+     "text": "// Take uint value in [0,2^16) to float in [0,1)"
+    },
+    {
+     "line": 107,
+     "text": "float Rand16ToFloat(uint Rand16Bits)"
+    },
+    {
+     "line": 108,
+     "text": "{"
+    },
+    {
+     "line": 109,
+     "text": "\treturn float(Rand16Bits) * (1.0 / 65536.0);"
+    },
+    {
+     "line": 110,
+     "text": "}"
+    }
+   ]
+  },
+  "Quantization.cpp": {
+   "label": "R11G11B10 quantization error",
+   "file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Quantization.cpp",
+   "sha256": "2208b3860bcb8e17ede8e023b91ce6be0171a38734e66a06c87926168f0d3cef",
+   "lines": [
+    {
+     "line": 9,
+     "text": "FVector3f ComputePixelFormatQuantizationError(EPixelFormat PixelFormat)"
+    },
+    {
+     "line": 10,
+     "text": "{"
+    },
+    {
+     "line": 11,
+     "text": "\tFIntVector ColorMantissaBits = FIntVector(1, 1, 1);"
+    },
+    {
+     "line": 12,
+     "text": "\tswitch (PixelFormat)"
+    },
+    {
+     "line": 13,
+     "text": "\t{"
+    },
+    {
+     "line": 14,
+     "text": "\tcase PF_FloatR11G11B10:"
+    },
+    {
+     "line": 15,
+     "text": "\t\tColorMantissaBits = FIntVector(6, 6, 5);"
+    },
+    {
+     "line": 16,
+     "text": "\t\tbreak;"
+    },
+    {
+     "line": 17,
+     "text": ""
+    },
+    {
+     "line": 18,
+     "text": "\tcase PF_FloatRGBA:"
+    },
+    {
+     "line": 19,
+     "text": "\t\tColorMantissaBits = FIntVector(10, 10, 10);"
+    },
+    {
+     "line": 20,
+     "text": "\t\tbreak;"
+    },
+    {
+     "line": 21,
+     "text": ""
+    },
+    {
+     "line": 22,
+     "text": "\tcase PF_R5G6B5_UNORM:"
+    },
+    {
+     "line": 23,
+     "text": "\t\tColorMantissaBits = FIntVector(5, 6, 5);"
+    },
+    {
+     "line": 24,
+     "text": "\t\tbreak;"
+    },
+    {
+     "line": 25,
+     "text": ""
+    },
+    {
+     "line": 26,
+     "text": "\tcase PF_B8G8R8A8:"
+    },
+    {
+     "line": 27,
+     "text": "\tcase PF_R8G8B8A8:"
+    },
+    {
+     "line": 28,
+     "text": "\t\tColorMantissaBits = FIntVector(8, 8, 8);"
+    },
+    {
+     "line": 29,
+     "text": "\t\tbreak;"
+    },
+    {
+     "line": 30,
+     "text": ""
+    },
+    {
+     "line": 31,
+     "text": "\tcase PF_A2B10G10R10:"
+    },
+    {
+     "line": 32,
+     "text": "\t\tColorMantissaBits = FIntVector(10, 10, 10);"
+    },
+    {
+     "line": 33,
+     "text": "\t\tbreak;"
+    },
+    {
+     "line": 34,
+     "text": ""
+    },
+    {
+     "line": 35,
+     "text": "\tcase PF_A16B16G16R16:"
+    },
+    {
+     "line": 36,
+     "text": "\t\tColorMantissaBits = FIntVector(16, 16, 16);"
+    },
+    {
+     "line": 37,
+     "text": "\t\tbreak;"
+    },
+    {
+     "line": 38,
+     "text": ""
+    },
+    {
+     "line": 39,
+     "text": ""
+    },
+    {
+     "line": 40,
+     "text": "\tcase PF_A32B32G32R32F:"
+    },
+    {
+     "line": 41,
+     "text": "\tdefault:"
+    },
+    {
+     "line": 42,
+     "text": "\t\t// A few view UBs are created witch SceneTexturesConfig not fully setup, so we gracefully fallback to a default 32bits."
+    },
+    {
+     "line": 43,
+     "text": "\t\tColorMantissaBits = FIntVector(23, 23, 23);"
+    },
+    {
+     "line": 44,
+     "text": "\t}"
+    },
+    {
+     "line": 45,
+     "text": ""
+    },
+    {
+     "line": 46,
+     "text": "\tFVector3f Error;"
+    },
+    {
+     "line": 47,
+     "text": "\tError.X = FMath::Pow(0.5f, ColorMantissaBits.X);"
+    },
+    {
+     "line": 48,
+     "text": "\tError.Y = FMath::Pow(0.5f, ColorMantissaBits.Y);"
+    },
+    {
+     "line": 49,
+     "text": "\tError.Z = FMath::Pow(0.5f, ColorMantissaBits.Z);"
+    },
+    {
+     "line": 50,
+     "text": "\treturn Error;"
+    }
+   ]
+  }
+ },
+ "permutation": {
+  "sourcePath": "ScreenProbeTraceVoxelsCS -> TraceVoxels -> ConeTraceLumenSceneVoxels -> RayTraceGlobalDistanceField",
+  "traceVoxelsPermutation": "!bUseHardwareRayTracing && Lumen::UseGlobalSDFTracing",
+  "radianceCachePermutation": "LumenScreenProbeGather::UseRadianceCache()",
+  "structuredImportancePermutation": "LumenScreenProbeGather::UseImportanceSampling(View)",
+  "simpleCoverageBasedExpand": false,
+  "cvars": {
+   "r.Lumen.HardwareRayTracing": {
+    "type": "int32",
+    "source": "Console",
+    "value": "0"
+   },
+   "r.Lumen.ThreadGroupSize32": {
+    "type": "int32",
+    "source": "Constructor",
+    "value": "1"
+   },
+   "r.Lumen.ScreenProbeGather.RadianceCache": {
+    "type": "int32",
+    "source": "Constructor",
+    "value": "1"
+   },
+   "r.Lumen.ScreenProbeGather.ImportanceSample": {
+    "type": "int32",
+    "source": "Constructor",
+    "value": "1"
+   },
+   "r.Lumen.ScreenProbeGather.ImportanceSample.NumLevels": {
+    "type": "int32",
+    "source": "Constructor",
+    "value": "1"
+   },
+   "r.Lumen.ScreenProbeGather.ReferenceMode": {
+    "type": "int32",
+    "source": "Constructor",
+    "value": "0"
+   }
+  },
+  "exactCompiledPermutationWitness": false,
+  "note": "The pass event name is emitted only by the TraceVoxels lambda. The exact compiled permutation is not recorded by DumpGPU; CVars and non-null bindings constrain it but do not prove each bit."
+ },
+ "selfchecks": [
+  {
+   "name": "selected_lane_is_captured_compacted_trace",
+   "pass": true,
+   "detail": "word=69206692"
+  },
+  {
+   "name": "query_origin_matches_captured_screen_depth_and_ray_info",
+   "pass": true,
+   "detail": "homogeneousZ=671.3284912109375 depth=671.3284912109375"
+  },
+  {
+   "name": "four_gdf_native_bindings_resolve_to_exported_diagnostic_resources",
+   "pass": true,
+   "detail": "{'pageAtlas': '000100000228d576b738', 'coverageAtlas': '000100000228d576ba00', 'pageTable': '000100000228d576bdf8', 'mip': '000100000228d576c0c0'}"
+  },
+  {
+   "name": "gdf_interval_uses_cache_bound_not_20000",
+   "pass": true,
+   "detail": "cacheBound=360.8439025878906 rayMax=20000.0"
+  },
+  {
+   "name": "gdf_interval_is_shorter_than_one_minimum_step",
+   "pass": true,
+   "detail": "length=7.464874267578125 minStep=9.920635223388672"
+  },
+  {
+   "name": "gdf_trace_records_first_iteration_with_raw_values",
+   "pass": true,
+   "detail": "iterations=1"
+  },
+  {
+   "name": "gdf_miss_matches_captured_bHit_false",
+   "pass": true,
+   "detail": "gdfHit=False captured_bHit=False"
+  },
+  {
+   "name": "tracehit_word_is_exact_cache_override",
+   "pass": true,
+   "detail": "captured=0x43c53748 expected=0x43c53748"
+  },
+  {
+   "name": "tracehit_previous_version_is_a_same_graph_pass_before_167",
+   "pass": true,
+   "detail": "pass 163 TraceScreen(Scene)"
+  },
+  {
+   "name": "no_recorded_graph_writer_on_four_gdf_ids",
+   "pass": true,
+   "detail": "no graph-0001 write"
+  },
+  {
+   "name": "export_timing_caveat_recorded",
+   "pass": true,
+   "detail": "owner/source-state proofs false"
+  },
+  {
+   "name": "trace_radiance_residual_within_one_store_ulp",
+   "pass": true,
+   "detail": "{'rawWordMatchesCaptured': False, 'ditherWordMatchesCaptured': False, 'rawCodeDeltaToCaptured': [0, -1, 0], 'ditherCodeDeltaToCaptured': [1, 0, 1]}"
+  },
+  {
+   "name": "not_claiming_trace_radiance_exact",
+   "pass": true,
+   "detail": "explicit forward-consistency only"
+  },
+  {
+   "name": "no_gpu_work_executed",
+   "pass": true,
+   "detail": "CPU only; no GPU dispatch"
+  }
+ ],
+ "allSelfchecksPassed": true,
+ "unsupported": [
+  "Exact compiled shader permutation (TraceVoxels, StructuredImportanceSampling, ThreadGroupSize32, RadianceCache, ScreenProbeExtraAO, HairStrands) is not recorded by DumpGPU; the replay follows the event-name/source path and captured CVars.",
+  "The four GDF volumes are pass-28 native exports reused by pass 167; no RDG execution dependency proves byte invariance between those passes.",
+  "Hardware trilinear filtering is modelled as float32 8-tap interpolation of the exported R8 volumes; GPU fixed-point filter weights are not captured. The miss margin is large (33.7 vs 9.92 UU, and page value -1 LSB still misses), so the hit/miss branch is robust even though the last fraction is not bit-exact.",
+  "The previous TraceHit read by pass 167 is the pass-163 TraceScreen output. That version is captured and used; it is a same-graph read-before-write.",
+  "The cache radiance is a CPU replay of the GPU's eight-probe interpolation; exact compiled arithmetic and any half-precision intermediates are not captured. TraceRadiance is compared only with a one-ULP store bound.",
+  "The exact indirect dispatch record (Div32 vs Div64) consumed by the device is not recorded; the selected lane is below both limits."
+ ],
+ "evidenceHashes": {
+  "schema": "unreal-understanding-gdf-march-hashes-v1",
+  "capture": "D:\\UnrealEngine\\UnrealUnderstandingCapture\\capture\\buffers\\gpudump\\binary-20261112-153914",
+  "inputs": {
+   "compactedTraceTexelData": {
+    "path": "Resources\\000100000228d58f0010.v000100000228d58f0310.bin",
+    "bytes": 1720320,
+    "sha256": "deec641ed53b6036f0ca4d5b3ecdda7cc806bbc28c04dcf64ef79e2822fea367"
+   },
+   "traceHitPrevious": {
+    "path": "Resources\\000100000225fb913620.mip0.v000100000225fb91bf20.bin",
+    "bytes": 1720320,
+    "sha256": "2487a2863e2d912fa10a04a2714f1c072c2f5f7a14a55ee63f26ea930c3dd773"
+   },
+   "traceHitFinal": {
+    "path": "Resources\\000100000225fb913620.mip0.v000100000228d58f3800.bin",
+    "bytes": 1720320,
+    "sha256": "b68ef5956b568f73557e5c1689f226e3513a8f68f048096a979c176eb995db26"
+   },
+   "traceRadianceFinal": {
+    "path": "Resources\\000100000225fb913310.mip0.v000100000228d58f3800.bin",
+    "bytes": 1720320,
+    "sha256": "4064e3d92c2cc3360a1d05529c00647b9a3491437438497c940d5ca7d7dccded"
+   }
+  },
+  "gdfExports": {
+   "pageAtlas": {
+    "path": "Resources\\000100000228d576b738.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 58720256,
+    "sha256": "88977356fd6d2d9a0ed1063693cf3e3dcc23fa667fd7a375bf97926fb55e1718"
+   },
+   "coverageAtlas": {
+    "path": "Resources\\000100000228d576ba00.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 7340032,
+    "sha256": "9eb8c695067839e3ecf7cd86cd9d5bc90ea3128aac48932844f60637741de208"
+   },
+   "pageTable": {
+    "path": "Resources\\000100000228d576bdf8.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 746496,
+    "sha256": "1cf800687e84badf35c92e2ad009fcc4bb189daa9dea373f21568a19cffd3c0c"
+   },
+   "mip": {
+    "path": "Resources\\000100000228d576c0c0.linear.mip0.v000100000225fb9fef70.bin",
+    "bytes": 1000188,
+    "sha256": "15ddbe672ab39e63d0e92545b1b69527706e541fa8b99fe6797623803b1230ce"
+   }
+  },
+  "queryInputs": {
+   "Lumen.ScreenProbeGather.ScreenProbeSceneDepth": {
+    "path": "Resources\\000100000228e8df7cc8.mip0.v000100000228ec1e0010.bin",
+    "bytes": 26880,
+    "sha256": "045eb8064c0d4e22404161d8e5ae680839ddacbc6e87609bec066c9eab12d758",
+    "version": "000100000228ec1e0010",
+    "uniqueResource": "000100000228e8df7cc8"
+   },
+   "Lumen.ScreenProbeGather.RayInfosForTracing": {
+    "path": "Resources\\000100000225fb910b30.mip0.v000100000225fb910fc0.bin",
+    "bytes": 860160,
+    "sha256": "62c0a7fd04c899e6c75243cf5156c5df2411e9f3c620f22cf94d71d0c635e052",
+    "version": "000100000225fb910fc0",
+    "uniqueResource": "000100000225fb910b30"
+   },
+   "Lumen.ScreenProbeGather.ScreenProbeWorldNormal": {
+    "path": "Resources\\000100000228e8df7f90.mip0.v000100000228ec1e0010.bin",
+    "bytes": 13440,
+    "sha256": "29ce83c2e6d50b7c5b1613f209ee92e0a9ab16edc4363826f0e98784a64c0eaa",
+    "version": "000100000228ec1e0010",
+    "uniqueResource": "000100000228e8df7f90"
+   },
+   "Lumen.ScreenProbeGather.ScreenProbeWorldSpeed": {
+    "path": "Resources\\000100000228e8df8250.mip0.v000100000228ec1e0010.bin",
+    "bytes": 13440,
+    "sha256": "5779b517a4093b920ec781447242b82b65ed1d4c55d88ae35bb694fbe2eeb2b9",
+    "version": "000100000228ec1e0010",
+    "uniqueResource": "000100000228e8df8250"
+   },
+   "Lumen.ScreenProbeGather.TraceHit": {
+    "path": "Resources\\000100000225fb913620.mip0.v000100000228d58f3800.bin",
+    "bytes": 1720320,
+    "sha256": "b68ef5956b568f73557e5c1689f226e3513a8f68f048096a979c176eb995db26",
+    "version": "000100000228d58f3800",
+    "uniqueResource": "000100000225fb913620"
+   },
+   "Lumen.ScreenProbeGather.TraceRadiance": {
+    "path": "Resources\\000100000225fb913310.mip0.v000100000228d58f3800.bin",
+    "bytes": 1720320,
+    "sha256": "4064e3d92c2cc3360a1d05529c00647b9a3491437438497c940d5ca7d7dccded",
+    "version": "000100000228d58f3800",
+    "uniqueResource": "000100000225fb913310"
+   },
+   "Lumen.ScreenProbeGather.CompactedTraceTexelAllocator": {
+    "path": "Resources\\000100000225fb91f930.v000100000228d58f0310.bin",
+    "bytes": 4,
+    "sha256": "d2cd5ec8c1378341a93f8189e39952130ad71c8fbf89729600fa624c37dff7e1",
+    "version": "000100000228d58f0310",
+    "uniqueResource": "000100000225fb91f930"
+   },
+   "Lumen.ScreenProbeGather.CompactedTraceTexelData": {
+    "path": "Resources\\000100000228d58f0010.v000100000228d58f0310.bin",
+    "bytes": 1720320,
+    "sha256": "deec641ed53b6036f0ca4d5b3ecdda7cc806bbc28c04dcf64ef79e2822fea367",
+    "version": "000100000228d58f0310",
+    "uniqueResource": "000100000228d58f0010"
+   },
+   "Lumen.RadianceCache.RadianceProbeIndirectionTexture": {
+    "path": "Resources\\000100000228dcc20010.mip0.v000100000225e8ccc458.bin",
+    "bytes": 1769472,
+    "sha256": "97ed5cb5f632b47331e344a746f06a0d0e31e2246abbc0080a6ae2cd8b403d20",
+    "version": "000100000225e8ccc458",
+    "uniqueResource": "000100000228dcc20010"
+   },
+   "Lumen.RadianceCache.FinalRadianceAtlas": {
+    "path": "Resources\\000100000228ec1e8450.mip0.v000100000228ba9e7db0.bin",
+    "bytes": 75759616,
+    "sha256": "a0216270fef13b0ba9a9e6dac24917f63dd373484374122e8f81189a1f46be55",
+    "version": "000100000228ba9e7db0",
+    "uniqueResource": "000100000228ec1e8450"
+   },
+   "Lumen.RadianceCache.DepthProbeAtlasTexture": {
+    "path": "Resources\\000100000228ec1e8190.mip0.v000100000225e8adc160.bin",
+    "bytes": 33554432,
+    "sha256": "6a5d6d0735e3a21b00cf511f1e66ddc7a70742172a98152926efee36c08731a5",
+    "version": "000100000225e8adc160",
+    "uniqueResource": "000100000228ec1e8190"
+   },
+   "Lumen.RadianceCache.ProbeWorldOffset": {
+    "path": "Resources\\000100000228ec1eedb0.v000100000225e8ccc458.bin",
+    "bytes": 131072,
+    "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+    "version": "000100000225e8ccc458",
+    "uniqueResource": "000100000228ec1eedb0"
+   },
+   "BlueNoise.Vec2Texture": {
+    "path": "Resources\\000100000225e8ce9630.linear.mip0.v000100000225e8ce68d0.bin",
+    "bytes": 4194304,
+    "sha256": "cd7286ea0fd5374282ac76deb74e47be42a0a175991a293468b506c4c5a19ad0",
+    "uniqueResource": "000100000225e8ce9630"
+   }
+  },
+  "sourceFiles": {
+   "GlobalDistanceFieldUtils.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\DistanceField\\GlobalDistanceFieldUtils.ush",
+    "sha256": "0ccd9fbc7f07042cbfbb7ce97e694c9a90b42f8506bd2a56a5b057deec61f08e"
+   },
+   "GlobalDistanceFieldShared.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\DistanceField\\GlobalDistanceFieldShared.ush",
+    "sha256": "d928e7af88319251d9c7eb5241f60de12e1ddb6e478afa733216ad8c57be01fb"
+   },
+   "LumenScreenProbeTracing.usf": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeTracing.usf",
+    "sha256": "397de6574bd4a8d38413834953ea4b175fe24e25b1b4ca9414e826378497b49f"
+   },
+   "LumenSoftwareRayTracing.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenSoftwareRayTracing.ush",
+    "sha256": "0c0e4a5b6b1b2e6dccb668e33ced60f14360b90a419676c865588b5af346bbdc"
+   },
+   "LumenScreenProbeTracingCommon.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeTracingCommon.ush",
+    "sha256": "e00eb28a810241c1b9349e736c1c83bf0fbe50e34e832e72fc05fbf994c668d9"
+   },
+   "LumenScreenProbeCommon.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeCommon.ush",
+    "sha256": "7da63b360f9c5e9c540d21a5e32a1374324cfcba4c171694e2779aec50a0a84e"
+   },
+   "LumenRadianceCacheInterpolation.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenRadianceCacheInterpolation.ush",
+    "sha256": "16db4c628da14c6277d3b06c03b01dfb90f60493f9a35ef01315e07be2e39ed6"
+   },
+   "LumenScreenProbeTracing.cpp": {
+    "file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeTracing.cpp",
+    "sha256": "055092f459232272767a267aa8a9b6861859b92109f1aa7645e6a7eeb3388dc4"
+   },
+   "Quantization.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Quantization.ush",
+    "sha256": "771412055c5842435e3c960638067553580612660668c2d5201a207239ebfc66"
+   },
+   "RandomPCG.ush": {
+    "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\RandomPCG.ush",
+    "sha256": "3251d897cc0d1f6a59896c3b55471d4fd999796da3d86ea565f3fac88c259e32"
+   },
+   "Quantization.cpp": {
+    "file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Quantization.cpp",
+    "sha256": "2208b3860bcb8e17ede8e023b91ce6be0171a38734e66a06c87926168f0d3cef"
+   }
+  }
+ }
+}

@@ -1,0 +1,3254 @@
+diff --git a/Engine/Shaders/Private/Tools/DumpTexture.usf b/Engine/Shaders/Private/Tools/DumpTexture.usf
+index 858c7b55d78a..1750167d4db2 100644
+--- a/Engine/Shaders/Private/Tools/DumpTexture.usf
++++ b/Engine/Shaders/Private/Tools/DumpTexture.usf
+@@ -7,16 +7,45 @@
+ 
+ #define TILE_SIZE 8
+ 
++// DIM_TEXTURE_TYPE must match FDumpTextureCS::ETextureType.
++// 0-2 are the historical two dimensional permutations and must not be renumbered.
+ #if DIM_TEXTURE_TYPE == 0 // Texture2DFloatNoMSAA
+-	#define payload float4	
++	#define payload float4
++	#define TEXTURE_DIMENSION_2D 1
+ 
+-#elif DIM_TEXTURE_TYPE == 1 // Texture2DIntNoMSAA
++#elif DIM_TEXTURE_TYPE == 1 // Texture2DUintNoMSAA
+ 	#define payload uint4
++	#define TEXTURE_DIMENSION_2D 1
+ 
+ #elif DIM_TEXTURE_TYPE == 2 // Texture2DDepthStencilNoMSAA
+ 	#define payload uint4
++	#define TEXTURE_DIMENSION_2D 1
+ 	#define SWIZZLE_STENCIL 1
+ 
++#elif DIM_TEXTURE_TYPE == 3 // Texture3DFloatNoMSAA
++	#define payload float4
++	#define TEXTURE_DIMENSION_3D 1
++
++#elif DIM_TEXTURE_TYPE == 4 // Texture3DUintNoMSAA
++	#define payload uint4
++	#define TEXTURE_DIMENSION_3D 1
++
++#elif DIM_TEXTURE_TYPE == 5 // Texture3DSintNoMSAA
++	#define payload int4
++	#define TEXTURE_DIMENSION_3D 1
++
++#elif DIM_TEXTURE_TYPE == 6 // TextureCubeFloatNoMSAA
++	#define payload float4
++	#define TEXTURE_DIMENSION_ARRAY 1
++
++#elif DIM_TEXTURE_TYPE == 7 // TextureCubeUintNoMSAA
++	#define payload uint4
++	#define TEXTURE_DIMENSION_ARRAY 1
++
++#elif DIM_TEXTURE_TYPE == 8 // TextureCubeSintNoMSAA
++	#define payload int4
++	#define TEXTURE_DIMENSION_ARRAY 1
++
+ #else
+ 	#error unknown DIM_TEXTURE_TYPE
+ 
+@@ -25,16 +54,45 @@
+ 
+ //------------------------------------------------------- PARAMETERS
+ 
+-Texture2D<payload> Texture;
++#if defined(TEXTURE_DIMENSION_3D)
++	Texture3D<payload> Texture;
++#elif defined(TEXTURE_DIMENSION_ARRAY)
++	// A plain cube is read through a single slice 2D array view created by the exporter, so the cube face being
++	// copied is slice 0 of the view.
++	Texture2DArray<payload> Texture;
++#else
++	Texture2D<payload> Texture;
++#endif
++
+ RWTexture2D<payload> StagingOutput;
+ 
++// Z slice copied by the Texture3D permutations. The other permutations do not use it.
++uint ZSlice;
++
+ 
+ //------------------------------------------------------- ENTRY POINT
+ 
+ [numthreads(TILE_SIZE, TILE_SIZE, 1)]
+ void MainCS(uint2 DispatchThreadId : SV_DispatchThreadID)
+ {
++	// Explicit bounds guard: out of range lanes do not rely on API UAV write masking.
++	uint StagingWidth = 0;
++	uint StagingHeight = 0;
++	StagingOutput.GetDimensions(StagingWidth, StagingHeight);
++
++	if (DispatchThreadId.x >= StagingWidth || DispatchThreadId.y >= StagingHeight)
++	{
++		return;
++	}
++
++#if defined(TEXTURE_DIMENSION_3D)
++	// The SRV covers a single mip level, so the mip index of the load is always 0.
++	payload PixelValue = Texture.Load(int4(DispatchThreadId, int(ZSlice), 0));
++#elif defined(TEXTURE_DIMENSION_ARRAY)
++	payload PixelValue = Texture.Load(int4(DispatchThreadId, 0, 0));
++#else
+ 	payload PixelValue = Texture[DispatchThreadId];
++#endif
+ 	
+ 	#if defined(SWIZZLE_STENCIL)
+ 		PixelValue = payload(PixelValue STENCIL_COMPONENT_SWIZZLE, 0, 0, 0);
+diff --git a/Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp b/Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp
+index e2b733c1dce6..48af259baea3 100644
+--- a/Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp
++++ b/Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp
+@@ -191,6 +191,25 @@ static TAutoConsoleVariable<int32> GDumpGPUEnableLogWrite(
+ 	TEXT(" 1: Logging writes are enabled (default)"),
+ 	ECVF_Default);
+ 
++static TAutoConsoleVariable<int32> GDumpGPUBufferSkipTrackingCVar(
++	TEXT("r.DumpGPU.Buffer.SkipTracking"), 0,
++	TEXT("Whether to read back buffers flagged with ERDGBufferFlags::SkipTracking through a diagnostic compute shader.\n")
++	TEXT("Such buffers are never transitioned by RDG: this only reads buffers that the dumped pass binds as a shader resource\n")
++	TEXT("and never as a writable UAV, so the owner's access state is preserved. Buffers written as UAVs are still skipped.\n")
++	TEXT(" 0: Skip them and record the exact reason in Base/ResourceDumpSkipped.json (default)\n")
++	TEXT(" 1: Read the read-only bindings with an exact-byte diagnostic copy\n"),
++	ECVF_RenderThreadSafe);
++
++static TAutoConsoleVariable<int32> GDumpGPUNativeUniformBufferTexturesCVar(
++	TEXT("r.DumpGPU.NativeUniformBufferTextures"), 1,
++	TEXT("Whether to export native textures bound through referenced uniform buffers.\n")
++	TEXT("The export uses a diagnostic-only SkipTracking wrapper whose RHI lookup is removed from the render graph\n")
++	TEXT("immediately after the dump traversal, and it reads the exact bound SRV view (mip/array range, dimension,\n")
++	TEXT("format and sRGB). An existing renderer wrapper is reused, never removed or shadowed.\n")
++	TEXT(" 0: Record the exact binding and view metadata only\n")
++	TEXT(" 1: Read back the exact SRV view (default)\n"),
++	ECVF_RenderThreadSafe);
++
+ } // namespace
+ 
+ #endif // RDG_DUMP_RESOURCES
+@@ -208,6 +227,14 @@ class FDumpTextureCS : public FGlobalShader
+ 		Texture2DFloatNoMSAA,
+ 		Texture2DUintNoMSAA,
+ 		Texture2DDepthStencilNoMSAA,
++		// 3D and cube permutations are appended so that the DIM_TEXTURE_TYPE value of the two dimensional
++		// permutations above (which are part of the shader map key) is preserved.
++		Texture3DFloatNoMSAA,
++		Texture3DUintNoMSAA,
++		Texture3DSintNoMSAA,
++		TextureCubeFloatNoMSAA,
++		TextureCubeUintNoMSAA,
++		TextureCubeSintNoMSAA,
+ 		MAX
+ 	};
+ 	class FTextureTypeDim : SHADER_PERMUTATION_ENUM_CLASS("DIM_TEXTURE_TYPE", ETextureType);
+@@ -216,11 +243,35 @@ class FDumpTextureCS : public FGlobalShader
+ 	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+ 		SHADER_PARAMETER_SRV(Texture2D, Texture)
+ 		SHADER_PARAMETER_UAV(RWTexture2D, StagingOutput)
++		/** Z slice read by the Texture3D permutations; ignored (or optimized out) by the other permutations. */
++		SHADER_PARAMETER(uint32, ZSlice)
+ 	END_SHADER_PARAMETER_STRUCT()
+ };
+ 
+ IMPLEMENT_GLOBAL_SHADER(FDumpTextureCS, "/Engine/Private/Tools/DumpTexture.usf", "MainCS", SF_Compute);
+ 
++/**
++ * Exact byte copy of a buffer into a linear uint staging texture, used for the diagnostic readback of
++ * buffers flagged ERDGBufferFlags::SkipTracking. A raw (ByteAddressBuffer) view is used so that no pixel
++ * format interpretation is applied: four source bytes are copied into one uint texel, bit for bit.
++ */
++class FDumpBufferCS : public FGlobalShader
++{
++	DECLARE_GLOBAL_SHADER(FDumpBufferCS);
++	SHADER_USE_PARAMETER_STRUCT(FDumpBufferCS, FGlobalShader);
++
++	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
++		SHADER_PARAMETER_SRV(ByteAddressBuffer, SourceBuffer)
++		SHADER_PARAMETER_UAV(RWTexture2D, StagingOutput)
++		SHADER_PARAMETER(uint32, NumElements)
++		SHADER_PARAMETER(uint32, WidthElements)
++		/** Byte prefix inside the 16 byte aligned raw SRV that precedes the requested view. */
++		SHADER_PARAMETER(uint32, SourceByteOffset)
++	END_SHADER_PARAMETER_STRUCT()
++};
++
++IMPLEMENT_GLOBAL_SHADER(FDumpBufferCS, "/Engine/Private/Tools/DumpBuffer.usf", "MainCS", SF_Compute);
++
+ } // namespace
+ 
+ #if RDG_DUMP_RESOURCES
+@@ -237,6 +288,20 @@ BEGIN_SHADER_PARAMETER_STRUCT(FDumpBufferPass, )
+ 	RDG_BUFFER_ACCESS(Buffer, ERHIAccess::CopySrc)
+ END_SHADER_PARAMETER_STRUCT()
+ 
++/**
++ * Diagnostic readback of a buffer flagged ERDGBufferFlags::SkipTracking. Such a buffer is locked in external access
++ * mode and never transitioned by RDG, so the pass only declares the read access the owner already guarantees: the
++ * shader resource state used by the pass that is being dumped. No copy/transition of the buffer is issued.
++ */
++BEGIN_SHADER_PARAMETER_STRUCT(FDumpBufferDiagnosticPass, )
++	RDG_BUFFER_ACCESS(Buffer, ERHIAccess::SRVCompute)
++END_SHADER_PARAMETER_STRUCT()
++
++/** Subresource geometry of a Texture3D readback: the pass only needs the SRV, the z slice is a dispatch parameter. */
++BEGIN_SHADER_PARAMETER_STRUCT(FDumpTexture3DPass, )
++	SHADER_PARAMETER_RDG_TEXTURE_SRV(Texture3D, Texture)
++END_SHADER_PARAMETER_STRUCT()
++
+ const FName GDumpGPUTextureFenceName("DumpGPU.TextureFence");
+ const FName GDumpGPUBufferFenceName("DumpGPU.BufferFence");
+ 
+@@ -279,6 +344,17 @@ public:
+ 	TMap<const FRDGResource*, const FRDGPass*> LastResourceVersion;
+ 	TSet<const void*> IsDumpedToDisk;
+ 
++	// Diagnostic native-texture wrappers registered for this graph only. Their RHI lookup entry is removed from
++	// FRDGBuilder::ExternalTextures immediately after the dump traversal so a later ordinary renderer registration of
++	// the same FRHITexture gets a fresh, correctly-tracked wrapper. The wrapper object itself stays alive because it is
++	// referenced by the scheduled dump passes.
++	TMap<FRHITexture*, FRDGTextureRef> IsolatedNativeTextures;
++	TArray<FRHITexture*> PendingIsolatedTextureLookupRemovals;
++	TSet<const FRDGTexture*> NativeTextureDescriptorsDumped;
++	/** Exact native view (keyed by native pointer + range + format + sRGB) already scheduled in this graph. */
++	TMap<FString, FString> ScheduledNativeTextureViewFiles;
++	TMap<FString, const FRDGPass*> ScheduledNativeTextureViewPasses;
++
+ 	bool bOverrideFixedDeltaTime = false;
+ 	double PreviousFixedDeltaTime = 0.0f;
+ 
+@@ -530,8 +606,9 @@ public:
+ 
+ 		FString UniqueResourceName = GetUniqueResourceName(SubResourceDesc.Texture);
+ 
+-		if (SubResourceDesc.Texture->Desc.IsTextureArray())
++		if (SubResourceDesc.Texture->Desc.IsTextureArray() || SubResourceDesc.Texture->Desc.Dimension == ETextureDimension::TextureCube)
+ 		{
++			// For a plain cube the slice index is the cube face index (0..5 per cube).
+ 			UniqueResourceName += FString::Printf(TEXT(".[%d]"), SubResourceDesc.FirstArraySlice);
+ 		}
+ 
+@@ -540,6 +617,20 @@ public:
+ 			return FString::Printf(TEXT("%s.stencil"), *UniqueResourceName);
+ 		}
+ 
++		// Different view interpretations of the same storage must never share a path: a typed alias and a forced
++		// linear sRGB view decode different bytes, so both are part of the unique subresource name.
++		if (SubResourceDesc.Format != PF_Unknown && SubResourceDesc.Format != SubResourceDesc.Texture->Desc.Format)
++		{
++			const TCHAR* FormatName = (SubResourceDesc.Format < PF_MAX && GPixelFormats[SubResourceDesc.Format].Name)
++				? GPixelFormats[SubResourceDesc.Format].Name
++				: TEXT("Unknown");
++			UniqueResourceName += FString::Printf(TEXT(".fmt_%s"), FormatName);
++		}
++		if (SubResourceDesc.SRGBOverride != SRGBO_Default)
++		{
++			UniqueResourceName += TEXT(".linear");
++		}
++
+ 		return FString::Printf(TEXT("%s.mip%d"), *UniqueResourceName, SubResourceDesc.MipLevel);
+ 	}
+ 
+@@ -747,7 +838,9 @@ public:
+ 	{
+ 		FString PixelFormat = ToJson(Desc.Format);
+ 
+-		int32 ResourceByteSize = Desc.Extent.X * Desc.Extent.Y * Desc.Depth * Desc.ArraySize * Desc.NumSamples * GPixelFormats[Desc.Format].BlockBytes;
++		// A plain cube holds ArraySize * 6 faces; the array size alone would under-report its footprint.
++		const int32 ResourceArraySize = (Desc.Dimension == ETextureDimension::TextureCube) ? (Desc.ArraySize * 6) : Desc.ArraySize;
++		int32 ResourceByteSize = Desc.Extent.X * Desc.Extent.Y * Desc.Depth * ResourceArraySize * Desc.NumSamples * GPixelFormats[Desc.Format].BlockBytes;
+ 
+ 		TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+ 		JsonObject->SetStringField(TEXT("Name"), Name);
+@@ -836,8 +929,20 @@ public:
+ 	struct FTextureSubresourceDumpDesc
+ 	{
+ 		FIntPoint SubResourceExtent = FIntPoint(0, 0);
++		/** Depth of the subresource for Texture3D, 1 for every other dimension. */
++		int32 SubResourceDepth = 1;
++		/** Byte size of the staging texture the readback writes before any CPU side narrowing. */
+ 		SIZE_T ByteSize = 0;
++		/** Byte size of the bytes actually written to disk (PostprocessedPixelFormat, every z slice). */
++		SIZE_T StoredByteSize = 0;
+ 		bool bPreprocessForStaging = false;
++		bool bIsTexture3D = false;
++		/** Pixel format the SRV is read through; may differ from the native texture format for typed aliases. */
++		EPixelFormat ViewPixelFormat = PF_Unknown;
++		bool bNativeSRGB = false;
++		bool bViewSRGB = false;
++		/** Exact reason the view cannot be encoded into a safe staging readback, or null. */
++		const TCHAR* UnsupportedReason = nullptr;
+ 		FDumpTextureCS::ETextureType DumpTextureType = FDumpTextureCS::ETextureType::MAX;
+ 		EPixelFormat PreprocessedPixelFormat;
+ 		EPixelFormat PostprocessedPixelFormat;
+@@ -846,83 +951,184 @@ public:
+ 		{
+ 			return ByteSize != SIZE_T(0);
+ 		}
++
++		bool IsVolumetric() const
++		{
++			return SubResourceDepth > 1;
++		}
+ 	};
+-	
+-	FTextureSubresourceDumpDesc TranslateSubresourceDumpDesc(FRDGTextureSRVDesc SubresourceDesc)
+-	{
+-		check(SubresourceDesc.NumMipLevels == 1);
+-		check(!SubresourceDesc.Texture->Desc.IsTextureArray() || SubresourceDesc.NumArraySlices == 1);
+ 
+-		const FRDGTextureDesc& Desc = SubresourceDesc.Texture->Desc;
++	/** Byte size of a single z slice in the staging format the compute readback writes. */
++	SIZE_T GetPreprocessedSliceByteSize(const FTextureSubresourceDumpDesc& SubresourceDumpDesc) const
++	{
++		return SIZE_T(SubresourceDumpDesc.SubResourceExtent.X)
++			* SIZE_T(SubresourceDumpDesc.SubResourceExtent.Y)
++			* SIZE_T(GPixelFormats[SubresourceDumpDesc.PreprocessedPixelFormat].BlockBytes);
++	}
+ 
++	/** Byte size of a single z slice in the format actually stored on disk. */
++	SIZE_T GetStoredSliceByteSize(const FTextureSubresourceDumpDesc& SubresourceDumpDesc) const
++	{
++		return SIZE_T(SubresourceDumpDesc.SubResourceExtent.X)
++			* SIZE_T(SubresourceDumpDesc.SubResourceExtent.Y)
++			* SIZE_T(GPixelFormats[SubresourceDumpDesc.PostprocessedPixelFormat].BlockBytes);
++	}
++	
++	FTextureSubresourceDumpDesc TranslateSubresourceDumpDesc(
++		const FRHITextureDesc& Desc,
++		EPixelFormat ViewPixelFormat,
++		bool bViewSRGB,
++		int32 MipLevel,
++		int32 SubresourceDepth,
++		bool bIsCubeFace,
++		bool bSkipTracking,
++		bool bForcePreprocess)
++	{
+ 		FTextureSubresourceDumpDesc SubresourceDumpDesc;
+-		SubresourceDumpDesc.PostprocessedPixelFormat = Desc.Format;
+-
+-		bool bIsUnsupported = false;
++		SubresourceDumpDesc.bIsTexture3D = Desc.IsTexture3D();
++		SubresourceDumpDesc.ViewPixelFormat = ViewPixelFormat;
++		SubresourceDumpDesc.PostprocessedPixelFormat = ViewPixelFormat;
++		SubresourceDumpDesc.bNativeSRGB = EnumHasAnyFlags(Desc.Flags, TexCreate_SRGB);
++		SubresourceDumpDesc.bViewSRGB = bViewSRGB;
++
++		bool bIsUnsupported = ViewPixelFormat == PF_Unknown
++			|| ViewPixelFormat >= PF_MAX
++			|| GPixelFormats[ViewPixelFormat].BlockBytes == 0
++			|| Desc.Format == PF_Unknown
++			|| Desc.Format >= PF_MAX
++			|| GPixelFormats[Desc.Format].BlockBytes == 0;
++
++		// The readback geometry is computed from the native extent and the view format. A view whose element size is
++		// not byte compatible with the native storage cannot produce a faithful full subresource read, so record it as
++		// unsupported instead of exporting a mis-sized image.
++		if (!bIsUnsupported && GPixelFormats[ViewPixelFormat].BlockBytes != GPixelFormats[Desc.Format].BlockBytes)
++		{
++			bIsUnsupported = true;
++			SubresourceDumpDesc.UnsupportedReason = TEXT("ViewElementSizeNotByteCompatible");
++		}
+ 
+-		// We support uncompressing certain BC formats, as the DumpGPU viewer doesn't support compressed formats.  Compression
+-		// is used by Lumen, so it's extremely useful to preview.  Additional code below selects the uncompressed format (BC4 is
+-		// scalar, so we use PF_R32_FLOAT, BC5 is dual channel, so it uses PF_G16R16F, etc).  If you add a format here, you must
+-		// also update Engine\Extras\GPUDumpViewer\GPUDumpViewer.html (see "translate_subresource_desc").
+-		if ((GPixelFormats[Desc.Format].BlockSizeX != 1 ||
++		// We support uncompressing BC formats, as the DumpGPU viewer doesn't support compressed formats.  Compression
++		// is used by Lumen, so it's extremely useful to preview.  Critical native inputs (BlueNoise BC5, BC1/2/3 aliases)
++		// are decoded into full float32 RGBA staging, never written through a BC-format UAV. BC4 is a single scalar
++		// channel and uses PF_R32_FLOAT. If you add a format here, you must also update
++		// Engine\Extras\GPUDumpViewer\GPUDumpViewer.html (see "translate_subresource_desc").
++		if (!bIsUnsupported &&
++			(GPixelFormats[Desc.Format].BlockSizeX != 1 ||
+ 			 GPixelFormats[Desc.Format].BlockSizeY != 1 ||
+ 			 GPixelFormats[Desc.Format].BlockSizeZ != 1) &&
+-			!(Desc.Format == PF_BC4 ||
++			!(Desc.Format == PF_DXT1 ||
++			  Desc.Format == PF_DXT3 ||
++			  Desc.Format == PF_DXT5 ||
++			  Desc.Format == PF_BC4 ||
+ 			  Desc.Format == PF_BC5 ||
+ 			  Desc.Format == PF_BC6H ||
+ 			  Desc.Format == PF_BC7))
+ 		{
+ 			bIsUnsupported = true;
++			SubresourceDumpDesc.UnsupportedReason = TEXT("UnsupportedBlockCompressedFormat");
+ 		}
+ 
+-		if (!bIsUnsupported && Desc.IsTexture2D() && !Desc.IsMultisample())
++		// A cube stencil view needs the 2D depth/stencil shader permutation, which has no cube-equivalent read path.
++		// A cube depth view is safe: it is read through the cube float permutation and re-encoded as PF_R32_FLOAT.
++		if (!bIsUnsupported && bIsCubeFace && ViewPixelFormat == PF_X24_G8)
+ 		{
+-			SubresourceDumpDesc.SubResourceExtent.X = Desc.Extent.X >> SubresourceDesc.MipLevel;
+-			SubresourceDumpDesc.SubResourceExtent.Y = Desc.Extent.Y >> SubresourceDesc.MipLevel;
++			bIsUnsupported = true;
++			SubresourceDumpDesc.UnsupportedReason = TEXT("CubeStencilViewNotSupported");
++		}
+ 
+-			if (IsUintFormat(Desc.Format) || IsSintFormat(Desc.Format))
+-			{
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DUintNoMSAA;
+-			}
+-			else
+-			{
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
+-			}
++		// Plain cubes are dumped per face (see AddDumpTextureAllSubResourcesPasses). Cube arrays are not expanded:
++		// the RDG descriptor counts cubes while the RHI validates cube slice views in faces, so a partial expansion
++		// would be mislabelled; they are recorded as skipped instead.
++		if (!bIsUnsupported && (Desc.IsTexture2D() || Desc.IsTexture3D() || bIsCubeFace) && !Desc.IsMultisample())
++		{
++			// Mip extents are clamped to a minimum of one texel: the tail mips of a non power of two extent would
++			// otherwise collapse to zero and be reported as an unsupported subresource.
++			SubresourceDumpDesc.SubResourceExtent.X = FMath::Max(1, Desc.Extent.X >> MipLevel);
++			SubresourceDumpDesc.SubResourceExtent.Y = FMath::Max(1, Desc.Extent.Y >> MipLevel);
++			SubresourceDumpDesc.SubResourceDepth = Desc.IsTexture3D() ? FMath::Max(1, SubresourceDepth) : 1;
+ 
+-			if (SubresourceDesc.Format == PF_X24_G8)
+-			{
+-				SubresourceDumpDesc.PostprocessedPixelFormat = PF_R8_UINT;
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DDepthStencilNoMSAA;
+-			}
+-			else if (Desc.Format == PF_DepthStencil)
+-			{
+-				SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
+-			}
+-			else if (Desc.Format == PF_ShadowDepth)
++			if (Desc.IsTexture3D())
+ 			{
+-				SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				SubresourceDumpDesc.DumpTextureType =
++					IsSintFormat(ViewPixelFormat) ? FDumpTextureCS::ETextureType::Texture3DSintNoMSAA :
++					IsUintFormat(ViewPixelFormat) ? FDumpTextureCS::ETextureType::Texture3DUintNoMSAA :
++					FDumpTextureCS::ETextureType::Texture3DFloatNoMSAA;
+ 			}
+-			else if (Desc.Format == PF_D24)
++			else if (bIsCubeFace)
+ 			{
+-				SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				// Plain cubes and cube arrays: one SRV per face, read as a single slice 2D array view
++				// (see AddDumpTextureAllSubResourcesPasses).
++				SubresourceDumpDesc.DumpTextureType =
++					IsSintFormat(ViewPixelFormat) ? FDumpTextureCS::ETextureType::TextureCubeSintNoMSAA :
++					IsUintFormat(ViewPixelFormat) ? FDumpTextureCS::ETextureType::TextureCubeUintNoMSAA :
++					FDumpTextureCS::ETextureType::TextureCubeFloatNoMSAA;
+ 			}
+-			else if (Desc.Format == PF_BC4)
++			else if (IsUintFormat(ViewPixelFormat) || IsSintFormat(ViewPixelFormat))
+ 			{
+-				SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DUintNoMSAA;
+ 			}
+-			else if (Desc.Format == PF_BC5)
++			else
+ 			{
+-				SubresourceDumpDesc.PostprocessedPixelFormat = PF_G16R16F;
+ 				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
+ 			}
+-			else if ((Desc.Format == PF_BC6H) || (Desc.Format == PF_BC7))
++
++			// The depth/stencil and block compressed re-interpretations below apply to two dimensional textures and
++			// to cube faces. A cube face otherwise used the compressed/depth storage format as the staging UAV format,
++			// which is illegal and sized the binary by blocks instead of by the face texels.
++			if (Desc.IsTexture2D() || bIsCubeFace)
+ 			{
+-				SubresourceDumpDesc.PostprocessedPixelFormat = PF_FloatRGBA;
+-				SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				if (ViewPixelFormat == PF_X24_G8)
++				{
++					// Cube stencil views were rejected above; this branch is the supported 2D permutation.
++					SubresourceDumpDesc.PostprocessedPixelFormat = PF_R8_UINT;
++					SubresourceDumpDesc.DumpTextureType = FDumpTextureCS::ETextureType::Texture2DDepthStencilNoMSAA;
++				}
++				else if (ViewPixelFormat != Desc.Format)
++				{
++					// A typed alias: the staging format and the shader payload type follow the view, not the storage.
++				}
++				else if (Desc.Format == PF_DepthStencil)
++				{
++					SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
++					SubresourceDumpDesc.DumpTextureType = bIsCubeFace
++						? FDumpTextureCS::ETextureType::TextureCubeFloatNoMSAA
++						: FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				}
++				else if (Desc.Format == PF_ShadowDepth)
++				{
++					SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
++					SubresourceDumpDesc.DumpTextureType = bIsCubeFace
++						? FDumpTextureCS::ETextureType::TextureCubeFloatNoMSAA
++						: FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				}
++				else if (Desc.Format == PF_D24)
++				{
++					SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
++					SubresourceDumpDesc.DumpTextureType = bIsCubeFace
++						? FDumpTextureCS::ETextureType::TextureCubeFloatNoMSAA
++						: FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				}
++				else if (Desc.Format == PF_BC4)
++				{
++					SubresourceDumpDesc.PostprocessedPixelFormat = PF_R32_FLOAT;
++					SubresourceDumpDesc.DumpTextureType = bIsCubeFace
++						? FDumpTextureCS::ETextureType::TextureCubeFloatNoMSAA
++						: FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				}
++				else if (Desc.Format == PF_DXT1 ||
++						 Desc.Format == PF_DXT3 ||
++						 Desc.Format == PF_DXT5 ||
++						 Desc.Format == PF_BC5 ||
++						 Desc.Format == PF_BC6H ||
++						 Desc.Format == PF_BC7)
++				{
++					// Full float32 shader-decoded RGBA, so critical native inputs (for example a BlueNoise BC5 alias)
++					// keep the decoded channel precision. The bytes are decoded values, not native storage bits.
++					SubresourceDumpDesc.PostprocessedPixelFormat = PF_FloatRGBA;
++					SubresourceDumpDesc.DumpTextureType = bIsCubeFace
++						? FDumpTextureCS::ETextureType::TextureCubeFloatNoMSAA
++						: FDumpTextureCS::ETextureType::Texture2DFloatNoMSAA;
++				}
+ 			}
+ 		}
+ 
+@@ -932,13 +1138,30 @@ public:
+ 			SubresourceDumpDesc.bPreprocessForStaging |= SubresourceDumpDesc.PostprocessedPixelFormat != Desc.Format;
+ 
+ 			// If the texture has a mip chain, use pixel shader to correctly copy the right mip given RHI doesn't support copy from mip levels. Also on Mip 0 to avoid bugs on D3D11
+-			SubresourceDumpDesc.bPreprocessForStaging |= SubresourceDesc.Texture->Desc.NumMips > 1;
++			SubresourceDumpDesc.bPreprocessForStaging |= Desc.NumMips > 1;
+ 
+ 			// If the texture is an array, use pixel shader to correctly copy the right slice given RHI doesn't support copy from slices
+-			SubresourceDumpDesc.bPreprocessForStaging |= SubresourceDesc.Texture->Desc.IsTextureArray();
++			SubresourceDumpDesc.bPreprocessForStaging |= Desc.IsTextureArray();
++
++			// A Texture3D subresource has no portable direct copy to a linear staging texture, and tiled 3D textures
++			// (TexCreate_Tiling3D) must be read through a shader instead of a tiled->linear copy. Every z slice is
++			// therefore copied by the compute shader into a linear staging texture of the same pixel format.
++			SubresourceDumpDesc.bPreprocessForStaging |= Desc.IsTexture3D();
++
++			// A plain cube is always read per face through a single slice 2D array view; the RHI has no whole cube
++			// to 2D staging copy that selects the face.
++			SubresourceDumpDesc.bPreprocessForStaging |= bIsCubeFace;
+ 
+ 			// Reads the texture using a shader if it has SkipTracking to avoid transitioning it in anyway from its SRV read state.
+-			SubresourceDumpDesc.bPreprocessForStaging |= EnumHasAnyFlags(SubresourceDesc.Texture->Flags, ERDGTextureFlags::SkipTracking);
++			SubresourceDumpDesc.bPreprocessForStaging |= bSkipTracking;
++
++			// A forced-disabled sRGB view is a different interpretation of the same storage; only the compute path
++			// applies that view instead of copying the native bytes.
++			SubresourceDumpDesc.bPreprocessForStaging |= SubresourceDumpDesc.bViewSRGB != SubresourceDumpDesc.bNativeSRGB;
++
++			// Exact native SRV views are read through a shader so the mip/slice/format bounds are exactly the view's
++			// bounds, never a whole-mip copy of a different subresource.
++			SubresourceDumpDesc.bPreprocessForStaging |= bForcePreprocess;
+ 		}
+ 
+ 		// Some RHIs (GL) only support 32Bit single channel images as CS output
+@@ -953,11 +1176,43 @@ public:
+ 			}
+ 		}
+ 
+-		SubresourceDumpDesc.ByteSize = SIZE_T(SubresourceDumpDesc.SubResourceExtent.X) * SIZE_T(SubresourceDumpDesc.SubResourceExtent.Y) * SIZE_T(GPixelFormats[SubresourceDumpDesc.PreprocessedPixelFormat].BlockBytes);
++		SubresourceDumpDesc.ByteSize = SIZE_T(SubresourceDumpDesc.SubResourceExtent.X)
++			* SIZE_T(SubresourceDumpDesc.SubResourceExtent.Y)
++			* SIZE_T(SubresourceDumpDesc.SubResourceDepth)
++			* SIZE_T(GPixelFormats[SubresourceDumpDesc.PreprocessedPixelFormat].BlockBytes);
++		SubresourceDumpDesc.StoredByteSize = SIZE_T(SubresourceDumpDesc.SubResourceExtent.X)
++			* SIZE_T(SubresourceDumpDesc.SubResourceExtent.Y)
++			* SIZE_T(SubresourceDumpDesc.SubResourceDepth)
++			* SIZE_T(GPixelFormats[SubresourceDumpDesc.PostprocessedPixelFormat].BlockBytes);
+ 
+ 		return SubresourceDumpDesc;
+ 	}
+ 
++	/** Translates a render graph SRV descriptor to the exact subresource readback description. */
++	FTextureSubresourceDumpDesc TranslateSubresourceDumpDesc(FRDGTextureSRVDesc SubresourceDesc)
++	{
++		check(SubresourceDesc.NumMipLevels == 1);
++		check(!SubresourceDesc.Texture->Desc.IsTextureArray() || SubresourceDesc.NumArraySlices == 1);
++
++		const FRHITextureDesc& Desc = SubresourceDesc.Texture->Desc;
++		const EPixelFormat ViewPixelFormat = SubresourceDesc.Format != PF_Unknown ? SubresourceDesc.Format : Desc.Format;
++		const bool bNativeSRGB = EnumHasAnyFlags(Desc.Flags, TexCreate_SRGB);
++		// SRGBO_ForceDisable is the only override in this engine version: the view samples the raw storage as linear.
++		const bool bViewSRGB = bNativeSRGB && SubresourceDesc.SRGBOverride != SRGBO_ForceDisable;
++		const int32 SubresourceDepth = Desc.IsTexture3D() ? FMath::Max(1, Desc.Depth >> SubresourceDesc.MipLevel) : 1;
++		const bool bIsCubeFace = Desc.Dimension == ETextureDimension::TextureCube || Desc.Dimension == ETextureDimension::TextureCubeArray;
++
++		return TranslateSubresourceDumpDesc(
++			Desc,
++			ViewPixelFormat,
++			bViewSRGB,
++			SubresourceDesc.MipLevel,
++			SubresourceDepth,
++			bIsCubeFace,
++			EnumHasAnyFlags(SubresourceDesc.Texture->Flags, ERDGTextureFlags::SkipTracking),
++			/* bForcePreprocess = */ false);
++	}
++
+ 	void PostProcessTexture(
+ 		const FTextureSubresourceDumpDesc& SubresourceDumpDesc,
+ 		void* Content,
+@@ -1007,6 +1262,229 @@ public:
+ 		}
+ 	}
+ 
++	/**
++	 * Describes how the stored bytes relate to the GPU's native texel storage, so no consumer assumes a blanket bit
++	 * preservation guarantee. The compute readback decodes texels and re-encodes them into the staging format; that is
++	 * bit exact for integer channels in the same format, but only value preserving (not bit preserving) for floating
++	 * point and normalised formats.
++	 */
++	static void GetSubresourceValueInterpretation(
++		EPixelFormat NativeFormat,
++		EPixelFormat StagingFormat,
++		EPixelFormat StoredFormat,
++		bool bViewSRGB,
++		FString& OutInterpretation,
++		bool& bOutBitExact,
++		bool& bOutValuePreserving,
++		FString& OutCondition)
++	{
++		const bool bSameStagingFormat = (StagingFormat == NativeFormat);
++		const bool bSameStoredFormat = (StoredFormat == NativeFormat);
++
++		bOutBitExact = false;
++		bOutValuePreserving = false;
++
++		if (NativeFormat == PF_Unknown || NativeFormat >= PF_MAX || GPixelFormats[NativeFormat].BlockBytes == 0)
++		{
++			OutInterpretation = TEXT("Unknown");
++			OutCondition = TEXT("The native pixel format has no GPU format entry.");
++			return;
++		}
++
++		if (IsUintFormat(NativeFormat) || IsSintFormat(NativeFormat))
++		{
++			OutInterpretation = IsUintFormat(NativeFormat) ? TEXT("UnsignedIntegerBits") : TEXT("SignedIntegerBits");
++			bOutBitExact = bSameStagingFormat && bSameStoredFormat;
++			bOutValuePreserving = bOutBitExact;
++			OutCondition = bOutBitExact
++				? TEXT("Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.")
++				: TEXT("Integer channels are re-encoded into a different staging or stored format; native bits are not preserved.");
++			return;
++		}
++
++		if (bSameStagingFormat && bSameStoredFormat)
++		{
++			OutInterpretation = bViewSRGB ? TEXT("DecodedFloatLinearFromSRGB") : TEXT("DecodedFloat");
++			bOutValuePreserving = true;
++			OutCondition = bViewSRGB
++				? TEXT("The exact sRGB view is used for the readback and the values are stored in a linear staging format. "
++					"The stored bytes are the shader-visible values (linear when the RHI decodes sRGB on typed loads), not "
++					"the native sRGB encoded storage bits.")
++				: TEXT("Values are decoded to float32 and re-encoded into the same format. Finite values round trip, "
++					"but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be "
++					"flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.");
++			return;
++		}
++
++		OutInterpretation = TEXT("DecodedFloatExpanded");
++		OutCondition = bViewSRGB
++			? TEXT("The sRGB view is decoded to linear and expanded into a different staging or stored format. The stored "
++				"bytes are decoded linear values, not the native sRGB encoded storage bits.")
++			: TEXT("The native format is expanded into a different staging or stored format. The stored bytes are "
++				"decoded numeric values, not the native storage bits.");
++	}
++
++	/**
++	 * Records the exact geometry of a dumped texture subresource binary. The file name only carries the mip (and the
++	 * array slice) in the historical format; this record is what makes the z slice count, the depth, the byte layout
++	 * and the native/staging/stored pixel formats of a Texture3D subresource unambiguous, including any format
++	 * expansion performed by the preprocessing path.
++	 */
++	void DumpSubresourceLayoutToFile(
++		const FTextureSubresourceDumpDesc& SubresourceDumpDesc,
++		const FRDGTextureSRVDesc& SubresourceDesc,
++		const FString& DumpFilePath)
++	{
++		const FRDGTextureDesc& Desc = SubresourceDesc.Texture->Desc;
++
++		TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
++		JsonObject->SetStringField(TEXT("Resource"), GetUniqueResourceName(SubresourceDesc.Texture));
++		JsonObject->SetStringField(TEXT("Name"), SubresourceDesc.Texture->Name);
++		JsonObject->SetStringField(TEXT("File"), DumpFilePath);
++		JsonObject->SetStringField(TEXT("Dimension"), GetTextureDimensionString(Desc.Dimension));
++		JsonObject->SetNumberField(TEXT("MipLevel"), SubresourceDesc.MipLevel);
++		JsonObject->SetNumberField(TEXT("FirstArraySlice"), SubresourceDesc.FirstArraySlice);
++		JsonObject->SetNumberField(TEXT("NumArraySlices"), SubresourceDesc.NumArraySlices);
++		if (Desc.Dimension == ETextureDimension::TextureCube)
++		{
++			// For a plain cube the slice index is the face index (0..5 per cube).
++			JsonObject->SetNumberField(TEXT("CubeFace"), SubresourceDesc.FirstArraySlice);
++		}
++		JsonObject->SetNumberField(TEXT("ExtentX"), SubresourceDumpDesc.SubResourceExtent.X);
++		JsonObject->SetNumberField(TEXT("ExtentY"), SubresourceDumpDesc.SubResourceExtent.Y);
++		JsonObject->SetNumberField(TEXT("Depth"), SubresourceDumpDesc.SubResourceDepth);
++		JsonObject->SetNumberField(TEXT("ZSliceCount"), SubresourceDumpDesc.SubResourceDepth);
++		JsonObject->SetNumberField(TEXT("ZSliceStrideBytes"), (double)GetStoredSliceByteSize(SubresourceDumpDesc));
++		JsonObject->SetNumberField(TEXT("RowPitchBytes"),
++			(double)SIZE_T(SubresourceDumpDesc.SubResourceExtent.X) * SIZE_T(GPixelFormats[SubresourceDumpDesc.PostprocessedPixelFormat].BlockBytes));
++		JsonObject->SetStringField(TEXT("ZSliceOrder"), SubresourceDumpDesc.SubResourceDepth > 1 ? TEXT("ascending z, tightly packed") : TEXT("single slice"));
++		JsonObject->SetStringField(TEXT("NativeFormat"), ToJson(Desc.Format));
++		JsonObject->SetStringField(TEXT("ViewFormat"), ToJson(SubresourceDumpDesc.ViewPixelFormat));
++		JsonObject->SetBoolField(TEXT("ViewFormatMatchesNativeFormat"), SubresourceDumpDesc.ViewPixelFormat == Desc.Format);
++		JsonObject->SetStringField(TEXT("StagingFormat"), ToJson(SubresourceDumpDesc.PreprocessedPixelFormat));
++		JsonObject->SetStringField(TEXT("StoredFormat"), ToJson(SubresourceDumpDesc.PostprocessedPixelFormat));
++		JsonObject->SetBoolField(TEXT("NativeFormatExpanded"),
++			SubresourceDumpDesc.PreprocessedPixelFormat != Desc.Format || SubresourceDumpDesc.PostprocessedPixelFormat != Desc.Format);
++		JsonObject->SetBoolField(TEXT("NativeSRGB"), SubresourceDumpDesc.bNativeSRGB);
++		JsonObject->SetBoolField(TEXT("ViewSRGB"), SubresourceDumpDesc.bViewSRGB);
++		JsonObject->SetStringField(TEXT("SRGBOverride"),
++			SubresourceDesc.SRGBOverride == SRGBO_ForceDisable ? TEXT("ForceDisable") : TEXT("Default"));
++		// A direct copy stores the native bytes; the compute path reads through the exact view (including sRGB) and
++		// stores the values in a linear staging format. Whether the RHI decodes sRGB on a typed Load is an RHI property,
++		// so the flag states which view was used rather than asserting a particular decode implementation.
++		JsonObject->SetBoolField(TEXT("SRGBViewUsedForReadback"), SubresourceDumpDesc.bPreprocessForStaging && SubresourceDumpDesc.bViewSRGB);
++		JsonObject->SetBoolField(TEXT("StoredBytesAreNativeStorage"), !SubresourceDumpDesc.bPreprocessForStaging);
++
++		{
++			FString Interpretation;
++			bool bBitExact = false;
++			bool bValuePreserving = false;
++			FString Condition;
++			GetSubresourceValueInterpretation(
++				Desc.Format,
++				SubresourceDumpDesc.PreprocessedPixelFormat,
++				SubresourceDumpDesc.PostprocessedPixelFormat,
++				SubresourceDumpDesc.bViewSRGB && SubresourceDumpDesc.bPreprocessForStaging,
++				Interpretation,
++				bBitExact,
++				bValuePreserving,
++				Condition);
++			JsonObject->SetStringField(TEXT("NativeValueInterpretation"), Interpretation);
++			JsonObject->SetBoolField(TEXT("BitExact"), bBitExact);
++			JsonObject->SetBoolField(TEXT("ValuePreserving"), bValuePreserving);
++			JsonObject->SetStringField(TEXT("BitExactCondition"), Condition);
++		}
++		JsonObject->SetBoolField(TEXT("MipExtentClampedToMinimum"),
++			(Desc.Extent.X >> SubresourceDesc.MipLevel) < 1 ||
++			(Desc.Extent.Y >> SubresourceDesc.MipLevel) < 1 ||
++			(Desc.IsTexture3D() && (Desc.Depth >> SubresourceDesc.MipLevel) < 1));
++		JsonObject->SetBoolField(TEXT("StencilSubresource"), SubresourceDesc.Format == PF_X24_G8);
++		JsonObject->SetStringField(TEXT("Readback"),
++			SubresourceDumpDesc.bIsTexture3D ? TEXT("SynchronousComputePerSlice") :
++			SubresourceDumpDesc.bPreprocessForStaging ? TEXT("ComputeThenCopy") : TEXT("DirectCopy"));
++		// Scheduling is not proof of a file. Base/DumpReadbackStatus.json is appended after execution with the
++		// actual file existence and size, and only that record can say "Dumped".
++		JsonObject->SetStringField(TEXT("DumpStatus"), bStream ? TEXT("ScheduledStreamedForReadback") : TEXT("ScheduledForReadback"));
++		JsonObject->SetBoolField(TEXT("FileVerifiedAtSchedule"), false);
++		// ByteSize is the size of the file actually written. The staging size is recorded separately because the
++		// compute path may expand a narrow format into a 32 bit staging format before narrowing it on the CPU.
++		JsonObject->SetNumberField(TEXT("ByteSize"), (double)SubresourceDumpDesc.StoredByteSize);
++		JsonObject->SetNumberField(TEXT("StagingByteSize"), (double)SubresourceDumpDesc.ByteSize);
++
++		DumpJsonToFile(JsonObject, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("SubresourceLayouts.json"), FILEWRITE_Append);
++	}
++
++	/**
++	 * Records a descriptor whose binary could not be produced, with the exact reason and the descriptor fields that
++	 * explain it. This is what the coverage inventory is built from, so a resource is never silently dropped nor
++	 * falsely reported as captured.
++	 */
++	void RecordSkippedTextureSubresource(const FRDGTextureSRVDesc& SubresourceDesc, const TCHAR* Reason)
++	{
++		const FRDGTextureDesc& Desc = SubresourceDesc.Texture->Desc;
++
++		TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
++		JsonObject->SetStringField(TEXT("Resource"), GetUniqueResourceName(SubresourceDesc.Texture));
++		JsonObject->SetStringField(TEXT("Name"), SubresourceDesc.Texture->Name);
++		JsonObject->SetStringField(TEXT("Kind"), TEXT("texture"));
++		JsonObject->SetStringField(TEXT("Dimension"), GetTextureDimensionString(Desc.Dimension));
++		JsonObject->SetStringField(TEXT("Format"), ToJson(Desc.Format));
++		JsonObject->SetNumberField(TEXT("MipLevel"), SubresourceDesc.MipLevel);
++		JsonObject->SetNumberField(TEXT("FirstArraySlice"), SubresourceDesc.FirstArraySlice);
++		JsonObject->SetNumberField(TEXT("NumArraySlices"), SubresourceDesc.NumArraySlices);
++		JsonObject->SetNumberField(TEXT("ArraySize"), Desc.ArraySize);
++		JsonObject->SetNumberField(TEXT("Depth"), Desc.Depth);
++		JsonObject->SetNumberField(TEXT("NumMips"), Desc.NumMips);
++		JsonObject->SetStringField(TEXT("Reason"), Reason);
++
++		DumpJsonToFile(JsonObject, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("ResourceDumpSkipped.json"), FILEWRITE_Append);
++	}
++
++	void RecordSkippedBuffer(const FRDGBuffer* Buffer, const TCHAR* Reason, uint32 ByteSize)
++	{
++		TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
++		JsonObject->SetStringField(TEXT("Resource"), GetUniqueResourceName(Buffer));
++		JsonObject->SetStringField(TEXT("Name"), Buffer->Name);
++		JsonObject->SetStringField(TEXT("Kind"), TEXT("buffer"));
++		JsonObject->SetNumberField(TEXT("ByteSize"), ByteSize);
++		JsonObject->SetNumberField(TEXT("BytesPerElement"), Buffer->Desc.BytesPerElement);
++		JsonObject->SetStringField(TEXT("Reason"), Reason);
++
++		DumpJsonToFile(JsonObject, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("ResourceDumpSkipped.json"), FILEWRITE_Append);
++	}
++
++	/**
++	 * Records the outcome of a scheduled readback after it executed. The scheduling metadata only says
++	 * "ScheduledForReadback"; this record verifies the file actually exists and has the expected stored byte count.
++	 * A missing file or a size mismatch is recorded as a failure, never as "Dumped".
++	 */
++	void RecordReadbackCompletion(const FString& DumpFilePath, int64 ExpectedBytes, const TCHAR* Kind)
++	{
++		if (!bEnableDiskWrite)
++		{
++			return;
++		}
++
++		const FString FullPath = GetDumpFullPath(DumpFilePath);
++		const int64 ActualBytes = IFileManager::Get().FileSize(*FullPath);
++		const bool bFileExists = ActualBytes >= 0;
++		const bool bSizeMatches = bFileExists && ExpectedBytes >= 0 && ActualBytes == ExpectedBytes;
++
++		TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
++		JsonObject->SetStringField(TEXT("File"), DumpFilePath);
++		JsonObject->SetStringField(TEXT("Kind"), Kind);
++		JsonObject->SetNumberField(TEXT("ExpectedBytes"), (double)ExpectedBytes);
++		JsonObject->SetNumberField(TEXT("ActualBytes"), (double)ActualBytes);
++		JsonObject->SetBoolField(TEXT("FileExists"), bFileExists);
++		JsonObject->SetBoolField(TEXT("FileSizeMatches"), bSizeMatches);
++		JsonObject->SetStringField(TEXT("Status"),
++			bSizeMatches ? TEXT("Dumped") :
++			bFileExists ? TEXT("DumpedSizeMismatch") : TEXT("DumpedFileMissing"));
++		JsonObject->SetStringField(TEXT("Timing"), TEXT("GPUReadbackCompleted"));
++
++		DumpJsonToFile(JsonObject, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("DumpReadbackStatus.json"), FILEWRITE_Append);
++	}
++
+ 	enum class FStagingResourceStatus
+ 	{
+ 		Unused,
+@@ -1321,6 +1799,151 @@ public:
+ 		}
+ 	}
+ 
++	/**
++	 * Reads back a Texture3D subresource (all mip levels are handled by the caller through SubresourceDesc.MipLevel).
++	 *
++	 * Every z slice is read by the preprocessing compute shader with an explicit z coordinate, copied into a linear 2D
++	 * CPU readback texture, mapped, and appended to the output in ascending z order. The result is the whole
++	 * subresource's texel data, tightly packed, in the staging pixel format (which is the native format unless the
++	 * RHI requires an expansion, in which case SubresourceLayouts.json records it).
++	 *
++	 * Streaming is bypassed for volumetric subresources: each slice needs its own map, which the staging pool does not
++	 * model. The readback is synchronous and bounded by r.DumpGPU.MaxStagingSize per slice.
++	 */
++	void DumpTexture3DSubResource(
++		FRHICommandListImmediate& RHICmdList,
++		const TCHAR* TextureDebugName,
++		FRHIShaderResourceView* SubResourceSRV,
++		const FTextureSubresourceDumpDesc& SubresourceDumpDesc,
++		const FString& DumpFilePath)
++	{
++		check(IsInRenderingThread());
++		check(SubresourceDumpDesc.bIsTexture3D);
++		check(SubresourceDumpDesc.bPreprocessForStaging);
++
++		const int32 ZSliceCount = FMath::Max(1, SubresourceDumpDesc.SubResourceDepth);
++		const SIZE_T PreprocessedSliceByteSize = GetPreprocessedSliceByteSize(SubresourceDumpDesc);
++		const SIZE_T StoredSliceByteSize = GetStoredSliceByteSize(SubresourceDumpDesc);
++		const uint32 GPUIndex = RHICmdList.GetGPUMask().GetLastIndex();
++
++		// The output binary is the whole mip, every z slice stored contiguously with a constant StoredSliceByteSize stride.
++		TArray64<uint8> Array;
++		Array.SetNumUninitialized(StoredSliceByteSize * SIZE_T(ZSliceCount));
++
++		FDumpTextureCS::FPermutationDomain PermutationVector;
++		PermutationVector.Set<FDumpTextureCS::FTextureTypeDim>(SubresourceDumpDesc.DumpTextureType);
++		TShaderMapRef<FDumpTextureCS> ComputeShader(GetGlobalShaderMap(GMaxRHIShaderPlatform), PermutationVector);
++
++		bool bMapFailed = false;
++		int32 ZSlice = 0;
++
++		for (; ZSlice < ZSliceCount; ZSlice++)
++		{
++			FTextureRHIRef SliceTexture;
++			FTextureRHIRef StagingTexture;
++
++			{
++				FTimeBucketMeasure TimeBucketMeasure(this, ETimingBucket::RHIReadbackCommands);
++
++				// Preprocess this z slice into a linear 32 bit staging texture. The compute shader selects the slice
++				// explicitly, so no copy of the volume resource itself is needed (which would be illegal for tiled 3D
++				// textures and unsupported for every RHI in the general case).
++				{
++					const FRHITextureCreateDesc Desc =
++						FRHITextureCreateDesc::Create2D(TEXT("DumpGPU.PreprocessTexture3DSlice"), SubresourceDumpDesc.SubResourceExtent, SubresourceDumpDesc.PreprocessedPixelFormat)
++						.SetFlags(ETextureCreateFlags::UAV | ETextureCreateFlags::ShaderResource | ETextureCreateFlags::HideInVisualizeTexture);
++
++					CreateStagingTexture(RHICmdList, Desc, /* out */ &SliceTexture);
++					RHICmdList.Transition(FRHITransitionInfo(SliceTexture, ERHIAccess::Unknown, ERHIAccess::UAVCompute));
++
++					FUnorderedAccessViewRHIRef StagingOutput = CreateUAVNoLifetimeExtension(RHICmdList, SliceTexture, /* MipLevel = */ 0);
++
++					FDumpTextureCS::FParameters ShaderParameters;
++					ShaderParameters.Texture = SubResourceSRV;
++					ShaderParameters.StagingOutput = StagingOutput;
++					ShaderParameters.ZSlice = uint32(ZSlice);
++
++					FComputeShaderUtils::Dispatch(
++						RHICmdList,
++						ComputeShader,
++						ShaderParameters,
++						FComputeShaderUtils::GetGroupCount(SubresourceDumpDesc.SubResourceExtent, 8));
++
++					RHICmdList.Transition(FRHITransitionInfo(SliceTexture, ERHIAccess::UAVCompute, ERHIAccess::CopySrc));
++				}
++
++				{
++					const FRHITextureCreateDesc Desc =
++						FRHITextureCreateDesc::Create2D(TEXT("DumpGPU.StagingTexture3DSlice"), SubresourceDumpDesc.SubResourceExtent, SubresourceDumpDesc.PreprocessedPixelFormat)
++						.SetFlags(ETextureCreateFlags::CPUReadback | ETextureCreateFlags::HideInVisualizeTexture);
++
++					CreateStagingTexture(RHICmdList, Desc, /* out */ &StagingTexture);
++					RHICmdList.Transition(FRHITransitionInfo(StagingTexture, ERHIAccess::Unknown, ERHIAccess::CopyDest));
++
++					RHICmdList.CopyTexture(SliceTexture, StagingTexture, {});
++					RHICmdList.Transition(FRHITransitionInfo(StagingTexture, ERHIAccess::CopyDest, ERHIAccess::CPURead));
++				}
++			}
++
++			FGPUFenceRHIRef Fence = RHICreateGPUFence(GDumpGPUTextureFenceName);
++			{
++				FTimeBucketMeasure TimeBucketMeasure(this, ETimingBucket::GPUWait);
++				Fence->Clear();
++				RHICmdList.WriteGPUFence(Fence);
++				RHICmdList.SubmitAndBlockUntilGPUIdle();
++			}
++
++			void* Content = nullptr;
++			int32 RowPitchInPixels = 0;
++			int32 ColumnPitchInPixels = 0;
++
++			RHICmdList.MapStagingSurface(StagingTexture, Fence.GetReference(), Content, RowPitchInPixels, ColumnPitchInPixels, GPUIndex);
++
++			if (!Content)
++			{
++				bMapFailed = true;
++				StagingTexture = nullptr;
++				SliceTexture = nullptr;
++				break;
++			}
++
++			{
++				// Post process a single slice (the row copy and any 32 bit -> native narrowing are identical to the 2D path).
++				FTextureSubresourceDumpDesc SliceDumpDesc = SubresourceDumpDesc;
++				SliceDumpDesc.SubResourceDepth = 1;
++				SliceDumpDesc.ByteSize = PreprocessedSliceByteSize;
++				SliceDumpDesc.StoredByteSize = StoredSliceByteSize;
++
++				TArray64<uint8> SliceArray;
++				PostProcessTexture(
++					SliceDumpDesc,
++					Content,
++					RowPitchInPixels,
++					ColumnPitchInPixels,
++					/* out */ SliceArray);
++
++				RHICmdList.UnmapStagingSurface(StagingTexture, GPUIndex);
++
++				check(SliceArray.Num() == int64(StoredSliceByteSize));
++				FMemory::Memcpy(Array.GetData() + SIZE_T(ZSlice) * StoredSliceByteSize, SliceArray.GetData(), StoredSliceByteSize);
++			}
++
++			StagingTexture = nullptr;
++			SliceTexture = nullptr;
++		}
++
++		if (bMapFailed)
++		{
++			UE_LOGF(LogDumpGPU, Warning, "RHICmdList.MapStagingSurface() to dump texture %ls z slice %d/%d failed.", TextureDebugName, ZSlice, ZSliceCount);
++			return;
++		}
++
++		if (!DumpResourceBinaryToFile(Array.GetData(), Array.Num(), DumpFilePath))
++		{
++			UE_LOGF(LogDumpGPU, Warning, "DumpResourceBinaryToFile() to dump texture %ls failed.", TextureDebugName);
++		}
++	}
++
+ 	void AddDumpTextureSubResourcePass(
+ 		FRDGBuilder& GraphBuilder,
+ 		TArray<TSharedPtr<FJsonValue>>& InputResourceNames,
+@@ -1329,7 +1952,9 @@ public:
+ 		FRDGTextureSRVDesc SubresourceDesc,
+ 		bool bRegisterSubResourceToPass,
+ 		bool bIsOutputResource,
+-		bool bAllowDumpBinary)
++		bool bAllowDumpBinary,
++		const FRDGPass* VersionPassOverride = nullptr,
++		TArray<FString>* OutDumpFilePaths = nullptr)
+ 	{
+ 		int32 DumpTextureMode = GDumpTextureCVar.GetValueOnRenderThread();
+ 		
+@@ -1338,6 +1963,12 @@ public:
+ 		
+ 		if (DumpTextureMode == 0 || IsMemoryless)
+ 		{
++			// Only record once, on the first sight of the subresource that would otherwise have been dumped, so a
++			// memoryless or CVar disabled resource is never silently absent from the coverage inventory.
++			if (bAllowDumpBinary && DumpTextureMode == 2)
++			{
++				RecordSkippedTextureSubresource(SubresourceDesc, IsMemoryless ? TEXT("MemorylessTexture") : TEXT("TextureDumpDisabledByCVar"));
++			}
+ 			return;
+ 		}
+  
+@@ -1365,6 +1996,12 @@ public:
+ 
+ 		if (!SubresourceDumpDesc.IsDumpSupported())
+ 		{
++			RecordSkippedTextureSubresource(SubresourceDesc,
++				SubresourceDumpDesc.UnsupportedReason ? SubresourceDumpDesc.UnsupportedReason :
++				Desc.Dimension == ETextureDimension::TextureCubeArray ? TEXT("CubeArrayFacesNotExpanded") :
++				Desc.Dimension == ETextureDimension::Texture2DArray ? TEXT("ArraySubresourceNotExpandable") :
++				Desc.IsMultisample() ? TEXT("MultisampleTextureNotSupported") :
++				TEXT("UnsupportedPixelFormatOrDimension"));
+ 			return;
+ 		}
+ 
+@@ -1372,6 +2009,7 @@ public:
+ 		if (IsUnsafeToDumpResource(SubresourceDumpDesc.ByteSize, 2.2f + (SubresourceDumpDesc.bPreprocessForStaging ? 1.0f : 0.0f)))
+ 		{
+ 			UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because of insuficient memory available for staging texture.", SubresourceDesc.Texture->Name);
++			RecordSkippedTextureSubresource(SubresourceDesc, TEXT("StagingMemoryBudget"));
+ 			return;
+ 		}
+ 
+@@ -1385,52 +2023,102 @@ public:
+ 
+ 		// Dump the resource's binary to a .bin file.
+ 		{
+-			const FRDGPass* VersionPass = bIsOutputResource ? Pass : LastResourceVersion.FindRef(SubresourceDesc.Texture);
++			const FRDGPass* VersionPass = VersionPassOverride
++				? VersionPassOverride
++				: (bIsOutputResource ? Pass : LastResourceVersion.FindRef(SubresourceDesc.Texture));
+ 			FString DumpFilePath = kResourcesDir / FString::Printf(TEXT("%s.v%s.bin"), *UniqueResourceSubResourceName, *PtrToString(VersionPass));
+ 
+-			FDumpTexturePass* PassParameters = GraphBuilder.AllocParameters<FDumpTexturePass>();
+-			if (SubresourceDumpDesc.bPreprocessForStaging)
++			if (SubresourceDumpDesc.bPreprocessForStaging && !(SubresourceDesc.Texture->Desc.Flags & TexCreate_ShaderResource))
++			{
++				UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because requires copy to staging texture using compute, but is missing TexCreate_ShaderResource.", *UniqueResourceSubResourceName);
++				RecordSkippedTextureSubresource(SubresourceDesc, TEXT("MissingShaderResourceFlag"));
++				return;
++			}
++
++			// A volume subresource is read one z slice at a time by the compute shader, so it uses its own pass
++			// parameter struct declaring the 3D SRV dimension (also for a one texel deep volume).
++			if (SubresourceDumpDesc.bIsTexture3D)
+ 			{
+-				if (!(SubresourceDesc.Texture->Desc.Flags & TexCreate_ShaderResource))
++				FDumpTexture3DPass* PassParameters3D = GraphBuilder.AllocParameters<FDumpTexture3DPass>();
++				PassParameters3D->Texture = GraphBuilder.CreateSRV(SubresourceDesc);
++
++				GraphBuilder.AddPass(
++					RDG_EVENT_NAME("RDG DumpTexture3D(%s -> %s) %dx%dx%d",
++						SubresourceDesc.Texture->Name, *DumpFilePath,
++						SubresourceDumpDesc.SubResourceExtent.X, SubresourceDumpDesc.SubResourceExtent.Y, SubresourceDumpDesc.SubResourceDepth),
++					PassParameters3D,
++					ERDGPassFlags::Compute | ERDGPassFlags::NeverCull,
++					[
++						PassParameters3D, this, DumpFilePath,
++						SubresourceDesc, SubresourceDumpDesc]
++					(FRHICommandListImmediate& RHICmdList)
+ 				{
+-					UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because requires copy to staging texture using compute, but is missing TexCreate_ShaderResource.", *UniqueResourceSubResourceName);
+-					return;
+-				}
++					this->DumpTexture3DSubResource(
++						RHICmdList,
++						SubresourceDesc.Texture->Name,
++						PassParameters3D->Texture->GetRHI(),
++						SubresourceDumpDesc,
++						DumpFilePath);
++
++					// The volumetric readback maps every slice synchronously; it does not use the streaming pool.
++					this->RecordReadbackCompletion(DumpFilePath, int64(SubresourceDumpDesc.StoredByteSize), TEXT("Texture3D"));
++					this->ReleaseRHIResources(RHICmdList);
++					this->UpdatePassProgress();
++				});
+ 
+-				PassParameters->Texture = GraphBuilder.CreateSRV(SubresourceDesc);
++				this->DumpSubresourceLayoutToFile(SubresourceDumpDesc, SubresourceDesc, DumpFilePath);
++				if (OutDumpFilePaths)
++				{
++					OutDumpFilePaths->Add(DumpFilePath);
++				}
++				ResourcesDumpPasses++;
+ 			}
+ 			else
+ 			{
+-				PassParameters->TextureAccess = FRDGTextureAccess(SubresourceDesc.Texture, ERHIAccess::CopySrc);
+-			}
++				FDumpTexturePass* PassParameters = GraphBuilder.AllocParameters<FDumpTexturePass>();
++				if (SubresourceDumpDesc.bPreprocessForStaging)
++				{
++					PassParameters->Texture = GraphBuilder.CreateSRV(SubresourceDesc);
++				}
++				else
++				{
++					PassParameters->TextureAccess = FRDGTextureAccess(SubresourceDesc.Texture, ERHIAccess::CopySrc);
++				}
+ 
+-			GraphBuilder.AddPass(
+-				RDG_EVENT_NAME("RDG DumpTexture(%s -> %s) %dx%d",
+-					SubresourceDesc.Texture->Name, *DumpFilePath,
+-					SubresourceDumpDesc.SubResourceExtent.X, SubresourceDumpDesc.SubResourceExtent.Y),
+-				PassParameters,
+-				(SubresourceDumpDesc.bPreprocessForStaging ? ERDGPassFlags::Compute : ERDGPassFlags::Copy) | ERDGPassFlags::NeverCull,
+-				[
+-					PassParameters, this, DumpFilePath,
+-					SubresourceDesc, SubresourceDumpDesc]
+-				(FRHICommandListImmediate& RHICmdList)
+-			{
++				GraphBuilder.AddPass(
++					RDG_EVENT_NAME("RDG DumpTexture(%s -> %s) %dx%d",
++						SubresourceDesc.Texture->Name, *DumpFilePath,
++						SubresourceDumpDesc.SubResourceExtent.X, SubresourceDumpDesc.SubResourceExtent.Y),
++					PassParameters,
++					(SubresourceDumpDesc.bPreprocessForStaging ? ERDGPassFlags::Compute : ERDGPassFlags::Copy) | ERDGPassFlags::NeverCull,
++					[
++						PassParameters, this, DumpFilePath,
++						SubresourceDesc, SubresourceDumpDesc]
++					(FRHICommandListImmediate& RHICmdList)
++				{
+ 
+-				this->DumpTextureSubResource(
+-					RHICmdList,
+-					SubresourceDesc.Texture->Name,
+-					SubresourceDumpDesc.bPreprocessForStaging ? nullptr : SubresourceDesc.Texture->GetRHI(),
+-					SubresourceDumpDesc.bPreprocessForStaging ? PassParameters->Texture->GetRHI() : nullptr,
+-					SubresourceDumpDesc,
+-					DumpFilePath);
+-				if (!bStream)
++					this->DumpTextureSubResource(
++						RHICmdList,
++						SubresourceDesc.Texture->Name,
++						SubresourceDumpDesc.bPreprocessForStaging ? nullptr : SubresourceDesc.Texture->GetRHI(),
++						SubresourceDumpDesc.bPreprocessForStaging ? PassParameters->Texture->GetRHI() : nullptr,
++						SubresourceDumpDesc,
++						DumpFilePath);
++					if (!bStream)
++					{
++						this->RecordReadbackCompletion(DumpFilePath, int64(SubresourceDumpDesc.StoredByteSize), TEXT("Texture"));
++						this->ReleaseRHIResources(RHICmdList);
++					}
++					this->UpdatePassProgress();
++				});
++
++				this->DumpSubresourceLayoutToFile(SubresourceDumpDesc, SubresourceDesc, DumpFilePath);
++				if (OutDumpFilePaths)
+ 				{
+-					this->ReleaseRHIResources(RHICmdList);
++					OutDumpFilePaths->Add(DumpFilePath);
+ 				}
+-				this->UpdatePassProgress();
+-			});
+-
+-			ResourcesDumpPasses++;
++				ResourcesDumpPasses++;
++			}
+ 		}
+ 
+ 		if (bIsExternalMode)
+@@ -1447,20 +2135,31 @@ public:
+ 		const FRDGTextureSRVDesc& SubresourceRangeDesc,
+ 		bool bRegisterSubResourceToPass,
+ 		bool bIsOutputResource,
+-		bool bAllowDumpBinary)
++		bool bAllowDumpBinary,
++		const FRDGPass* VersionPassOverride = nullptr,
++		TArray<FString>* OutDumpFilePaths = nullptr)
+ 	{
+-		if (SubresourceRangeDesc.Texture->Desc.IsTextureArray() && SubresourceRangeDesc.NumArraySlices != 1)
++		const FRDGTextureDesc& TextureDesc = SubresourceRangeDesc.Texture->Desc;
++
++		// A plain cube has ArraySize cubes, each of them six faces; its faces are dumped individually through a single
++		// slice 2D array view. A plain cube is not IsTextureArray(), so it needs its own branch.
++		const bool bIsPlainCube = TextureDesc.Dimension == ETextureDimension::TextureCube;
++		const uint32 NumSlices = bIsPlainCube ? (TextureDesc.ArraySize * 6) : TextureDesc.ArraySize;
++
++		if ((TextureDesc.IsTextureArray() || bIsPlainCube) && SubresourceRangeDesc.NumArraySlices != 1)
+ 		{
+ 			// If this is an array, recursively dump all subresource of each individual array slice.
+ 			uint32 ArraySliceStart = SubresourceRangeDesc.FirstArraySlice;
+-			uint32 ArraySliceCount = (SubresourceRangeDesc.NumArraySlices > 0) ? SubresourceRangeDesc.NumArraySlices : (SubresourceRangeDesc.Texture->Desc.ArraySize - SubresourceRangeDesc.FirstArraySlice);
++			uint32 ArraySliceCount = (SubresourceRangeDesc.NumArraySlices > 0) ? SubresourceRangeDesc.NumArraySlices : (NumSlices - SubresourceRangeDesc.FirstArraySlice);
+ 
+ 			for (uint32 ArraySlice = ArraySliceStart; ArraySlice < (ArraySliceStart + ArraySliceCount); ArraySlice++)
+ 			{
+ 				FRDGTextureSRVDesc SubresourceDesc = SubresourceRangeDesc;
+ 				SubresourceDesc.FirstArraySlice = ArraySlice;
+ 				SubresourceDesc.NumArraySlices = 1;
+-				SubresourceDesc.DimensionOverride = ETextureDimension::Texture2D;
++				// The RHI only accepts a slice of a cube when the view dimension is a single slice 2D array (RHI.cpp
++				// FRHITextureSRVCreateInfo::Validate); for 2D arrays the existing 2D narrowing is kept.
++				SubresourceDesc.DimensionOverride = bIsPlainCube ? ETextureDimension::Texture2DArray : ETextureDimension::Texture2D;
+ 
+ 				AddDumpTextureAllSubResourcesPasses(
+ 					GraphBuilder,
+@@ -1470,7 +2169,9 @@ public:
+ 					SubresourceDesc,
+ 					bRegisterSubResourceToPass,
+ 					bIsOutputResource,
+-					bAllowDumpBinary);
++					bAllowDumpBinary,
++					VersionPassOverride,
++					OutDumpFilePaths);
+ 			}
+ 		}
+ 		else if (SubresourceRangeDesc.Format == PF_X24_G8)
+@@ -1484,7 +2185,9 @@ public:
+ 				SubresourceRangeDesc,
+ 				bRegisterSubResourceToPass,
+ 				bIsOutputResource,
+-				bAllowDumpBinary);
++				bAllowDumpBinary,
++				VersionPassOverride,
++				OutDumpFilePaths);
+ 		}
+ 		else
+ 		{
+@@ -1497,6 +2200,12 @@ public:
+ 				{
+                 	SubresourceDesc.DimensionOverride = ETextureDimension::Texture2D;
+ 				}
++				else if (SubresourceRangeDesc.Texture->Desc.Dimension == ETextureDimension::TextureCube)
++				{
++					// A pass can bind a single cube face explicitly; the view must stay a single slice 2D array.
++					SubresourceDesc.DimensionOverride = ETextureDimension::Texture2DArray;
++					SubresourceDesc.NumArraySlices = 1;
++				}
+                 
+ 				AddDumpTextureSubResourcePass(
+ 					GraphBuilder,
+@@ -1506,7 +2215,9 @@ public:
+ 					SubresourceDesc,
+ 					bRegisterSubResourceToPass,
+ 					bIsOutputResource,
+-					bAllowDumpBinary);
++					bAllowDumpBinary,
++					VersionPassOverride,
++					OutDumpFilePaths);
+ 			}
+ 		}
+ 	}
+@@ -1553,16 +2264,29 @@ public:
+ 						/* bAllowDumpBinary = */ true);
+ 				}
+ 
+-				// Dump all the remaining sub resource (mip levels, array slices...)
+-				AddDumpTextureAllSubResourcesPasses(
+-					GraphBuilder,
+-					InputResourceNames,
+-					OutputResourceNames,
+-					Pass,
+-					FRDGTextureSRVDesc::Create(SubresourceRangeDesc.Texture),
+-					/* bRegisterSubResourceToPass = */ false,
+-					bIsOutputResource,
+-					/* bAllowDumpBinary = */ true);
++				// Dump all the remaining sub resource (mip levels, array slices...). Preserve the requested view
++				// interpretation: recreating the descriptor with FRDGTextureSRVDesc::Create() would silently drop a
++				// typed view format or a forced-linear sRGB override, storing native bytes under a view-scoped name.
++				{
++					FRDGTextureSRVDesc AllSubresourcesDesc = FRDGTextureSRVDesc::Create(SubresourceRangeDesc.Texture);
++					// The stencil branch above already handles PF_X24_G8; propagating it here would dump only the
++					// stencil plane for every mip/slice and lose the depth/color payload.
++					if (SubresourceRangeDesc.Format != PF_Unknown && SubresourceRangeDesc.Format != PF_X24_G8)
++					{
++						AllSubresourcesDesc.Format = SubresourceRangeDesc.Format;
++					}
++					AllSubresourcesDesc.SRGBOverride = SubresourceRangeDesc.SRGBOverride;
++
++					AddDumpTextureAllSubResourcesPasses(
++						GraphBuilder,
++						InputResourceNames,
++						OutputResourceNames,
++						Pass,
++						AllSubresourcesDesc,
++						/* bRegisterSubResourceToPass = */ false,
++						bIsOutputResource,
++						/* bAllowDumpBinary = */ true);
++				}
+ 
+ 				// Still register the input subresources used without dump any binary.
+ 				return AddDumpTextureAllSubResourcesPasses(
+@@ -1575,35 +2299,1289 @@ public:
+ 					bIsOutputResource,
+ 					/* bAllowDumpBinary = */ false);
+ 			}
+-		}
+-		else if (bIsOutputResource)
+-		{
+-			UpdateResourceLastModifyingPass(SubresourceRangeDesc.Texture, Pass);
+-		}
+-		else
+-		{
+-			if (GDumpGPURedumpInputs.GetValueOnRenderThread() != 0)
++		}
++		else if (bIsOutputResource)
++		{
++			UpdateResourceLastModifyingPass(SubresourceRangeDesc.Texture, Pass);
++		}
++		else
++		{
++			if (GDumpGPURedumpInputs.GetValueOnRenderThread() != 0)
++			{
++				// Re-dump under a unique version key (the consuming pass pointer). So if this texture has been dumped 
++				// previously but modified by intermeddiate passes between then and now, We can still get the correct copy.
++				UpdateResourceLastModifyingPass(SubresourceRangeDesc.Texture, Pass);
++			}
++			else
++			{
++				// The texture has already been dumped, so can early return given it is not being modified by this Pass.
++				bAllowDumpBinary = false;
++			}
++		}
++
++		return AddDumpTextureAllSubResourcesPasses(
++			GraphBuilder,
++			InputResourceNames,
++			OutputResourceNames,
++			Pass,
++			SubresourceRangeDesc,
++			/* bRegisterSubResourceToPass = */ true,
++			bIsOutputResource,
++			bAllowDumpBinary);
++	}
++
++	struct FNativeTextureExportSummary
++	{
++		FString BaseName;
++		TArray<FString> DumpFiles;
++		int32 ScheduledSubresources = 0;
++		int32 MipFirst = 0;
++		int32 MipCount = 0;
++		int32 ArrayFirstInViewUnits = 0;
++		int32 ArrayCountInViewUnits = 0;
++		int32 FaceFirst = 0;
++		int32 FaceCount = 0;
++		EPixelFormat ViewFormat = PF_Unknown;
++		bool bViewSRGB = false;
++		bool bWholeTexturesResource = false;
++		bool bReusedExistingReadback = false;
++		FString FirstScheduledByPass;
++		const TCHAR* SkipReason = nullptr;
++	};
++
++	/**
++	 * Returns the diagnostic wrapper for a native RHI texture. An existing renderer registration is reused unchanged and
++	 * keeps its real tracking state. A wrapper registered only for this diagnostic is memoized in the dump context and
++	 * its RHI lookup is removed by FRDGBuilder::DumpResourcePassOutputs right after the dump traversal, so a later
++	 * ordinary renderer registration of the same RHI texture gets its own normal wrapper. The wrapper object stays
++	 * alive because the scheduled dump passes reference it.
++	 */
++	FRDGTextureRef GetOrRegisterDiagnosticNativeTexture(FRDGBuilder& GraphBuilder, FRHITexture* Texture)
++	{
++		if (!Texture)
++		{
++			return nullptr;
++		}
++
++		if (FRDGTextureRef* Found = IsolatedNativeTextures.Find(Texture))
++		{
++			// If a real renderer registration appeared later in the same graph, use that actual tracked wrapper instead
++			// of the diagnostic wrapper so RDG transitions and versions stay the renderer's.
++			if (FRDGTextureRef CurrentTexture = GraphBuilder.FindExternalTexture(Texture))
++			{
++				if (CurrentTexture != *Found)
++				{
++					*Found = CurrentTexture;
++					return CurrentTexture;
++				}
++			}
++			return *Found;
++		}
++
++		// Never shadow or replace an existing renderer registration. This is the actual tracked RDG state, so RDG
++		// transitions and resource versions remain the renderer's.
++		if (FRDGTextureRef ExistingTexture = GraphBuilder.FindExternalTexture(Texture))
++		{
++			IsolatedNativeTextures.Add(Texture, ExistingTexture);
++			return ExistingTexture;
++		}
++
++		TRefCountPtr<IPooledRenderTarget> PooledTexture = CreateRenderTarget(Texture, TEXT("DumpGPU.NativeUniformBufferBinding"));
++		if (!PooledTexture)
++		{
++			return nullptr;
++		}
++
++		FRDGTextureRef RDGTexture = GraphBuilder.RegisterExternalTexture(
++			PooledTexture, TEXT("DumpGPU.NativeUniformBufferBinding"), ERDGTextureFlags::SkipTracking);
++		if (RDGTexture)
++		{
++			IsolatedNativeTextures.Add(Texture, RDGTexture);
++			// Mark it for removal from the builder's RHI lookup only. The graph-owned FRDGTexture itself is kept.
++			PendingIsolatedTextureLookupRemovals.Add(Texture);
++		}
++		return RDGTexture;
++	}
++
++	/**
++	 * Schedules the readback of the exact native SRV view (mip range, array range, dimension, format and sRGB) through
++	 * the diagnostic wrapper. The view is never widened to the whole resource: widening would read subresources the
++	 * shader does not sample and could be in a different/unsupported access state.
++	 */
++	bool AddDumpNativeTextureViewPasses(
++		FRDGBuilder& GraphBuilder,
++		TArray<TSharedPtr<FJsonValue>>& InputResourceNames,
++		TArray<TSharedPtr<FJsonValue>>& OutputResourceNames,
++		const FRDGPass* Pass,
++		FRDGTextureRef RDGTexture,
++		FRHITexture* NativeTexture,
++		const FRHITextureDesc& NativeDesc,
++		const FRHIViewDesc::FTextureSRV::FViewInfo& ViewInfo,
++		bool bWholeTexture,
++		FNativeTextureExportSummary& OutSummary)
++	{
++		check(RDGTexture);
++		check(NativeTexture);
++
++		OutSummary = FNativeTextureExportSummary();
++		OutSummary.bWholeTexturesResource = bWholeTexture;
++		OutSummary.MipFirst = ViewInfo.MipRange.First;
++		OutSummary.MipCount = ViewInfo.MipRange.Num;
++		OutSummary.ArrayFirstInViewUnits = ViewInfo.ArrayRange.First;
++		OutSummary.ArrayCountInViewUnits = ViewInfo.ArrayRange.Num;
++		OutSummary.ViewFormat = ViewInfo.Format;
++		OutSummary.bViewSRGB = ViewInfo.bSRGB != 0;
++
++		const int32 TextureDumpMode = GDumpTextureCVar.GetValueOnRenderThread();
++		if (TextureDumpMode == 0)
++		{
++			OutSummary.SkipReason = TEXT("TextureDumpDisabledByCVar");
++			return false;
++		}
++		if (TextureDumpMode == 1)
++		{
++			OutSummary.SkipReason = TEXT("TextureDumpDescriptorsOnlyByCVar");
++			return false;
++		}
++		if (NativeDesc.NumSamples != 1)
++		{
++			OutSummary.SkipReason = TEXT("NativeMultisampleTextureNotSupported");
++			return false;
++		}
++		if (!EnumHasAnyFlags(NativeDesc.Flags, TexCreate_ShaderResource))
++		{
++			OutSummary.SkipReason = TEXT("SkippedMissingShaderResourceFlag");
++			return false;
++		}
++
++		// Cube arrays count array elements in cubes while a per-face read must address 2D slices. The RDG descriptor
++		// path does not expose that unit conversion consistently, so this case is skipped with an exact reason rather
++		// than being mislabelled. Plain cubes and explicit 2D-array-face views are supported.
++		if (NativeDesc.Dimension == ETextureDimension::TextureCubeArray)
++		{
++			OutSummary.SkipReason = TEXT("NativeCubeArrayViewNotExpanded");
++			return false;
++		}
++		if (NativeDesc.Dimension == ETextureDimension::TextureCube && ViewInfo.Dimension == FRHIViewDesc::EDimension::Texture2D)
++		{
++			OutSummary.SkipReason = TEXT("NativeCubeViewDimensionUnsupported");
++			return false;
++		}
++		if (NativeDesc.IsTexture3D() && ViewInfo.Dimension != FRHIViewDesc::EDimension::Texture3D)
++		{
++			OutSummary.SkipReason = TEXT("NativeTexture3DViewDimensionMismatch");
++			return false;
++		}
++		if (!NativeDesc.IsTexture3D() && ViewInfo.Dimension == FRHIViewDesc::EDimension::Texture3D)
++		{
++			OutSummary.SkipReason = TEXT("NativeTexture3DViewDimensionMismatch");
++			return false;
++		}
++
++		if (OutSummary.MipCount <= 0 || OutSummary.MipFirst + OutSummary.MipCount > NativeDesc.NumMips)
++		{
++			OutSummary.SkipReason = TEXT("NativeViewMipRangeOutOfBounds");
++			return false;
++		}
++
++		// The stencil plane permutation reads a single mip; a multi-mip stencil view would otherwise be passed to the
++		// single-subresource entry point with NumMipLevels > 1.
++		if (OutSummary.ViewFormat == PF_X24_G8 && OutSummary.MipCount > 1)
++		{
++			OutSummary.SkipReason = TEXT("NativeStencilViewMultiMipNotSupported");
++			return false;
++		}
++
++		// Cube view array ranges are expressed in cubes; the RDG descriptor and the RHI face view use face slices.
++		if (ViewInfo.Dimension == FRHIViewDesc::EDimension::TextureCube)
++		{
++			OutSummary.FaceFirst = OutSummary.ArrayFirstInViewUnits * 6;
++			OutSummary.FaceCount = OutSummary.ArrayCountInViewUnits * 6;
++		}
++		else
++		{
++			OutSummary.FaceFirst = OutSummary.ArrayFirstInViewUnits;
++			OutSummary.FaceCount = OutSummary.ArrayCountInViewUnits;
++		}
++
++		if (NativeDesc.IsTexture3D())
++		{
++			OutSummary.FaceFirst = 0;
++			OutSummary.FaceCount = 1;
++		}
++
++		const int32 MaxArraySlices = (NativeDesc.Dimension == ETextureDimension::TextureCube)
++			? (NativeDesc.ArraySize * 6)
++			: NativeDesc.ArraySize;
++		if (OutSummary.FaceCount <= 0 || OutSummary.FaceFirst + OutSummary.FaceCount > MaxArraySlices)
++		{
++			OutSummary.SkipReason = TEXT("NativeViewArrayRangeOutOfBounds");
++			return false;
++		}
++
++		FRDGTextureSRVDesc ViewDesc = FRDGTextureSRVDesc::Create(RDGTexture);
++		ViewDesc.MipLevel = uint8(OutSummary.MipFirst);
++		ViewDesc.NumMipLevels = uint8(OutSummary.MipCount);
++		ViewDesc.Format = OutSummary.ViewFormat;
++		ViewDesc.SRGBOverride = OutSummary.bViewSRGB ? SRGBO_Default : SRGBO_ForceDisable;
++		// RHI validation requires FirstArraySlice == 0 and NumArraySlices == 0 for non-array textures (including 3D).
++		// Only array and cube resources carry a slice range in the SRV descriptor.
++		if (NativeDesc.IsTexture3D() || NativeDesc.Dimension == ETextureDimension::Texture2D)
++		{
++			ViewDesc.FirstArraySlice = 0;
++			ViewDesc.NumArraySlices = 0;
++		}
++		else
++		{
++			ViewDesc.FirstArraySlice = uint16(OutSummary.FaceFirst);
++			ViewDesc.NumArraySlices = uint16(OutSummary.FaceCount);
++		}
++
++		// Resolve the exact staging representation before scheduling. This keeps the binding-level status and the
++		// coverage inventory precise for unsupported depth/BC/format cases instead of a generic "not schedulable".
++		{
++			const int32 ProbeDepth = NativeDesc.IsTexture3D()
++				? FMath::Max(1, NativeDesc.Depth >> OutSummary.MipFirst)
++				: 1;
++			const FTextureSubresourceDumpDesc Probe = TranslateSubresourceDumpDesc(
++				NativeDesc,
++				OutSummary.ViewFormat,
++				OutSummary.bViewSRGB,
++				OutSummary.MipFirst,
++				ProbeDepth,
++				NativeDesc.IsTextureCube(),
++				/* bSkipTracking = */ false,
++				/* bForcePreprocess = */ false);
++			if (!Probe.IsDumpSupported())
++			{
++				OutSummary.SkipReason = Probe.UnsupportedReason
++					? Probe.UnsupportedReason
++					: TEXT("SkippedNativeTextureUnsupportedFormatOrDimension");
++				RecordSkippedTextureSubresource(ViewDesc, OutSummary.SkipReason);
++				return false;
++			}
++		}
++
++		OutSummary.BaseName = FString::Printf(TEXT("NativeTexture.%s.mip%d_%d.a%d_%d.f%d_%d.dim%d.plane%d"),
++			*PtrToString(NativeTexture), OutSummary.MipFirst, OutSummary.MipCount,
++			OutSummary.ArrayFirstInViewUnits, OutSummary.ArrayCountInViewUnits,
++			OutSummary.FaceFirst, OutSummary.FaceCount,
++			int32(ViewInfo.Dimension), int32(ViewInfo.Plane));
++		if (OutSummary.ViewFormat != NativeDesc.Format)
++		{
++			const TCHAR* FormatName = (OutSummary.ViewFormat < PF_MAX && GPixelFormats[OutSummary.ViewFormat].Name)
++				? GPixelFormats[OutSummary.ViewFormat].Name
++				: TEXT("Unknown");
++			OutSummary.BaseName += FString::Printf(TEXT(".fmt_%s"), FormatName);
++		}
++		if (OutSummary.bViewSRGB != EnumHasAnyFlags(NativeDesc.Flags, TexCreate_SRGB))
++		{
++			OutSummary.BaseName += OutSummary.bViewSRGB ? TEXT(".srgb") : TEXT(".linear");
++		}
++
++		if (!NativeTextureDescriptorsDumped.Contains(RDGTexture))
++		{
++			NativeTextureDescriptorsDumped.Add(RDGTexture);
++			if (!HasResourceEverBeenDumped(RDGTexture))
++			{
++				const FString UniqueResourceName = GetUniqueResourceName(RDGTexture);
++				TSharedPtr<FJsonObject> JsonObject = ToJson(UniqueResourceName, RDGTexture->Name, RDGTexture->Desc);
++				DumpJsonToFile(JsonObject, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("ResourceDescs.json"), FILEWRITE_Append);
++			}
++		}
++
++		// The same exact view of the same native texture is read once per graph. A later consumer only registers its
++		// input edges and links to the already scheduled file; different mip/array/format/sRGB interpretations have a
++		// different BaseName and are never deduplicated together.
++		if (const FString* ExistingFile = ScheduledNativeTextureViewFiles.Find(OutSummary.BaseName))
++		{
++			AddDumpTextureAllSubResourcesPasses(
++				GraphBuilder,
++				InputResourceNames,
++				OutputResourceNames,
++				Pass,
++				ViewDesc,
++				/* bRegisterSubResourceToPass = */ true,
++				/* bIsOutputResource = */ false,
++				/* bAllowDumpBinary = */ false);
++
++			OutSummary.DumpFiles.Add(*ExistingFile);
++			OutSummary.bReusedExistingReadback = true;
++			if (const FRDGPass** FirstPass = ScheduledNativeTextureViewPasses.Find(OutSummary.BaseName))
++			{
++				OutSummary.FirstScheduledByPass = PtrToString(*FirstPass);
++			}
++			return true;
++		}
++
++		const int32 PassesBefore = ResourcesDumpPasses;
++		AddDumpTextureAllSubResourcesPasses(
++			GraphBuilder,
++			InputResourceNames,
++			OutputResourceNames,
++			Pass,
++			ViewDesc,
++			/* bRegisterSubResourceToPass = */ true,
++			/* bIsOutputResource = */ false,
++			/* bAllowDumpBinary = */ true,
++			/* VersionPassOverride = */ Pass,
++			/* OutDumpFilePaths = */ &OutSummary.DumpFiles);
++
++		OutSummary.ScheduledSubresources = ResourcesDumpPasses - PassesBefore;
++		if (OutSummary.ScheduledSubresources == 0)
++		{
++			// AddDumpTextureSubResourcePass wrote the exact per-subresource reason to ResourceDumpSkipped.json.
++			OutSummary.SkipReason = TEXT("NativeViewNotSchedulableSeeResourceDumpSkipped");
++			return false;
++		}
++
++		if (OutSummary.DumpFiles.Num() > 0)
++		{
++			ScheduledNativeTextureViewFiles.Add(OutSummary.BaseName, OutSummary.DumpFiles[0]);
++			ScheduledNativeTextureViewPasses.Add(OutSummary.BaseName, Pass);
++		}
++
++		return true;
++	}
++
++	/** Local mapping of a view dimension to text (FRHIViewDesc::GetTextureDimensionString is not exported). */
++	static const TCHAR* GetViewDimensionString(FRHIViewDesc::EDimension Dimension)	{
++		switch (Dimension)
++		{
++		case FRHIViewDesc::EDimension::Texture2D:			return TEXT("Texture2D");
++		case FRHIViewDesc::EDimension::Texture2DArray:		return TEXT("Texture2DArray");
++		case FRHIViewDesc::EDimension::Texture3D:			return TEXT("Texture3D");
++		case FRHIViewDesc::EDimension::TextureCube:			return TEXT("TextureCube");
++		case FRHIViewDesc::EDimension::TextureCubeArray:	return TEXT("TextureCubeArray");
++		default:											return TEXT("Unknown");
++		}
++	}
++
++	/** Local mapping of a buffer view type to text (FRHIViewDesc::GetBufferTypeString is not exported). */
++	static const TCHAR* GetBufferViewTypeString(FRHIViewDesc::EBufferType BufferType)
++	{
++		switch (BufferType)
++		{
++		case FRHIViewDesc::EBufferType::Typed:					return TEXT("Typed");
++		case FRHIViewDesc::EBufferType::Structured:				return TEXT("Structured");
++		case FRHIViewDesc::EBufferType::AccelerationStructure:	return TEXT("AccelerationStructure");
++		case FRHIViewDesc::EBufferType::Raw:					return TEXT("Raw");
++		default:												return TEXT("Unknown");
++		}
++	}
++
++	/**
++	 * Returns whether the dumped pass declares a writable access to the native buffer through an RDG buffer parameter.
++	 *
++	 * Native buffer bindings are collected after the pass executed. A pass that also writes the same RHI buffer would
++	 * make a post-execute read the output of the pass rather than its input, so those bindings are rejected instead of
++	 * being mislabelled as pass inputs.
++	 */
++	static bool IsNativeBufferWrittenByPass(const FRDGPass* Pass, FRHIBuffer* NativeBuffer)
++	{
++		if (!NativeBuffer)
++		{
++			return false;
++		}
++
++		bool bWritable = false;
++
++		Pass->GetParameters().Enumerate([&](FRDGParameter Parameter)
++		{
++			if (bWritable)
++			{
++				return;
++			}
++
++			switch (Parameter.GetType())
++			{
++			case UBMT_RDG_BUFFER_UAV:
++			{
++				if (FRDGBufferUAVRef UAV = Parameter.GetAsBufferUAV())
++				{
++					bWritable |= (UAV->Desc.Buffer->GetRHIUnchecked() == NativeBuffer);
++				}
++			}
++			break;
++			case UBMT_RDG_BUFFER_ACCESS:
++			{
++				if (FRDGBufferAccess BufferAccess = Parameter.GetAsBufferAccess())
++				{
++					bWritable |= (BufferAccess.GetBuffer()->GetRHIUnchecked() == NativeBuffer && IsWritableAccess(BufferAccess.GetAccess()));
++				}
++			}
++			break;
++			case UBMT_RDG_BUFFER_ACCESS_ARRAY:
++			{
++				for (FRDGBufferAccess BufferAccess : Parameter.GetAsBufferAccessArray())
++				{
++					if (BufferAccess.GetBuffer()->GetRHIUnchecked() == NativeBuffer && IsWritableAccess(BufferAccess.GetAccess()))
++					{
++						bWritable = true;
++						break;
++					}
++				}
++			}
++			break;
++			default:
++				break;
++			}
++		});
++
++		return bWritable;
++	}	/** Base types that store a native (non render graph) resource pointer in a uniform buffer. */
++	static bool IsNativeResourceBaseType(EUniformBufferBaseType BaseType)
++	{
++		switch (BaseType)
++		{
++		case UBMT_TEXTURE:
++		case UBMT_SRV:
++		case UBMT_UAV:
++		case UBMT_SAMPLER:
++			return true;
++		default:
++			return false;
++		}
++	}
++
++	/** Maps the absolute byte offset of each native resource member of a shader parameter struct to its member path. */
++	static void CollectNativeBindingMemberNames(
++		const FShaderParametersMetadata* Metadata,
++		uint32 BaseOffset,
++		const FString& Prefix,
++		TMap<uint32, FString>& OutNames,
++		TMap<uint32, uint32>& OutElementCounts,
++		TMap<uint32, uint32>& OutMemberBaseOffsets)
++	{
++		for (const FShaderParametersMetadata::FMember& Member : Metadata->GetMembers())
++		{
++			const uint32 Offset = BaseOffset + Member.GetOffset();
++			const EUniformBufferBaseType BaseType = Member.GetBaseType();
++
++			// Inline structs hold their native resource members inline, so recurse. An array of inline structs is a C
++			// array of the concrete struct type, so its element stride is the metadata struct size. Referenced structs
++			// and RDG uniform buffers have their own storage and are not part of this uniform buffer's payload.
++			if (Member.GetStructMetadata()
++				&& BaseType != UBMT_REFERENCED_STRUCT
++				&& BaseType != UBMT_RDG_UNIFORM_BUFFER)
++			{
++				const uint32 StructElementCount = FMath::Max(1u, Member.GetNumElements());
++				const uint32 StructStride = Member.GetStructMetadata()->GetSize();
++				if (StructStride == 0)
++				{
++					continue;
++				}
++
++				for (uint32 ElementIndex = 0; ElementIndex < StructElementCount; ElementIndex++)
++				{
++					const FString ElementPrefix = (StructElementCount > 1)
++						? FString::Printf(TEXT("%s%s[%u]."), *Prefix, Member.GetName(), ElementIndex)
++						: FString::Printf(TEXT("%s%s."), *Prefix, Member.GetName());
++
++					CollectNativeBindingMemberNames(
++						Member.GetStructMetadata(),
++						Offset + ElementIndex * StructStride,
++						ElementPrefix,
++						OutNames,
++						OutElementCounts,
++						OutMemberBaseOffsets);
++				}
++				continue;
++			}
++
++			if (!IsNativeResourceBaseType(BaseType))
++			{
++				continue;
++			}
++
++			// The RHI uniform buffer layout carries one resource entry per array element (see
++			// ShaderParameterMetadata.cpp), each with its own exact MemberOffset. Mirror that here so every element gets
++			// its own path and there is no second, guessed expansion on top of the layout's element enumeration.
++			const uint32 ArrayElementCount = FMath::Max(1u, Member.GetNumElements());
++			for (uint32 ElementIndex = 0; ElementIndex < ArrayElementCount; ElementIndex++)
++			{
++				const uint32 ElementOffset = Offset + ElementIndex * SHADER_PARAMETER_POINTER_ALIGNMENT;
++				const FString ElementName = (ArrayElementCount > 1)
++					? FString::Printf(TEXT("%s[%u]"), Member.GetName(), ElementIndex)
++					: FString(Member.GetName());
++
++				OutNames.Add(ElementOffset, Prefix + ElementName);
++				OutElementCounts.Add(ElementOffset, ArrayElementCount);
++				OutMemberBaseOffsets.Add(ElementOffset, Offset);
++			}
++		}
++	}
++
++	/**
++	 * Exports the native RHI resource bindings of a referenced uniform buffer (the resources a shader reads through
++	 * the uniform buffer rather than through a render graph pass parameter: GDF atlases, LTC LUTs, preintegrated BRDF,
++	 * BlueNoise LUTs, ...).
++	 *
++	 * The uniform buffer content is the CPU copy maintained by r.RHI.UniformBufferContentMap, so each member offset
++	 * yields the exact pointer the shader will read. Textures bound as TEXTURE/SRV members are exported through the
++	 * existing subresource pipeline (all mips, slices and z slices) by registering the native texture as an external
++	 * render graph texture flagged SkipTracking: RDG then never transitions it and the read is the same compute shader
++	 * SRV read the owning pass already relies on. UAV and sampler members are recorded with their pointer and type but
++	 * no access state is inferred and no bytes are fabricated.
++	 */
++	void DumpNativeUniformBufferBindings(
++		FRDGBuilder& GraphBuilder,
++		const FRDGPass* Pass,
++		TArray<TSharedPtr<FJsonValue>>& InputResourceNames,
++		TArray<TSharedPtr<FJsonValue>>& OutputResourceNames,
++		const FRHIUniformBuffer* UniformBuffer,
++		const uint8* UniformBufferContent,
++		const FShaderParametersMetadata* Metadata,
++		const FString& Prefix)
++	{
++		const FRHIUniformBufferLayout& Layout = UniformBuffer->GetLayout();
++		if (Layout.Resources.Num() == 0 || !UniformBufferContent || !Metadata)
++		{
++			return;
++		}
++
++		TMap<uint32, FString> MemberNames;
++		TMap<uint32, uint32> MemberElementCounts;
++		TMap<uint32, uint32> MemberBaseOffsets;
++		CollectNativeBindingMemberNames(Metadata, 0, Prefix, MemberNames, MemberElementCounts, MemberBaseOffsets);
++
++		// Native resource arrays in a uniform buffer are C arrays of the concrete pointer type (see
++		// ShaderParameterMacros.h), so the element stride is the shader parameter pointer alignment (8 on every
++		// platform, to match the largest pointer) and not a uniform array stride. The RHI layout already contains one
++		// entry per element; every read is bounded by the constant buffer size.
++		const uint32 ElementStride = SHADER_PARAMETER_POINTER_ALIGNMENT;
++
++		// A native buffer SRV is read after its owning pass executed. If the same uniform buffer also binds the buffer
++		// through a UAV, the SRV is not necessarily the pass input; collect those aliases so they are rejected instead
++		// of being labelled as an input.
++		TSet<FRHIBuffer*> WritableNativeBuffers;
++		TSet<FRHITexture*> WritableNativeTextures;
++		for (const FRHIUniformBufferResource& WritableResource : Layout.Resources)
++		{
++			if (WritableResource.MemberType != UBMT_UAV || WritableResource.MemberOffset >= Layout.ConstantBufferSize
++				|| (uint32(WritableResource.MemberOffset) + ElementStride) > Layout.ConstantBufferSize)
++			{
++				continue;
++			}
++
++			FRHIView* WritableView = *reinterpret_cast<FRHIView* const*>(UniformBufferContent + WritableResource.MemberOffset);
++			if (WritableView && WritableView->IsBuffer())
++			{
++				WritableNativeBuffers.Add(WritableView->GetBuffer());
++			}
++			else if (WritableView && WritableView->IsTexture())
++			{
++				WritableNativeTextures.Add(WritableView->GetTexture());
++			}
++		}
++
++		TSharedPtr<FJsonObject> BindingsJson = MakeShareable(new FJsonObject);
++
++		for (const FRHIUniformBufferResource& Resource : Layout.Resources)
++		{
++			if (!IsNativeResourceBaseType(Resource.MemberType))
++			{
++				continue;
++			}
++
++			if (Resource.MemberOffset >= Layout.ConstantBufferSize
++				|| (uint32(Resource.MemberOffset) + ElementStride) > Layout.ConstantBufferSize)
++			{
++				continue;
++			}
++
++			const FString* FoundName = MemberNames.Find(Resource.MemberOffset);
++			const FString MemberName = FoundName ? *FoundName : FString::Printf(TEXT("%soffset%u"), *Prefix, Resource.MemberOffset);
++
++			const uint32* FoundCount = MemberElementCounts.Find(Resource.MemberOffset);
++			const uint32 ArrayNumElements = FoundCount ? FMath::Max(1u, *FoundCount) : 1u;
++			const uint32* FoundBaseOffset = MemberBaseOffsets.Find(Resource.MemberOffset);
++			const uint32 MemberBaseOffset = FoundBaseOffset ? *FoundBaseOffset : Resource.MemberOffset;
++			const uint32 ElementOffset = Resource.MemberOffset;
++			const uint8* MemberContent = UniformBufferContent + ElementOffset;
++			const FString ElementName = MemberName;
++
++			TSharedPtr<FJsonObject> Entry = MakeShareable(new FJsonObject);
++			Entry->SetStringField(TEXT("BaseType"), GetUniformBufferBaseTypeString(Resource.MemberType));
++			Entry->SetNumberField(TEXT("MemberBaseOffset"), MemberBaseOffset);
++			Entry->SetNumberField(TEXT("MemberOffset"), ElementOffset);
++			Entry->SetNumberField(TEXT("ElementStrideBytes"), ElementStride);
++			Entry->SetNumberField(TEXT("ArrayNumElements"), ArrayNumElements);
++			// The pointer is captured from the uniform buffer payload; the resource access state is not part of it.
++			Entry->SetBoolField(TEXT("StateCaptured"), false);
++			Entry->SetStringField(TEXT("Source"), TEXT("ReferencedUniformBufferContentMap"));
++
++			FRHITexture* Texture = nullptr;
++			// Exact SRV view of the native texture. For UBMT_SRV this is the view the shader samples; for a plain
++			// UBMT_TEXTURE slot the shader reads the whole resource, so a whole-resource view is synthesized below.
++			FRHIViewDesc::FTextureSRV::FViewInfo TextureViewInfo = {};
++			bool bHasTextureViewInfo = false;
++			bool bBufferView = false;
++			bool bNullView = false;
++
++			switch (Resource.MemberType)
++			{
++			case UBMT_TEXTURE:
++			{
++				Texture = *reinterpret_cast<FRHITexture* const*>(MemberContent);
++				Entry->SetStringField(TEXT("ResourceKind"), TEXT("Texture"));
++				Entry->SetStringField(TEXT("Pointer"), PtrToString(Texture));
++				Entry->SetBoolField(TEXT("Null"), Texture == nullptr);
++			}
++			break;
++
++			case UBMT_SRV:
++			case UBMT_UAV:
++			{
++				FRHIView* View = *reinterpret_cast<FRHIView* const*>(MemberContent);
++				Entry->SetStringField(TEXT("ResourceKind"), Resource.MemberType == UBMT_SRV ? TEXT("ShaderResourceView") : TEXT("UnorderedAccessView"));
++				Entry->SetStringField(TEXT("Pointer"), PtrToString(View));
++				Entry->SetBoolField(TEXT("Null"), View == nullptr);
++				bNullView = (View == nullptr);
++				bBufferView = View && View->IsBuffer();
++
++				if (View && View->IsTexture())
++				{
++					Texture = View->GetTexture();
++					Entry->SetStringField(TEXT("UnderlyingTexture"), PtrToString(Texture));
++
++					// Preserve the exact view range and format the shader reads through, not only the resource.
++					if (Resource.MemberType == UBMT_SRV)
++					{
++						TextureViewInfo = View->GetDesc().Texture.SRV.GetViewInfo(Texture);
++						bHasTextureViewInfo = true;
++						const FRHIViewDesc::FTextureSRV::FViewInfo& ViewInfo = TextureViewInfo;
++						Entry->SetNumberField(TEXT("ViewMipFirst"), ViewInfo.MipRange.First);
++						Entry->SetNumberField(TEXT("ViewMipCount"), ViewInfo.MipRange.Num);
++						Entry->SetNumberField(TEXT("ViewArrayFirst"), ViewInfo.ArrayRange.First);
++						Entry->SetNumberField(TEXT("ViewArrayCount"), ViewInfo.ArrayRange.Num);
++						Entry->SetStringField(TEXT("ViewFormat"), ToJson(ViewInfo.Format));
++						Entry->SetBoolField(TEXT("ViewSRGB"), ViewInfo.bSRGB != 0);
++						Entry->SetStringField(TEXT("ViewDimension"), GetViewDimensionString(ViewInfo.Dimension));
++					}
++					else
++					{
++						const FRHIViewDesc::FTextureUAV::FViewInfo ViewInfo = View->GetDesc().Texture.UAV.GetViewInfo(Texture);
++						Entry->SetNumberField(TEXT("ViewMipFirst"), ViewInfo.MipLevel);
++						Entry->SetNumberField(TEXT("ViewMipCount"), 1);
++						Entry->SetNumberField(TEXT("ViewArrayFirst"), ViewInfo.ArrayRange.First);
++						Entry->SetNumberField(TEXT("ViewArrayCount"), ViewInfo.ArrayRange.Num);
++						Entry->SetStringField(TEXT("ViewFormat"), ToJson(ViewInfo.Format));
++						Entry->SetStringField(TEXT("ViewDimension"), GetViewDimensionString(ViewInfo.Dimension));
++					}
++				}
++				else if (View && View->IsBuffer())
++				{
++					FRHIBuffer* NativeBuffer = View->GetBuffer();
++					const FRHIBufferDesc& NativeBufferDesc = NativeBuffer->GetDesc();
++					Entry->SetStringField(TEXT("ResourceKind"), Resource.MemberType == UBMT_SRV ? TEXT("BufferShaderResourceView") : TEXT("BufferUnorderedAccessView"));
++					Entry->SetStringField(TEXT("UnderlyingBuffer"), PtrToString(NativeBuffer));
++					Entry->SetStringField(TEXT("UnderlyingBufferName"), *NativeBuffer->GetName().ToString());
++					Entry->SetNumberField(TEXT("NativeBufferByteSize"), NativeBufferDesc.Size);
++
++					if (Resource.MemberType == UBMT_SRV)
++					{
++						const FRHIViewDesc::FBufferSRV::FViewInfo BufferViewInfo = View->GetDesc().Buffer.SRV.GetViewInfo(NativeBuffer);
++						Entry->SetStringField(TEXT("BufferViewType"), GetBufferViewTypeString(BufferViewInfo.BufferType));
++						if (BufferViewInfo.BufferType != FRHIViewDesc::EBufferType::AccelerationStructure)
++						{
++							Entry->SetNumberField(TEXT("ViewOffsetInBytes"), BufferViewInfo.OffsetInBytes);
++							Entry->SetNumberField(TEXT("ViewSizeInBytes"), BufferViewInfo.SizeInBytes);
++							Entry->SetNumberField(TEXT("ViewStrideInBytes"), BufferViewInfo.StrideInBytes);
++							Entry->SetNumberField(TEXT("ViewNumElements"), BufferViewInfo.NumElements);
++							Entry->SetStringField(TEXT("ViewFormat"), ToJson(BufferViewInfo.Format));
++							Entry->SetBoolField(TEXT("ViewIsNull"), BufferViewInfo.bNullView);
++							Entry->SetBoolField(TEXT("ExactViewByteRange"), true);
++							if (BufferViewInfo.BufferType == FRHIViewDesc::EBufferType::Typed)
++							{
++								const bool bFormatHasEntry = BufferViewInfo.Format != PF_Unknown && BufferViewInfo.Format < PF_MAX;
++								Entry->SetNumberField(TEXT("ViewFormatBlockBytes"), bFormatHasEntry ? GPixelFormats[BufferViewInfo.Format].BlockBytes : 0);
++								Entry->SetBoolField(TEXT("ViewStrideMatchesFormat"),
++									bFormatHasEntry && GPixelFormats[BufferViewInfo.Format].BlockBytes == BufferViewInfo.StrideInBytes);
++							}
++						}
++
++						const bool bHasByteAddressBufferUsage = EnumHasAnyFlags(NativeBuffer->GetUsage(), BUF_ByteAddressBuffer);
++						Entry->SetBoolField(TEXT("RawViewSupportedForAnyBuffer"), GRHISupportsRawViewsForAnyBuffer);
++						Entry->SetBoolField(TEXT("BufferHasByteAddressBufferUsage"), bHasByteAddressBufferUsage);
++						Entry->SetStringField(TEXT("RawViewSupportBasis"),
++							GRHISupportsRawViewsForAnyBuffer ? TEXT("GRHISupportsRawViewsForAnyBuffer") :
++							bHasByteAddressBufferUsage ? TEXT("ByteAddressBufferUsage") : TEXT("None"));
++						Entry->SetBoolField(TEXT("ForcedRawViewOnStructuredBuffer"),
++							BufferViewInfo.BufferType == FRHIViewDesc::EBufferType::Structured && !bHasByteAddressBufferUsage);
++
++						const int32 BufferDumpMode = GDumpBufferCVar.GetValueOnRenderThread();
++						if (BufferViewInfo.bNullView || NativeBufferDesc.IsNull())
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNullNativeBufferView"));
++						}
++						else if (BufferViewInfo.BufferType == FRHIViewDesc::EBufferType::AccelerationStructure)
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeAccelerationStructureView"));
++						}
++						else if (BufferViewInfo.BufferType == FRHIViewDesc::EBufferType::Unknown)
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeBufferViewTypeUnknown"));
++						}
++						else if (BufferViewInfo.SizeInBytes == 0)
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedEmptyNativeBufferView"));
++						}
++						else if ((BufferViewInfo.OffsetInBytes % 4) != 0 || (BufferViewInfo.SizeInBytes % 4) != 0)
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeBufferViewNotDwordAligned"));
++						}
++						else if (!EnumHasAnyFlags(NativeBuffer->GetUsage(), EBufferUsageFlags::ShaderResource)
++							&& !EnumHasAnyFlags(NativeBuffer->GetUsage(), EBufferUsageFlags::ByteAddressBuffer)
++							&& !EnumHasAnyFlags(NativeBuffer->GetUsage(), EBufferUsageFlags::StructuredBuffer))
++						{
++							// ByteAddressBuffer/StructuredBuffer are shader-readable by construction; ShaderResource is
++							// only needed for buffer types that would not otherwise be bindable as an SRV.
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeBufferWithoutShaderResourceUsage"));
++						}
++						else if (!GRHISupportsRawViewsForAnyBuffer && !bHasByteAddressBufferUsage)
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeBufferRawViewUnsupported"));
++						}
++						else if (WritableNativeBuffers.Contains(NativeBuffer) || IsNativeBufferWrittenByPass(Pass, NativeBuffer))
++						{
++							// Collecting after pass execution would expose the pass output, not the input the shader read.
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeBufferAliasedByWritablePassBinding"));
++							Entry->SetStringField(TEXT("TimingBlocker"), TEXT("PostExecuteReadWouldNotBePassInput"));
++						}
++						else if (BufferDumpMode == 0)
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedBufferDumpDisabledByCVar"));
++						}
++						else if (BufferDumpMode == 1)
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedBufferDumpDescriptorsOnlyByCVar"));
++						}
++						else if (IsUnsafeToDumpResource(BufferViewInfo.SizeInBytes, 1.2f))
++						{
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeBufferStagingMemoryBudget"));
++						}
++						else
++						{
++							const FString UniqueResourceName = FString::Printf(TEXT("NativeBuffer.%s.o%u.n%u"),
++								*PtrToString(NativeBuffer), BufferViewInfo.OffsetInBytes, BufferViewInfo.NumElements);
++							const FString DumpFilePath = kResourcesDir / FString::Printf(TEXT("%s.v%s.bin"), *UniqueResourceName, *PtrToString(Pass));
++
++							// The owning pass binds this exact view as an SRV, so the buffer is already in a readable state.
++							// The read is a raw SRV over the exact view byte range and writes only to a private staging
++							// texture: no transition, copy or restore of the native buffer is issued.
++							AddDumpNativeBufferViewPass(GraphBuilder, Pass, NativeBuffer, BufferViewInfo.OffsetInBytes, BufferViewInfo.SizeInBytes, DumpFilePath);
++							InputResourceNames.AddUnique(MakeShareable(new FJsonValueString(UniqueResourceName)));
++
++							Entry->SetStringField(TEXT("DumpedAs"), UniqueResourceName);
++							Entry->SetStringField(TEXT("DumpFile"), DumpFilePath);
++							Entry->SetNumberField(TEXT("ExportByteSize"), BufferViewInfo.SizeInBytes);
++							Entry->SetStringField(TEXT("ExportFidelity"), TEXT("ExactBytesThroughRawSRV"));
++							Entry->SetStringField(TEXT("ReadStateBasis"), TEXT("ReadOnlyUniformBufferSRVBinding"));
++							Entry->SetBoolField(TEXT("TransitionIssued"), false);
++							Entry->SetBoolField(TEXT("OwnerPassExecutionDependencyClaimed"), false);
++							Entry->SetBoolField(TEXT("SourceStateProvenAtScheduling"), FRDGBuilder::IsImmediateMode());
++							Entry->SetStringField(TEXT("TimingRisk"), FRDGBuilder::IsImmediateMode()
++								? TEXT("None")
++								: TEXT("OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency"));
++							Entry->SetBoolField(TEXT("CrossUniformBufferAliasObservable"), false);
++							Entry->SetStringField(TEXT("RawViewOffsetPolicy"), TEXT("AlignDown16WithShaderPrefix"));
++							Entry->SetNumberField(TEXT("RawViewAlignedBaseOffset"), BufferViewInfo.OffsetInBytes & ~15u);
++							Entry->SetNumberField(TEXT("RawViewPrefixBytes"), BufferViewInfo.OffsetInBytes & 15u);
++							Entry->SetBoolField(TEXT("FileVerified"), false);
++							Entry->SetStringField(TEXT("ReadbackStatusFile"), TEXT("Base/DumpReadbackStatus.json"));
++							Entry->SetStringField(TEXT("DumpStatus"), TEXT("ScheduledForReadback"));
++						}
++					}
++					else
++					{
++						const FRHIViewDesc::FBufferUAV::FViewInfo BufferViewInfo = View->GetDesc().Buffer.UAV.GetViewInfo(NativeBuffer);
++						Entry->SetStringField(TEXT("BufferViewType"), GetBufferViewTypeString(BufferViewInfo.BufferType));
++						Entry->SetNumberField(TEXT("ViewOffsetInBytes"), BufferViewInfo.OffsetInBytes);
++						Entry->SetNumberField(TEXT("ViewSizeInBytes"), BufferViewInfo.SizeInBytes);
++						Entry->SetNumberField(TEXT("ViewStrideInBytes"), BufferViewInfo.StrideInBytes);
++						Entry->SetNumberField(TEXT("ViewNumElements"), BufferViewInfo.NumElements);
++						Entry->SetStringField(TEXT("ViewFormat"), ToJson(BufferViewInfo.Format));
++						Entry->SetBoolField(TEXT("ViewIsNull"), BufferViewInfo.bNullView);
++						Entry->SetBoolField(TEXT("ViewAtomicCounter"), BufferViewInfo.bAtomicCounter);
++						Entry->SetBoolField(TEXT("ViewAppendBuffer"), BufferViewInfo.bAppendBuffer);
++						// A UAV member is written by the shader. The owner's UAV state cannot be observed or restored, so
++						// no bytes are read and no value is fabricated. The possible recovery follows the same rules as
++						// the SkipTracking blocker: only a read-only view plus an explicit UAV barrier could be legal,
++						// and the typed case additionally needs a typed load path.
++						Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeUAVBindingStateNotObservable"));
++						Entry->SetStringField(TEXT("RecoveryPath"),
++							BufferViewInfo.BufferType == FRHIViewDesc::EBufferType::Typed
++								? TEXT("TypedUAVReadPathNotImplemented")
++								: TEXT("ReadOnlyRawViewWithUAVBarrierNotValidated"));
++					}
++				}
++			}
++			break;
++
++			case UBMT_SAMPLER:
++			{
++				const void* Sampler = *reinterpret_cast<const void* const*>(MemberContent);
++				Entry->SetStringField(TEXT("ResourceKind"), TEXT("Sampler"));
++				Entry->SetStringField(TEXT("Pointer"), PtrToString(Sampler));
++				Entry->SetBoolField(TEXT("Null"), Sampler == nullptr);
++				// Static sampler initialisers are source resolved; only the bound slot is recorded here.
++				Entry->SetBoolField(TEXT("StaticInitializerCaptured"), false);
++			}
++			break;
++
++			default:
++				continue;
++			}
++
++			if (Texture)
++			{
++				const FRHITextureDesc& TextureDesc = Texture->GetDesc();
++				Entry->SetStringField(TEXT("NativeTextureName"), *Texture->GetName().ToString());
++				Entry->SetStringField(TEXT("NativeDimension"), GetTextureDimensionString(TextureDesc.Dimension));
++				Entry->SetStringField(TEXT("NativeFormat"), ToJson(TextureDesc.Format));
++				Entry->SetNumberField(TEXT("NativeExtentX"), TextureDesc.Extent.X);
++				Entry->SetNumberField(TEXT("NativeExtentY"), TextureDesc.Extent.Y);
++				Entry->SetNumberField(TEXT("NativeDepth"), TextureDesc.Depth);
++				Entry->SetNumberField(TEXT("NativeArraySize"), TextureDesc.ArraySize);
++				Entry->SetNumberField(TEXT("NativeNumMips"), TextureDesc.NumMips);
++
++				if (Resource.MemberType == UBMT_UAV)
++				{
++					// A UAV member is written by the shader; its state is a UAV state this readback cannot observe or
++					// restore, so it is recorded but never read.
++					Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeUAVBindingStateNotObservable"));
++				}
++				else if (!EnumHasAnyFlags(TextureDesc.Flags, TexCreate_ShaderResource))
++				{
++					Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedMissingShaderResourceFlag"));
++				}
++				else if (TextureDesc.NumSamples != 1)
++				{
++					Entry->SetStringField(TEXT("DumpStatus"), TEXT("NativeMultisampleTextureNotSupported"));
++				}
++				else if (EnumHasAnyFlags(TextureDesc.Flags, TexCreate_Memoryless))
++				{
++					Entry->SetStringField(TEXT("DumpStatus"), TEXT("MemorylessTexture"));
++				}
++				else if (WritableNativeTextures.Contains(Texture))
++				{
++					// The same uniform buffer writes this texture through a UAV in the same pass. The post-execute
++					// read would see the pass output, not the SRV input.
++					Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeTextureAliasedByWritablePassBinding"));
++					Entry->SetStringField(TEXT("TimingBlocker"), TEXT("PostExecuteReadWouldNotBePassInput"));
++				}
++				else if (GDumpGPUNativeUniformBufferTexturesCVar.GetValueOnRenderThread() == 0)
++				{
++					Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedNativeTextureDumpDisabledByCVar"));
++					Entry->SetStringField(TEXT("ExportScope"), TEXT("ViewMetadataOnly"));
++					Entry->SetBoolField(TEXT("RegistryMutation"), false);
++					Entry->SetStringField(TEXT("EnableWith"), TEXT("r.DumpGPU.NativeUniformBufferTextures=1"));
++				}
++				else
++				{
++					const bool bWholeTexture = (Resource.MemberType == UBMT_TEXTURE);
++					if (bWholeTexture)
++					{
++						// A plain TEXTURE slot has no SRV view descriptor: the shader sees the whole resource in its
++						// native format and native sRGB interpretation. This is a real whole-resource view, not a
++						// widened fallback for a narrow SRV.
++						TextureViewInfo = {};
++						TextureViewInfo.MipRange.First = 0;
++						TextureViewInfo.MipRange.Num = TextureDesc.NumMips;
++						TextureViewInfo.ArrayRange.First = 0;
++						TextureViewInfo.ArrayRange.Num = TextureDesc.ArraySize;
++						TextureViewInfo.Format = TextureDesc.Format;
++						TextureViewInfo.bSRGB = EnumHasAnyFlags(TextureDesc.Flags, TexCreate_SRGB) ? 1 : 0;
++						TextureViewInfo.Plane = ERHITexturePlane::Primary;
++						switch (TextureDesc.Dimension)
++						{
++						case ETextureDimension::Texture2D:			TextureViewInfo.Dimension = FRHIViewDesc::EDimension::Texture2D; break;
++						case ETextureDimension::Texture2DArray:		TextureViewInfo.Dimension = FRHIViewDesc::EDimension::Texture2DArray; break;
++						case ETextureDimension::Texture3D:			TextureViewInfo.Dimension = FRHIViewDesc::EDimension::Texture3D; break;
++						case ETextureDimension::TextureCube:		TextureViewInfo.Dimension = FRHIViewDesc::EDimension::TextureCube; break;
++						case ETextureDimension::TextureCubeArray:	TextureViewInfo.Dimension = FRHIViewDesc::EDimension::TextureCubeArray; break;
++						default:									TextureViewInfo.Dimension = FRHIViewDesc::EDimension::Texture2D; break;
++						}
++						bHasTextureViewInfo = true;
++					}
++
++					FRDGTextureRef RDGTexture = bHasTextureViewInfo
++						? GetOrRegisterDiagnosticNativeTexture(GraphBuilder, Texture)
++						: nullptr;
++
++					if (RDGTexture)
++					{
++						FNativeTextureExportSummary Summary;
++						if (AddDumpNativeTextureViewPasses(
++							GraphBuilder,
++							InputResourceNames,
++							OutputResourceNames,
++							Pass,
++							RDGTexture,
++							Texture,
++							TextureDesc,
++							TextureViewInfo,
++							bWholeTexture,
++							Summary))
++						{
++							Entry->SetStringField(TEXT("DumpedAs"), Summary.BaseName);
++							Entry->SetStringField(TEXT("DiagnosticResource"), GetUniqueResourceName(RDGTexture));
++							Entry->SetStringField(TEXT("NativePointer"), PtrToString(Texture));
++							Entry->SetStringField(TEXT("NativeBindingPath"), ElementName);
++							Entry->SetNumberField(TEXT("ExportSubresourceCount"), Summary.ScheduledSubresources);
++							Entry->SetStringField(TEXT("ExportFirstFile"), Summary.DumpFiles.Num() > 0 ? Summary.DumpFiles[0] : FString());
++							Entry->SetBoolField(TEXT("ExportSRGB"), Summary.bViewSRGB);
++							Entry->SetBoolField(TEXT("ExportUsesWholeNativeResource"), bWholeTexture);
++							Entry->SetStringField(TEXT("ExportScope"), bWholeTexture ? TEXT("WholeNativeResource") : TEXT("ExactSRVView"));
++							Entry->SetStringField(TEXT("ExportRisk"), bWholeTexture ? TEXT("BindIsWholeTexture") : TEXT("None"));
++							Entry->SetNumberField(TEXT("ExportMipFirst"), Summary.MipFirst);
++							Entry->SetNumberField(TEXT("ExportMipCount"), Summary.MipCount);
++							Entry->SetNumberField(TEXT("ExportArrayFirstInViewUnits"), Summary.ArrayFirstInViewUnits);
++							Entry->SetNumberField(TEXT("ExportArrayCountInViewUnits"), Summary.ArrayCountInViewUnits);
++							Entry->SetNumberField(TEXT("ExportFaceFirst"), Summary.FaceFirst);
++							Entry->SetNumberField(TEXT("ExportFaceCount"), Summary.FaceCount);
++							Entry->SetStringField(TEXT("ExportViewFormat"), ToJson(Summary.ViewFormat));
++							Entry->SetStringField(TEXT("ReadStateBasis"), TEXT("OwnerPassSRVBinding"));
++							Entry->SetBoolField(TEXT("OwnerPassExecutionDependencyClaimed"), false);
++							Entry->SetBoolField(TEXT("SourceStateProvenAtScheduling"), FRDGBuilder::IsImmediateMode());
++							Entry->SetStringField(TEXT("TimingRisk"), FRDGBuilder::IsImmediateMode()
++								? TEXT("None")
++								: TEXT("OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency"));
++							Entry->SetBoolField(TEXT("RegistryMutation"), false);
++							Entry->SetBoolField(TEXT("FileVerified"), false);
++							Entry->SetStringField(TEXT("ReadbackStatusFile"), TEXT("Base/DumpReadbackStatus.json"));
++							Entry->SetBoolField(TEXT("CrossUniformBufferAliasObservable"), false);
++							Entry->SetBoolField(TEXT("ReusedScheduledReadback"), Summary.bReusedExistingReadback);
++							if (Summary.bReusedExistingReadback)
++							{
++								Entry->SetStringField(TEXT("FirstScheduledByPass"), Summary.FirstScheduledByPass);
++								Entry->SetStringField(TEXT("DumpStatus"), TEXT("ScheduledByEarlierPass"));
++							}
++							else
++							{
++								Entry->SetStringField(TEXT("DumpStatus"), bStream
++									? TEXT("ScheduledStreamedForReadback")
++									: TEXT("ScheduledForReadback"));
++							}
++						}
++						else
++						{
++							Entry->SetStringField(TEXT("DumpStatus"),
++								Summary.SkipReason ? Summary.SkipReason : TEXT("SkippedNativeTextureViewNotSchedulable"));
++							Entry->SetBoolField(TEXT("RegistryMutation"), false);
++							Entry->SetStringField(TEXT("ExportScope"), bWholeTexture ? TEXT("WholeNativeResource") : TEXT("ExactSRVView"));
++						}
++					}
++					else
++					{
++						Entry->SetStringField(TEXT("DumpStatus"), TEXT("SkippedRegisterExternalTextureFailed"));
++					}
++				}
++			}
++			else if (Resource.MemberType != UBMT_SAMPLER && !bBufferView)
++			{
++				// A buffer view is handled above; this is a null or an unsupported native view kind, not a texture that
++				// happened to be missing.
++				Entry->SetStringField(TEXT("DumpStatus"), bNullView ? TEXT("SkippedNullNativeView") : TEXT("SkippedUnsupportedNativeViewKind"));
++			}
++
++			BindingsJson->SetObjectField(ElementName, Entry);
++		}
++
++		if (BindingsJson->Values.Num() > 0)
++		{
++			TSharedPtr<FJsonObject> FileEntry = MakeShareable(new FJsonObject);
++			FileEntry->SetStringField(TEXT("Pass"), PtrToString(Pass));
++			FileEntry->SetStringField(TEXT("UniformBuffer"), PtrToString(UniformBuffer));
++			FileEntry->SetStringField(TEXT("LayoutName"), Layout.GetDebugName());
++			// The CPU side traversal runs during graph-build parameter setup, not necessarily after the owner pass
++			// executed. The GPU readback pass is inserted after the owner in the RDG queue, but no execution
++			// dependency on the owner's GPU completion is claimed for native resources.
++			FileEntry->SetStringField(TEXT("CPUCollectionTiming"), TEXT("GraphBuildParameterTraversal"));
++			FileEntry->SetStringField(TEXT("GPUReadbackOrdering"), TEXT("InsertedAfterOwnerInRDGQueue"));
++			FileEntry->SetStringField(TEXT("CollectionTiming"), TEXT("GraphBuildParameterTraversal"));
++			FileEntry->SetBoolField(TEXT("OwnerPassExecutionDependencyClaimed"), false);
++			FileEntry->SetBoolField(TEXT("SourceStateProvenAtScheduling"), FRDGBuilder::IsImmediateMode());
++			FileEntry->SetStringField(TEXT("TimingRisk"), FRDGBuilder::IsImmediateMode()
++				? TEXT("None")
++				: TEXT("OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency"));
++			FileEntry->SetStringField(TEXT("ReadbackCompletionFile"), TEXT("Base/DumpReadbackStatus.json"));
++			FileEntry->SetStringField(TEXT("ScheduledStatus"), TEXT("ScheduledForReadback"));
++			FileEntry->SetStringField(TEXT("DumpedStatusSource"), TEXT("Base/DumpReadbackStatus.json after file verification"));
++			FileEntry->SetStringField(TEXT("ReadOnlyBindingPolicy"), TEXT("NoTransitionPrivateStagingOutput"));
++			FileEntry->SetStringField(TEXT("MutableBindingPolicy"), TEXT("NoBytesWhenWritableAliasOrUAVNotObservable"));
++			FileEntry->SetObjectField(TEXT("Bindings"), BindingsJson);
++			DumpJsonToFile(FileEntry, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("NativeUniformBufferBindings.json"), FILEWRITE_Append);
++		}
++	}
++
++	/** Schedules the no-transition read of an exact native buffer SRV byte range into a private staging texture. */
++	void AddDumpNativeBufferViewPass(
++		FRDGBuilder& GraphBuilder,
++		const FRDGPass* Pass,
++		FRHIBuffer* Buffer,
++		uint32 OffsetInBytes,
++		uint32 ByteSize,
++		const FString& DumpFilePath)
++	{
++		check(Buffer);
++		check((OffsetInBytes % 4) == 0);
++		check(ByteSize > 0 && (ByteSize % 4) == 0);
++
++		const uint32 MaxStagingByteSize = uint32(FMath::Max(1, GDumpMaxStagingSize.GetValueOnRenderThread())) * 1024U * 1024U;
++		const uint32 StagingResourceByteSize = FMath::Max(4U, FMath::Min(ByteSize, MaxStagingByteSize));
++
++		// A native pass has no render graph resource parameters because the source is a raw RHI buffer owned by
++		// the dumped pass. RDG validation still requires a parameterized AddPass for Compute, so bind the empty
++		// parameter struct instead of using the parameterless overload (which only accepts None).
++		FEmptyShaderParameters* PassParameters = GraphBuilder.AllocParameters<FEmptyShaderParameters>();
++
++		GraphBuilder.AddPass(
++			RDG_EVENT_NAME("RDG DumpNativeBufferView(%s -> %s)", *Buffer->GetName().ToString(), *DumpFilePath),
++			PassParameters,
++			ERDGPassFlags::Compute | ERDGPassFlags::NeverCull,
++			[this, DumpFilePath, Buffer, OffsetInBytes, ByteSize, StagingResourceByteSize](FRHICommandListImmediate& RHICmdList)
++		{
++			check(IsInRenderingThread());
++			// The buffer is in the readable state the owning pass established; the readback never transitions it.
++			this->DumpRawBufferViewReadback(RHICmdList, Buffer, OffsetInBytes, ByteSize, StagingResourceByteSize, DumpFilePath);
++			this->RecordReadbackCompletion(DumpFilePath, int64(ByteSize), TEXT("Buffer"));
++			this->ReleaseRHIResources(RHICmdList);
++			this->UpdatePassProgress();
++		});
++
++		ResourcesDumpPasses++;
++	}
++
++	/** Returns whether the pass binds Buffer through a writable UAV parameter, in any of the RDG buffer parameter forms. */
++	static bool IsBufferBoundAsWritableInPass(const FRDGPass* Pass, FRDGBuffer* Buffer)
++	{
++		bool bWritable = false;
++
++		Pass->GetParameters().Enumerate([&](FRDGParameter Parameter)
++		{
++			if (bWritable)
++			{
++				return;
++			}
++
++			switch (Parameter.GetType())
++			{
++			case UBMT_RDG_BUFFER_UAV:
++			{
++				if (FRDGBufferUAVRef UAV = Parameter.GetAsBufferUAV())
++				{
++					bWritable |= (UAV->Desc.Buffer == Buffer);
++				}
++			}
++			break;
++			case UBMT_RDG_BUFFER_ACCESS:
++			{
++				if (FRDGBufferAccess BufferAccess = Parameter.GetAsBufferAccess())
++				{
++					bWritable |= (BufferAccess.GetBuffer() == Buffer && IsWritableAccess(BufferAccess.GetAccess()));
++				}
++			}
++			break;
++			case UBMT_RDG_BUFFER_ACCESS_ARRAY:
++			{
++				for (FRDGBufferAccess BufferAccess : Parameter.GetAsBufferAccessArray())
++				{
++					if (BufferAccess.GetBuffer() == Buffer && IsWritableAccess(BufferAccess.GetAccess()))
++					{
++						bWritable = true;
++						break;
++					}
++				}
++			}
++			break;
++			default:
++				break;
++			}
++		});
++
++		return bWritable;
++	}
++
++	/**
++	 * Reads an exact byte range of a native buffer through a raw SRV without ever transitioning the buffer.
++	 *
++	 * The caller has already established that the source state is readable: either RDG locked a SkipTracking buffer in
++	 * external access mode and the dumped pass binds it read-only, or a referenced uniform buffer binds a native buffer
++	 * SRV whose owner pass requires the readable state. The bytes are copied into a private linear staging texture by a
++	 * compute shader, four source bytes per uint texel, and written verbatim. No pixel format conversion is applied and
++	 * no value is fabricated. OffsetInBytes is the exact view offset; ByteSize is the exact view size. Raw buffer views
++	 * require 16 byte aligned offsets, so the RHI view starts at the aligned address before the request and the shader
++	 * skips that prefix; the requested bytes are still the exact tail of the view.
++	 */
++	void DumpRawBufferViewReadback(
++		FRHICommandListImmediate& RHICmdList,
++		FRHIBuffer* Buffer,
++		uint32 OffsetInBytes,
++		uint32 ByteSize,
++		uint32 StagingResourceByteSize,
++		const FString& DumpFilePath)
++	{
++		check(Buffer);
++		check(IsInRenderingThread());
++		check((OffsetInBytes % 4) == 0);
++		check((ByteSize % 4) == 0);
++		check(StagingResourceByteSize > 0 && (StagingResourceByteSize % 4) == 0);
++
++		const uint32 GPUIndex = RHICmdList.GetGPUMask().GetLastIndex();
++
++		TUniquePtr<FArchive> Ar;
++		if (bEnableDiskWrite)
++		{
++			FString FullPath = GetDumpFullPath(DumpFilePath);
++			FFileWriteCtx WriteCtx(this, ETimingBucket::ResourceBinaryFileWrite, /* ByteSize = */ 0);
++			Ar = TUniquePtr<FArchive>(IFileManager::Get().CreateFileWriter(*FullPath, /* WriteFlags = */ 0));
++		}
++
++		for (uint32 Offset = 0; Offset < ByteSize; Offset += StagingResourceByteSize)
++		{
++			const uint32 CopyByteSize = FMath::Min(StagingResourceByteSize, ByteSize - Offset);
++			const uint32 CopyNumElements = CopyByteSize / 4;
++			const uint32 WidthElements = FMath::Max(1u, FMath::Min<uint32>(CopyNumElements, 2048u));
++			const uint32 Height = FMath::DivideAndRoundUp(CopyNumElements, WidthElements);
++			const FIntPoint StagingExtent = FIntPoint(int32(WidthElements), int32(Height));
++
++			// Raw buffer views require the view offset to be a multiple of 16 bytes (RHIResources.cpp:238).
++			// The requested sub-range is not necessarily 16 byte aligned (only the 4 byte element alignment
++			// is guaranteed), so the raw view starts at an aligned address before the request and the shader
++			// skips the prefix. The view still ends exactly at the end of the requested range, so it never
++			// reads past the bound SRV or the native buffer.
++			const uint32 RequestedOffset = OffsetInBytes + Offset;
++			const uint32 AlignedOffset = RequestedOffset & ~15u;
++			const uint32 PrefixBytes = RequestedOffset - AlignedOffset;
++			const uint32 RawByteSize = PrefixBytes + CopyByteSize;
++			const uint32 RawNumElements = RawByteSize / 4;
++			check((AlignedOffset % 16) == 0);
++			check((PrefixBytes % 4) == 0);
++			check((RawByteSize % 4) == 0);
++			check((uint64(AlignedOffset) + uint64(RawByteSize)) <= uint64(Buffer->GetDesc().Size));
++
++			FTextureRHIRef PreprocessTexture;
++			FTextureRHIRef StagingTexture;
++			FShaderResourceViewRHIRef SourceSRV;
++
++			{
++				FTimeBucketMeasure TimeBucketMeasure(this, ETimingBucket::RHIReadbackCommands);
++
++				const FRHITextureCreateDesc PreprocessDesc =
++					FRHITextureCreateDesc::Create2D(TEXT("DumpGPU.PreprocessBuffer"), StagingExtent, PF_R32_UINT)
++					.SetFlags(ETextureCreateFlags::UAV | ETextureCreateFlags::ShaderResource | ETextureCreateFlags::HideInVisualizeTexture);
++
++				CreateStagingTexture(RHICmdList, PreprocessDesc, /* out */ &PreprocessTexture);
++				RHICmdList.Transition(FRHITransitionInfo(PreprocessTexture, ERHIAccess::Unknown, ERHIAccess::UAVCompute));
++
++				FUnorderedAccessViewRHIRef StagingOutput = CreateUAVNoLifetimeExtension(RHICmdList, PreprocessTexture, /* MipLevel = */ 0);
++
++				// Raw (ByteAddressBuffer) view so that no pixel format conversion is applied to the source bytes.
++				// The view starts at the 16 byte aligned address before the requested range and covers the prefix,
++				// so the requested bytes are still the exact tail of the view.
++				SourceSRV = RHICmdList.CreateShaderResourceView(
++					Buffer,
++					FRHIViewDesc::CreateBufferSRV()
++						.SetType(FRHIViewDesc::EBufferType::Raw)
++						.SetOffsetInBytes(AlignedOffset)
++						.SetNumElements(RawNumElements));
++				SourceSRV->DisableLifetimeExtension();
++
++				FDumpBufferCS::FParameters ShaderParameters;
++				ShaderParameters.SourceBuffer = SourceSRV;
++				ShaderParameters.StagingOutput = StagingOutput;
++				ShaderParameters.NumElements = CopyNumElements;
++				ShaderParameters.WidthElements = WidthElements;
++				ShaderParameters.SourceByteOffset = PrefixBytes;
++
++				TShaderMapRef<FDumpBufferCS> ComputeShader(GetGlobalShaderMap(GMaxRHIShaderPlatform));
++				FComputeShaderUtils::Dispatch(
++					RHICmdList,
++					ComputeShader,
++					ShaderParameters,
++					FIntVector(
++						int32(FMath::DivideAndRoundUp(WidthElements, 8u)),
++						int32(FMath::DivideAndRoundUp(Height, 8u)),
++						1));
++
++				RHICmdList.Transition(FRHITransitionInfo(PreprocessTexture, ERHIAccess::UAVCompute, ERHIAccess::CopySrc));
++
++				const FRHITextureCreateDesc StagingDesc =
++					FRHITextureCreateDesc::Create2D(TEXT("DumpGPU.StagingBufferLinear"), StagingExtent, PF_R32_UINT)
++					.SetFlags(ETextureCreateFlags::CPUReadback | ETextureCreateFlags::HideInVisualizeTexture);
++
++				CreateStagingTexture(RHICmdList, StagingDesc, /* out */ &StagingTexture);
++				RHICmdList.Transition(FRHITransitionInfo(StagingTexture, ERHIAccess::Unknown, ERHIAccess::CopyDest));
++
++				RHICmdList.CopyTexture(PreprocessTexture, StagingTexture, {});
++				RHICmdList.Transition(FRHITransitionInfo(StagingTexture, ERHIAccess::CopyDest, ERHIAccess::CPURead));
++			}
++
++			FGPUFenceRHIRef Fence = RHICreateGPUFence(GDumpGPUBufferFenceName);
++			{
++				FTimeBucketMeasure TimeBucketMeasure(this, ETimingBucket::GPUWait);
++				Fence->Clear();
++				RHICmdList.WriteGPUFence(Fence);
++				RHICmdList.SubmitAndBlockUntilGPUIdle();
++			}
++
++			void* Content = nullptr;
++			int32 RowPitchInPixels = 0;
++			int32 ColumnPitchInPixels = 0;
++
++			RHICmdList.MapStagingSurface(StagingTexture, Fence.GetReference(), Content, RowPitchInPixels, ColumnPitchInPixels, GPUIndex);
++
++			if (!Content)
+ 			{
+-				// Re-dump under a unique version key (the consuming pass pointer). So if this texture has been dumped 
+-				// previously but modified by intermeddiate passes between then and now, We can still get the correct copy.
+-				UpdateResourceLastModifyingPass(SubresourceRangeDesc.Texture, Pass);
++				UE_LOGF(LogDumpGPU, Warning, "RHICmdList.MapStagingSurface() to dump buffer %ls failed.", *Buffer->GetName().ToString());
++				PreprocessTexture = nullptr;
++				StagingTexture = nullptr;
++				SourceSRV = nullptr;
++				Fence = nullptr;
++				break;
+ 			}
+-			else
++
+ 			{
+-				// The texture has already been dumped, so can early return given it is not being modified by this Pass.
+-				bAllowDumpBinary = false;
++				TArray64<uint8> ChunkArray;
++				ChunkArray.SetNumUninitialized(SIZE_T(WidthElements) * SIZE_T(Height) * 4);
++
++				const uint8* SrcData = static_cast<const uint8*>(Content);
++				for (uint32 Row = 0; Row < Height; Row++)
++				{
++					FPlatformMemory::Memmove(
++						ChunkArray.GetData() + SIZE_T(Row) * SIZE_T(WidthElements) * 4,
++						SrcData + SIZE_T(Row) * SIZE_T(RowPitchInPixels) * 4,
++						SIZE_T(WidthElements) * 4);
++				}
++
++				RHICmdList.UnmapStagingSurface(StagingTexture, GPUIndex);
++
++				// The last row may contain texels past the end of the chunk; the shader never wrote them.
++				ChunkArray.SetNum(CopyByteSize);
++
++				if (Ar)
++				{
++					FFileWriteCtx WriteCtx(this, ETimingBucket::ResourceBinaryFileWrite, CopyByteSize, /* OpenedFiles = */ 0);
++					Ar->Serialize((void*)ChunkArray.GetData(), CopyByteSize);
++					Ar->Flush();
++				}
+ 			}
++
++			PreprocessTexture = nullptr;
++			StagingTexture = nullptr;
++			SourceSRV = nullptr;
++			Fence = nullptr;
+ 		}
+ 
+-		return AddDumpTextureAllSubResourcesPasses(
+-			GraphBuilder,
+-			InputResourceNames,
+-			OutputResourceNames,
+-			Pass,
+-			SubresourceRangeDesc,
+-			/* bRegisterSubResourceToPass = */ true,
+-			bIsOutputResource,
+-			bAllowDumpBinary);
++		if (Ar)
++		{
++			FFileWriteCtx WriteCtx(this, ETimingBucket::ResourceBinaryFileWrite, /* ByteSize = */ 0, /* OpenedFiles = */ 0);
++			// Always explicitly close to catch errors from flush/close
++			Ar->Close();
++			Ar = nullptr;
++		}
+ 	}
+ 
+ 	void AddDumpBufferPass(
+@@ -1695,7 +3673,10 @@ public:
+ 				return;
+ 			}
+ 
+-			const uint32 StagingResourceByteSize = bStream ? ByteSize : FMath::Min(ByteSize, GDumpMaxStagingSize.GetValueOnRenderThread() * 1024U * 1024U);
++			// A SkipTracking buffer is always read in bounded chunks: its diagnostic readback is synchronous and must
++			// respect the same staging budget as the regular path, even when r.DumpGPU.Stream is enabled.
++			const bool bSkipTracking = EnumHasAnyFlags(Buffer->Flags, ERDGBufferFlags::SkipTracking);
++			const uint32 StagingResourceByteSize = (bStream && !bSkipTracking) ? ByteSize : FMath::Min(ByteSize, GDumpMaxStagingSize.GetValueOnRenderThread() * 1024U * 1024U);
+ 
+ 			FString DumpFilePath = kResourcesDir / FString::Printf(TEXT("%s.v%s.bin"), *UniqueResourceName, *PtrToString(bIsOutputResource ? Pass : nullptr));
+ 
+@@ -1706,19 +3687,93 @@ public:
+ 			}
+ 
+ 			// Verify the texture is able to do resource transitions.
+-			if (EnumHasAnyFlags(Buffer->Flags, ERDGBufferFlags::SkipTracking))
++			//
++			// A buffer flagged ERDGBufferFlags::SkipTracking is locked in external access mode: RDG never transitions it
++			// and its actual state is owned by the caller. Reading it is only safe where the owner already guarantees a
++			// readable state, which is the case when the dumped pass binds it as a shader resource and never as a
++			// writable UAV. The diagnostic path then reads it through a raw SRV in a compute shader and copies the
++			// bytes into a private staging texture: the buffer is never transitioned, never read from a copy state, and
++			// is left in exactly the state the pass required.
++			bool bDiagnosticReadback = false;
++			if (bSkipTracking)
+ 			{
+-				UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because has ERDGBufferFlags::SkipTracking.", Buffer->Name);
+-				return;
++				if (GDumpGPUBufferSkipTrackingCVar.GetValueOnRenderThread() == 0)
++				{
++					UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because has ERDGBufferFlags::SkipTracking (r.DumpGPU.Buffer.SkipTracking=0).", Buffer->Name);
++					RecordSkippedBuffer(Buffer, TEXT("SkipTrackingReadbackDisabled"), ByteSize);
++					return;
++				}
++
++				if (bIsOutputResource || IsBufferBoundAsWritableInPass(Pass, Buffer))
++				{
++					// RDG exposes neither the owner's current access state nor a way to restore it. Transitioning an
++					// unknown state, or fabricating zeros, would misrepresent the computation's input bytes.
++					UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because has ERDGBufferFlags::SkipTracking and is bound as a writable UAV; its access state cannot be observed or preserved.", Buffer->Name);
++					RecordSkippedBuffer(Buffer, TEXT("SkipTrackingWritableBindingStateNotObservable"), ByteSize);
++					return;
++				}
++
++				if (!EnumHasAnyFlags(Buffer->Desc.Usage, EBufferUsageFlags::ShaderResource))
++				{
++					UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because has ERDGBufferFlags::SkipTracking and no ShaderResource usage.", Buffer->Name);
++					RecordSkippedBuffer(Buffer, TEXT("SkipTrackingWithoutShaderResourceUsage"), ByteSize);
++					return;
++				}
++
++				if (!GRHISupportsRawViewsForAnyBuffer && !EnumHasAnyFlags(Buffer->Desc.Usage, EBufferUsageFlags::ByteAddressBuffer))
++				{
++					UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because has ERDGBufferFlags::SkipTracking and this RHI cannot create a raw view of it.", Buffer->Name);
++					RecordSkippedBuffer(Buffer, TEXT("SkipTrackingRawViewUnsupported"), ByteSize);
++					return;
++				}
++
++				if ((ByteSize % 4) != 0 || (StagingResourceByteSize % 4) != 0)
++				{
++					UE_LOGF(LogDumpGPU, Warning, "Not dumping %ls because has ERDGBufferFlags::SkipTracking and a byte size that is not dword aligned.", Buffer->Name);
++					RecordSkippedBuffer(Buffer, TEXT("ByteSizeNotDwordAligned"), ByteSize);
++					return;
++				}
++
++				bDiagnosticReadback = true;
++
++				// VirtualTextureFeedbackResource::End() schedules the owner's UAVMask->SRVCompute transition before the
++				// Hash table indirect args / Build feedback hash table / Compact feedback hash table passes read the
++				// feedback buffer as an SRV. Those pass-scoped reads are exactly this case. A pass that binds the buffer
++				// as a UAV (e.g. BasePass) was rejected above, so its pre-transition bytes are never labelled as the
++				// final VT bytes.
+ 			}
+ 
+ 			const FRDGViewableResource::FAccessModeState AccessModeState = Buffer->AccessModeState;
+ 
+-			if (AccessModeState.Mode == FRDGViewableResource::EAccessMode::External)
++			// A SkipTracking buffer is locked in external access mode and must not be switched to internal access mode.
++			if (!bSkipTracking && AccessModeState.Mode == FRDGViewableResource::EAccessMode::External)
+ 			{
+ 				GraphBuilder.UseInternalAccessMode(Buffer);
+ 			}
+ 
++			if (bDiagnosticReadback)
++			{
++				FDumpBufferDiagnosticPass* PassParameters = GraphBuilder.AllocParameters<FDumpBufferDiagnosticPass>();
++				PassParameters->Buffer = Buffer;
++
++				GraphBuilder.AddPass(
++					RDG_EVENT_NAME("RDG DumpBufferSkipTracking(%s -> %s)", Buffer->Name, *DumpFilePath),
++					PassParameters,
++					ERDGPassFlags::Compute | ERDGPassFlags::NeverCull,
++					[this, DumpFilePath, Buffer, ByteSize, StagingResourceByteSize](FRHICommandListImmediate& RHICmdList)
++				{
++					check(IsInRenderingThread());
++					this->DumpRawBufferViewReadback(RHICmdList, Buffer->GetRHI(), /* OffsetInBytes = */ 0, ByteSize, StagingResourceByteSize, DumpFilePath);
++					this->RecordReadbackCompletion(DumpFilePath, int64(ByteSize), TEXT("SkipTrackingBuffer"));
++					this->ReleaseRHIResources(RHICmdList);
++					this->UpdatePassProgress();
++				});
++
++				// The diagnostic readback is synchronous; the external access mode was never left, so nothing to restore.
++				ResourcesDumpPasses++;
++				return;
++			}
++
+ 			FDumpBufferPass* PassParameters = GraphBuilder.AllocParameters<FDumpBufferPass>();
+ 			PassParameters->Buffer = Buffer;
+ 
+@@ -2514,7 +4569,60 @@ static const TCHAR* GetPassEventNameWithGPUMask(const FRDGPass* Pass, FString& O
+ }
+ 
+ #if !(UE_BUILD_SHIPPING || UE_BUILD_TEST)
+-void DumpReferencedStructs(const FShaderParametersMetadata* Metadata, const uint8* Content, uint32 ParentOffset,const FString& Prefix, TSharedPtr<FJsonObject> OutReferencedStructs)
++static FString GetUniformBufferBindingFlagsString(EUniformBufferBindingFlags BindingFlags)
++{
++	FString Result;
++	if (EnumHasAnyFlags(BindingFlags, EUniformBufferBindingFlags::Static))
++	{
++		Result += TEXT("Static");
++	}
++	if (EnumHasAnyFlags(BindingFlags, EUniformBufferBindingFlags::Shader))
++	{
++		Result += Result.IsEmpty() ? TEXT("Shader") : TEXT("|Shader");
++	}
++	return Result;
++}
++
++/** Base types laid out as a single pointer in the shader parameter struct, recorded without interpreting any state. */
++static bool IsPointerBindingBaseType(EUniformBufferBaseType BaseType)
++{
++	switch (BaseType)
++	{
++	case UBMT_SAMPLER:
++	case UBMT_TEXTURE:
++	case UBMT_SRV:
++	case UBMT_UAV:
++	case UBMT_RDG_TEXTURE:
++	case UBMT_RDG_TEXTURE_SRV:
++	case UBMT_RDG_TEXTURE_NON_PIXEL_SRV:
++	case UBMT_RDG_TEXTURE_UAV:
++	case UBMT_RDG_BUFFER_SRV:
++	case UBMT_RDG_BUFFER_UAV:
++		return true;
++	default:
++		return false;
++	}
++}
++
++/**
++ * Dumps the parameter payloads reachable from a shader parameter struct.
++ *
++ * OutReferencedStructs feeds Base/ReferencedStructs.json (the mapping the viewer follows to a structure binary).
++ * OutParameterBindings feeds Base/ParameterBindings.json: it records pointer bindings the viewer cannot follow
++ * (samplers, RHI resource views) together with their metadata offset, and never infers the resource's state.
++ */
++void DumpReferencedStructs(
++	const FShaderParametersMetadata* Metadata,
++	const uint8* Content,
++	uint32 ParentOffset,
++	const FString& Prefix,
++	TSharedPtr<FJsonObject> OutReferencedStructs,
++	TSharedPtr<FJsonObject> OutParameterBindings,
++	FRDGBuilder& GraphBuilder,
++	const FRDGPass* Pass,
++	TArray<TSharedPtr<FJsonValue>>& InputResourceNames,
++	TArray<TSharedPtr<FJsonValue>>& OutputResourceNames,
++	TSet<const void*>& TraversalStack)
+ {
+ 	check(Metadata);
+ 	check(Content);
+@@ -2523,69 +4631,288 @@ void DumpReferencedStructs(const FShaderParametersMetadata* Metadata, const uint
+ 
+ 	for (const FShaderParametersMetadata::FMember& Member : Metadata->GetMembers())
+ 	{
++		const EUniformBufferBaseType BaseType = Member.GetBaseType();
++		const uint32 AbsoluteOffset = ParentOffset + Member.GetOffset();
++		const uint8* MemberContent = Content + AbsoluteOffset;
++		// GetNumElements() returns 0 for a non array member.
++		const uint32 NumElements = Member.GetNumElements();
++		const uint32 ElementCount = FMath::Max(1u, NumElements);
++
+ 		const FShaderParametersMetadata* MemberMetadata = Member.GetStructMetadata();
+ 		if (!MemberMetadata)
+ 		{
+-			// Basic types do not contain metadata and can be skipped
++			// Basic types do not contain metadata and can be skipped, but pointer bindings are what the dependency
++			// closure needs to know about, so record their slot without dereferencing or interpreting it.
++			if (OutParameterBindings && IsPointerBindingBaseType(BaseType))
++			{
++				// Resource arrays in a shader parameter struct are C arrays of the concrete pointer type, so the element
++				// stride is SHADER_PARAMETER_POINTER_ALIGNMENT (the declared type in ShaderParameterMacros.h), not the
++				// uniform array stride.
++				const uint32 ElementStride = SHADER_PARAMETER_POINTER_ALIGNMENT;
++				for (uint32 ElementIndex = 0; ElementIndex < ElementCount; ElementIndex++)
++				{
++					const void* Pointer = *reinterpret_cast<const void* const*>(MemberContent + SIZE_T(ElementIndex) * ElementStride);
++					const FString ElementName = (ElementCount > 1)
++						? FString::Printf(TEXT("%s[%u]"), Member.GetName(), ElementIndex)
++						: FString(Member.GetName());
++
++					TSharedPtr<FJsonObject> BindingEntry = MakeShareable(new FJsonObject);
++					BindingEntry->SetStringField(TEXT("BaseType"), GetUniformBufferBaseTypeString(BaseType));
++					BindingEntry->SetNumberField(TEXT("Offset"), AbsoluteOffset + ElementIndex * ElementStride);
++					BindingEntry->SetNumberField(TEXT("NumElements"), 1);
++					BindingEntry->SetNumberField(TEXT("ElementStrideBytes"), ElementStride);
++					BindingEntry->SetBoolField(TEXT("Null"), Pointer == nullptr);
++					BindingEntry->SetStringField(TEXT("Pointer"), ResourceDumpContext->PtrToString(Pointer));
++					// The bound object is a RHI/SRV/UAV/sampler resource; its state is not part of the parameter memory.
++					BindingEntry->SetBoolField(TEXT("StateCaptured"), false);
++					BindingEntry->SetStringField(TEXT("Source"), TEXT("PassParameterBlock"));
++					OutParameterBindings->SetObjectField(Prefix + ElementName, BindingEntry);
++				}
++			}
+ 			continue;
+ 		}
+ 
+ 		FString MemberName = Prefix + Member.GetName();
+ 
+-		if (Member.GetBaseType() != EUniformBufferBaseType::UBMT_REFERENCED_STRUCT)
++		// An RDG uniform buffer is a graph resource: its payload lives in the RDG allocator and is not exposed through
++		// the RHI uniform buffer content map, so it must be handled before the inline struct recursion below.
++		if (BaseType == EUniformBufferBaseType::UBMT_RDG_UNIFORM_BUFFER)
+ 		{
+-			// Inlined structs can be skipped as they are contained in the pass content but since they can contain referenced structs we recursively call DumpReferencedStructs
+-			DumpReferencedStructs(MemberMetadata, Content, ParentOffset + Member.GetOffset(), MemberName + TEXT("."), OutReferencedStructs);
+-			continue;
+-		}
++			// The element layout type is FRDGUniformBufferBinding (TRDGUniformBufferBinding<T> adds no data), so arrays
++			// are walked with the size of that concrete type instead of a guessed stride.
++			const uint32 ElementStride = sizeof(FRDGUniformBufferBinding);
+ 
+-		const FUniformBufferBinding* UniformBufferBinding = reinterpret_cast<const FUniformBufferBinding*>(Content + ParentOffset + Member.GetOffset());
+-		if (!UniformBufferBinding)
+-		{
+-			// Skip referenced structs without a valid reference
++			for (uint32 ElementIndex = 0; ElementIndex < ElementCount; ElementIndex++)
++			{
++				const uint32 ElementOffset = AbsoluteOffset + ElementIndex * ElementStride;
++				const FRDGUniformBufferBinding* UniformBufferBinding = reinterpret_cast<const FRDGUniformBufferBinding*>(Content + ElementOffset);
++				const FString ElementName = (ElementCount > 1)
++					? FString::Printf(TEXT("%s[%u]"), *MemberName, ElementIndex)
++					: MemberName;
++
++				FRDGUniformBuffer* RDGUniformBuffer = UniformBufferBinding->GetUniformBuffer();
++
++				if (!RDGUniformBuffer)
++				{
++					// Honest null binding: record that the slot exists and is unbound, without inventing a payload.
++					if (OutReferencedStructs)
++					{
++						TSharedPtr<FJsonObject> NullEntry = MakeShareable(new FJsonObject);
++						NullEntry->SetBoolField(TEXT("Null"), true);
++						NullEntry->SetStringField(TEXT("BaseType"), GetUniformBufferBaseTypeString(BaseType));
++						NullEntry->SetNumberField(TEXT("MemberOffset"), ElementOffset);
++						NullEntry->SetStringField(TEXT("ContentKind"), TEXT("RDGUniformBufferUnbound"));
++						NullEntry->SetStringField(TEXT("BindingFlags"), GetUniformBufferBindingFlagsString(UniformBufferBinding->GetBindingFlags()));
++						OutReferencedStructs->SetObjectField(ElementName, NullEntry);
++					}
++					continue;
++				}
++
++				const FRDGParameterStruct& ParameterStruct = RDGUniformBuffer->GetParameters();
++				const uint8* PayloadContent = ParameterStruct.GetContents();
++				const FShaderParametersMetadata* PayloadMetadata = ParameterStruct.GetMetadata();
++
++				uint32 PayloadByteSize = PayloadMetadata ? PayloadMetadata->GetSize() : 0;
++				if (PayloadByteSize == 0 && ParameterStruct.GetLayoutPtr())
++				{
++					PayloadByteSize = ParameterStruct.GetLayout().ConstantBufferSize;
++				}
++
++				// Record the mapping so the GPU dump viewer can link to this RDG uniform buffer's payload. The payload is
++				// keyed by the graph uniform buffer object the pass actually binds, not by the pass parameter block and
++				// not by the RHI uniform buffer (which is created lazily and only valid during pass execution).
++				const void* TraversalKey = static_cast<const void*>(RDGUniformBuffer);
++				const bool bTraversalCycle = TraversalStack.Contains(TraversalKey);
++				if (OutReferencedStructs)
++				{
++					TSharedPtr<FJsonObject> RefStructEntry = MakeShareable(new FJsonObject);
++					RefStructEntry->SetStringField(TEXT("Content"), ResourceDumpContext->PtrToString(RDGUniformBuffer));
++					RefStructEntry->SetStringField(TEXT("Metadata"), ResourceDumpContext->PtrToString(PayloadMetadata));
++					RefStructEntry->SetStringField(TEXT("ContentKind"), TEXT("RDGUniformBufferParameters"));
++					RefStructEntry->SetStringField(TEXT("BaseType"), GetUniformBufferBaseTypeString(BaseType));
++					RefStructEntry->SetNumberField(TEXT("MemberOffset"), ElementOffset);
++					RefStructEntry->SetStringField(TEXT("BindingFlags"), GetUniformBufferBindingFlagsString(UniformBufferBinding->GetBindingFlags()));
++					RefStructEntry->SetStringField(TEXT("LayoutName"), ParameterStruct.GetLayout().GetDebugName());
++					RefStructEntry->SetNumberField(TEXT("ByteSize"), PayloadByteSize);
++					RefStructEntry->SetBoolField(TEXT("Null"), false);
++					RefStructEntry->SetBoolField(TEXT("ContentAvailable"), PayloadContent != nullptr && PayloadByteSize > 0);
++					RefStructEntry->SetBoolField(TEXT("TraversalCycleDetected"), bTraversalCycle);
++					RefStructEntry->SetBoolField(TEXT("CollectedDuringGraphBuildParameterTraversal"), true);
++					OutReferencedStructs->SetObjectField(ElementName, RefStructEntry);
++				}
++
++				// Only the immutable payload write is deduplicated. The per-consumer mapping and the recursive traversal
++				// below must run for every pass that binds this uniform buffer, otherwise later consumers lose their
++				// nested bindings. A per-traversal stack (not the global dump set) guards recursive payload cycles.
++				if (!ResourceDumpContext->IsDumped(RDGUniformBuffer))
++				{
++					ResourceDumpContext->SetDumped(RDGUniformBuffer);
++
++					if (PayloadMetadata)
++					{
++						ResourceDumpContext->Dump(PayloadMetadata);
++					}
++
++					if (PayloadContent && PayloadMetadata && PayloadByteSize > 0)
++					{
++						TArrayView<const uint8> ArrayView(PayloadContent, PayloadByteSize);
++						FString DumpFilePath = FRDGResourceDumpContext::kStructuresDir / ResourceDumpContext->PtrToString(RDGUniformBuffer) + TEXT(".bin");
++						ResourceDumpContext->DumpBinaryToFile(ArrayView, DumpFilePath, FRDGResourceDumpContext::ETimingBucket::ParametersFileWrite);
++					}
++					else
++					{
++						UE_LOGF(LogDumpGPU, Warning, "Unable to dump RDG uniform buffer %ls (%ls) as its parameter content is not available.", *ElementName, *GetUniformBufferBindingFlagsString(UniformBufferBinding->GetBindingFlags()));
++					}
++				}
++
++				if (PayloadContent && PayloadMetadata && PayloadByteSize > 0 && !bTraversalCycle)
++				{
++					// Nested RDG uniform buffers and referenced structs inside the payload are part of every consumer's
++					// closure, not only of the first pass that happened to reference this uniform buffer.
++					TraversalStack.Add(TraversalKey);
++					DumpReferencedStructs(PayloadMetadata, PayloadContent, 0, ElementName + TEXT("."), OutReferencedStructs, OutParameterBindings, GraphBuilder, Pass, InputResourceNames, OutputResourceNames, TraversalStack);
++					TraversalStack.Remove(TraversalKey);
++				}
++			}
+ 			continue;
+ 		}
+ 
+-		FRHIUniformBuffer* UniformBuffer = UniformBufferBinding->GetUniformBuffer();
+-		if (!UniformBuffer)
++		if (BaseType != EUniformBufferBaseType::UBMT_REFERENCED_STRUCT)
+ 		{
+-			// Skip referenced structs without a valid buffer
++			// Inlined structs can be skipped as they are contained in the pass content but since they can contain
++			// referenced structs we recursively call DumpReferencedStructs. An array of inline structs is a C array of
++			// the concrete struct type, so the element stride is the metadata's struct size.
++			const uint32 ElementStride = MemberMetadata->GetSize();
++			if (ElementStride == 0)
++			{
++				continue;
++			}
++
++			for (uint32 ElementIndex = 0; ElementIndex < ElementCount; ElementIndex++)
++			{
++				const FString ElementName = (ElementCount > 1)
++					? FString::Printf(TEXT("%s[%u]"), *MemberName, ElementIndex)
++					: MemberName;
++
++				DumpReferencedStructs(
++					MemberMetadata,
++					Content,
++					AbsoluteOffset + ElementIndex * ElementStride,
++					ElementName + TEXT("."),
++					OutReferencedStructs,
++					OutParameterBindings,
++					GraphBuilder,
++					Pass,
++					InputResourceNames,
++					OutputResourceNames,
++					TraversalStack);
++			}
+ 			continue;
+ 		}
+ 
+-		const uint8* ReferencedStructContent = (const uint8*)UE::RHI::UniformBufferContentMap::Get(UniformBuffer);
+-		// Record the mapping so the GPU dump viewer can link to this referenced struct's content
+-		if (ReferencedStructContent)
++		// A referenced struct array is a C array of FUniformBufferBinding, so each element has its own pointer and
++		// binding flags. Walk every element with the concrete type stride instead of only the first one.
++		const uint32 BindingElementStride = sizeof(FUniformBufferBinding);
++		for (uint32 ElementIndex = 0; ElementIndex < ElementCount; ElementIndex++)
+ 		{
++			const uint32 ElementOffset = AbsoluteOffset + ElementIndex * BindingElementStride;
++			const FString ElementName = (ElementCount > 1)
++				? FString::Printf(TEXT("%s[%u]"), *MemberName, ElementIndex)
++				: MemberName;
++
++			const FUniformBufferBinding* UniformBufferBinding = reinterpret_cast<const FUniformBufferBinding*>(Content + ElementOffset);
++			if (!UniformBufferBinding)
++			{
++				// Skip referenced structs without a valid reference
++				continue;
++			}
++
++			FRHIUniformBuffer* UniformBuffer = UniformBufferBinding->GetUniformBuffer();
++			if (!UniformBuffer)
++			{
++				// Record every unbound slot, including each array element, without inventing a payload.
++				if (OutReferencedStructs)
++				{
++					TSharedPtr<FJsonObject> NullEntry = MakeShareable(new FJsonObject);
++					NullEntry->SetBoolField(TEXT("Null"), true);
++					NullEntry->SetStringField(TEXT("BaseType"), GetUniformBufferBaseTypeString(BaseType));
++					NullEntry->SetNumberField(TEXT("MemberBaseOffset"), AbsoluteOffset);
++					NullEntry->SetNumberField(TEXT("MemberOffset"), ElementOffset);
++					NullEntry->SetNumberField(TEXT("ElementStrideBytes"), BindingElementStride);
++					NullEntry->SetNumberField(TEXT("ArrayNumElements"), ElementCount);
++					NullEntry->SetStringField(TEXT("ContentKind"), TEXT("RHIUniformBufferUnbound"));
++					OutReferencedStructs->SetObjectField(ElementName, NullEntry);
++				}
++				continue;
++			}
++
++			const uint8* ReferencedStructContent = (const uint8*)UE::RHI::UniformBufferContentMap::Get(UniformBuffer);
++			const uint32 StructByteSize = MemberMetadata->GetSize();
++			const void* TraversalKey = static_cast<const void*>(UniformBuffer);
++			const bool bTraversalCycle = TraversalStack.Contains(TraversalKey);
++
++			// Record the mapping so the GPU dump viewer can link to this referenced struct's content. This is emitted
++			// for every pass that binds the uniform buffer; only the immutable payload write below is deduplicated.
+ 			if (OutReferencedStructs)
+ 			{
+ 				TSharedPtr<FJsonObject> RefStructEntry = MakeShareable(new FJsonObject);
+ 				RefStructEntry->SetStringField(TEXT("Content"), ResourceDumpContext->PtrToString(UniformBuffer));
+ 				RefStructEntry->SetStringField(TEXT("Metadata"), ResourceDumpContext->PtrToString(MemberMetadata));
+-				OutReferencedStructs->SetObjectField(MemberName, RefStructEntry);
++				RefStructEntry->SetStringField(TEXT("ContentKind"), TEXT("RHIUniformBufferContentMap"));
++				RefStructEntry->SetStringField(TEXT("BaseType"), GetUniformBufferBaseTypeString(BaseType));
++				RefStructEntry->SetNumberField(TEXT("MemberBaseOffset"), AbsoluteOffset);
++				RefStructEntry->SetNumberField(TEXT("MemberOffset"), ElementOffset);
++				RefStructEntry->SetNumberField(TEXT("ElementStrideBytes"), BindingElementStride);
++				RefStructEntry->SetNumberField(TEXT("ArrayNumElements"), ElementCount);
++				RefStructEntry->SetStringField(TEXT("BindingFlags"), GetUniformBufferBindingFlagsString(UniformBufferBinding->GetBindingFlags()));
++				RefStructEntry->SetNumberField(TEXT("ByteSize"), StructByteSize);
++				RefStructEntry->SetBoolField(TEXT("Null"), false);
++				RefStructEntry->SetBoolField(TEXT("ContentAvailable"), ReferencedStructContent != nullptr);
++				RefStructEntry->SetBoolField(TEXT("TraversalCycleDetected"), bTraversalCycle);
++				RefStructEntry->SetStringField(TEXT("CollectedDuringGraphBuildParameterTraversal"), TEXT("True"));
++				OutReferencedStructs->SetObjectField(ElementName, RefStructEntry);
+ 			}
+-		}
+-
+-		if (!ResourceDumpContext->IsDumped(UniformBuffer))
+-		{
+-			ResourceDumpContext->SetDumped(UniformBuffer);
+-			ResourceDumpContext->Dump(MemberMetadata);
+ 
+ 			if (ReferencedStructContent)
+ 			{
+-				DumpReferencedStructs(MemberMetadata, ReferencedStructContent, 0, MemberName + TEXT("."), OutReferencedStructs);
++				// The native RHI resources bound through this uniform buffer (textures, SRVs, samplers) are invisible to
++				// the render graph inventory. Record and export them for every pass that consumes the uniform buffer, so
++				// the field -> pointer -> payload mapping is complete even when the payload itself was already written.
++				ResourceDumpContext->DumpNativeUniformBufferBindings(
++					GraphBuilder,
++					Pass,
++					InputResourceNames,
++					OutputResourceNames,
++					UniformBuffer,
++					ReferencedStructContent,
++					MemberMetadata,
++					ElementName + TEXT("."));
++			}
++
++			if (!ResourceDumpContext->IsDumped(UniformBuffer))
++			{
++				ResourceDumpContext->SetDumped(UniformBuffer);
++				ResourceDumpContext->Dump(MemberMetadata);
+ 
+-				uint32 PassParametersByteSize = MemberMetadata->GetSize();
+-				if (PassParametersByteSize > 0)
++				if (ReferencedStructContent && StructByteSize > 0)
+ 				{
+-					TArrayView<const uint8> ArrayView(ReferencedStructContent, PassParametersByteSize);
++					TArrayView<const uint8> ArrayView(ReferencedStructContent, StructByteSize);
+ 					FString DumpFilePath = FRDGResourceDumpContext::kStructuresDir / ResourceDumpContext->PtrToString(UniformBuffer) + TEXT(".bin");
+ 					ResourceDumpContext->DumpBinaryToFile(ArrayView, DumpFilePath, FRDGResourceDumpContext::ETimingBucket::ParametersFileWrite);
+ 				}
++				else
++				{
++					UE_LOGF(LogDumpGPU, Warning, "Unable to dump referenced struct %ls as content could not be found. Please make sure to enable r.RHI.UniformBufferContentMap.Enable.", Member.GetShaderType());
++				}
+ 			}
+-			else
++
++			if (ReferencedStructContent && StructByteSize > 0 && !bTraversalCycle)
+ 			{
+-				UE_LOGF(LogDumpGPU, Warning, "Unable to dump referenced struct %ls as content could not be found. Please make sure to enable r.RHI.UniformBufferContentMap.Enable.", Member.GetShaderType());
++				// Nested referenced structs and their native bindings belong to every consumer of this uniform buffer,
++				// not only to the first pass that caused the payload to be written.
++				TraversalStack.Add(TraversalKey);
++				DumpReferencedStructs(MemberMetadata, ReferencedStructContent, 0, ElementName + TEXT("."), OutReferencedStructs, OutParameterBindings, GraphBuilder, Pass, InputResourceNames, OutputResourceNames, TraversalStack);
++				TraversalStack.Remove(TraversalKey);
+ 			}
+ 		}
+ 	}
+@@ -2604,6 +4931,11 @@ void FRDGBuilder::DumpNewGraphBuilder()
+ 	ResourceDumpContext->GraphBuilderIndex++;
+ 	ResourceDumpContext->LastResourceVersion.Empty();
+ 	ResourceDumpContext->IsDumpedToDisk.Empty();
++	ResourceDumpContext->IsolatedNativeTextures.Empty();
++	ResourceDumpContext->PendingIsolatedTextureLookupRemovals.Empty();
++	ResourceDumpContext->NativeTextureDescriptorsDumped.Empty();
++	ResourceDumpContext->ScheduledNativeTextureViewFiles.Empty();
++	ResourceDumpContext->ScheduledNativeTextureViewPasses.Empty();
+ }
+ 
+ void FRDGBuilder::DumpResourcePassOutputs(const FRDGPass* Pass)
+@@ -2805,51 +5137,12 @@ void FRDGBuilder::DumpResourcePassOutputs(const FRDGPass* Pass)
+ 		}
+ 	});
+ 
+-	// Dump the pass informations
+-	{
+-		TArray<TSharedPtr<FJsonValue>> ParentEventScopeNames;
+-		{
+-#if RDG_EVENTS
+-			FRDGScope const* ParentScope = Pass->GetScope();
+-			if (ParentScope)
+-			{
+-				// FRDGScopeState sets ERDGScopeMode::AllEventsAndPassNames when DumpGPU is active.
+-				ParentScope = ParentScope->Parent;
+-			}
+-			for (; ParentScope; ParentScope = ParentScope->Parent)
+-			{
+-				if (FRDGScope_RHI const* RHIScope = ParentScope->Get<FRDGScope_RHI>())
+-				{
+-					FRHIBreadcrumb::FBuffer Buffer;
+-					ParentEventScopeNames.Add(MakeShareable(new FJsonValueString(RHIScope->GetTCHAR(Buffer))));
+-				}
+-			}
+-#endif // RDG_EVENTS
+-
+-			ParentEventScopeNames.Add(MakeShareable(new FJsonValueString(FString::Printf(TEXT("Frame %llu (Delta=%fs)"), GFrameCounterRenderThread, ResourceDumpContext->DeltaTime))));
+-		}
+-
+-		FString EventNameStorage;
+-
+-		TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+-		JsonObject->SetStringField(TEXT("EventName"), GetPassEventNameWithGPUMask(Pass, EventNameStorage));
+-		JsonObject->SetStringField(TEXT("ParametersName"), Pass->GetParameters().GetLayout().GetDebugName());
+-		JsonObject->SetStringField(TEXT("Parameters"), ResourceDumpContext->PtrToString(Pass->GetParameters().GetContents()));
+-		JsonObject->SetStringField(TEXT("ParametersMetadata"), ResourceDumpContext->PtrToString(Pass->GetParameters().GetMetadata()));
+-		JsonObject->SetStringField(TEXT("Pointer"), ResourceDumpContext->PtrToString(Pass));
+-		JsonObject->SetNumberField(TEXT("Id"), ResourceDumpContext->PassesCount);
+-		JsonObject->SetArrayField(TEXT("ParentEventScopes"), ParentEventScopeNames);
+-		JsonObject->SetArrayField(TEXT("InputResources"), InputResourceNames);
+-		JsonObject->SetArrayField(TEXT("OutputResources"), OutputResourceNames);
+-
+-		ResourceDumpContext->DumpJsonToFile(JsonObject, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("Passes.json"), FILEWRITE_Append);
+-	}
+-
+ 	// Dump the pass' parameters
+ 	if (GDumpGPUPassParameters.GetValueOnRenderThread() != 0)
+ 	{
+ #if !(UE_BUILD_SHIPPING || UE_BUILD_TEST)
+ 		TSharedPtr<FJsonObject> ReferencedStructsJson = MakeShareable(new FJsonObject);
++		TSharedPtr<FJsonObject> ParameterBindingsJson = MakeShareable(new FJsonObject);
+ #endif
+ 		int32 PassParametersByteSize = 0;
+ 		{
+@@ -2861,12 +5154,35 @@ void FRDGBuilder::DumpResourcePassOutputs(const FRDGPass* Pass)
+ #if !(UE_BUILD_SHIPPING || UE_BUILD_TEST)
+ 				if (const uint8* Content = Pass->GetParameters().GetContents())
+ 				{
+-					DumpReferencedStructs(Metadata, Content, 0, TEXT(""), ReferencedStructsJson);
++					// Per-traversal cycle guard. The global IsDumped set only deduplicates immutable payload writes, so
++					// shared uniform buffers are re-traversed for every consumer without recursing forever on a cycle.
++					TSet<const void*> TraversalStack;
++					DumpReferencedStructs(Metadata, Content, 0, TEXT(""), ReferencedStructsJson, ParameterBindingsJson,
++						*this, Pass, InputResourceNames, OutputResourceNames, TraversalStack);
+ 				}
+ #endif
+ 			}
+ 		}
+ 
++		// Drop only the RHI lookup entries that this diagnostic inserted. The graph-owned FRDGTexture wrappers remain
++		// alive (the scheduled dump passes reference them), but a later ordinary renderer registration of the same
++		// FRHITexture will not find a SkipTracking diagnostic wrapper and will create its own correctly tracked wrapper.
++		// An existing renderer registration was never added to this list and therefore can never be removed here.
++		{
++			for (FRHITexture* NativeTexture : ResourceDumpContext->PendingIsolatedTextureLookupRemovals)
++			{
++				FRDGTextureRef IsolatedTexture = ResourceDumpContext->IsolatedNativeTextures.FindRef(NativeTexture);
++				if (FRDGTextureRef* FoundTexture = ExternalTextures.Find(NativeTexture))
++				{
++					if (*FoundTexture == IsolatedTexture)
++					{
++						ExternalTextures.Remove(NativeTexture);
++					}
++				}
++			}
++			ResourceDumpContext->PendingIsolatedTextureLookupRemovals.Empty();
++		}
++
+ 		if (PassParametersByteSize == 0 && Pass->GetParameters().GetLayoutPtr())
+ 		{
+ 			PassParametersByteSize = Pass->GetParameters().GetLayout().ConstantBufferSize;
+@@ -2890,10 +5206,65 @@ void FRDGBuilder::DumpResourcePassOutputs(const FRDGPass* Pass)
+ 			FString RefStructsPath = FString(FRDGResourceDumpContext::kBaseDir) / TEXT("ReferencedStructs.json");
+ 			ResourceDumpContext->DumpJsonToFile(ReferencedStructsFile, RefStructsPath, FILEWRITE_Append);
+ 		}
++
++		// Write the pointer bindings of the pass parameters that are not structure references (samplers, RHI views and
++		// RDG views). Only the parameter memory is captured; no access state is inferred for these bindings.
++		if (ParameterBindingsJson->Values.Num() > 0)
++		{
++			TSharedPtr<FJsonObject> ParameterBindingsFile = MakeShareable(new FJsonObject);
++			ParameterBindingsFile->SetStringField(TEXT("Pass"), ResourceDumpContext->PtrToString(Pass));
++			ParameterBindingsFile->SetStringField(TEXT("Parameters"), ResourceDumpContext->PtrToString(PassParametersContent));
++			ParameterBindingsFile->SetObjectField(TEXT("Bindings"), ParameterBindingsJson);
++			FString ParameterBindingsPath = FString(FRDGResourceDumpContext::kBaseDir) / TEXT("ParameterBindings.json");
++			ResourceDumpContext->DumpJsonToFile(ParameterBindingsFile, ParameterBindingsPath, FILEWRITE_Append);
++		}
+ #endif
+ 
+ 	}
+ 
++	// Dump the pass information only after the parameter traversal above, because that traversal appends the native
++	// uniform buffer binding edges (textures and buffers) to InputResourceNames/OutputResourceNames. Serializing the
++	// arrays before this point would drop every discovered native edge from the consumer's Passes.json record.
++	{
++		TArray<TSharedPtr<FJsonValue>> ParentEventScopeNames;
++		{
++#if RDG_EVENTS
++			FRDGScope const* ParentScope = Pass->GetScope();
++			if (ParentScope)
++			{
++				// FRDGScopeState sets ERDGScopeMode::AllEventsAndPassNames when DumpGPU is active.
++				ParentScope = ParentScope->Parent;
++			}
++			for (; ParentScope; ParentScope = ParentScope->Parent)
++			{
++				if (FRDGScope_RHI const* RHIScope = ParentScope->Get<FRDGScope_RHI>())
++				{
++					FRHIBreadcrumb::FBuffer Buffer;
++					ParentEventScopeNames.Add(MakeShareable(new FJsonValueString(RHIScope->GetTCHAR(Buffer))));
++				}
++			}
++#endif // RDG_EVENTS
++
++			ParentEventScopeNames.Add(MakeShareable(new FJsonValueString(FString::Printf(TEXT("Frame %llu (Delta=%fs)"), GFrameCounterRenderThread, ResourceDumpContext->DeltaTime))));
++		}
++
++		FString EventNameStorage;
++
++		TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
++		JsonObject->SetStringField(TEXT("EventName"), GetPassEventNameWithGPUMask(Pass, EventNameStorage));
++		JsonObject->SetStringField(TEXT("ParametersName"), Pass->GetParameters().GetLayout().GetDebugName());
++		JsonObject->SetStringField(TEXT("Parameters"), ResourceDumpContext->PtrToString(Pass->GetParameters().GetContents()));
++		JsonObject->SetStringField(TEXT("ParametersMetadata"), ResourceDumpContext->PtrToString(Pass->GetParameters().GetMetadata()));
++		JsonObject->SetStringField(TEXT("Pointer"), ResourceDumpContext->PtrToString(Pass));
++		JsonObject->SetNumberField(TEXT("Id"), ResourceDumpContext->PassesCount);
++		JsonObject->SetArrayField(TEXT("ParentEventScopes"), ParentEventScopeNames);
++		JsonObject->SetArrayField(TEXT("InputResources"), InputResourceNames);
++		JsonObject->SetArrayField(TEXT("OutputResources"), OutputResourceNames);
++		JsonObject->SetBoolField(TEXT("BindingEdgesCollectedDuringGraphBuild"), true);
++
++		ResourceDumpContext->DumpJsonToFile(JsonObject, FString(FRDGResourceDumpContext::kBaseDir) / TEXT("Passes.json"), FILEWRITE_Append);
++	}
++
+ 	ResourceDumpContext->PassesCount++;
+ }
+ 

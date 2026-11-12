@@ -1,0 +1,305 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1351",
+  "nativeRecordId": "native-018363",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.PhysicalPagesToInitialize",
+  "uniqueName": "000400000225fb905c00",
+  "displayLabel": "Shadow.Virtual.PhysicalPagesToInitialize · instance 0004 · frame 292 · passes 834",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 834,
+    "last": 834
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 32772,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 8193,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 8193
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.PhysicalPagesToInitialize",
+    "UniqueResourceName": "000400000225fb905c00",
+    "ByteSize": 32772,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 8193,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02060",
+      "role": "resource",
+      "originalPath": "Resources/000400000225fb905c00.v000400000225fb906038.bin",
+      "bytes": 32772,
+      "sha256": "1c8421b66ec0ec26837b3d07fb0bd058d806510971920841110a3761aad5d149",
+      "version": "000400000225fb906038",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1351",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "1c8421b66ec0ec26837b3d07fb0bd058d806510971920841110a3761aad5d149",
+          "offset": 0,
+          "length": 32772
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000225fb905c00",
+        "name": "Shadow.Virtual.PhysicalPagesToInitialize",
+        "byteSize": 32772
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000225fb906038",
+      "producerPassId": "pass-0835",
+      "producerPassName": "SelectPagesToInitialize",
+      "payloadIds": [
+        "payload-02060"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0835",
+        "name": "SelectPagesToInitialize",
+        "displayLabel": "SelectPagesToInitialize · InitializePhysicalPages · frame 292 · pass 834",
+        "record": "records/pass/pass-0835.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0836",
+        "name": "InitializePhysicalMemoryIndirect",
+        "displayLabel": "InitializePhysicalMemoryIndirect · InitializePhysicalPages · frame 292 · pass 835",
+        "record": "records/pass/pass-0836.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02060",
+      "file": "Resources/000400000225fb905c00.v000400000225fb906038.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-physical-pages-selected",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.PhysicalPages(ToInitialize|ToMerge)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "int32 list of selected physical pages; no header word - the list starts at element 0 and the valid count is derived from the paired indirect args; static-array pages are encoded as pageIndex+MaxPhysicalPages",
+      "units": "physical page index (+MaxPhysicalPages for static slice)",
+      "coordinateSpace": "physical page pool linear index; >MaxPhysicalPages selects array slice 1 (static)",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "int32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "capacity GetTotalAllocatedPhysicalPages()+1, i.e. 2*MaxPhysicalPages+1 when separate static pages exist"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 8193,
+          "byteSize": 32772
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "int32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "capacity GetTotalAllocatedPhysicalPages()+1, i.e. 2*MaxPhysicalPages+1 when separate static pages exist"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "staticSliceDecode",
+          "expression": "if (Index >= MaxPhysicalPages) { Page=Index-MaxPhysicalPages; ArraySlice=1; } else { Page=Index; ArraySlice=0; }",
+          "requires": [
+            "PhysicalPagesToInitialize"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.tilesetup"
+          ]
+        },
+        {
+          "name": "validCount",
+          "expression": "For PhysicalPagesToInitialize: Count = InitializePagesIndirectArgs[0] / TILES_PER_PAGE_1D; for PhysicalPagesToMerge: Count = PostProcessPagesIndirectArgs[0] / TILES_PER_PAGE_1D",
+          "requires": [
+            "PhysicalPagesToInitialize",
+            "PhysicalPagesToMerge"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.emitpage"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "EmitPageToProcess adds TILES_PER_PAGE_1D groups per page and writes the page index at slot = (pre-add group count)/TILES_PER_PAGE_1D, so slot 0 is the first page (PhysicalPageManagement.usf:838-844).",
+        "TILES_PER_PAGE_1D = 1<<(2*(7-4)) = 64 for a 128-page split into 16x16-pixel tiles of 4x4 threads (LOG2_TILE_SIZE_XY=5) - see :814-832."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.emitpage"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.tilesetup"
+      ],
+      "gaps": [
+        "PhysicalPagesToMerge is consumed by MergeStaticPhysicalPagesIndirectCS; PhysicalPagesToInitialize by InitializePhysicalPagesIndirectCS (both in PhysicalPageManagement.usf), not re-anchored here."
+      ],
+      "fields": [
+        {
+          "name": "PageIndices",
+          "type": "int32",
+          "byteOffset": 0,
+          "count": 8192,
+          "decode": "array[i], i in [0,Count); page index, or pageIndex+MaxPhysicalPages for static slice; element 0 is the first selected page, NOT a count",
+          "units": "physical page index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.emitpage",
+            "part3.visibility.vsm.s.tilesetup"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "PageIndices"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0835",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.PhysicalPagesToInitialize has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1351"
+    }
+  ]
+}

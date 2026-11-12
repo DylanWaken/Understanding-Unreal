@@ -1,0 +1,325 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0594",
+  "nativeRecordId": "native-017601",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "CulledLightLinks",
+  "uniqueName": "000300000228ec03f6a0",
+  "displayLabel": "CulledLightLinks · instance 0003 · frame 292 · passes 353",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 353,
+    "last": 353
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4587520,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1146880,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1146880
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "CulledLightLinks",
+    "UniqueResourceName": "000300000228ec03f6a0",
+    "ByteSize": 4587520,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1146880,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01756",
+      "role": "resource",
+      "originalPath": "Resources/000300000228ec03f6a0.v000300000228e99d10d0.bin",
+      "bytes": 4587520,
+      "sha256": "79579b9699d49f6fe2a4caf3fab96103f8549437ed1077319836733499a1911f",
+      "version": "000300000228e99d10d0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0594",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "8eb81b790973d449306c5a49333aeaf87c3121b8008fd213fba0584ad2063260",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "14d1dc319e5c7721e0207c2b99e3ebb93cadaf592dc3046c8341ba4cb453b6fb",
+          "offset": 1048576,
+          "length": 1048576
+        },
+        {
+          "sha": "73eac6e9b70627caf13643e93537c6879bcfcf3e24fc8d3e5afedbc20ded2b65",
+          "offset": 2097152,
+          "length": 1048576
+        },
+        {
+          "sha": "525e601c61e9a727ea8193da7c00222aed8f19af4192b6f26ab603700517d3b9",
+          "offset": 3145728,
+          "length": 1048576
+        },
+        {
+          "sha": "c090ada4549bca3c318ecbdc45c9c28bb969a6710bfc2bcd1caeeb7d81923c5c",
+          "offset": 4194304,
+          "length": 393216
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228ec03f6a0",
+        "name": "CulledLightLinks",
+        "byteSize": 4587520
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228e99d10d0",
+      "producerPassId": "pass-0354",
+      "producerPassName": "LightGridInject LinkedList RefineRectLightBounds UseHZBCull  SingleThread",
+      "payloadIds": [
+        "payload-01756"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0354",
+        "name": "LightGridInject LinkedList RefineRectLightBounds UseHZBCull  SingleThread",
+        "displayLabel": "LightGridInject LinkedList RefineRectLightBounds UseHZBCull  SingleThread · CullLights 20x12x32 NumLights 1 NumCaptures 0 · frame 292 · pass 353",
+        "record": "records/pass/pass-0354.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01756",
+      "file": "Resources/000300000228ec03f6a0.v000300000228e99d10d0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.cl-links",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^CulledLightLinks$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one 8-byte link record per culled-link allocation; two mutually exclusive encodings selected by the USE_THREAD_GROUP_PER_CELL permutation",
+      "units": "encoding A: local light index + previous link offset; encoding B: 24-bit primitive index + 16-bit index-in-cell + 24-bit next link offset",
+      "coordinateSpace": "none (link chain); terminator differs per encoding",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32 x2",
+        "strideBytes": 8,
+        "formatAlternatives": [
+          "LightLinkStride=2 dwords per link",
+          "capture 1146880 dwords = 573440 links"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 1146880,
+          "byteSize": 4587520
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32 x2",
+      "formatProof": "descriptive-element-layout",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "LightLinkStride=2 dwords per link",
+        "capture 1146880 dwords = 573440 links"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "unpackB",
+          "expression": "PrimitiveIndex = word0 & 0xFFFFFF; IndexInCell = ((word0>>24)&0xFF) | (((word1>>24)&0xFF)<<8); NextLinkOffset = word1 & 0xFFFFFF",
+          "requires": [
+            "CulledLightLinks"
+          ],
+          "sourceRefs": [
+            "part3.visibility.cl.lgiu.linkB"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Encoding A terminates at 0xFFFFFFFF; encoding B terminates at LIGHT_GRID_CELL_WRITER_MAX_LINK_OFFSET = 0xFFFFFF.",
+        "Off-by-one: when NumAvailableLinks == 1<<24, link index 0xFFFFFF is allocatable but indistinguishable from encoding B's sentinel; that final slot is effectively unusable (dormant at capture scale)."
+      ],
+      "producerSources": [
+        "part3.visibility.cl.lgi.links",
+        "part3.visibility.cl.lgiu.linkA",
+        "part3.visibility.cl.lgiu.linkB"
+      ],
+      "consumerSources": [
+        "part3.visibility.cl.lgiu.cellout"
+      ],
+      "gaps": [
+        "The two encodings are not interchangeable; the consumer must match the writer permutation (USE_THREAD_GROUP_PER_CELL)."
+      ],
+      "fields": [
+        {
+          "name": "LinkWord0",
+          "type": "uint32",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "encoding A: LocalLightIndex; encoding B: (IndexInCell & 0xFF)<<24 | (PrimitiveIndex & 0xFFFFFF)",
+          "units": "index / packed",
+          "sourceRefs": [
+            "part3.visibility.cl.lgiu.linkA",
+            "part3.visibility.cl.lgiu.linkB"
+          ]
+        },
+        {
+          "name": "LinkWord1",
+          "type": "uint32",
+          "byteOffset": 4,
+          "count": 1,
+          "decode": "encoding A: previous LinkOffset, 0xFFFFFFFF = end; encoding B: ((IndexInCell>>8)&0xFF)<<24 | (LinkOffset & 0xFFFFFF), 0xFFFFFF = end",
+          "units": "offset / packed",
+          "sourceRefs": [
+            "part3.visibility.cl.lgiu.linkA",
+            "part3.visibility.cl.lgiu.linkB",
+            "part3.visibility.cl.lgiu.cellout"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "LinkWord0",
+          "LinkWord1"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0372",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer CulledLightLinks has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0594"
+    }
+  ]
+}

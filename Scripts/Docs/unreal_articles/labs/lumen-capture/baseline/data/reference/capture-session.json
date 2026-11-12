@@ -1,0 +1,268 @@
+{
+  "schema": "unreal-reference-capture-session-v1",
+  "status": "ok",
+  "pid": 56064,
+  "started_utc": "2026-11-12T13:17:01Z",
+  "started_monotonic": 87373.906,
+  "engine_version": "5.8.1-0+UE5",
+  "project": "reproduce/UnrealLab",
+  "map": "/Game/Labs/LumenRoom",
+  "resolution": [
+    1280,
+    720
+  ],
+  "lumen_warmup_draws": 200,
+  "lumen_settle_draws": 90,
+  "lumen_commands": [
+    "r.ScreenPercentage 100",
+    "r.AntiAliasingMethod 2",
+    "r.MotionBlurQuality 0",
+    "r.Lumen.HardwareRayTracing 0",
+    "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+    "r.Lumen.Reflections.ScreenTraces 1",
+    "r.DynamicGlobalIlluminationMethod 1",
+    "r.ReflectionMethod 1",
+    "r.Lumen.Visualize 0",
+    "r.LumenScene.SurfaceCache.AtlasSize 4096",
+    "showflag.BillboardSprites 0",
+    "showflag.Grid 0",
+    "showflag.Selection 0",
+    "showflag.SelectionOutline 0",
+    "showflag.ModeWidgets 0",
+    "showflag.Bounds 0"
+  ],
+  "path_tracer_commands": [
+    "r.PathTracing.SamplesPerPixel 256",
+    "r.PathTracing.MaxBounces 8",
+    "r.PathTracing.Denoiser 0",
+    "r.PathTracing.ProgressDisplay 0",
+    "r.PathTracing.FilterWidth 3.0",
+    "r.PathTracing.MISMode 2",
+    "r.PathTracing.EnableEmissive 1",
+    "r.PathTracing.EnableReferenceDOF 0",
+    "r.PathTracing.VisibleLights 0"
+  ],
+  "target_samples_per_pixel": 256,
+  "target_bounces": 8,
+  "pso_warmup_draws": 64,
+  "denoiser": "disabled (r.PathTracing.Denoiser 0; no denoiser plugin assumed)",
+  "draws": 443,
+  "path_tracer": {
+    "support_status_before": {
+      "view_mode_index": 3,
+      "is_path_tracing_view_mode": false,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true,
+      "samples": 0,
+      "sample_count": 0
+    },
+    "commands": [
+      "r.PathTracing.SamplesPerPixel 256",
+      "r.PathTracing.MaxBounces 8",
+      "r.PathTracing.Denoiser 0",
+      "r.PathTracing.ProgressDisplay 0",
+      "r.PathTracing.FilterWidth 3.0",
+      "r.PathTracing.MISMode 2",
+      "r.PathTracing.EnableEmissive 1",
+      "r.PathTracing.EnableReferenceDOF 0",
+      "r.PathTracing.VisibleLights 0"
+    ],
+    "samples_per_pixel_requested": 256,
+    "max_bounces_requested": 8,
+    "denoiser_requested": 0,
+    "filter_width_requested": 3.0,
+    "mis_mode_requested": 2,
+    "pso_warmup_draws": 64,
+    "pso_warmup_start_draw": 291,
+    "warmup_status": {
+      "view_mode_index": 27,
+      "is_path_tracing_view_mode": true,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true,
+      "samples": 178,
+      "sample_count": 256
+    },
+    "forced_reset_after_warmup": true,
+    "reset_commands": [
+      "r.PathTracing.SamplesPerPixel 255",
+      "r.PathTracing.SamplesPerPixel 256"
+    ],
+    "reset_draw": 357,
+    "sample_index_after_reset": 1,
+    "sample_count_after_reset": 256,
+    "first_nonzero_sample_draw": 358,
+    "first_nonzero_sample": 4,
+    "mode": "path tracing",
+    "view_mode": "VMI_PathTracing",
+    "sample_index_before_screenshot": 256,
+    "sample_index_after_screenshot": 256,
+    "sample_count_reported": 256,
+    "samples_per_pixel_at_capture": 256,
+    "sample_index_authority": "engine FSceneViewStateInterface::GetPathTracingSampleIndex() (bridge GetPathTracingSamples)",
+    "draw_requests_for_256_samples": 86,
+    "draw_request_span": "357-443 (reset/first sample at 357, nonzero progress 358-443, capture at 443)",
+    "sample_count_is_not_draw_count": true,
+    "max_bounces_at_capture": 8,
+    "denoiser_at_capture": 0,
+    "capture_draw_number": 443,
+    "first_accumulation_draw": 358,
+    "first_sample_index": 4,
+    "accumulation_seconds": 1.0159999999887077,
+    "support_status_at_capture": {
+      "view_mode_index": 27,
+      "is_path_tracing_view_mode": true,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true,
+      "samples": 256,
+      "sample_count": 256
+    },
+    "image": {
+      "file": "figures/reference/pathtracer-256spp-8bounces.png",
+      "bytes": 1194328,
+      "sha256": "1d73c08b47f05df95894c4b506528cc2d31ab86f0cd0080dbd37b4d6b39de051",
+      "modified_utc": "2026-11-12T13:17:07Z"
+    }
+  },
+  "images": {
+    "lumen_lit": {
+      "file": "figures/reference/lumen-lit.png",
+      "bytes": 823905,
+      "sha256": "6b9c1132fc882d65812f4c769be0e14dc5ce82af0bb5e3b61178a7d5448e5076",
+      "modified_utc": "2026-11-12T13:17:05Z"
+    },
+    "path_tracer": {
+      "file": "figures/reference/pathtracer-256spp-8bounces.png",
+      "bytes": 1194328,
+      "sha256": "1d73c08b47f05df95894c4b506528cc2d31ab86f0cd0080dbd37b4d6b39de051",
+      "modified_utc": "2026-11-12T13:17:07Z"
+    }
+  },
+  "limitations": [
+    "Editor viewport capture, not Movie Render Queue or a packaged build.",
+    "The editor viewport is SDR (GetSceneHDREnabled false), so the capture path writes display-referred 8-bit PNG; no linear EXR is produced by this procedure.",
+    "Path-tracer sample accumulation is not one sample per viewport draw: 256 samples accumulated across about 86 explicit draw requests (sample reset/first sample at draw 357, nonzero progression from draw 358, capture draw 443). The engine GetPathTracingSampleIndex() is authoritative; this is not a timing or performance benchmark.",
+    "Lumen screen-probe/radiosity temporal state is warmed but not proven converged; stochastic noise is expected.",
+    "The saved room keeps its recorded RectLight attenuation radius (1000 cm), even though the original builder requested 2000 cm."
+  ],
+  "camera": {
+    "actor": "CameraActor",
+    "location_cm": [
+      0.0,
+      -400.0,
+      165.0
+    ],
+    "rotation_degrees": {
+      "pitch": -2.105514188856035,
+      "yaw": 90.00000000000006,
+      "roll": 2.5614055970807246e-08
+    },
+    "target_cm": [
+      0.0,
+      280.0,
+      140.0
+    ],
+    "vertical_fov_degrees": 43.0,
+    "component_field_of_view_degrees": 70.0059814453125,
+    "note": "Camera component FOV is Unreal horizontal FOV; 43 deg vertical at 16:9 yields this value."
+  },
+  "exposure": {
+    "method": "histogram (AEM_HISTOGRAM) with min_brightness == max_brightness == EV100 4",
+    "effective_method": "histogram metering pinned to EV100 4 by min=max=4 and bias=0; not manual mode",
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+    "pre_exposure": 0.0625,
+    "one_over_pre_exposure": 16.0,
+    "eye_adaptation_exposure_scale": 0.0625,
+    "eye_adaptation_average_scene_luminance": 8.370248794555664,
+    "ev100": 4.0,
+    "min_brightness": 4.0,
+    "max_brightness": 4.0,
+    "bias": 0.0,
+    "postprocess_values_after_set": {
+      "override_auto_exposure_min_brightness": "True",
+      "auto_exposure_min_brightness": "4.0",
+      "override_auto_exposure_max_brightness": "True",
+      "auto_exposure_max_brightness": "4.0",
+      "override_auto_exposure_bias": "True",
+      "auto_exposure_bias": "0.0",
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+      "override_auto_exposure_method": "False",
+      "override_path_tracing_samples_per_pixel": "False",
+      "path_tracing_samples_per_pixel": "2048",
+      "override_path_tracing_max_bounces": "False",
+      "path_tracing_max_bounces": "32",
+      "override_path_tracing_enable_denoiser": "False",
+      "path_tracing_enable_denoiser": "True",
+      "override_path_tracing_max_path_intensity": "False",
+      "path_tracing_max_path_intensity": "24.0"
+    }
+  },
+  "light": {
+    "actor": "Ceiling area light",
+    "location_cm": [
+      0.0,
+      270.0,
+      298.0
+    ],
+    "rotation_degrees": {
+      "pitch": -90.0,
+      "yaw": 0.0,
+      "roll": 0.0
+    },
+    "intensity_lumens": 2400.0,
+    "intensity_units": "<LightUnits.LUMENS: 2>",
+    "source_width_cm": 130.0,
+    "source_height_cm": 120.0,
+    "attenuation_radius_cm": 1000.0,
+    "light_color": [
+      255.0,
+      255.0,
+      255.0
+    ]
+  },
+  "scene_verification": {
+    "available": true,
+    "source": "source-reference/scene-inventory.json",
+    "actor_count_expected": 10,
+    "actor_count_actual": 10,
+    "matched": true,
+    "problems": []
+  },
+  "lumen_capture": {
+    "mode": "lit",
+    "view_mode": "VMI_Lit",
+    "draw_number": 291,
+    "warmup_draws": 200,
+    "settle_draws": 90,
+    "capture_seconds": 0.42199999999138527,
+    "commands": [
+      "r.ScreenPercentage 100",
+      "r.AntiAliasingMethod 2",
+      "r.MotionBlurQuality 0",
+      "r.Lumen.HardwareRayTracing 0",
+      "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+      "r.Lumen.Reflections.ScreenTraces 1",
+      "r.DynamicGlobalIlluminationMethod 1",
+      "r.ReflectionMethod 1",
+      "r.Lumen.Visualize 0",
+      "r.LumenScene.SurfaceCache.AtlasSize 4096",
+      "showflag.BillboardSprites 0",
+      "showflag.Grid 0",
+      "showflag.Selection 0",
+      "showflag.SelectionOutline 0",
+      "showflag.ModeWidgets 0",
+      "showflag.Bounds 0"
+    ],
+    "image": {
+      "file": "figures/reference/lumen-lit.png",
+      "bytes": 823905,
+      "sha256": "6b9c1132fc882d65812f4c769be0e14dc5ce82af0bb5e3b61178a7d5448e5076",
+      "modified_utc": "2026-11-12T13:17:05Z"
+    }
+  },
+  "finished_utc": "2026-11-12T13:17:07Z",
+  "elapsed_seconds": 6.75,
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged."
+}

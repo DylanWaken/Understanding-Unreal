@@ -1,0 +1,130 @@
+{
+  "schema": "instrumented-lumen-room-capture-provenance-v1",
+  "captureId": "binary-20261112-153914",
+  "engine": {
+    "version": "5.8.1",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+    "branch": "release",
+    "buildId": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9"
+  },
+  "gpu": {
+    "model": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "driver": "610.62",
+    "rhi": "D3D12 SM6"
+  },
+  "map": {
+    "objectPath": "/Game/Labs/LumenRoom",
+    "sha256": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818",
+    "matchesBaseline": true
+  },
+  "build": {
+    "command": "Engine/Build/BatchFiles/Build.bat UnrealEditor Win64 Development",
+    "verifiedLog": "patch/native-module-build-7.log",
+    "productHashes": {
+      "Engine/Binaries/Win64/UnrealEditor-RenderCore.dll": "6F1BF96FAB9841F0D4793CB65ABC4DFBF459AA41EE4A8EE90D06D737CF32BF1D",
+      "Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp": "0DC2FFCBDC84C2B6EB3E3DEDDEAB3E48FE79C3DD4D30D15ACF4ACC751FDEEB4C",
+      "Engine/Shaders/Private/Tools/DumpTexture.usf": "8CAE461806D5F28931C9D57F03881CFCEA19F37DE6373F1DB2833816EF7EF887",
+      "Engine/Shaders/Private/Tools/DumpBuffer.usf": "79C934A53C055F6F85D449446D46AC3401BFA0421EE92A3F7B9EDB882BDD4B1C",
+      "Engine/Binaries/Win64/UnrealEditor.exe": "DD2A31E9A3BABE48B56C49C54D85661F50D07A1254D09FAC64F50B85244D4833"
+    }
+  },
+  "patch": {
+    "file": "patch/ours-only.patch",
+    "sha256": "7194180a43eab6d8896633b950fa18bd40c89165006cac230c1749172bdc0963",
+    "newShaderFile": "patch/DumpBuffer.usf.new",
+    "newShaderSha256": "79c934a53c055f6f85d449446d46ac3401bfa0421ee92a3f7b9edb882bdd4b1c"
+  },
+  "captureSettings": {
+    "root": "*",
+    "texture": 2,
+    "buffer": 2,
+    "pass_parameters": 1,
+    "console_variables": 1,
+    "native_uniform_buffer_textures": 1,
+    "buffer_skip_tracking": 1,
+    "startup_ini_cvar": "r.RHI.UniformBufferContentMap.Enable=1",
+    "resolution": [
+      1280,
+      720
+    ],
+    "rhi": "D3D12",
+    "shader_platform": "PCD3D_SM6",
+    "warmup_draws": 200,
+    "settle_draws": 90,
+    "dump_seconds": 26.75,
+    "wall_seconds": 72.1
+  },
+  "captureCvars": {
+    "r.RHI.UniformBufferContentMap.Enable": {
+      "value": "true",
+      "type": "bool",
+      "set_by": "SystemSettingsIni"
+    },
+    "r.DumpGPU.Root": {
+      "value": "*",
+      "type": "FString",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.Texture": {
+      "value": "2",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.Buffer": {
+      "value": "2",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.MaxStagingSize": {
+      "value": "256",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.PassParameters": {
+      "value": "1",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.FrameCount": {
+      "value": "1",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.Stream": {
+      "value": "0",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.ConsoleVariables": {
+      "value": "1",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.Buffer.SkipTracking": {
+      "value": "1",
+      "type": "int32",
+      "set_by": "Console"
+    },
+    "r.DumpGPU.NativeUniformBufferTextures": {
+      "value": "1",
+      "type": "int32",
+      "set_by": "Console"
+    }
+  },
+  "raw": {
+    "status": "ok",
+    "files": 7912,
+    "bytes": 18570711246,
+    "engineFrame": 292,
+    "sceneGraphs": [
+      "0001",
+      "0003",
+      "0004"
+    ]
+  },
+  "notes": [
+    "The original project module was copied from the reference project and the copied manifest BuildId matched the current engine. The portable recipe builds the project module against the selected engine.",
+    "The final patch was verified against the current source using git apply --check --reverse. The portable wrapper was parsed but was not rerun.",
+    "Diagnostic source remains in the engine workspace. 187 pre-existing staged paths were preserved."
+  ]
+}

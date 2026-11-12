@@ -1,0 +1,343 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1101",
+  "nativeRecordId": "native-018111",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.CardPageResampleDataBuffer",
+  "uniqueName": "0004000002292507b988",
+  "displayLabel": "Lumen.CardPageResampleDataBuffer · instance 0004 · frame 292",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 2048,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 128,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 128
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.CardPageResampleDataBuffer",
+    "UniqueResourceName": "0004000002292507b988",
+    "ByteSize": 2048,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 128,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02687",
+      "role": "resource",
+      "originalPath": "Resources/0004000002292507b988.v00000000000000000000.bin",
+      "bytes": 2048,
+      "sha256": "37bbb5b559207b42db1f5ab4dea554efab4b3ab0e5ce2bcc0f10c428a9146813",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1101",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "37bbb5b559207b42db1f5ab4dea554efab4b3ab0e5ce2bcc0f10c428a9146813",
+          "offset": 0,
+          "length": 2048
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0004000002292507b988",
+        "name": "Lumen.CardPageResampleDataBuffer",
+        "byteSize": 2048
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-02687"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0666",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 665",
+        "record": "records/pass/pass-0666.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02687",
+      "file": "Resources/0004000002292507b988.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.card-page-resample-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.CardPageResampleDataBuffer)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-capture-rect source-card info for resampling material and history lighting from the previous card layout: two uint4 words per rect",
+      "units": "card index, source card index + flip bit, card UV rect",
+      "coordinateSpace": "card UV space (rect index space for the outer index)",
+      "storage": {
+        "kind": "upload-buffer",
+        "format": "uint4 (PF_R32G32B32A32_UINT SRV), 16 B",
+        "strideBytes": 16
+      },
+      "actualFormat": null,
+      "declaredFormat": "PF_R32G32B32A32_UINT",
+      "declaredFormatText": "uint4 (PF_R32G32B32A32_UINT SRV), 16 B",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [
+        {
+          "name": "materialResample",
+          "expression": "Packed = Word0.y; Src = (Packed & 0x7fffffff)-1; bFlip = (Packed & 0x80000000)!=0; CardUV = lerp(Word1.xy, Word1.zw, RectUV); if bFlip: CardUV.x = 1-CardUV.x",
+          "requires": [
+            "Lumen.CardPageResampleDataBuffer"
+          ],
+          "sourceRefs": [
+            "part1.cards_rp_matusedata",
+            "part1.cards_rp_srcindex",
+            "part1.cards_rp_flipuse",
+            "part1.cards_rp_matuv"
+          ]
+        },
+        {
+          "name": "lightingResample",
+          "expression": "CardIndex = Word0.x; skipped when CardIndex == LUMEN_INVALID_CARD_INDEX",
+          "requires": [
+            "Lumen.CardPageResampleDataBuffer"
+          ],
+          "sourceRefs": [
+            "part1.cards_rp_lightuse",
+            "part1.cards_rp_invalid"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "2 uint4 words per rect = 32 B; element count = RoundUpToPowerOfTwo(NumRects*2); valid words = 2*NumRects",
+        "word0.x and word0.y are different payloads for two different consumers (lighting vs material resample) and must not be conflated"
+      ],
+      "producerSources": [
+        "part1.cards_rp_cardindex",
+        "part1.cards_rp_copy",
+        "part1.cards_rp_flip",
+        "part1.cards_rp_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_rp_lightuse",
+        "part1.cards_rp_matusedata",
+        "part1.cards_rp_srcindex"
+      ],
+      "gaps": [
+        "word0.z/.w are uninitialized; do not interpret them.",
+        "The two consumers use different fields; word0.y's low 31 bits are not a card index directly (it is +1 encoded, 0 means no copy).",
+        "Rect order must match CardCaptureRects and the rasterizer instance order; it is not stored in the buffer."
+      ],
+      "fields": [
+        {
+          "name": "CardIndex",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "word[2*Rect+0].x: card index for lighting-history resample, or 0xFFFFFFFF when bResampleLastLighting is false (LUMEN_INVALID_CARD_INDEX)",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_rp_cardindex",
+            "part1.cards_rp_lightuse",
+            "part1.cards_rp_invalid"
+          ]
+        },
+        {
+          "name": "SourceCardIndexPlusOne",
+          "type": "uint31",
+          "byteOffset": 4,
+          "decode": "word[2*Rect+0].y bits[0:30]: (CopyCardIndex+1) when the page does not need render, else 0; the material resample shader computes SourceCardIndex = (y & 0x7fffffff)-1 and skips when it equals 0xFFFFFFFF",
+          "units": "index+1",
+          "sourceRefs": [
+            "part1.cards_rp_copy",
+            "part1.cards_rp_srcindex"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 31
+        },
+        {
+          "name": "bAxisXFlipped",
+          "type": "uint1",
+          "byteOffset": 4,
+          "decode": "word[2*Rect+0].y bit31: flip source CardUV.x before resampling",
+          "units": "bool",
+          "sourceRefs": [
+            "part1.cards_rp_flip",
+            "part1.cards_rp_flipuse"
+          ],
+          "bitOffset": 31,
+          "bitWidth": 1
+        },
+        {
+          "name": "CardUVRect",
+          "type": "float4",
+          "byteOffset": 16,
+          "decode": "word[2*Rect+1] reinterpreted as float4: source card UV rect (xy=min, zw=max) used for the material resample",
+          "units": "card UV",
+          "sourceRefs": [
+            "part1.cards_rp_uv",
+            "part1.cards_rp_matuv"
+          ]
+        },
+        {
+          "name": "UnusedZW",
+          "type": "uint2",
+          "byteOffset": 8,
+          "decode": "word[2*Rect+0].z/.w are never written by the producer; contents undefined",
+          "units": "undefined",
+          "sourceRefs": [
+            "part1.cards_rp_cardindex"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 5,
+        "sourceEquationFields": [
+          "CardIndex",
+          "SourceCardIndexPlusOne",
+          "bAxisXFlipped",
+          "CardUVRect",
+          "UnusedZW"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0680",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.CardPageResampleDataBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1101"
+    }
+  ]
+}

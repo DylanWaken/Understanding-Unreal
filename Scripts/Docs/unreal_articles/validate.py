@@ -40,11 +40,23 @@ def main():
     ap.add_argument('--article', choices=[a['key'] for a in ARTICLES])
     args = ap.parse_args()
     parsed, errors = {}, []
+    explorer_routes = None
 
     def parse(path):
         if path not in parsed:
             p = Page(); p.feed(path.read_text(encoding='utf-8-sig')); parsed[path] = p
         return parsed[path]
+
+    def has_fragment(target, fragment):
+        nonlocal explorer_routes
+        if target == (OUT / 'frame-explorer.html').resolve() and fragment.startswith(('resource/', 'pass/')):
+            if explorer_routes is None:
+                inventory = json.loads((OUT / 'assets/lumen-frame/inventory.json').read_text(encoding='utf-8'))
+                explorer_routes = {kind + '/' + record['id']
+                                   for kind, key in [('resource', 'resources'), ('pass', 'passes')]
+                                   for record in inventory[key]}
+            return fragment in explorer_routes
+        return fragment in parse(target).ids
 
     for article in ARTICLES:
         if args.article and article['key'] != args.article: continue
@@ -70,7 +82,7 @@ def main():
             if parts.path.startswith('/'): errors.append(f'{path}: root-relative URL {url}'); continue
             target = (path.parent / unquote(parts.path)).resolve() if parts.path else path
             if not target.exists(): errors.append(f'{path}: missing link {url}'); continue
-            if parts.fragment and target.suffix == '.html' and unquote(parts.fragment) not in parse(target).ids:
+            if parts.fragment and target.suffix == '.html' and not has_fragment(target, unquote(parts.fragment)):
                 errors.append(f'{path}: missing fragment {url}')
         source = article_source(article)
         headings = Headings(); headings.feed(source)

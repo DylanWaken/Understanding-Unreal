@@ -1,0 +1,264 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0458",
+  "nativeRecordId": "native-015977",
+  "name": "SelectMaxPriorityBucket",
+  "displayLabel": "SelectMaxPriorityBucket · UpdateWorldRadianceCaches · frame 292 · pass 457",
+  "frameNumber": 292,
+  "graphPrefix": "UpdateWorldRadianceCaches",
+  "viewState": null,
+  "pointer": "000300000228bbbe3d80",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228bbbe3c10",
+  "parametersMetadataPointer": "000300007ffb89251700",
+  "parentScopes": [
+    "UpdateWorldRadianceCaches",
+    "LumenScreenProbeGather",
+    "DiffuseIndirectAndAO",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "SelectMaxPriorityBucket",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228bbbe3c10",
+    "ParametersMetadata": "000300007ffb89251700",
+    "Pointer": "000300000228bbbe3d80",
+    "Id": 457,
+    "ParentEventScopes": [
+      "UpdateWorldRadianceCaches",
+      "LumenScreenProbeGather",
+      "DiffuseIndirectAndAO",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228b83082a0"
+    ],
+    "OutputResources": [
+      "000300000228b8308e08",
+      "000300000228b8308f40"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228b83082a0",
+      "resourceId": "resource-0742",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01234",
+        "payload-01235"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000228b8308e08",
+      "resourceId": "resource-0743",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01239",
+        "payload-01240"
+      ]
+    },
+    {
+      "uniqueName": "000300000228b8308f40",
+      "resourceId": "resource-0744",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01241",
+        "payload-01242"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06390",
+    "metadataPointer": "000300007ffb89251700",
+    "bytes": 64,
+    "sha256": "7a7b4dd03f0aabe8185905ec4a2da0d13100d82fbc759fd0b06094e87f376f7f",
+    "chunks": [
+      {
+        "sha": "7a7b4dd03f0aabe8185905ec4a2da0d13100d82fbc759fd0b06094e87f376f7f",
+        "offset": 0,
+        "length": 64
+      }
+    ],
+    "originalPath": "Structures/000300000228bbbe3c10.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenRadianceCache.cpp",
+    "FileLine": 559,
+    "Size": 64,
+    "Members": [
+      {
+        "Name": "View",
+        "ShaderType": "FViewUniformShaderParameters",
+        "FileLine": 560,
+        "Offset": 0,
+        "BaseType": "UBMT_REFERENCED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb9ac979f0"
+      },
+      {
+        "Name": "RWMaxUpdateBucket",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 561,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "RWMaxTracesFromMaxUpdateBucket",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 562,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "PriorityHistogram",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 563,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "ProbeTraceAllocator",
+        "ShaderType": "Buffer<uint>",
+        "FileLine": 564,
+        "Offset": 40,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "NumProbesToTraceBudget",
+        "ShaderType": "",
+        "FileLine": 565,
+        "Offset": 48,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [
+    {
+      "Null": true,
+      "BaseType": "UBMT_REFERENCED_STRUCT",
+      "MemberBaseOffset": 0,
+      "MemberOffset": 0,
+      "ElementStrideBytes": 16,
+      "ArrayNumElements": 1,
+      "ContentKind": "RHIUniformBufferUnbound",
+      "member": "View",
+      "contentPointer": null,
+      "metadataPointer": null,
+      "payloadId": null,
+      "status": "null-reference",
+      "metadata": null
+    }
+  ],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228bbbe3d80",
+      "Parameters": "000300000228bbbe3c10",
+      "Bindings": {
+        "RWMaxUpdateBucket": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228bbbe3c50",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "RWMaxTracesFromMaxUpdateBucket": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228bbbe3c98",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "PriorityHistogram": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228bbbe3ce0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "ProbeTraceAllocator": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 40,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": true,
+          "Pointer": "00000000000000000000",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-1082",
+      "kind": "referenced-struct-null",
+      "severity": "info",
+      "scope": "pass",
+      "message": "Referenced struct View is recorded Null=true (RHIUniformBufferUnbound); there is no captured block because the source binding is explicitly null.",
+      "source": "Base/ReferencedStructs.json",
+      "passId": "pass-0458"
+    }
+  ]
+}

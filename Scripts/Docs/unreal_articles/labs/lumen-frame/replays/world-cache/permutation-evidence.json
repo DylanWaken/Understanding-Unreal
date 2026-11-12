@@ -1,0 +1,1406 @@
+{
+  "schema": "unreal-understanding-world-cache-permutation-v1",
+  "passPointer": "000100000228d58f3800",
+  "eventName": "TraceGlobalSDFAndApplyRadianceCache",
+  "structuredImportanceSampling": true,
+  "radianceCache": true,
+  "traceBranch": {
+    "actualPass": "TraceGlobalSDFAndApplyRadianceCache",
+    "hardwareRayTracingCvar": "0",
+    "screenProbeHardwareRayTracingCvar": "1",
+    "globalSDFClipmaps": 4,
+    "globalSDFPageObjectGridBytes": 7340032,
+    "runtimeWitness": "The pass's unique RDG event name is emitted only from the TraceVoxels lambda, and the non-HWRT path is selected (r.Lumen.HardwareRayTracing=0). The exact FTraceVoxels sub-permutation and per-ray GDF hit are not captured, so the boundary is reported as path-eligible global-SDF voxel tracing, not as a proven per-ray trace result."
+  },
+  "evidence": {
+    "cvars": {
+      "r.Lumen.ThreadGroupSize32": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      },
+      "r.Lumen.ScreenProbeGather.ReferenceMode": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "0"
+      },
+      "r.Lumen.ScreenProbeGather.ImportanceSample": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      },
+      "r.Lumen.ScreenProbeGather.ImportanceSample.NumLevels": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      },
+      "r.Lumen.ScreenProbeGather.RadianceCache": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      },
+      "r.Lumen.HardwareRayTracing": {
+        "type": "int32",
+        "source": "Console",
+        "value": "0"
+      },
+      "r.Lumen.ScreenProbeGather.HardwareRayTracing": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      }
+    },
+    "rayInfosBoundTo": {
+      "name": "Lumen.ScreenProbeGather.RayInfosForTracing",
+      "file": "Resources\\000100000225fb910b30.mip0.v000100000225fb910fc0.bin",
+      "exists": true,
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.RayInfosForTracing",
+        "UniqueResourceName": "000100000225fb910b30",
+        "ByteSize": 860160,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_R16_UINT",
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "uniqueResource": "000100000225fb910b30",
+      "version": "000100000225fb910fc0",
+      "writerPass": {
+        "Id": 161,
+        "Pointer": "000100000225fb910fc0",
+        "EventName": "GenerateRays 8x8"
+      },
+      "sha256": "62c0a7fd04c899e6c75243cf5156c5df2411e9f3c620f22cf94d71d0c635e052",
+      "bytes": 860160,
+      "layout": {
+        "Resource": "000100000225fb910b30",
+        "Name": "Lumen.ScreenProbeGather.RayInfosForTracing",
+        "File": "Resources/000100000225fb910b30.mip0.v000100000225fb910fc0.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 860160,
+        "RowPitchBytes": 1280,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16_UINT",
+        "ViewFormat": "PF_R16_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16_UINT",
+        "StoredFormat": "PF_R16_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 860160,
+        "StagingByteSize": 860160
+      }
+    },
+    "rayInfoProducer": "GenerateRays 8x8 pass 161 (last writer before the selected pass)",
+    "maxImportanceSamplingOctahedronResolution": 16,
+    "screenProbeTracingOctahedronResolution": 8,
+    "selectedRayInfo": 129,
+    "source": [
+      {
+        "label": "thread-group CVar and device gate",
+        "file": "Engine/Source/Runtime/Renderer/Private/Lumen/Lumen.cpp",
+        "sha256": "b4b71fef2a12d9730e9ac2d266748439f0f9c6bdd72adbcbde8b426cb0946156",
+        "lines": [
+          {
+            "line": 38,
+            "text": "static TAutoConsoleVariable<int32> CVarLumenThreadGroupSize32("
+          },
+          {
+            "line": 39,
+            "text": "\tTEXT(\"r.Lumen.ThreadGroupSize32\"),"
+          },
+          {
+            "line": 40,
+            "text": "\t1,"
+          },
+          {
+            "line": 41,
+            "text": "\tTEXT(\"Whether to prefer dispatches in groups of 32 threads on HW which supports it (instead of standard 64).\"),"
+          },
+          {
+            "line": 89,
+            "text": "bool Lumen::UseThreadGroupSize32()"
+          },
+          {
+            "line": 90,
+            "text": "{"
+          },
+          {
+            "line": 91,
+            "text": "\treturn GRHISupportsWaveOperations && GRHIMinimumWaveSize <= 32 && CVarLumenThreadGroupSize32.GetValueOnAnyThread() != 0;"
+          },
+          {
+            "line": 92,
+            "text": "}"
+          }
+        ]
+      },
+      {
+        "label": "indirect-args enum, active permutations, dispatch offset and event",
+        "file": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeTracing.cpp",
+        "sha256": "055092f459232272767a267aa8a9b6861859b92109f1aa7645e6a7eeb3388dc4",
+        "lines": [
+          {
+            "line": 595,
+            "text": "enum class ECompactedTracingIndirectArgs"
+          },
+          {
+            "line": 596,
+            "text": "{"
+          },
+          {
+            "line": 597,
+            "text": "\tNumTracesDiv64 = 0 * sizeof(FRHIDispatchIndirectParameters),"
+          },
+          {
+            "line": 598,
+            "text": "\tNumTracesDiv32 = 1 * sizeof(FRHIDispatchIndirectParameters),"
+          },
+          {
+            "line": 599,
+            "text": "\tNumLightSampleTracesDiv64 = 2 * sizeof(FRHIDispatchIndirectParameters),"
+          },
+          {
+            "line": 600,
+            "text": "\tNumLightSampleTracesDiv32 = 3 * sizeof(FRHIDispatchIndirectParameters),"
+          },
+          {
+            "line": 601,
+            "text": "\tMAX = 4,"
+          },
+          {
+            "line": 602,
+            "text": "};"
+          },
+          {
+            "line": 904,
+            "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FThreadGroupSize32 >(Lumen::UseThreadGroupSize32());"
+          },
+          {
+            "line": 905,
+            "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FRadianceCache >(bRadianceCache);"
+          },
+          {
+            "line": 906,
+            "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FScreenProbeExtraAO >(LumenScreenProbeGather::UseScreenProbeExtraAO());"
+          },
+          {
+            "line": 907,
+            "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FStructuredImportanceSampling >(LumenScreenProbeGather::UseImportanceSampling(View));"
+          },
+          {
+            "line": 908,
+            "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FHairStrands>(bNeedTraceHairVoxel);"
+          },
+          {
+            "line": 909,
+            "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FTraceVoxels>(!bUseHardwareRayTracing && Lumen::UseGlobalSDFTracing(View.Family->EngineShowFlags));"
+          },
+          {
+            "line": 910,
+            "text": "\t\tPermutationVector.Set< FScreenProbeTraceVoxelsCS::FSimpleCoverageBasedExpand>(PermutationVector.Get<FScreenProbeTraceVoxelsCS::FTraceVoxels>() && Lumen::UseGlobalSDFSimpleCoverageBasedExpand());"
+          },
+          {
+            "line": 911,
+            "text": "\t\tPermutationVector = FScreenProbeTraceVoxelsCS::RemapPermutation(PermutationVector);"
+          },
+          {
+            "line": 912,
+            "text": "\t\tauto ComputeShader = View.ShaderMap->GetShader<FScreenProbeTraceVoxelsCS>(PermutationVector);"
+          },
+          {
+            "line": 913,
+            "text": ""
+          },
+          {
+            "line": 914,
+            "text": "\t\tECompactedTracingIndirectArgs IndirectArgsOffset = Lumen::UseThreadGroupSize32() ? ECompactedTracingIndirectArgs::NumTracesDiv32 : ECompactedTracingIndirectArgs::NumTracesDiv64;"
+          },
+          {
+            "line": 916,
+            "text": "\t\tFComputeShaderUtils::AddPass("
+          },
+          {
+            "line": 917,
+            "text": "\t\t\tGraphBuilder,"
+          },
+          {
+            "line": 918,
+            "text": "\t\t\tbNeedTraceHairVoxel ? RDG_EVENT_NAME(\"TraceGlobalSDFAndApplyRadianceCache and HairStrands\") : RDG_EVENT_NAME(\"TraceGlobalSDFAndApplyRadianceCache\"),"
+          },
+          {
+            "line": 922,
+            "text": "\t\t\tCompactedTraceParameters.IndirectArgs,"
+          }
+        ]
+      },
+      {
+        "label": "importance-sampling CVar",
+        "file": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeImportanceSampling.cpp",
+        "sha256": "f6bbfb893f9ed420a28b2657e88eaacf5c973fd3ffc08624b6f94867e4001b3f",
+        "lines": [
+          {
+            "line": 11,
+            "text": ""
+          },
+          {
+            "line": 12,
+            "text": "int32 GLumenScreenProbeImportanceSampling = 1;"
+          },
+          {
+            "line": 13,
+            "text": "FAutoConsoleVariableRef GVarLumenScreenProbeGatherImportanceSampling("
+          },
+          {
+            "line": 14,
+            "text": "\tTEXT(\"r.Lumen.ScreenProbeGather.ImportanceSample\"),"
+          },
+          {
+            "line": 15,
+            "text": "\tGLumenScreenProbeImportanceSampling,"
+          },
+          {
+            "line": 16,
+            "text": "\tTEXT(\"Whether to use Importance Sampling to generate probe trace directions.\"),"
+          },
+          {
+            "line": 17,
+            "text": "\tECVF_Scalability | ECVF_RenderThreadSafe"
+          }
+        ]
+      },
+      {
+        "label": "UseImportanceSampling",
+        "file": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeImportanceSampling.cpp",
+        "sha256": "f6bbfb893f9ed420a28b2657e88eaacf5c973fd3ffc08624b6f94867e4001b3f",
+        "lines": [
+          {
+            "line": 246,
+            "text": "\tbool UseImportanceSampling(const FViewInfo& View)"
+          },
+          {
+            "line": 247,
+            "text": "\t{"
+          },
+          {
+            "line": 248,
+            "text": "\t\tif (GLumenScreenProbeGatherReferenceMode)"
+          },
+          {
+            "line": 249,
+            "text": "\t\t{"
+          },
+          {
+            "line": 250,
+            "text": "\t\t\treturn false;"
+          },
+          {
+            "line": 251,
+            "text": "\t\t}"
+          },
+          {
+            "line": 252,
+            "text": ""
+          },
+          {
+            "line": 253,
+            "text": "\t\t// Shader permutations only created for these resolutions"
+          },
+          {
+            "line": 254,
+            "text": "\t\tconst int32 TracingResolution = GetTracingOctahedronResolution(View);"
+          },
+          {
+            "line": 255,
+            "text": "\t\treturn GLumenScreenProbeImportanceSampling != 0 && IsProbeTracingResolutionSupportedForImportanceSampling(TracingResolution);"
+          },
+          {
+            "line": 256,
+            "text": "\t}"
+          },
+          {
+            "line": 257,
+            "text": "}"
+          },
+          {
+            "line": 258,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "label": "radiance-cache and ray-direction-frame gates",
+        "file": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp",
+        "sha256": "d063b5662cdc4a03f46b9cfb53ad35e7da8e83fd2bcf9653eb94787cc3047b2e",
+        "lines": [
+          {
+            "line": 686,
+            "text": "bool LumenScreenProbeGather::UseRadianceCache()"
+          },
+          {
+            "line": 687,
+            "text": "{"
+          },
+          {
+            "line": 688,
+            "text": "\treturn GLumenScreenProbeGatherReferenceMode ? false : GLumenRadianceCache != 0;"
+          },
+          {
+            "line": 2275,
+            "text": "\tScreenProbeParameters.ScreenProbeRayDirectionFrameIndex = StateFrameIndex % FMath::Max(CVarLumenScreenProbeTemporalMaxRayDirections.GetValueOnRenderThread(), 1);"
+          }
+        ]
+      },
+      {
+        "label": "trace dispatch guard and cache call",
+        "file": "Engine/Shaders/Private/Lumen/LumenScreenProbeTracing.usf",
+        "sha256": "397de6574bd4a8d38413834953ea4b175fe24e25b1b4ca9414e826378497b49f",
+        "lines": [
+          {
+            "line": 685,
+            "text": "#if THREADGROUP_SIZE_32"
+          },
+          {
+            "line": 686,
+            "text": "\t#define PROBE_TRACE_THREADGROUP_SIZE_1D 32"
+          },
+          {
+            "line": 687,
+            "text": "#else"
+          },
+          {
+            "line": 688,
+            "text": "\t#define PROBE_TRACE_THREADGROUP_SIZE_1D 64"
+          },
+          {
+            "line": 693,
+            "text": "[numthreads(PROBE_TRACE_THREADGROUP_SIZE_1D, 1, 1)]"
+          },
+          {
+            "line": 699,
+            "text": "\tif (DispatchThreadId.x < CompactedTraceTexelAllocator[0])"
+          },
+          {
+            "line": 700,
+            "text": "\t{"
+          },
+          {
+            "line": 701,
+            "text": "\t\tuint ScreenProbeIndex;"
+          },
+          {
+            "line": 702,
+            "text": "\t\tuint2 TraceTexelCoord;"
+          },
+          {
+            "line": 703,
+            "text": "\t\tReadTraceTexel(DispatchThreadId.x, ScreenProbeIndex, TraceTexelCoord);"
+          },
+          {
+            "line": 704,
+            "text": ""
+          },
+          {
+            "line": 719,
+            "text": "\tuint2 ScreenProbeScreenPosition = GetScreenProbeScreenPosition(ScreenProbeIndex);"
+          },
+          {
+            "line": 720,
+            "text": "\tuint2 ScreenTileCoord = GetScreenTileCoord(ScreenProbeScreenPosition);"
+          },
+          {
+            "line": 727,
+            "text": "\t{"
+          },
+          {
+            "line": 828,
+            "text": "\t\t\t\tfloat TransparencyBeforeRadianceCache = TraceResult.Transparency;"
+          },
+          {
+            "line": 829,
+            "text": "\t\t\t\t// Extra AO, Skylight Leaking and fogging need hit distances further than what screen probes trace"
+          },
+          {
+            "line": 830,
+            "text": "\t\t\t\tfloat RadianceCacheHitDistance = TraceHitDistance;"
+          },
+          {
+            "line": 831,
+            "text": "\t\t\t\tSampleRadianceCacheAndApply(Coverage, TranslatedWorldPosition, RayWorldDirection, ConeHalfAngle, /*RandomScalarForStochasticIterpolation*/ 0.5f, TraceResult.Lighting, TraceResult.Transparency, RadianceCacheHitDistance);"
+          },
+          {
+            "line": 832,
+            "text": ""
+          },
+          {
+            "line": 833,
+            "text": "\t\t\t\tif (TransparencyBeforeRadianceCache > 0.0f)"
+          },
+          {
+            "line": 859,
+            "text": "\t\t\t\tRWTraceRadiance[TraceBufferCoord] = float3(0, 0, .5f) * View.PreExposure;"
+          },
+          {
+            "line": 860,
+            "text": "\t\t\t#else"
+          },
+          {
+            "line": 861,
+            "text": "\t\t\t\tRWTraceRadiance[TraceBufferCoord] = QuantizeForFloatRenderTarget(TraceResult.Lighting, int3(TraceBufferCoord, View.StateFrameIndexMod8));"
+          },
+          {
+            "line": 862,
+            "text": "\t\t\t#endif"
+          },
+          {
+            "line": 870,
+            "text": "\t\tWriteTraceHit(TraceBufferCoord, TraceHitDistanceForSpatialFiltering, bHit, false, /*bReachedRadianceCache*/ false);"
+          },
+          {
+            "line": 874,
+            "text": "[numthreads(PROBE_TRACE_THREADGROUP_SIZE_1D, 1, 1)]"
+          },
+          {
+            "line": 875,
+            "text": "void ScreenProbeTraceVoxelsCS("
+          },
+          {
+            "line": 876,
+            "text": "\tuint3 GroupId : SV_GroupID,"
+          },
+          {
+            "line": 877,
+            "text": "\tuint3 DispatchThreadId : SV_DispatchThreadID,"
+          },
+          {
+            "line": 878,
+            "text": "\tuint3 GroupThreadId : SV_GroupThreadID)"
+          },
+          {
+            "line": 879,
+            "text": "{"
+          },
+          {
+            "line": 880,
+            "text": "\tif (DispatchThreadId.x < CompactedTraceTexelAllocator[0])"
+          }
+        ]
+      },
+      {
+        "label": "cache probe, parallax, interpolation and apply",
+        "file": "Engine/Shaders/Private/Lumen/LumenRadianceCacheInterpolation.ush",
+        "sha256": "16db4c628da14c6277d3b06c03b01dfb90f60493f9a35ef01315e07be2e39ed6",
+        "lines": [
+          {
+            "line": 245,
+            "text": "FRadianceCacheSample SampleRadianceCacheProbe(uint ProbeIndex, float3 WorldSpaceDirection, float MipLevel)"
+          },
+          {
+            "line": 246,
+            "text": "{"
+          },
+          {
+            "line": 247,
+            "text": "\tFRadianceCacheSample Sample;"
+          },
+          {
+            "line": 248,
+            "text": "\tSample.Radiance = 0.0f;"
+          },
+          {
+            "line": 249,
+            "text": "\tSample.SkyVisibility = 0.0f;"
+          },
+          {
+            "line": 250,
+            "text": "\tSample.TraceHitDistance = 0.0f;"
+          },
+          {
+            "line": 251,
+            "text": ""
+          },
+          {
+            "line": 252,
+            "text": "\tfloat2 ProbeUV = InverseEquiAreaSphericalMapping(WorldSpaceDirection);"
+          },
+          {
+            "line": 253,
+            "text": ""
+          },
+          {
+            "line": 257,
+            "text": "\t\tuint2 ProbeAtlasCoord = RadianceProbeResolution * uint2(ProbeIndex & ProbeAtlasResolutionModuloMask, ProbeIndex >> ProbeAtlasResolutionDivideShift);"
+          },
+          {
+            "line": 263,
+            "text": "\t\tuint2 ProbeAtlasCoord = FinalProbeResolution * uint2(ProbeIndex & ProbeAtlasResolutionModuloMask, ProbeIndex >> ProbeAtlasResolutionDivideShift);"
+          },
+          {
+            "line": 264,
+            "text": "\t\tfloat2 ProbeTexelCoord = ProbeUV * RadianceProbeResolution + (1u << FinalRadianceAtlasMaxMip);"
+          },
+          {
+            "line": 265,
+            "text": "\t\tfloat2 ProbeAtlasUV = (ProbeAtlasCoord + ProbeTexelCoord) * InvProbeFinalRadianceAtlasResolution;"
+          },
+          {
+            "line": 272,
+            "text": "\t\t\tSample.Radiance = RadianceCacheFinalRadianceAtlas.SampleLevel(GlobalTrilinearClampedSampler, ProbeAtlasUV, MipLevel) * RadianceCacheOneOverCachedLightingPreExposure;"
+          },
+          {
+            "line": 284,
+            "text": "\t{"
+          },
+          {
+            "line": 285,
+            "text": "\t\tuint2 ProbeAtlasCoord = RadianceProbeResolution * uint2(ProbeIndex & ProbeAtlasResolutionModuloMask, ProbeIndex >> ProbeAtlasResolutionDivideShift);"
+          },
+          {
+            "line": 286,
+            "text": "\t\tfloat2 ProbeTexelCoord = ProbeUV * RadianceProbeResolution;"
+          },
+          {
+            "line": 287,
+            "text": "\t\tFProbeDepth ProbeDepth = DecodeProbeDepth(RadianceCacheDepthAtlas[ProbeAtlasCoord + ProbeTexelCoord].x);"
+          },
+          {
+            "line": 288,
+            "text": "\t\tSample.TraceHitDistance = ProbeDepth.HitDistance;"
+          },
+          {
+            "line": 289,
+            "text": "\t\tSample.bBackface = !ProbeDepth.bFrontface && !ProbeDepth.bTwoSided;"
+          },
+          {
+            "line": 332,
+            "text": "FRadianceCacheSample SampleRadianceCacheProbeWithParallaxCorrection(uint3 ProbeCoord, uint ProbeClipmapIndex, float3 TranslatedWorldSpacePosition, float3 WorldSpaceDirection, float MipLevel)"
+          },
+          {
+            "line": 334,
+            "text": "\tfloat ProbeTMin = GetRadianceProbeTMin(ProbeClipmapIndex);"
+          },
+          {
+            "line": 335,
+            "text": "\tProbeTMin = ProbeTMin == 0.0f ? 1000.0f : ProbeTMin;\t"
+          },
+          {
+            "line": 337,
+            "text": "\tuint ProbeIndex = GetProbeIndexFromIndirectionTexture(ProbeCoord, ProbeClipmapIndex);"
+          },
+          {
+            "line": 338,
+            "text": "\tfloat3 ProbeTranslatedWorldPosition = GetProbeTranslatedWorldPosition(ProbeCoord, ProbeClipmapIndex, ProbeIndex);"
+          },
+          {
+            "line": 339,
+            "text": ""
+          },
+          {
+            "line": 340,
+            "text": "\tfloat3 ReprojectedDirection = WorldSpaceDirection;"
+          },
+          {
+            "line": 341,
+            "text": "\tfloat CorrectionFactor = 1.0f;"
+          },
+          {
+            "line": 343,
+            "text": "#define SIMPLE_SPHERE_PARALLAX 1"
+          },
+          {
+            "line": 346,
+            "text": "#if SIMPLE_SPHERE_PARALLAX"
+          },
+          {
+            "line": 348,
+            "text": "\tfloat ReprojectionRadius = ReprojectionRadiusScale * ProbeTMin;"
+          },
+          {
+            "line": 349,
+            "text": "\tfloat T = RayIntersectSphere(TranslatedWorldSpacePosition, WorldSpaceDirection, float4(ProbeTranslatedWorldPosition, ReprojectionRadius)).y;"
+          },
+          {
+            "line": 350,
+            "text": "\tfloat3 TranslatedIntersectionPosition = TranslatedWorldSpacePosition + WorldSpaceDirection * T;"
+          },
+          {
+            "line": 351,
+            "text": "\tReprojectedDirection = TranslatedIntersectionPosition - ProbeTranslatedWorldPosition;"
+          },
+          {
+            "line": 352,
+            "text": "\t// Cancel out the attenuation effect when moving towards/away from a probe texel to mitigate the grid like pattern"
+          },
+          {
+            "line": 353,
+            "text": "\t// CorrectionFactor = T^2 / R^2 / dot(normalize(ReprojectedDirection), WorldSpaceDirection)"
+          },
+          {
+            "line": 354,
+            "text": "\tCorrectionFactor = T * T / (ReprojectionRadius * dot(ReprojectedDirection, WorldSpaceDirection));"
+          },
+          {
+            "line": 401,
+            "text": "\tFRadianceCacheSample RadianceCacheSample = SampleRadianceCacheProbe(ProbeIndex, ReprojectedDirection, MipLevel);"
+          },
+          {
+            "line": 402,
+            "text": "\tRadianceCacheSample.Radiance *= CorrectionFactor;"
+          },
+          {
+            "line": 403,
+            "text": "\treturn RadianceCacheSample;"
+          },
+          {
+            "line": 429,
+            "text": "FRadianceCacheSample SampleRadianceCacheInterpolated(FRadianceCacheCoverage Coverage, float3 TranslatedWorldSpacePosition, float3 WorldSpaceDirection, float ConeHalfAngle, float RandomScalarForStochasticInterpolation)"
+          },
+          {
+            "line": 440,
+            "text": "\tfloat3 ProbeCoordFloat = GetRadianceProbeCoordFloat(TranslatedWorldSpacePosition, Coverage.ClipmapIndex);"
+          },
+          {
+            "line": 443,
+            "text": "\tfloat NumTexels = sqrt(1.0f - cos(ConeHalfAngle)) * RadianceProbeResolution;"
+          },
+          {
+            "line": 444,
+            "text": "\tfloat MipLevel = clamp(log2(NumTexels), 0, (float)FinalRadianceAtlasMaxMip);"
+          },
+          {
+            "line": 446,
+            "text": "\tfloat3 CornerProbeCoordFloat = ProbeCoordFloat - 0.5f;"
+          },
+          {
+            "line": 447,
+            "text": "\tint3 CornerProbeCoord = floor(CornerProbeCoordFloat);"
+          },
+          {
+            "line": 448,
+            "text": "\tfloat3 LerpAlphas = frac(CornerProbeCoordFloat);"
+          },
+          {
+            "line": 450,
+            "text": "#if RADIANCE_CACHE_STOCHASTIC_INTERPOLATION"
+          },
+          {
+            "line": 475,
+            "text": "\tFRadianceCacheSample Sample000 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 0, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 476,
+            "text": "\tFRadianceCacheSample Sample001 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 0, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 477,
+            "text": "\tFRadianceCacheSample Sample010 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 1, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 478,
+            "text": "\tFRadianceCacheSample Sample011 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 1, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 479,
+            "text": "\tFRadianceCacheSample Sample100 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 0, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 480,
+            "text": "\tFRadianceCacheSample Sample101 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 0, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 481,
+            "text": "\tFRadianceCacheSample Sample110 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 1, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 482,
+            "text": "\tFRadianceCacheSample Sample111 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 1, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+          },
+          {
+            "line": 484,
+            "text": "\tFRadianceCacheSample ZLerp00 = LerpRadianceCacheSample(Sample000, Sample001, LerpAlphas.z);"
+          },
+          {
+            "line": 485,
+            "text": "\tFRadianceCacheSample ZLerp01 = LerpRadianceCacheSample(Sample010, Sample011, LerpAlphas.z);"
+          },
+          {
+            "line": 486,
+            "text": "\tFRadianceCacheSample ZLerp10 = LerpRadianceCacheSample(Sample100, Sample101, LerpAlphas.z);"
+          },
+          {
+            "line": 487,
+            "text": "\tFRadianceCacheSample ZLerp11 = LerpRadianceCacheSample(Sample110, Sample111, LerpAlphas.z);"
+          },
+          {
+            "line": 488,
+            "text": ""
+          },
+          {
+            "line": 489,
+            "text": "\tFRadianceCacheSample YLerp0 = LerpRadianceCacheSample(ZLerp00, ZLerp01, LerpAlphas.y);"
+          },
+          {
+            "line": 490,
+            "text": "\tFRadianceCacheSample YLerp1 = LerpRadianceCacheSample(ZLerp10, ZLerp11, LerpAlphas.y);"
+          },
+          {
+            "line": 491,
+            "text": ""
+          },
+          {
+            "line": 492,
+            "text": "\tFRadianceCacheSample InterpolatedSample = LerpRadianceCacheSample(YLerp0, YLerp1, LerpAlphas.x);"
+          },
+          {
+            "line": 499,
+            "text": "void SampleRadianceCacheAndApply(FRadianceCacheCoverage Coverage, float3 TranslatedWorldSpacePosition, float3 WorldSpaceDirection, float ConeHalfAngle, float RandomScalarForStochasticInterpolation, inout float3 Lighting, inout float Transparency, inout float TraceHitDistance)"
+          },
+          {
+            "line": 501,
+            "text": "\tif (Transparency > 0.0f)"
+          },
+          {
+            "line": 502,
+            "text": "\t{"
+          },
+          {
+            "line": 503,
+            "text": "\t\tFRadianceCacheSample RadianceCacheSample = SampleRadianceCacheInterpolated(Coverage, TranslatedWorldSpacePosition, WorldSpaceDirection, ConeHalfAngle, RandomScalarForStochasticInterpolation);"
+          },
+          {
+            "line": 505,
+            "text": "\t\tif (ShowBlackRadianceCacheLighting == 0)"
+          },
+          {
+            "line": 507,
+            "text": "\t\t\tLighting += RadianceCacheSample.Radiance * Transparency;"
+          },
+          {
+            "line": 510,
+            "text": "\t\tTraceHitDistance = RadianceCacheSample.TraceHitDistance;"
+          },
+          {
+            "line": 511,
+            "text": "\t\tTransparency = 0.0f;"
+          }
+        ]
+      },
+      {
+        "label": "BlueNoiseVec2",
+        "file": "Engine/Shaders/Private/BlueNoise.ush",
+        "sha256": "25d436ab958abe2cc7b6b1b42003474858b32308c2505ce36bd3eceeaaeaa065",
+        "lines": [
+          {
+            "line": 23,
+            "text": "float2 BlueNoiseVec2(uint2 ScreenCoord, uint FrameIndex)"
+          },
+          {
+            "line": 24,
+            "text": "{"
+          },
+          {
+            "line": 25,
+            "text": "\treturn GetBlueNoiseVec2(BlueNoise.Vec2Texture, BlueNoise.Dimensions, BlueNoise.ModuloMasks, ScreenCoord, FrameIndex);"
+          }
+        ]
+      },
+      {
+        "label": "GetBlueNoiseVec2",
+        "file": "Engine/Shaders/Private/BlueNoiseCommon.ush",
+        "sha256": "2c517aebf448403954199a5092edad45df6372fef38a51a22e5ac8a4d5b19baf",
+        "lines": [
+          {
+            "line": 11,
+            "text": ""
+          },
+          {
+            "line": 12,
+            "text": "float2 GetBlueNoiseVec2(Texture2D<float2> InTexture, int3 InDimensions, int3 InModuloMasks, uint2 InScreenCoord, uint InFrameIndex)"
+          },
+          {
+            "line": 13,
+            "text": "{"
+          },
+          {
+            "line": 14,
+            "text": "\tuint3 WrappedCoordinate = uint3(InScreenCoord, InFrameIndex) & InModuloMasks;"
+          },
+          {
+            "line": 15,
+            "text": "\tuint3 TextureCoordinate = uint3(WrappedCoordinate.x, WrappedCoordinate.z * BlueNoise.Dimensions.y + WrappedCoordinate.y, 0);"
+          },
+          {
+            "line": 16,
+            "text": "\treturn InTexture.Load(TextureCoordinate, 0).xy;"
+          },
+          {
+            "line": 17,
+            "text": "}"
+          },
+          {
+            "line": 18,
+            "text": ""
+          },
+          {
+            "line": 19,
+            "text": "float GetBlueNoiseDitheredCoverage(Texture2D<float> InTexture, int3 InDimensions, int3 InModuloMasks, uint2 InScreenCoord, uint InFrameIndex, float InCoverage)"
+          }
+        ]
+      },
+      {
+        "label": "probe texel center and structured ray info",
+        "file": "Engine/Shaders/Private/Lumen/LumenScreenProbeTracingCommon.ush",
+        "sha256": "e00eb28a810241c1b9349e736c1c83bf0fbe50e34e832e72fc05fbf994c668d9",
+        "lines": [
+          {
+            "line": 8,
+            "text": "float2 GetProbeTexelCenter(uint2 ScreenTileCoord)"
+          },
+          {
+            "line": 9,
+            "text": "{"
+          },
+          {
+            "line": 10,
+            "text": "#define JITTER_RAY_DIRECTION 1"
+          },
+          {
+            "line": 11,
+            "text": "#if JITTER_RAY_DIRECTION"
+          },
+          {
+            "line": 12,
+            "text": "\t#define BLUE_NOISE_LUT 1"
+          },
+          {
+            "line": 13,
+            "text": "\t#if BLUE_NOISE_LUT"
+          },
+          {
+            "line": 14,
+            "text": "\t\treturn BlueNoiseVec2(ScreenTileCoord, ScreenProbeRayDirectionFrameIndex);"
+          },
+          {
+            "line": 88,
+            "text": "#if STRUCTURED_IMPORTANCE_SAMPLING"
+          },
+          {
+            "line": 89,
+            "text": "\tuint RayInfo = StructuredImportanceSampledRayInfosForTracing[TraceBufferCoord];"
+          },
+          {
+            "line": 90,
+            "text": "\tuint2 RayTexelCoord;"
+          },
+          {
+            "line": 91,
+            "text": "\tuint RayLevel;"
+          },
+          {
+            "line": 92,
+            "text": "\tUnpackRayInfo(RayInfo, RayTexelCoord, RayLevel);"
+          },
+          {
+            "line": 93,
+            "text": ""
+          },
+          {
+            "line": 94,
+            "text": "\tuint MipSize = MaxImportanceSamplingOctahedronResolution >> RayLevel;"
+          },
+          {
+            "line": 95,
+            "text": "\tfloat InvSupersampledMipSize = 1.0f / (MipSize * NumSupersamples);"
+          },
+          {
+            "line": 96,
+            "text": "\tProbeUV = (RayTexelCoord * NumSupersamples + ProbeTexelCenter) * InvSupersampledMipSize;"
+          },
+          {
+            "line": 97,
+            "text": "\tConeHalfAngle = acosFast(1.0f - 1.0f * InvSupersampledMipSize * InvSupersampledMipSize);"
+          },
+          {
+            "line": 98,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "label": "screen position, tile and compacted texel encoding",
+        "file": "Engine/Shaders/Private/Lumen/LumenScreenProbeCommon.ush",
+        "sha256": "7da63b360f9c5e9c540d21a5e32a1374324cfcba4c171694e2779aec50a0a84e",
+        "lines": [
+          {
+            "line": 122,
+            "text": "uint2 GetScreenProbeScreenPosition(uint ScreenProbeIndex)"
+          },
+          {
+            "line": 123,
+            "text": "{"
+          },
+          {
+            "line": 124,
+            "text": "\tuint2 ScreenProbeAtlasCoord = uint2(ScreenProbeIndex % ScreenProbeViewSize.x, ScreenProbeIndex / ScreenProbeViewSize.x);"
+          },
+          {
+            "line": 125,
+            "text": "\tuint2 ScreenProbeScreenPosition = ScreenProbeAtlasCoord * ScreenProbeDownsampleFactor + GetScreenTileJitter(SCREEN_TEMPORAL_INDEX) + View.ViewRectMinAndSize.xy;"
+          },
+          {
+            "line": 135,
+            "text": "uint2 GetScreenTileCoord(uint2 ScreenProbeScreenPosition)"
+          },
+          {
+            "line": 136,
+            "text": "{"
+          },
+          {
+            "line": 137,
+            "text": "\treturn (ScreenProbeScreenPosition - GetScreenTileJitter(SCREEN_TEMPORAL_INDEX) - View.ViewRectMinAndSize.xy) / ScreenProbeDownsampleFactor;"
+          },
+          {
+            "line": 138,
+            "text": "}"
+          },
+          {
+            "line": 202,
+            "text": "uint EncodeScreenProbeTraceTexel(uint ScreenProbeIndex, uint2 TraceTexelCoord)"
+          },
+          {
+            "line": 203,
+            "text": "{"
+          },
+          {
+            "line": 204,
+            "text": "\treturn (ScreenProbeIndex & 0xFFFFF) | ((TraceTexelCoord.x & 0x1F) << 20) | ((TraceTexelCoord.y & 0x1F) << 25);"
+          },
+          {
+            "line": 207,
+            "text": "void DecodeScreenProbeTraceTexel(uint TraceTexelData, out uint ScreenProbeIndex, out uint2 TraceTexelCoord)"
+          },
+          {
+            "line": 208,
+            "text": "{"
+          },
+          {
+            "line": 209,
+            "text": "\tScreenProbeIndex = TraceTexelData & 0xFFFFF;"
+          },
+          {
+            "line": 210,
+            "text": "\tTraceTexelCoord.x = (TraceTexelData >> 20) & 0x1F;"
+          },
+          {
+            "line": 211,
+            "text": "\tTraceTexelCoord.y = (TraceTexelData >> 25) & 0x1F;"
+          }
+        ]
+      },
+      {
+        "label": "translated-world position reconstruction",
+        "file": "Engine/Shaders/Private/Lumen/LumenPosition.ush",
+        "sha256": "87a668844f5a455abaaeb78b9612288fbff24f8bdf9ca781071affed003f5887",
+        "lines": [
+          {
+            "line": 16,
+            "text": "float3 GetTranslatedWorldPositionFromScreenUV(float2 ScreenUV, float SceneDepth)"
+          },
+          {
+            "line": 17,
+            "text": "{"
+          },
+          {
+            "line": 18,
+            "text": "\tfloat2 ScreenPosition = (ScreenUV - View.ScreenPositionScaleBias.wz) / View.ScreenPositionScaleBias.xy;"
+          },
+          {
+            "line": 19,
+            "text": "\treturn mul(float4(GetScreenPositionForProjectionType(ScreenPosition, SceneDepth), SceneDepth, 1), PrimaryView.ScreenToTranslatedWorld).xyz;"
+          },
+          {
+            "line": 20,
+            "text": "}"
+          },
+          {
+            "line": 21,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "label": "RayIntersectSphere far root",
+        "file": "Engine/Shaders/Private/Common.ush",
+        "sha256": "d6d43d5200e269bc38136cf644054e5c0ae372a61dce21d3a97ef6e9450ec8e5",
+        "lines": [
+          {
+            "line": 1962,
+            "text": "float2 RayIntersectSphere(float3 RayOrigin, float3 RayDirection, float4 Sphere)"
+          },
+          {
+            "line": 1963,
+            "text": "{"
+          },
+          {
+            "line": 1964,
+            "text": "\tfloat3 LocalPosition = RayOrigin - Sphere.xyz;"
+          },
+          {
+            "line": 1965,
+            "text": "\tfloat LocalPositionSqr = dot(LocalPosition, LocalPosition);"
+          },
+          {
+            "line": 1966,
+            "text": ""
+          },
+          {
+            "line": 1967,
+            "text": "\tfloat3 QuadraticCoef;"
+          },
+          {
+            "line": 1968,
+            "text": "\tQuadraticCoef.x = dot(RayDirection, RayDirection);"
+          },
+          {
+            "line": 1969,
+            "text": "\tQuadraticCoef.y = 2 * dot(RayDirection, LocalPosition);"
+          },
+          {
+            "line": 1970,
+            "text": "\tQuadraticCoef.z = LocalPositionSqr - Sphere.w * Sphere.w;"
+          },
+          {
+            "line": 1971,
+            "text": ""
+          },
+          {
+            "line": 1972,
+            "text": "\tfloat Discriminant = QuadraticCoef.y * QuadraticCoef.y - 4 * QuadraticCoef.x * QuadraticCoef.z;"
+          },
+          {
+            "line": 1973,
+            "text": ""
+          },
+          {
+            "line": 1974,
+            "text": "\tfloat2 Intersections = -1;"
+          },
+          {
+            "line": 1975,
+            "text": ""
+          },
+          {
+            "line": 1976,
+            "text": "\t// Only continue if the ray intersects the sphere"
+          },
+          {
+            "line": 1977,
+            "text": "\tFLATTEN"
+          },
+          {
+            "line": 1978,
+            "text": "\tif (Discriminant >= 0)"
+          },
+          {
+            "line": 1979,
+            "text": "\t{"
+          },
+          {
+            "line": 1980,
+            "text": "\t\tfloat SqrtDiscriminant = sqrt(Discriminant);"
+          }
+        ]
+      },
+      {
+        "label": "equi-area mapping",
+        "file": "Engine/Shaders/Private/MonteCarlo.ush",
+        "sha256": "a4bfdbb5a1c1bfeef0e3b009850fceda902829fbb215dfc8cd82beeb65b51436",
+        "lines": [
+          {
+            "line": 159,
+            "text": "float3 EquiAreaSphericalMapping(float2 UV)"
+          },
+          {
+            "line": 160,
+            "text": "{"
+          },
+          {
+            "line": 161,
+            "text": "\tUV = 2 * UV - 1;"
+          },
+          {
+            "line": 162,
+            "text": "\tfloat D = 1 - (abs(UV.x) + abs(UV.y));"
+          },
+          {
+            "line": 163,
+            "text": "\tfloat R = 1 - abs(D);"
+          },
+          {
+            "line": 164,
+            "text": "\t// Branch to avoid dividing by 0."
+          },
+          {
+            "line": 165,
+            "text": "\t// Only happens with (0.5, 0.5), usually occurs in odd number resolutions which use the very central texel"
+          },
+          {
+            "line": 166,
+            "text": "\tfloat Phi = R == 0 ? 0 : (PI / 4) * ((abs(UV.y) - abs(UV.x)) / R + 1);"
+          },
+          {
+            "line": 167,
+            "text": "\tfloat F = R * sqrt(2 - R * R);"
+          },
+          {
+            "line": 168,
+            "text": "\treturn float3("
+          },
+          {
+            "line": 169,
+            "text": "\t\tF * sign(UV.x) * abs(cos(Phi)),"
+          },
+          {
+            "line": 170,
+            "text": "\t\tF * sign(UV.y) * abs(sin(Phi)),"
+          },
+          {
+            "line": 178,
+            "text": "float2 InverseEquiAreaSphericalMapping(float3 Direction)"
+          },
+          {
+            "line": 179,
+            "text": "{"
+          },
+          {
+            "line": 180,
+            "text": "\t// Most use cases of this func generate Direction by diffing two positions and thus unnormalized"
+          },
+          {
+            "line": 181,
+            "text": "\tDirection = normalize(Direction);"
+          },
+          {
+            "line": 182,
+            "text": "\t"
+          },
+          {
+            "line": 183,
+            "text": "\tfloat3 AbsDir = abs(Direction);"
+          },
+          {
+            "line": 184,
+            "text": "\tfloat R = sqrt(1 - AbsDir.z);"
+          },
+          {
+            "line": 185,
+            "text": "\tfloat Epsilon = 5.42101086243e-20; // 2^-64 (this avoids 0/0 without changing the rest of the mapping)"
+          },
+          {
+            "line": 186,
+            "text": "\tfloat x = min(AbsDir.x, AbsDir.y) / (max(AbsDir.x, AbsDir.y) + Epsilon);"
+          },
+          {
+            "line": 187,
+            "text": ""
+          },
+          {
+            "line": 188,
+            "text": "\t// Coefficients for 6th degree minimax approximation of atan(x)*2/pi, x=[0,1]."
+          },
+          {
+            "line": 189,
+            "text": "\tconst float t1 = 0.406758566246788489601959989e-5f;"
+          },
+          {
+            "line": 190,
+            "text": "\tconst float t2 = 0.636226545274016134946890922156f;"
+          },
+          {
+            "line": 191,
+            "text": "\tconst float t3 = 0.61572017898280213493197203466e-2f;"
+          },
+          {
+            "line": 192,
+            "text": "\tconst float t4 = -0.247333733281268944196501420480f;"
+          },
+          {
+            "line": 193,
+            "text": "\tconst float t5 = 0.881770664775316294736387951347e-1f;"
+          },
+          {
+            "line": 194,
+            "text": "\tconst float t6 = 0.419038818029165735901852432784e-1f;"
+          },
+          {
+            "line": 195,
+            "text": "\tconst float t7 = -0.251390972343483509333252996350e-1f;"
+          },
+          {
+            "line": 196,
+            "text": ""
+          },
+          {
+            "line": 197,
+            "text": "\t// Polynomial approximation of atan(x)*2/pi"
+          },
+          {
+            "line": 198,
+            "text": "\tfloat Phi = t6 + t7 * x;"
+          },
+          {
+            "line": 199,
+            "text": "\tPhi = t5 + Phi * x;"
+          },
+          {
+            "line": 200,
+            "text": "\tPhi = t4 + Phi * x;"
+          },
+          {
+            "line": 201,
+            "text": "\tPhi = t3 + Phi * x;"
+          },
+          {
+            "line": 202,
+            "text": "\tPhi = t2 + Phi * x;"
+          },
+          {
+            "line": 203,
+            "text": "\tPhi = t1 + Phi * x;"
+          },
+          {
+            "line": 204,
+            "text": ""
+          },
+          {
+            "line": 205,
+            "text": "\tPhi = (AbsDir.x < AbsDir.y) ? 1 - Phi : Phi;"
+          },
+          {
+            "line": 206,
+            "text": "\tfloat2 UV = float2(R - Phi * R, Phi * R);"
+          }
+        ]
+      },
+      {
+        "label": "acosFast",
+        "file": "Engine/Shaders/Private/FastMathThirdParty.ush",
+        "sha256": "4f76812638643c363edd0f33c8bfa1ec735f2321fad1bf1db6d03ebb860184a5",
+        "lines": [
+          {
+            "line": 108,
+            "text": "float acosFast(float inX) "
+          },
+          {
+            "line": 109,
+            "text": "{"
+          },
+          {
+            "line": 110,
+            "text": "    float x = abs(inX);"
+          },
+          {
+            "line": 111,
+            "text": "    float res = -0.156583f * x + (0.5 * PI);"
+          },
+          {
+            "line": 112,
+            "text": "    res *= sqrt(1.0f - x);"
+          },
+          {
+            "line": 113,
+            "text": "    return (inX >= 0) ? res : PI - res;"
+          },
+          {
+            "line": 114,
+            "text": "}"
+          },
+          {
+            "line": 115,
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "groupSize": {
+    "allocator": 82102,
+    "compactedTraceTexelDataElements": 430080,
+    "compactedTraceCoordsUnique": 82102,
+    "indirectArgs": [
+      [
+        1283,
+        1,
+        1
+      ],
+      [
+        2566,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "enumOffsets": {
+      "NumTracesDiv64": 0,
+      "NumTracesDiv32": 12,
+      "NumLightSampleTracesDiv64": 24,
+      "NumLightSampleTracesDiv32": 36
+    },
+    "dispatchTripleDiv64": [
+      1283,
+      1,
+      1
+    ],
+    "dispatchTripleDiv32": [
+      2566,
+      1,
+      1
+    ],
+    "hlslGuard": "if (DispatchThreadId.x < CompactedTraceTexelAllocator[0])",
+    "cvarThreadGroupSize32": {
+      "type": "int32",
+      "source": "Constructor",
+      "value": "1"
+    },
+    "exactGroupSizeWitness": false,
+    "groupSizeCaveat": "The captured indirect-args buffer contains both Div64 and Div32 records; DumpGPU does not record which record the indirect dispatch consumed. Both triples are consistent with the allocator and the selected lane is below both limits. The CVar r.Lumen.ThreadGroupSize32=1 and the D3D12/SM6 NVIDIA device indicate 32, but this replay does not claim the 32-vs-64 choice as a direct device witness."
+  }
+}

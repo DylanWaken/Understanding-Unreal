@@ -1,0 +1,100 @@
+{
+  "schema": "publication-native-dump-summary-v1",
+  "dump_id": "binary-20261112-133826",
+  "engine_version": "5.8.1-0+UE5",
+  "engine_frame": 292,
+  "frame_delta_seconds": 0.009839,
+  "status": "ok",
+  "raw_dump_included": false,
+  "raw_dump_path_label": "external-raw-dump/binary-20261112-133826",
+  "raw_dump_measurements": {
+    "status_file": "ok",
+    "resource_binary_files": 2481,
+    "resource_binary_bytes": 14517078510,
+    "resource_binary_gib": 13.52,
+    "total_dump_files_including_metadata": 4335,
+    "total_dump_bytes_including_metadata": 14523875616,
+    "dump_seconds": 15.125,
+    "draws": 292,
+    "dump_settings": {
+      "Texture": 2,
+      "Buffer": 2,
+      "PassParameters": 1,
+      "ConsoleVariables": 1,
+      "Root": "*",
+      "Explore": 0,
+      "Upload": 0,
+      "MaxStagingSize": 256,
+      "Stream": 0,
+      "RedumpInputs": 0,
+      "FrameCount": 1
+    }
+  },
+  "counts": {
+    "resources_total": 1389,
+    "resources_captured": 1284,
+    "resources_partial": 0,
+    "resources_descriptor_only": 105,
+    "texture3d_total": 78,
+    "texture3d_captured": 0,
+    "texturecube_total": 3,
+    "texturecube_captured": 0,
+    "resource_binary_files": 2481,
+    "passes_total": 928,
+    "passes_without_parameter_payload": 0,
+    "skipped_descriptor_warning_lines": 24
+  },
+  "known_gaps": [
+    {
+      "gap": "Texture3D payloads absent",
+      "count": 78,
+      "detail": "All 78 Texture3D resources are descriptor-only. DumpGPU's TranslateSubresourceDumpDesc fills extents only for Texture2D, so no 3D texture bytes exist in Resources/. Descriptors remain in inventory.json."
+    },
+    {
+      "gap": "TextureCube payloads absent",
+      "count": 3,
+      "detail": "All 3 TextureCube resources are descriptor-only for the same IsTexture2D gate. Descriptors remain in inventory.json; face bytes are not present."
+    },
+    {
+      "gap": "SkipTracking default/dummy buffers",
+      "count": 24,
+      "detail": "24 warning lines record DefaultStructuredBuffer, DefaultByteAddressBuffer, DefaultBuffer and VirtualTexture_FeedbackBuffer skipped because of ERDGBufferFlags::SkipTracking. Exact warning lines are retained in missing-coverage.json."
+    },
+    {
+      "gap": "RDG uniform-buffer payload mappings (LumenCardScene)",
+      "detail": "This export retains pass parameter payloads and StructuresMetadata for shader structures including LumenCardScene, but it does not provide an exact mapping from every RDG uniform-buffer payload to the corresponding RDG resource. Source instrumentation is expected to close this in later data. No such mapping is claimed here."
+    },
+    {
+      "gap": "Non-RDG / never-viewed resources",
+      "detail": "Only resources referenced by an RDG pass are discoverable. RHI-external resources, never-viewed resources, swapchain/backbuffer state and driver-private allocations are absent."
+    },
+    {
+      "gap": "Shader-local registers",
+      "detail": "DumpGPU captures resources and pass parameter payloads, not registers or values local to a shader invocation. Shader source mapping is evidence, not a memory capture."
+    },
+    {
+      "gap": "RHI descriptor views",
+      "detail": "Passes.json names resource versions bound to passes; it is not a full descriptor-heap or SRV/UAV view dump."
+    },
+    {
+      "gap": "RedumpInputs=0",
+      "detail": "When a resource is modified in place, later passes link to the one dumped producer version rather than per-read duplicates. Passes.json preserves the version linkage."
+    },
+    {
+      "gap": "Depth/stencil preprocessing",
+      "detail": "Depth/stencil and sub-4-byte textures are copied through a staging preprocess; stored bytes are the postprocessed format, not native RHI layout."
+    },
+    {
+      "gap": "Upload/Explore disabled",
+      "detail": "r.DumpGPU.Upload=0 and r.DumpGPU.Explore=0; nothing was uploaded or opened. Raw dump path is external and not included."
+    }
+  ],
+  "coverage_statement": "This package retains the complete DumpGPU resource/pass inventory for the native attempt, but makes no claim of exhaustive computational coverage. The known omissions above remain.",
+  "source_files": [
+    "data/native/inventory.json",
+    "data/native/pass-inventory.json",
+    "data/native/resource-files.json",
+    "data/native/missing-coverage.json",
+    "data/native/runtime-actual.json"
+  ]
+}

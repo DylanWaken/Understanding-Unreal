@@ -1,0 +1,303 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0661",
+  "nativeRecordId": "native-017669",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.CardTileDepthRanges",
+  "uniqueName": "000300000228ba9ed3b8",
+  "displayLabel": "Lumen.CardTileDepthRanges · instance 0003 · frame 292 · passes 413",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 413,
+    "last": 413
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 33124,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 8281,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 8281
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.CardTileDepthRanges",
+    "UniqueResourceName": "000300000228ba9ed3b8",
+    "ByteSize": 33124,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 8281,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01272",
+      "role": "resource",
+      "originalPath": "Resources/000300000228ba9ed3b8.v000300000228ba9ed640.bin",
+      "bytes": 33124,
+      "sha256": "eaf2c513f6daf84927ee722ff400be575a6023671fa308cc6a8405bc4dc4296a",
+      "version": "000300000228ba9ed640",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0661",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "eaf2c513f6daf84927ee722ff400be575a6023671fa308cc6a8405bc4dc4296a",
+          "offset": 0,
+          "length": 33124
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228ba9ed3b8",
+        "name": "Lumen.CardTileDepthRanges",
+        "byteSize": 33124
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228ba9ed640",
+      "producerPassId": "pass-0414",
+      "producerPassName": "CalculateCardTileDepthRanges",
+      "payloadIds": [
+        "payload-01272"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0414",
+        "name": "CalculateCardTileDepthRanges",
+        "displayLabel": "CalculateCardTileDepthRanges · CullTiles 1 lights · frame 292 · pass 413",
+        "record": "records/pass/pass-0414.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0418",
+        "name": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "displayLabel": "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1 · CullTiles 1 lights · frame 292 · pass 417",
+        "record": "records/pass/pass-0418.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01272",
+      "file": "Resources/000300000228ba9ed3b8.v000300000228ba9ed640.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.card-tile-depth-ranges",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.CardTileDepthRanges)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-card-tile min/max surface-cache depth, used to tighten light culling",
+      "units": "normalized card depth (two IEEE fp16 bit patterns)",
+      "coordinateSpace": "card space depth [0,1] (0=near, 1=far as used by GetCardLocalPosition)",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32: fp16 min in bits[0:15], fp16 max in bits[16:31]",
+        "strideBytes": 4
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32: fp16 min in bits[0:15], fp16 max in bits[16:31]",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "decodeRange",
+          "expression": "Min = f16tof32(Packed & 0xFFFF); Max = f16tof32(Packed >> 16); if culling disabled: (0,1)",
+          "requires": [
+            "Lumen.CardTileDepthRanges"
+          ],
+          "sourceRefs": [
+            "part1.cards_ctdr_read",
+            "part1.cards_ctdr_default"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "values are half-precision encodings of the float depth, not unorm16 integers",
+        "per-card-tile reduction: min/max over 64 texels; invalid texels are skipped and defaults are 0/1",
+        "capacity = MaxLightTiles of the direct-lighting update context (8281 in this capture); entries beyond CardTileAllocator[0] are stale"
+      ],
+      "producerSources": [
+        "part1.cards_ctdr_write",
+        "part1.cards_ctdr_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_ctdr_read",
+        "part1.cards_ctdr_default"
+      ],
+      "gaps": [
+        "Only produced when r.LumenScene.DirectLighting.CullToTileDepthRange != 0; otherwise the buffer is allocated with 1 element and the decode must return (0,1).",
+        "The packed half floats are not a continuous fixed-point range; decode with f16tof32, not /65535."
+      ],
+      "fields": [
+        {
+          "name": "MinDepthFp16",
+          "type": "float16",
+          "byteOffset": 0,
+          "decode": "f32tof16(min depth) in bits[0:15]; 0.0 when no valid texel",
+          "units": "normalized depth",
+          "sourceRefs": [
+            "part1.cards_ctdr_write",
+            "part1.cards_ctdr_read"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 16
+        },
+        {
+          "name": "MaxDepthFp16",
+          "type": "float16",
+          "byteOffset": 0,
+          "decode": "f32tof16(max depth) in bits[16:31]; 1.0 when no valid texel",
+          "units": "normalized depth",
+          "sourceRefs": [
+            "part1.cards_ctdr_write",
+            "part1.cards_ctdr_read"
+          ],
+          "bitOffset": 16,
+          "bitWidth": 16
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 2,
+        "sourceEquationFields": [
+          "MinDepthFp16",
+          "MaxDepthFp16"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0422",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.CardTileDepthRanges has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0661"
+    }
+  ]
+}

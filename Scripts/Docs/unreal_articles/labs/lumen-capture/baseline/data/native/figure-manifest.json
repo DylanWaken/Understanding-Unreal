@@ -1,0 +1,996 @@
+{
+  "schema": "unreal-active-frame-figure-manifest-v1",
+  "dump_directory": "external-raw-dump/binary-20261112-133826 (not included)",
+  "engine_frame": 292,
+  "source_screenshot": "Base/Screenshot.png (1280x720, display-referred, not used for radiometry)",
+  "decoded_figure_count": 13,
+  "figures": [
+    {
+      "slug": "gbuffer-a-normal",
+      "file": "figures/native/decoded/gbuffer-a-normal.png",
+      "png_bytes": 18509,
+      "png_sha256": "af653d8b62244769968a5640d69052b90066b3053ba78bfcb6312a084fc380be",
+      "source_resource_id": "0001000001b5c4c33720",
+      "source_name": "GBufferA",
+      "source_format": "PF_A2B10G10R10",
+      "source_type": "Texture2D",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5c4c33720.mip0.v0001000001b603073ce0.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "cbfd73f11e271437cc61dc6a7bec9fee37b192106e7e3945e3554fb8ed780c44",
+      "version_pass_id": 125,
+      "version_pass_event": "BasePassParallel",
+      "engine_frame": 292,
+      "decoder": "gbuffer_normal",
+      "channel_mapping": "R=10-bit UNORM low bits, G=next 10, B=next 10, A=top 2; RGB stored as world normal N*0.5+0.5 (legacy GBufferA). A value of 0 is the cleared/background pixel, not a normal.",
+      "display_normalization": "identity / direct channel value",
+      "stats": {
+        "mean_luminance": 61.12904004592484,
+        "std_luminance": 60.34448365635946,
+        "min_luminance": 0.0,
+        "max_luminance": 154.2128,
+        "unique_rgb_colors": 6,
+        "nonblack_fraction_lum_gt_8": 0.6060089386261261,
+        "blank_rejected": false,
+        "normal_length_mean": 1.2884220537189823,
+        "normal_length_fraction_within_0.1_of_1": 0.6060089386261261,
+        "normal_length_mean_nonblack": 1.000000955539237,
+        "normal_length_fraction_nonblack_within_0.1_of_1": 1.0,
+        "nonblack_pixel_fraction": 0.6060089386261261,
+        "unique_packed_values": 6,
+        "channel_mapping": "R=10-bit UNORM low bits, G=next 10, B=next 10, A=top 2; RGB stored as world normal N*0.5+0.5 (legacy GBufferA). A value of 0 is the cleared/background pixel, not a normal."
+      },
+      "note": "Full native 1280x888 render target. Not resized to the 1280x720 screenshot.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "gbuffer-b-roughness",
+      "file": "figures/native/decoded/gbuffer-b-roughness.png",
+      "png_bytes": 9616,
+      "png_sha256": "43de1e85ff02e84ad32043b95babe4618ee6bab61fd67eec4f8683b06830dfa5",
+      "source_resource_id": "0001000001b5c4c339e0",
+      "source_name": "GBufferB",
+      "source_format": "PF_B8G8R8A8",
+      "source_type": "Texture2D",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5c4c339e0.mip0.v0001000001b603073ce0.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "6ea8806364ea8a1cfe2ceb037572b8eeb0115457516988ccd880097851e2b226",
+      "version_pass_id": 125,
+      "version_pass_event": "BasePassParallel",
+      "engine_frame": 292,
+      "decoder": "bgra_channel",
+      "channel_mapping": "PF_B8G8R8A8 memory order B,G,R,A; shader .z (Roughness) lands in byte 0 (B), .x Metallic in byte 2 (R)",
+      "display_normalization": "identity / direct channel value",
+      "stats": {
+        "mean_luminance": 104.49605591920044,
+        "std_luminance": 87.04190175487471,
+        "min_luminance": 0.0,
+        "max_luminance": 177.99999999999997,
+        "unique_rgb_colors": 3,
+        "nonblack_fraction_lum_gt_8": 0.6060089386261261,
+        "blank_rejected": false,
+        "channel": "B",
+        "memory_byte_index": 0,
+        "value_min": 0,
+        "value_max": 178,
+        "value_mean": 104.49605591920044,
+        "channel_mapping": "PF_B8G8R8A8 memory order B,G,R,A; shader .z (Roughness) lands in byte 0 (B), .x Metallic in byte 2 (R)"
+      },
+      "note": "Grayscale = GBufferB shader .z (Roughness), stored in memory byte 0 of B8G8R8A8.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "gbuffer-b-material",
+      "file": "figures/native/decoded/gbuffer-b-material.png",
+      "png_bytes": 27299,
+      "png_sha256": "10899de5ec6666e5e913d6888c0d95f8bd765c68995577b870fcc550831eef8e",
+      "source_resource_id": "0001000001b5c4c339e0",
+      "source_name": "GBufferB",
+      "source_format": "PF_B8G8R8A8",
+      "source_type": "Texture2D",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5c4c339e0.mip0.v0001000001b603073ce0.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "6ea8806364ea8a1cfe2ceb037572b8eeb0115457516988ccd880097851e2b226",
+      "version_pass_id": 125,
+      "version_pass_event": "BasePassParallel",
+      "engine_frame": 292,
+      "decoder": "bgra_material",
+      "channel_mapping": "RGB display = (Metallic=R byte2, Roughness=B byte0, Specular=G byte1); A=ShadingModel byte3 omitted",
+      "display_normalization": "identity / direct channel value",
+      "stats": {
+        "mean_luminance": 81.37020662426097,
+        "std_luminance": 66.19301767419866,
+        "min_luminance": 0.0,
+        "max_luminance": 136.54719999999998,
+        "unique_rgb_colors": 5,
+        "nonblack_fraction_lum_gt_8": 0.6060089386261261,
+        "blank_rejected": false,
+        "channel_mapping": "RGB display = (Metallic=R byte2, Roughness=B byte0, Specular=G byte1); A=ShadingModel byte3 omitted"
+      },
+      "note": "RGB display = (Metallic, Roughness, Specular); A/ShadingModel is retained in the raw file only.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "scene-depth-device-z",
+      "file": "figures/native/decoded/scene-depth-device-z.png",
+      "png_bytes": 15351,
+      "png_sha256": "3f5754a371a1ecfbdc30f4b88d274eb9f15acc6cc9d09a5869181e6b28aaf3da",
+      "source_resource_id": "0001000001b5c4c323c0",
+      "source_name": "SceneDepthZ",
+      "source_format": "PF_DepthStencil",
+      "source_type": "Texture2D",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5c4c323c0.mip0.v0001000001b59a70e920.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "06688174ae7ec87a2857123c92aa6f9f016be2a57348f48b80d8e64be06bad77",
+      "version_pass_id": 28,
+      "version_pass_event": "DepthPassParallel",
+      "engine_frame": 292,
+      "decoder": "depth",
+      "channel_mapping": "PF_DepthStencil copied through R32_FLOAT: grayscale = raw device Z (UE reversed-Z; larger=nearer), scaled so the image maximum maps to 255. Not linearized and not exposure-scaled.",
+      "display_normalization": "identity / direct channel value",
+      "stats": {
+        "mean_luminance": 111.50677699183558,
+        "std_luminance": 97.31810405103536,
+        "min_luminance": 0.0,
+        "max_luminance": 254.99999999999997,
+        "unique_rgb_colors": 146,
+        "nonblack_fraction_lum_gt_8": 0.6060089386261261,
+        "blank_rejected": false,
+        "device_z_min": 0.0,
+        "device_z_max": 0.025344425812363625,
+        "device_z_mean": 0.011083962436988988,
+        "device_z_scale_to_255": 39.45640778778961,
+        "channel_mapping": "PF_DepthStencil copied through R32_FLOAT: grayscale = raw device Z (UE reversed-Z; larger=nearer), scaled so the image maximum maps to 255. Not linearized and not exposure-scaled.",
+        "note": "PF_X24_G8 stencil is a separate .stencil subresource when present."
+      },
+      "note": "Depth is the raw reversed-Z device value; no linearization is claimed.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "vsm-maskbits-nibble0",
+      "file": "figures/native/decoded/vsm-maskbits-nibble0.png",
+      "png_bytes": 33069,
+      "png_sha256": "3a21549b6358fc1eb92e2d74a9d2cc1b8b35e5a9612e2883217edfb24f95606f",
+      "source_resource_id": "0001000001b59a05e8c0",
+      "source_name": "Shadow.Virtual.MaskBits",
+      "source_format": "PF_R32G32_UINT",
+      "source_type": "Texture2D",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b59a05e8c0.mip0.v0001000001b59a05f100.bin",
+      "source_raw_bytes": 9093120,
+      "source_sha256": "8415936b90a0a1efd0b27722e99eb4514556e9e37d4d8e0f086fdb5c5faf64e0",
+      "version_pass_id": 248,
+      "version_pass_event": "VirtualShadowMapProjection(Input:GBuffer)",
+      "engine_frame": 292,
+      "decoder": "maskbits",
+      "channel_mapping": "R32G32_UINT holds 16 packed 4-bit shadow-mask values (one per packed light-grid index, low nibble=first). Figure shows nibble 0 / 15 as grayscale; all 16 nibbles are retained in the raw file.",
+      "display_normalization": "identity / direct channel value",
+      "stats": {
+        "mean_luminance": 145.64256140906528,
+        "std_luminance": 125.54566792191042,
+        "min_luminance": 0.0,
+        "max_luminance": 254.99999999999997,
+        "unique_rgb_colors": 16,
+        "nonblack_fraction_lum_gt_8": 0.5775522592905405,
+        "blank_rejected": false,
+        "nonzero_nibbles_mean": 0.5796707840653154,
+        "nonzero_nibbles_max": 16,
+        "channel_mapping": "R32G32_UINT holds 16 packed 4-bit shadow-mask values (one per packed light-grid index, low nibble=first). Figure shows nibble 0 / 15 as grayscale; all 16 nibbles are retained in the raw file."
+      },
+      "note": "Final packed shadow-mask bits from the VSM projection pass; 16 4-bit nibbles are retained.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "vsm-page-table-low8",
+      "file": "figures/native/decoded/vsm-page-table-low8.png",
+      "png_bytes": 14479,
+      "png_sha256": "139a535040ce4e208a1fcee5e59a7fa8f5ea85938eae8ad634f0da1bfc4634c9",
+      "source_resource_id": "0001000001b5ebf74cf8",
+      "source_name": "Shadow.Virtual.PageTable",
+      "source_format": "PF_R32_UINT",
+      "source_type": "Texture2D",
+      "source_extent": [
+        8192,
+        192
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5ebf74cf8.mip0.v0001000001b59aee4980.bin",
+      "source_raw_bytes": 6291456,
+      "source_sha256": "cdf3c93a7646a48b11b85886d730bd1d5a9a1911719222b6f3f827b0d3fd10f2",
+      "version_pass_id": 212,
+      "version_pass_event": "PropagateMappedMips",
+      "engine_frame": 292,
+      "decoder": "uint_low8",
+      "channel_mapping": "low 8 bits of the first 32-bit word (PF_R32_UINT); packed page-table/page-flag fields are not decoded further",
+      "display_normalization": "identity / direct channel value",
+      "stats": {
+        "mean_luminance": 9.789653778076172,
+        "std_luminance": 28.388619220459915,
+        "min_luminance": 0.0,
+        "max_luminance": 127.0,
+        "unique_rgb_colors": 106,
+        "nonblack_fraction_lum_gt_8": 0.13237826029459634,
+        "blank_rejected": false,
+        "channel_mapping": "low 8 bits of the first 32-bit word (PF_R32_UINT); packed page-table/page-flag fields are not decoded further"
+      },
+      "note": "Packed virtual page table; only the low 8 bits are displayed, the full words are raw."
+    },
+    {
+      "slug": "scene-color-before-indirect",
+      "file": "figures/native/decoded/scene-color-before-indirect.png",
+      "png_bytes": 124908,
+      "png_sha256": "a316a3980f8ff1449d8fe7d750721fb2592193b49520fe3c0e06c4c56e32f760",
+      "source_resource_id": "0001000001b5c4c32960",
+      "source_name": "SceneColor",
+      "source_format": "PF_FloatRGBA",
+      "source_type": "Texture2D",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5c4c32960.mip0.v0001000001b59e1b11b0.bin",
+      "source_raw_bytes": 9093120,
+      "source_sha256": "1aca84e6ef4616fd9693c9559198efd47b20a9c2b38f2f650dc5aac56f0b90e2",
+      "version_pass_id": 249,
+      "version_pass_event": "RenderLight Light::StandardDeferred: Ceiling area light",
+      "engine_frame": 292,
+      "decoder": "hdr",
+      "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+      "display_normalization": "reinhard c/(1+c) after uniform linear scale",
+      "stats": {
+        "mean_luminance": 16.637509375175956,
+        "std_luminance": 26.780184632882726,
+        "min_luminance": 0.0,
+        "max_luminance": 162.0522,
+        "unique_rgb_colors": 2573,
+        "nonblack_fraction_lum_gt_8": 0.38542106559684686,
+        "blank_rejected": false,
+        "p99_luminance_linear": 2.311146484375,
+        "linear_scale": 0.34614854809445056,
+        "tone_curve": "reinhard c/(1+c) after uniform linear scale",
+        "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+        "radiance_note": "This is a display normalization of HDR radiance, not the reference PNG tone curve and not a radiometric comparison."
+      },
+      "note": "SceneColor version produced by the Ceiling area light pass, before DiffuseIndirectComposite.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "scene-color-after-indirect",
+      "file": "figures/native/decoded/scene-color-after-indirect.png",
+      "png_bytes": 465885,
+      "png_sha256": "f1cc68ae2aeb1e01425658f6da74e3d2fa3714b012060d75f13aa05176b3e220",
+      "source_resource_id": "0001000001b5c4c32960",
+      "source_name": "SceneColor",
+      "source_format": "PF_FloatRGBA",
+      "source_type": "Texture2D",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5c4c32960.mip0.v0001000001b59e1b8dd0.bin",
+      "source_raw_bytes": 9093120,
+      "source_sha256": "960221860f13384435af904d7c09a282c7fb24bfa2b853c96cd0c6970d2cc342",
+      "version_pass_id": 255,
+      "version_pass_event": "DiffuseIndirectComposite(DiffuseIndirect=ScreenProbeGather) 1280x720",
+      "engine_frame": 292,
+      "decoder": "hdr",
+      "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+      "display_normalization": "reinhard c/(1+c) after uniform linear scale",
+      "stats": {
+        "mean_luminance": 24.512902514780404,
+        "std_luminance": 28.869200084927392,
+        "min_luminance": 0.0,
+        "max_luminance": 157.33299999999997,
+        "unique_rgb_colors": 14899,
+        "nonblack_fraction_lum_gt_8": 0.5440297719594595,
+        "blank_rejected": false,
+        "p99_luminance_linear": 2.795122265625,
+        "linear_scale": 0.28621288229089936,
+        "tone_curve": "reinhard c/(1+c) after uniform linear scale",
+        "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+        "radiance_note": "This is a display normalization of HDR radiance, not the reference PNG tone curve and not a radiometric comparison."
+      },
+      "note": "SceneColor version produced by DiffuseIndirectComposite (screen-probe indirect applied).",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "screen-probe-diffuse",
+      "file": "figures/native/decoded/screen-probe-diffuse.png",
+      "png_bytes": 1121807,
+      "png_sha256": "6d0f6ab0b36f2bdb9549d4198ea580bf19afb140129a6d542685c5e467b677e9",
+      "source_resource_id": "0001000001b5b962d710",
+      "source_name": "Lumen.ScreenProbeGather.DiffuseIndirect",
+      "source_format": "PF_FloatR11G11B10",
+      "source_type": "Texture2DArray",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": 0,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5b962d710.[0].mip0.v0001000001b5f285d240.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "dc17aeb554cbf8628f469309cd819781dc8e4758a3918ad50eabddebd147ff07",
+      "version_pass_id": 181,
+      "version_pass_event": "ScreenProbeIntegrate SupportAll DownsampleFactor:1",
+      "engine_frame": 292,
+      "decoder": "hdr",
+      "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+      "display_normalization": "reinhard c/(1+c) after uniform linear scale",
+      "stats": {
+        "mean_luminance": 37.98364905739724,
+        "std_luminance": 36.92587754308088,
+        "min_luminance": 0.0,
+        "max_luminance": 254.28199999999998,
+        "unique_rgb_colors": 28263,
+        "nonblack_fraction_lum_gt_8": 0.5560115779842343,
+        "blank_rejected": false,
+        "p99_luminance_linear": 1.327525,
+        "linear_scale": 0.6026251859663659,
+        "tone_curve": "reinhard c/(1+c) after uniform linear scale",
+        "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+        "radiance_note": "This is a display normalization of HDR radiance, not the reference PNG tone curve and not a radiometric comparison."
+      },
+      "note": "Final screen-probe integrate output for diffuse indirect (pass 181 SupportAll).",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "screen-probe-rough-specular",
+      "file": "figures/native/decoded/screen-probe-rough-specular.png",
+      "png_bytes": 453322,
+      "png_sha256": "a7b18948e78b80a3d9dafe0056abaea66610b32d656d6a31e220711119c58424",
+      "source_resource_id": "0001000001b5b962df50",
+      "source_name": "Lumen.ScreenProbeGather.RoughSpecularIndirect",
+      "source_format": "PF_FloatR11G11B10",
+      "source_type": "Texture2DArray",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": 0,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5b962df50.[0].mip0.v0001000001b5f285d240.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "042c75a799cf7282b7846a2ad521b01ae61a5ff9adec8ee49ee0e6a06adba462",
+      "version_pass_id": 181,
+      "version_pass_event": "ScreenProbeIntegrate SupportAll DownsampleFactor:1",
+      "engine_frame": 292,
+      "decoder": "hdr",
+      "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+      "display_normalization": "reinhard c/(1+c) after uniform linear scale",
+      "stats": {
+        "mean_luminance": 4.259927740709459,
+        "std_luminance": 10.948327403918022,
+        "min_luminance": 0.0,
+        "max_luminance": 139.8244,
+        "unique_rgb_colors": 589,
+        "nonblack_fraction_lum_gt_8": 0.06762123451576577,
+        "blank_rejected": false,
+        "p99_luminance_linear": 35.8112,
+        "linear_scale": 0.02233937985881512,
+        "tone_curve": "reinhard c/(1+c) after uniform linear scale",
+        "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+        "radiance_note": "This is a display normalization of HDR radiance, not the reference PNG tone curve and not a radiometric comparison."
+      },
+      "note": "Final screen-probe integrate output for rough specular indirect (pass 181 SupportAll).",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "screen-probe-history",
+      "file": "figures/native/decoded/screen-probe-history.png",
+      "png_bytes": 248553,
+      "png_sha256": "8e25d5fa5ab61474cfde0093d13e22b6bfa232ebdc438e4efb593e57e19b822c",
+      "source_resource_id": "0001000001b5b9625c10",
+      "source_name": "Lumen.ScreenProbeGather.ScreenProbeFilteredRadiance",
+      "source_format": "PF_FloatR11G11B10",
+      "source_type": "Texture2D",
+      "source_extent": [
+        640,
+        672
+      ],
+      "source_mip": 0,
+      "source_slice": null,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b5b9625c10.mip0.v0001000001b5b96263c0.bin",
+      "source_raw_bytes": 1720320,
+      "source_sha256": "bc03dc9c0c918a4d2ef95325e11448bf16193390ee0dc9db24dc12bd365be0bf",
+      "version_pass_id": 170,
+      "version_pass_event": "FilterRadianceWithGather",
+      "engine_frame": 292,
+      "decoder": "hdr",
+      "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+      "display_normalization": "reinhard c/(1+c) after uniform linear scale",
+      "stats": {
+        "mean_luminance": 8.171098014787946,
+        "std_luminance": 19.65919190165121,
+        "min_luminance": 0.0,
+        "max_luminance": 236.66119999999998,
+        "unique_rgb_colors": 25472,
+        "nonblack_fraction_lum_gt_8": 0.1961449032738095,
+        "blank_rejected": false,
+        "p99_luminance_linear": 2.7965812499999996,
+        "linear_scale": 0.2860635642179179,
+        "tone_curve": "reinhard c/(1+c) after uniform linear scale",
+        "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+        "radiance_note": "This is a display normalization of HDR radiance, not the reference PNG tone curve and not a radiometric comparison."
+      },
+      "note": "Filtered radiance history buffer (640x672 probe grid), latest FilterRadianceWithGather pass."
+    },
+    {
+      "slug": "reflection-trace",
+      "file": "figures/native/decoded/reflection-trace.png",
+      "png_bytes": 17491,
+      "png_sha256": "47685f653b0ee802fb238ac5bfd105425e7ca9cc49ef2c4d40ab5bebda6bc261",
+      "source_resource_id": "0001000001b59beae490",
+      "source_name": "Lumen.Reflections.TraceRadiance",
+      "source_format": "PF_FloatRGB",
+      "source_type": "Texture2DArray",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": 0,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b59beae490.[0].mip0.v0001000001b59e0666e0.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "df63b709c0eb8ecef4dcc2a969ab8b9c96375aceb897e272f553c81311458cf2",
+      "version_pass_id": 242,
+      "version_pass_event": "TraceVoxels(Scene)",
+      "engine_frame": 292,
+      "decoder": "hdr",
+      "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+      "display_normalization": "reinhard c/(1+c) after uniform linear scale",
+      "stats": {
+        "mean_luminance": 1.9583638344594596,
+        "std_luminance": 10.436874197895982,
+        "min_luminance": 0.0,
+        "max_luminance": 131.7476,
+        "unique_rgb_colors": 1187,
+        "nonblack_fraction_lum_gt_8": 0.04819291948198198,
+        "blank_rejected": false,
+        "p99_luminance_linear": 36449.68990847168,
+        "linear_scale": 2.1948060518727847e-05,
+        "tone_curve": "reinhard c/(1+c) after uniform linear scale",
+        "channel_mapping": "linear HDR RGB; R/G/B decoded from the stored float format. Display only: uniform linear scale from the image 99th percentile then Reinhard c/(1+c).",
+        "radiance_note": "This is a display normalization of HDR radiance, not the reference PNG tone curve and not a radiometric comparison."
+      },
+      "note": "Reflection trace radiance before resolve; linear HDR array slice 0.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    },
+    {
+      "slug": "reflection-resolved",
+      "file": "figures/native/decoded/reflection-resolved.png",
+      "png_bytes": 6093,
+      "png_sha256": "6f6c53029e8d38a5c01a3f2767ab6470c97c428cfd0245bb5b3bcfa2fa82aa5d",
+      "source_resource_id": "0001000001b59e069020",
+      "source_name": "Lumen.Reflections.ResolvedSpecularIndirect",
+      "source_format": "PF_FloatRGB",
+      "source_type": "Texture2DArray",
+      "source_extent": [
+        1280,
+        888
+      ],
+      "source_mip": 0,
+      "source_slice": 0,
+      "source_stencil": false,
+      "source_raw_file": "Resources/0001000001b59e069020.[0].mip0.v0001000001b59e06a970.bin",
+      "source_raw_bytes": 4546560,
+      "source_sha256": "cf7cf38853a25e4539a13948fcbf61f8310243aeb6af54947ba6fecc20fe33f8",
+      "version_pass_id": 244,
+      "version_pass_event": "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:0",
+      "engine_frame": 292,
+      "decoder": "hdr_sentinel",
+      "channel_mapping": "linear HDR RGB; 11/11/10 decode. Values at or above the 60000 sentinel (R11G11B10 finite maximum ~65024) are masked to black as empty tile entries; remaining values use the same percentile/Reinhard display normalization as other HDR figures.",
+      "display_normalization": "reinhard c/(1+c) after uniform linear scale",
+      "stats": {
+        "mean_luminance": 0.7457876082136824,
+        "std_luminance": 5.222599529965637,
+        "min_luminance": 0.0,
+        "max_luminance": 151.25,
+        "unique_rgb_colors": 386,
+        "nonblack_fraction_lum_gt_8": 0.02365216779279279,
+        "blank_rejected": false,
+        "p99_luminance_linear": 10885.162930786133,
+        "linear_scale": 7.34945361026602e-05,
+        "tone_curve": "reinhard c/(1+c) after uniform linear scale",
+        "sentinel_threshold": 60000.0,
+        "sentinel_pixel_fraction": 0.7920942426801801,
+        "active_pixel_fraction": 0.2079057573198198,
+        "channel_mapping": "linear HDR RGB; 11/11/10 decode. Values at or above the 60000 sentinel (R11G11B10 finite maximum ~65024) are masked to black as empty tile entries; remaining values use the same percentile/Reinhard display normalization as other HDR figures."
+      },
+      "note": "Resolved specular indirect reflection output, array slice 0. Empty-tile sentinel values are masked to black and counted in the manifest; the raw file keeps them unchanged.",
+      "native_content_rect_xywh": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "native_padding": "bottom 168 rows of the 1280x888 render target are black padding; the published viewport screenshot is the 1280x720 content region"
+    }
+  ],
+  "vsm_visualizations": [
+    {
+      "mode": "mask",
+      "image": {
+        "file": "figures/native/vsm/vsm-mask.png",
+        "bytes": 192756,
+        "sha256": "2a824378d3a08bbdf396e92607de7e85cbc47d7809054023a98ef87e8205fbcc",
+        "modified_utc": "2026-11-12T13:40:26Z",
+        "stats": {
+          "file": "figures/native/vsm/vsm-mask.png",
+          "width": 1280,
+          "height": 720,
+          "channels": 4,
+          "mean_luminance": 145.6122705829672,
+          "std_luminance": 107.78951016818554,
+          "min_luminance": 0.0,
+          "max_luminance": 254.99999999999997,
+          "unique_rgb_colors": 265,
+          "nonblack_fraction_lum_gt_8": 0.7105490451388888,
+          "size_ok": true,
+          "blank_rejected": false
+        },
+        "vsm_mode": "mask",
+        "view_mode_after": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 32,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        },
+        "cvar": {
+          "name": "r.Shadow.Virtual.Visualize",
+          "found": true,
+          "value": "",
+          "default": "",
+          "set_by": "Constructor",
+          "flags": 1
+        },
+        "capture_draw": 300,
+        "comparison_to_lit_baseline": {
+          "mean_abs_rgb_difference_0_255": 55.83813657407407,
+          "fraction_sampled_pixels_rgb_difference_gt_8": 0.6571354166666666,
+          "sample_step": 4
+        }
+      },
+      "render_status_after": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 32,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      },
+      "visualize_cvar": {
+        "name": "r.Shadow.Virtual.Visualize",
+        "found": true,
+        "value": "",
+        "default": "",
+        "set_by": "Constructor",
+        "flags": 1
+      },
+      "layout": {
+        "name": "r.Shadow.Virtual.Visualize.Layout",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "light_name_cvar": {
+        "name": "r.Shadow.Virtual.Visualize.LightName",
+        "found": true,
+        "value": "Ceiling area light",
+        "default": "",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "showflags": {
+        "VisualizeVirtualShadowMap": "2"
+      },
+      "comparison_to_lit_baseline": {
+        "mean_abs_rgb_difference_0_255": 55.83813657407407,
+        "fraction_sampled_pixels_rgb_difference_gt_8": 0.6571354166666666,
+        "sample_step": 4
+      },
+      "exact_commands": [
+        "r.Shadow.Virtual.Visualize.Layout 0",
+        "r.Shadow.Virtual.Visualize.LightName \"Ceiling area light\"",
+        "Viewport view mode VMI_VisualizeVirtualShadowMap, mode mask"
+      ]
+    },
+    {
+      "mode": "vpage",
+      "image": {
+        "file": "figures/native/vsm/vsm-vpage.png",
+        "bytes": 225262,
+        "sha256": "7d9a188a9de5561391457e4f5061f499380e1dfc1375e257a9cbe5cf920a37f8",
+        "modified_utc": "2026-11-12T13:40:27Z",
+        "stats": {
+          "file": "figures/native/vsm/vsm-vpage.png",
+          "width": 1280,
+          "height": 720,
+          "channels": 4,
+          "mean_luminance": 100.90913035204973,
+          "std_luminance": 74.3796113367879,
+          "min_luminance": 0.0,
+          "max_luminance": 254.99999999999997,
+          "unique_rgb_colors": 457,
+          "nonblack_fraction_lum_gt_8": 0.7025542534722222,
+          "size_ok": true,
+          "blank_rejected": false
+        },
+        "vsm_mode": "vpage",
+        "view_mode_after": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 32,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        },
+        "cvar": {
+          "name": "r.Shadow.Virtual.Visualize",
+          "found": true,
+          "value": "",
+          "default": "",
+          "set_by": "Constructor",
+          "flags": 1
+        },
+        "capture_draw": 310,
+        "comparison_to_lit_baseline": {
+          "mean_abs_rgb_difference_0_255": 38.1230092592591,
+          "fraction_sampled_pixels_rgb_difference_gt_8": 0.6456770833333333,
+          "sample_step": 4
+        }
+      },
+      "render_status_after": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 32,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      },
+      "visualize_cvar": {
+        "name": "r.Shadow.Virtual.Visualize",
+        "found": true,
+        "value": "",
+        "default": "",
+        "set_by": "Constructor",
+        "flags": 1
+      },
+      "layout": {
+        "name": "r.Shadow.Virtual.Visualize.Layout",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "light_name_cvar": {
+        "name": "r.Shadow.Virtual.Visualize.LightName",
+        "found": true,
+        "value": "Ceiling area light",
+        "default": "",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "showflags": {
+        "VisualizeVirtualShadowMap": "2"
+      },
+      "comparison_to_lit_baseline": {
+        "mean_abs_rgb_difference_0_255": 38.1230092592591,
+        "fraction_sampled_pixels_rgb_difference_gt_8": 0.6456770833333333,
+        "sample_step": 4
+      },
+      "exact_commands": [
+        "r.Shadow.Virtual.Visualize.Layout 0",
+        "r.Shadow.Virtual.Visualize.LightName \"Ceiling area light\"",
+        "Viewport view mode VMI_VisualizeVirtualShadowMap, mode vpage"
+      ]
+    },
+    {
+      "mode": "cache",
+      "image": {
+        "file": "figures/native/vsm/vsm-cache.png",
+        "bytes": 349068,
+        "sha256": "237b45c2690697544ae8f04bec5ac0f37c2f0079639ebea5d51187cb642b3bc2",
+        "modified_utc": "2026-11-12T13:40:28Z",
+        "stats": {
+          "file": "figures/native/vsm/vsm-cache.png",
+          "width": 1280,
+          "height": 720,
+          "channels": 4,
+          "mean_luminance": 131.48503557421867,
+          "std_luminance": 87.57382913535393,
+          "min_luminance": 0.0,
+          "max_luminance": 254.99999999999997,
+          "unique_rgb_colors": 2507,
+          "nonblack_fraction_lum_gt_8": 0.718193359375,
+          "size_ok": true,
+          "blank_rejected": false
+        },
+        "vsm_mode": "cache",
+        "view_mode_after": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 32,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        },
+        "cvar": {
+          "name": "r.Shadow.Virtual.Visualize",
+          "found": true,
+          "value": "",
+          "default": "",
+          "set_by": "Constructor",
+          "flags": 1
+        },
+        "capture_draw": 320,
+        "comparison_to_lit_baseline": {
+          "mean_abs_rgb_difference_0_255": 60.78717013888884,
+          "fraction_sampled_pixels_rgb_difference_gt_8": 0.6643055555555556,
+          "sample_step": 4
+        }
+      },
+      "render_status_after": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 32,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      },
+      "visualize_cvar": {
+        "name": "r.Shadow.Virtual.Visualize",
+        "found": true,
+        "value": "",
+        "default": "",
+        "set_by": "Constructor",
+        "flags": 1
+      },
+      "layout": {
+        "name": "r.Shadow.Virtual.Visualize.Layout",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "light_name_cvar": {
+        "name": "r.Shadow.Virtual.Visualize.LightName",
+        "found": true,
+        "value": "Ceiling area light",
+        "default": "",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "showflags": {
+        "VisualizeVirtualShadowMap": "2"
+      },
+      "comparison_to_lit_baseline": {
+        "mean_abs_rgb_difference_0_255": 60.78717013888884,
+        "fraction_sampled_pixels_rgb_difference_gt_8": 0.6643055555555556,
+        "sample_step": 4
+      },
+      "exact_commands": [
+        "r.Shadow.Virtual.Visualize.Layout 0",
+        "r.Shadow.Virtual.Visualize.LightName \"Ceiling area light\"",
+        "Viewport view mode VMI_VisualizeVirtualShadowMap, mode cache"
+      ]
+    }
+  ],
+  "vsm_lit_baseline": {
+    "file": "figures/native/vsm/vsm-lit-baseline.png",
+    "bytes": 825203,
+    "sha256": "4e2dc96182c8bf09fde8f42c9658397cd940e58f8c90687b966b1011a2f1f2c3",
+    "modified_utc": "2026-11-12T13:40:25Z",
+    "stats": {
+      "file": "figures/native/vsm/vsm-lit-baseline.png",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_luminance": 128.3190896685522,
+      "std_luminance": 93.62884962271515,
+      "min_luminance": 0.0,
+      "max_luminance": 252.0682,
+      "unique_rgb_colors": 67297,
+      "nonblack_fraction_lum_gt_8": 0.6980349392361112,
+      "size_ok": true,
+      "blank_rejected": false
+    }
+  },
+  "vsm_session": null,
+  "path_traced_1024": {
+    "image": {
+      "file": "figures/reference/pathtracer-1024spp-8bounces.png",
+      "bytes": 963516,
+      "sha256": "94186451033da3a52890aeb2cbce1000c0af86da1d9b25b8e4c81c0b01b135c3",
+      "modified_utc": "2026-11-12T13:40:57Z",
+      "stats": {
+        "file": "figures/reference/pathtracer-1024spp-8bounces.png",
+        "width": 1280,
+        "height": 720,
+        "channels": 4,
+        "mean_luminance": 129.13136493710059,
+        "std_luminance": 93.78578213716305,
+        "min_luminance": 0.0,
+        "max_luminance": 251.0682,
+        "unique_rgb_colors": 76244,
+        "nonblack_fraction_lum_gt_8": 0.6872645399305556,
+        "size_ok": true,
+        "blank_rejected": false
+      }
+    },
+    "sample_index_before_screenshot": 1024,
+    "sample_index_after_screenshot": 1024,
+    "sample_count_reported": 1024,
+    "requested_samples_per_pixel": 1024,
+    "max_bounces": 8,
+    "denoiser": 0,
+    "capture_draw": 698,
+    "first_accumulation_draw": 357,
+    "reset_draw": 356,
+    "status_at_capture": {
+      "view_mode_index": 27,
+      "is_path_tracing_view_mode": true,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true,
+      "samples": 1024,
+      "sample_count": 1024
+    }
+  },
+  "path_traced_1024_session": null,
+  "limitations": [
+    "All decoded figures are display normalizations of raw GPU data, not re-renders.",
+    "HDR figures use a per-image 99th-percentile linear scale plus Reinhard c/(1+c); they are not comparable radiometrically with the SDR reference PNG or with each other without the raw files.",
+    "Scene render targets are natively 1280x888 with 168 black padding rows; the content region is the top 1280x720. Figures are written at native 1280x888 and are not resized.",
+    "GBuffer figures are valid only because r.Substrate=0 (legacy GBuffer path) was the runtime value.",
+    "Lumen reflection trace/resolve resources are tile/ray buffers, not screen-space images: TraceRadiance contains only traced texels and ResolvedSpecularIndirect contains packed tiles with a finite-max sentinel for empty entries. The decoded figures preserve that layout; the composed result is visible in scene-color-after-indirect."
+  ],
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged."
+}

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1060" role="img" aria-labelledby="title desc">
+<title id="title">From surface state to the composed image</title><desc id="desc">A dependency diagram connects raster material state, card irradiance and final radiance, selected visibility, screen and world tracing, probe integration, dedicated reflections, and composition. Arrows describe data dependencies, not a single forced scheduling order.</desc>
+<defs><marker id="arrow-0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker><marker id="arrow-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker><marker id="arrow-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker><marker id="arrow-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker><marker id="arrow-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker></defs>
+<rect width="1280" height="1060" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="36" y="48" font-size="30" fill="#22312d" font-weight="600" text-anchor="start">From surface state to the composed image</text>
+<rect x="40" y="100" width="360" height="130" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M52 101H388" stroke="#286c56" stroke-width="4"/>
+<text x="58" y="135" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Rasterized primary surface</text>
+<text x="58" y="169" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Depth + normal + material</text>
+<text x="58" y="197" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">GBuffer: no incoming-light integral</text>
+<rect x="460" y="100" width="360" height="130" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M472 101H808" stroke="#286c56" stroke-width="4"/>
+<text x="478" y="135" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Captured card material</text>
+<text x="478" y="169" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Albedo, normal, emission, depth</text>
+<text x="478" y="197" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Page table locates persistent data</text>
+<rect x="880" y="100" width="360" height="130" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M892 101H1228" stroke="#286788" stroke-width="4"/>
+<text x="898" y="135" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Selected light sources</text>
+<text x="898" y="169" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Primary visibility: VSM / selected path</text>
+<text x="898" y="197" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Card shadows use their own tracer</text>
+<rect x="40" y="330" width="360" height="125" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M52 331H388" stroke="#286788" stroke-width="4"/>
+<text x="58" y="365" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Screen tracing</text>
+<text x="58" y="399" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">HZB geometry + selected color</text>
+<text x="58" y="427" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">History is separately validated</text>
+<rect x="460" y="330" width="360" height="125" rx="8" fill="#fffdf8" stroke="#93661e" stroke-width="1.5"/>
+<path d="M472 331H808" stroke="#93661e" stroke-width="4"/>
+<text x="478" y="365" font-size="23" fill="#93661e" font-weight="600" text-anchor="start">Card lighting updates</text>
+<text x="478" y="399" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Direct irradiance + radiosity</text>
+<text x="478" y="427" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">E_direct and E_indirect</text>
+<rect x="880" y="330" width="360" height="125" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M892 331H1228" stroke="#286788" stroke-width="4"/>
+<text x="898" y="365" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Primary direct lighting</text>
+<text x="898" y="399" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Material BRDF × light contribution</text>
+<text x="898" y="427" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Visibility belongs to the connection</text>
+<rect x="40" y="560" width="360" height="130" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M52 561H388" stroke="#286788" stroke-width="4"/>
+<text x="58" y="595" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Unresolved geometry / far field</text>
+<text x="58" y="629" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Configured SDF or HWRT queries</text>
+<text x="58" y="657" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">World radiance-cache lookup</text>
+<rect x="460" y="560" width="360" height="130" rx="8" fill="#fffdf8" stroke="#93661e" stroke-width="1.5"/>
+<path d="M472 561H808" stroke="#93661e" stroke-width="4"/>
+<text x="478" y="595" font-size="23" fill="#93661e" font-weight="600" text-anchor="start">Final card lighting</text>
+<text x="478" y="629" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">L_cache = Lₑ + (ρ/π)(E_D + E_I)</text>
+<text x="478" y="657" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Diffuse outgoing radiance</text>
+<rect x="880" y="560" width="360" height="130" rx="8" fill="#fffdf8" stroke="#aa5343" stroke-width="1.5"/>
+<path d="M892 561H1228" stroke="#aa5343" stroke-width="4"/>
+<text x="898" y="595" font-size="23" fill="#aa5343" font-weight="600" text-anchor="start">Dedicated reflections</text>
+<text x="898" y="629" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Glossy ray → selected hit shading</text>
+<text x="898" y="657" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Resolve + temporal/spatial filtering</text>
+<rect x="40" y="820" width="360" height="135" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M52 821H388" stroke="#286c56" stroke-width="4"/>
+<text x="58" y="855" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Screen-probe integration</text>
+<text x="58" y="889" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Reconstructed incoming radiance</text>
+<text x="58" y="917" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Outputs: E/π and rough specular</text>
+<rect x="880" y="820" width="360" height="135" rx="8" fill="#fffdf8" stroke="#aa5343" stroke-width="1.5"/>
+<path d="M892 821H1228" stroke="#aa5343" stroke-width="4"/>
+<text x="898" y="855" font-size="23" fill="#aa5343" font-weight="600" text-anchor="start">Material and composition</text>
+<text x="898" y="889" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">ρ × diffuse response + glossy blend</text>
+<text x="898" y="917" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Add owned emission/direct terms</text>
+<path d="M220.0 235L220.0 320" fill="none" stroke="#586760" stroke-width="2" marker-end="url(#arrow-4)"/>
+<path d="M640.0 235L640.0 320" fill="none" stroke="#586760" stroke-width="2" marker-end="url(#arrow-4)"/>
+<path d="M1060.0 235L1060.0 320" fill="none" stroke="#586760" stroke-width="2" marker-end="url(#arrow-4)"/>
+<path d="M880 215L815 330" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<path d="M640 460L640 550" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
+<path d="M220 460L220 550" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<path d="M460 625L410 625" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
+<path d="M820 625L870 625" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
+<path d="M220 695L220 810" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<path d="M460 690L350 810" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
+<path d="M1060 695L1060 810" fill="none" stroke="#aa5343" stroke-width="2" marker-end="url(#arrow-3)"/>
+<path d="M400 885L870 885" fill="none" stroke="#286c56" stroke-width="2" marker-end="url(#arrow-0)"/>
+<text x="625" y="867" font-size="17" fill="#286c56" font-weight="400" text-anchor="middle">probe diffuse + rough specular</text>
+<path d="M1240 430L1258 430" fill="none" stroke="#286788" stroke-width="2"/>
+<path d="M1258 430L1258 795" fill="none" stroke="#286788" stroke-width="2"/>
+<path d="M1258 795L1220 810" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<text x="1090" y="770" font-size="17" fill="#286788" font-weight="400" text-anchor="start">direct contribution</text>
+<text x="40" y="995" font-size="18" fill="#586760" font-weight="400" text-anchor="start">History feeds cache updates and reconstruction; it must be reprojected, validated and exposure-corrected.</text>
+<text x="36" y="1036" font-size="16" fill="#586760" font-weight="400" text-anchor="start">Original dependency diagram. Optional branches and asynchronous overlap are explained in the text.</text>
+</g></svg>

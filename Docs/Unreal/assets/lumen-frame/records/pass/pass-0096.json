@@ -1,0 +1,202 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0096",
+  "nativeRecordId": "native-015615",
+  "name": "Select max update bucket",
+  "displayLabel": "Select max update bucket · BuildCardUpdateContext · frame 292 · pass 95",
+  "frameNumber": 292,
+  "graphPrefix": "BuildCardUpdateContext",
+  "viewState": null,
+  "pointer": "000100000228d4db6b20",
+  "parametersName": "FParameters",
+  "parametersPointer": "000100000228d4db6b00",
+  "parametersMetadataPointer": "000100007ffb892689e0",
+  "parentScopes": [
+    "BuildCardUpdateContext",
+    "LumenSceneLighting",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "Select max update bucket",
+    "ParametersName": "FParameters",
+    "Parameters": "000100000228d4db6b00",
+    "ParametersMetadata": "000100007ffb892689e0",
+    "Pointer": "000100000228d4db6b20",
+    "Id": 95,
+    "ParentEventScopes": [
+      "BuildCardUpdateContext",
+      "LumenSceneLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000100000228d4db2db0"
+    ],
+    "OutputResources": [
+      "000100000228d4db2ee8"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000100000228d4db2db0",
+      "resourceId": "resource-0164",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00430",
+        "payload-00431"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000100000228d4db2ee8",
+      "resourceId": "resource-0162",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00432",
+        "payload-00433"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06047",
+    "metadataPointer": "000100007ffb892689e0",
+    "bytes": 32,
+    "sha256": "376fd0ecb243ab232f1adf8c5d305b238fd424bfc5f35d1f9e59567130c93659",
+    "chunks": [
+      {
+        "sha": "376fd0ecb243ab232f1adf8c5d305b238fd424bfc5f35d1f9e59567130c93659",
+        "offset": 0,
+        "length": 32
+      }
+    ],
+    "originalPath": "Structures/000100000228d4db6b00.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenSceneLighting.cpp",
+    "FileLine": 401,
+    "Size": 32,
+    "Members": [
+      {
+        "Name": "RWMaxUpdateBucket",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 402,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "PriorityHistogram",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 403,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "MaxDirectLightingTilesToUpdate",
+        "ShaderType": "",
+        "FileLine": 404,
+        "Offset": 16,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "MaxIndirectLightingTilesToUpdate",
+        "ShaderType": "",
+        "FileLine": 405,
+        "Offset": 20,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "SurfaceCacheUpdateFrameIndex",
+        "ShaderType": "",
+        "FileLine": 406,
+        "Offset": 24,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "FreezeUpdateFrame",
+        "ShaderType": "",
+        "FileLine": 407,
+        "Offset": 28,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000100000228d4db6b20",
+      "Parameters": "000100000228d4db6b00",
+      "Bindings": {
+        "RWMaxUpdateBucket": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228d4db3158",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "PriorityHistogram": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000100000228d4db3400",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

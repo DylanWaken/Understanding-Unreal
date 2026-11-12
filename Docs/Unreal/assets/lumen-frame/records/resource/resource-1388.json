@@ -1,0 +1,324 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1388",
+  "nativeRecordId": "native-018400",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.Reflections.CompactRayTraceDispatchIndirectArgs",
+  "uniqueName": "000400000228e890f1d8",
+  "displayLabel": "Lumen.Reflections.CompactRayTraceDispatchIndirectArgs · instance 0004 · frame 292 · passes 861",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 861,
+    "last": 861
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 12,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.Reflections.CompactRayTraceDispatchIndirectArgs",
+    "UniqueResourceName": "000400000228e890f1d8",
+    "ByteSize": 12,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02534",
+      "role": "resource",
+      "originalPath": "Resources/000400000228e890f1d8.v000400000228e890f540.bin",
+      "bytes": 12,
+      "sha256": "92c948b3f0f54e84320623dc44213138ad9026b53b965473d50fb26a44c6af59",
+      "version": "000400000228e890f540",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1388",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "92c948b3f0f54e84320623dc44213138ad9026b53b965473d50fb26a44c6af59",
+          "offset": 0,
+          "length": 12
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228e890f1d8",
+        "name": "Lumen.Reflections.CompactRayTraceDispatchIndirectArgs",
+        "byteSize": 12
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228e890f540",
+      "producerPassId": "pass-0862",
+      "producerPassName": "SetupCompactedTracesIndirectArgs",
+      "payloadIds": [
+        "payload-02534"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0862",
+        "name": "SetupCompactedTracesIndirectArgs",
+        "displayLabel": "SetupCompactedTracesIndirectArgs · LumenReflections · frame 292 · pass 861",
+        "record": "records/pass/pass-0862.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0863",
+        "name": "TraceVoxels(Scene)",
+        "displayLabel": "TraceVoxels(Scene) · LumenReflections · frame 292 · pass 862",
+        "record": "records/pass/pass-0863.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02534",
+      "file": "Resources/000400000228e890f1d8.v000400000228e890f540.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.refl.compact-ray-trace-dispatch-indirect-args",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.Reflections\\.CompactRayTraceDispatchIndirectArgs$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "dispatch dimensions for DispatchRays over compacted reflection traces",
+      "units": "ray counts (x,y,z) - this is a ray dispatch, not a thread-group dispatch",
+      "coordinateSpace": "flat compacted trace index",
+      "storage": {
+        "kind": "buffer",
+        "format": "FRHIDispatchIndirectParameters (3 x uint32)",
+        "strideBytes": 12,
+        "numElements": 1,
+        "capacity": "1 FRHIDispatchIndirectParameters record",
+        "usage": "IndirectArgs(UAV|DispatchRays) | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 12,
+            "numElements": 1,
+            "byteSize": 12,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "DrawIndirect",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters (3 x uint32)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "record",
+          "expression": "x = CompactedTraceTexelAllocator[0]; y = z = 1 (comment: 'Ray tracing dispatch dimensions are defined simply in terms of threads/rays, not thread groups')",
+          "requires": [
+            "CompactedTraceTexelAllocator"
+          ],
+          "sourceRefs": [
+            "part2.refl.compact.rayargs"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "The HW RT pass also recomputes its own 1-record indirect args from the same allocator (LumenReflectionHardwareRayTracing.usf:50), so this buffer is the shared/setup copy."
+      ],
+      "producerSources": [
+        "part2.refl.cpp.compact.rayargs"
+      ],
+      "consumerSources": [
+        "part2.refl.dispatch.ray"
+      ],
+      "gaps": [
+        "If the compacted trace count is 0, a zero-ray dispatch is emitted; there is no null-record fallback."
+      ],
+      "fields": [
+        {
+          "name": "X",
+          "type": "uint32",
+          "decode": "record.x = CompactedTraceTexelAllocator[0] (number of rays)",
+          "units": "rays",
+          "sourceRefs": [
+            "part2.refl.compact.rayargs"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "Y",
+          "type": "uint32",
+          "decode": "record.y = 1",
+          "units": "rays",
+          "sourceRefs": [
+            "part2.refl.compact.rayargs"
+          ],
+          "byteOffset": 4,
+          "bitWidth": 32
+        },
+        {
+          "name": "Z",
+          "type": "uint32",
+          "decode": "record.z = 1",
+          "units": "rays",
+          "sourceRefs": [
+            "part2.refl.compact.rayargs"
+          ],
+          "byteOffset": 8,
+          "bitWidth": 32
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0867",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.Reflections.CompactRayTraceDispatchIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1388"
+    }
+  ]
+}

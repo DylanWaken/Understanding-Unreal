@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1000" role="img" aria-labelledby="title desc">
+<title id="title">Global distance field: clipmaps and physical pages</title><desc id="desc">Source-derived addressing diagram. The coarse mip is the fallback. A valid page within the mip transition band provides distance and optional coverage. Page-table z includes the clipmap index; physical page atlases use different distance and coverage resolutions.</desc>
+<defs><marker id="arrow-0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker><marker id="arrow-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker><marker id="arrow-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker><marker id="arrow-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker><marker id="arrow-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker></defs>
+<rect width="1280" height="1000" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="36" y="48" font-size="30" fill="#22312d" font-weight="600" text-anchor="start">Global distance field: clipmaps and physical pages</text>
+<rect x="35" y="100" width="350" height="135" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M47 101H373" stroke="#286788" stroke-width="4"/>
+<text x="53" y="135" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Translated-world query</text>
+<text x="53" y="169" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">x_t = x_w + PreViewTranslation</text>
+<text x="53" y="197" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Clipmap center / extent and UV map</text>
+<text x="53" y="225" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">R: voxel resolution; P = ceil(R / 7)</text>
+<rect x="465" y="100" width="350" height="135" rx="8" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<path d="M477 101H803" stroke="#286788" stroke-width="4"/>
+<text x="483" y="135" font-size="23" fill="#286788" font-weight="600" text-anchor="start">Coarse mip sample</text>
+<text x="483" y="169" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">u_mip → signed distance</text>
+<text x="483" y="197" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Retain this value if no usable page</text>
+<text x="483" y="225" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Range is larger than a fine page</text>
+<rect x="895" y="100" width="350" height="135" rx="8" fill="#fffdf8" stroke="#93661e" stroke-width="1.5"/>
+<path d="M907 101H1233" stroke="#93661e" stroke-width="4"/>
+<text x="913" y="135" font-size="23" fill="#93661e" font-weight="600" text-anchor="start">Virtual page address</text>
+<text x="913" y="169" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">local = saturate(uv) × P</text>
+<text x="913" y="197" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">address = int3(local + (0, 0, iP))</text>
+<text x="913" y="225" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Read flags and physical atlas ID</text>
+<path d="M390 167L455 167" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<path d="M210 240L210 270" fill="none" stroke="#286788" stroke-width="2"/>
+<path d="M210 270L1070 270" fill="none" stroke="#286788" stroke-width="2"/>
+<path d="M1070 270L1070 245" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<rect x="35" y="330" width="350" height="175" rx="8" fill="#fffdf8" stroke="#286c56" stroke-width="1.5"/>
+<path d="M47 331H373" stroke="#286c56" stroke-width="4"/>
+<text x="53" y="365" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Page-use decision</text>
+<text x="53" y="399" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">page valid AND u_mip &lt; transition</text>
+<text x="53" y="427" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">No: keep mip distance; coverage = 1</text>
+<text x="53" y="455" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Yes: use page distance and</text>
+<text x="53" y="483" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">configured coverage branch</text>
+<rect x="465" y="330" width="350" height="175" rx="8" fill="#fffdf8" stroke="#93661e" stroke-width="1.5"/>
+<path d="M477 331H803" stroke="#93661e" stroke-width="4"/>
+<text x="483" y="365" font-size="23" fill="#93661e" font-weight="600" text-anchor="start">Fine distance page</text>
+<text x="483" y="399" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">8³ stored texels per physical page</text>
+<text x="483" y="427" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">uv_a = (8a + 7f + 0.5) / atlasSize</text>
+<text x="483" y="455" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">d = (2u − 1) × 8h</text>
+<text x="483" y="483" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">h = clipmap half-extent / R</text>
+<rect x="895" y="330" width="350" height="175" rx="8" fill="#fffdf8" stroke="#aa5343" stroke-width="1.5"/>
+<path d="M907 331H1233" stroke="#aa5343" stroke-width="4"/>
+<text x="913" y="365" font-size="23" fill="#aa5343" font-weight="600" text-anchor="start">Optional coverage page</text>
+<text x="913" y="399" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">4³ stored texels per physical page</text>
+<text x="913" y="427" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">uv_c = (4a + 3f + 0.5) / atlasSize</text>
+<text x="913" y="455" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Missing / disabled coverage: C = 1</text>
+<text x="913" y="483" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">C modifies expansion and min step</text>
+<path d="M640 240L640 300" fill="none" stroke="#286788" stroke-width="2"/>
+<path d="M640 300L210 300" fill="none" stroke="#286788" stroke-width="2"/>
+<path d="M210 300L210 320" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-1)"/>
+<path d="M1070 280L1070 300" fill="none" stroke="#93661e" stroke-width="2"/>
+<path d="M1070 300L400 300" fill="none" stroke="#93661e" stroke-width="2"/>
+<path d="M400 300L400 388" fill="none" stroke="#93661e" stroke-width="2"/>
+<path d="M400 388L390 388" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
+<path d="M390 425L455 425" fill="none" stroke="#286c56" stroke-width="2" marker-end="url(#arrow-0)"/>
+<path d="M210 510L210 535" fill="none" stroke="#286c56" stroke-width="2"/>
+<path d="M210 535L1070 535" fill="none" stroke="#286c56" stroke-width="2"/>
+<path d="M1070 535L1070 510" fill="none" stroke="#286c56" stroke-width="2" marker-end="url(#arrow-0)"/>
+<text x="35" y="570" font-size="22" fill="#286c56" font-weight="600" text-anchor="start">Page-table z slices: source-default example R = 252, P = 36</text>
+<rect x="35" y="600" width="530" height="48" rx="8" fill="#edf3ee" stroke="#286788" stroke-width="1.5"/>
+<text x="52" y="631" font-size="20" fill="#286788" font-weight="400" text-anchor="start">Clipmap 0:  z = 0 … 35     (local z + 0)</text>
+<rect x="35" y="658" width="530" height="48" rx="8" fill="#edf3ee" stroke="#286c56" stroke-width="1.5"/>
+<text x="52" y="689" font-size="20" fill="#286c56" font-weight="400" text-anchor="start">Clipmap 1:  z = 36 … 71     (local z + 36)</text>
+<rect x="35" y="716" width="530" height="48" rx="8" fill="#edf3ee" stroke="#93661e" stroke-width="1.5"/>
+<text x="52" y="747" font-size="20" fill="#93661e" font-weight="400" text-anchor="start">Clipmap 2:  z = 72 … 107     (local z + 72)</text>
+<rect x="35" y="774" width="530" height="48" rx="8" fill="#edf3ee" stroke="#aa5343" stroke-width="1.5"/>
+<text x="52" y="805" font-size="20" fill="#aa5343" font-weight="400" text-anchor="start">Clipmap 3:  z = 108 … 143     (local z + 108)</text>
+<text x="35" y="880" font-size="20" fill="#22312d" font-weight="400" text-anchor="start">Leaving out iP samples another clipmap.</text>
+<text x="35" y="909" font-size="20" fill="#22312d" font-weight="400" text-anchor="start">Packed object-grid value 0 is valid; 0xFFFFFFFF is invalid.</text>
+<text x="650" y="570" font-size="22" fill="#93661e" font-weight="600" text-anchor="start">One physical-page slice</text>
+<rect x="650" y="600" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="600" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="600" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="600" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="600" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="600" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="600" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="600" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="650" y="627" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="627" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="627" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="627" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="627" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="627" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="627" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="627" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="650" y="654" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="654" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="654" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="654" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="654" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="654" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="654" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="654" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="650" y="681" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="681" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="681" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="681" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="681" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="681" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="681" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="681" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="650" y="708" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="708" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="708" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="708" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="708" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="708" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="708" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="708" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="650" y="735" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="735" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="735" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="735" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="735" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="735" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="735" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="735" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="650" y="762" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="762" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="762" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="762" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="762" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="762" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="762" width="26" height="26" rx="0" fill="#fffaf0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="762" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="650" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="677" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="704" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="731" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="758" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="785" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="812" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="839" y="789" width="26" height="26" rx="0" fill="#f3e8d0" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="990" y="600" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1038" y="600" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1086" y="600" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1134" y="600" width="47" height="47" rx="0" fill="#f4e5df" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="990" y="648" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1038" y="648" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1086" y="648" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1134" y="648" width="47" height="47" rx="0" fill="#f4e5df" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="990" y="696" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1038" y="696" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1086" y="696" width="47" height="47" rx="0" fill="#fff8f5" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1134" y="696" width="47" height="47" rx="0" fill="#f4e5df" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="990" y="744" width="47" height="47" rx="0" fill="#f4e5df" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1038" y="744" width="47" height="47" rx="0" fill="#f4e5df" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1086" y="744" width="47" height="47" rx="0" fill="#f4e5df" stroke="#c4cec7" stroke-width="1.5"/>
+<rect x="1134" y="744" width="47" height="47" rx="0" fill="#f4e5df" stroke="#c4cec7" stroke-width="1.5"/>
+<text x="650" y="850" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Distance: 8 × 8 texels</text>
+<text x="650" y="878" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">7 unique intervals; overlap border</text>
+<text x="650" y="906" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">UNORM8 distance step = 16h / 255</text>
+<text x="990" y="850" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Coverage: 4 × 4 texels</text>
+<text x="990" y="878" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">3 unique intervals</text>
+<text x="990" y="906" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">A separate scalar field</text>
+<text x="36" y="976" font-size="16" fill="#586760" font-weight="400" text-anchor="start">Source-derived schematic, not a captured atlas. i: clipmap index; a: physical page coordinate; f: fractional local page coordinate.</text>
+</g></svg>

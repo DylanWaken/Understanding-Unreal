@@ -1,0 +1,797 @@
+{
+  "schema": "unreal-active-frame-gpudump-session-v1",
+  "mode": "vsm",
+  "run_id": "20261112-133929",
+  "pid": 49388,
+  "started_utc": "2026-11-12T13:39:29Z",
+  "started_monotonic": 88722.703,
+  "engine_version": "5.8.1-0+UE5",
+  "project": "reproduce/UnrealLab",
+  "map": "/Game/Labs/LumenRoom",
+  "resolution": [
+    1280,
+    720
+  ],
+  "lumen_commands": [
+    "r.ScreenPercentage 100",
+    "r.AntiAliasingMethod 2",
+    "r.MotionBlurQuality 0",
+    "r.Lumen.HardwareRayTracing 0",
+    "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+    "r.Lumen.Reflections.ScreenTraces 1",
+    "r.DynamicGlobalIlluminationMethod 1",
+    "r.ReflectionMethod 1",
+    "r.Lumen.Visualize 0",
+    "r.LumenScene.SurfaceCache.AtlasSize 4096",
+    "showflag.BillboardSprites 0",
+    "showflag.Grid 0",
+    "showflag.Selection 0",
+    "showflag.SelectionOutline 0",
+    "showflag.ModeWidgets 0",
+    "showflag.Bounds 0"
+  ],
+  "warmup_draws": 200,
+  "settle_draws": 90,
+  "dump_directory": null,
+  "status": "error",
+  "limitations": [
+    "DumpGPU captures RDG-visible resources only; resources never referenced by an RDG pass, or resources flagged SkipTracking/memoryless, are absent and are listed as unsupported.",
+    "Shader-local intermediate registers and values inside shader invocations are not DumpGPU resources; shader source mapping is evidence, not a memory capture.",
+    "r.DumpGPU.RedumpInputs=0 keeps the producer version of in-place-modified resources; the version linkage is recorded in Passes.json rather than forcing per-read duplicates."
+  ],
+  "camera": {
+    "actor": "CameraActor",
+    "location_cm": [
+      0.0,
+      -400.0,
+      165.0
+    ],
+    "rotation_degrees": {
+      "pitch": -2.105514188856035,
+      "yaw": 90.00000000000006,
+      "roll": 2.5614055970807246e-08
+    },
+    "target_cm": [
+      0.0,
+      280.0,
+      140.0
+    ],
+    "vertical_fov_degrees": 43.0,
+    "component_field_of_view_degrees": 70.0059814453125
+  },
+  "exposure": {
+    "effective_method": "histogram (AEM_HISTOGRAM) with min_brightness == max_brightness == EV100 4",
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+    "override_auto_exposure_method": "False",
+    "ev100": 4.0,
+    "min_brightness": 4.0,
+    "max_brightness": 4.0,
+    "bias": 0.0,
+    "postprocess_values_after_set": {
+      "override_auto_exposure_min_brightness": "True",
+      "auto_exposure_min_brightness": "4.0",
+      "override_auto_exposure_max_brightness": "True",
+      "auto_exposure_max_brightness": "4.0",
+      "override_auto_exposure_bias": "True",
+      "auto_exposure_bias": "0.0",
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+      "override_auto_exposure_method": "False",
+      "override_path_tracing_samples_per_pixel": "False",
+      "path_tracing_samples_per_pixel": "2048",
+      "override_path_tracing_max_bounces": "False",
+      "path_tracing_max_bounces": "32",
+      "override_path_tracing_enable_denoiser": "False",
+      "path_tracing_enable_denoiser": "True"
+    },
+    "note": "Not manual exposure. The unbound PostProcessVolume leaves AEM_HISTOGRAM active; min=max=4 locks the histogram-derived exposure to EV100 4."
+  },
+  "light": {
+    "actor": "Ceiling area light",
+    "location_cm": [
+      0.0,
+      270.0,
+      298.0
+    ],
+    "rotation_degrees": {
+      "pitch": -90.0,
+      "yaw": 0.0,
+      "roll": 0.0
+    },
+    "intensity_lumens": 2400.0,
+    "intensity_units": "<LightUnits.LUMENS: 2>",
+    "source_width_cm": 130.0,
+    "source_height_cm": 120.0,
+    "attenuation_radius_cm": 1000.0,
+    "light_color": [
+      255.0,
+      255.0,
+      255.0
+    ]
+  },
+  "light_label": "Ceiling area light",
+  "pp_values": {
+    "override_auto_exposure_min_brightness": "True",
+    "auto_exposure_min_brightness": "4.0",
+    "override_auto_exposure_max_brightness": "True",
+    "auto_exposure_max_brightness": "4.0",
+    "override_auto_exposure_bias": "True",
+    "auto_exposure_bias": "0.0",
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+    "override_auto_exposure_method": "False",
+    "override_path_tracing_samples_per_pixel": "False",
+    "path_tracing_samples_per_pixel": "2048",
+    "override_path_tracing_max_bounces": "False",
+    "path_tracing_max_bounces": "32",
+    "override_path_tracing_enable_denoiser": "False",
+    "path_tracing_enable_denoiser": "True"
+  },
+  "scene_file": "data/native/scene.json",
+  "phase": "warmup",
+  "runtime_file": "not-included/runtime/vsm-20261112-133929.json",
+  "runtime_key_cvars": {
+    "r.Substrate": {
+      "name": "r.Substrate",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 36
+    },
+    "r.Substrate.Project": {
+      "name": "r.Substrate.Project",
+      "found": false
+    },
+    "r.Substrate.OpaqueMaterial": {
+      "name": "r.Substrate.OpaqueMaterial",
+      "found": false
+    },
+    "r.Substrate.Debug": {
+      "name": "r.Substrate.Debug",
+      "found": false
+    },
+    "r.MegaLights.Enable": {
+      "name": "r.MegaLights.Enable",
+      "found": false
+    },
+    "r.MegaLights.EnableForProject": {
+      "name": "r.MegaLights.EnableForProject",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.MegaLights.Supported": {
+      "name": "r.MegaLights.Supported",
+      "found": true,
+      "value": "true",
+      "default": "true",
+      "set_by": "Constructor",
+      "flags": 36
+    },
+    "r.MegaLights.Allowed": {
+      "name": "r.MegaLights.Allowed",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 352
+    },
+    "r.MegaLights.Debug": {
+      "name": "r.MegaLights.Debug",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.Lumen.HardwareRayTracing": {
+      "name": "r.Lumen.HardwareRayTracing",
+      "found": true,
+      "value": "0",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.Lumen.ScreenProbeGather.ScreenTraces": {
+      "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.Lumen.Reflections.ScreenTraces": {
+      "name": "r.Lumen.Reflections.ScreenTraces",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.LumenScene.SurfaceCache.AtlasSize": {
+      "name": "r.LumenScene.SurfaceCache.AtlasSize",
+      "found": true,
+      "value": "4096",
+      "default": "4096",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.DynamicGlobalIlluminationMethod": {
+      "name": "r.DynamicGlobalIlluminationMethod",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.ReflectionMethod": {
+      "name": "r.ReflectionMethod",
+      "found": true,
+      "value": "1",
+      "default": "2",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.Shadow.Virtual.Enable": {
+      "name": "r.Shadow.Virtual.Enable",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "ProjectSetting",
+      "flags": 67109216
+    },
+    "r.Shadow.Virtual.Visualize": {
+      "name": "r.Shadow.Virtual.Visualize",
+      "found": true,
+      "value": "",
+      "default": "",
+      "set_by": "Constructor",
+      "flags": 1
+    },
+    "r.Shadow.Virtual.Visualize.Layout": {
+      "name": "r.Shadow.Virtual.Visualize.Layout",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.Shadow.Virtual.Visualize.LightName": {
+      "name": "r.Shadow.Virtual.Visualize.LightName",
+      "found": true,
+      "value": "",
+      "default": "",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.RayTracing": {
+      "name": "r.RayTracing",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "ProjectSetting",
+      "flags": 67108900
+    },
+    "r.RayTracing.Shadows": {
+      "name": "r.RayTracing.Shadows",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 352
+    },
+    "r.RayTracing.GlobalIllumination": {
+      "name": "r.RayTracing.GlobalIllumination",
+      "found": false
+    },
+    "r.PathTracing": {
+      "name": "r.PathTracing",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 36
+    },
+    "r.PathTracing.SamplesPerPixel": {
+      "name": "r.PathTracing.SamplesPerPixel",
+      "found": true,
+      "value": "-1",
+      "default": "-1",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.MaxBounces": {
+      "name": "r.PathTracing.MaxBounces",
+      "found": true,
+      "value": "-1",
+      "default": "-1",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.Denoiser": {
+      "name": "r.PathTracing.Denoiser",
+      "found": true,
+      "value": "-1",
+      "default": "-1",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.FilterWidth": {
+      "name": "r.PathTracing.FilterWidth",
+      "found": true,
+      "value": "3",
+      "default": "3.000000",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.MISMode": {
+      "name": "r.PathTracing.MISMode",
+      "found": true,
+      "value": "2",
+      "default": "2",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.EnableEmissive": {
+      "name": "r.PathTracing.EnableEmissive",
+      "found": true,
+      "value": "-1",
+      "default": "-1",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.EnableReferenceDOF": {
+      "name": "r.PathTracing.EnableReferenceDOF",
+      "found": true,
+      "value": "-1",
+      "default": "-1",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.VisibleLights": {
+      "name": "r.PathTracing.VisibleLights",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.PathTracing.ProgressDisplay": {
+      "name": "r.PathTracing.ProgressDisplay",
+      "found": true,
+      "value": "true",
+      "default": "true",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.ScreenPercentage": {
+      "name": "r.ScreenPercentage",
+      "found": true,
+      "value": "100",
+      "default": "0.000000",
+      "set_by": "Console",
+      "flags": 268435776
+    },
+    "r.AntiAliasingMethod": {
+      "name": "r.AntiAliasingMethod",
+      "found": true,
+      "value": "2",
+      "default": "4",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.MotionBlurQuality": {
+      "name": "r.MotionBlurQuality",
+      "found": true,
+      "value": "0",
+      "default": "4",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.DefaultFeature.AutoExposure": {
+      "name": "r.DefaultFeature.AutoExposure",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DefaultFeature.AutoExposure.Method": {
+      "name": "r.DefaultFeature.AutoExposure.Method",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange": {
+      "name": "r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "ProjectSetting",
+      "flags": 67108864
+    },
+    "r.EyeAdaptation.MethodOverride": {
+      "name": "r.EyeAdaptation.MethodOverride",
+      "found": true,
+      "value": "-1",
+      "default": "-1",
+      "set_by": "Constructor",
+      "flags": 352
+    },
+    "r.EyeAdaptation.ExposureCompensation": {
+      "name": "r.EyeAdaptation.ExposureCompensation",
+      "found": false
+    },
+    "r.EyeAdaptation.PreExposureOverride": {
+      "name": "r.EyeAdaptation.PreExposureOverride",
+      "found": true,
+      "value": "0",
+      "default": "0.000000",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.EyeAdaptation.PreExposure": {
+      "name": "r.EyeAdaptation.PreExposure",
+      "found": false
+    },
+    "r.EyeAdaptationQuality": {
+      "name": "r.EyeAdaptationQuality",
+      "found": true,
+      "value": "2",
+      "default": "2",
+      "set_by": "Scalability",
+      "flags": 33554784
+    },
+    "r.PreExposure": {
+      "name": "r.PreExposure",
+      "found": false
+    },
+    "r.Tonemapper.Quality": {
+      "name": "r.Tonemapper.Quality",
+      "found": true,
+      "value": "5",
+      "default": "5",
+      "set_by": "Scalability",
+      "flags": 33554784
+    },
+    "r.Tonemapper.Sharpen": {
+      "name": "r.Tonemapper.Sharpen",
+      "found": true,
+      "value": "-1",
+      "default": "-1.000000",
+      "set_by": "Constructor",
+      "flags": 352
+    },
+    "r.GenerateMeshDistanceFields": {
+      "name": "r.GenerateMeshDistanceFields",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "ProjectSetting",
+      "flags": 67108868
+    },
+    "r.AllowStaticLighting": {
+      "name": "r.AllowStaticLighting",
+      "found": true,
+      "value": "0",
+      "default": "1",
+      "set_by": "ProjectSetting",
+      "flags": 67108900
+    },
+    "r.DumpGPU.Root": {
+      "name": "r.DumpGPU.Root",
+      "found": true,
+      "value": "*",
+      "default": "*",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.Texture": {
+      "name": "r.DumpGPU.Texture",
+      "found": true,
+      "value": "2",
+      "default": "2",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.DumpGPU.Buffer": {
+      "name": "r.DumpGPU.Buffer",
+      "found": true,
+      "value": "2",
+      "default": "2",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.DumpGPU.PassParameters": {
+      "name": "r.DumpGPU.PassParameters",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.DumpGPU.ConsoleVariables": {
+      "name": "r.DumpGPU.ConsoleVariables",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.Explore": {
+      "name": "r.DumpGPU.Explore",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.Upload": {
+      "name": "r.DumpGPU.Upload",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.Directory": {
+      "name": "r.DumpGPU.Directory",
+      "found": true,
+      "value": "",
+      "default": "",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.MaxStagingSize": {
+      "name": "r.DumpGPU.MaxStagingSize",
+      "found": true,
+      "value": "64",
+      "default": "64",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.DumpGPU.Stream": {
+      "name": "r.DumpGPU.Stream",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.RedumpInputs": {
+      "name": "r.DumpGPU.RedumpInputs",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.DumpGPU.FrameCount": {
+      "name": "r.DumpGPU.FrameCount",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.FrameDelay": {
+      "name": "r.DumpGPU.FrameDelay",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.DumpGPU.Delay": {
+      "name": "r.DumpGPU.Delay",
+      "found": true,
+      "value": "0",
+      "default": "0.000000",
+      "set_by": "Constructor",
+      "flags": 32
+    },
+    "r.DumpGPU.Draws": {
+      "name": "r.DumpGPU.Draws",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.Mask": {
+      "name": "r.DumpGPU.Mask",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.EnableLogWrite": {
+      "name": "r.DumpGPU.EnableLogWrite",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.Test.EnableDiskWrite": {
+      "name": "r.DumpGPU.Test.EnableDiskWrite",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 0
+    },
+    "r.DumpGPU.Test.PrettifyResourceFileNames": {
+      "name": "r.DumpGPU.Test.PrettifyResourceFileNames",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Constructor",
+      "flags": 32
+    }
+  },
+  "render_status": {
+    "rhi": "D3D12",
+    "feature_level": 4,
+    "shader_platform": "PCD3D_SM6",
+    "view_mode_index": 3,
+    "viewport_size": [
+      1280,
+      720
+    ],
+    "scene_hdr_enabled": false,
+    "ray_tracing_supported": true,
+    "ray_tracing_shaders_supported": true,
+    "path_tracing_shader_support": true
+  },
+  "figures": [
+    {
+      "file": "figures/native/vsm/vsm-mask.png",
+      "bytes": 190982,
+      "sha256": "356b08bb675c7e868e7b8e2b3f7bb2ba3ee13ca7e5de9e837d90c922c14a0be1",
+      "modified_utc": "2026-11-12T13:39:34Z",
+      "stats": {
+        "file": "figures/native/vsm/vsm-mask.png",
+        "width": 1280,
+        "height": 720,
+        "channels": 4,
+        "mean_luminance": 145.6348627344446,
+        "std_luminance": 107.76675074217172,
+        "min_luminance": 0.0,
+        "max_luminance": 254.99999999999997,
+        "unique_rgb_colors": 265,
+        "nonblack_fraction_lum_gt_8": 0.7111393229166667,
+        "size_ok": true,
+        "blank_rejected": true
+      },
+      "vsm_mode": "mask",
+      "view_mode_after": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 32,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      },
+      "cvar": {
+        "name": "r.Shadow.Virtual.Visualize",
+        "found": true,
+        "value": "",
+        "default": "",
+        "set_by": "Constructor",
+        "flags": 1
+      },
+      "capture_draw": 299
+    }
+  ],
+  "vsm": [
+    {
+      "mode": "mask",
+      "image": {
+        "file": "figures/native/vsm/vsm-mask.png",
+        "bytes": 190982,
+        "sha256": "356b08bb675c7e868e7b8e2b3f7bb2ba3ee13ca7e5de9e837d90c922c14a0be1",
+        "modified_utc": "2026-11-12T13:39:34Z",
+        "stats": {
+          "file": "figures/native/vsm/vsm-mask.png",
+          "width": 1280,
+          "height": 720,
+          "channels": 4,
+          "mean_luminance": 145.6348627344446,
+          "std_luminance": 107.76675074217172,
+          "min_luminance": 0.0,
+          "max_luminance": 254.99999999999997,
+          "unique_rgb_colors": 265,
+          "nonblack_fraction_lum_gt_8": 0.7111393229166667,
+          "size_ok": true,
+          "blank_rejected": true
+        },
+        "vsm_mode": "mask",
+        "view_mode_after": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 32,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        },
+        "cvar": {
+          "name": "r.Shadow.Virtual.Visualize",
+          "found": true,
+          "value": "",
+          "default": "",
+          "set_by": "Constructor",
+          "flags": 1
+        },
+        "capture_draw": 299
+      },
+      "render_status_after": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 32,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      },
+      "visualize_cvar": {
+        "name": "r.Shadow.Virtual.Visualize",
+        "found": true,
+        "value": "",
+        "default": "",
+        "set_by": "Constructor",
+        "flags": 1
+      },
+      "layout": {
+        "name": "r.Shadow.Virtual.Visualize.Layout",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "light_name_cvar": {
+        "name": "r.Shadow.Virtual.Visualize.LightName",
+        "found": true,
+        "value": "Ceiling area light",
+        "default": "",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "showflags": {
+        "VisualizeVirtualShadowMap": "2"
+      },
+      "exact_commands": [
+        "r.Shadow.Virtual.Visualize.Layout 0",
+        "r.Shadow.Virtual.Visualize.LightName \"Ceiling area light\"",
+        "Viewport view mode VMI_VisualizeVirtualShadowMap, mode mask"
+      ]
+    }
+  ],
+  "error": "Traceback (most recent call last):\n  File \"reproduce/scripts/gpudump_capture.py\", line 799, in tick\n    capture_vsm(SESSION['light_label'])\n  File \"reproduce/scripts/gpudump_capture.py\", line 616, in capture_vsm\n    raise RuntimeError(f'VSM {mode} view rejected by numerical check: {json.dumps(stats)}')\nRuntimeError: VSM mask view rejected by numerical check: {\"file\": \"figures/native/vsm\\\\vsm-mask.png\", \"width\": 1280, \"height\": 720, \"channels\": 4, \"mean_luminance\": 145.6348627344446, \"std_luminance\": 107.76675074217172, \"min_luminance\": 0.0, \"max_luminance\": 254.99999999999997, \"unique_rgb_colors\": 265, \"nonblack_fraction_lum_gt_8\": 0.7111393229166667, \"size_ok\": true, \"blank_rejected\": true}\n",
+  "finished_utc": "2026-11-12T13:39:34Z",
+  "elapsed_seconds": 5.0,
+  "draws": 300,
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged."
+}

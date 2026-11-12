@@ -1,0 +1,228 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0355",
+  "nativeRecordId": "native-015874",
+  "name": "LightGridFeedbackStatus",
+  "displayLabel": "LightGridFeedbackStatus · CullLights 20x12x32 NumLights 1 NumCaptures 0 · frame 292 · pass 354",
+  "frameNumber": 292,
+  "graphPrefix": "CullLights 20x12x32 NumLights 1 NumCaptures 0",
+  "viewState": null,
+  "pointer": "000300000228e99d4a40",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228e99d4960",
+  "parametersMetadataPointer": "000300007ffb892462a0",
+  "parentScopes": [
+    "CullLights 20x12x32 NumLights 1 NumCaptures 0",
+    "ComputeLightGrid",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "LightGridFeedbackStatus",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228e99d4960",
+    "ParametersMetadata": "000300007ffb892462a0",
+    "Pointer": "000300000228e99d4a40",
+    "Id": 354,
+    "ParentEventScopes": [
+      "CullLights 20x12x32 NumLights 1 NumCaptures 0",
+      "ComputeLightGrid",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228ec03f9a0",
+      "000300000228ec03f820"
+    ],
+    "OutputResources": [
+      "000300000228ec3b05e8"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228ec03f9a0",
+      "resourceId": "resource-0591",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01759",
+        "payload-01760"
+      ]
+    },
+    {
+      "uniqueName": "000300000228ec03f820",
+      "resourceId": "resource-0590",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01757",
+        "payload-01758"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000228ec3b05e8",
+      "resourceId": "resource-0488",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01764",
+        "payload-01765",
+        "payload-01766",
+        "payload-01767"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06543",
+    "metadataPointer": "000300007ffb892462a0",
+    "bytes": 64,
+    "sha256": "e2a4b847e48387a742bf0c8d03bf19e0f32ce8c8e293164d7d4c167768517453",
+    "chunks": [
+      {
+        "sha": "e2a4b847e48387a742bf0c8d03bf19e0f32ce8c8e293164d7d4c167768517453",
+        "offset": 0,
+        "length": 64
+      }
+    ],
+    "originalPath": "Structures/000300000228e99d4960.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\LightGridInjection.cpp",
+    "FileLine": 2237,
+    "Size": 64,
+    "Members": [
+      {
+        "Name": "CulledLightDataAllocatorBuffer",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 2238,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "NumCulledLightDataEntries",
+        "ShaderType": "",
+        "FileLine": 2239,
+        "Offset": 8,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "CulledLightLinkAllocatorBuffer",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 2241,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "NumAvailableLinks",
+        "ShaderType": "",
+        "FileLine": 2242,
+        "Offset": 24,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "GPUMessageParams",
+        "ShaderType": "GPUMessage::FParameters",
+        "FileLine": 2244,
+        "Offset": 32,
+        "BaseType": "UBMT_INCLUDED_STRUCT",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "000300007ffb89245560"
+      },
+      {
+        "Name": "StatusMessageId",
+        "ShaderType": "",
+        "FileLine": 2245,
+        "Offset": 48,
+        "BaseType": "UBMT_UINT32",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228e99d4a40",
+      "Parameters": "000300000228e99d4960",
+      "Bindings": {
+        "CulledLightDataAllocatorBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228e99d49a0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "CulledLightLinkAllocatorBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228e99d49f0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "GPUMessageParams.GPUMessageDataBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228807100f0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

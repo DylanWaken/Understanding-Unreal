@@ -1,0 +1,320 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1246",
+  "nativeRecordId": "native-018258",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.PrepareProbeOcclusionIndirectArgs",
+  "uniqueName": "000400000228baec1648",
+  "displayLabel": "Lumen.RadianceCache.PrepareProbeOcclusionIndirectArgs · instance 0004 · frame 292 · passes 769",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 769,
+    "last": 769
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 84,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 12,
+  "numElements": 7,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 12,
+    "numElements": 7
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.PrepareProbeOcclusionIndirectArgs",
+    "UniqueResourceName": "000400000228baec1648",
+    "ByteSize": 84,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 12,
+    "NumElements": 7,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "DrawIndirect",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02235",
+      "role": "resource",
+      "originalPath": "Resources/000400000228baec1648.v000400000228baec1d70.bin",
+      "bytes": 84,
+      "sha256": "b7d0aa9f2880f4ec8695327aaec3716f678101f36a0ddb59f201909c1229fad4",
+      "version": "000400000228baec1d70",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1246",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "b7d0aa9f2880f4ec8695327aaec3716f678101f36a0ddb59f201909c1229fad4",
+          "offset": 0,
+          "length": 84
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000228baec1648",
+        "name": "Lumen.RadianceCache.PrepareProbeOcclusionIndirectArgs",
+        "byteSize": 84
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228baec1d70",
+      "producerPassId": "pass-0770",
+      "producerPassName": "SetupProbeIndirectArgsCS",
+      "payloadIds": [
+        "payload-02235"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0770",
+        "name": "SetupProbeIndirectArgsCS",
+        "displayLabel": "SetupProbeIndirectArgsCS · UpdateWorldRadianceCaches · frame 292 · pass 769",
+        "record": "records/pass/pass-0770.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02235",
+      "file": "Resources/000400000228baec1648.v000400000228baec1d70.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.rc.prepare-probe-occlusion-indirect-args",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.PrepareProbeOcclusionIndirectArgs$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "dispatch dimensions for FPrepareProbeOcclusionCS (1 group per traced probe, 1D)",
+      "units": "thread-group counts (x,y,z)",
+      "coordinateSpace": "z = probe trace index",
+      "storage": {
+        "kind": "buffer",
+        "format": "FRHIDispatchIndirectParameters (3 x uint32)",
+        "strideBytes": 12,
+        "numElements": 7,
+        "capacity": "7 FRHIDispatchIndirectParameters records",
+        "usage": "IndirectArgs(UAV|DrawIndirect) | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 12,
+            "numElements": 7,
+            "byteSize": 84,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "DrawIndirect",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FRHIDispatchIndirectParameters (3 x uint32)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "record0",
+          "expression": "x=1; y=1; z=min(ProbeTraceAllocator[0], MaxProbesToTrace)",
+          "requires": [
+            "ProbeTraceAllocator",
+            "MaxProbesToTrace"
+          ],
+          "sourceRefs": [
+            "part2.rc.args.occl.write",
+            "part2.rc.setup.args"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "The pass requires OcclusionProbeResolution == RadianceProbeResolution (ensureMsgf in LumenRadianceCache.cpp:2654)."
+      ],
+      "producerSources": [
+        "part2.rc.cpp.args.occl",
+        "part2.rc.args.occl.write"
+      ],
+      "consumerSources": [
+        "part2.rc.dispatch.occl"
+      ],
+      "gaps": [
+        "Capacity 7; only record 0 is written and dispatched."
+      ],
+      "fields": [
+        {
+          "name": "X",
+          "type": "uint32",
+          "decode": "record[0].x = 1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.occl.write"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "Y",
+          "type": "uint32",
+          "decode": "record[0].y = 1",
+          "units": "thread groups",
+          "sourceRefs": [
+            "part2.rc.args.occl.write"
+          ],
+          "byteOffset": 4,
+          "bitWidth": 32
+        },
+        {
+          "name": "Z",
+          "type": "uint32",
+          "decode": "record[0].z = NumProbesToTrace",
+          "units": "probes",
+          "sourceRefs": [
+            "part2.rc.args.occl.write"
+          ],
+          "byteOffset": 8,
+          "bitWidth": 32
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0782",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadianceCache.PrepareProbeOcclusionIndirectArgs has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1246"
+    }
+  ]
+}

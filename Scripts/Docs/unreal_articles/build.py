@@ -10,6 +10,9 @@ import argparse
 import json
 import math
 import re
+import struct
+import xml.etree.ElementTree as ET
+from urllib.parse import unquote, urlsplit
 from math_typesetting import typeset, PATTERN as MATH_PATTERN
 
 HERE = Path(__file__).resolve().parent
@@ -22,9 +25,10 @@ ARTICLES = [
     dict(key='nanite', slug='nanite', title='Nanite: From a Scanned Bunny to Visible Pixels',
          short='Nanite',
          deck='Build, select, stream, and rasterize virtual geometry: a source-guided essay with a computed Stanford bunny experiment and real Unreal Engine captures.'),
-    dict(key='lumen', slug='lumen', title='Lumen: Following Light Through a Room',
+    dict(key='lumen', slug='lumen', title='Lumen: From the Path Integral to a Frame',
          short='Lumen',
-         deck='Derive and implement the machinery of real-time indirect lighting: surface caches, distance fields, probes, reflections, and temporal reuse, demonstrated in one indoor scene.'),
+         date='2026-11-13', date_label='13 November 2026', append_lab_sources=False,
+         deck='Derive light transport, follow its real-time approximation, and inspect the actual deferred shading, shadows, surface caches, probes, and reflections in one Unreal frame.'),
     dict(key='material', slug='material-compiler', title='How Unreal Compiles a Material Graph',
          short='Material graph compilation',
          deck='Follow an expression graph from the Material Editor through analysis, shader generation, caching, compilation, and the GPU programs used to shade a surface.'),
@@ -102,6 +106,42 @@ class TermLinks(HTMLParser):
     def handle_comment(self, text): self.out.append('<!--' + text + '-->')
 
 
+def image_dimensions(match):
+    """Reserve image layout from the actual local PNG/SVG dimensions."""
+    tag = match[0]
+    class ImageTag(HTMLParser):
+        attributes = None
+        def handle_starttag(self, name, attrs):
+            if name == 'img': self.attributes = dict(attrs)
+    parsed = ImageTag(); parsed.feed(tag)
+    attrs = parsed.attributes or {}
+    if attrs.get('width') and attrs.get('height'): return tag
+    url = urlsplit(attrs.get('src', ''))
+    if url.scheme or url.netloc or not url.path: return tag
+    path = OUT / unquote(url.path)
+    if not path.is_file(): return tag
+    if path.suffix == '.png':
+        with path.open('rb') as stream: header = stream.read(24)
+        if header[:8] != b'\x89PNG\r\n\x1a\n': return tag
+        width, height = struct.unpack('>II', header[16:24])
+    elif path.suffix == '.svg':
+        svg = ET.parse(path).getroot()
+        box = [float(v) for v in re.split(r'[ ,]+', svg.get('viewBox', '').strip()) if v]
+        if len(box) != 4: return tag
+        width, height = box[2:]
+    else:
+        return tag
+    if width <= 0 or height <= 0: return tag
+    additions = []
+    if not attrs.get('width'):
+        value = float(attrs['height']) * width / height if attrs.get('height') else width
+        additions.append(f'width="{value:g}"')
+    if not attrs.get('height'):
+        value = float(attrs['width']) * height / width if attrs.get('width') else height
+        additions.append(f'height="{value:g}"')
+    return re.sub(r'\s*(/?>)$', lambda m: ' ' + ' '.join(additions) + m[1], tag)
+
+
 def render(article, body):
     equations = []
     def protect_math(match):
@@ -117,6 +157,7 @@ def render(article, body):
     body = re.sub(r'(<div class="table-scroll"[^>]*>)\s*(<table class="data-table">)<caption id="([^"]+)">(.*?)</caption>(.*?)</table>\s*</div>',
                   collapse_reference, body, flags=re.S)
     body = re.sub(r'(<h2>)\s*\d+[.)]\s+', r'\1', body)
+    body = re.sub(r'<img\b[^>]*>', image_dimensions, body)
     # Wide diagrams remain readable on phones; the surrounding article never scrolls sideways.
     def diagram(match):
         tag, image = match.groups()
@@ -161,7 +202,7 @@ def render(article, body):
 <nav class="essay-links" aria-label="Independent articles">{siblings}</nav>
 <header class="article-heading"><p class="kicker">Rendering engineering</p><h1>{title}</h1>
 <p class="deck">{escape(article['deck'])}</p>
-<p class="byline">Source study · Unreal Engine 5.8.1 · <time datetime="2026-10-15">15 October 2026</time><br>{count:,} words · approximately {minutes} minutes</p>
+<p class="byline">Source study · Unreal Engine 5.8.1 · <time datetime="{article.get('date', '2026-10-15')}">{article.get('date_label', '15 October 2026')}</time><br>{count:,} words · approximately {minutes} minutes</p>
 </header>
 <div class="reading-bar"><div class="reading-bar-inner">
 <details class="contents"><summary>Chapters <span aria-hidden="true">↓</span></summary><nav aria-label="Article chapters"><ol>{nav}</ol></nav></details>
@@ -216,7 +257,7 @@ def article_source(article):
     if article['key'] == 'scene':
         compatibility = HERE / 'chapters' / 'scene-compatibility.html'
         if compatibility.exists(): body += '\n' + compatibility.read_text(encoding='utf-8')
-    if article['key'] in ('nanite', 'lumen'):
+    if article['key'] in ('nanite', 'lumen') and article.get('append_lab_sources', True):
         evidence = HERE / 'evidence' / (article['key'] + '-lab.json')
         if evidence.exists():
             records = json.loads(evidence.read_text(encoding='utf-8'))
@@ -268,7 +309,7 @@ def migration_page():
 <main class="prose"><h1>Two independent essays</h1>
 <p>The former combined article has been replaced by two expanded, independently readable studies.</p>
 <p><a href="nanite.html">Nanite: From a Scanned Bunny to Visible Pixels</a> follows an actual mesh through building, LOD selection, rasterization, tessellation and shading.</p>
-<p><a href="lumen.html">Lumen: Following Light Through a Room</a> develops surface caches, tracing, probes, reflections and temporal reuse with computed experiments and real Unreal captures.</p>
+<p><a href="lumen.html">Lumen: From the Path Integral to a Frame</a> derives path tracing, then follows deferred lighting, shadows, caches, probes and reflections through the real-time approximation.</p>
 <p><a href="../index.html">Return to the Understanding Unreal homepage</a>.</p>''' + marker + '\n</main></body></html>\n'
 
 

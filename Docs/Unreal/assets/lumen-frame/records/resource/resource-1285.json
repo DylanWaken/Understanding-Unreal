@@ -1,0 +1,502 @@
+{
+  "format": "PF_FloatR11G11B10",
+  "version": 1,
+  "id": "resource-1285",
+  "nativeRecordId": "native-018297",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.ScreenProbeFilteredRadianceWithBorder",
+  "uniqueName": "000400000228dc9582e0",
+  "displayLabel": "Lumen.ScreenProbeGather.ScreenProbeFilteredRadianceWithBorder · instance 0004 · frame 292 · passes 794",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 794,
+    "last": 794
+  },
+  "allocation": [
+    800,
+    840
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": "probe-grid",
+    "allocation": [
+      800,
+      840
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 2688000,
+  "extent": [
+    800,
+    840,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "R11G11B10_FLOAT",
+    "bytesPerTexel": 4,
+    "formatNormalized": "FLOATR11G11B10",
+    "dumpFormat": "PF_FLOATR11G11B10",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.ScreenProbeFilteredRadianceWithBorder",
+    "UniqueResourceName": "000400000228dc9582e0",
+    "ByteSize": 2688000,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_FloatR11G11B10",
+    "ExtentX": 800,
+    "ExtentY": 840,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02468",
+      "role": "resource",
+      "originalPath": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+      "bytes": 2688000,
+      "sha256": "cbb2cdf9384418d270ef5f2b3ba3b51509fe83c5a7b835a063773fb2dbe3c2f8",
+      "version": "000400000228dc958750",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1285",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "454ee736dd834e3b765633c4311a9195fe77176a9d45e5f3fb1160559ce9eba4",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "78bdc53f68dab76e7e765b7d61dbc4da9e378354a70a884ea19757e87e60d858",
+          "offset": 1048576,
+          "length": 1048576
+        },
+        {
+          "sha": "e7927c77a903c189e5b9d5983b1ccb1cac8c53f3cc443f8cc00907d436cd6810",
+          "offset": 2097152,
+          "length": 590848
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000228dc9582e0",
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeFilteredRadianceWithBorder",
+        "File": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 800,
+        "ExtentY": 840,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 2688000,
+        "RowPitchBytes": 3200,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatR11G11B10",
+        "ViewFormat": "PF_FloatR11G11B10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatR11G11B10",
+        "StoredFormat": "PF_FloatR11G11B10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2688000,
+        "StagingByteSize": 2688000
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 2688000,
+          "ActualBytes": 2688000,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2688000,
+        "actualBytes": 2688000,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000228dc9582e0",
+        "name": "Lumen.ScreenProbeGather.ScreenProbeFilteredRadianceWithBorder",
+        "diagnosticResource": "000400000228dc9582e0"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 800,
+        "extentY": 840,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 2688000,
+        "rowPitchBytes": 3200,
+        "storageFormat": "PF_FloatR11G11B10",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "R11G11B10_FLOAT",
+        "bytesPerTexel": 4,
+        "formatNormalized": "FLOATR11G11B10",
+        "dumpFormat": "PF_FLOATR11G11B10",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_FloatR11G11B10",
+        "viewFormat": "PF_FloatR11G11B10",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228dc958750",
+      "producerPassId": "pass-0795",
+      "producerPassName": "FixupBorders",
+      "payloadIds": [
+        "payload-02468"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0795",
+        "name": "FixupBorders",
+        "displayLabel": "FixupBorders · LumenScreenProbeGather · frame 292 · pass 794",
+        "record": "records/pass/pass-0795.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0801",
+        "name": "ScreenProbeIntegrate SupportImportanceSampleBRDF DownsampleFactor:1",
+        "displayLabel": "ScreenProbeIntegrate SupportImportanceSampleBRDF DownsampleFactor:1 · Integrate · frame 292 · pass 800",
+        "record": "records/pass/pass-0801.json"
+      },
+      {
+        "id": "pass-0802",
+        "name": "ScreenProbeIntegrate SupportAll DownsampleFactor:1",
+        "displayLabel": "ScreenProbeIntegrate SupportAll DownsampleFactor:1 · Integrate · frame 292 · pass 801",
+        "record": "records/pass/pass-0802.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-02468",
+      "file": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+      "layout": {
+        "Resource": "000400000228dc9582e0",
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeFilteredRadianceWithBorder",
+        "File": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 800,
+        "ExtentY": 840,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 2688000,
+        "RowPitchBytes": 3200,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatR11G11B10",
+        "ViewFormat": "PF_FloatR11G11B10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatR11G11B10",
+        "StoredFormat": "PF_FloatR11G11B10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 2688000,
+        "StagingByteSize": 2688000
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 2688000,
+          "ActualBytes": 2688000,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2688000,
+        "actualBytes": 2688000,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-02468",
+      "file": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000228dc9582e0.mip0.v000400000228dc958750.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 2688000,
+          "ActualBytes": 2688000,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 2688000,
+        "actualBytes": 2688000,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.screen-probe-filtered-radiance-with-border",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.ScreenProbeFilteredRadianceWithBorder$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "probe radiance with a 1-texel border and mip chain, used for mip-filtered probe interpolation",
+      "units": "pre-exposed radiance (linear RGB)",
+      "coordinateSpace": "per-probe (GatherOctahedronResolution+2) equi-area grid with border, mip chain",
+      "storage": {
+        "kind": "texture2d",
+        "format": "PF_FloatR11G11B10",
+        "strideBytes": 4,
+        "extent": "ScreenProbeAtlasBufferSize * ScreenProbeGatherOctahedronResolutionWithBorder (captured 800x840 = 80*10 x 84*10)",
+        "mips": "GLumenScreenProbeGatherNumMips (captured 1)",
+        "flags": [
+          "ShaderResource",
+          "UAV"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGTextureDesc",
+            "type": "Texture2D",
+            "format": "PF_FloatR11G11B10",
+            "extentX": 800,
+            "extentY": 840,
+            "depth": 1,
+            "arraySize": 1,
+            "numMips": 1,
+            "byteSize": 2688000
+          }
+        ]
+      },
+      "actualFormat": "PF_FloatR11G11B10",
+      "declaredFormat": "PF_FloatR11G11B10",
+      "declaredFormatText": "PF_FloatR11G11B10",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_FloatR11G11B10",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_FLOATR11G11B10",
+      "payloadFormat": "PF_FLOATR11G11B10",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "border",
+          "expression": "ProbeTexelCoord = DispatchThreadId.xy / WithBorderRes; border texel = OctahedralMapWrapBorder(coord, WithBorderRes, 1)",
+          "requires": [
+            "ScreenProbeGatherOctahedronResolutionWithBorder"
+          ],
+          "sourceRefs": [
+            "part2.spgf.mip.write"
+          ]
+        },
+        {
+          "name": "mips",
+          "expression": "for MipLevel 1..GLumenScreenProbeGatherNumMips-1, generate from the previous mip",
+          "requires": [
+            "GLumenScreenProbeGatherNumMips"
+          ],
+          "sourceRefs": [
+            "part2.spgf.cpp.border.mips"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "ScreenProbeGatherOctahedronResolutionWithBorder = ScreenProbeGatherOctahedronResolution + 2 (the +1 texel border on each side).",
+        "The mip count is the CVar r.Lumen.ScreenProbeGather.NumMips; the captured descriptor has 1 mip, so only mip 0 is present in this frame."
+      ],
+      "producerSources": [
+        "part2.spgf.cpp.border.create",
+        "part2.spgf.mip.write"
+      ],
+      "consumerSources": [
+        "part2.spg.border.read"
+      ],
+      "gaps": [
+        "If NumMips == 1 the mip generation loop does not run and mips field is exactly 1; do not assume a full chain from the name."
+      ],
+      "fields": [
+        {
+          "name": "RadianceR",
+          "type": "float (R11)",
+          "decode": "red; border texels are copies via OctahedralMapWrapBorder, mip>0 generated by FScreenProbeGenerateMipLevelCS",
+          "units": "pre-exposed radiance",
+          "sourceRefs": [
+            "part2.spgf.cpp.border.create",
+            "part2.spgf.mip.write"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 11
+        },
+        {
+          "name": "RadianceG",
+          "type": "float (G11)",
+          "decode": "green",
+          "units": "pre-exposed radiance",
+          "sourceRefs": [
+            "part2.spgf.cpp.border.create"
+          ],
+          "bitOffset": 11,
+          "bitWidth": 11
+        },
+        {
+          "name": "RadianceB",
+          "type": "float (B10)",
+          "decode": "blue",
+          "units": "pre-exposed radiance",
+          "sourceRefs": [
+            "part2.spgf.cpp.border.create"
+          ],
+          "bitOffset": 22,
+          "bitWidth": 10
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "RadianceR",
+          "RadianceG",
+          "RadianceB"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [
+          "RadianceR",
+          "RadianceG",
+          "RadianceB"
+        ],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

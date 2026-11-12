@@ -1,0 +1,315 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0728",
+  "nativeRecordId": "native-017737",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.ProbeFreeList",
+  "uniqueName": "000300000228c0f7ea08",
+  "displayLabel": "Lumen.RadianceCache.ProbeFreeList · instance 0003 · frame 292 · passes 450",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 450,
+    "last": 450
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 65536,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 16384,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 16384
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.ProbeFreeList",
+    "UniqueResourceName": "000300000228c0f7ea08",
+    "ByteSize": 65536,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 16384,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01324",
+      "role": "resource",
+      "originalPath": "Resources/000300000228c0f7ea08.v000300000228b83002d0.bin",
+      "bytes": 65536,
+      "sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "version": "000300000228b83002d0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0728",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+          "offset": 0,
+          "length": 65536
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228c0f7ea08",
+        "name": "Lumen.RadianceCache.ProbeFreeList",
+        "byteSize": 65536
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228b83002d0",
+      "producerPassId": "pass-0451",
+      "producerPassName": "UpdateCacheForUsedProbes",
+      "payloadIds": [
+        "payload-01324"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0451",
+        "name": "UpdateCacheForUsedProbes",
+        "displayLabel": "UpdateCacheForUsedProbes · UpdateWorldRadianceCaches · frame 292 · pass 450",
+        "record": "records/pass/pass-0451.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0455",
+        "name": "AllocateUsedProbes",
+        "displayLabel": "AllocateUsedProbes · UpdateWorldRadianceCaches · frame 292 · pass 454",
+        "record": "records/pass/pass-0455.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01324",
+      "file": "Resources/000300000228c0f7ea08.v000300000228b83002d0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.rc.probe-free-list",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.ProbeFreeList$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "LIFO stack of freed probe indices available for reuse by the persistent radiance cache",
+      "units": "probe indices (each entry is a persistent probe index)",
+      "coordinateSpace": "stack slots [0, ProbeFreeListAllocator[0])",
+      "storage": {
+        "kind": "buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "numElements": "MaxNumProbes",
+        "capacity": "MaxNumProbes = ProbeAtlasResolutionInProbes.X*Y elements",
+        "usage": "UAV | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 4,
+            "numElements": 16384,
+            "byteSize": 65536,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "pop",
+          "expression": "NumFree = clamp(ProbeFreeListAllocator[0],0,MaxNumProbes); ProbeIndex = ProbeFreeList[NumFree-1]",
+          "requires": [
+            "ProbeFreeListAllocator",
+            "ProbeFreeList"
+          ],
+          "sourceRefs": [
+            "part2.rc.upd.freelist.pop"
+          ]
+        },
+        {
+          "name": "push",
+          "expression": "FreeIndex = InterlockedAdd(ProbeFreeListAllocator[0],1); ProbeFreeList[FreeIndex] = ProbeIndex",
+          "requires": [
+            "ProbeFreeListAllocator",
+            "ProbeFreeList"
+          ],
+          "sourceRefs": [
+            "part2.rc.upd.allocfn"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Only meaningful with PERSISTENT_CACHE=1; otherwise the buffer is not read."
+      ],
+      "producerSources": [
+        "part2.rc.cpp.freelist.alloc"
+      ],
+      "consumerSources": [
+        "part2.rc.upd.freelist.pop",
+        "part2.rc.upd.allocfn"
+      ],
+      "gaps": [
+        "Capacity is MaxNumProbes; the valid count is ProbeFreeListAllocator[0]. Warning: unused capacity is not valid probe data; the unused tail begins dynamically at ProbeFreeListAllocator[0], so it is not a fixed-offset field. The same RDG name is recreated per cache, so the captured element count can differ between caches."
+      ],
+      "fields": [
+        {
+          "name": "ProbeIndex",
+          "type": "uint32[MaxNumProbes]",
+          "decode": "valid slot k (k < clamp(ProbeFreeListAllocator[0],0,MaxNumProbes)) contains a freed probe index; popped as ProbeFreeList[NumFree-1]. Slots at or above the runtime counter are unused capacity, not valid probe data, and have no fixed byte offset.",
+          "units": "probe index",
+          "sourceRefs": [
+            "part2.rc.upd.freelist.pop",
+            "part2.rc.cpp.freelist.alloc"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32,
+          "count": "MaxNumProbes"
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "ProbeIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [
+          "ProbeIndex"
+        ],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0454",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadianceCache.ProbeFreeList has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0728"
+    }
+  ]
+}

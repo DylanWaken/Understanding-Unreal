@@ -1,0 +1,304 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0134",
+  "nativeRecordId": "native-017138",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.CardTileResampleDataBuffer",
+  "uniqueName": "000100000229355d5948",
+  "displayLabel": "Lumen.CardTileResampleDataBuffer · instance 0001 · frame 292",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 2048,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 512,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 512
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.CardTileResampleDataBuffer",
+    "UniqueResourceName": "000100000229355d5948",
+    "ByteSize": 2048,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 512,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00736",
+      "role": "resource",
+      "originalPath": "Resources/000100000229355d5948.v00000000000000000000.bin",
+      "bytes": 2048,
+      "sha256": "f4c6173c280f601c3358ed7689d9e7a4925cd05419682ed62bdfd8612d32ee5f",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0134",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "f4c6173c280f601c3358ed7689d9e7a4925cd05419682ed62bdfd8612d32ee5f",
+          "offset": 0,
+          "length": 2048
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000100000229355d5948",
+        "name": "Lumen.CardTileResampleDataBuffer",
+        "byteSize": 2048
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00736"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0046",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 45",
+        "record": "records/pass/pass-0046.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00736",
+      "file": "Resources/000100000229355d5948.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.card-tile-resample-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.CardTileResampleDataBuffer)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-capture-tile packed (rect index, tile x, tile y) list driving the lighting-history resample compute pass",
+      "units": "indices (rect, tile coordinates)",
+      "coordinateSpace": "card-capture atlas tile grid (8x8 texels per tile)",
+      "storage": {
+        "kind": "upload-buffer",
+        "format": "uint32 per tile",
+        "strideBytes": 4
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32 per tile",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "unpack",
+          "expression": "TileX = Packed & 0xF; TileY = (Packed>>4)&0xF; RectIndex = (Packed>>8)&0xFFFFFF; TileIndex = GroupId.x",
+          "requires": [
+            "Lumen.CardTileResampleDataBuffer"
+          ],
+          "sourceRefs": [
+            "part1.cards_tp_unpack_tile",
+            "part1.cards_tp_unpack_rect"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "one uint per 8x8 capture tile in rect-major order; NumCaptureTiles = sum(rectWidthInTiles*rectHeightInTiles)",
+        "capacity = RoundUpToPowerOfTwo(NumCaptureTiles); valid count = NumCaptureTiles"
+      ],
+      "producerSources": [
+        "part1.cards_tp_pack",
+        "part1.cards_tp_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_tp_unpack_tile",
+        "part1.cards_tp_unpack_rect"
+      ],
+      "gaps": [
+        "Valid count is the compute pass dispatch count (NumCaptureTiles), not stored in the buffer.",
+        "RectIndex is 24 bits; a rect count above 2^24 would collide, which is far outside the atlas capacity."
+      ],
+      "fields": [
+        {
+          "name": "TileX",
+          "type": "uint4",
+          "byteOffset": 0,
+          "decode": "bits[0:3]: tile X within the capture rect",
+          "units": "tile index",
+          "sourceRefs": [
+            "part1.cards_tp_pack",
+            "part1.cards_tp_unpack_tile"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 4
+        },
+        {
+          "name": "TileY",
+          "type": "uint4",
+          "byteOffset": 0,
+          "decode": "bits[4:7]: tile Y within the capture rect",
+          "units": "tile index",
+          "sourceRefs": [
+            "part1.cards_tp_pack",
+            "part1.cards_tp_unpack_tile"
+          ],
+          "bitOffset": 4,
+          "bitWidth": 4
+        },
+        {
+          "name": "RectIndex",
+          "type": "uint24",
+          "byteOffset": 0,
+          "decode": "bits[8:31]: index into CardCaptureRects/CardPageResampleData",
+          "units": "rect index",
+          "sourceRefs": [
+            "part1.cards_tp_pack",
+            "part1.cards_tp_unpack_rect"
+          ],
+          "bitOffset": 8,
+          "bitWidth": 24
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "TileX",
+          "TileY",
+          "RectIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0091",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.CardTileResampleDataBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0134"
+    }
+  ]
+}

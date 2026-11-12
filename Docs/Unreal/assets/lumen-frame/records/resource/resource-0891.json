@@ -1,0 +1,300 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0891",
+  "nativeRecordId": "native-017900",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.PhysicalPagesWithSeparableFilterable",
+  "uniqueName": "000300000228e88f5310",
+  "displayLabel": "Shadow.Virtual.PhysicalPagesWithSeparableFilterable · instance 0003 · frame 292 · passes 542",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 542,
+    "last": 542
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 16384,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 4096,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 4096
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.PhysicalPagesWithSeparableFilterable",
+    "UniqueResourceName": "000300000228e88f5310",
+    "ByteSize": 16384,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 4096,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01493",
+      "role": "resource",
+      "originalPath": "Resources/000300000228e88f5310.v000300000228e88f5e98.bin",
+      "bytes": 16384,
+      "sha256": "af96661603292e72dd56f19b4c07dd36ce33829941bb7645f794b2dda776cdab",
+      "version": "000300000228e88f5e98",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0891",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "af96661603292e72dd56f19b4c07dd36ce33829941bb7645f794b2dda776cdab",
+          "offset": 0,
+          "length": 16384
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228e88f5310",
+        "name": "Shadow.Virtual.PhysicalPagesWithSeparableFilterable",
+        "byteSize": 16384
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228e88f5e98",
+      "producerPassId": "pass-0543",
+      "producerPassName": "SelectPagesToPostProcess",
+      "payloadIds": [
+        "payload-01493"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0543",
+        "name": "SelectPagesToPostProcess",
+        "displayLabel": "SelectPagesToPostProcess · FVirtualShadowMapArray::PostProcessPages · frame 292 · pass 542",
+        "record": "records/pass/pass-0543.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01493",
+      "file": "Resources/000300000228e88f5310.v000300000228e88f5e98.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-physical-pages-filterable",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.PhysicalPagesWith(Separable)?Filterable$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "uint page-index list used by the prefiltered-distant (filterable shadow) post passes; one list for separable rows/cols and one for 2D filterable merge",
+      "units": "physical page index",
+      "coordinateSpace": "physical page pool linear index",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "capacity max(1, CacheManager.GetMaxFilterablePages())"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 4096,
+          "byteSize": 16384
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "capacity max(1, CacheManager.GetMaxFilterablePages())"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "separableCount",
+          "expression": "NumSeparable = PostProcessPagesIndirectArgs[4] / VSM_PAGE_SIZE",
+          "requires": [
+            "PhysicalPagesWithSeparableFilterable"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.postargs1"
+          ]
+        },
+        {
+          "name": "filterableCount",
+          "expression": "NumFilterable = PostProcessPagesIndirectArgs[8] / TILES_PER_PAGE_1D",
+          "requires": [
+            "PhysicalPagesWithFilterable"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.postargs3"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "One page needs VSM_PAGE_SIZE (128) groups for the separable filter (one per row/column) and TILES_PER_PAGE_1D groups for the 2D filterable merge.",
+        "Only pages with VSM_FLAG_SECONDARY_REQUEST and a projection with bHasPrefilteredDistant are emitted (SelectPagesToPostProcessCS:1037-1058)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.selectpost",
+        "part3.visibility.vsm.s.postargs1",
+        "part3.visibility.vsm.s.postargs3"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.postargs1"
+      ],
+      "gaps": [
+        "CacheManager.GetMaxFilterablePages() value is runtime (4096 in capture)."
+      ],
+      "fields": [
+        {
+          "name": "PageIndices",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 4096,
+          "decode": "list[slot]=physical page index; separable slot = groups/VSM_PAGE_SIZE; filterable slot = groups/TILES_PER_PAGE_1D",
+          "units": "physical page index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.selectpost",
+            "part3.visibility.vsm.s.postargs1",
+            "part3.visibility.vsm.s.postargs3"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "PageIndices"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0563",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.PhysicalPagesWithSeparableFilterable has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0891"
+    }
+  ]
+}

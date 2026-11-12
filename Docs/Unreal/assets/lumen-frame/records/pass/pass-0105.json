@@ -1,0 +1,118 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0105",
+  "nativeRecordId": "native-015624",
+  "name": "ClearBuffer(Lumen.DirectLighting.LightTileAllocatorForPerCardTileDispatch Size=4bytes)",
+  "displayLabel": "ClearBuffer(Lumen.DirectLighting.LightTileAllocatorForPerCardTileDispatch Size=4bytes) · CullTiles 1 lights · frame 292 · pass 104",
+  "frameNumber": 292,
+  "graphPrefix": "CullTiles 1 lights",
+  "viewState": null,
+  "pointer": "00010000022925070f50",
+  "parametersName": "FClearBufferUAVParameters",
+  "parametersPointer": "00010000022925070f40",
+  "parametersMetadataPointer": "000100007ffba0d5c0b0",
+  "parentScopes": [
+    "CullTiles 1 lights",
+    "DirectLighting",
+    "LumenSceneLighting",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "ClearBuffer(Lumen.DirectLighting.LightTileAllocatorForPerCardTileDispatch Size=4bytes)",
+    "ParametersName": "FClearBufferUAVParameters",
+    "Parameters": "00010000022925070f40",
+    "ParametersMetadata": "000100007ffba0d5c0b0",
+    "Pointer": "00010000022925070f50",
+    "Id": 104,
+    "ParentEventScopes": [
+      "CullTiles 1 lights",
+      "DirectLighting",
+      "LumenSceneLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [],
+    "OutputResources": [
+      "00010000022925070c78"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "uniqueName": "00010000022925070c78",
+      "resourceId": "resource-0177",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-00719",
+        "payload-00720"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06175",
+    "metadataPointer": "000100007ffba0d5c0b0",
+    "bytes": 16,
+    "sha256": "792a82b43468ee92ae53c379974a3607e8d3d63fd43b40d96a28ac1a000087c5",
+    "chunks": [
+      {
+        "sha": "792a82b43468ee92ae53c379974a3607e8d3d63fd43b40d96a28ac1a000087c5",
+        "offset": 0,
+        "length": 16
+      }
+    ],
+    "originalPath": "Structures/00010000022925070f40.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FClearBufferUAVParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Private\\RenderGraphUtils.cpp",
+    "FileLine": 415,
+    "Size": 16,
+    "Members": [
+      {
+        "Name": "BufferUAV",
+        "ShaderType": "RWBuffer<uint>",
+        "FileLine": 416,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "00010000022925070f50",
+      "Parameters": "00010000022925070f40",
+      "Bindings": {
+        "BufferUAV": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "00010000022925070ee8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

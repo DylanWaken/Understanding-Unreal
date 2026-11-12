@@ -1,0 +1,286 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0968",
+  "nativeRecordId": "native-017978",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.HashTableElementIndices",
+  "uniqueName": "000300000228c11f23e0",
+  "displayLabel": "Lumen.HashTableElementIndices · instance 0003 · frame 292 · passes 614",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 614,
+    "last": 614
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 8192,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 2048,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 2048
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.HashTableElementIndices",
+    "UniqueResourceName": "000300000228c11f23e0",
+    "ByteSize": 8192,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 2048,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01348",
+      "role": "resource",
+      "originalPath": "Resources/000300000228c11f23e0.v000300000228c11f3910.bin",
+      "bytes": 8192,
+      "sha256": "2b194ab2bac760f6f82710041a4097e5d61499c13b059a4e340f4c736b3ba466",
+      "version": "000300000228c11f3910",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0968",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "2b194ab2bac760f6f82710041a4097e5d61499c13b059a4e340f4c736b3ba466",
+          "offset": 0,
+          "length": 8192
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228c11f23e0",
+        "name": "Lumen.HashTableElementIndices",
+        "byteSize": 8192
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228c11f3910",
+      "producerPassId": "pass-0615",
+      "producerPassName": "Build feedback hash table",
+      "payloadIds": [
+        "payload-01348"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0615",
+        "name": "Build feedback hash table",
+        "displayLabel": "Build feedback hash table · Submit Lumen surface cache feedback · frame 292 · pass 614",
+        "record": "records/pass/pass-0615.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0616",
+        "name": "Compact feedback hash table",
+        "displayLabel": "Compact feedback hash table · Submit Lumen surface cache feedback · frame 292 · pass 615",
+        "record": "records/pass/pass-0616.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01348",
+      "file": "Resources/000300000228c11f23e0.v000300000228c11f3910.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.hashtable-element-indices",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.HashTableElementIndices)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "index of the first Lumen.Feedback element that claimed each hash bucket",
+      "units": "feedback element index",
+      "coordinateSpace": "Lumen.Feedback element index space",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32 per bucket",
+        "strideBytes": 4
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32 per bucket",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "lookup",
+          "expression": "if Counts[bucket] > 0: Element = Feedback[Indices[bucket]]; feed its PackedA/PackedB into CompactedFeedback",
+          "requires": [
+            "Lumen.HashTableElementIndices",
+            "Lumen.HashTableElementCounts",
+            "Lumen.Feedback"
+          ],
+          "sourceRefs": [
+            "part1.cards_ht_compact_count",
+            "part1.cards_ht_compact_index"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "HashTableSize = 2 * CompactedFeedbackBufferSize",
+        "not cleared before use (only Keys and Counts are cleared); entries for empty buckets are undefined and must not be read"
+      ],
+      "producerSources": [
+        "part1.cards_ht_index",
+        "part1.cards_ht_indices"
+      ],
+      "consumerSources": [
+        "part1.cards_ht_compact_index"
+      ],
+      "gaps": [
+        "Stale values for empty buckets are expected; gate on HashTableElementCounts > 0."
+      ],
+      "fields": [
+        {
+          "name": "ElementIndex",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "written on first insertion only: ElementIndex of the feedback element whose hash claimed this bucket; contents stale/0 for empty buckets",
+          "units": "index",
+          "sourceRefs": [
+            "part1.cards_ht_index",
+            "part1.cards_ht_compact_index"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "ElementIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0592",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.HashTableElementIndices has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0968"
+    }
+  ]
+}

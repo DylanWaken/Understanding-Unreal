@@ -1,0 +1,31 @@
+{
+  "captureId": "binary-20261112-153914",
+  "graph": "0001",
+  "cachedLightingPreExposure": 0.0625,
+  "oneOverCachedLightingPreExposure": 16.0,
+  "viewPreExposure": 0.0625,
+  "producer": {
+    "passId": 112,
+    "passPointer": "0001000002292507f1f0",
+    "parameterPath": "Structures/0001000002292507f0d0.bin",
+    "sha256": "33a10d357c32b3de8ce83e266fd63151d5046d1bb286c9d8f34fa6b15f4bcfeb",
+    "field": "CachedLightingPreExposure",
+    "offsetBytes": 204
+  },
+  "consumer": {
+    "passId": 167,
+    "passPointer": "000100000228d58f3800",
+    "parameterPath": "Structures/000100000228d58f3390.bin",
+    "sha256": "0ccf322bc68d4a85b9453ce7d9622fa82682bb4c78bf168f7befc8b1b5327f59",
+    "fields": [
+      {"field": "TracingParameters.CachedLightingPreExposure", "offsetBytes": 104, "float32": 0.0625},
+      {"field": "TracingParameters.OneOverCachedLightingPreExposure", "offsetBytes": 108, "float32": 16.0},
+      {"field": "RadianceCacheParameters.RadianceCacheOneOverCachedLightingPreExposure", "offsetBytes": 1040, "float32": 16.0}
+    ]
+  },
+  "sourceRefs": [
+    {"path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneDirectLighting.cpp", "line": 1235},
+    {"path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenTracingUtils.cpp", "line": 64},
+    {"path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenRadianceCache.cpp", "line": 150}
+  ]
+}

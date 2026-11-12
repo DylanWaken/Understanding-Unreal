@@ -2,6 +2,8 @@
 
 This records the initial migration snapshot. Later Lumen rewrites and capture additions are separate changes; the counts below describe the migration, not every later revision.
 
+After that copy was verified, the migrated essays, authoring files, and assets were removed from Ardashir in commit `061db67e95360fa3af07f051f254372bd375e4f9`. Commit `256b2fd` also removed the homepage's relocation notice and external Unreal navigation. No redirect pages remain in Ardashir. The user's unrelated working-tree changes were preserved. The read-only-copy statements below describe the initial migration stage, before this requested cleanup.
+
 ## Source snapshot
 
 - **Source checkout:** `D:/Projects/Ardashader`

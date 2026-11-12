@@ -1,0 +1,562 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0518",
+  "nativeRecordId": "native-017525",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Nanite.MaterialData",
+  "uniqueName": "00030000022880711280",
+  "displayLabel": "Nanite.MaterialData · instance 0003 · frame 292",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "other-domain",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": {
+      "min": [
+        0,
+        0
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "source": "ViewRectMinAndSize (uint32 x 4)"
+    },
+    "passId": "pass-0341",
+    "passName": "DepthPassParallel",
+    "passPointer": "000300000228e8ddef70",
+    "passIsCameraPass": true,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "DepthPassParallel (pass pass-0341) ViewRect retained as context only.",
+    "reason": "Buffers have no 2D screen-texel domain; the recorded pass ViewRect is context only and no screen padding is inferred.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4096,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1024,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1024
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Nanite.MaterialData",
+    "UniqueResourceName": "00030000022880711280",
+    "ByteSize": 4096,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1024,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ByteAddressBuffer",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01154",
+      "role": "resource",
+      "originalPath": "Resources/00030000022880711280.v00000000000000000000.bin",
+      "bytes": 4096,
+      "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0518",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+          "offset": 0,
+          "length": 4096
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "00030000022880711280",
+        "name": "Nanite.MaterialData",
+        "byteSize": 4096
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01154"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0333",
+        "name": "CullInstances(UnCulled). Bin 0",
+        "displayLabel": "CullInstances(UnCulled). Bin 0 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 332",
+        "record": "records/pass/pass-0333.json"
+      },
+      {
+        "id": "pass-0334",
+        "name": "CullInstances(Generic). Bin 1",
+        "displayLabel": "CullInstances(Generic). Bin 1 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 333",
+        "record": "records/pass/pass-0334.json"
+      },
+      {
+        "id": "pass-0338",
+        "name": "VSMUpdateViewInstanceState",
+        "displayLabel": "VSMUpdateViewInstanceState · frame 292 · pass 337",
+        "record": "records/pass/pass-0338.json"
+      },
+      {
+        "id": "pass-0339",
+        "name": "ProcessInvalidationQueueGPU",
+        "displayLabel": "ProcessInvalidationQueueGPU · Shadow.Virtual.ProcessInvalidationsGPU · frame 292 · pass 338",
+        "record": "records/pass/pass-0339.json"
+      },
+      {
+        "id": "pass-0341",
+        "name": "DepthPassParallel",
+        "displayLabel": "DepthPassParallel · PrePass DDM_AllOpaqueNoVelocity (Forced by Nanite) · frame 292 · pass 340 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0341.json"
+      },
+      {
+        "id": "pass-0342",
+        "name": "EditorPrimitives",
+        "displayLabel": "EditorPrimitives · PrePass DDM_AllOpaqueNoVelocity (Forced by Nanite) · frame 292 · pass 341 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0342.json"
+      },
+      {
+        "id": "pass-0362",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 361",
+        "record": "records/pass/pass-0362.json"
+      },
+      {
+        "id": "pass-0363",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 362",
+        "record": "records/pass/pass-0363.json"
+      },
+      {
+        "id": "pass-0364",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 363",
+        "record": "records/pass/pass-0364.json"
+      },
+      {
+        "id": "pass-0365",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 364",
+        "record": "records/pass/pass-0365.json"
+      },
+      {
+        "id": "pass-0366",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 365",
+        "record": "records/pass/pass-0366.json"
+      },
+      {
+        "id": "pass-0367",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 366",
+        "record": "records/pass/pass-0367.json"
+      },
+      {
+        "id": "pass-0368",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 367",
+        "record": "records/pass/pass-0368.json"
+      },
+      {
+        "id": "pass-0369",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 368",
+        "record": "records/pass/pass-0369.json"
+      },
+      {
+        "id": "pass-0370",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 369",
+        "record": "records/pass/pass-0370.json"
+      },
+      {
+        "id": "pass-0371",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 370",
+        "record": "records/pass/pass-0371.json"
+      },
+      {
+        "id": "pass-0372",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 371",
+        "record": "records/pass/pass-0372.json"
+      },
+      {
+        "id": "pass-0373",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 372",
+        "record": "records/pass/pass-0373.json"
+      },
+      {
+        "id": "pass-0374",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 373",
+        "record": "records/pass/pass-0374.json"
+      },
+      {
+        "id": "pass-0375",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 374",
+        "record": "records/pass/pass-0375.json"
+      },
+      {
+        "id": "pass-0376",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 375",
+        "record": "records/pass/pass-0376.json"
+      },
+      {
+        "id": "pass-0377",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 376",
+        "record": "records/pass/pass-0377.json"
+      },
+      {
+        "id": "pass-0378",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 377",
+        "record": "records/pass/pass-0378.json"
+      },
+      {
+        "id": "pass-0379",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 378",
+        "record": "records/pass/pass-0379.json"
+      },
+      {
+        "id": "pass-0380",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 379",
+        "record": "records/pass/pass-0380.json"
+      },
+      {
+        "id": "pass-0381",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 380",
+        "record": "records/pass/pass-0381.json"
+      },
+      {
+        "id": "pass-0382",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 381",
+        "record": "records/pass/pass-0382.json"
+      },
+      {
+        "id": "pass-0383",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 382",
+        "record": "records/pass/pass-0383.json"
+      },
+      {
+        "id": "pass-0384",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 383",
+        "record": "records/pass/pass-0384.json"
+      },
+      {
+        "id": "pass-0385",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 384",
+        "record": "records/pass/pass-0385.json"
+      },
+      {
+        "id": "pass-0386",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 385",
+        "record": "records/pass/pass-0386.json"
+      },
+      {
+        "id": "pass-0387",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 386",
+        "record": "records/pass/pass-0387.json"
+      },
+      {
+        "id": "pass-0388",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 387",
+        "record": "records/pass/pass-0388.json"
+      },
+      {
+        "id": "pass-0389",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 388",
+        "record": "records/pass/pass-0389.json"
+      },
+      {
+        "id": "pass-0390",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 389",
+        "record": "records/pass/pass-0390.json"
+      },
+      {
+        "id": "pass-0391",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 390",
+        "record": "records/pass/pass-0391.json"
+      },
+      {
+        "id": "pass-0392",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 391",
+        "record": "records/pass/pass-0392.json"
+      },
+      {
+        "id": "pass-0393",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 392",
+        "record": "records/pass/pass-0393.json"
+      },
+      {
+        "id": "pass-0394",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 393",
+        "record": "records/pass/pass-0394.json"
+      },
+      {
+        "id": "pass-0395",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 394",
+        "record": "records/pass/pass-0395.json"
+      },
+      {
+        "id": "pass-0396",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 395",
+        "record": "records/pass/pass-0396.json"
+      },
+      {
+        "id": "pass-0397",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 396",
+        "record": "records/pass/pass-0397.json"
+      },
+      {
+        "id": "pass-0398",
+        "name": "CardPage Commands:1",
+        "displayLabel": "CardPage Commands:1 · MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 · frame 292 · pass 397",
+        "record": "records/pass/pass-0398.json"
+      },
+      {
+        "id": "pass-0431",
+        "name": "DistanceFieldTracing 4x4 probes at 4 spacing",
+        "displayLabel": "DistanceFieldTracing 4x4 probes at 4 spacing · Radiosity · frame 292 · pass 430",
+        "record": "records/pass/pass-0431.json"
+      },
+      {
+        "id": "pass-0438",
+        "name": "BasePassParallel",
+        "displayLabel": "BasePassParallel · BasePass · frame 292 · pass 437 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0438.json"
+      },
+      {
+        "id": "pass-0439",
+        "name": "EditorPrimitives: SDPG_World",
+        "displayLabel": "EditorPrimitives: SDPG_World · EditorPrimitives · frame 292 · pass 438 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0439.json"
+      },
+      {
+        "id": "pass-0467",
+        "name": "TraceFromProbes Res=32x32 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=32x32 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 466",
+        "record": "records/pass/pass-0467.json"
+      },
+      {
+        "id": "pass-0468",
+        "name": "TraceFromProbes Res=8x8 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=8x8 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 467",
+        "record": "records/pass/pass-0468.json"
+      },
+      {
+        "id": "pass-0476",
+        "name": "TraceScreen(Scene)",
+        "displayLabel": "TraceScreen(Scene) · LumenScreenProbeGather · frame 292 · pass 475",
+        "record": "records/pass/pass-0476.json"
+      },
+      {
+        "id": "pass-0480",
+        "name": "TraceGlobalSDFAndApplyRadianceCache",
+        "displayLabel": "TraceGlobalSDFAndApplyRadianceCache · LumenScreenProbeGather · frame 292 · pass 479",
+        "record": "records/pass/pass-0480.json"
+      },
+      {
+        "id": "pass-0496",
+        "name": "TraceGlobalSDFAndInterpolateRadianceCache 3x3",
+        "displayLabel": "TraceGlobalSDFAndInterpolateRadianceCache 3x3 · TranslucencyVolumeLighting · frame 292 · pass 495",
+        "record": "records/pass/pass-0496.json"
+      },
+      {
+        "id": "pass-0515",
+        "name": "CullInstances(UnCulled). Bin 0",
+        "displayLabel": "CullInstances(UnCulled). Bin 0 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 514",
+        "record": "records/pass/pass-0515.json"
+      },
+      {
+        "id": "pass-0516",
+        "name": "CullInstances(Generic). Bin 1",
+        "displayLabel": "CullInstances(Generic). Bin 1 · BuildRenderingCommandsDeferred(Culling=On) · frame 292 · pass 515",
+        "record": "records/pass/pass-0516.json"
+      },
+      {
+        "id": "pass-0535",
+        "name": "CullPerPageDrawCommands",
+        "displayLabel": "CullPerPageDrawCommands · CullingPasses · frame 292 · pass 534",
+        "record": "records/pass/pass-0535.json"
+      },
+      {
+        "id": "pass-0540",
+        "name": "RasterPasses",
+        "displayLabel": "RasterPasses · Batched · frame 292 · pass 539",
+        "record": "records/pass/pass-0540.json"
+      },
+      {
+        "id": "pass-0551",
+        "name": "TraceScreen(Scene)",
+        "displayLabel": "TraceScreen(Scene) · LumenReflections · frame 292 · pass 550",
+        "record": "records/pass/pass-0551.json"
+      },
+      {
+        "id": "pass-0553",
+        "name": "CompactTraces WaveOpSize:32 ThreadGroupSize1024",
+        "displayLabel": "CompactTraces WaveOpSize:32 ThreadGroupSize1024 · LumenReflections · frame 292 · pass 552",
+        "record": "records/pass/pass-0553.json"
+      },
+      {
+        "id": "pass-0555",
+        "name": "TraceVoxels(Scene)",
+        "displayLabel": "TraceVoxels(Scene) · LumenReflections · frame 292 · pass 554",
+        "record": "records/pass/pass-0555.json"
+      },
+      {
+        "id": "pass-0571",
+        "name": "AsyncGpuTraceHelper::PostRenderOpaque",
+        "displayLabel": "AsyncGpuTraceHelper::PostRenderOpaque · PostRenderOpsFX · frame 292 · pass 570",
+        "record": "records/pass/pass-0571.json"
+      },
+      {
+        "id": "pass-0572",
+        "name": "Niagara::PostRenderFinish",
+        "displayLabel": "Niagara::PostRenderFinish · PostRenderOpsFX · frame 292 · pass 571",
+        "record": "records/pass/pass-0572.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01154",
+      "file": "Resources/00030000022880711280.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0330",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Nanite.MaterialData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0518"
+    },
+    {
+      "id": "gap-2005",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched Nanite.MaterialData (00030000022880711280). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0518"
+    }
+  ]
+}

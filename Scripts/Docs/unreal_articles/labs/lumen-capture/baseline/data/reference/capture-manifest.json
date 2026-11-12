@@ -1,0 +1,520 @@
+{
+  "schema": "unreal-reference-capture-manifest-v1",
+  "status": "ok",
+  "capture_date_utc": "2026-11-12T13:17:01Z",
+  "step": "Capture existing laboratory room with path tracing",
+  "engine": {
+    "version": "5.8.1-0+UE5",
+    "build_version": {
+      "MajorVersion": 5,
+      "MinorVersion": 8,
+      "PatchVersion": 1,
+      "Changelist": 0,
+      "CompatibleChangelist": 55116800,
+      "IsLicenseeVersion": 0,
+      "IsPromotedBuild": 0,
+      "BranchName": "UE5"
+    },
+    "git_sha": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+    "git_branch": "release",
+    "root": "EXTERNAL_ENGINE_ROOT",
+    "executable": "EXTERNAL_ENGINE_ROOT\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+    "executable_sha256": "dd2a31e9a3babe48b56c49c54d85661f50d07a1254d09fac64f50b85244d4833",
+    "modules_file_sha256": "b4328e7067b8d2b0ef3b2671b7b254567c61a96801d85d694d144cc6a8a33a20"
+  },
+  "renderer": {
+    "rhi": "Direct3D 12",
+    "shader_platform": "PCD3D_SM6",
+    "path_tracing_supported": true,
+    "path_tracing_shaders_supported": true,
+    "path_tracing_shader_platform_support": true,
+    "path_tracing_view_mode_index": 27
+  },
+  "gpu": {
+    "nvidia_smi": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 610.62, 97887 MiB",
+    "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "driver_version": "610.62"
+  },
+  "capture_process": {
+    "pid": 56064,
+    "command": "\"EXTERNAL_ENGINE_ROOT\\Engine\\Binaries\\Win64\\UnrealEditor.exe\" \"reproduce/UnrealLab\\UnrealLab.uproject\" -ExecutePythonScript=\"reproduce/scripts\\capture_reference.py\" -RenderOffscreen -unattended -nosplash -NoSound -NoSourceControl -dx12 -ResX=1280 -ResY=720 -ForceRes -stdout -FullStdOutLogOutput",
+    "started_utc": "2026-11-12T13:16:43.4822790Z",
+    "finished_utc": "2026-11-12T13:17:11.7801978Z",
+    "wall_seconds": 28.297918799999998,
+    "exit_code": null,
+    "exit_code_note": "PowerShell Start-Process did not populate ExitCode; status is taken from capture-session.json.",
+    "clean_exit_logged": true,
+    "stderr_bytes": 0,
+    "stdout_log": "not-included/logs/capture.stdout.log",
+    "stderr_log": "not-included/logs/capture.stderr.log",
+    "stdout_sha256": "709b161c6b9bcd99a56853b0085b1bb368cbf22e7c2c221a581f778f99cf68e9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "project": {
+    "path": "reproduce/UnrealLab",
+    "uproject": "reproduce/UnrealLab/UnrealLab.uproject",
+    "map": "/Game/Labs/LumenRoom",
+    "map_sha256": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818",
+    "original_saved_map": "EXTERNAL_ORIGINAL_TEMP_PROJECT\\UnrealLab\\Content\\Labs\\LumenRoom.umap",
+    "original_saved_map_sha256": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818",
+    "map_byte_identical_to_original": true,
+    "scene_sha256": "a8586602a49077f3fff9552218dbf5ce1b311ad87b81bf24720430c3ad7a6b31",
+    "ini_note": "The live isolated project ini gained an unrelated AndroidFileServerEditor section on first launch. All renderer/RHI entries are unchanged; the original copied file is preserved at source-reference/original_project/DefaultEngine.ini.",
+    "original_ini_sha256": "8eb6b32811ab9a23e5e6376e744ea26faa5c40be93aabbe3be9704de4cfd26d5",
+    "scene_verification": {
+      "available": true,
+      "source": "source-reference/scene-inventory.json",
+      "actor_count_expected": 10,
+      "actor_count_actual": 10,
+      "matched": true,
+      "problems": []
+    },
+    "actor_labels": [
+      "Floor",
+      "Ceiling",
+      "Left red wall",
+      "Right green wall",
+      "Back wall",
+      "Matte block",
+      "Glossy block",
+      "Ceiling area light",
+      "PostProcessVolume",
+      "CameraActor"
+    ],
+    "camera": {
+      "actor": "CameraActor",
+      "location_cm": [
+        0.0,
+        -400.0,
+        165.0
+      ],
+      "rotation_degrees": {
+        "pitch": -2.105514188856035,
+        "yaw": 90.00000000000006,
+        "roll": 2.5614055970807246e-08
+      },
+      "target_cm": [
+        0.0,
+        280.0,
+        140.0
+      ],
+      "vertical_fov_degrees": 43.0,
+      "component_field_of_view_degrees": 70.0059814453125,
+      "note": "Camera component FOV is Unreal horizontal FOV; 43 deg vertical at 16:9 yields this value."
+    },
+    "exposure": {
+      "method": "histogram (AEM_HISTOGRAM) with min_brightness == max_brightness == EV100 4",
+      "effective_method": "histogram metering pinned to EV100 4 by min=max=4 and bias=0; not manual mode",
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+      "pre_exposure": 0.0625,
+      "one_over_pre_exposure": 16.0,
+      "eye_adaptation_exposure_scale": 0.0625,
+      "eye_adaptation_average_scene_luminance": 8.370248794555664,
+      "ev100": 4.0,
+      "min_brightness": 4.0,
+      "max_brightness": 4.0,
+      "bias": 0.0,
+      "postprocess_values_after_set": {
+        "override_auto_exposure_min_brightness": "True",
+        "auto_exposure_min_brightness": "4.0",
+        "override_auto_exposure_max_brightness": "True",
+        "auto_exposure_max_brightness": "4.0",
+        "override_auto_exposure_bias": "True",
+        "auto_exposure_bias": "0.0",
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+        "override_auto_exposure_method": "False",
+        "override_path_tracing_samples_per_pixel": "False",
+        "path_tracing_samples_per_pixel": "2048",
+        "override_path_tracing_max_bounces": "False",
+        "path_tracing_max_bounces": "32",
+        "override_path_tracing_enable_denoiser": "False",
+        "path_tracing_enable_denoiser": "True",
+        "override_path_tracing_max_path_intensity": "False",
+        "path_tracing_max_path_intensity": "24.0"
+      },
+      "note": "Auto-exposure method remains histogram, but min=max=4 EV100 and bias=0 pin the exposure. The same PostProcessVolume is used for both images.",
+      "postprocess_path_tracing_note": "The PostProcessVolume PathTracing* fields remain engine defaults (2048 spp, 32 bounces, denoiser enabled); the capture overrides them with r.PathTracing.SamplesPerPixel 256, r.PathTracing.MaxBounces 8 and r.PathTracing.Denoiser 0. Effective values are in effective_renderer.path_tracer and capture-manifest.json."
+    },
+    "light": {
+      "actor": "Ceiling area light",
+      "location_cm": [
+        0.0,
+        270.0,
+        298.0
+      ],
+      "rotation_degrees": {
+        "pitch": -90.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "intensity_lumens": 2400.0,
+      "intensity_units": "<LightUnits.LUMENS: 2>",
+      "source_width_cm": 130.0,
+      "source_height_cm": 120.0,
+      "attenuation_radius_cm": 1000.0,
+      "light_color_raw_fcolor_0_255": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "light_color_linear": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "light_color_note": "The Python light_color property returns FColor 0-255; the authored light color is white."
+    }
+  },
+  "lumen": {
+    "method": "Lumen software tracing, VMI_Lit editor viewport",
+    "image": {
+      "path": "captures\\lumen-lit.png",
+      "bytes": 823905,
+      "sha256": "6b9c1132fc882d65812f4c769be0e14dc5ce82af0bb5e3b61178a7d5448e5076",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_luminance": 128.2916821655816,
+      "std_luminance": 93.6284936225084,
+      "unique_rgb_colors": 67211,
+      "nonblack_fraction_lum_gt_8": 0.6982009548611111
+    },
+    "capture_engine_frame": 291,
+    "viewport_draw": 291,
+    "warmup": {
+      "initial_viewport_draws": 200,
+      "settle_viewport_draws": 90,
+      "note": "draw requests only; not a convergence or timing measurement"
+    },
+    "settings_commands": [
+      "r.ScreenPercentage 100",
+      "r.AntiAliasingMethod 2",
+      "r.MotionBlurQuality 0",
+      "r.Lumen.HardwareRayTracing 0",
+      "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+      "r.Lumen.Reflections.ScreenTraces 1",
+      "r.DynamicGlobalIlluminationMethod 1",
+      "r.ReflectionMethod 1",
+      "r.Lumen.Visualize 0",
+      "r.LumenScene.SurfaceCache.AtlasSize 4096",
+      "showflag.BillboardSprites 0",
+      "showflag.Grid 0",
+      "showflag.Selection 0",
+      "showflag.SelectionOutline 0",
+      "showflag.ModeWidgets 0",
+      "showflag.Bounds 0"
+    ],
+    "temporal_settings": {
+      "r.Lumen.ScreenProbeGather.Temporal": 1,
+      "r.Lumen.ScreenProbeGather.Temporal.MaxFramesAccumulated": 10,
+      "r.Lumen.ScreenProbeGather.Temporal.MaxRayDirections": 8,
+      "r.LumenScene.Radiosity.Temporal": 1,
+      "r.LumenScene.Radiosity.Temporal.MaxFramesAccumulated": 4,
+      "r.Lumen.Reflections.Temporal": 1,
+      "r.Lumen.Reflections.Temporal.MaxFramesAccumulated": 12
+    }
+  },
+  "path_tracer": {
+    "method": "Unreal path tracer, VMI_PathTracing editor viewport, no denoiser",
+    "image": {
+      "path": "captures\\pathtracer-256spp-8bounces.png",
+      "bytes": 1194328,
+      "sha256": "1d73c08b47f05df95894c4b506528cc2d31ab86f0cd0080dbd37b4d6b39de051",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_luminance": 129.09581810677082,
+      "std_luminance": 93.788770269129,
+      "unique_rgb_colors": 110317,
+      "nonblack_fraction_lum_gt_8": 0.6871592881944445
+    },
+    "samples_per_pixel": 256,
+    "max_bounces": 8,
+    "denoiser": 0,
+    "filter_width": 3.0,
+    "mis_mode": 2,
+    "progress_display": 0,
+    "visible_lights": 0,
+    "pso_warmup_draws": 64,
+    "forced_reset_after_warmup": true,
+    "reset_commands": [
+      "r.PathTracing.SamplesPerPixel 255",
+      "r.PathTracing.SamplesPerPixel 256"
+    ],
+    "reset_draw": 357,
+    "sample_index_after_reset": 1,
+    "sample_index_at_capture": 256,
+    "sample_count_reported": 256,
+    "capture_engine_frame": 442,
+    "capture_viewport_draw": 443,
+    "accumulation_seconds": 1.0159999999887077,
+    "settings_commands": [
+      "r.PathTracing.SamplesPerPixel 256",
+      "r.PathTracing.MaxBounces 8",
+      "r.PathTracing.Denoiser 0",
+      "r.PathTracing.ProgressDisplay 0",
+      "r.PathTracing.FilterWidth 3.0",
+      "r.PathTracing.MISMode 2",
+      "r.PathTracing.EnableEmissive 1",
+      "r.PathTracing.EnableReferenceDOF 0",
+      "r.PathTracing.VisibleLights 0"
+    ],
+    "support_status": {
+      "view_mode_index": 27,
+      "is_path_tracing_view_mode": true,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true,
+      "samples": 256,
+      "sample_count": 256
+    },
+    "proof": {
+      "cvar_echoes": [
+        "r.PathTracing.SamplesPerPixel = \"256\"",
+        "r.PathTracing.MaxBounces = \"8\"",
+        "r.PathTracing.Denoiser = \"0\"",
+        "r.PathTracing.ProgressDisplay = \"false\"",
+        "r.PathTracing.FilterWidth = \"3\"",
+        "r.PathTracing.MISMode = \"2\"",
+        "r.PathTracing.EnableEmissive = \"1\"",
+        "r.PathTracing.EnableReferenceDOF = \"0\"",
+        "r.PathTracing.VisibleLights = \"0\"",
+        "r.PathTracing.SamplesPerPixel = \"255\"",
+        "r.PathTracing.SamplesPerPixel = \"256\""
+      ],
+      "sample_progress": [
+        "ARDA_REFERENCE_PT_SAMPLE 4/256 draw=358",
+        "ARDA_REFERENCE_PT_SAMPLE 256/256 draw=442"
+      ],
+      "capture_log_line": [
+        "[2026.11.12-13.17.07:876][442]LogPython: ARDA_REFERENCE_PT_CAPTURED samples=256 draw=443 sha256=1d73c08b47f05df95894c4b506528cc2d31ab86f0cd0080dbd37b4d6b39de051"
+      ],
+      "screenshot_log_line": [
+        "[2026.11.12-13.17.07:803][442]LogCore: Display: Tracing Screenshot \"pathtracer-256spp-8bounces\" taken with size: 1280 x 720"
+      ],
+      "pso_fallback_frames": [
+        295
+      ],
+      "pso_fallback_after_reset": [],
+      "pso_fallback_note": "The only PSO fallback occurred during the discarded 64-draw warm-up, before the forced sample reset."
+    }
+  },
+  "frame_and_warmup": {
+    "resolution": [
+      1280,
+      720
+    ],
+    "lumen": {
+      "warmup_initial_viewport_draws": 200,
+      "settle_viewport_draws": 90,
+      "capture_engine_frame": 291,
+      "capture_viewport_draw": 291
+    },
+    "path_tracer": {
+      "pso_warmup_viewport_draws": 64,
+      "reset_viewport_draw": 357,
+      "sample_index_after_reset": 1,
+      "samples_counted": 256,
+      "capture_engine_frame": 442,
+      "capture_viewport_draw": 443
+    },
+    "total_viewport_draws": 443,
+    "one_sample_per_viewport_draw": false,
+    "one_sample_per_viewport_draw_note": "Corrected in this public copy: 256 samples accumulated across about 86 explicit viewport draw requests; a draw request is not a path-tracing sample. The engine GetPathTracingSampleIndex() is authoritative. The source manifest's boolean value was contradicted by its own draw/sample evidence and is corrected here."
+  },
+  "verification": {
+    "path": "verification.json",
+    "status": "ok",
+    "checks_passed": 24,
+    "checks_total": 24,
+    "failed_checks": []
+  },
+  "image_analysis": {
+    "lumen": {
+      "file": "figures/reference/lumen-lit.png",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_rgb": [
+        132.57192491319444,
+        128.7106467013889,
+        111.537900390625
+      ],
+      "mean_luminance": 128.2916821655816,
+      "std_luminance": 93.6284936225084,
+      "min_luminance": 0.0,
+      "max_luminance": 252.0682,
+      "unique_rgb_colors": 67211,
+      "near_black_fraction": 0.2680479600694444,
+      "near_white_fraction": 0.0,
+      "nonblack_fraction_lum_gt_8": 0.6982009548611111,
+      "left_wall_rgb": [
+        231.09480657640233,
+        137.7874081237911,
+        118.00907156673114
+      ],
+      "right_wall_rgb": [
+        142.9025126646403,
+        215.12765957446808,
+        150.4568085106383
+      ],
+      "room_center_rgb": [
+        219.6980586080586,
+        218.08130036630035,
+        211.70150183150184
+      ],
+      "border_rgb": [
+        0.17172453703703705,
+        0.0,
+        0.0
+      ]
+    },
+    "path_tracer": {
+      "file": "figures/reference/pathtracer-256spp-8bounces.png",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_rgb": [
+        133.4962109375,
+        129.50939995659724,
+        112.0415625
+      ],
+      "mean_luminance": 129.09581810677082,
+      "std_luminance": 93.788770269129,
+      "min_luminance": 0.0,
+      "max_luminance": 251.0682,
+      "unique_rgb_colors": 110317,
+      "near_black_fraction": 0.2887272135416667,
+      "near_white_fraction": 0.0,
+      "nonblack_fraction_lum_gt_8": 0.6871592881944445,
+      "left_wall_rgb": [
+        230.81220502901354,
+        140.6836073500967,
+        119.05806576402321
+      ],
+      "right_wall_rgb": [
+        145.1490780141844,
+        214.14555217831813,
+        149.80490374873352
+      ],
+      "room_center_rgb": [
+        211.4127197802198,
+        209.7360989010989,
+        203.23933150183151
+      ],
+      "border_rgb": [
+        0.16674768518518518,
+        0.0,
+        0.0
+      ]
+    },
+    "published_original_lumen": {
+      "file": "external://source-reference/published-lumen-lit.png (optional, not included)",
+      "width": 1280,
+      "height": 720,
+      "channels": 4,
+      "mean_rgb": [
+        132.60716688368055,
+        128.77588216145833,
+        111.58884114583333
+      ],
+      "mean_luminance": 128.34950893207466,
+      "std_luminance": 93.59151259899933,
+      "min_luminance": 0.0,
+      "max_luminance": 252.0682,
+      "unique_rgb_colors": 67527,
+      "near_black_fraction": 0.26846137152777777,
+      "near_white_fraction": 0.0,
+      "nonblack_fraction_lum_gt_8": 0.6995453559027778,
+      "left_wall_rgb": [
+        231.08286266924566,
+        137.78830754352032,
+        118.00671179883946
+      ],
+      "right_wall_rgb": [
+        142.92707193515704,
+        215.15830800405269,
+        150.4822695035461
+      ],
+      "room_center_rgb": [
+        219.71760073260074,
+        218.10660256410256,
+        211.72716117216117
+      ],
+      "border_rgb": [
+        0.170625,
+        0.0,
+        0.0
+      ]
+    },
+    "new_lumen_vs_published_original": {
+      "mean_absolute_rgb_difference_0_255": 0.4394498697914301,
+      "fraction_pixels_rgb_difference_gt_8": 0.0035666232638888887,
+      "luminance_pearson_correlation": 0.9999111088143231
+    },
+    "new_lumen_vs_path_tracer": {
+      "mean_absolute_rgb_difference_0_255": 4.692626591436015,
+      "fraction_pixels_rgb_difference_gt_8": 0.12878472222222223,
+      "luminance_pearson_correlation": 0.9931351343774287
+    },
+    "rejection_rules": [
+      "size must be exactly 1280x720",
+      "luminance std > 5, nonblack fraction > 0.2, unique RGB colors > 1000",
+      "red wall on screen-left and green wall on screen-right",
+      "new Lumen must correlate > 0.98 with the published original and differ by < 10/255 mean",
+      "new Lumen and path tracer must correlate > 0.9 and not be identical"
+    ]
+  },
+  "hashes": {
+    "project_and_scripts": {
+      "UnrealLab\\UnrealLab.uproject": "9f5a6c6e5a6bd2da2c78f23dee5a97a07e14d71447178cd74ce1448314e483ee",
+      "UnrealLab\\Config\\DefaultEngine.ini": "0df2ae3ef9801745742050a2d0cf290126eb25a677ec06881a8ae376e5378238",
+      "UnrealLab\\Content\\Labs\\LumenRoom.umap": "f7255018f916af33894b1d0bd811b21585dc0151fca33fddc3a538851337e818",
+      "UnrealLab\\Source\\ArdaLabCapture\\ArdaLabCapture.cpp": "a7f6aa6fb44f9fc017125b020b98d9f8245da4162fc192446e10ca35cb100798",
+      "UnrealLab\\Source\\ArdaLabCapture\\ArdaLabCapture.h": "09ec5c85b76662593a8731a74e7e091ac9fecd083fe311d2ddd6e757fa833b7a",
+      "UnrealLab\\Source\\ArdaLabCapture\\ArdaLabCapture.Build.cs": "587e7f1af33282aacd9012233fedfe5faaf4afef366695b07b4c82eda5a0c90b",
+      "UnrealLab\\Source\\UnrealLabEditor.Target.cs": "85bf92e5ffe2afdcef9e6b3faaaaf5eac0fcf5f173e2a4357277835eeb05e0d8",
+      "scripts\\capture_reference.py": "9854cabf50ea09cb1f993feef3b7b9e74be8621cf08bb4b323e31db288b95708",
+      "scripts\\run_reference.ps1": "690d0aa4730dcf06fcba644a2dcdcda8d9b9895afdb84f9f5dd39ab2cfa0a52b",
+      "scripts\\image_stats.py": "578632c484c071323c77320332d43071675b1229238a9a8a164e3d0bcb955b73",
+      "scripts\\finalize_reference.py": "9a21b183d05d30efe0382d67e067754a4feab4817a51d25596acbc081b898906",
+      "scene.json": "a8586602a49077f3fff9552218dbf5ce1b311ad87b81bf24720430c3ad7a6b31",
+      "verification.json": "e3afb19eb35c9f0294eb2be9a2337e1bf990a6cbac3af0e96c6d0b7486c17fae"
+    },
+    "original_source_evidence": {
+      "source-reference\\capture.py": "b526553e4409c0bc4eb2dd1de9f9d3e798ec96f38dbd9380acfa698a1c5db4c7",
+      "source-reference\\capture_scene_room.py": "4eb159801012cf76dbfdf0427dd9e079eec5c4f2e5e52fa3609b4cf7103012d2",
+      "source-reference\\run.ps1": "e44dd7838ee98764d091ee482960bd5690bb7db15944d1875d40e20761c836bf",
+      "source-reference\\README.md": "cb5cd5c058213ef3b21219ff6633a7d72594a771bc510599f4ef04e25364f3a0",
+      "source-reference\\scene-inventory.json": "b91a7a1e2b5e3dc1b22fd05a321720f48fffae622294141cf6b412bdd94c6d8d",
+      "source-reference\\lumen-capture-report.json": "ebf023decd5ef7b79483a5a960b2f093e3b560f9e4ff1798bf763386646e73a3",
+      "source-reference\\capture-manifest.json": "20e0fc5784cc83588b9f111f72018f25d595c07efd17a61c8ee50052687946a9",
+      "source-reference\\capture-log-excerpt.txt": "52ef1e354135b0002be632e399570745e92c2be78f150f725aa1c358d4c5dd0d",
+      "source-reference\\scene-room-provenance.json": "ee1f167cfc69bdd85890f8ff501ed207b0c69d6cffbef52b023879d48319f28a",
+      "source-reference\\published-lumen-lit.png": "d5374ec9ba7a4e80f737f15fde51560534fd5ceb353545e0c7fc8bbdcd7cca37",
+      "source-reference\\original_project\\UnrealLab.uproject": "9f5a6c6e5a6bd2da2c78f23dee5a97a07e14d71447178cd74ce1448314e483ee",
+      "source-reference\\original_project\\DefaultEngine.ini": "8eb6b32811ab9a23e5e6376e744ea26faa5c40be93aabbe3be9704de4cfd26d5",
+      "source-reference\\original_project\\Source\\ArdaLabCapture\\ArdaLabCapture.cpp": "41d26d515f092ea4160d84bbf4acc50ddf1e5cadb7eab1059e3356c7fa6c58f5",
+      "source-reference\\original_project\\Source\\ArdaLabCapture\\ArdaLabCapture.h": "3ba19a81d2841eac8fbfbd435ce756420cf5f7ac76d025ca658579a7d91f1e8e",
+      "source-reference\\original_project\\Source\\ArdaLabCapture\\ArdaLabCapture.Build.cs": "587e7f1af33282aacd9012233fedfe5faaf4afef366695b07b4c82eda5a0c90b",
+      "source-reference\\original_project\\Source\\UnrealLabEditor.Target.cs": "85bf92e5ffe2afdcef9e6b3faaaaf5eac0fcf5f173e2a4357277835eeb05e0d8"
+    },
+    "published_original_image": {
+      "external://source-reference/published-lumen-lit.png (optional, not included)": "d5374ec9ba7a4e80f737f15fde51560534fd5ceb353545e0c7fc8bbdcd7cca37"
+    },
+    "copied_source_matches_original_repository": true
+  },
+  "limitations": [
+    "Editor viewport capture, not Movie Render Queue or a packaged build.",
+    "The editor viewport is SDR (GetSceneHDREnabled false), so the capture path writes display-referred 8-bit PNG; no linear EXR is produced by this procedure.",
+    "Path-tracer sample accumulation is not one sample per viewport draw: 256 samples accumulated across about 86 explicit draw requests (sample reset/first sample at draw 357, nonzero progression from draw 358, capture draw 443). The engine GetPathTracingSampleIndex() is authoritative; this is not a timing or performance benchmark.",
+    "Lumen screen-probe/radiosity temporal state is warmed but not proven converged; stochastic noise is expected.",
+    "The saved room keeps its recorded RectLight attenuation radius (1000 cm), even though the original builder requested 2000 cm.",
+    "Path tracing was rendered through the editor viewport on one GPU; multi-GPU and Movie Render Queue were not used.",
+    "The RTPSO fallback warning appears once during the discarded warm-up; no fallback was logged after the forced reset.",
+    "The engine NNEDenoiser plugin was instantiated by the project defaults, but r.PathTracing.Denoiser 0 prevented use of a denoise pass.",
+    "The 256 spp image still contains Monte Carlo noise; no convergence metric or performance benchmark is claimed.",
+    "The published original Lumen image is used only as a cross-check of room, camera and capture procedure."
+  ],
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged."
+}

@@ -1,0 +1,235 @@
+{
+  "schema": "lumen-educational-reference-checks/1",
+  "artifact": "educational CPU reference, NOT Unreal",
+  "seed": 20240601,
+  "command_line": "python C:/Users/Administrator/AppData/Local/Temp/UnrealUnderstanding-Math/reference/test_estimators.py --seed 20240601 --samples 200000 --json C:/Users/Administrator/AppData/Local/Temp/UnrealUnderstanding-Math/reference/out/checks.json",
+  "elapsed_seconds": 2.406479,
+  "tolerances": "absolute unless stated; 4 standard errors for MC checks",
+  "overall": "pass",
+  "checks": [
+    {
+      "name": "cosine_pdf_lambertian",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240602,
+      "measured": 3.141592653585281,
+      "expected": 3.141592653589793,
+      "tolerance": 1e-09,
+      "detail": "E[cos/pdf]=3.141592653585281 (exact pi=3.141592653589793); uniform-MC integral of pdf=1.001678 (exact 1)",
+      "extra": {
+        "cos_over_pdf_mean": 3.141592653585281,
+        "cos_over_pdf_exact": 3.141592653589793,
+        "pdf_integral_uniform_mc": 1.0016778144493794,
+        "samples": 200000
+      }
+    },
+    {
+      "name": "constant_environment_cosine_sampling",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240603,
+      "measured": 1.1999999999989595,
+      "expected": 1.2,
+      "tolerance": 1e-09,
+      "detail": "mean=1.199999999999, albedo*L_env=1.200000000000",
+      "extra": {
+        "mean": 1.1999999999989595,
+        "expected": 1.2,
+        "albedo": 0.6,
+        "environment": 2.0,
+        "samples": 50000
+      }
+    },
+    {
+      "name": "terminal_depth_retains_direct_environment",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240613,
+      "measured": 1.1999999999998912,
+      "expected": 1.2,
+      "tolerance": 1e-09,
+      "detail": "max_depth=1 mean=1.200000000000, expected rho*L_env=1.200000000000",
+      "extra": {
+        "mean": 1.1999999999998912,
+        "expected": 1.2,
+        "albedo": 0.6,
+        "environment": 2.0,
+        "samples": 5000
+      }
+    },
+    {
+      "name": "russian_roulette_in_tracer",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240609,
+      "measured": 1.19526,
+      "expected": 1.2,
+      "tolerance": 0.01240569644143536,
+      "detail": "mean=1.195260000, albedo*L_env=1.200000000 (|err|=4.74e-03, 4SE=1.24e-02, q=0.60)",
+      "extra": {
+        "mean": 1.19526,
+        "se": 0.00310142411035884,
+        "expected": 1.2,
+        "survival_q": 0.6,
+        "samples": 100000
+      }
+    },
+    {
+      "name": "camera_basis_and_unmirrored_room",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240610,
+      "measured": 1.0,
+      "expected": 1.0,
+      "tolerance": 1e-12,
+      "detail": "center.fwd=1.000000000000; right.dir=+0.4036; left.dir=-0.4036; up.dir=+0.3006; down.dir=-0.3006; left hit=left-red, right hit=right-green",
+      "extra": {
+        "center_dot_forward": 1.0,
+        "right_dot_right": 0.4036427048659237,
+        "left_dot_right": -0.4036427048659237,
+        "up_dot_up": 0.30055796312999844,
+        "down_dot_up": -0.30055796312999844,
+        "adjacent_ray_separation": 0.00011029493266902117,
+        "left_hit": "left-red",
+        "right_hit": "right-green",
+        "seed": 20240610
+      }
+    },
+    {
+      "name": "terminal_depth_nee_not_mis_weighted",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240611,
+      "measured": 0.08632665659885193,
+      "expected": 0.08632231258416995,
+      "tolerance": 9.278478985323544e-05,
+      "detail": "max_depth=1 NEE mean=0.086326657, reference=0.086322313 (|err|=4.34e-06, 4SE=9.28e-05)",
+      "extra": {
+        "mean": 0.08632665659885193,
+        "se": 2.319619746330886e-05,
+        "reference": 0.08632231258416995,
+        "abs_error": 4.344014681981201e-06,
+        "samples": 100000
+      }
+    },
+    {
+      "name": "shadow_ray_skips_only_target_light",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240612,
+      "measured": true,
+      "expected": true,
+      "tolerance": 0,
+      "detail": "blocked by other emitter=True; blocked when other emitter ignored=False",
+      "extra": {
+        "blocked_by_other_emitter": true,
+        "not_blocked_when_other_ignored": false,
+        "seed": 20240612
+      }
+    },
+    {
+      "name": "area_to_solid_angle_jacobian",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240604,
+      "measured": 1.0,
+      "expected": 1.0,
+      "tolerance": 1e-09,
+      "detail": "integral(p_omega dOmega)=1.000000000000000 (exact 1); Omega_proj converged to 0.387413632936 (|32-64|=1.83e-15)",
+      "extra": {
+        "pdf_integral": 1.0,
+        "grid": 256,
+        "omega_proj_12": 0.3874136329361528,
+        "omega_proj_32": 0.3874136329361554,
+        "omega_proj_64": 0.3874136329361572,
+        "omega_conv_12_32": 2.609024107869118e-15,
+        "omega_conv_32_64": 1.8318679906315083e-15
+      }
+    },
+    {
+      "name": "direct_lighting_mis_vs_reference",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240605,
+      "measured": 0.08632479284678471,
+      "expected": 0.08632231258416995,
+      "tolerance": 7.052343866786599e-05,
+      "detail": "reference=0.08632231; MIS sum=0.08632479 (err 2.48e-06, tol 7.05e-05); components NEE=0.08500909 + BSDF=0.00131571 = 0.08632479",
+      "extra": {
+        "reference": 0.08632231258416995,
+        "nee_mean": 0.08500908717305929,
+        "nee_se": 1.5753426951889024e-05,
+        "bsdf_mean": 0.001315705673725427,
+        "bsdf_se": 7.974369532526293e-06,
+        "component_sum": 0.08632479284678471,
+        "mis_mean": 0.08632479284678471,
+        "mis_se": 1.7630859666966498e-05,
+        "mis_abs_error": 2.4802626147624185e-06,
+        "mis_rel_error": 2.873257840890209e-05,
+        "weight_partition_max_error": 2.220446049250313e-16,
+        "samples": 200000,
+        "albedo": 0.7,
+        "light_emission": 1.0
+      }
+    },
+    {
+      "name": "mis_power_heuristic_partition",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240606,
+      "measured": 2.220446049250313e-16,
+      "expected": 0.0,
+      "tolerance": 1e-12,
+      "detail": "max |w_light+w_bsdf-1|=2.22e-16 over 50000 random pairs; weights in [1.711e-36, 1.000e+00]",
+      "extra": {
+        "pairs": 50000,
+        "max_partition_error": 2.220446049250313e-16,
+        "min_weight": 1.7109514830581753e-36,
+        "max_weight": 1.0
+      }
+    },
+    {
+      "name": "russian_roulette_compensated_expectation",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240607,
+      "measured": 2.502076562397935,
+      "expected": 2.4999999979948755,
+      "tolerance": 0.009037538528383855,
+      "detail": "mean=2.502077 vs exact=2.500000 (|err|=2.08e-03 <= 4SE=9.04e-03); uncompensated control=1.921978 (exact uncompensated=1.923077)",
+      "extra": {
+        "a": 0.6,
+        "q": 0.8,
+        "max_depth": 40,
+        "trials": 200000,
+        "exact_compensated": 2.4999999979948755,
+        "mean_compensated": 2.502076562397935,
+        "se_compensated": 0.002259384632095964,
+        "abs_error": 0.0020765644030595887,
+        "tolerance_4se": 0.009037538528383855,
+        "mean_compensated_square": 7.281345802432433,
+        "exact_uncompensated": 1.923076923076759,
+        "mean_uncompensated": 1.9219784171081102,
+        "se_uncompensated": 0.0012218185664344097
+      }
+    },
+    {
+      "name": "camera_ray_emitter_not_double_counted",
+      "status": "pass",
+      "base_seed": 20240601,
+      "sampling_seed": 20240608,
+      "measured": [
+        3.0,
+        2.0,
+        1.0
+      ],
+      "expected": [
+        3.0,
+        2.0,
+        1.0
+      ],
+      "tolerance": 0.0,
+      "detail": "radiance=(3.0, 2.0, 1.0), expected emission=(3.0, 2.0, 1.0)"
+    }
+  ]
+}

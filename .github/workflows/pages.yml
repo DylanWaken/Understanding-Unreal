@@ -44,6 +44,16 @@ jobs:
       - name: Validate reproducible laboratory evidence
         run: python3 Scripts/Docs/unreal_articles/validate_labs.py
 
+      - name: Validate Lumen derivation and captured reference evidence
+        run: python3 Scripts/Docs/unreal_articles/validate_lumen_v2.py
+
+      - name: Check frame decoders and actual package reads
+        run: |
+          python3 -m unittest discover -s Scripts/Docs/unreal_articles/labs/lumen-frame/tests -q
+          python3 -m unittest discover -s Scripts/Docs/unreal_articles/labs/lumen-frame -p test_verify_frame_evidence.py -q
+          node Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_codec.cjs
+          node Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_read_path.cjs
+
       - name: Validate essays, links and figures
         run: python3 Scripts/Docs/unreal_articles/validate.py
 

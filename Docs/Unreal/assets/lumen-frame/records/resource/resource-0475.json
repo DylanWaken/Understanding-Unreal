@@ -1,0 +1,222 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0475",
+  "nativeRecordId": "native-017482",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "VirtualTexture_FeedbackBuffer",
+  "uniqueName": "000100000228e994e5a0",
+  "displayLabel": "VirtualTexture_FeedbackBuffer · instance 0001 · frame 292",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 35840,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 8960,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 8960
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "VirtualTexture_FeedbackBuffer",
+    "UniqueResourceName": "000100000228e994e5a0",
+    "ByteSize": 35840,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 8960,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "SourceCopy",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00584",
+      "role": "resource",
+      "originalPath": "Resources/000100000228e994e5a0.v00000000000000000000.bin",
+      "bytes": 35840,
+      "sha256": "03b076d4495e9e512a4b5503d14dd53141870ac26003eb0e6d6e174c469f35e1",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0475",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "03b076d4495e9e512a4b5503d14dd53141870ac26003eb0e6d6e174c469f35e1",
+          "offset": 0,
+          "length": 35840
+        }
+      ],
+      "nativeKind": "SkipTrackingBuffer",
+      "classification": "skip-tracking-buffer",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": {
+          "File": "Resources/000100000228e994e5a0.v00000000000000000000.bin",
+          "Kind": "SkipTrackingBuffer",
+          "ExpectedBytes": 35840,
+          "ActualBytes": 35840,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 35840,
+        "actualBytes": 35840,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "SkipTrackingBuffer",
+        "reason": null
+      },
+      "identity": null,
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00584"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0295",
+        "name": "Hash table indirect arguments",
+        "displayLabel": "Hash table indirect arguments · VirtualTextureUpdate · frame 292 · pass 294",
+        "record": "records/pass/pass-0295.json"
+      },
+      {
+        "id": "pass-0296",
+        "name": "Build feedback hash table",
+        "displayLabel": "Build feedback hash table · VirtualTextureUpdate · frame 292 · pass 295",
+        "record": "records/pass/pass-0296.json"
+      },
+      {
+        "id": "pass-0297",
+        "name": "Compact feedback hash table",
+        "displayLabel": "Compact feedback hash table · VirtualTextureUpdate · frame 292 · pass 296",
+        "record": "records/pass/pass-0297.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00584",
+      "file": "Resources/000100000228e994e5a0.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": {
+          "File": "Resources/000100000228e994e5a0.v00000000000000000000.bin",
+          "Kind": "SkipTrackingBuffer",
+          "ExpectedBytes": 35840,
+          "ActualBytes": 35840,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 35840,
+        "actualBytes": 35840,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "SkipTrackingBuffer",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0289",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer VirtualTexture_FeedbackBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0475"
+    },
+    {
+      "id": "gap-1976",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched VirtualTexture_FeedbackBuffer (000100000228e994e5a0). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0475"
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "format": "unreal-frame-explorer-package-pass-record",
+  "version": 1,
+  "id": "pass-0539",
+  "nativeRecordId": "native-016058",
+  "name": "OutputCommandInstanceListsCs",
+  "displayLabel": "OutputCommandInstanceListsCs · CullingPasses · frame 292 · pass 538",
+  "frameNumber": 292,
+  "graphPrefix": "CullingPasses",
+  "viewState": null,
+  "pointer": "000300000228e225f0e0",
+  "parametersName": "FParameters",
+  "parametersPointer": "000300000228e225ef20",
+  "parametersMetadataPointer": "000300007ffb89338f10",
+  "parentScopes": [
+    "CullingPasses",
+    "Batched",
+    "RenderVirtualShadowMaps(Non-Nanite)",
+    "ShadowDepths",
+    "Scene",
+    "Frame 292 (Delta=0.010717s)"
+  ],
+  "drawCount": null,
+  "drawCountStatus": "not-captured",
+  "drawCountSource": "Base/PassDrawCounts.json",
+  "native": {
+    "EventName": "OutputCommandInstanceListsCs",
+    "ParametersName": "FParameters",
+    "Parameters": "000300000228e225ef20",
+    "ParametersMetadata": "000300007ffb89338f10",
+    "Pointer": "000300000228e225f0e0",
+    "Id": 538,
+    "ParentEventScopes": [
+      "CullingPasses",
+      "Batched",
+      "RenderVirtualShadowMaps(Non-Nanite)",
+      "ShadowDepths",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "InputResources": [
+      "000300000228baecb3f8",
+      "000300000228e22571d0",
+      "000300000228e225e7e8"
+    ],
+    "OutputResources": [
+      "000300000228e225e578",
+      "000300000228e225e6b0",
+      "000300000228baecb2c0"
+    ],
+    "BindingEdgesCollectedDuringGraphBuild": true
+  },
+  "inputs": [
+    {
+      "uniqueName": "000300000228baecb3f8",
+      "resourceId": "resource-0881",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01282"
+      ]
+    },
+    {
+      "uniqueName": "000300000228e22571d0",
+      "resourceId": "resource-0871",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01439",
+        "payload-01440"
+      ]
+    },
+    {
+      "uniqueName": "000300000228e225e7e8",
+      "resourceId": "resource-0885",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01455"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "uniqueName": "000300000228e225e578",
+      "resourceId": "resource-0886",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01453"
+      ]
+    },
+    {
+      "uniqueName": "000300000228e225e6b0",
+      "resourceId": "resource-0887",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01454"
+      ]
+    },
+    {
+      "uniqueName": "000300000228baecb2c0",
+      "resourceId": "resource-0884",
+      "version": null,
+      "mip": null,
+      "slice": null,
+      "stencil": false,
+      "payloadMatch": "resource+mip+slice+aspect+version-when-named",
+      "payloadIds": [
+        "payload-01280",
+        "payload-01281"
+      ]
+    }
+  ],
+  "parameterBlock": {
+    "payloadId": "payload-06496",
+    "metadataPointer": "000300007ffb89338f10",
+    "bytes": 64,
+    "sha256": "d681c55e86dbd8fa28c783f5fde412a335ac96ef370c804131277a6e7ce7323e",
+    "chunks": [
+      {
+        "sha": "d681c55e86dbd8fa28c783f5fde412a335ac96ef370c804131277a6e7ce7323e",
+        "offset": 0,
+        "length": 64
+      }
+    ],
+    "originalPath": "Structures/000300000228e225ef20.bin"
+  },
+  "parameterMetadata": {
+    "StructTypeName": "FParameters",
+    "ShaderVariableName": "",
+    "FileName": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\VirtualShadowMaps\\VirtualShadowMapArray.cpp",
+    "FileLine": 3917,
+    "Size": 64,
+    "Members": [
+      {
+        "Name": "VisibleInstances",
+        "ShaderType": "StructuredBuffer< FVSMVisibleInstanceCmd >",
+        "FileLine": 3918,
+        "Offset": 0,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "InstanceIdsBufferOut",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 3919,
+        "Offset": 8,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "PageInfoBufferOut",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 3920,
+        "Offset": 16,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "TmpInstanceIdOffsetBufferOut",
+        "ShaderType": "RWStructuredBuffer<uint>",
+        "FileLine": 3921,
+        "Offset": 24,
+        "BaseType": "UBMT_RDG_BUFFER_UAV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "VisibleInstanceCountBuffer",
+        "ShaderType": "StructuredBuffer<uint>",
+        "FileLine": 3922,
+        "Offset": 32,
+        "BaseType": "UBMT_RDG_BUFFER_SRV",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      },
+      {
+        "Name": "IndirectArgs",
+        "ShaderType": "",
+        "FileLine": 3925,
+        "Offset": 40,
+        "BaseType": "UBMT_RDG_BUFFER_ACCESS",
+        "Precision": 0,
+        "NumRows": 1,
+        "NumColumns": 1,
+        "NumElements": 0,
+        "StructMetadata": "00000000000000000000"
+      }
+    ]
+  },
+  "referencedStructs": [],
+  "nativeUniformBuffers": [],
+  "parameterBindings": [
+    {
+      "Pass": "000300000228e225f0e0",
+      "Parameters": "000300000228e225ef20",
+      "Bindings": {
+        "VisibleInstances": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 0,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228e225ef60",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "InstanceIdsBufferOut": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 8,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228e225eff8",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "PageInfoBufferOut": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 16,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228e225efb0",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "TmpInstanceIdOffsetBufferOut": {
+          "BaseType": "UBMT_RDG_BUFFER_UAV",
+          "Offset": 24,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228e225f040",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        },
+        "VisibleInstanceCountBuffer": {
+          "BaseType": "UBMT_RDG_BUFFER_SRV",
+          "Offset": 32,
+          "NumElements": 1,
+          "ElementStrideBytes": 8,
+          "Null": false,
+          "Pointer": "000300000228e225f088",
+          "StateCaptured": false,
+          "Source": "PassParameterBlock"
+        }
+      }
+    }
+  ],
+  "schemaMatches": [],
+  "gaps": []
+}

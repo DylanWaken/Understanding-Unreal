@@ -1,0 +1,403 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1235",
+  "nativeRecordId": "native-018247",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.RadianceCache.ProbeTraceData",
+  "uniqueName": "0004000002287c167fe8",
+  "displayLabel": "Lumen.RadianceCache.ProbeTraceData · instance 0004 · frame 292 · passes 767",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 767,
+    "last": 767
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "probe-grid",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 262144,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 16384,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 16384
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.RadianceCache.ProbeTraceData",
+    "UniqueResourceName": "0004000002287c167fe8",
+    "ByteSize": 262144,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 16384,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02185",
+      "role": "resource",
+      "originalPath": "Resources/0004000002287c167fe8.v000400000228dcc7be40.bin",
+      "bytes": 262144,
+      "sha256": "faa3515f2d6b64bb3da7fdd752f8ad048c5408a735742259c605cd61645c4761",
+      "version": "000400000228dcc7be40",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1235",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "faa3515f2d6b64bb3da7fdd752f8ad048c5408a735742259c605cd61645c4761",
+          "offset": 0,
+          "length": 262144
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0004000002287c167fe8",
+        "name": "Lumen.RadianceCache.ProbeTraceData",
+        "byteSize": 262144
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000228dcc7be40",
+      "producerPassId": "pass-0768",
+      "producerPassName": "AllocateProbeTraces",
+      "payloadIds": [
+        "payload-02185"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0768",
+        "name": "AllocateProbeTraces",
+        "displayLabel": "AllocateProbeTraces · UpdateWorldRadianceCaches · frame 292 · pass 767",
+        "record": "records/pass/pass-0768.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0772",
+        "name": "GenerateUniformProbeTraceTiles",
+        "displayLabel": "GenerateUniformProbeTraceTiles · UpdateWorldRadianceCaches · frame 292 · pass 771",
+        "record": "records/pass/pass-0772.json"
+      },
+      {
+        "id": "pass-0776",
+        "name": "TraceFromProbes Res=8x8 SkyVisibility:0",
+        "displayLabel": "TraceFromProbes Res=8x8 SkyVisibility:0 · UpdateWorldRadianceCaches · frame 292 · pass 775",
+        "record": "records/pass/pass-0776.json"
+      },
+      {
+        "id": "pass-0778",
+        "name": "FilterProbeRadiance Res=8x8",
+        "displayLabel": "FilterProbeRadiance Res=8x8 · UpdateWorldRadianceCaches · frame 292 · pass 777",
+        "record": "records/pass/pass-0778.json"
+      },
+      {
+        "id": "pass-0780",
+        "name": "FixupBordersAndGenerateMips",
+        "displayLabel": "FixupBordersAndGenerateMips · UpdateWorldRadianceCaches · frame 292 · pass 779",
+        "record": "records/pass/pass-0780.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02185",
+      "file": "Resources/0004000002287c167fe8.v000400000228dcc7be40.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.rc.probe-trace-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.RadianceCache\\.ProbeTraceData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "compact list of probes to trace: translated-world probe center plus packed clipmap/probe index and force-downsample flag",
+      "units": "xyz in translated world units (cm); w is a packed uint32",
+      "coordinateSpace": "translated world space for xyz; index space for w",
+      "storage": {
+        "kind": "buffer",
+        "format": "float4",
+        "strideBytes": 16,
+        "numElements": "MaxNumProbes",
+        "capacity": "MaxNumProbes elements; valid count = min(ProbeTraceAllocator[0],MaxProbesToTrace)",
+        "usage": "UAV(PF_A32B32G32R32F) | SRV",
+        "captureObserved": [
+          {
+            "descriptor": "FRDGBufferDesc",
+            "bytesPerElement": 16,
+            "numElements": 16384,
+            "byteSize": 262144,
+            "usage": [
+              "Static",
+              "UnorderedAccess",
+              "ShaderResource",
+              "VertexBuffer"
+            ]
+          }
+        ]
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "unpack",
+          "expression": "PackedW = asuint(ProbeTraceData[i].w); ProbeIndex = PackedW & 0xFFFFFF; ClipmapIndex = (PackedW >> 24) & 0x7F; bForceDownsample = (PackedW >> 31) & 1",
+          "requires": [
+            "ProbeTraceData"
+          ],
+          "sourceRefs": [
+            "part2.rc.tc.unpack",
+            "part2.rc.tc.clipmap",
+            "part2.rc.tc.probeindex",
+            "part2.rc.tc.force"
+          ]
+        },
+        {
+          "name": "pack",
+          "expression": "PackedW = (ClipmapIndex << 24) | ProbeIndex; if (bForceDownsample) PackedW |= 1<<31",
+          "requires": [
+            "ClipmapIndex",
+            "ProbeIndex",
+            "bForceDownsample"
+          ],
+          "sourceRefs": [
+            "part2.rc.tc.pack",
+            "part2.rc.tc.packw"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Element stride is 16 B because the C++ allocation uses sizeof(FVector4f) (LumenRadianceCache.cpp:1951); it is not a half4.",
+        "The packed index field is 24 bits wide but EncodeProbeIndirection supports at most 16 bits of persistent probe index; no probe index > 0xFFFFFF is produced in practice."
+      ],
+      "producerSources": [
+        "part2.rc.cpp.tracedata.alloc",
+        "part2.rc.upd.tracedata.pack",
+        "part2.rc.tracedata.write",
+        "part2.rc.tracealloc.add"
+      ],
+      "consumerSources": [
+        "part2.rc.tc.unpack"
+      ],
+      "gaps": [
+        "Only entries [0, NumProbesToTrace) were written this frame; the remainder of the MaxNumProbes allocation is stale/uninitialized.",
+        "PackProbeTraceData does not mask ClipmapIndex to 7 bits before shifting; values > 127 would corrupt bit 31, but NumRadianceProbeClipmaps is far smaller."
+      ],
+      "fields": [
+        {
+          "name": "ProbeTranslatedWorldCenterX",
+          "type": "float32",
+          "decode": "x = ProbeTranslatedWorldPosition.x (LWC-relative translated world)",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.rc.tc.pack",
+            "part2.rc.tracedata.write"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 32
+        },
+        {
+          "name": "ProbeTranslatedWorldCenterY",
+          "type": "float32",
+          "decode": "y",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.rc.tc.pack"
+          ],
+          "byteOffset": 4,
+          "bitWidth": 32
+        },
+        {
+          "name": "ProbeTranslatedWorldCenterZ",
+          "type": "float32",
+          "decode": "z",
+          "units": "cm",
+          "sourceRefs": [
+            "part2.rc.tc.pack"
+          ],
+          "byteOffset": 8,
+          "bitWidth": 32
+        },
+        {
+          "name": "ProbeIndex",
+          "type": "uint24",
+          "decode": "w & 0xFFFFFF",
+          "units": "probe index",
+          "sourceRefs": [
+            "part2.rc.tc.probeindex",
+            "part2.rc.tc.packw"
+          ],
+          "byteOffset": 12,
+          "bitOffset": 0,
+          "bitWidth": 24
+        },
+        {
+          "name": "ClipmapIndex",
+          "type": "uint7",
+          "decode": "(w >> 24) & 0x7F",
+          "units": "clipmap index",
+          "sourceRefs": [
+            "part2.rc.tc.clipmap",
+            "part2.rc.tc.packw"
+          ],
+          "byteOffset": 12,
+          "bitOffset": 24,
+          "bitWidth": 7
+        },
+        {
+          "name": "bForceDownsample",
+          "type": "uint1",
+          "decode": "(w >> 31) & 1",
+          "units": "bool",
+          "sourceRefs": [
+            "part2.rc.tc.force"
+          ],
+          "byteOffset": 12,
+          "bitOffset": 31,
+          "bitWidth": 1
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 6,
+        "sourceEquationFields": [
+          "ProbeTranslatedWorldCenterX",
+          "ProbeTranslatedWorldCenterY",
+          "ProbeTranslatedWorldCenterZ",
+          "ProbeIndex",
+          "ClipmapIndex",
+          "bForceDownsample"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0771",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.RadianceCache.ProbeTraceData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1235"
+    }
+  ]
+}

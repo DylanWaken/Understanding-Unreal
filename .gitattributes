@@ -1,0 +1,10 @@
+# Preserve exact bytes in frozen experiment manifests and captured metadata.
+Scripts/Docs/unreal_articles/labs/lumen-pathtracer/reference/** -text -whitespace
+Scripts/Docs/unreal_articles/labs/lumen-capture/baseline/** -text -whitespace
+Scripts/Docs/unreal_articles/labs/lumen-frame/** -text -whitespace
+Docs/Unreal/assets/lumen-v2/** -text -whitespace
+Docs/Unreal/assets/lumen-frame/** -text -diff -whitespace
+Docs/Unreal/assets/frame-*.js -text whitespace=cr-at-eol
+Docs/Unreal/assets/frame-*.css -text whitespace=cr-at-eol
+Docs/Unreal/frame-explorer.html -text whitespace=cr-at-eol
+Scripts/Docs/unreal_articles/labs/lumen-diagrams/generate.py text eol=lf

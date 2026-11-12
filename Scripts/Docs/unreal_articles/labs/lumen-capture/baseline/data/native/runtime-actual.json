@@ -1,0 +1,765 @@
+{
+  "schema": "unreal-active-frame-runtime-v1",
+  "dump_directory": "external-raw-dump/binary-20261112-133826 (not included)",
+  "engine_frame": 292,
+  "session_file": null,
+  "engine_version": "5.8.1-0+UE5",
+  "render_status": {
+    "rhi": "D3D12",
+    "feature_level": 4,
+    "shader_platform": "PCD3D_SM6",
+    "view_mode_index": 3,
+    "viewport_size": [
+      1280,
+      720
+    ],
+    "scene_hdr_enabled": false,
+    "ray_tracing_supported": true,
+    "ray_tracing_shaders_supported": true,
+    "path_tracing_shader_support": true
+  },
+  "viewport_screenshot_size": [
+    1280,
+    720
+  ],
+  "scene_render_target_extent": [
+    1280,
+    888
+  ],
+  "scene_render_target_note": "active GBuffer/SceneColor targets are 1280x888; the top 1280x720 rows contain the visible view, the bottom 168 rows are black padding",
+  "camera": {
+    "actor": "CameraActor",
+    "location_cm": [
+      0.0,
+      -400.0,
+      165.0
+    ],
+    "rotation_degrees": {
+      "pitch": -2.105514188856035,
+      "yaw": 90.00000000000006,
+      "roll": 2.5614055970807246e-08
+    },
+    "target_cm": [
+      0.0,
+      280.0,
+      140.0
+    ],
+    "vertical_fov_degrees": 43.0,
+    "component_field_of_view_degrees": 70.0059814453125
+  },
+  "light": {
+    "actor": "Ceiling area light",
+    "location_cm": [
+      0.0,
+      270.0,
+      298.0
+    ],
+    "rotation_degrees": {
+      "pitch": -90.0,
+      "yaw": 0.0,
+      "roll": 0.0
+    },
+    "intensity_lumens": 2400.0,
+    "intensity_units": "<LightUnits.LUMENS: 2>",
+    "source_width_cm": 130.0,
+    "source_height_cm": 120.0,
+    "attenuation_radius_cm": 1000.0,
+    "light_color": [
+      255.0,
+      255.0,
+      255.0
+    ]
+  },
+  "exposure": {
+    "effective_method": "histogram (AEM_HISTOGRAM) with min_brightness == max_brightness == EV100 4",
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+    "override_auto_exposure_method": "False",
+    "ev100": 4.0,
+    "postprocess_values": {
+      "override_auto_exposure_min_brightness": "True",
+      "auto_exposure_min_brightness": "4.0",
+      "override_auto_exposure_max_brightness": "True",
+      "auto_exposure_max_brightness": "4.0",
+      "override_auto_exposure_bias": "True",
+      "auto_exposure_bias": "0.0",
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>",
+      "override_auto_exposure_method": "False",
+      "override_path_tracing_samples_per_pixel": "False",
+      "path_tracing_samples_per_pixel": "2048",
+      "override_path_tracing_max_bounces": "False",
+      "path_tracing_max_bounces": "32",
+      "override_path_tracing_enable_denoiser": "False",
+      "path_tracing_enable_denoiser": "True"
+    },
+    "pre_exposure": 0.0625,
+    "one_over_pre_exposure": 16.0,
+    "view_uniform_metadata": "000100007ffb98a179f0.json",
+    "view_uniform_content": "0001000001b5c715a500",
+    "eye_adaptation_buffer": [
+      {
+        "resource_id": "0001000001b2b1efc4a8",
+        "file": "Resources/0001000001b2b1efc4a8.v0001000001b2b1efc718.bin",
+        "version_pass_id": 274,
+        "slot0": {
+          "x_exposure_scale": 0.0625,
+          "y_exposure_target": 0.0625,
+          "z_average_scene_luminance": 8.370248794555664,
+          "w_exposure_bias_only": 1.0
+        },
+        "slot1": {
+          "x_average_local_exposure": 1.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 0.0
+        }
+      },
+      {
+        "resource_id": "0001000001b5c15ea8d0",
+        "file": "Resources/0001000001b5c15ea8d0.v00000000000000000000.bin",
+        "version_pass_id": null,
+        "slot0": {
+          "x_exposure_scale": 0.0625,
+          "y_exposure_target": 0.0625,
+          "z_average_scene_luminance": 8.368221282958984,
+          "w_exposure_bias_only": 1.0
+        },
+        "slot1": {
+          "x_average_local_exposure": 1.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 0.0
+        }
+      }
+    ],
+    "exposure_cvars": {
+      "r.LocalExposure": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "1"
+      },
+      "r.EyeAdaptationQuality": {
+        "type": "int32",
+        "set_by": "Scalability",
+        "value": "2"
+      },
+      "r.EyeAdaptation.PreExposureOverride": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.EyeAdaptation.MethodOverride": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "-1"
+      },
+      "r.EyeAdaptation.ExponentialTransitionDistance": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "1.5"
+      },
+      "r.EyeAdaptation.VisualizeDebugType": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.EyeAdaptation.LensAttenuation": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0.78"
+      },
+      "r.EyeAdaptation.BlackHistogramBucketInfluence": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.EyeAdaptation.ExposureCompensationCurveLUT": {
+        "type": "bool",
+        "set_by": "Constructor",
+        "value": "true"
+      },
+      "r.EyeAdaptation.ExposureCompensationCurveLUT.NumSamples": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "64"
+      },
+      "r.EyeAdaptation.ExposureCompensationCurveLUT.MinX": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "-10"
+      },
+      "r.EyeAdaptation.ExposureCompensationCurveLUT.MaxX": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "20"
+      },
+      "r.AutoExposure.IgnoreMaterials": {
+        "type": "bool",
+        "set_by": "Constructor",
+        "value": "false"
+      },
+      "r.AutoExposure.LuminanceMethod": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.AutoExposure.IgnoreMaterials.ReconstructFromSceneColor": {
+        "type": "bool",
+        "set_by": "Constructor",
+        "value": "true"
+      },
+      "r.AutoExposure.IgnoreMaterials.EvaluationPositionBias": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "10"
+      },
+      "r.AutoExposure.IgnoreMaterials.LuminanceScale": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0.18"
+      },
+      "r.AutoExposure.IgnoreMaterials.MinBaseColorLuminance": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0.01"
+      },
+      "r.AutoExposure.IgnoreMaterials.UsePrecalculatedIlluminance": {
+        "type": "bool",
+        "set_by": "Constructor",
+        "value": "true"
+      },
+      "r.AutoExposure.IgnoreMaterials.DownscaleFactor": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "2"
+      },
+      "r.AutoExposure.IgnoreMaterials.Debug": {
+        "type": "bool",
+        "set_by": "Constructor",
+        "value": "false"
+      },
+      "r.EyeAdaptation.CachedLightingPreExposure": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "4"
+      },
+      "r.Bloom.ApplyLocalExposure": {
+        "type": "bool",
+        "set_by": "Constructor",
+        "value": "true"
+      },
+      "r.LocalExposure.ExposureFusion.TargetLuminance": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0.5"
+      },
+      "r.LocalExposure.ExposureFusion.NumLevels": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "16"
+      },
+      "r.Mobile.EyeAdaptation": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "1"
+      },
+      "r.EyeAdaptation.VisualizeLuminanceScale": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "1"
+      },
+      "r.LocalExposure.VisualizationMode": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.TSR.ShadingRejection.ExposureOffset": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.FastVRam.EyeAdaptation": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "1"
+      },
+      "r.ExposureOffset": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.DefaultFeature.AutoExposure": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "1"
+      },
+      "r.DefaultFeature.AutoExposure.Method": {
+        "type": "int32",
+        "set_by": "Constructor",
+        "value": "0"
+      },
+      "r.DefaultFeature.AutoExposure.Bias": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "1"
+      },
+      "r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange": {
+        "type": "int32",
+        "set_by": "ProjectSetting",
+        "value": "1"
+      },
+      "r.DefaultFeature.LocalExposure.HighlightContrastScale": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "1"
+      },
+      "r.DefaultFeature.LocalExposure.ShadowContrastScale": {
+        "type": "float",
+        "set_by": "Constructor",
+        "value": "1"
+      }
+    },
+    "note": "PreExposure/OneOverPreExposure are read from the captured FViewUniformShaderParameters content at the captured frame. EyeAdaptationBuffer slot 0 is the float4 exposure state (x=result scale, y=target scale, z=average scene luminance, w=bias-only per the engine visualization shader); slot 1 x=average local exposure."
+  },
+  "key_cvars": {
+    "r.Substrate": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "0"
+    },
+    "r.Substrate.ProjectGBufferFormat": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "1"
+    },
+    "r.Substrate.BytesPerPixel": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "80"
+    },
+    "r.MegaLights.EnableForProject": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "0"
+    },
+    "r.MegaLights.Allowed": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "1"
+    },
+    "r.MegaLights.Supported": {
+      "type": "bool",
+      "set_by": "Constructor",
+      "value": "true"
+    },
+    "r.Lumen.HardwareRayTracing": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.Lumen.HardwareRayTracing.LightingMode": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "0"
+    },
+    "r.Shadow.Virtual.Enable": {
+      "type": "int32",
+      "set_by": "ProjectSetting",
+      "value": "1"
+    },
+    "r.RayTracing": {
+      "type": "int32",
+      "set_by": "ProjectSetting",
+      "value": "1"
+    },
+    "r.RayTracing.Shadows": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "0"
+    },
+    "r.RayTracing.GlobalIllumination": {
+      "found": false
+    },
+    "r.PathTracing": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "1"
+    },
+    "r.DynamicGlobalIlluminationMethod": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.ReflectionMethod": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.ScreenPercentage": {
+      "type": "float",
+      "set_by": "Console",
+      "value": "100"
+    },
+    "r.AntiAliasingMethod": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "2"
+    },
+    "r.MotionBlurQuality": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.Lumen.ScreenProbeGather.ScreenTraces": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.Lumen.Reflections.ScreenTraces": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.LumenScene.SurfaceCache.AtlasSize": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "4096"
+    },
+    "r.DefaultFeature.AutoExposure": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "1"
+    },
+    "r.DefaultFeature.AutoExposure.Method": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "0"
+    },
+    "r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange": {
+      "type": "int32",
+      "set_by": "ProjectSetting",
+      "value": "1"
+    },
+    "r.EyeAdaptation.MethodOverride": {
+      "type": "int32",
+      "set_by": "Constructor",
+      "value": "-1"
+    },
+    "r.EyeAdaptation.PreExposureOverride": {
+      "type": "float",
+      "set_by": "Constructor",
+      "value": "0"
+    },
+    "r.EyeAdaptationQuality": {
+      "type": "int32",
+      "set_by": "Scalability",
+      "value": "2"
+    },
+    "r.Tonemapper.Quality": {
+      "type": "int32",
+      "set_by": "Scalability",
+      "value": "5"
+    },
+    "r.Tonemapper.Sharpen": {
+      "type": "float",
+      "set_by": "Constructor",
+      "value": "-1"
+    },
+    "r.RHI.UniformBufferContentMap.Enable": {
+      "type": "bool",
+      "set_by": "SystemSettingsIni",
+      "value": "true"
+    },
+    "r.DumpGPU.Root": {
+      "type": "FString",
+      "set_by": "Console",
+      "value": "*"
+    },
+    "r.DumpGPU.Texture": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "2"
+    },
+    "r.DumpGPU.Buffer": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "2"
+    },
+    "r.DumpGPU.PassParameters": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.DumpGPU.ConsoleVariables": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.DumpGPU.Explore": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.DumpGPU.Upload": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.DumpGPU.Directory": {
+      "type": "FString",
+      "set_by": "Console",
+      "value": "external-raw-dump"
+    },
+    "r.DumpGPU.MaxStagingSize": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "256"
+    },
+    "r.DumpGPU.Stream": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.DumpGPU.RedumpInputs": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.DumpGPU.FrameCount": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.DumpGPU.FrameDelay": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.DumpGPU.Delay": {
+      "type": "float",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.DumpGPU.Draws": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "0"
+    },
+    "r.DumpGPU.Mask": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    },
+    "r.DumpGPU.EnableLogWrite": {
+      "type": "int32",
+      "set_by": "Console",
+      "value": "1"
+    }
+  },
+  "route": {
+    "substrate_enabled": false,
+    "substrate_state": "r.Substrate=0 -> legacy GBuffer path",
+    "megalights_enabled": false,
+    "megalights_state": "r.MegaLights.EnableForProject=0; r.MegaLights.Allowed=1",
+    "lumen_hardware_ray_tracing": "0",
+    "lumen_route": "software tracing",
+    "virtual_shadow_maps": "1",
+    "ray_tracing_project_setting": "1",
+    "active_view_mode": "VMI_Lit (view_mode_index 3); path tracer available but not the active view",
+    "evidence": {
+      "Lumen": {
+        "count": 468,
+        "examples": [
+          "ResampleLightingHistoryToCardCaptureAtlas @ LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearIndirectArgInstanceCount @ BuildRenderingCommands(Culling=Off) / LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)",
+          "CullInstances(UnCulled) @ BuildRenderingCommands(Culling=Off) / LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearCardCapture @ LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)",
+          "CardPage Commands:1 @ MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 / LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)",
+          "CardPage Commands:1 @ MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 / LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)",
+          "CardPage Commands:1 @ MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 / LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)",
+          "CardPage Commands:1 @ MeshCardCapture Pages:37 Draws:37 Instances:37 Tris:1776 / LumenSceneUpdate: 37 card captures 0.030M texels / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "TraceScreen": {
+        "count": 6,
+        "examples": [
+          "TraceScreen(Scene) @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "TraceScreen(Scene) @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "TraceScreen(Scene) @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "TraceScreen(Scene) @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "TraceScreen(Scene) @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "TraceScreen(Scene) @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "TraceVoxels": {
+        "count": 3,
+        "examples": [
+          "TraceVoxels(Scene) @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "TraceVoxels(Scene) @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "TraceVoxels(Scene) @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "ScreenProbeIntegrate": {
+        "count": 12,
+        "examples": [
+          "ScreenProbeIntegrateClearUnusedTileData @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "ScreenProbeIntegrate SimpleDiffuse DownsampleFactor:1 @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "ScreenProbeIntegrate SupportImportanceSampleBRDF DownsampleFactor:1 @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "ScreenProbeIntegrate SupportAll DownsampleFactor:1 @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "ScreenProbeIntegrateClearUnusedTileData @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "ScreenProbeIntegrate SimpleDiffuse DownsampleFactor:1 @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "ScreenProbeIntegrate SupportImportanceSampleBRDF DownsampleFactor:1 @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "ScreenProbeIntegrate SupportAll DownsampleFactor:1 @ Integrate / LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "FilterRadianceWithGather": {
+        "count": 9,
+        "examples": [
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)",
+          "FilterRadianceWithGather @ LumenScreenProbeGather / DiffuseIndirectAndAO / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "ReflectionsResolve": {
+        "count": 3,
+        "examples": [
+          "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:0 @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:0 @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:0 @ LumenReflections / DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "VirtualShadowMap": {
+        "count": 123,
+        "examples": [
+          "FVirtualShadowMapArray::UpdatePhysicalPageAddresses @ Scene / Frame 292 (Delta=0.009839s)",
+          "ScatterUpload (Resource: Shadow.Virtual.ProjectionData) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearBuffer(Shadow.Virtual.StatsBuffer Size=360bytes) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearPageTable(Shadow.Virtual.PageRequestFlags Size=8192x192 texels) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearPageTableDir(Shadow.Virtual.PageReceiverMasks Size=256x384 texels) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearBuffer(Shadow.Virtual.DirtyPageFlags Size=98308bytes) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "InitPageRectBounds @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearBuffer(NanitePerformanceFeedback Size=65592bytes) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "RenderVirtualShadowMaps": {
+        "count": 27,
+        "examples": [
+          "ClearBuffer(Shadow.Virtual.VisibleInstanceWriteOffset Size=4bytes) @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearBuffer(Shadow.Virtual.OutputOffsetBuffer Size=4bytes) @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearIndirectArgInstanceCount @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)",
+          "CullPerPageDrawCommands @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearBuffer(InstanceCulling.OutputOffsetBufferOut Size=4bytes) @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)",
+          "AllocateCommandInstanceOutputSpaceCs @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)",
+          "InitIndirectArgs1D @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)",
+          "OutputCommandInstanceListsCs @ CullingPasses / Batched / RenderVirtualShadowMaps(Non-Nanite) / ShadowDepths / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "MegaLights": {
+        "count": 3,
+        "examples": [
+          "ClearBuffer(MegaLights.LightPowerHistoryRatio Size=4bytes) @ MegaLightsLightPowerDelta / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearBuffer(MegaLights.LightPowerHistoryRatio Size=4bytes) @ MegaLightsLightPowerDelta / Scene / Frame 292 (Delta=0.009839s)",
+          "ClearBuffer(MegaLights.LightPowerHistoryRatio Size=4bytes) @ MegaLightsLightPowerDelta / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "Substrate": {
+        "count": 0,
+        "examples": []
+      },
+      "RayTracing": {
+        "count": 0,
+        "examples": []
+      },
+      "HardwareRayTracing": {
+        "count": 0,
+        "examples": []
+      },
+      "GBuffer": {
+        "count": 9,
+        "examples": [
+          "GBufferClear @ Scene / Frame 292 (Delta=0.009839s)",
+          "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=6,{80,45}) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "VirtualShadowMapProjection(Input:GBuffer) @ VirtualShadowMapProjectionMaskBits / DirectLighting / Lights / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "GBufferClear @ Scene / Frame 292 (Delta=0.009839s)",
+          "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=6,{80,45}) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)",
+          "VirtualShadowMapProjection(Input:GBuffer) @ VirtualShadowMapProjectionMaskBits / DirectLighting / Lights / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "GBufferClear @ Scene / Frame 292 (Delta=0.009839s)",
+          "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=6,{80,45}) @ FVirtualShadowMapArray::BeginMarkPages / VirtualShadowMapMarkPages / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "HistogramEyeAdaptation": {
+        "count": 3,
+        "examples": [
+          "HistogramEyeAdaptation (CS) @ PostProcessing / Scene / Frame 292 (Delta=0.009839s)",
+          "HistogramEyeAdaptation (CS) @ PostProcessing / Scene / Frame 292 (Delta=0.009839s)",
+          "HistogramEyeAdaptation (CS) @ PostProcessing / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "Tonemap": {
+        "count": 3,
+        "examples": [
+          "Tonemap 1280x720 (PS GammaOnly=0) @ PostProcessing / Scene / Frame 292 (Delta=0.009839s)",
+          "Tonemap 1280x720 (PS GammaOnly=0) @ PostProcessing / Scene / Frame 292 (Delta=0.009839s)",
+          "Tonemap 1280x720 (PS GammaOnly=0) @ PostProcessing / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "FXAA": {
+        "count": 3,
+        "examples": [
+          "FXAA(Quality=4) 1280x720 PS @ FXAA / PostProcessing / Scene / Frame 292 (Delta=0.009839s)",
+          "FXAA(Quality=4) 1280x720 PS @ FXAA / PostProcessing / Scene / Frame 292 (Delta=0.009839s)",
+          "FXAA(Quality=4) 1280x720 PS @ FXAA / PostProcessing / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "DiffuseIndirectComposite": {
+        "count": 3,
+        "examples": [
+          "DiffuseIndirectComposite(DiffuseIndirect=ScreenProbeGather) 1280x720 @ DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "DiffuseIndirectComposite(DiffuseIndirect=ScreenProbeGather) 1280x720 @ DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "DiffuseIndirectComposite(DiffuseIndirect=ScreenProbeGather) 1280x720 @ DiffuseIndirectAndAO / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      },
+      "RenderLight": {
+        "count": 3,
+        "examples": [
+          "RenderLight Light::StandardDeferred: Ceiling area light @ LumenRoom.Ceiling area light / UnbatchedLights / DirectLighting / Lights / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "RenderLight Light::StandardDeferred: Ceiling area light @ LumenRoom.Ceiling area light / UnbatchedLights / DirectLighting / Lights / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)",
+          "RenderLight Light::StandardDeferred: Ceiling area light @ LumenRoom.Ceiling area light / UnbatchedLights / DirectLighting / Lights / RenderDeferredLighting / Scene / Frame 292 (Delta=0.009839s)"
+        ]
+      }
+    },
+    "statement": "D3D12 SM6, legacy GBuffer (r.Substrate=0), MegaLights disabled (r.MegaLights.EnableForProject=0), Lumen software tracing (r.Lumen.HardwareRayTracing=0), Virtual Shadow Maps enabled (r.Shadow.Virtual.Enable=1). r.RayTracing=1 only enables the project ray-tracing capability; r.RayTracing.Shadows=0 and Lumen HWRT is off. The active passes include Lumen ScreenProbe/Reflections TraceScreen+TraceVoxels, LumenReflections/ReflectionsResolve, and VirtualShadowMap page/raster passes. No Substrate or hardware-ray-tracing pass appears. MegaLights is off; only three MegaLights.LightPowerHistoryRatio clear-buffer passes remain, with no MegaLights shading/volume/trace pass."
+  },
+  "dump_settings": {
+    "command": "DumpGPU -path=\"external-raw-dump/binary-20261112-133826 (not included)\" -noexplorer -oneframe",
+    "settings": {
+      "mode": "binary",
+      "Texture": 2,
+      "Buffer": 2,
+      "PassParameters": 1,
+      "ConsoleVariables": 1,
+      "Root": "*",
+      "Explore": 0,
+      "Upload": 0,
+      "MaxStagingSize": 256,
+      "Stream": 0,
+      "RedumpInputs": 0,
+      "FrameCount": 1,
+      "frame_index": null,
+      "warmup_draws": 200,
+      "settle_draws": 90,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    "command_returned": true,
+    "status": "ok",
+    "seconds": 15.125
+  },
+  "portable_paths_note": "Absolute host paths were replaced by portable public placeholders; measurements, hashes, sizes and resource records are unchanged."
+}

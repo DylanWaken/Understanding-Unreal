@@ -1,0 +1,229 @@
+{
+  "format": "unreal-frame-explorer-read-path-expectation",
+  "version": 2,
+  "provenance": "Expected bytes were read directly with Python from the candidate files at the stated byte offsets. Offsets for texture cases were computed from the packaged SubresourceLayouts RowPitchBytes/ZSliceStrideBytes, independently of PackageStore. The uniform case reads Structures/00010000022880566180.bin directly at the stated offsets.",
+  "sourceCandidate": "binary-20261112-153914",
+  "uniformCase": {
+    "passId": "pass-0117",
+    "passPointer": "000100000225e8ce68d0",
+    "uniformBuffer": "00010000022880566180",
+    "payloadId": "payload-05915",
+    "bytes": 6752,
+    "sha256": "0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944",
+    "first": {
+      "offset": 0,
+      "length": 16,
+      "hex": "5bc8b6bfe513b3b100000000bc9c3bb3"
+    },
+    "last": {
+      "offset": 6736,
+      "length": 16,
+      "hex": "00000000000000000000000000000000"
+    },
+    "range": {
+      "offset": 64,
+      "length": 16,
+      "hex": "5bc8b6bfe513b3b100000000bc9c3bb3"
+    },
+    "decode": {
+      "offset": 64,
+      "type": "float32",
+      "count": 4,
+      "values": [-1.4279893636703491, -5.211847398101099e-09, 0.0, -4.368187944692181e-08]
+    }
+  },
+  "cases": [
+    {
+      "name": "GBufferA actual texel (640,500)",
+      "resourceId": "resource-0207",
+      "payloadPath": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+      "x": 640,
+      "y": 500,
+      "z": 0,
+      "byteOffset": 2562560,
+      "length": 4,
+      "hex": "fffdf77f",
+      "layout": {
+        "Dimension": "Texture2D",
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "ZSliceCount": 1,
+        "RowPitchBytes": 5120,
+        "ZSliceStrideBytes": 4546560,
+        "StoredFormat": "PF_A2B10G10R10"
+      },
+      "completion": {
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted"
+      }
+    },
+    {
+      "name": "GBufferA two-texel read crossing the 1 MiB chunk boundary",
+      "resourceId": "resource-0207",
+      "payloadPath": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+      "x": 1023,
+      "y": 204,
+      "z": 0,
+      "byteOffset": 1048572,
+      "length": 8,
+      "hex": "fffff75ffffff75f",
+      "crossesChunkBoundary": true,
+      "layout": {
+        "Dimension": "Texture2D",
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "ZSliceCount": 1,
+        "RowPitchBytes": 5120,
+        "ZSliceStrideBytes": 4546560,
+        "StoredFormat": "PF_A2B10G10R10"
+      },
+      "completion": {
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted"
+      }
+    },
+    {
+      "name": "Texture3D actual z=30 y=20 x=10",
+      "resourceId": "resource-0205",
+      "payloadPath": "Resources/000100000228dcc20010.mip0.v000100000225e8cc02d0.bin",
+      "x": 10,
+      "y": 20,
+      "z": 30,
+      "byteOffset": 1121320,
+      "length": 4,
+      "hex": "ffffffff",
+      "layout": {
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "CubeFace": null,
+        "ExtentX": 192,
+        "ExtentY": 48,
+        "Depth": 48,
+        "ZSliceCount": 48,
+        "ZSliceStrideBytes": 36864,
+        "RowPitchBytes": 768,
+        "NativeFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "ByteSize": 1769472
+      },
+      "completion": {
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted"
+      }
+    },
+    {
+      "name": "TextureCube actual face 4",
+      "resourceId": "resource-0198",
+      "payloadPath": "Resources/000100000228d576f860.[4].mip0.v00000000000000000000.bin",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "byteOffset": 0,
+      "length": 4,
+      "hex": "000000ff",
+      "layout": {
+        "Dimension": "TextureCube",
+        "MipLevel": 0,
+        "FirstArraySlice": 4,
+        "NumArraySlices": 1,
+        "CubeFace": 4,
+        "ExtentX": 1,
+        "ExtentY": 1,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4,
+        "RowPitchBytes": 4,
+        "NativeFormat": "PF_B8G8R8A8",
+        "StoredFormat": "PF_B8G8R8A8",
+        "ByteSize": 4
+      },
+      "completion": {
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted"
+      }
+    },
+    {
+      "name": "Texture2DArray actual slice 0 mip 0",
+      "resourceId": "resource-0218",
+      "payloadPath": "Resources/000100000228bb0fe8e0.[0].mip0.v00000000000000000000.bin",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "byteOffset": 0,
+      "length": 4,
+      "hex": "000000ff",
+      "layout": {
+        "Dimension": "Texture2DArray",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 1,
+        "CubeFace": null,
+        "ExtentX": 1,
+        "ExtentY": 1,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4,
+        "RowPitchBytes": 4,
+        "NativeFormat": "PF_B8G8R8A8",
+        "StoredFormat": "PF_B8G8R8A8",
+        "ByteSize": 4
+      },
+      "completion": {
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted"
+      }
+    },
+    {
+      "name": "BC7 converted to stored PF_FloatRGBA, first texel",
+      "resourceId": "resource-0121",
+      "payloadPath": "Resources/00010000022925049890.mip0.v00000000000000000000.bin",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "byteOffset": 0,
+      "length": 8,
+      "hex": "d63ad63aa63a0000",
+      "layout": {
+        "Dimension": "Texture2D",
+        "ExtentX": 4096,
+        "ExtentY": 4096,
+        "ZSliceCount": 1,
+        "RowPitchBytes": 32768,
+        "ZSliceStrideBytes": 134217728,
+        "NativeFormat": "PF_BC7",
+        "StoredFormat": "PF_FloatRGBA",
+        "BitExact": false,
+        "ValuePreserving": false
+      },
+      "completion": {
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted"
+      }
+    },
+    {
+      "name": "Native typed buffer subrange read",
+      "payloadPath": "Resources/NativeBuffer.00010000022615f54e00.o0.n1.v000100000225e8ad3bd0.bin",
+      "byteOffset": 0,
+      "length": 4,
+      "hex": "0000803f",
+      "viewOffsetInBytes": 0,
+      "viewSizeInBytes": 16,
+      "viewStrideInBytes": 16,
+      "viewNumElements": 1,
+      "viewFormat": "PF_A32B32G32R32F",
+      "completion": {
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted"
+      }
+    }
+  ]
+}

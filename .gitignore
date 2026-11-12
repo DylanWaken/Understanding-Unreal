@@ -8,6 +8,7 @@ venv/
 .ruff_cache/
 
 # Local laboratory downloads, generated intermediates and raw GPU dumps
+Captures/
 Scripts/Docs/unreal_articles/labs/nanite/data/
 Scripts/Docs/unreal_articles/labs/nanite/cache/
 Scripts/Docs/unreal_articles/labs/nanite/.venv/
@@ -16,6 +17,11 @@ Scripts/Docs/unreal_articles/labs/unreal/Build/
 Scripts/Docs/unreal_articles/labs/unreal/Intermediate/
 Scripts/Docs/unreal_articles/labs/unreal/Saved/
 Scripts/Docs/unreal_articles/labs/unreal/DerivedDataCache/
+Scripts/Docs/unreal_articles/labs/lumen-capture/**/reproduce/output/
+Scripts/Docs/unreal_articles/labs/lumen-capture/**/UnrealLab/Binaries/
+Scripts/Docs/unreal_articles/labs/lumen-capture/**/UnrealLab/Intermediate/
+Scripts/Docs/unreal_articles/labs/lumen-capture/**/UnrealLab/Saved/
+Scripts/Docs/unreal_articles/labs/lumen-capture/**/UnrealLab/DerivedDataCache/
 
 # Temporary output and logs outside the published assets
 *.log
@@ -33,3 +39,8 @@ Thumbs.db
 
 # DeepCluster controller audit files
 .deep-cluster/
+
+# Every file in the published frozen frame package is intentional evidence.
+!Docs/Unreal/assets/lumen-frame/**
+!Scripts/Docs/unreal_articles/labs/lumen-frame/provenance/*.log
+!Scripts/Docs/unreal_articles/labs/lumen-frame/capture/patch/*.log

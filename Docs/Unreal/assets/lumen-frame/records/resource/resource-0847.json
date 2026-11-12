@@ -1,0 +1,349 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0847",
+  "nativeRecordId": "native-017856",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.LightGridData",
+  "uniqueName": "000300000225ef697970",
+  "displayLabel": "Shadow.Virtual.LightGridData · instance 0003 · frame 292 · passes 509",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 509,
+    "last": 509
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 2293760,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 573440,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 573440
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.LightGridData",
+    "UniqueResourceName": "000300000225ef697970",
+    "ByteSize": 2293760,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 573440,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01019",
+      "role": "resource",
+      "originalPath": "Resources/000300000225ef697970.v000300000225ef697ea0.bin",
+      "bytes": 2293760,
+      "sha256": "7abbe5f961dcd1fd22a86b10f53cd8e4accf240aa501ee4891f1f35cc6c5cdfa",
+      "version": "000300000225ef697ea0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0847",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "1587b7d529163f16a7534bac7b1eb1fd46dbaf4a7d4f1b88113d660c47392ed3",
+          "offset": 0,
+          "length": 1048576
+        },
+        {
+          "sha": "bf40fa81f88482168c31887236073d1d5940123c73990645b847f7cddf3f24ee",
+          "offset": 1048576,
+          "length": 1048576
+        },
+        {
+          "sha": "1792c94c16917ecb1f1ffa2d70b4cc9b422c2bb4004836f2f85c80cbddf43baf",
+          "offset": 2097152,
+          "length": 196608
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000225ef697970",
+        "name": "Shadow.Virtual.LightGridData",
+        "byteSize": 2293760
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000225ef697ea0",
+      "producerPassId": "pass-0510",
+      "producerPassName": "PruneLightGrid(Min=0,Max=1)",
+      "payloadIds": [
+        "payload-01019"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0510",
+        "name": "PruneLightGrid(Min=0,Max=1)",
+        "displayLabel": "PruneLightGrid(Min=0,Max=1) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 509",
+        "record": "records/pass/pass-0510.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0511",
+        "name": "MarkCoarsePages",
+        "displayLabel": "MarkCoarsePages · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 510",
+        "record": "records/pass/pass-0511.json"
+      },
+      {
+        "id": "pass-0512",
+        "name": "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=6,{80,45})",
+        "displayLabel": "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=6,{80,45}) · FVirtualShadowMapArray::BeginMarkPages · frame 292 · pass 511",
+        "record": "records/pass/pass-0512.json"
+      },
+      {
+        "id": "pass-0535",
+        "name": "CullPerPageDrawCommands",
+        "displayLabel": "CullPerPageDrawCommands · CullingPasses · frame 292 · pass 534",
+        "record": "records/pass/pass-0535.json"
+      },
+      {
+        "id": "pass-0540",
+        "name": "RasterPasses",
+        "displayLabel": "RasterPasses · Batched · frame 292 · pass 539",
+        "record": "records/pass/pass-0540.json"
+      },
+      {
+        "id": "pass-0561",
+        "name": "VirtualShadowMapProjection(Input:GBuffer)",
+        "displayLabel": "VirtualShadowMapProjection(Input:GBuffer) · VirtualShadowMapProjectionMaskBits · frame 292 · pass 560",
+        "record": "records/pass/pass-0561.json"
+      },
+      {
+        "id": "pass-0562",
+        "name": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "displayLabel": "RenderLight Light::StandardDeferred: Ceiling area light · LumenRoom.Ceiling area light · frame 292 · pass 561",
+        "record": "records/pass/pass-0562.json"
+      },
+      {
+        "id": "pass-0563",
+        "name": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=0,Max=32,VirtualShadowMap)",
+        "displayLabel": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=0,Max=32,VirtualShadowMap) · InjectTranslucencyLightingVolume(View=0) · frame 292 · pass 562",
+        "record": "records/pass/pass-0563.json"
+      },
+      {
+        "id": "pass-0564",
+        "name": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=1,Max=32,VirtualShadowMap)",
+        "displayLabel": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=1,Max=32,VirtualShadowMap) · InjectTranslucencyLightingVolume(View=0) · frame 292 · pass 563",
+        "record": "records/pass/pass-0564.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01019",
+      "file": "Resources/000300000225ef697970.v000300000225ef697ea0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-pruned-light-grid-data",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.LightGridData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "uint per retained light entry; value = global culled-light index; capacity equals the original CulledLightDataGrid element count",
+      "units": "culled-light data index",
+      "coordinateSpace": "per-view light grid cells (ComputeLightGridCellIndex) with stereo reflection padding preserved",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "allocated with the original grid's NumElements (stereo adds CulledBufferOffsetISR padding)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 573440,
+          "byteSize": 2293760
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "allocated with the original grid's NumElements (stereo adds CulledBufferOffsetISR padding)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "gridLookup",
+          "expression": "Header=GetCulledLightsGridHeader(cell); Header.NumLights=NumCulledLightsGrid[cell]; DataStartIndex from original grid header; light=LightGridData[DataStartIndex+i]",
+          "requires": [
+            "LightGridData",
+            "NumCulledLightsGrid"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.prunedread",
+            "part3.visibility.vsm.s.prunedlight"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Retains only local lights with a valid VSM handle; non-distant VSM lights first, then single-page/distant VSM lights (PruneLightGridCS:238-270).",
+        "Entries for cells whose index exceeds the culled grid size (reflection data) are skipped (PruneLightGridCS:215-219).",
+        "MaxLightGridEntryIndex = NumLightGridCells-1 is passed as a uniform, not stored."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.prune"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.prunedlight"
+      ],
+      "gaps": [
+        "Global (unpruned) CulledLightDataGrid and CulledLightLinks are separate families (culled-light cluster); this entry covers only the VSM-pruned per-view Shadow.Virtual.LightGridData.",
+        "Capture 573440 elements is the full grid allocation; live entry count is bounded by NumLightGridCells*MaxCulledLightsPerCell, not stored."
+      ],
+      "fields": [
+        {
+          "name": "LightDataIndex",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "LightGridData[DataStartIndex+i] = global culled-light index (GetCulledLightDataGrid copy)",
+          "units": "culled light index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.prune"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "LightDataIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0519",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.LightGridData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0847"
+    }
+  ]
+}

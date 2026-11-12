@@ -1,0 +1,2611 @@
+{
+  "contract_id": "deferred-replay-final-binary-20261112-153914-pass249-pixel640x650",
+  "schema": "deferred-replay-contract-v1",
+  "status": "final-capture-validated; actual native LTC Mat/Amp and actual DeferredLight UB",
+  "goal": "Exact CPU replay of the one actual screen-space deferred rect-light pass (graph 0001, pass 249) at pixel (640,650), with all inputs bound to the final capture by exact version, actual native LUT/shadow bytes, exact pre-exposure, and an observed-FP16 comparison.",
+  "capture": {
+    "id": "binary-20261112-153914",
+    "root": ".",
+    "project": "UnrealLab",
+    "engine": "UE 5.8.1 Editor Development D3D12 SM6",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition, driver 610.62",
+    "frame_scope": "Frame 292 (Delta=0.010717s)",
+    "graph_prefix": "0001",
+    "view_rect": {
+      "min_x": 0,
+      "min_y": 0,
+      "width": 1280,
+      "height": 720
+    },
+    "buffer_extent": {
+      "width": 1280,
+      "height": 888
+    }
+  },
+  "scope": {
+    "in_scope": [
+      "pass 249 FRenderLightParameters / FDeferredLightPS::FParameters",
+      "SceneColor before/after at pass 249",
+      "GBufferA/B/C/D, SceneDepthZ, MaskBits",
+      "actual PS.View FViewUniformShaderParameters (6752 B)",
+      "actual PS.DeferredLight FDeferredLightUniformStruct (192 B)",
+      "actual PS.VirtualShadowMap FVirtualShadowMapUniformParameters (368 B)",
+      "actual shader-bound GGX LTC Mat/Amp native textures",
+      "one legacy DefaultLit rect-light pixel and an observed-FP16 comparison"
+    ],
+    "out_of_scope": [
+      "Substrate",
+      "MegaLights",
+      "hardware ray-traced direct lighting",
+      "translucency/hair/eye/SSS/clearcoat/cloth",
+      "Lumen indirect lighting and reflections",
+      "VSM/SMRT producer replay",
+      "GPU execution and engine/target-repo modification"
+    ]
+  },
+  "selection": {
+    "pass_id": 249,
+    "pass_pointer": "000100000228e3a88880",
+    "graph_prefix": "0001",
+    "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+    "parent_event_scopes": [
+      "LumenRoom.Ceiling area light",
+      "UnbatchedLights",
+      "DirectLighting",
+      "Lights",
+      "RenderDeferredLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "same_light_other_graphs": [
+      {
+        "id": 249,
+        "pointer": "000100000228e3a88880",
+        "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "selected": true
+      },
+      {
+        "id": 561,
+        "pointer": "00030000022651f18880",
+        "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "selected": false
+      },
+      {
+        "id": 869,
+        "pointer": "000400000228bf788880",
+        "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "selected": false
+      }
+    ],
+    "pixel": [
+      640,
+      650
+    ],
+    "why": "Pass 249 is the screen-space deferred RenderLight for the only local light in graph 0001. The same light pass appears again at ids 561/869 in graphs 0003/0004; this contract pins graph 0001 / id 249 / pointer 000100000228e3a88880. The pixel is inside the 1280x720 view, DefaultLit, metallic=0, with MaskBits=0xF (visibility exactly 1.0)."
+  },
+  "pass": {
+    "id": 249,
+    "pointer": "000100000228e3a88880",
+    "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+    "parametersName": "FRenderLightParameters",
+    "parameters": "000100000228e3a88380",
+    "parametersMetadata": "000100007ffb89248ea0",
+    "parentEventScopes": [
+      "LumenRoom.Ceiling area light",
+      "UnbatchedLights",
+      "DirectLighting",
+      "Lights",
+      "RenderDeferredLighting",
+      "Scene",
+      "Frame 292 (Delta=0.010717s)"
+    ],
+    "outputResources": [
+      "000100000228d3652960.mip0",
+      "000100000228d36523c0.stencil"
+    ],
+    "renderTargets": {
+      "kind": "UBMT_RENDER_TARGET_BINDING_SLOTS",
+      "pointer": "00000228d3652960"
+    },
+    "graph_disambiguation": [
+      {
+        "id": 249,
+        "pointer": "000100000228e3a88880",
+        "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "selected": true
+      },
+      {
+        "id": 561,
+        "pointer": "00030000022651f18880",
+        "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "selected": false
+      },
+      {
+        "id": 869,
+        "pointer": "000400000228bf788880",
+        "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "selected": false
+      }
+    ]
+  },
+  "scene_graph": {
+    "graph_prefix": "0001",
+    "frame_scope": "Frame 292 (Delta=0.010717s)",
+    "view_metadata": "000100007ffb9ac979f0",
+    "view_content": "00010000022880566180",
+    "view_sha256": "0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944",
+    "scene_graphs_file_sha256": "37b015488c91cc27e4f6b317d8e4d34c09b1d878f46fc4dcdb1cde24972d94ee",
+    "primary_view": {
+      "pass": "000100000225fb9fef70",
+      "path": "View.View",
+      "content": "00010000022880566180",
+      "metadata": "000100007ffb9ac979f0",
+      "bin_sha256": "0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944",
+      "bin_bytes": 6752
+    }
+  },
+  "producer_versions": {
+    "SceneColor.before": {
+      "id": 126,
+      "pointer": "000100000228dcc2d760",
+      "event": "EditorPrimitives: SDPG_World",
+      "parametersName": "FOpaqueBasePassParameters",
+      "parentEventScopes": [
+        "EditorPrimitives",
+        "BasePass",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "SceneColor.after": {
+      "id": 249,
+      "pointer": "000100000228e3a88880",
+      "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+      "parametersName": "FRenderLightParameters",
+      "parentEventScopes": [
+        "LumenRoom.Ceiling area light",
+        "UnbatchedLights",
+        "DirectLighting",
+        "Lights",
+        "RenderDeferredLighting",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "SceneDepthZ": {
+      "id": 29,
+      "pointer": "000100000228d23fc770",
+      "event": "EditorPrimitives",
+      "parametersName": "FDepthPassParameters",
+      "parentEventScopes": [
+        "PrePass DDM_AllOpaqueNoVelocity (Forced by Nanite)",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "GBufferA": {
+      "id": 126,
+      "pointer": "000100000228dcc2d760",
+      "event": "EditorPrimitives: SDPG_World",
+      "parametersName": "FOpaqueBasePassParameters",
+      "parentEventScopes": [
+        "EditorPrimitives",
+        "BasePass",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "GBufferB": {
+      "id": 126,
+      "pointer": "000100000228dcc2d760",
+      "event": "EditorPrimitives: SDPG_World",
+      "parametersName": "FOpaqueBasePassParameters",
+      "parentEventScopes": [
+        "EditorPrimitives",
+        "BasePass",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "GBufferC": {
+      "id": 126,
+      "pointer": "000100000228dcc2d760",
+      "event": "EditorPrimitives: SDPG_World",
+      "parametersName": "FOpaqueBasePassParameters",
+      "parentEventScopes": [
+        "EditorPrimitives",
+        "BasePass",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "GBufferD": {
+      "id": 126,
+      "pointer": "000100000228dcc2d760",
+      "event": "EditorPrimitives: SDPG_World",
+      "parametersName": "FOpaqueBasePassParameters",
+      "parentEventScopes": [
+        "EditorPrimitives",
+        "BasePass",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "Shadow.Virtual.MaskBits": {
+      "id": 248,
+      "pointer": "000100000228e3a85210",
+      "event": "VirtualShadowMapProjection(Input:GBuffer)",
+      "parametersName": "FParameters",
+      "parentEventScopes": [
+        "VirtualShadowMapProjectionMaskBits",
+        "DirectLighting",
+        "Lights",
+        "RenderDeferredLighting",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    }
+  },
+  "resources": {
+    "SceneColor": {
+      "uniqueResource": "000100000228d3652960",
+      "before": {
+        "path": "Resources/000100000228d3652960.mip0.v000100000228dcc2d760.bin",
+        "bytes": 9093120,
+        "sha256": "c40276d3c4b8fda259c126bc1200aec43ad0d5bb4460b6796e4006f9c6780ea9",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d3652960",
+          "Name": "SceneColor",
+          "File": "Resources/000100000228d3652960.mip0.v000100000228dcc2d760.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 9093120,
+          "RowPitchBytes": 10240,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_FloatRGBA",
+          "ViewFormat": "PF_FloatRGBA",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_FloatRGBA",
+          "StoredFormat": "PF_FloatRGBA",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 9093120,
+          "StagingByteSize": 9093120
+        },
+        "uniqueResource": "000100000228d3652960",
+        "subresource": ".mip0",
+        "version": "000100000228dcc2d760",
+        "producer": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "SceneColor.before",
+          "storedFormat": "PF_FloatRGBA",
+          "nativeFormat": "PF_FloatRGBA",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 10240,
+          "zSliceStrideBytes": 9093120,
+          "channels": 4,
+          "dtype": "<f2"
+        },
+        "readback": {
+          "File": "Resources/000100000228d3652960.mip0.v000100000228dcc2d760.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 9093120,
+          "ActualBytes": 9093120,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      "after": {
+        "path": "Resources/000100000228d3652960.mip0.v000100000228e3a88880.bin",
+        "bytes": 9093120,
+        "sha256": "1aca84e6ef4616fd9693c9559198efd47b20a9c2b38f2f650dc5aac56f0b90e2",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d3652960",
+          "Name": "SceneColor",
+          "File": "Resources/000100000228d3652960.mip0.v000100000228e3a88880.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 9093120,
+          "RowPitchBytes": 10240,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_FloatRGBA",
+          "ViewFormat": "PF_FloatRGBA",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_FloatRGBA",
+          "StoredFormat": "PF_FloatRGBA",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 9093120,
+          "StagingByteSize": 9093120
+        },
+        "uniqueResource": "000100000228d3652960",
+        "subresource": ".mip0",
+        "version": "000100000228e3a88880",
+        "producer": {
+          "id": 249,
+          "pointer": "000100000228e3a88880",
+          "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+          "parametersName": "FRenderLightParameters",
+          "parentEventScopes": [
+            "LumenRoom.Ceiling area light",
+            "UnbatchedLights",
+            "DirectLighting",
+            "Lights",
+            "RenderDeferredLighting",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "SceneColor.after",
+          "storedFormat": "PF_FloatRGBA",
+          "nativeFormat": "PF_FloatRGBA",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 10240,
+          "zSliceStrideBytes": 9093120,
+          "channels": 4,
+          "dtype": "<f2"
+        },
+        "readback": {
+          "File": "Resources/000100000228d3652960.mip0.v000100000228e3a88880.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 9093120,
+          "ActualBytes": 9093120,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      "view_rect": {
+        "min_x": 0,
+        "min_y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    "SceneDepthZ": {
+      "path": "Resources/000100000228d36523c0.mip0.v000100000228d23fc770.bin",
+      "bytes": 4546560,
+      "sha256": "06688174ae7ec87a2857123c92aa6f9f016be2a57348f48b80d8e64be06bad77",
+      "kind": "texture",
+      "layout": {
+        "Resource": "000100000228d36523c0",
+        "Name": "SceneDepthZ",
+        "File": "Resources/000100000228d36523c0.mip0.v000100000228d23fc770.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4546560,
+        "RowPitchBytes": 5120,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_DepthStencil",
+        "ViewFormat": "PF_DepthStencil",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_FLOAT",
+        "StoredFormat": "PF_R32_FLOAT",
+        "NativeFormatExpanded": true,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloatExpanded",
+        "BitExact": false,
+        "ValuePreserving": false,
+        "BitExactCondition": "The native format is expanded into a different staging or stored format. The stored bytes are decoded numeric values, not the native storage bits.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "ComputeThenCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4546560,
+        "StagingByteSize": 4546560
+      },
+      "uniqueResource": "000100000228d36523c0",
+      "subresource": ".mip0",
+      "version": "000100000228d23fc770",
+      "producer": {
+        "id": 29,
+        "pointer": "000100000228d23fc770",
+        "event": "EditorPrimitives",
+        "parametersName": "FDepthPassParameters",
+        "parentEventScopes": [
+          "PrePass DDM_AllOpaqueNoVelocity (Forced by Nanite)",
+          "Scene",
+          "Frame 292 (Delta=0.010717s)"
+        ]
+      },
+      "decoded": {
+        "name": "SceneDepthZ",
+        "storedFormat": "PF_R32_FLOAT",
+        "nativeFormat": "PF_DepthStencil",
+        "nativeValueInterpretation": "DecodedFloatExpanded",
+        "storedBytesAreNativeStorage": false,
+        "viewSRGB": false,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "rowPitchBytes": 5120,
+        "zSliceStrideBytes": 4546560,
+        "channels": 1,
+        "dtype": "<f4"
+      },
+      "readback": {
+        "File": "Resources/000100000228d36523c0.mip0.v000100000228d23fc770.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 4546560,
+        "ActualBytes": 4546560,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    },
+    "GBufferA": {
+      "path": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+      "bytes": 4546560,
+      "sha256": "cbfd73f11e271437cc61dc6a7bec9fee37b192106e7e3945e3554fb8ed780c44",
+      "kind": "texture",
+      "layout": {
+        "Resource": "000100000228d3653720",
+        "Name": "GBufferA",
+        "File": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4546560,
+        "RowPitchBytes": 5120,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_A2B10G10R10",
+        "ViewFormat": "PF_A2B10G10R10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_A2B10G10R10",
+        "StoredFormat": "PF_A2B10G10R10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4546560,
+        "StagingByteSize": 4546560
+      },
+      "uniqueResource": "000100000228d3653720",
+      "subresource": ".mip0",
+      "version": "000100000228dcc2d760",
+      "producer": {
+        "id": 126,
+        "pointer": "000100000228dcc2d760",
+        "event": "EditorPrimitives: SDPG_World",
+        "parametersName": "FOpaqueBasePassParameters",
+        "parentEventScopes": [
+          "EditorPrimitives",
+          "BasePass",
+          "Scene",
+          "Frame 292 (Delta=0.010717s)"
+        ]
+      },
+      "decoded": {
+        "name": "GBufferA",
+        "storedFormat": "PF_A2B10G10R10",
+        "nativeFormat": "PF_A2B10G10R10",
+        "nativeValueInterpretation": "DecodedFloat",
+        "storedBytesAreNativeStorage": true,
+        "viewSRGB": false,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "rowPitchBytes": 5120,
+        "zSliceStrideBytes": 4546560,
+        "channels": 1,
+        "dtype": "<u4"
+      },
+      "readback": {
+        "File": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 4546560,
+        "ActualBytes": 4546560,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    },
+    "GBufferB": {
+      "path": "Resources/000100000228d36539e0.mip0.v000100000228dcc2d760.bin",
+      "bytes": 4546560,
+      "sha256": "6ea8806364ea8a1cfe2ceb037572b8eeb0115457516988ccd880097851e2b226",
+      "kind": "texture",
+      "layout": {
+        "Resource": "000100000228d36539e0",
+        "Name": "GBufferB",
+        "File": "Resources/000100000228d36539e0.mip0.v000100000228dcc2d760.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4546560,
+        "RowPitchBytes": 5120,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_B8G8R8A8",
+        "ViewFormat": "PF_B8G8R8A8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_B8G8R8A8",
+        "StoredFormat": "PF_B8G8R8A8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4546560,
+        "StagingByteSize": 4546560
+      },
+      "uniqueResource": "000100000228d36539e0",
+      "subresource": ".mip0",
+      "version": "000100000228dcc2d760",
+      "producer": {
+        "id": 126,
+        "pointer": "000100000228dcc2d760",
+        "event": "EditorPrimitives: SDPG_World",
+        "parametersName": "FOpaqueBasePassParameters",
+        "parentEventScopes": [
+          "EditorPrimitives",
+          "BasePass",
+          "Scene",
+          "Frame 292 (Delta=0.010717s)"
+        ]
+      },
+      "decoded": {
+        "name": "GBufferB",
+        "storedFormat": "PF_B8G8R8A8",
+        "nativeFormat": "PF_B8G8R8A8",
+        "nativeValueInterpretation": "DecodedFloat",
+        "storedBytesAreNativeStorage": true,
+        "viewSRGB": false,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "rowPitchBytes": 5120,
+        "zSliceStrideBytes": 4546560,
+        "channels": 4,
+        "dtype": "u1"
+      },
+      "readback": {
+        "File": "Resources/000100000228d36539e0.mip0.v000100000228dcc2d760.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 4546560,
+        "ActualBytes": 4546560,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    },
+    "GBufferC": {
+      "path": "Resources/000100000228d3653ca0.mip0.v000100000228dcc2d760.bin",
+      "bytes": 4546560,
+      "sha256": "3d34b2c48c508ff126f7beed0e68353bac0f2980abf8ca58753aeb3258220a66",
+      "kind": "texture",
+      "layout": {
+        "Resource": "000100000228d3653ca0",
+        "Name": "GBufferC",
+        "File": "Resources/000100000228d3653ca0.mip0.v000100000228dcc2d760.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4546560,
+        "RowPitchBytes": 5120,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_B8G8R8A8",
+        "ViewFormat": "PF_B8G8R8A8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_B8G8R8A8",
+        "StoredFormat": "PF_B8G8R8A8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": true,
+        "ViewSRGB": true,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4546560,
+        "StagingByteSize": 4546560
+      },
+      "uniqueResource": "000100000228d3653ca0",
+      "subresource": ".mip0",
+      "version": "000100000228dcc2d760",
+      "producer": {
+        "id": 126,
+        "pointer": "000100000228dcc2d760",
+        "event": "EditorPrimitives: SDPG_World",
+        "parametersName": "FOpaqueBasePassParameters",
+        "parentEventScopes": [
+          "EditorPrimitives",
+          "BasePass",
+          "Scene",
+          "Frame 292 (Delta=0.010717s)"
+        ]
+      },
+      "decoded": {
+        "name": "GBufferC",
+        "storedFormat": "PF_B8G8R8A8",
+        "nativeFormat": "PF_B8G8R8A8",
+        "nativeValueInterpretation": "DecodedFloat",
+        "storedBytesAreNativeStorage": true,
+        "viewSRGB": true,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "rowPitchBytes": 5120,
+        "zSliceStrideBytes": 4546560,
+        "channels": 4,
+        "dtype": "u1"
+      },
+      "readback": {
+        "File": "Resources/000100000228d3653ca0.mip0.v000100000228dcc2d760.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 4546560,
+        "ActualBytes": 4546560,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    },
+    "GBufferD": {
+      "path": "Resources/000100000228d3653f60.mip0.v000100000228dcc2d760.bin",
+      "bytes": 4546560,
+      "sha256": "46c5e9fa3a41c9d86ff844c63383eae7b303e9315e64c19f4f780c6c4cb6b6df",
+      "kind": "texture",
+      "layout": {
+        "Resource": "000100000228d3653f60",
+        "Name": "GBufferD",
+        "File": "Resources/000100000228d3653f60.mip0.v000100000228dcc2d760.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4546560,
+        "RowPitchBytes": 5120,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_B8G8R8A8",
+        "ViewFormat": "PF_B8G8R8A8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_B8G8R8A8",
+        "StoredFormat": "PF_B8G8R8A8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4546560,
+        "StagingByteSize": 4546560
+      },
+      "uniqueResource": "000100000228d3653f60",
+      "subresource": ".mip0",
+      "version": "000100000228dcc2d760",
+      "producer": {
+        "id": 126,
+        "pointer": "000100000228dcc2d760",
+        "event": "EditorPrimitives: SDPG_World",
+        "parametersName": "FOpaqueBasePassParameters",
+        "parentEventScopes": [
+          "EditorPrimitives",
+          "BasePass",
+          "Scene",
+          "Frame 292 (Delta=0.010717s)"
+        ]
+      },
+      "decoded": {
+        "name": "GBufferD",
+        "storedFormat": "PF_B8G8R8A8",
+        "nativeFormat": "PF_B8G8R8A8",
+        "nativeValueInterpretation": "DecodedFloat",
+        "storedBytesAreNativeStorage": true,
+        "viewSRGB": false,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "rowPitchBytes": 5120,
+        "zSliceStrideBytes": 4546560,
+        "channels": 4,
+        "dtype": "u1"
+      },
+      "readback": {
+        "File": "Resources/000100000228d3653f60.mip0.v000100000228dcc2d760.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 4546560,
+        "ActualBytes": 4546560,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    },
+    "Shadow.Virtual.MaskBits": {
+      "path": "Resources/000100000228e3a849d0.mip0.v000100000228e3a85210.bin",
+      "bytes": 9093120,
+      "sha256": "d8f1c55e2e830d58f042ac245c96094570ce236f866796275e33d3d0e28ef15c",
+      "kind": "texture",
+      "layout": {
+        "Resource": "000100000228e3a849d0",
+        "Name": "Shadow.Virtual.MaskBits",
+        "File": "Resources/000100000228e3a849d0.mip0.v000100000228e3a85210.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 1280,
+        "ExtentY": 888,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 9093120,
+        "RowPitchBytes": 10240,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R32G32_UINT",
+        "ViewFormat": "PF_R32G32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32G32_UINT",
+        "StoredFormat": "PF_R32G32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 9093120,
+        "StagingByteSize": 9093120
+      },
+      "uniqueResource": "000100000228e3a849d0",
+      "subresource": ".mip0",
+      "version": "000100000228e3a85210",
+      "producer": {
+        "id": 248,
+        "pointer": "000100000228e3a85210",
+        "event": "VirtualShadowMapProjection(Input:GBuffer)",
+        "parametersName": "FParameters",
+        "parentEventScopes": [
+          "VirtualShadowMapProjectionMaskBits",
+          "DirectLighting",
+          "Lights",
+          "RenderDeferredLighting",
+          "Scene",
+          "Frame 292 (Delta=0.010717s)"
+        ]
+      },
+      "decoded": {
+        "name": "Shadow.Virtual.MaskBits",
+        "storedFormat": "PF_R32G32_UINT",
+        "nativeFormat": "PF_R32G32_UINT",
+        "nativeValueInterpretation": "UnsignedIntegerBits",
+        "storedBytesAreNativeStorage": true,
+        "viewSRGB": false,
+        "extentX": 1280,
+        "extentY": 888,
+        "depth": 1,
+        "rowPitchBytes": 10240,
+        "zSliceStrideBytes": 9093120,
+        "channels": 2,
+        "dtype": "<u4"
+      },
+      "readback": {
+        "File": "Resources/000100000228e3a849d0.mip0.v000100000228e3a85210.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 9093120,
+        "ActualBytes": 9093120,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    }
+  },
+  "shader_parameters": {
+    "FRenderLightParameters": {
+      "label": "FRenderLightParameters",
+      "metadata": "000100007ffb89248ea0",
+      "content": "000100000228e3a88380",
+      "structTypeName": "FRenderLightParameters",
+      "size": 912,
+      "metadataFile": {
+        "path": "StructuresMetadata/000100007ffb89248ea0.json",
+        "bytes": 2003,
+        "sha256": "d53a4208f96e81f5d5f9ac2dbbd675d9d5e058075d7d48d329638b21fc9b0197"
+      },
+      "contentFile": {
+        "path": "Structures/000100000228e3a88380.bin",
+        "bytes": 912,
+        "sha256": "3f55d882eba6520849aa8485db064b6bbdecf005db3b8dc2b67713064280e58c"
+      }
+    },
+    "PS.View": {
+      "label": "PS.View",
+      "metadata": "000100007ffb9ac979f0",
+      "content": "00010000022880566180",
+      "structTypeName": "FViewUniformShaderParameters",
+      "size": 6752,
+      "metadataFile": {
+        "path": "StructuresMetadata/000100007ffb9ac979f0.json",
+        "bytes": 102382,
+        "sha256": "a8967122baefb6a1ab9778fd87a65d4bda8b34f3ca2ab7de5cd1c2006ac5b100"
+      },
+      "contentFile": {
+        "path": "Structures/00010000022880566180.bin",
+        "bytes": 6752,
+        "sha256": "0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944"
+      }
+    },
+    "PS.DeferredLight": {
+      "label": "PS.DeferredLight",
+      "metadata": "000100007ffb89247ae0",
+      "content": "000100000228e3a88830",
+      "structTypeName": "FDeferredLightUniformStruct",
+      "size": 192,
+      "metadataFile": {
+        "path": "StructuresMetadata/000100007ffb89247ae0.json",
+        "bytes": 2673,
+        "sha256": "8c42e611453c4db19f9adfbda9f5a058595c15093c4710a21526366c43867b7c"
+      },
+      "contentFile": {
+        "path": "Structures/000100000228e3a88830.bin",
+        "bytes": 192,
+        "sha256": "9378465b8ee730c068912c300545f01a976fc7d95795800985fb70e7a9e02019"
+      }
+    },
+    "PS.SceneTextures": {
+      "label": "PS.SceneTextures",
+      "metadata": "000100007ffb9ac975f0",
+      "content": "000100000228bbbe92a0",
+      "structTypeName": "FSceneTextureUniformParameters",
+      "size": 128,
+      "metadataFile": {
+        "path": "StructuresMetadata/000100007ffb9ac975f0.json",
+        "bytes": 4397,
+        "sha256": "5286c0f6ee629c86f740302ab1050ddc582464391aacbf64359b1eef5b97b6d1"
+      },
+      "contentFile": {
+        "path": "Structures/000100000228bbbe92a0.bin",
+        "bytes": 128,
+        "sha256": "607296a9117d0b0fe4c1aa1b1eb55a900881f027085a12e09392953105fbb7c5"
+      }
+    },
+    "PS.VirtualShadowMap": {
+      "label": "PS.VirtualShadowMap",
+      "metadata": "000100007ffb893329a0",
+      "content": "000100000228b830ae00",
+      "structTypeName": "FVirtualShadowMapUniformParameters",
+      "size": 368,
+      "metadataFile": {
+        "path": "StructuresMetadata/000100007ffb893329a0.json",
+        "bytes": 13902,
+        "sha256": "0da0eb520d3649babba0202125deaf0c7b537266c3bc4508802173f414f39182"
+      },
+      "contentFile": {
+        "path": "Structures/000100000228b830ae00.bin",
+        "bytes": 368,
+        "sha256": "585f524dd3ea820ba7bf9a5d041348248442b6d4d0864445e258058fc19b3d9a"
+      }
+    }
+  },
+  "light": {
+    "struct": "FDeferredLightUniformStruct",
+    "translated_world_position": [
+      0.0,
+      670.0,
+      133.0
+    ],
+    "color": [
+      979.4150390625,
+      979.4150390625,
+      979.4150390625
+    ],
+    "inv_radius": 0.0010000000474974513,
+    "falloff_exponent": 0.0,
+    "direction": [
+      2.220446049250313e-16,
+      0.0,
+      1.0
+    ],
+    "tangent": [
+      1.0,
+      0.0,
+      -2.220446049250313e-16
+    ],
+    "source_radius": 65.0,
+    "source_length": 60.0,
+    "rect_light_barn_cos_angle": 0.03489949554204941,
+    "rect_light_barn_length": 20.0,
+    "specular_scale": 1.0,
+    "diffuse_scale": 1.0,
+    "shadowed_bits": 3,
+    "shadow_map_channel_mask": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "contact_shadow_length": 0.0,
+    "light_scene_id": 552,
+    "light_type": null,
+    "ies_atlas_index": -1.0,
+    "light_function_atlas_light_index": 0,
+    "b_affects_translucent_lighting": 1,
+    "light_mask": 0.9649480800171347,
+    "distance_squared": 132974.76584699613,
+    "to_light": [
+      0.25473594843049613,
+      210.1750239216944,
+      297.9952353245063
+    ],
+    "mean_light_direction": [
+      0.0006829878043244907,
+      0.5615867608784435,
+      0.8274175750693945
+    ],
+    "falloff": 0.09369636652026728,
+    "no_l": 0.8268671566675498,
+    "sin_alpha_squared": 0.029824479762901014,
+    "notes": "All fields read from the captured PS.DeferredLight UB; no reconstruction from FLumenPackedLight."
+  },
+  "pixel": {
+    "x": 640,
+    "y": 650,
+    "uv": [
+      0.500390625,
+      0.732545045045045
+    ],
+    "ndc": [
+      0.0007812499999999556,
+      -0.8069444588047487
+    ],
+    "device_z": 0.021478749811649323,
+    "device_z_bits": "0x3CAFF434",
+    "scene_depth_cm": 465.57643895545374,
+    "translated_world_position": [
+      -0.25473594843049613,
+      459.8249760783056,
+      -164.99523532450635
+    ],
+    "world_position": [
+      -0.25473594843049613,
+      59.82497607830561,
+      0.004764675493646564
+    ],
+    "camera_vector": [
+      0.0005214325560736783,
+      -0.9412401904808056,
+      0.33773751928346096
+    ],
+    "normal": [
+      -0.000977516172494306,
+      -0.000977516172494306,
+      0.999999044461676
+    ],
+    "base_color": [
+      0.7230551289219693,
+      0.7230551289219693,
+      0.6795424696330938
+    ],
+    "metallic": 0.0,
+    "specular": 0.4980392156862745,
+    "roughness": 0.6980392156862745,
+    "shading_model_id": 1,
+    "selective_output_mask": "0xA0",
+    "gbuffer_a_word": "0x7FF7FDFF",
+    "gbuffer_b_word": "0xA1007FB2",
+    "gbuffer_c_word": "0xFFDDDDD7",
+    "gbuffer_d_word": "0x00000000",
+    "gbuffer_ao": 1.0,
+    "f0": [
+      0.03984313725490196,
+      0.03984313725490196,
+      0.03984313725490196
+    ],
+    "rho": [
+      0.7230551289219693,
+      0.7230551289219693,
+      0.6795424696330938
+    ],
+    "scene_color_before": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scene_color_after": [
+      1.2392578125,
+      1.2392578125,
+      1.1767578125,
+      0.0
+    ],
+    "observed_delta": [
+      1.2392578125,
+      1.2392578125,
+      1.1767578125
+    ]
+  },
+  "visibility": {
+    "path": "USE_VIRTUAL_SHADOW_MAP_MASK",
+    "virtual_shadow_map_id": 8192,
+    "fallback_taken": false,
+    "mask_bits_dwords": [
+      "0x0000000F",
+      "0x00000000"
+    ],
+    "light_index": 0,
+    "unpacked_4bit": 15,
+    "visibility": 1.0,
+    "surface_shadow": 1.0,
+    "producer": {
+      "id": 248,
+      "pointer": "000100000228e3a85210",
+      "event": "VirtualShadowMapProjection(Input:GBuffer)",
+      "parentEventScopes": [
+        "VirtualShadowMapProjectionMaskBits",
+        "DirectLighting",
+        "Lights",
+        "RenderDeferredLighting",
+        "Scene",
+        "Frame 292 (Delta=0.010717s)"
+      ]
+    },
+    "producer_operands": {
+      "ProjectionData": "00000228c202a348",
+      "PageTableSampler": "0000022615ec2b20",
+      "PageTable": "00000225f2c83a68",
+      "PageFlags": "00000225f2c83d30",
+      "PageReceiverMasks": "00000228c202e1d0",
+      "AllocatedPageRectBounds": "00000228b83083b0",
+      "UncachedPageRectBounds": "00000228b8308400",
+      "PhysicalPagePool": "00000228d23ff6c0",
+      "CachePrimitiveAsDynamic": "00000228d5766808",
+      "PerViewData.LightGridData": "00000225f2c8a4d0",
+      "PerViewData.NumCulledLightsGrid": "00000225f2c8a520",
+      "PerViewData.DirectionalLightIds": "00000225f2c87920",
+      "BilinearClampedSampler": "0000022615ec2b20"
+    },
+    "boundary": "FINAL 4-bit quantized packed Shadow.Virtual.MaskBits, consumed by pass 249. The SMRT producer (pass 248) is NOT replayed; page/light/projection operands are retained only as evidence. No unquantized screen-space shadow factor is claimed.",
+    "quantization_note": "Visibility is exact only because UnpackShadowMask=15 -> 15/15=1.0; the underlying unquantized SMRT factor is not independently proven."
+  },
+  "ltc": {
+    "source": "actual-native-binding",
+    "sampler": {
+      "matPointer": "00010000022615ec2b20",
+      "ampPointer": "00010000022615ec2b20",
+      "sharedBilinearClampedPointer": "00010000022615ec2b20",
+      "sameObjectAsSharedBilinearClamped": true,
+      "stateCaptured": false,
+      "interpretation": "bilinear clamp, SampleLevel(...,0), 64x64, no mip chain",
+      "source": "SceneManagement.cpp:1277 TStaticSamplerState<SF_Bilinear, AM_Clamp, AM_Clamp, AM_Clamp>; RectLight.ush:14-16 uses View.SharedBilinearClampedSampler when SUPPORTS_INDEPENDENT_SAMPLERS"
+    },
+    "mat": {
+      "path": "Resources/000100000228d23f80d0.linear.mip0.v000100000225fb9fef70.bin",
+      "bytes": 32768,
+      "sha256": "a4b5de62685647a60ef388b9a8084a9de3a8621f75d952c80463bf3aefba7590",
+      "kind": "native-texture",
+      "layout": {
+        "Resource": "000100000228d23f80d0",
+        "Name": "DumpGPU.NativeUniformBufferBinding",
+        "File": "Resources/000100000228d23f80d0.linear.mip0.v000100000225fb9fef70.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 32768,
+        "RowPitchBytes": 512,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatRGBA",
+        "ViewFormat": "PF_FloatRGBA",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatRGBA",
+        "StoredFormat": "PF_FloatRGBA",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "ForceDisable",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "ComputeThenCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 32768,
+        "StagingByteSize": 32768
+      },
+      "bindingPath": "PS.View.GGXLTCMatTexture",
+      "nativePointer": "000100000228ec2da800",
+      "nativeTextureName": "GGX.LTCMat",
+      "nativeFormat": "PF_FloatRGBA",
+      "exportViewFormat": "PF_FloatRGBA",
+      "diagnosticResource": "000100000228d23f80d0",
+      "dumpStatus": "ScheduledByEarlierPass",
+      "reusedScheduledReadback": true,
+      "firstScheduledByPass": "000100000225fb9fef70",
+      "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+      "decoded": {
+        "name": "GGXLTCMat",
+        "storedFormat": "PF_FloatRGBA",
+        "nativeFormat": "PF_FloatRGBA",
+        "nativeValueInterpretation": "DecodedFloat",
+        "storedBytesAreNativeStorage": false,
+        "viewSRGB": false,
+        "extentX": 64,
+        "extentY": 64,
+        "depth": 1,
+        "rowPitchBytes": 512,
+        "zSliceStrideBytes": 32768,
+        "channels": 4,
+        "dtype": "<f2"
+      },
+      "readback": {
+        "File": "Resources/000100000228d23f80d0.linear.mip0.v000100000225fb9fef70.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 32768,
+        "ActualBytes": 32768,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    },
+    "amp": {
+      "path": "Resources/000100000228d23f8ad0.linear.mip0.v000100000225fb9fef70.bin",
+      "bytes": 16384,
+      "sha256": "86a414395cad51e0bc5ff8018254ce3c48ba124089bb0a717cf85c68fa9f5b24",
+      "kind": "native-texture",
+      "layout": {
+        "Resource": "000100000228d23f8ad0",
+        "Name": "DumpGPU.NativeUniformBufferBinding",
+        "File": "Resources/000100000228d23f8ad0.linear.mip0.v000100000225fb9fef70.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 16384,
+        "RowPitchBytes": 256,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_G16R16F",
+        "ViewFormat": "PF_G16R16F",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_G16R16F",
+        "StoredFormat": "PF_G16R16F",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "ForceDisable",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "ComputeThenCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 16384,
+        "StagingByteSize": 16384
+      },
+      "bindingPath": "PS.View.GGXLTCAmpTexture",
+      "nativePointer": "000100000228ec2dab80",
+      "nativeTextureName": "GGX.LTCAmp",
+      "nativeFormat": "PF_G16R16F",
+      "exportViewFormat": "PF_G16R16F",
+      "diagnosticResource": "000100000228d23f8ad0",
+      "dumpStatus": "ScheduledByEarlierPass",
+      "reusedScheduledReadback": true,
+      "firstScheduledByPass": "000100000225fb9fef70",
+      "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+      "decoded": {
+        "name": "GGXLTCAmp",
+        "storedFormat": "PF_G16R16F",
+        "nativeFormat": "PF_G16R16F",
+        "nativeValueInterpretation": "DecodedFloat",
+        "storedBytesAreNativeStorage": false,
+        "viewSRGB": false,
+        "extentX": 64,
+        "extentY": 64,
+        "depth": 1,
+        "rowPitchBytes": 256,
+        "zSliceStrideBytes": 16384,
+        "channels": 2,
+        "dtype": "<f2"
+      },
+      "readback": {
+        "File": "Resources/000100000228d23f8ad0.linear.mip0.v000100000225fb9fef70.bin",
+        "Kind": "Texture",
+        "ExpectedBytes": 16384,
+        "ActualBytes": 16384,
+        "FileExists": true,
+        "FileSizeMatches": true,
+        "Status": "Dumped",
+        "Timing": "GPUReadbackCompleted"
+      }
+    },
+    "sampled": {
+      "NoV": 0.33866676436195803,
+      "F90": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "UV": [
+        0.6949448529411765,
+        0.8083298516756743
+      ],
+      "M": [
+        0.5856864200368056,
+        -0.28026741197201943,
+        0.5386638240830689,
+        0.5205275583148652
+      ],
+      "A": [
+        0.7437171867090612,
+        0.02350480188822511
+      ],
+      "IrradianceScale": [
+        0.05220032278932195,
+        0.05220032278932195,
+        0.05220032278932195
+      ],
+      "LL": [
+        0.011283660971340731,
+        0.00019338763606151915,
+        0.0605649167392785
+      ],
+      "LLen": 0.06160736598272708,
+      "NoL": 0.9830791460271026,
+      "Irradiance": 0.0605649167392785
+    },
+    "channel_order": {
+      "mat": "PF_FloatRGBA export: file order R,G,B,A -> M.x,M.y,M.z,M.w (no reorder)",
+      "amp": "PF_G16R16F export: file order channel0,channel1 -> A.x,A.y (no reorder)"
+    },
+    "fallback_used": false
+  },
+  "permutation": {
+    "shading_model": {
+      "id": 1,
+      "name": "SHADINGMODELID_DEFAULT_LIT",
+      "selective_output_mask": "0xA0",
+      "has_anisotropy_bit": false
+    },
+    "substrate": {
+      "enabled": false,
+      "evidence": "r.Substrate=0; PS.Substrate pointer is null; pass is legacy GBuffer + DefaultLit"
+    },
+    "mega_lights": {
+      "enabled": false,
+      "evidence": "r.MegaLights.EnableForProject=0"
+    },
+    "source_shape": {
+      "value": "Rect",
+      "evidence": "Pass event 'RenderLight Light::StandardDeferred: Ceiling area light'; the captured DeferredLight struct carries the rect-light fields RectLightBarnCosAngle/RectLightBarnLength and RectLightAtlasUVScale/Offset; the active specular call is RectGGXApproxLTC, not the capsule/directional path. No synthetic LightType field is asserted beyond the captured pass/struct evidence."
+    },
+    "source_texture": {
+      "active": false,
+      "evidence": "RectLightAtlasUVScale=(0,0), RectLightAtlasMaxLevel=32; no source texture resource in pass inputs"
+    },
+    "ies": {
+      "active": false,
+      "evidence": "IESAtlasIndex=-1.0"
+    },
+    "anisotropy": {
+      "active": false,
+      "evidence": "FAnistropicMaterials = bSupportAnisotropyPermutation && !IsRectLight -> false for rect light; GBuffer mask 0xA0 has no 0x10 bit"
+    },
+    "lighting_channels": {
+      "active": false,
+      "evidence": "PS.bLightingChannelEnabled=0; LightingChannelsTexture is ZeroUIntDummy"
+    },
+    "vsm_mask": {
+      "active": true,
+      "evidence": "VirtualShadowMapId=8192 != INDEX_NONE and ShadowMaskBits bound; bUseVirtualShadowMapMask=1"
+    },
+    "transmission": {
+      "active": false,
+      "evidence": "opaque SceneColor pass; bTransmission=0; no translucent light pass"
+    },
+    "hair_lighting": {
+      "active": false,
+      "evidence": "FHairLighting permutation explicitly 0; HairShadowMaskValid=0"
+    },
+    "hair_complex_transmittance": {
+      "active": false,
+      "evidence": "FHairComplexTransmittance false; HairShadowMaskValid=0"
+    },
+    "light_function_atlas": {
+      "active": false,
+      "light_index": 0,
+      "evidence": "LightFunctionAtlasLightIndex=0; GetLocalLightFunctionCommon returns 1.0 for index 0; no light function material in the captured light"
+    },
+    "cloud_transmittance": {
+      "active": false,
+      "evidence": "PS.bCloudShadowEnabled=0"
+    },
+    "atmosphere_transmittance": {
+      "active": false,
+      "evidence": "PS.bAtmosphereTransmittanceEnabled=0"
+    },
+    "visualize_culling": {
+      "active": false,
+      "evidence": "normal deferred light pass writing SceneColor, not the light-culling debug color"
+    },
+    "energy_conservation": {
+      "use_energy_conservation": 0,
+      "evidence": "r.Material.EnergyConservation=0 (capture cvar), r.Substrate=0 -> LEGACY_MATERIAL_ENERGYCONSERVATION=0 -> USE_ENERGY_CONSERVATION=0; energy LUT lookup compiled out"
+    },
+    "compiled_shader_hash": {
+      "captured": false,
+      "gap": "The capture records the permutation domain inputs but no PSO/shader hash. The active branch is derived from the captured parameters and CVars; M8 remains open."
+    }
+  },
+  "energy_conservation": {
+    "use_energy_conservation": 0,
+    "energy_lut_active": false,
+    "evidence": "r.Material.EnergyConservation=0 in Base/ConsoleVariables.csv; r.Substrate=0; ShadingEnergyConservation.ush:20-30 selects USE_ENERGY_CONSERVATION=0; ShaderCompiler.cpp:4191-4194 sets LEGACY_MATERIAL_ENERGYCONSERVATION=0"
+  },
+  "numerical": {
+    "diffuse_unexposed": [
+      0.01783117777828439,
+      0.01783117777828439,
+      0.016758117188087555
+    ],
+    "specular_unexposed": [
+      0.003161508203498746,
+      0.003161508203498746,
+      0.003161508203498746
+    ],
+    "light_mask": 0.9649480800171347,
+    "surface_shadow": 1.0,
+    "visibility": 1.0,
+    "pre_exposure": 0.0625,
+    "one_over_pre_exposure": 16.0,
+    "masked_light_color": [
+      945.0846614832664,
+      945.0846614832664,
+      945.0846614832664
+    ],
+    "cpu_contribution": [
+      1.2399915952948766,
+      1.2399915952948766,
+      1.1766082762550512
+    ],
+    "observed_delta": [
+      1.2392578125,
+      1.2392578125,
+      1.1767578125
+    ],
+    "residual": [
+      0.0007337827948765696,
+      0.0007337827948765696,
+      -0.00014953624494884465
+    ],
+    "half_ulp": 0.0009765625,
+    "residual_ulps": [
+      0.7513935819536073,
+      0.7513935819536073,
+      -0.15312511482761693
+    ],
+    "max_abs_residual_ulps": 0.7513935819536073,
+    "tolerance_ulps": 1.0,
+    "passed": true,
+    "predicted_after_fp16": [
+      1.240234375,
+      1.240234375,
+      1.1767578125
+    ],
+    "observed_after_fp16": [
+      1.2392578125,
+      1.2392578125,
+      1.1767578125
+    ],
+    "predicted_after_fp16_bits": [
+      "0x3CF6",
+      "0x3CF6",
+      "0x3CB5"
+    ],
+    "observed_after_fp16_bits": [
+      "0x3CF5",
+      "0x3CF5",
+      "0x3CB5"
+    ],
+    "codeword_delta": [
+      1,
+      1,
+      0
+    ],
+    "codeword_within_1_ulp": true,
+    "test": "pass if max_channel |L_cpu - (after-before)| <= ULP_fp16(max(|after|,|L_cpu|)); before=0 -> 1 ULP"
+  },
+  "checks": {
+    "exact_final_scene_graph": true,
+    "exact_producer_versions": true,
+    "actual_view_uniform_buffer": true,
+    "actual_deferred_light_uniform_struct": true,
+    "actual_shader_bound_ltc_textures": true,
+    "actual_shadow_mask_values": true,
+    "exact_pre_exposure": true,
+    "observed_fp16_output_used": true,
+    "numerical_tolerance_pass": true,
+    "codeword_within_1_ulp": true
+  },
+  "gaps": [
+    {
+      "id": "G1",
+      "kind": "residual",
+      "detail": "The CPU contribution is 1.239991595 (R/G) and 1.176608276 (B); the observed FP16 delta is 1.2392578125 (R/G) and 1.1767578125 (B). The unrounded residual is +0.7514 ULP (R/G) and -0.1531 ULP (B), within the 1-ULP tolerance. The predicted FP16 codeword is +1 ULP in R/G and exact in B. The LTC sidecar is actual and bit-identical to the quantized LTC.h, so this is not an LTC-content gap. No missing operand has been identified; the remaining sub-ULP difference is in the GPU shader evaluation (candidates include the half-precision BxDF inputs and filter/approximation details), which this float64 CPU replay does not model bit-exactly."
+    },
+    {
+      "id": "G2",
+      "kind": "vsm-boundary",
+      "detail": "Only the final quantized 4-bit MaskBits is replayed. The SMRT/VSM producer (pass 248) is not replayed; page table, page flags, page receiver masks, physical page pool, projection data, light grid and culled-light grid are retained as operands but not sampled. Visibility=1.0 is exact for the 15/15 codeword; the unquantized shadow factor is not independently proven."
+    },
+    {
+      "id": "G3",
+      "kind": "shader-hash",
+      "detail": "No compiled PSO/shader hash was captured for pass 249. The active permutation is derived from the captured parameters/CVars and source; a byte-exact compiled shader identity remains open (old M8)."
+    },
+    {
+      "id": "G4",
+      "kind": "native-sampler-state",
+      "detail": "Sampler bindings are pointer-only (StateCaptured=false). The LTC sampler pointer equals View.SharedBilinearClampedSampler and source initializes that object as SF_Bilinear/AM_Clamp x3, so bilinear-clamp is the correct interpretation; the raw sampler object state was not captured."
+    },
+    {
+      "id": "G5",
+      "kind": "native-readback-timing",
+      "detail": "The LTC native bindings are ReusedScheduledReadback from pass 000100000225fb9fef70 with TimingRisk=OwnerPassNotExecutedAtCPUCollection; the exported file exists, size matches, DumpReadbackStatus=Dumped, and its 64x64 half values are bit-identical to the quantized LTC.h. The content is therefore valid for this static global LUT, but the capture-side timing caveat is retained."
+    },
+    {
+      "id": "G6",
+      "kind": "stored-format-provenance",
+      "detail": "SubresourceLayouts marks the LTC exports StoredBytesAreNativeStorage=false, NativeValueInterpretation=DecodedFloat, BitExact=false, ValuePreserving=true. The decoder follows StoredFormat (PF_FloatRGBA / PF_G16R16F) and preserves file channel order; it does not assume a half2/half4 decoder from NativeFormat."
+    }
+  ],
+  "provenance": {
+    "report_file": "report.json",
+    "report_sha256": "4dacc34ac987e31ab212108d4e94eacd996a9de66c101a8badce2b3d38674fde",
+    "verification_file": "verification.json",
+    "verification_sha256": "abddacbdbc66e0d9d92dc120c3987ae3cd3e1846f48d02dd651fb4515fa00246",
+    "verification_passed": true,
+    "verification_checks": 17,
+    "files": [
+      {
+        "path": "Structures/000100000228e3a88380.bin",
+        "bytes": 912,
+        "sha256": "3f55d882eba6520849aa8485db064b6bbdecf005db3b8dc2b67713064280e58c"
+      },
+      {
+        "path": "StructuresMetadata/000100007ffb89248ea0.json",
+        "bytes": 2003,
+        "sha256": "d53a4208f96e81f5d5f9ac2dbbd675d9d5e058075d7d48d329638b21fc9b0197"
+      },
+      {
+        "path": "Structures/00010000022880566180.bin",
+        "bytes": 6752,
+        "sha256": "0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944"
+      },
+      {
+        "path": "StructuresMetadata/000100007ffb9ac979f0.json",
+        "bytes": 102382,
+        "sha256": "a8967122baefb6a1ab9778fd87a65d4bda8b34f3ca2ab7de5cd1c2006ac5b100"
+      },
+      {
+        "path": "Structures/000100000228e3a88830.bin",
+        "bytes": 192,
+        "sha256": "9378465b8ee730c068912c300545f01a976fc7d95795800985fb70e7a9e02019"
+      },
+      {
+        "path": "StructuresMetadata/000100007ffb89247ae0.json",
+        "bytes": 2673,
+        "sha256": "8c42e611453c4db19f9adfbda9f5a058595c15093c4710a21526366c43867b7c"
+      },
+      {
+        "path": "Structures/000100000228bbbe92a0.bin",
+        "bytes": 128,
+        "sha256": "607296a9117d0b0fe4c1aa1b1eb55a900881f027085a12e09392953105fbb7c5"
+      },
+      {
+        "path": "StructuresMetadata/000100007ffb9ac975f0.json",
+        "bytes": 4397,
+        "sha256": "5286c0f6ee629c86f740302ab1050ddc582464391aacbf64359b1eef5b97b6d1"
+      },
+      {
+        "path": "Structures/000100000228b830ae00.bin",
+        "bytes": 368,
+        "sha256": "585f524dd3ea820ba7bf9a5d041348248442b6d4d0864445e258058fc19b3d9a"
+      },
+      {
+        "path": "StructuresMetadata/000100007ffb893329a0.json",
+        "bytes": 13902,
+        "sha256": "0da0eb520d3649babba0202125deaf0c7b537266c3bc4508802173f414f39182"
+      },
+      {
+        "path": "Resources/000100000228d3652960.mip0.v000100000228dcc2d760.bin",
+        "bytes": 9093120,
+        "sha256": "c40276d3c4b8fda259c126bc1200aec43ad0d5bb4460b6796e4006f9c6780ea9",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d3652960",
+          "Name": "SceneColor",
+          "File": "Resources/000100000228d3652960.mip0.v000100000228dcc2d760.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 9093120,
+          "RowPitchBytes": 10240,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_FloatRGBA",
+          "ViewFormat": "PF_FloatRGBA",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_FloatRGBA",
+          "StoredFormat": "PF_FloatRGBA",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 9093120,
+          "StagingByteSize": 9093120
+        },
+        "uniqueResource": "000100000228d3652960",
+        "subresource": ".mip0",
+        "version": "000100000228dcc2d760",
+        "producer": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "SceneColor.before",
+          "storedFormat": "PF_FloatRGBA",
+          "nativeFormat": "PF_FloatRGBA",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 10240,
+          "zSliceStrideBytes": 9093120,
+          "channels": 4,
+          "dtype": "<f2"
+        },
+        "readback": {
+          "File": "Resources/000100000228d3652960.mip0.v000100000228dcc2d760.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 9093120,
+          "ActualBytes": 9093120,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d3652960.mip0.v000100000228e3a88880.bin",
+        "bytes": 9093120,
+        "sha256": "1aca84e6ef4616fd9693c9559198efd47b20a9c2b38f2f650dc5aac56f0b90e2",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d3652960",
+          "Name": "SceneColor",
+          "File": "Resources/000100000228d3652960.mip0.v000100000228e3a88880.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 9093120,
+          "RowPitchBytes": 10240,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_FloatRGBA",
+          "ViewFormat": "PF_FloatRGBA",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_FloatRGBA",
+          "StoredFormat": "PF_FloatRGBA",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 9093120,
+          "StagingByteSize": 9093120
+        },
+        "uniqueResource": "000100000228d3652960",
+        "subresource": ".mip0",
+        "version": "000100000228e3a88880",
+        "producer": {
+          "id": 249,
+          "pointer": "000100000228e3a88880",
+          "event": "RenderLight Light::StandardDeferred: Ceiling area light",
+          "parametersName": "FRenderLightParameters",
+          "parentEventScopes": [
+            "LumenRoom.Ceiling area light",
+            "UnbatchedLights",
+            "DirectLighting",
+            "Lights",
+            "RenderDeferredLighting",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "SceneColor.after",
+          "storedFormat": "PF_FloatRGBA",
+          "nativeFormat": "PF_FloatRGBA",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 10240,
+          "zSliceStrideBytes": 9093120,
+          "channels": 4,
+          "dtype": "<f2"
+        },
+        "readback": {
+          "File": "Resources/000100000228d3652960.mip0.v000100000228e3a88880.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 9093120,
+          "ActualBytes": 9093120,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d36523c0.mip0.v000100000228d23fc770.bin",
+        "bytes": 4546560,
+        "sha256": "06688174ae7ec87a2857123c92aa6f9f016be2a57348f48b80d8e64be06bad77",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d36523c0",
+          "Name": "SceneDepthZ",
+          "File": "Resources/000100000228d36523c0.mip0.v000100000228d23fc770.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 4546560,
+          "RowPitchBytes": 5120,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_DepthStencil",
+          "ViewFormat": "PF_DepthStencil",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_R32_FLOAT",
+          "StoredFormat": "PF_R32_FLOAT",
+          "NativeFormatExpanded": true,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": false,
+          "NativeValueInterpretation": "DecodedFloatExpanded",
+          "BitExact": false,
+          "ValuePreserving": false,
+          "BitExactCondition": "The native format is expanded into a different staging or stored format. The stored bytes are decoded numeric values, not the native storage bits.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "ComputeThenCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 4546560,
+          "StagingByteSize": 4546560
+        },
+        "uniqueResource": "000100000228d36523c0",
+        "subresource": ".mip0",
+        "version": "000100000228d23fc770",
+        "producer": {
+          "id": 29,
+          "pointer": "000100000228d23fc770",
+          "event": "EditorPrimitives",
+          "parametersName": "FDepthPassParameters",
+          "parentEventScopes": [
+            "PrePass DDM_AllOpaqueNoVelocity (Forced by Nanite)",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "SceneDepthZ",
+          "storedFormat": "PF_R32_FLOAT",
+          "nativeFormat": "PF_DepthStencil",
+          "nativeValueInterpretation": "DecodedFloatExpanded",
+          "storedBytesAreNativeStorage": false,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 5120,
+          "zSliceStrideBytes": 4546560,
+          "channels": 1,
+          "dtype": "<f4"
+        },
+        "readback": {
+          "File": "Resources/000100000228d36523c0.mip0.v000100000228d23fc770.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+        "bytes": 4546560,
+        "sha256": "cbfd73f11e271437cc61dc6a7bec9fee37b192106e7e3945e3554fb8ed780c44",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d3653720",
+          "Name": "GBufferA",
+          "File": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 4546560,
+          "RowPitchBytes": 5120,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_A2B10G10R10",
+          "ViewFormat": "PF_A2B10G10R10",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_A2B10G10R10",
+          "StoredFormat": "PF_A2B10G10R10",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 4546560,
+          "StagingByteSize": 4546560
+        },
+        "uniqueResource": "000100000228d3653720",
+        "subresource": ".mip0",
+        "version": "000100000228dcc2d760",
+        "producer": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "GBufferA",
+          "storedFormat": "PF_A2B10G10R10",
+          "nativeFormat": "PF_A2B10G10R10",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 5120,
+          "zSliceStrideBytes": 4546560,
+          "channels": 1,
+          "dtype": "<u4"
+        },
+        "readback": {
+          "File": "Resources/000100000228d3653720.mip0.v000100000228dcc2d760.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d36539e0.mip0.v000100000228dcc2d760.bin",
+        "bytes": 4546560,
+        "sha256": "6ea8806364ea8a1cfe2ceb037572b8eeb0115457516988ccd880097851e2b226",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d36539e0",
+          "Name": "GBufferB",
+          "File": "Resources/000100000228d36539e0.mip0.v000100000228dcc2d760.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 4546560,
+          "RowPitchBytes": 5120,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_B8G8R8A8",
+          "ViewFormat": "PF_B8G8R8A8",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_B8G8R8A8",
+          "StoredFormat": "PF_B8G8R8A8",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 4546560,
+          "StagingByteSize": 4546560
+        },
+        "uniqueResource": "000100000228d36539e0",
+        "subresource": ".mip0",
+        "version": "000100000228dcc2d760",
+        "producer": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "GBufferB",
+          "storedFormat": "PF_B8G8R8A8",
+          "nativeFormat": "PF_B8G8R8A8",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 5120,
+          "zSliceStrideBytes": 4546560,
+          "channels": 4,
+          "dtype": "u1"
+        },
+        "readback": {
+          "File": "Resources/000100000228d36539e0.mip0.v000100000228dcc2d760.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d3653ca0.mip0.v000100000228dcc2d760.bin",
+        "bytes": 4546560,
+        "sha256": "3d34b2c48c508ff126f7beed0e68353bac0f2980abf8ca58753aeb3258220a66",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d3653ca0",
+          "Name": "GBufferC",
+          "File": "Resources/000100000228d3653ca0.mip0.v000100000228dcc2d760.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 4546560,
+          "RowPitchBytes": 5120,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_B8G8R8A8",
+          "ViewFormat": "PF_B8G8R8A8",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_B8G8R8A8",
+          "StoredFormat": "PF_B8G8R8A8",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": true,
+          "ViewSRGB": true,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 4546560,
+          "StagingByteSize": 4546560
+        },
+        "uniqueResource": "000100000228d3653ca0",
+        "subresource": ".mip0",
+        "version": "000100000228dcc2d760",
+        "producer": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "GBufferC",
+          "storedFormat": "PF_B8G8R8A8",
+          "nativeFormat": "PF_B8G8R8A8",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": true,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 5120,
+          "zSliceStrideBytes": 4546560,
+          "channels": 4,
+          "dtype": "u1"
+        },
+        "readback": {
+          "File": "Resources/000100000228d3653ca0.mip0.v000100000228dcc2d760.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d3653f60.mip0.v000100000228dcc2d760.bin",
+        "bytes": 4546560,
+        "sha256": "46c5e9fa3a41c9d86ff844c63383eae7b303e9315e64c19f4f780c6c4cb6b6df",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228d3653f60",
+          "Name": "GBufferD",
+          "File": "Resources/000100000228d3653f60.mip0.v000100000228dcc2d760.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 4546560,
+          "RowPitchBytes": 5120,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_B8G8R8A8",
+          "ViewFormat": "PF_B8G8R8A8",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_B8G8R8A8",
+          "StoredFormat": "PF_B8G8R8A8",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 4546560,
+          "StagingByteSize": 4546560
+        },
+        "uniqueResource": "000100000228d3653f60",
+        "subresource": ".mip0",
+        "version": "000100000228dcc2d760",
+        "producer": {
+          "id": 126,
+          "pointer": "000100000228dcc2d760",
+          "event": "EditorPrimitives: SDPG_World",
+          "parametersName": "FOpaqueBasePassParameters",
+          "parentEventScopes": [
+            "EditorPrimitives",
+            "BasePass",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "GBufferD",
+          "storedFormat": "PF_B8G8R8A8",
+          "nativeFormat": "PF_B8G8R8A8",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 5120,
+          "zSliceStrideBytes": 4546560,
+          "channels": 4,
+          "dtype": "u1"
+        },
+        "readback": {
+          "File": "Resources/000100000228d3653f60.mip0.v000100000228dcc2d760.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4546560,
+          "ActualBytes": 4546560,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228e3a849d0.mip0.v000100000228e3a85210.bin",
+        "bytes": 9093120,
+        "sha256": "d8f1c55e2e830d58f042ac245c96094570ce236f866796275e33d3d0e28ef15c",
+        "kind": "texture",
+        "layout": {
+          "Resource": "000100000228e3a849d0",
+          "Name": "Shadow.Virtual.MaskBits",
+          "File": "Resources/000100000228e3a849d0.mip0.v000100000228e3a85210.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 1280,
+          "ExtentY": 888,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 9093120,
+          "RowPitchBytes": 10240,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_R32G32_UINT",
+          "ViewFormat": "PF_R32G32_UINT",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_R32G32_UINT",
+          "StoredFormat": "PF_R32G32_UINT",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "Default",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": true,
+          "NativeValueInterpretation": "UnsignedIntegerBits",
+          "BitExact": true,
+          "ValuePreserving": true,
+          "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "DirectCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 9093120,
+          "StagingByteSize": 9093120
+        },
+        "uniqueResource": "000100000228e3a849d0",
+        "subresource": ".mip0",
+        "version": "000100000228e3a85210",
+        "producer": {
+          "id": 248,
+          "pointer": "000100000228e3a85210",
+          "event": "VirtualShadowMapProjection(Input:GBuffer)",
+          "parametersName": "FParameters",
+          "parentEventScopes": [
+            "VirtualShadowMapProjectionMaskBits",
+            "DirectLighting",
+            "Lights",
+            "RenderDeferredLighting",
+            "Scene",
+            "Frame 292 (Delta=0.010717s)"
+          ]
+        },
+        "decoded": {
+          "name": "Shadow.Virtual.MaskBits",
+          "storedFormat": "PF_R32G32_UINT",
+          "nativeFormat": "PF_R32G32_UINT",
+          "nativeValueInterpretation": "UnsignedIntegerBits",
+          "storedBytesAreNativeStorage": true,
+          "viewSRGB": false,
+          "extentX": 1280,
+          "extentY": 888,
+          "depth": 1,
+          "rowPitchBytes": 10240,
+          "zSliceStrideBytes": 9093120,
+          "channels": 2,
+          "dtype": "<u4"
+        },
+        "readback": {
+          "File": "Resources/000100000228e3a849d0.mip0.v000100000228e3a85210.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 9093120,
+          "ActualBytes": 9093120,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d23f80d0.linear.mip0.v000100000225fb9fef70.bin",
+        "bytes": 32768,
+        "sha256": "a4b5de62685647a60ef388b9a8084a9de3a8621f75d952c80463bf3aefba7590",
+        "kind": "native-texture",
+        "layout": {
+          "Resource": "000100000228d23f80d0",
+          "Name": "DumpGPU.NativeUniformBufferBinding",
+          "File": "Resources/000100000228d23f80d0.linear.mip0.v000100000225fb9fef70.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 64,
+          "ExtentY": 64,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 32768,
+          "RowPitchBytes": 512,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_FloatRGBA",
+          "ViewFormat": "PF_FloatRGBA",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_FloatRGBA",
+          "StoredFormat": "PF_FloatRGBA",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "ForceDisable",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": false,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "ComputeThenCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 32768,
+          "StagingByteSize": 32768
+        },
+        "bindingPath": "PS.View.GGXLTCMatTexture",
+        "nativePointer": "000100000228ec2da800",
+        "nativeTextureName": "GGX.LTCMat",
+        "nativeFormat": "PF_FloatRGBA",
+        "exportViewFormat": "PF_FloatRGBA",
+        "diagnosticResource": "000100000228d23f80d0",
+        "dumpStatus": "ScheduledByEarlierPass",
+        "reusedScheduledReadback": true,
+        "firstScheduledByPass": "000100000225fb9fef70",
+        "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+        "decoded": {
+          "name": "GGXLTCMat",
+          "storedFormat": "PF_FloatRGBA",
+          "nativeFormat": "PF_FloatRGBA",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": false,
+          "viewSRGB": false,
+          "extentX": 64,
+          "extentY": 64,
+          "depth": 1,
+          "rowPitchBytes": 512,
+          "zSliceStrideBytes": 32768,
+          "channels": 4,
+          "dtype": "<f2"
+        },
+        "readback": {
+          "File": "Resources/000100000228d23f80d0.linear.mip0.v000100000225fb9fef70.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 32768,
+          "ActualBytes": 32768,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Resources/000100000228d23f8ad0.linear.mip0.v000100000225fb9fef70.bin",
+        "bytes": 16384,
+        "sha256": "86a414395cad51e0bc5ff8018254ce3c48ba124089bb0a717cf85c68fa9f5b24",
+        "kind": "native-texture",
+        "layout": {
+          "Resource": "000100000228d23f8ad0",
+          "Name": "DumpGPU.NativeUniformBufferBinding",
+          "File": "Resources/000100000228d23f8ad0.linear.mip0.v000100000225fb9fef70.bin",
+          "Dimension": "Texture2D",
+          "MipLevel": 0,
+          "FirstArraySlice": 0,
+          "NumArraySlices": 0,
+          "ExtentX": 64,
+          "ExtentY": 64,
+          "Depth": 1,
+          "ZSliceCount": 1,
+          "ZSliceStrideBytes": 16384,
+          "RowPitchBytes": 256,
+          "ZSliceOrder": "single slice",
+          "NativeFormat": "PF_G16R16F",
+          "ViewFormat": "PF_G16R16F",
+          "ViewFormatMatchesNativeFormat": true,
+          "StagingFormat": "PF_G16R16F",
+          "StoredFormat": "PF_G16R16F",
+          "NativeFormatExpanded": false,
+          "NativeSRGB": false,
+          "ViewSRGB": false,
+          "SRGBOverride": "ForceDisable",
+          "SRGBViewUsedForReadback": false,
+          "StoredBytesAreNativeStorage": false,
+          "NativeValueInterpretation": "DecodedFloat",
+          "BitExact": false,
+          "ValuePreserving": true,
+          "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+          "MipExtentClampedToMinimum": false,
+          "StencilSubresource": false,
+          "Readback": "ComputeThenCopy",
+          "DumpStatus": "ScheduledForReadback",
+          "FileVerifiedAtSchedule": false,
+          "ByteSize": 16384,
+          "StagingByteSize": 16384
+        },
+        "bindingPath": "PS.View.GGXLTCAmpTexture",
+        "nativePointer": "000100000228ec2dab80",
+        "nativeTextureName": "GGX.LTCAmp",
+        "nativeFormat": "PF_G16R16F",
+        "exportViewFormat": "PF_G16R16F",
+        "diagnosticResource": "000100000228d23f8ad0",
+        "dumpStatus": "ScheduledByEarlierPass",
+        "reusedScheduledReadback": true,
+        "firstScheduledByPass": "000100000225fb9fef70",
+        "timingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+        "decoded": {
+          "name": "GGXLTCAmp",
+          "storedFormat": "PF_G16R16F",
+          "nativeFormat": "PF_G16R16F",
+          "nativeValueInterpretation": "DecodedFloat",
+          "storedBytesAreNativeStorage": false,
+          "viewSRGB": false,
+          "extentX": 64,
+          "extentY": 64,
+          "depth": 1,
+          "rowPitchBytes": 256,
+          "zSliceStrideBytes": 16384,
+          "channels": 2,
+          "dtype": "<f2"
+        },
+        "readback": {
+          "File": "Resources/000100000228d23f8ad0.linear.mip0.v000100000225fb9fef70.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 16384,
+          "ActualBytes": 16384,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        }
+      },
+      {
+        "path": "Base/Passes.json",
+        "bytes": 1595138,
+        "sha256": "a7740c0a54294a27e28d15c7d9b0b9842402955c3639ec99d0756cda2f915585",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/ResourceDescs.json",
+        "bytes": 499915,
+        "sha256": "9e94fb4ed98e321a01f7401182188fcf312a183511c6b0af5e32b737b593b792",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/SubresourceLayouts.json",
+        "bytes": 2023203,
+        "sha256": "6b4110050c2b9af9b2f0792c0f05c932ba8c4495b7d001791fd24a791675853d",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/ReferencedStructs.json",
+        "bytes": 766482,
+        "sha256": "48e65cd47d400c9afe2772dbaf521505fb969f1bbe7ac2bcd406d15251dd78d0",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/NativeUniformBufferBindings.json",
+        "bytes": 39687945,
+        "sha256": "8701cfd579775e312942eba2ec003c43732ea5fea62e22e498c89ba43b55c030",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/DumpReadbackStatus.json",
+        "bytes": 1293442,
+        "sha256": "b9b55eec55f553b43c235ec3dadb170fee80a8b6b2cd4b9831631f972169bc58",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/ConsoleVariables.csv",
+        "bytes": 536873,
+        "sha256": "1bb9e59367c5356d6755cfe8efc4905c88ebb0ab3c32210ed5e49e12f5914126",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/Infos.json",
+        "bytes": 987,
+        "sha256": "d60dfcdddc9cbd4e492e8f29b38aff24d88adf3e0631339485692968df1abe07",
+        "kind": "metadata"
+      }
+    ],
+    "provenance_files": [
+      {
+        "path": "Base/Passes.json",
+        "bytes": 1595138,
+        "sha256": "a7740c0a54294a27e28d15c7d9b0b9842402955c3639ec99d0756cda2f915585",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/ResourceDescs.json",
+        "bytes": 499915,
+        "sha256": "9e94fb4ed98e321a01f7401182188fcf312a183511c6b0af5e32b737b593b792",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/SubresourceLayouts.json",
+        "bytes": 2023203,
+        "sha256": "6b4110050c2b9af9b2f0792c0f05c932ba8c4495b7d001791fd24a791675853d",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/ReferencedStructs.json",
+        "bytes": 766482,
+        "sha256": "48e65cd47d400c9afe2772dbaf521505fb969f1bbe7ac2bcd406d15251dd78d0",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/NativeUniformBufferBindings.json",
+        "bytes": 39687945,
+        "sha256": "8701cfd579775e312942eba2ec003c43732ea5fea62e22e498c89ba43b55c030",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/DumpReadbackStatus.json",
+        "bytes": 1293442,
+        "sha256": "b9b55eec55f553b43c235ec3dadb170fee80a8b6b2cd4b9831631f972169bc58",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/ConsoleVariables.csv",
+        "bytes": 536873,
+        "sha256": "1bb9e59367c5356d6755cfe8efc4905c88ebb0ab3c32210ed5e49e12f5914126",
+        "kind": "metadata"
+      },
+      {
+        "path": "Base/Infos.json",
+        "bytes": 987,
+        "sha256": "d60dfcdddc9cbd4e492e8f29b38aff24d88adf3e0631339485692968df1abe07",
+        "kind": "metadata"
+      }
+    ],
+    "no_gpu_work": true
+  },
+  "commands": {
+    "install": "python -m pip install -r analysis/deferred-replay/requirements.txt",
+    "replay": "python analysis/deferred-replay/replay_cpu.py --capture <capture-root> --output analysis/deferred-replay/report.json",
+    "verify": "python analysis/deferred-replay/verify_replay.py --capture <capture-root> --report analysis/deferred-replay/report.json --output analysis/deferred-replay/verification.json --ltc-header <engine>/Engine/Source/Runtime/Renderer/Private/LTC.h --final-dir <final>",
+    "contract": "python analysis/deferred-replay/write_contract.py --report analysis/deferred-replay/report.json --verification analysis/deferred-replay/verification.json --out-dir analysis/deferred-replay --scene-graphs <final>/scene-graphs.json"
+  }
+}

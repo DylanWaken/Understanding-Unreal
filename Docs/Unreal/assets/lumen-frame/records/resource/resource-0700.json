@@ -1,0 +1,421 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0700",
+  "nativeRecordId": "native-017709",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "LightFunctionAtlasLightInfoData",
+  "uniqueName": "000300000228e99d7f60",
+  "displayLabel": "LightFunctionAtlasLightInfoData · scene 0003 · frame 292 · View.StateFrameIndexMod8 0",
+  "instancePrefix": "0003",
+  "sceneInvocation": "0003",
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": {
+    "member": "View.View",
+    "metadataPointer": "000300007ffb9ac979f0",
+    "contentPointer": "000300000228ec7dca80",
+    "payloadId": "payload-06575",
+    "frameIndexMod8": 0,
+    "frameIndex": 872,
+    "viewRect": {
+      "min": [
+        0,
+        0
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "source": "ViewRectMinAndSize (uint32 x 4)"
+    },
+    "source": "Base/ReferencedStructs.json View.View content read at StructuresMetadata member offsets"
+  },
+  "viewport": {
+    "applicability": "other-domain",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": {
+      "min": [
+        0,
+        0
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "source": "ViewRectMinAndSize (uint32 x 4)"
+    },
+    "passId": "pass-0438",
+    "passName": "BasePassParallel",
+    "passPointer": "000300000229140278e0",
+    "passIsCameraPass": true,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "BasePassParallel (pass pass-0438) ViewRect retained as context only.",
+    "reason": "Buffers have no 2D screen-texel domain; the recorded pass ViewRect is context only and no screen padding is inferred.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 2560,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 160,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 160
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "LightFunctionAtlasLightInfoData",
+    "UniqueResourceName": "000300000228e99d7f60",
+    "ByteSize": 2560,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 160,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01531",
+      "role": "resource",
+      "originalPath": "Resources/000300000228e99d7f60.v00000000000000000000.bin",
+      "bytes": 2560,
+      "sha256": "7a21e15a3910aa0c41338f1759f524fe079942834d6f7b4fe2a3f619d845cb01",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0700",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "7a21e15a3910aa0c41338f1759f524fe079942834d6f7b4fe2a3f619d845cb01",
+          "offset": 0,
+          "length": 2560
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228e99d7f60",
+        "name": "LightFunctionAtlasLightInfoData",
+        "byteSize": 2560
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-01531"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0438",
+        "name": "BasePassParallel",
+        "displayLabel": "BasePassParallel · BasePass · frame 292 · pass 437 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0438.json"
+      },
+      {
+        "id": "pass-0439",
+        "name": "EditorPrimitives: SDPG_World",
+        "displayLabel": "EditorPrimitives: SDPG_World · EditorPrimitives · frame 292 · pass 438 · View.StateFrameIndexMod8 0",
+        "record": "records/pass/pass-0439.json"
+      },
+      {
+        "id": "pass-0562",
+        "name": "RenderLight Light::StandardDeferred: Ceiling area light",
+        "displayLabel": "RenderLight Light::StandardDeferred: Ceiling area light · LumenRoom.Ceiling area light · frame 292 · pass 561",
+        "record": "records/pass/pass-0562.json"
+      },
+      {
+        "id": "pass-0563",
+        "name": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=0,Max=32,VirtualShadowMap)",
+        "displayLabel": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=0,Max=32,VirtualShadowMap) · InjectTranslucencyLightingVolume(View=0) · frame 292 · pass 562",
+        "record": "records/pass/pass-0563.json"
+      },
+      {
+        "id": "pass-0564",
+        "name": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=1,Max=32,VirtualShadowMap)",
+        "displayLabel": "InjectTranslucencyLightingVolumeBatch(VolumeCascade=1,Max=32,VirtualShadowMap) · InjectTranslucencyLightingVolume(View=0) · frame 292 · pass 563",
+        "record": "records/pass/pass-0564.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01531",
+      "file": "Resources/000300000228e99d7f60.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.sc-light-function-atlas-light-info",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^LightFunctionAtlasLightInfoData$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one 80-byte FAtlasLightInfoData record per light-function slot: 4 float4 parameters + a 4x4 float transform",
+      "units": "fade distance (cm), packed light type/disabled brightness/atlas min UV, tan outer angle, translated-world->light matrix",
+      "coordinateSpace": "translated world -> light space",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "float4 x5 (FAtlasLightInfoData)",
+        "strideBytes": 80,
+        "formatAlternatives": [
+          "allocated as StructuredBuffer<float4> with NumElements=5*roundUp(N,32)"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 16,
+          "numElements": 160,
+          "byteSize": 2560
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "float4 x5 (FAtlasLightInfoData)",
+      "formatProof": "descriptive-element-layout",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "allocated as StructuredBuffer<float4> with NumElements=5*roundUp(N,32)"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "recordIndex",
+          "expression": "element base = LightIndex*5 float4",
+          "requires": [
+            "LightFunctionAtlasLightInfoData"
+          ],
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.unpack"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "The captured 160 float4 / 5 = 32 records; the effective capacity is roundUp(N,32).",
+        "Slot index 0 is reserved as the null light function (LightFunctionAtlasLightIndex==0 => none)."
+      ],
+      "producerSources": [
+        "part3.visibility.sc.lfa.capacity",
+        "part3.visibility.sc.lfa.buffer"
+      ],
+      "consumerSources": [
+        "part3.visibility.sc.lfa.unpack"
+      ],
+      "gaps": [
+        "Captured element count is float4 count (160), not light count (32); valid record count is runtime (EffectiveLocalLightSlotArray.Num)."
+      ],
+      "fields": [
+        {
+          "name": "FadeDistance",
+          "type": "float",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "Parameters.x",
+          "units": "cm",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.parameters"
+          ]
+        },
+        {
+          "name": "LightTypeAndDisabledBrightness",
+          "type": "uint32",
+          "byteOffset": 4,
+          "count": 1,
+          "decode": "bits0-7 LightType; bits8-23 f16 Encoded LightFunctionDisabledBrightness; bits24-31 unused",
+          "units": "bitfield",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.pack"
+          ]
+        },
+        {
+          "name": "AtlasSlotMinUV",
+          "type": "uint32",
+          "byteOffset": 8,
+          "count": 1,
+          "decode": "bits0-15 round(MinU*65536); bits16-31 round(MinV*65536)",
+          "units": "UV fixed point",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.packuv"
+          ]
+        },
+        {
+          "name": "TanOuterAngle",
+          "type": "float",
+          "byteOffset": 12,
+          "count": 1,
+          "decode": "tan(outer cone half-angle); -1 for non-spot",
+          "units": "dimensionless",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.parameters"
+          ]
+        },
+        {
+          "name": "TransformRow0",
+          "type": "float4",
+          "byteOffset": 16,
+          "count": 1,
+          "decode": "TranslatedWorldToLight row 0",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.struct"
+          ]
+        },
+        {
+          "name": "TransformRow1",
+          "type": "float4",
+          "byteOffset": 32,
+          "count": 1,
+          "decode": "row 1",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.struct"
+          ]
+        },
+        {
+          "name": "TransformRow2",
+          "type": "float4",
+          "byteOffset": 48,
+          "count": 1,
+          "decode": "row 2",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.struct"
+          ]
+        },
+        {
+          "name": "TransformRow3",
+          "type": "float4",
+          "byteOffset": 64,
+          "count": 1,
+          "decode": "row 3",
+          "units": "matrix",
+          "sourceRefs": [
+            "part3.visibility.sc.lfa.struct"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 8,
+        "sourceEquationFields": [
+          "FadeDistance",
+          "LightTypeAndDisabledBrightness",
+          "AtlasSlotMinUV",
+          "TanOuterAngle",
+          "TransformRow0",
+          "TransformRow1",
+          "TransformRow2",
+          "TransformRow3"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0448",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer LightFunctionAtlasLightInfoData has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0700"
+    }
+  ]
+}

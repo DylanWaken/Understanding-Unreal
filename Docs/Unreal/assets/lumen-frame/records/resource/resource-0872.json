@@ -1,0 +1,273 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0872",
+  "nativeRecordId": "native-017881",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.OutputOffsetBuffer",
+  "uniqueName": "000300000228e2257308",
+  "displayLabel": "Shadow.Virtual.OutputOffsetBuffer · instance 0003 · frame 292 · passes 532",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 532,
+    "last": 532
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.OutputOffsetBuffer",
+    "UniqueResourceName": "000300000228e2257308",
+    "ByteSize": 4,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01441",
+      "role": "resource",
+      "originalPath": "Resources/000300000228e2257308.v000300000228e22579e0.bin",
+      "bytes": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "version": "000300000228e22579e0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0872",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "offset": 0,
+          "length": 4
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000228e2257308",
+        "name": "Shadow.Virtual.OutputOffsetBuffer",
+        "byteSize": 4
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228e22579e0",
+      "producerPassId": "pass-0533",
+      "producerPassName": "ClearBuffer(Shadow.Virtual.OutputOffsetBuffer Size=4bytes)",
+      "payloadIds": [
+        "payload-01441"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0533",
+        "name": "ClearBuffer(Shadow.Virtual.OutputOffsetBuffer Size=4bytes)",
+        "displayLabel": "ClearBuffer(Shadow.Virtual.OutputOffsetBuffer Size=4bytes) · CullingPasses · frame 292 · pass 532",
+        "record": "records/pass/pass-0533.json"
+      }
+    ],
+    "consumers": []
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-01441",
+      "file": "Resources/000300000228e2257308.v000300000228e22579e0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-output-offset-buffer",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.OutputOffsetBuffer$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "single uint32 atomic output cursor; allocated and cleared but not bound to any pass in this build",
+      "units": "instance count",
+      "coordinateSpace": "global output cursor (unused)",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "1 element, cleared to 0"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 1,
+          "byteSize": 4
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "1 element, cleared to 0"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "partial",
+      "transforms": [],
+      "mathTerms": [
+        "Allocated and cleared at VSMARRAY_C:3974-3977; the allocation pass binds InstanceIdOutOffsetBufferRDG (created at :4070) as OutputOffsetBufferOut, not this resource.",
+        "Read as zero/cleared and never written in this build; treat its content as semantically dead."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.c.alloc.outputoffset"
+      ],
+      "consumerSources": [],
+      "gaps": [
+        "No consumer binds this exact RDG resource in this build; the real compaction counter is a different buffer with the same role. Do not decode values from this family until a frame is found where it is bound."
+      ],
+      "fields": [
+        {
+          "name": "Count",
+          "type": "uint",
+          "byteOffset": 0,
+          "count": 1,
+          "decode": "intended InterlockedAdd target for allocating compacted output space; the active pass uses the separate InstanceCulling.OutputOffsetBufferOut buffer instead",
+          "units": "instances",
+          "sourceRefs": [
+            "part3.visibility.vsm.c.alloc.outputoffset"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "Count"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0544",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.OutputOffsetBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0872"
+    }
+  ]
+}

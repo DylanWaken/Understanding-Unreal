@@ -1,0 +1,460 @@
+{
+  "format": "PF_R8",
+  "version": 1,
+  "id": "resource-0723",
+  "nativeRecordId": "native-017732",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.ScreenProbeDisocclusion",
+  "uniqueName": "000300000228c0f74ce8",
+  "displayLabel": "Lumen.ScreenProbeGather.ScreenProbeDisocclusion · instance 0003 · frame 292 · passes 446",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 446,
+    "last": 446
+  },
+  "allocation": [
+    80,
+    84
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": "probe-grid",
+    "allocation": [
+      80,
+      84
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 6720,
+  "extent": [
+    80,
+    84,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "UNORM8",
+    "bytesPerTexel": 1,
+    "formatNormalized": "R8",
+    "dumpFormat": "PF_R8",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.ScreenProbeDisocclusion",
+    "UniqueResourceName": "000300000228c0f74ce8",
+    "ByteSize": 6720,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_R8",
+    "ExtentX": 80,
+    "ExtentY": 84,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01305",
+      "role": "resource",
+      "originalPath": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+      "bytes": 6720,
+      "sha256": "53192a12b178687771e5a607727c1a7102e095fc05515a6e827a4eeff529a280",
+      "version": "000300000228c0f75580",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0723",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "53192a12b178687771e5a607727c1a7102e095fc05515a6e827a4eeff529a280",
+          "offset": 0,
+          "length": 6720
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000300000228c0f74ce8",
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeDisocclusion",
+        "File": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 80,
+        "ExtentY": 84,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 6720,
+        "RowPitchBytes": 80,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 6720,
+        "StagingByteSize": 6720
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 6720,
+          "ActualBytes": 6720,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 6720,
+        "actualBytes": 6720,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000300000228c0f74ce8",
+        "name": "Lumen.ScreenProbeGather.ScreenProbeDisocclusion",
+        "diagnosticResource": "000300000228c0f74ce8"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 80,
+        "extentY": 84,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 6720,
+        "rowPitchBytes": 80,
+        "storageFormat": "PF_R8",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UNORM8",
+        "bytesPerTexel": 1,
+        "formatNormalized": "R8",
+        "dumpFormat": "PF_R8",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R8",
+        "viewFormat": "PF_R8",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000228c0f75580",
+      "producerPassId": "pass-0447",
+      "producerPassName": "ScreenProbeGatherScreenData",
+      "payloadIds": [
+        "payload-01305"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0447",
+        "name": "ScreenProbeGatherScreenData",
+        "displayLabel": "ScreenProbeGatherScreenData · LumenScreenProbeGather · frame 292 · pass 446",
+        "record": "records/pass/pass-0447.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0483",
+        "name": "FilterRadianceWithGather",
+        "displayLabel": "FilterRadianceWithGather · LumenScreenProbeGather · frame 292 · pass 482",
+        "record": "records/pass/pass-0483.json"
+      },
+      {
+        "id": "pass-0484",
+        "name": "FilterRadianceWithGather",
+        "displayLabel": "FilterRadianceWithGather · LumenScreenProbeGather · frame 292 · pass 483",
+        "record": "records/pass/pass-0484.json"
+      },
+      {
+        "id": "pass-0485",
+        "name": "FilterRadianceWithGather",
+        "displayLabel": "FilterRadianceWithGather · LumenScreenProbeGather · frame 292 · pass 484",
+        "record": "records/pass/pass-0485.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-01305",
+      "file": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+      "layout": {
+        "Resource": "000300000228c0f74ce8",
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeDisocclusion",
+        "File": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 80,
+        "ExtentY": 84,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 6720,
+        "RowPitchBytes": 80,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 6720,
+        "StagingByteSize": 6720
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 6720,
+          "ActualBytes": 6720,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 6720,
+        "actualBytes": 6720,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-01305",
+      "file": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000300000228c0f74ce8.mip0.v000300000228c0f75580.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 6720,
+          "ActualBytes": 6720,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 6720,
+        "actualBytes": 6720,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.screen-probe-disocclusion",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.ScreenProbeDisocclusion$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "binary per-probe disocclusion flag used by the spatial denoiser to reject history",
+      "units": "0 or 1 (R8 UNORM)",
+      "coordinateSpace": "screen-probe atlas texel",
+      "storage": {
+        "kind": "texture2d",
+        "format": "PF_R8",
+        "strideBytes": 1,
+        "extent": "ScreenProbeAtlasBufferSize (captured 80x84)",
+        "mips": 1,
+        "flags": [
+          "ShaderResource",
+          "UAV"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGTextureDesc",
+            "type": "Texture2D",
+            "format": "PF_R8",
+            "extentX": 80,
+            "extentY": 84,
+            "depth": 1,
+            "arraySize": 1,
+            "numMips": 1,
+            "byteSize": 6720
+          }
+        ]
+      },
+      "actualFormat": "PF_R8",
+      "declaredFormat": "PF_R8",
+      "declaredFormatText": "PF_R8",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R8",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R8",
+      "payloadFormat": "PF_R8",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "write",
+          "expression": "SharedNumDisocclusionPixels is accumulated from per-sample bDisocclusionPixel; SharedNumElements counts accepted footprint pixels; the single texel stores the >= fraction comparison as 1.0 or 0.0",
+          "requires": [
+            "SharedNumDisocclusionPixels",
+            "SharedNumElements",
+            "SpatialFilterDisocclusionFraction"
+          ],
+          "sourceRefs": [
+            "part2.spgd.disocc.write"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "Only allocated when LumenScreenProbeGather::UseDisocclusionSpatialFilter() is true (LumenScreenProbeImportanceSampling.cpp:286-292)."
+      ],
+      "producerSources": [
+        "part2.spgi.cpp.disocc.create",
+        "part2.spgd.disocc.write"
+      ],
+      "consumerSources": [
+        "part2.spg.disocc.read"
+      ],
+      "gaps": [
+        "The shader stores the comparison result as a float 0/1 into R8; there is no fractional disocclusion confidence."
+      ],
+      "fields": [
+        {
+          "name": "ProbeDisoccluded",
+          "type": "UNORM8",
+          "decode": "value = 1 when the accumulated disocclusion-pixel count >= SharedNumElements * SpatialFilterDisocclusionFraction, else 0",
+          "units": "bool",
+          "sourceRefs": [
+            "part2.spgd.disocc.write"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 8
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "ProbeDisoccluded"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

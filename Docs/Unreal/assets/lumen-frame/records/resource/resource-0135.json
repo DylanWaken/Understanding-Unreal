@@ -1,0 +1,348 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0135",
+  "nativeRecordId": "native-017139",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.CardCaptureRects",
+  "uniqueName": "0001000002292504b800",
+  "displayLabel": "Lumen.CardCaptureRects · instance 0001 · frame 292",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": null,
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "card-atlas",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 1024,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 16,
+  "numElements": 64,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 16,
+    "numElements": 64
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.CardCaptureRects",
+    "UniqueResourceName": "0001000002292504b800",
+    "ByteSize": 1024,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 16,
+    "NumElements": 64,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "ShaderResource",
+      "VertexBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00714",
+      "role": "resource",
+      "originalPath": "Resources/0001000002292504b800.v00000000000000000000.bin",
+      "bytes": 1024,
+      "sha256": "edc505e1502839ee3d7614df89ce92b32a25d2df0d8a51f4812f59569ff8b9e6",
+      "version": "00000000000000000000",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0135",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "edc505e1502839ee3d7614df89ce92b32a25d2df0d8a51f4812f59569ff8b9e6",
+          "offset": 0,
+          "length": 1024
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "0001000002292504b800",
+        "name": "Lumen.CardCaptureRects",
+        "byteSize": 1024
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "00000000000000000000",
+      "producerPassId": null,
+      "producerPassName": null,
+      "payloadIds": [
+        "payload-00714"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [],
+    "consumers": [
+      {
+        "id": "pass-0046",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 45",
+        "record": "records/pass/pass-0046.json"
+      },
+      {
+        "id": "pass-0049",
+        "name": "ClearCardCapture",
+        "displayLabel": "ClearCardCapture · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 48",
+        "record": "records/pass/pass-0049.json"
+      },
+      {
+        "id": "pass-0087",
+        "name": "CopyToSurfaceCache Depth",
+        "displayLabel": "CopyToSurfaceCache Depth · CopyCardsToSurfaceCache · frame 292 · pass 86",
+        "record": "records/pass/pass-0087.json"
+      },
+      {
+        "id": "pass-0088",
+        "name": "CompressToSurfaceCache Albedo",
+        "displayLabel": "CompressToSurfaceCache Albedo · CopyCardsToSurfaceCache · frame 292 · pass 87",
+        "record": "records/pass/pass-0088.json"
+      },
+      {
+        "id": "pass-0089",
+        "name": "CompressToSurfaceCache Normal",
+        "displayLabel": "CompressToSurfaceCache Normal · CopyCardsToSurfaceCache · frame 292 · pass 88",
+        "record": "records/pass/pass-0089.json"
+      },
+      {
+        "id": "pass-0090",
+        "name": "CompressToSurfaceCache Emissive",
+        "displayLabel": "CompressToSurfaceCache Emissive · CopyCardsToSurfaceCache · frame 292 · pass 89",
+        "record": "records/pass/pass-0090.json"
+      },
+      {
+        "id": "pass-0091",
+        "name": "CopyCardCaptureLightingToAtlas",
+        "displayLabel": "CopyCardCaptureLightingToAtlas · CopyCardsToSurfaceCache · frame 292 · pass 90",
+        "record": "records/pass/pass-0091.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00714",
+      "file": "Resources/0001000002292504b800.v00000000000000000000.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.card-capture-rects",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.CardCaptureRects)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-captured-page rectangle in the card-capture atlas, used as the rasterizer's instance rect",
+      "units": "atlas texels",
+      "coordinateSpace": "card-capture atlas texel space (origin top-left, [MinX,MinY,MaxX,MaxY])",
+      "storage": {
+        "kind": "upload-buffer",
+        "format": "FUintVector4 / uint4 (4 x uint32, 16 B)",
+        "strideBytes": 16
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "FUintVector4 / uint4 (4 x uint32, 16 B)",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "rasterizeRect",
+          "expression": "RectCoord = RectCoordBuffer[InstanceId] * DownsampleFactor; VertexCoord = (VertexId max ? RectCoord.zw : RectCoord.xy); RectUV = RectCoord * InvViewSize.xyxy",
+          "requires": [
+            "Lumen.CardCaptureRects"
+          ],
+          "sourceRefs": [
+            "part1.cards_uv_scaled",
+            "part1.cards_uv_vertex"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "one rect per CardPagesToRender entry, in the same order as the page-index upload",
+        "capacity = RoundUpToPowerOfTwo(NumRects); valid entries = NumRects",
+        "when used for compressed surface-cache copy the rect is consumed with DownsampleFactor=4 and a separate capture-rect UV buffer"
+      ],
+      "producerSources": [
+        "part1.cards_rect_fill",
+        "part1.cards_rect_alloc"
+      ],
+      "consumerSources": [
+        "part1.cards_rect_use",
+        "part1.cards_uv_vs",
+        "part1.cards_uv_scaled"
+      ],
+      "gaps": [
+        "Rect .zw are exclusive max corners, not inclusive; a decoder must subtract Min to get the size.",
+        "The buffer has no header/count; the valid count is the pass's NumRects argument, not derivable from the buffer alone."
+      ],
+      "fields": [
+        {
+          "name": "MinX",
+          "type": "uint32",
+          "byteOffset": 0,
+          "decode": "CardCaptureAtlasRect.Min.X",
+          "units": "texels",
+          "sourceRefs": [
+            "part1.cards_rect_min",
+            "part1.cards_uv_type"
+          ]
+        },
+        {
+          "name": "MinY",
+          "type": "uint32",
+          "byteOffset": 4,
+          "decode": "CardCaptureAtlasRect.Min.Y",
+          "units": "texels",
+          "sourceRefs": [
+            "part1.cards_rect_min",
+            "part1.cards_uv_type"
+          ]
+        },
+        {
+          "name": "MaxX",
+          "type": "uint32",
+          "byteOffset": 8,
+          "decode": "CardCaptureAtlasRect.Max.X (exclusive max corner)",
+          "units": "texels",
+          "sourceRefs": [
+            "part1.cards_rect_max",
+            "part1.cards_uv_type"
+          ]
+        },
+        {
+          "name": "MaxY",
+          "type": "uint32",
+          "byteOffset": 12,
+          "decode": "CardCaptureAtlasRect.Max.Y (exclusive max corner)",
+          "units": "texels",
+          "sourceRefs": [
+            "part1.cards_rect_max",
+            "part1.cards_uv_type"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 4,
+        "sourceEquationFields": [
+          "MinX",
+          "MinY",
+          "MaxX",
+          "MaxY"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0092",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Lumen.CardCaptureRects has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0135"
+    }
+  ]
+}

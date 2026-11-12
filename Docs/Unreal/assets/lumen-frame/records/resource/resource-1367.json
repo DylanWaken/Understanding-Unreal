@@ -1,0 +1,319 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-1367",
+  "nativeRecordId": "native-018379",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Shadow.Virtual.InstanceIdsBuffer",
+  "uniqueName": "000400000225fba0e578",
+  "displayLabel": "Shadow.Virtual.InstanceIdsBuffer · instance 0004 · frame 292 · passes 846",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 846,
+    "last": 846
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": "virtual-shadow-map",
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 1344,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 336,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 336
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Shadow.Virtual.InstanceIdsBuffer",
+    "UniqueResourceName": "000400000225fba0e578",
+    "ByteSize": 1344,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 336,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-02079",
+      "role": "resource",
+      "originalPath": "Resources/000400000225fba0e578.v000400000225fba0f0e0.bin",
+      "bytes": 1344,
+      "sha256": "5ea74e9a65425e1adbe62a498cae35841b4a9e98650c7f5269d1acda51bf37c7",
+      "version": "000400000225fba0f0e0",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1367",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "5ea74e9a65425e1adbe62a498cae35841b4a9e98650c7f5269d1acda51bf37c7",
+          "offset": 0,
+          "length": 1344
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000400000225fba0e578",
+        "name": "Shadow.Virtual.InstanceIdsBuffer",
+        "byteSize": 1344
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000225fba0f0e0",
+      "producerPassId": "pass-0847",
+      "producerPassName": "OutputCommandInstanceListsCs",
+      "payloadIds": [
+        "payload-02079"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0847",
+        "name": "OutputCommandInstanceListsCs",
+        "displayLabel": "OutputCommandInstanceListsCs · CullingPasses · frame 292 · pass 846",
+        "record": "records/pass/pass-0847.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0848",
+        "name": "RasterPasses",
+        "displayLabel": "RasterPasses · Batched · frame 292 · pass 847",
+        "record": "records/pass/pass-0848.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-02079",
+      "file": "Resources/000400000225fba0e578.v000400000225fba0f0e0.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "visibility.resource.vsm-instance-ids-buffer",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Shadow\\.Virtual\\.InstanceIdsBuffer$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "one packed uint32 per visible instance slot (compacted output), capacity MaxNumInstancesPerPass",
+      "units": "bitfield: instance id (24b), culling flags (4b), view index (4b)",
+      "coordinateSpace": "per-indirect-arg compacted instance range, offset from InstanceIdOffsetBuffer",
+      "storage": {
+        "kind": "structured-buffer",
+        "format": "uint32",
+        "strideBytes": 4,
+        "formatAlternatives": [
+          "same capacity as VisibleInstances"
+        ],
+        "capture": {
+          "descriptor": "FRDGBufferDesc",
+          "strideBytes": 4,
+          "numElements": 336,
+          "byteSize": 1344
+        }
+      },
+      "actualFormat": null,
+      "declaredFormat": null,
+      "declaredFormatText": "uint32",
+      "formatProof": "explicit-element-stride",
+      "gateFormat": null,
+      "formatAlternatives": [
+        "same capacity as VisibleInstances"
+      ],
+      "dumpFormat": null,
+      "payloadFormat": null,
+      "formatMatch": null,
+      "dumpFormatMatchDeclared": null,
+      "payloadFormatMatch": null,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "pack",
+          "expression": "P = (InstanceId & 0xFFFFFF) | ((CullingFlags & 0xF) << 24) | (ViewIndex << 28)",
+          "requires": [
+            "InstanceIdsBuffer"
+          ],
+          "sourceRefs": [
+            "part3.visibility.vsm.s.packinst"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "INSTANCE_ID_NUM_BITS=24, mask=(1<<24)-1 (SceneDefinitions.h:15,26); INSTANCE_CULLING_FLAGS_NUM_BITS=4 (SceneData.ush:1272).",
+        "VSM output writes ViewIndex=0 (OutputCommandInstanceListsCs:499)."
+      ],
+      "producerSources": [
+        "part3.visibility.vsm.s.outcmd"
+      ],
+      "consumerSources": [
+        "part3.visibility.vsm.s.packinst"
+      ],
+      "gaps": [
+        "Valid range for each command is [InstanceIdOffsetBuffer[arg], +DrawIndirectArgsBuffer[arg*5+1])."
+      ],
+      "fields": [
+        {
+          "name": "InstanceId",
+          "type": "uint",
+          "bitOffset": 0,
+          "bitWidth": 24,
+          "decode": "P & 0xFFFFFF",
+          "units": "instance index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.packinst",
+            "part3.visibility.vsm.s.instbits"
+          ]
+        },
+        {
+          "name": "CullingFlags",
+          "type": "uint",
+          "bitOffset": 24,
+          "bitWidth": 4,
+          "decode": "(P>>24)&0xF",
+          "units": "bit flags",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.packinst",
+            "part3.visibility.vsm.s.instbits"
+          ]
+        },
+        {
+          "name": "ViewIndex",
+          "type": "uint",
+          "bitOffset": 28,
+          "bitWidth": 4,
+          "decode": "P>>28 (0 for VSM output pass)",
+          "units": "view index",
+          "sourceRefs": [
+            "part3.visibility.vsm.s.packinst"
+          ]
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 3,
+        "sourceEquationFields": [
+          "InstanceId",
+          "CullingFlags",
+          "ViewIndex"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-0851",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer Shadow.Virtual.InstanceIdsBuffer has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-1367"
+    }
+  ]
+}

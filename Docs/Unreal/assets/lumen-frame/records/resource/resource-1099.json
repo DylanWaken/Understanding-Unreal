@@ -1,0 +1,437 @@
+{
+  "format": "PF_R8",
+  "version": 1,
+  "id": "resource-1099",
+  "nativeRecordId": "native-018109",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ResampledCardCaptureNumFramesAccumulated",
+  "uniqueName": "000400000225e8ce4da0",
+  "displayLabel": "Lumen.ResampledCardCaptureNumFramesAccumulated · instance 0004 · frame 292 · passes 665",
+  "instancePrefix": "0004",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 665,
+    "last": 665
+  },
+  "allocation": [
+    64,
+    64
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": "card-atlas",
+    "allocation": [
+      64,
+      64
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 4096,
+  "extent": [
+    64,
+    64,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "UNORM8",
+    "bytesPerTexel": 1,
+    "formatNormalized": "R8",
+    "dumpFormat": "PF_R8",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ResampledCardCaptureNumFramesAccumulated",
+    "UniqueResourceName": "000400000225e8ce4da0",
+    "ByteSize": 4096,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_R8",
+    "ExtentX": 64,
+    "ExtentY": 64,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV",
+      "NoFastClear"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-01830",
+      "role": "resource",
+      "originalPath": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+      "bytes": 4096,
+      "sha256": "97a748077959ee3ef29d1faab287e055a4d130f7fd7240fb69a71ca565b08cf3",
+      "version": "000400000225e8ce5cf8",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-1099",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "97a748077959ee3ef29d1faab287e055a4d130f7fd7240fb69a71ca565b08cf3",
+          "offset": 0,
+          "length": 4096
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000400000225e8ce4da0",
+        "Name": "Lumen.ResampledCardCaptureNumFramesAccumulated",
+        "File": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4096,
+        "RowPitchBytes": 64,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4096,
+        "StagingByteSize": 4096
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4096,
+          "ActualBytes": 4096,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4096,
+        "actualBytes": 4096,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000400000225e8ce4da0",
+        "name": "Lumen.ResampledCardCaptureNumFramesAccumulated",
+        "diagnosticResource": "000400000225e8ce4da0"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 64,
+        "extentY": 64,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 4096,
+        "rowPitchBytes": 64,
+        "storageFormat": "PF_R8",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "UNORM8",
+        "bytesPerTexel": 1,
+        "formatNormalized": "R8",
+        "dumpFormat": "PF_R8",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R8",
+        "viewFormat": "PF_R8",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000400000225e8ce5cf8",
+      "producerPassId": "pass-0666",
+      "producerPassName": "ResampleLightingHistoryToCardCaptureAtlas",
+      "payloadIds": [
+        "payload-01830"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0666",
+        "name": "ResampleLightingHistoryToCardCaptureAtlas",
+        "displayLabel": "ResampleLightingHistoryToCardCaptureAtlas · LumenSceneUpdate: 37 card captures 0.030M texels · frame 292 · pass 665",
+        "record": "records/pass/pass-0666.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0711",
+        "name": "CopyCardCaptureLightingToAtlas",
+        "displayLabel": "CopyCardCaptureLightingToAtlas · CopyCardsToSurfaceCache · frame 292 · pass 710",
+        "record": "records/pass/pass-0711.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-01830",
+      "file": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+      "layout": {
+        "Resource": "000400000225e8ce4da0",
+        "Name": "Lumen.ResampledCardCaptureNumFramesAccumulated",
+        "File": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 64,
+        "ExtentY": 64,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 4096,
+        "RowPitchBytes": 64,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R8",
+        "ViewFormat": "PF_R8",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R8",
+        "StoredFormat": "PF_R8",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 4096,
+        "StagingByteSize": 4096
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4096,
+          "ActualBytes": 4096,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4096,
+        "actualBytes": 4096,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-01830",
+      "file": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000400000225e8ce4da0.mip0.v000400000225e8ce5cf8.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 4096,
+          "ActualBytes": 4096,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 4096,
+        "actualBytes": 4096,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "cards.resource.resampled-card-capture-numframes",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^(?:Lumen\\.ResampledCardCaptureNumFramesAccumulated)$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per card tile (8x8 texels): average number of accumulated radiosity frames, resampled from the previous surface cache",
+      "units": "frames (UNORM8 quantized)",
+      "coordinateSpace": "card-capture atlas tile grid (one texel per 8x8 tile)",
+      "storage": {
+        "kind": "texture2d",
+        "format": "PF_R8 (UNORM), one texel per 8x8 tile",
+        "strideBytes": 1
+      },
+      "actualFormat": "PF_R8",
+      "declaredFormat": "PF_R8",
+      "declaredFormatText": "PF_R8 (UNORM), one texel per 8x8 tile",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R8",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R8",
+      "payloadFormat": "PF_R8",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "average",
+          "expression": "Read source RadiosityNumFramesAccumulatedAtlas.x (= frames/255), sum 64 tile texels, divide by 64, write to R8 UNORM; hardware stores round(avg_frames), so decoded frames = code",
+          "requires": [
+            "Lumen.ResampledCardCaptureNumFramesAccumulated"
+          ],
+          "sourceRefs": [
+            "part1.cards_rca_num_avg",
+            "part1.cards_rca_num_write"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "extent = CardCaptureAtlasSize/8 (64x64 in this capture)",
+        "PF_R8 is UNORM: stored 0..1 maps to code 0..255; the source deliberately stores frames/255 (LumenRadiosity.usf:501-506), so this texture's code is the average frame count",
+        "the average mixes valid and invalid texels; the source does not weight by validity for this average"
+      ],
+      "producerSources": [
+        "part1.cards_rca_alloc",
+        "part1.cards_rca_num_avg",
+        "part1.cards_rca_num_write"
+      ],
+      "consumerSources": [
+        "part1.cards_rca_cons_num"
+      ],
+      "gaps": [
+        "The source per-texel frame count can be >1 and is averaged; the R8 code is the rounded average, so quantization is 1 frame (code), not 1/255 frame."
+      ],
+      "fields": [
+        {
+          "name": "NumFramesAccumulated",
+          "type": "unorm8",
+          "byteOffset": 0,
+          "decode": "stored = average(source .x) where source .x = frames/255; because R8 is UNORM, decode frames = code = stored*255 (1-frame quantization), not stored/255",
+          "units": "frames",
+          "sourceRefs": [
+            "part1.cards_rca_num_avg",
+            "part1.cards_rca_num_write",
+            "part1.cards_rca_num_fmt",
+            "part1.cards_numframes_src_read",
+            "part1.cards_numframes_src_store"
+          ],
+          "bitOffset": 0,
+          "bitWidth": 8
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "NumFramesAccumulated"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

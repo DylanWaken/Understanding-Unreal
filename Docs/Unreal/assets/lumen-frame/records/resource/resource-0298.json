@@ -1,0 +1,461 @@
+{
+  "format": "PF_R16F",
+  "version": 1,
+  "id": "resource-0298",
+  "nativeRecordId": "native-017304",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "Lumen.ScreenProbeGather.LightingProbabilityDensityFunction",
+  "uniqueName": "000100000228ba9ecd00",
+  "displayLabel": "Lumen.ScreenProbeGather.LightingProbabilityDensityFunction · instance 0001 · frame 292 · passes 160",
+  "instancePrefix": "0001",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 160,
+    "last": 160
+  },
+  "allocation": [
+    640,
+    672
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "texture2d",
+    "classification": "probe-grid",
+    "allocation": [
+      640,
+      672
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "texture",
+  "bytes": 860160,
+  "extent": [
+    640,
+    672,
+    1
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": null,
+  "numElements": null,
+  "metadataPointer": null,
+  "decode": {
+    "supported": true,
+    "layout": "FLOAT16",
+    "bytesPerTexel": 2,
+    "formatNormalized": "R16F",
+    "dumpFormat": "PF_R16F",
+    "convertedByDumpGpu": false
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "Lumen.ScreenProbeGather.LightingProbabilityDensityFunction",
+    "UniqueResourceName": "000100000228ba9ecd00",
+    "ByteSize": 860160,
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_R16F",
+    "ExtentX": 640,
+    "ExtentY": 672,
+    "Depth": 1,
+    "ArraySize": 1,
+    "NumMips": 1,
+    "NumSamples": 1,
+    "Flags": [
+      "ShaderResource",
+      "UAV"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00211",
+      "role": "resource",
+      "originalPath": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+      "bytes": 860160,
+      "sha256": "122cae492c96e9afe2d5c73ad572d7c54e219d76e34c520e73f687436e51ef2f",
+      "version": "000100000228ba9edc30",
+      "mip": 0,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0298",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "122cae492c96e9afe2d5c73ad572d7c54e219d76e34c520e73f687436e51ef2f",
+          "offset": 0,
+          "length": 860160
+        }
+      ],
+      "nativeKind": "Texture2D",
+      "classification": "texture-readback-subresource",
+      "layout": {
+        "Resource": "000100000228ba9ecd00",
+        "Name": "Lumen.ScreenProbeGather.LightingProbabilityDensityFunction",
+        "File": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 860160,
+        "RowPitchBytes": 1280,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16F",
+        "ViewFormat": "PF_R16F",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16F",
+        "StoredFormat": "PF_R16F",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 860160,
+        "StagingByteSize": 860160
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 860160,
+          "ActualBytes": 860160,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 860160,
+        "actualBytes": 860160,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      },
+      "identity": {
+        "source": "Base/SubresourceLayouts.json",
+        "kind": "rdg-texture",
+        "pointer": "000100000228ba9ecd00",
+        "name": "Lumen.ScreenProbeGather.LightingProbabilityDensityFunction",
+        "diagnosticResource": "000100000228ba9ecd00"
+      },
+      "diagnosticResource": null,
+      "subresource": {
+        "dimension": "Texture2D",
+        "mipLevel": 0,
+        "firstArraySlice": 0,
+        "numArraySlices": 0,
+        "cubeFace": null,
+        "extentX": 640,
+        "extentY": 672,
+        "depth": 1,
+        "zSliceCount": 1,
+        "zSliceStrideBytes": 860160,
+        "rowPitchBytes": 1280,
+        "storageFormat": "PF_R16F",
+        "stencil": false
+      },
+      "decode": {
+        "supported": true,
+        "layout": "FLOAT16",
+        "bytesPerTexel": 2,
+        "formatNormalized": "R16F",
+        "dumpFormat": "PF_R16F",
+        "convertedByDumpGpu": false,
+        "source": "SubresourceLayouts.json StoredFormat",
+        "nativeFormat": "PF_R16F",
+        "viewFormat": "PF_R16F",
+        "storedBytesAreNativeStorage": true,
+        "nativeFormatExpanded": false,
+        "nativeValueInterpretation": "DecodedFloat",
+        "bitExact": false,
+        "valuePreserving": true,
+        "bitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "srgbViewUsedForReadback": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "000100000228ba9edc30",
+      "producerPassId": "pass-0161",
+      "producerPassName": "ComputeLightingPDF",
+      "payloadIds": [
+        "payload-00211"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0161",
+        "name": "ComputeLightingPDF",
+        "displayLabel": "ComputeLightingPDF · LumenScreenProbeGather · frame 292 · pass 160",
+        "record": "records/pass/pass-0161.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0162",
+        "name": "GenerateRays 8x8",
+        "displayLabel": "GenerateRays 8x8 · LumenScreenProbeGather · frame 292 · pass 161",
+        "record": "records/pass/pass-0162.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [
+    {
+      "payloadId": "payload-00211",
+      "file": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+      "layout": {
+        "Resource": "000100000228ba9ecd00",
+        "Name": "Lumen.ScreenProbeGather.LightingProbabilityDensityFunction",
+        "File": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 860160,
+        "RowPitchBytes": 1280,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16F",
+        "ViewFormat": "PF_R16F",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16F",
+        "StoredFormat": "PF_R16F",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 860160,
+        "StagingByteSize": 860160
+      },
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 860160,
+          "ActualBytes": 860160,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 860160,
+        "actualBytes": 860160,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "completion": [
+    {
+      "payloadId": "payload-00211",
+      "file": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+      "completion": {
+        "scheduledStatus": "ScheduledForReadback",
+        "statusRecord": {
+          "File": "Resources/000100000228ba9ecd00.mip0.v000100000228ba9edc30.bin",
+          "Kind": "Texture",
+          "ExpectedBytes": 860160,
+          "ActualBytes": 860160,
+          "FileExists": true,
+          "FileSizeMatches": true,
+          "Status": "Dumped",
+          "Timing": "GPUReadbackCompleted"
+        },
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": true,
+        "dumped": true,
+        "timing": "GPUReadbackCompleted",
+        "expectedBytes": 860160,
+        "actualBytes": 860160,
+        "fileExists": true,
+        "fileSizeMatches": true,
+        "kind": "Texture",
+        "reason": null
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [
+    {
+      "schemaId": "probes.spg.lighting-probability-density-function",
+      "method": "explicit-selector",
+      "selectors": [
+        {
+          "resourceNameRegex": "^Lumen\\.ScreenProbeGather\\.LightingProbabilityDensityFunction$",
+          "passNameRegex": null
+        }
+      ],
+      "quantity": "per-probe discrete probability density of incoming lighting over the tracing octahedron texels (used to importance-sample lighting)",
+      "units": "normalized probability per texel (sum over one probe's texels ~= 1); stored as R16F",
+      "coordinateSpace": "per-probe ScreenProbeTracingOctahedronResolution x ScreenProbeTracingOctahedronResolution equi-area octahedral/equi-area grid",
+      "storage": {
+        "kind": "texture2d",
+        "format": "PF_R16F",
+        "strideBytes": 2,
+        "extent": "ScreenProbeAtlasBufferSize * ScreenProbeTracingOctahedronResolution (captured 640x672 = 80x84*8)",
+        "mips": 1,
+        "flags": [
+          "ShaderResource",
+          "UAV"
+        ],
+        "captureObserved": [
+          {
+            "descriptor": "FRDGTextureDesc",
+            "type": "Texture2D",
+            "format": "PF_R16F",
+            "extentX": 640,
+            "extentY": 672,
+            "depth": 1,
+            "arraySize": 1,
+            "numMips": 1,
+            "byteSize": 860160
+          }
+        ]
+      },
+      "actualFormat": "PF_R16F",
+      "declaredFormat": "PF_R16F",
+      "declaredFormatText": "PF_R16F",
+      "formatProof": "explicit-pf",
+      "gateFormat": "PF_R16F",
+      "formatAlternatives": [],
+      "dumpFormat": "PF_R16F",
+      "payloadFormat": "PF_R16F",
+      "formatMatch": true,
+      "dumpFormatMatchDeclared": true,
+      "payloadFormatMatch": true,
+      "activeFormatVariant": null,
+      "formatVariantFields": [],
+      "formatGatedFields": [],
+      "primaryFieldsExtractable": true,
+      "extractionEligible": true,
+      "extractionEligibleReason": null,
+      "decodingStatus": "complete",
+      "transforms": [
+        {
+          "name": "normalize",
+          "expression": "PDF_texel = rawPDF_texel / max(sum(rawPDF over probe texels), 0.0001)",
+          "requires": [
+            "rawPDF"
+          ],
+          "sourceRefs": [
+            "part2.spgi.lightpdf.write",
+            "part2.spgi.lightpdf.norm"
+          ]
+        },
+        {
+          "name": "mipScale",
+          "expression": "LightingPDFScale = LightingPDF * (MipSize*MipSize)",
+          "requires": [
+            "LightingPDF",
+            "MipSize"
+          ],
+          "sourceRefs": [
+            "part2.spgi.lightpdf.use"
+          ]
+        }
+      ],
+      "mathTerms": [
+        "The stored value is a probability (not radiance); the radiance itself remains in ScreenProbeRadiance and is sampled by the generated rays.",
+        "Only created when r.Lumen.ScreenProbeGather.ImportanceSampleIncomingLighting is enabled (LumenScreenProbeImportanceSampling.cpp:361)."
+      ],
+      "producerSources": [
+        "part2.spgi.cpp.lightpdf.create",
+        "part2.spgi.lightpdf.write"
+      ],
+      "consumerSources": [
+        "part2.spgi.lightpdf.use"
+      ],
+      "gaps": [
+        "Texture extent depends on the tracing octahedron resolution, which is a runtime CVar; the captured 640x672 confirms resolution 8 for the atlas buffer 80x84 in this frame."
+      ],
+      "fields": [
+        {
+          "name": "PDF",
+          "type": "float16",
+          "decode": "value = PDF / max(PDFSum,0.0001) where PDFSum is the per-probe reduction of the raw radiance PDF; consumers multiply by MipSize^2 when sampling a mip",
+          "units": "probability per texel",
+          "sourceRefs": [
+            "part2.spgi.lightpdf.write",
+            "part2.spgi.lightpdf.norm",
+            "part2.spgi.lightpdf.use"
+          ],
+          "byteOffset": 0,
+          "bitWidth": 16
+        }
+      ],
+      "fieldSupport": {
+        "fieldCount": 1,
+        "sourceEquationFields": [
+          "PDF"
+        ],
+        "unsafeExpressionFields": [],
+        "unsupportedTypeFields": [],
+        "missingOffsetFields": []
+      }
+    }
+  ],
+  "gaps": []
+}

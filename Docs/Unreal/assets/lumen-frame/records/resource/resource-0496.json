@@ -1,0 +1,207 @@
+{
+  "format": null,
+  "version": 1,
+  "id": "resource-0496",
+  "nativeRecordId": "native-017503",
+  "nativePath": "Base/ResourceDescs.json",
+  "name": "SceneCulling.Items",
+  "uniqueName": "000300000225ef677530",
+  "displayLabel": "SceneCulling.Items · instance 0003 · frame 292 · passes 324",
+  "instancePrefix": "0003",
+  "sceneInvocation": null,
+  "frameNumber": 292,
+  "passInterval": {
+    "first": 324,
+    "last": 324
+  },
+  "allocation": [
+    1,
+    1,
+    1
+  ],
+  "viewState": null,
+  "viewport": {
+    "applicability": "no-view-context",
+    "screenPadding": false,
+    "cropAllowed": false,
+    "domain": "non-texture",
+    "classification": null,
+    "allocation": [
+      1,
+      1
+    ],
+    "activeMip": null,
+    "mipExtent": null,
+    "boundsMatch": null,
+    "passViewRect": null,
+    "passId": null,
+    "passName": null,
+    "passPointer": null,
+    "passIsCameraPass": false,
+    "sameViewPayload": null,
+    "storedFormat": null,
+    "basis": "No pass-associated View.View rect.",
+    "reason": "No captured View.View rect is associated with this resource's pass interval; screen padding is not inferred and the viewport crop is disabled.",
+    "source": "camera-pass output binding plus active-mip SubresourceLayouts; maximum allocation area is never used to identify a camera"
+  },
+  "padding": null,
+  "kind": "buffer",
+  "bytes": 4096,
+  "extent": [
+    null,
+    null,
+    null
+  ],
+  "arraySize": 1,
+  "numMips": 1,
+  "numSamples": 1,
+  "bytesPerElement": 4,
+  "numElements": 1024,
+  "metadataPointer": "00000000000000000000",
+  "decode": {
+    "supported": false,
+    "layout": "buffer-element",
+    "reason": "Buffers have no pixel format. Typed values require a captured structure metadata pointer or a source schema field with an explicit offset basis.",
+    "bytesPerElement": 4,
+    "numElements": 1024
+  },
+  "bufferMetadata": null,
+  "native": {
+    "Name": "SceneCulling.Items",
+    "UniqueResourceName": "000300000225ef677530",
+    "ByteSize": 4096,
+    "Desc": "FRDGBufferDesc",
+    "BytesPerElement": 4,
+    "NumElements": 1024,
+    "Metadata": "00000000000000000000",
+    "Usage": [
+      "Static",
+      "UnorderedAccess",
+      "ShaderResource",
+      "StructuredBuffer"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "payload-00954",
+      "role": "resource",
+      "originalPath": "Resources/000300000225ef677530.v000300000225ef677a80.bin",
+      "bytes": 4096,
+      "sha256": "df434cdfe83d4b0feb44df482d841226425686e16203d9f4defde989ed5f41b7",
+      "version": "000300000225ef677a80",
+      "mip": null,
+      "slice": null,
+      "face": null,
+      "stencil": false,
+      "resourceId": "resource-0496",
+      "passId": null,
+      "chunks": [
+        {
+          "sha": "df434cdfe83d4b0feb44df482d841226425686e16203d9f4defde989ed5f41b7",
+          "offset": 0,
+          "length": 4096
+        }
+      ],
+      "nativeKind": "rdg-buffer",
+      "classification": "rdg-buffer-version",
+      "layout": null,
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      },
+      "identity": {
+        "source": "Base/ResourceDescs.json",
+        "kind": "rdg-buffer",
+        "pointer": "000300000225ef677530",
+        "name": "SceneCulling.Items",
+        "byteSize": 4096
+      },
+      "diagnosticResource": null,
+      "subresource": null,
+      "decode": null
+    }
+  ],
+  "versions": [
+    {
+      "version": "000300000225ef677a80",
+      "producerPassId": "pass-0325",
+      "producerPassName": "ScatterUpload (Resource: SceneCulling.Items)",
+      "payloadIds": [
+        "payload-00954"
+      ],
+      "previousVersion": null,
+      "nextVersion": null
+    }
+  ],
+  "bindings": {
+    "producers": [
+      {
+        "id": "pass-0325",
+        "name": "ScatterUpload (Resource: SceneCulling.Items)",
+        "displayLabel": "ScatterUpload (Resource: SceneCulling.Items) · frame 292 · pass 324",
+        "record": "records/pass/pass-0325.json"
+      }
+    ],
+    "consumers": [
+      {
+        "id": "pass-0329",
+        "name": "NaniteSkinningUpdateViewData",
+        "displayLabel": "NaniteSkinningUpdateViewData · frame 292 · pass 328",
+        "record": "records/pass/pass-0329.json"
+      }
+    ]
+  },
+  "subresourceLayouts": [],
+  "completion": [
+    {
+      "payloadId": "payload-00954",
+      "file": "Resources/000300000225ef677530.v000300000225ef677a80.bin",
+      "completion": {
+        "scheduledStatus": null,
+        "statusRecord": null,
+        "statusSource": "Base/DumpReadbackStatus.json",
+        "observed": false,
+        "dumped": null,
+        "timing": null,
+        "expectedBytes": null,
+        "actualBytes": null,
+        "fileExists": true,
+        "fileSizeMatches": null,
+        "kind": "RDGBufferVersion",
+        "reason": "No DumpReadbackStatus record lists this RDG buffer version file. Its bytes are present and hashed, but completion and owner-time value identity are unobserved."
+      }
+    }
+  ],
+  "nativeUniformBindings": [],
+  "schemaMatches": [],
+  "gaps": [
+    {
+      "id": "gap-0308",
+      "kind": "buffer-metadata-missing",
+      "severity": "info",
+      "scope": "decoding",
+      "message": "Buffer SceneCulling.Items has no captured structure metadata; typed buffer fields require a source schema or remain raw.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0496"
+    },
+    {
+      "id": "gap-1986",
+      "kind": "resource-schema-unmatched",
+      "severity": "info",
+      "scope": "schema",
+      "message": "No source resource schema selector matched SceneCulling.Items (000300000225ef677530). Raw metadata remains authoritative.",
+      "source": "Base/ResourceDescs.json",
+      "resourceId": "resource-0496"
+    }
+  ]
+}
