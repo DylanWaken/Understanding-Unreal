@@ -1,0 +1,128 @@
+[
+  {
+    "id": "ll-card",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneData.h",
+    "line": 307,
+    "end_line": 350,
+    "claim": "FLumenCard stores local/world capture placement, allocated levels, mip mappings, and ownership indices.",
+    "sha256": "d3bdefa79227d0128c32561f62c3a7d8b41766fa1b5415c9f4b324af820ad5f1",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-frame-temporaries",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneData.h",
+    "line": 996,
+    "end_line": 1024,
+    "claim": "Frame temporaries expose captured material/depth atlases, separate lighting atlases, temporal statistics, and addressing resources.",
+    "sha256": "48eb8ed587971ca8e53c507cb1af239699b678b8c2870d509fbc3e7cd644bc46",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-capture-targets",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneCardCapture.cpp",
+    "line": 537,
+    "end_line": 582,
+    "claim": "Card capture allocates material targets and a depth-stencil atlas.",
+    "sha256": "50c37a8489a320137cfb4e32c162daffc8516212d281c1927c354138d3d7dc99",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-radiosity",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenRadiosity.cpp",
+    "line": 20,
+    "end_line": 48,
+    "claim": "Radiosity is a Surface Cache indirect gather providing multibounce diffuse; sampling and spatial filtering have explicit quality tradeoffs.",
+    "sha256": "65e26bd046af48ba9f18c8129d68a91f12259d9b8b46593558896f7d8e8d3d5c",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-radiance-update",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenRadianceCache.h",
+    "line": 107,
+    "end_line": 122,
+    "claim": "Radiance cache update places or reuses marked probes, traces a subset, and provides interpolation resources.",
+    "sha256": "42c56fbbe7f4feecc42ebf1e3c4351db39027e5cffa2b6b2b316aeb04485900b",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-radiance-parameters",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenRadianceCacheInterpolation.h",
+    "line": 44,
+    "end_line": 69,
+    "claim": "Radiance-cache interpolation carries indirection, radiance/irradiance, validity, occlusion/depth, clipmap transforms, and pre-exposure.",
+    "sha256": "7e5a4cad777222ef959b5fcd05848a46199aa1524792f18af1ec699185aad58c",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-screen-parameters",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.h",
+    "line": 30,
+    "end_line": 120,
+    "claim": "Screen-probe declarations distinguish irradiance formats, tracing/gathering dimensions, reconstruction policy, and structured importance samples.",
+    "sha256": "600f8b16f76768a08b2a193e0039aded645081d8d627c239faf7d2a640a95be5",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-screen-trace",
+    "path": "Engine/Shaders/Private/Lumen/LumenScreenProbeTracing.usf",
+    "line": 54,
+    "end_line": 79,
+    "claim": "The shader provides a distinct screen-texture trace entry point for probe rays.",
+    "sha256": "2b38f8439d38b6e17069f8f398b316935ee40111ee600a4a32bc7887a2291add",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-compact",
+    "path": "Engine/Shaders/Private/Lumen/LumenScreenProbeTracing.usf",
+    "line": 421,
+    "end_line": 439,
+    "claim": "Trace compaction tests unresolved trace state and radiance-cache completion.",
+    "sha256": "bc8cf7eefda58c0f4ca2ee9fcae6b2e81d961fc825b415b7637890cdb35af886",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-mesh-sdf",
+    "path": "Engine/Shaders/Private/Lumen/LumenScreenProbeTracing.usf",
+    "line": 549,
+    "end_line": 565,
+    "claim": "Mesh distance field tracing has a separate screen-probe implementation path.",
+    "sha256": "cbe006d83ec838b36608c836f9b1904e8d3ccdfc5eb1e718a85fa929a133411a",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-voxel-trace",
+    "path": "Engine/Shaders/Private/Lumen/LumenScreenProbeTracing.usf",
+    "line": 754,
+    "end_line": 785,
+    "claim": "Valid radiance-cache coverage limits trace distance before cone tracing scene voxels.",
+    "sha256": "7cfe8b79100f804a3a3bd8dd34b4bae24362ba5740d22eaf8cccc1da1095d6d7",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-lighting-pdf",
+    "path": "Engine/Shaders/Private/Lumen/LumenScreenProbeImportanceSampling.usf",
+    "line": 139,
+    "end_line": 190,
+    "claim": "Lighting luminance is reduced and normalized into a directional sampling PDF.",
+    "sha256": "a546aa5248c708c1abb0afa2a254721621fb878981209d8bc28726a75d46f929",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-reflection-vndf",
+    "path": "Engine/Shaders/Private/Lumen/LumenReflections.usf",
+    "line": 370,
+    "end_line": 394,
+    "claim": "The inspected reflection path uses material roughness, optional anisotropy, visible-GGX half-vector sampling, and reflected ray direction.",
+    "sha256": "8ce12b86c32d4d8b7d951c04388eb632898d633ae94a343ed8c453b575c92ede",
+    "repository": "unreal"
+  },
+  {
+    "id": "ll-temporal",
+    "path": "Engine/Shaders/Private/Lumen/LumenScreenProbeFiltering.usf",
+    "line": 190,
+    "end_line": 253,
+    "claim": "Temporal probe filtering has prior depth, radiance, world position, history projection, and bounds checks.",
+    "sha256": "0d7a821db02cfb6e26991724c43cf4e04978066e5eb82b8b4610d4e0b4e39525",
+    "repository": "unreal"
+  }
+]

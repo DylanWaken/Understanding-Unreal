@@ -1,0 +1,18 @@
+.equation-block { margin: 1.8rem 0; }
+.equation-scroll { max-width: 100%; overflow-x: auto; padding: .4rem .2rem; }
+.equation-scroll .katex-display { margin: .5rem 0; text-align: left; }
+.equation-scroll .katex-display > .katex { text-align: left; }
+.inline-math .katex { font-size: 1.05em; }
+.equation-source { margin-top: .3rem; font: .72rem/1.6 system-ui, sans-serif; color: var(--muted); }
+.equation-source summary { width: fit-content; }
+.equation-source pre { font-size: .77rem; color: var(--ink); margin: .7rem 0; }
+.reference-table { margin: 2rem 0; border-block: 1px solid var(--rule); }
+.reference-table > summary { font: 600 .88rem/1.65 system-ui, sans-serif; padding: .85rem .3rem; }
+.reference-table > summary::marker { color: var(--accent); }
+.reference-table .table-wrap { margin: 0 0 1rem; }
+.reference-table table { min-width: 40rem; }
+.experiment-note { border-left: 2px solid var(--accent); padding-left: 1rem; color: var(--muted); font-size: .9em; }
+.lab-controls { font: .82rem/1.6 system-ui, sans-serif; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.lab-controls button { background: var(--wash); color: var(--ink); border: 1px solid var(--rule); padding: .45rem .8rem; border-radius: 3px; font: inherit; }
+.lab-controls button[aria-pressed="true"] { border-color: var(--accent); }
+@media print { .equation-source { display: none; } .reference-table table { min-width: 0; } }

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Understanding Unreal: independent, source-backed essays on Unreal Engine rendering, virtual geometry, global illumination and material compilation.">
+  <title>Understanding Unreal</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/glossary-data.js" defer></script>
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-brand" href="index.html">Understanding Unreal</a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-navigation" aria-expanded="false">Menu</button>
+      <nav class="site-nav" id="site-navigation" data-site-nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="Unreal/scene-representation.html">Scene representation</a></li>
+          <li><a href="Unreal/nanite.html">Nanite</a></li>
+          <li><a href="Unreal/lumen.html">Lumen</a></li>
+          <li><a href="Unreal/material-compiler.html">Materials</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle>Dark theme</button>
+    </div>
+  </header>
+
+  <main class="site-main" id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Unreal Engine rendering, explained from first principles</p>
+      <h1 id="hero-title">Understand what Unreal actually does.</h1>
+      <p class="lede">Four independent, long-form studies follow real data through Unreal Engine 5.8.1: scene representation, virtual geometry, indirect lighting and material compilation. Each essay combines source-guided explanation, reproducible measurements, original diagrams and unedited engine captures.</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="Unreal/scene-representation.html">Start with the room</a>
+        <a class="button" href="glossary.html">Browse the glossary</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="essays-heading">
+      <h2 id="essays-heading">The essays</h2>
+      <p class="section-intro">Every article stands on its own. Read them in order for one connected picture of the renderer, or follow a single subject from its first principle to its engine implementation.</p>
+      <div class="card-grid">
+        <article class="card card--featured">
+          <p class="eyebrow">Scene representation</p>
+          <h3><a href="Unreal/scene-representation.html">Scene Representation in Unreal Engine</a></h3>
+          <p>Follow one indoor room from shared geometry and placed components through render proxies, GPU Scene records, animation, visible surfaces and lighting representations. Instanced plants, a skeletal mannequin and a hinged door extend the same room into the geometry families a renderer must support.</p>
+        </article>
+        <article class="card card--featured">
+          <p class="eyebrow">Virtual geometry</p>
+          <h3><a href="Unreal/nanite.html">Nanite: From a Scanned Bunny to Visible Pixels</a></h3>
+          <p>Build a measured cluster hierarchy from the Stanford bunny, select compatible detail, stream pages, test occlusion and rasterize visibility. A computed reference experiment is compared with actual Unreal Nanite builds and captures.</p>
+        </article>
+        <article class="card card--featured">
+          <p class="eyebrow">Global illumination</p>
+          <h3><a href="Unreal/lumen.html">Lumen: Following Light Through a Room</a></h3>
+          <p>Develop surface caches, distance-field tracing, probes, diffuse GI, reflections and temporal reuse for one indoor scene. Computed intermediate states and step-by-step derivations sit beside real Lumen captures.</p>
+        </article>
+        <article class="card card--featured">
+          <p class="eyebrow">Material compilation</p>
+          <h3><a href="Unreal/material-compiler.html">How Unreal Compiles a Material Graph</a></h3>
+          <p>Trace an expression graph from the Material Editor through analysis, HLSL translation, shader generation, permutation management, caching and the GPU programs that shade a surface.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="reproducibility-heading">
+      <h2 id="reproducibility-heading">Source, evidence and reproduction</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Source-guided</h3>
+          <p>Claims about Unreal behaviour are anchored to inspected engine ranges at commit <code>71fe36aac5a8</code>. Historical presentations and screenshots are identified in their captions, and engine source links require access to Epic's Unreal Engine repository.</p>
+        </article>
+        <article class="card">
+          <h3>Reproducible laboratories</h3>
+          <p>The Nanite, Lumen and Unreal scene laboratories publish their authored generators, scene descriptions, evidence records and frozen output hashes. <code>validate_labs.py</code> checks the frozen evidence without a GPU or scientific Python stack.</p>
+        </article>
+        <article class="card">
+          <h3>Offline mathematics</h3>
+          <p>Equations are pre-rendered to static HTML and MathML using a vendored KaTeX toolchain and locally served fonts. Reading requires no content delivery network; the checked-in cache makes the build deterministic.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="reading-heading">
+      <h2 id="reading-heading">Using this site</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Read the argument</h3>
+          <p>Each essay opens with a problem statement and builds its representation, algorithm and cost model in numbered chapters. Chapter navigation, reading position and a dark appearance are progressive enhancements.</p>
+        </article>
+        <article class="card">
+          <h3>Check the evidence</h3>
+          <p>Figures link to full-size originals, tables preserve recorded measurements, and source lists identify the inspected implementation ranges. The migration record documents exactly what was copied and what was excluded.</p>
+        </article>
+        <article class="card">
+          <h3>Resolve terminology</h3>
+          <p>The <a href="glossary.html">graphics glossary</a> gives every linked term a stable address. Without JavaScript the links still work; with it, focus or hover also reveals a concise definition.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Understanding Unreal · independent Unreal Engine rendering studies</p>
+      <p><a href="glossary.html">Glossary</a> · <a href="https://github.com/DylanWaken/Understanding-Unreal">Source and build notes</a> · <a href="https://dylanwaken.github.io/Ardashir/">Companion Ardashir project</a></p>
+    </div>
+  </footer>
+</body>
+</html>

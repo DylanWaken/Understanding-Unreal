@@ -1,0 +1,72 @@
+name: Deploy Understanding Unreal to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Docs/**"
+      - "Scripts/Docs/unreal_articles/**"
+      - ".github/workflows/pages.yml"
+      - "README.md"
+      - "MIGRATION.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate and package the standalone site
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: read
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Check generated essays
+        run: python3 Scripts/Docs/unreal_articles/build.py --check
+
+      - name: Check the offline equation cache
+        run: python3 Scripts/Docs/unreal_articles/math_typesetting.py --check --node node
+
+      - name: Validate reproducible laboratory evidence
+        run: python3 Scripts/Docs/unreal_articles/validate_labs.py
+
+      - name: Validate essays, links and figures
+        run: python3 Scripts/Docs/unreal_articles/validate.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: Docs
+          include-hidden-files: true
+
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

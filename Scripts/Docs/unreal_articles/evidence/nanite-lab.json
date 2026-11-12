@@ -1,0 +1,152 @@
+[
+  {
+    "id": "lab-cluster-capacity",
+    "path": "Engine/Shaders/Shared/NaniteDefinitions.h",
+    "line": 21,
+    "end_line": 28,
+    "claim": "The inspected triangle path caps a cluster at 128 triangles and 256 vertices.",
+    "sha256": "71b7953f88bbac5c0f5c7ca44d1556576daf99cf53e6a37d4bae2c3bd287c16d",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-builder-cluster",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/Cluster.h",
+    "line": 272,
+    "end_line": 327,
+    "claim": "Builder FCluster stores geometry, external edges, bounds/errors, group relationships, and encoding work.",
+    "sha256": "88d6cf7125fb4826de07917fc3ddaa6a69c4127d2408b404006fd422f4793d4c",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-builder-group",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/ClusterDAG.h",
+    "line": 33,
+    "end_line": 47,
+    "claim": "FClusterGroup carries children, bounds, parent error, page-range association and mesh/assembly state.",
+    "sha256": "acba0168a321b5af63eaa3a1759d6f86a969e8287b16047eb4430d0f383d4130",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-reduce-group",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/ClusterDAG.cpp",
+    "line": 1375,
+    "end_line": 1602,
+    "claim": "ReduceGroup merges children, simplifies, repartitions parents and propagates shared parent error.",
+    "sha256": "99f23156318a634570f3e7a2d0008eed31a50836e8fdae562409aab33c9adb02",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-simplifier-settings",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/Cluster.cpp",
+    "line": 965,
+    "end_line": 1052,
+    "claim": "The builder supplies attribute weights, locks external edge positions, and configures the mesh simplifier.",
+    "sha256": "adcff35a55e21c352ad101b1da809462a4bb62480b66390f341fcda78a0aa2f9",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-packed-cluster",
+    "path": "Engine/Source/Runtime/Engine/Public/Rendering/NaniteResources.h",
+    "line": 105,
+    "end_line": 144,
+    "claim": "FPackedCluster groups geometry decoding, culling and material-access metadata into the GPU record.",
+    "sha256": "ef2759c39707cdd96f6a9b4e60e1c44ed5b109b9cbe440bf38e900ad560db457",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-selection-shader",
+    "path": "Engine/Shaders/Private/Nanite/NaniteClusterCulling.usf",
+    "line": 256,
+    "end_line": 312,
+    "claim": "Hierarchy traversal and cluster draw eligibility use projected edge scales, stored errors and view/instance scale conventions.",
+    "sha256": "8953fd938724cc3d64d9b304477b98489a3cc2ebb42871010142fb89855964b0",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-hierarchy-slice",
+    "path": "Engine/Shaders/Private/Nanite/NaniteDataDecode.ush",
+    "line": 171,
+    "end_line": 188,
+    "claim": "FHierarchyNodeSlice exposes bounds, error interval, child/page references, loaded/enabled flags and deformation metadata.",
+    "sha256": "002a81b65b7c4dd82732f368c629c4367042725c10f040c4df26bc4d6d4a0e86",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-streaming-state",
+    "path": "Engine/Source/Runtime/Engine/Public/Rendering/NaniteResources.h",
+    "line": 248,
+    "end_line": 258,
+    "claim": "FPageStreamingState records storage sizes and offsets, dependencies, hierarchy depth and flags.",
+    "sha256": "31862e433b1bfc5ba07a67a5cfd64e7f8479b574dc74ba55418bda2782c52eea",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-instance-postpass",
+    "path": "Engine/Shaders/Private/Nanite/NaniteInstanceCulling.usf",
+    "line": 353,
+    "end_line": 421,
+    "claim": "The instance-culling shader distinguishes previous-frame/main-pass occlusion from post-pass recovery.",
+    "sha256": "f58afb21c43d01361eb2951da70a4bdd1912635c92b91e3b29327a5b593ac6b5",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-visible-cluster",
+    "path": "Engine/Shaders/Private/Nanite/NaniteDataDecode.ush",
+    "line": 48,
+    "end_line": 60,
+    "claim": "FVisibleCluster identifies the view, instance, page and cluster, with raster flags, assembly and virtual-shadow metadata.",
+    "sha256": "80ba6ce173207ca8a5eac1ff1abffea1a8c1b449f6e19d23198fa934d3f2b406",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-pixel-write",
+    "path": "Engine/Shaders/Private/Nanite/NaniteWritePixel.ush",
+    "line": 19,
+    "end_line": 92,
+    "claim": "The supported 64-bit visibility path packs identity/depth and performs an atomic maximum.",
+    "sha256": "796a9e580452663c02e336ea75554b855e6f7a409f1f7fccda81de57efff4310",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-barycentrics",
+    "path": "Engine/Shaders/Private/Barycentrics.ush",
+    "line": 60,
+    "end_line": 101,
+    "claim": "Triangle reconstruction computes perspective-correct barycentric values and quotient-rule derivatives.",
+    "sha256": "e1752559d147e018fe7bb25e1c3bbbb8e61cf03fa7de174bb6b144923aa54073",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-tessellation-factors",
+    "path": "Engine/Shaders/Private/Nanite/NaniteTessellation.ush",
+    "line": 61,
+    "end_line": 143,
+    "claim": "Tessellation factors use view-space edge lengths/depth, LOD scale and dicing controls before pattern initialization.",
+    "sha256": "e423045f8ebfb3476d5220b63670ed2815f24351e2abb6cc05cd1ec7ee62a0b0",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  {
+    "id": "lab-tessellated-patch",
+    "path": "Engine/Shaders/Private/Nanite/NaniteTessellation.ush",
+    "line": 135,
+    "end_line": 211,
+    "claim": "FTessellatedPatch stores a table offset and packed pattern/output counts and decodes barycentric vertices/connectivity.",
+    "sha256": "80460e1296f0132971c818c150c7e8a66de97c1b94fc8ed1cc9e45baada7f00e",
+    "repository": "unreal",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  }
+]

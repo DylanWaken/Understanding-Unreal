@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img" aria-labelledby="title desc"><title id="title">Asynchronous geometry residency</title><desc id="desc">The current frame draws resident geometry while it sends a request for finer pages. Reads and installation happen later, then a later frame selects the new detail.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#2c7568"/></marker></defs><rect width="960" height="460" fill="#fcfaf5"/>
+<text x="32" y="40" fill="#24332e" font-family="Arial, sans-serif" font-size="25" text-anchor="start" font-weight="bold">Keep drawing while refinement is in flight</text>
+<text x="35" y="89" fill="#24332e" font-family="Arial, sans-serif" font-size="23" text-anchor="start" font-weight="bold">Current frame</text>
+<text x="35" y="305" fill="#24332e" font-family="Arial, sans-serif" font-size="23" text-anchor="start" font-weight="bold">Later frame</text>
+<rect x="245" y="65" width="220" height="115" rx="8" fill="#e3eee7" stroke="#2c7568" stroke-width="2"/>
+<text x="355" y="109" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Resident coarse cut</text>
+<text x="355" y="138" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">draws this frame</text>
+<rect x="595" y="65" width="275" height="115" rx="8" fill="#efe7d8" stroke="#a87520" stroke-width="2"/>
+<text x="732" y="109" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">GPU requests finer pages</text>
+<text x="732" y="138" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">no frame waits for disk</text>
+<line x1="465" y1="122" x2="586" y2="122" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="732" y1="182" x2="732" y2="255" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="740" y="224" fill="#586960" font-family="Arial, sans-serif" font-size="20" text-anchor="start" font-weight="normal">I/O + install</text>
+<rect x="595" y="266" width="275" height="115" rx="8" fill="#e2eaf0" stroke="#3b657f" stroke-width="2"/>
+<text x="732" y="312" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">References become valid</text>
+<text x="732" y="341" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">finer pages are resident</text>
+<rect x="245" y="266" width="220" height="115" rx="8" fill="#e3eee7" stroke="#2c7568" stroke-width="2"/>
+<text x="355" y="312" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">A valid finer cut</text>
+<text x="355" y="341" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">can now be selected</text>
+<line x1="592" y1="325" x2="475" y2="325" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="34" y="429" fill="#24332e" font-family="Arial, sans-serif" font-size="23" text-anchor="start" font-weight="normal">Residency limits detail temporarily; valid replacement prevents holes.</text>
+</svg>

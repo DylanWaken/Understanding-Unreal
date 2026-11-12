@@ -1,0 +1,354 @@
+[
+  {
+    "id": "material-properties",
+    "path": "Engine/Source/Runtime/Engine/Public/Materials/Material.h",
+    "line": 476,
+    "end_line": 532,
+    "claim": "UMaterial keeps domain, blending, and shading-model properties separately.",
+    "sha256": "91e9defd089fb5a1a97559dcaa7af67f2a8d184bbac11a902297454f497b1425"
+  },
+  {
+    "id": "property-roots",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/Material.cpp",
+    "line": 7206,
+    "end_line": 7261,
+    "claim": "CompilePropertyEx compiles the root associated with the requested material property.",
+    "sha256": "321376ec132b6e6bf574d133b0da05146f789c3da40ba236b687d0b6c911fcc6"
+  },
+  {
+    "id": "multiply-node",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+    "line": 4727,
+    "end_line": 4735,
+    "claim": "Multiply expressions delegate their inputs and multiplication to FMaterialCompiler.",
+    "sha256": "bd1c00fe147d4e5f03c899315f8b2f92c66d8d5b901b36aa95df8d8ab9a244aa"
+  },
+  {
+    "id": "texture-node",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+    "line": 2770,
+    "end_line": 2835,
+    "claim": "Texture sample compilation handles resource, sampling, and coordinate inputs.",
+    "sha256": "810b6a2dbfc18f5078ab1fd6fe39b44c42c252eb51ae012ce0bb9f57e5a28e34"
+  },
+  {
+    "id": "expression-sharing",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+    "line": 4477,
+    "end_line": 4557,
+    "claim": "Expression traversal caches translations by context and checks reentrant expressions.",
+    "sha256": "cccbb742148a9add6669f3dcf4e15bea924eb5daf010e0dc78463f6017839ede"
+  },
+  {
+    "id": "static-switch",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+    "line": 8669,
+    "end_line": 8695,
+    "claim": "Static switch compilation has distinct dynamic-branch and effective-input paths.",
+    "sha256": "6658af4511d8eabc5b53bca069934b4d228f2650c4601a5e00ca0373e50a5b82"
+  },
+  {
+    "id": "compiler-interface",
+    "path": "Engine/Source/Runtime/Engine/Public/MaterialCompiler.h",
+    "line": 145,
+    "end_line": 180,
+    "claim": "FMaterialCompiler exposes material property, shader frequency, and diagnostic context.",
+    "sha256": "b1742b663c93a68057c48b2e13cda5a2688716814facf5c3b6591c8fcfba0227"
+  },
+  {
+    "id": "typed-chunks",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+    "line": 3337,
+    "end_line": 3410,
+    "claim": "Translator code chunks carry value types and derivative information.",
+    "sha256": "42d99faacf89b642a2bc28759c02cc9e9737ee15257438b40237aee4bc71fd83"
+  },
+  {
+    "id": "property-context",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/Material.cpp",
+    "line": 195,
+    "end_line": 220,
+    "claim": "Compiling a material property establishes shader frequency and previous-frame-time context.",
+    "sha256": "eeac2ef11dc573270065576bc0e7695bef5a2a4755762a92224439e928771cda"
+  },
+  {
+    "id": "normal-template",
+    "path": "Engine/Shaders/Private/MaterialTemplate.ush",
+    "line": 3708,
+    "end_line": 3768,
+    "claim": "Material normal helpers distinguish raw material normals and interpreted values.",
+    "sha256": "e4a8b6828bcb047265c7f320779a66be2899e510509207f47bb11ad5026d037c"
+  },
+  {
+    "id": "translation-dispatch",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp",
+    "line": 3683,
+    "end_line": 3704,
+    "claim": "FMaterial::Translate selects new or legacy translator based on shader-map configuration.",
+    "sha256": "6e9b4a2c311551bc35fa4bfb604a2ec82f1955f961cd87bf64684dce2b6a2d54"
+  },
+  {
+    "id": "legacy-translation",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp",
+    "line": 3541,
+    "end_line": 3577,
+    "claim": "Legacy translator produces compilation output and the generated material include.",
+    "sha256": "1c3b3e11d256ac0cc76702a6d072125d8706dedc795bd18eb2dd8f6735c532f4"
+  },
+  {
+    "id": "new-translation",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp",
+    "line": 3610,
+    "end_line": 3681,
+    "claim": "Experimental translator builds Material IR and emits generated HLSL through template resolution.",
+    "sha256": "bedfa82c5ccb51490642edd795b9b0e1a4b3f348fdcaef4c33fd65c587780755"
+  },
+  {
+    "id": "translator-default",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp",
+    "line": 108,
+    "end_line": 123,
+    "claim": "The new material translator prototype console variable defaults false.",
+    "sha256": "5b8e1da2602d6e9cedb7020bd401c8572c0218d38445c635e2bcf22002dad23f"
+  },
+  {
+    "id": "translator-gates",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialInterface.cpp",
+    "line": 342,
+    "end_line": 355,
+    "claim": "New translator selection checks the console variable, restrictive mode, and material flag.",
+    "sha256": "57f75d3f9231e9bd8d1d262f643ebc495f1ef93cc3efe234a791b1a8a1dc79a1"
+  },
+  {
+    "id": "uniform-buffer",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialUniformExpressions.cpp",
+    "line": 1546,
+    "end_line": 1580,
+    "claim": "Uniform buffer filling evaluates either Preshader2 bytecode or individual preshaders.",
+    "sha256": "8910eb64aa3a811782a5f31cf2cfb0e9863b5ae18d1cd111366733617962d148"
+  },
+  {
+    "id": "uniform-cache",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialRenderProxy.cpp",
+    "line": 458,
+    "end_line": 476,
+    "claim": "Uniform expression evaluation reads the rendering shader map and updates cached data.",
+    "sha256": "4cb7f5c8569bc6b78119f80fe5c684e8c27a6bd4d95cf4a95bce0043aee059e1"
+  },
+  {
+    "id": "material-template",
+    "path": "Engine/Shaders/Private/MaterialTemplate.ush",
+    "line": 4330,
+    "end_line": 4364,
+    "claim": "Material template computes pixel inputs and interprets the resulting normal.",
+    "sha256": "d1a5b9291ca0a6e4322685e80aef1d300b1aea9aa9b1fa54ce62ac8210c50f99"
+  },
+  {
+    "id": "template-resolver",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+    "line": 2738,
+    "end_line": 2765,
+    "claim": "Legacy translation resolves MaterialTemplate shader text.",
+    "sha256": "98560dcba4e22ceb86103457b25cab8fc930a4b4b653f87f3c49de5a3fc1168d"
+  },
+  {
+    "id": "base-pass-material",
+    "path": "Engine/Shaders/Private/BasePassPixelShader.usf",
+    "line": 950,
+    "end_line": 1028,
+    "claim": "Base-pass shader evaluates material parameters then reads surface properties.",
+    "sha256": "acbae00970b8fa549d6cc09afe09c31672d03d41376dacbeaed611f3d3a9307c"
+  },
+  {
+    "id": "permutation-filter",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShader.cpp",
+    "line": 255,
+    "end_line": 312,
+    "claim": "Material shader-map construction filters material and mesh-material permutations.",
+    "sha256": "b9d490131d0ca92c9ad4614077af8b90f698e3766063564ba1698e4d35f8caf2"
+  },
+  {
+    "id": "shader-map-identity",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShader.cpp",
+    "line": 1382,
+    "end_line": 1415,
+    "claim": "Shader-map hashes include dependency and translation configuration information.",
+    "sha256": "5f9e499bdb33bf29555ae0f1853191440922117ddfff49dda101172fb677123e"
+  },
+  {
+    "id": "shader-map-load",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShader.cpp",
+    "line": 2135,
+    "end_line": 2177,
+    "claim": "Material shader maps start asynchronous loads from derived data.",
+    "sha256": "e55e63fb400f57b84eff239fb05e65c692200275821e8a7eb2989e1c82309fc1"
+  },
+  {
+    "id": "shader-map-save",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShader.cpp",
+    "line": 2220,
+    "end_line": 2257,
+    "claim": "Material shader maps serialize derived-data results with a material/platform key.",
+    "sha256": "4ee9a615c39f40776ee3f7b1d8e71af3f27745daf047e88b6a3367c1203a68f2"
+  },
+  {
+    "id": "begin-shader-map",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp",
+    "line": 3714,
+    "end_line": 3757,
+    "claim": "BeginCompileShaderMap translates the material and establishes uniform layouts.",
+    "sha256": "f90a2c3391ced6aea4af2ee7426c2c55f56d073d0786c64a439b373232cbb018"
+  },
+  {
+    "id": "submit-jobs",
+    "path": "Engine/Source/Runtime/Engine/Private/ShaderCompiler/ShaderCompiler.cpp",
+    "line": 1519,
+    "end_line": 1574,
+    "claim": "The shader compiling manager submits jobs into managed compilation work.",
+    "sha256": "c86ba9d036a53e9989a4d64e995855e296a89f5fee686f5a2c1ff42a3cc980fc"
+  },
+  {
+    "id": "worker-selection",
+    "path": "Engine/Source/Runtime/Engine/Private/ShaderCompiler/ShaderCompiler.cpp",
+    "line": 773,
+    "end_line": 811,
+    "claim": "Shader compilation discovers the ShaderCompileWorker executable.",
+    "sha256": "0f4774a2af91b49a5f2fa57a409ebc877a83a223ad792b201e41a869ebfe59ba"
+  },
+  {
+    "id": "d3d-backend",
+    "path": "Engine/Source/Developer/Windows/ShaderFormatD3D/Private/D3DShaderCompiler.cpp",
+    "line": 1508,
+    "end_line": 1529,
+    "claim": "Direct3D backend selects DXC depending on shader model.",
+    "sha256": "3e1b217479d4ec265cf97d1eccc1581afbf59f8d8686fd2424707e169b1afce6"
+  },
+  {
+    "id": "vulkan-backend",
+    "path": "Engine/Source/Developer/VulkanShaderFormat/Private/VulkanShaderCompiler.cpp",
+    "line": 319,
+    "end_line": 350,
+    "claim": "Vulkan shader compilation uses ShaderConductor/DXC and packages SPIR-V.",
+    "sha256": "07c8f3de78158ae54de51503cdb46332bf4d19a8f24f0b5a312551bffc0d7665"
+  },
+  {
+    "id": "async-results",
+    "path": "Engine/Source/Runtime/Engine/Private/ShaderCompiler/ShaderCompiler.cpp",
+    "line": 2865,
+    "end_line": 2923,
+    "claim": "The shader compiling manager processes completed work with explicit timing and completion controls.",
+    "sha256": "394e1b948c1122789a8f63c54d67f44850d32666134efb1fee79b91e2f5ad263"
+  },
+  {
+    "id": "instance-update",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialInstance.cpp",
+    "line": 605,
+    "end_line": 632,
+    "claim": "Game-thread material instance changes enqueue render-proxy updates and uniform recaching.",
+    "sha256": "dbdbeee4ebff1aa9e89a861b1bb0084f9542bc21b51b3853e01457619846d7ad"
+  },
+  {
+    "id": "binding-declaration",
+    "path": "Engine/Source/Runtime/Renderer/Private/ShaderBaseClasses.cpp",
+    "line": 110,
+    "end_line": 128,
+    "claim": "Material shader constructor binds material uniform buffers using the compiler parameter map.",
+    "sha256": "3156fc24192f0e9a32e913fc11a570a0325fce1dffe3481cb60501ee6b45642e"
+  },
+  {
+    "id": "binding-runtime",
+    "path": "Engine/Source/Runtime/Renderer/Private/ShaderBaseClasses.cpp",
+    "line": 339,
+    "end_line": 364,
+    "claim": "Material shader bindings check shader-map/cache compatibility and bind material buffers.",
+    "sha256": "fd5f864015383daf11e01e9981d17892056ffc45a2be15d5b653c3728f4ae17a"
+  },
+  {
+    "id": "pipeline-cache",
+    "path": "Engine/Source/Runtime/RenderCore/Public/ShaderPipelineCache.h",
+    "line": 27,
+    "end_line": 64,
+    "claim": "FShaderPipelineCache manages PSO logging, serialization, and preparation.",
+    "sha256": "7dbfb692bd97f6d7b5d93f10da73a10b0c240927aa3493168a3d5904e91479ee"
+  },
+  {
+    "id": "nanite-shading",
+    "path": "Engine/Source/Runtime/Renderer/Private/Nanite/NaniteShading.cpp",
+    "line": 367,
+    "end_line": 467,
+    "claim": "Nanite has explicit compute shading-bin construction and resource interfaces.",
+    "sha256": "a8a5f7beda9c09c2c42fb1d838fb259391f10646a1ca3cacdfc9595cca57ec1e"
+  },
+  {
+    "id": "nanite-raster",
+    "path": "Engine/Source/Runtime/Renderer/Private/Nanite/NaniteCullRaster.cpp",
+    "line": 1127,
+    "end_line": 1203,
+    "claim": "Nanite raster-bin construction is separate from shading-bin construction.",
+    "sha256": "05572ed61fde511f7b3b318039f93cfa22faa3ea2d6660f969002b8eebbef6ae"
+  },
+  {
+    "id": "substrate-settings",
+    "path": "Engine/Source/Runtime/RenderCore/Private/RenderUtils.cpp",
+    "line": 2068,
+    "end_line": 2090,
+    "claim": "Substrate settings distinguish project history and GBuffer formats.",
+    "sha256": "991f749b30692d273d2797c66fe1ed83ef21be83901e80e65005fe2341859c2e"
+  },
+  {
+    "id": "lumen-card-types",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneCardCapture.cpp",
+    "line": 67,
+    "end_line": 121,
+    "claim": "Lumen capture uses material shader types, eligibility filters, and simplified Substrate settings.",
+    "sha256": "926a1f8c17690165afe9bc8afe669a01dfed8c263a164de59c233dac8f414910"
+  },
+  {
+    "id": "lumen-card-evaluation",
+    "path": "Engine/Shaders/Private/Lumen/LumenCardPixelShader.usf",
+    "line": 25,
+    "end_line": 61,
+    "claim": "Lumen card pixel shader calculates material parameters for capture.",
+    "sha256": "f48e1483e0188160d4bacad53ae91d90543431c34956f6abfdeffa9304ccf28d"
+  },
+  {
+    "id": "ray-quality-switch",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+    "line": 17745,
+    "end_line": 17775,
+    "claim": "Ray Tracing Quality Switch requires both inputs and delegates the context-dependent replacement.",
+    "sha256": "5a3c61c0d37b516949131a81e5c375732955318fedae6214185b9cc9a32d9329"
+  },
+  {
+    "id": "preshader-debug",
+    "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp",
+    "line": 100,
+    "end_line": 104,
+    "claim": "The material editor can append preshader expressions and parameter information to HLSL display.",
+    "sha256": "e94db9fbe34f7e3d8b6f92663631df1081e20970276effaa14d33edf221cd87f"
+  },
+  {
+    "id": "shader-debug-dump",
+    "path": "Engine/Source/Runtime/Engine/Private/ShaderCompiler/ShaderCompiler.cpp",
+    "line": 323,
+    "end_line": 334,
+    "claim": "Shader debug dumping has explicit modes and project Saved/ShaderDebugInfo output.",
+    "sha256": "867733e34a1c7713d4b39dff1fcd7d9d2eb527d0a7e7710d1634659086b92b76"
+  },
+  {
+    "id": "dynamic-instance-create",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h",
+    "line": 1623,
+    "end_line": 1629,
+    "claim": "Primitive components expose CreateDynamicMaterialInstance for a material element.",
+    "sha256": "ab5820a925b1d999f09ccb5d97348a6bf4732a9582837f63a9ffd66a1cdcdba3"
+  },
+  {
+    "id": "dynamic-instance-values",
+    "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialInstanceDynamic.h",
+    "line": 18,
+    "end_line": 27,
+    "claim": "Dynamic instances expose SetScalarParameterValue.",
+    "sha256": "5fb0b256486f4739d0661cd5e5e67361968fcd7d2aead5fd5c11c1287a376309"
+  }
+]

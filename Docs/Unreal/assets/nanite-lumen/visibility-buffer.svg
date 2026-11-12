@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" role="img" aria-labelledby="title desc"><title id="title">Visibility buffer and reconstructed shading</title><desc id="desc">Triangles compete using coverage and depth. The winning identity addresses the triangle. Barycentric interpolation and material evaluation produce surface data for lighting.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#2c7568"/></marker></defs><rect width="960" height="490" fill="#fcfaf5"/>
+<text x="32" y="40" fill="#24332e" font-family="Arial, sans-serif" font-size="25" text-anchor="start" font-weight="bold">One winner, then its material</text>
+<text x="165" y="90" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Competing coverage</text>
+<text x="492" y="90" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Winning sample</text>
+<text x="800" y="90" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Surface evaluation</text>
+<path d="M60 297 L152.5 112 L245 297 Z" fill="#e3d9c5" stroke="#a87520" stroke-width="2"/>
+<path d="M101 298 L182.0 136 L263 298 Z" fill="#cae0db" stroke="#2c7568" stroke-width="2"/>
+<path d="M145 289 L199.0 181 L253 289 Z" fill="#c8dbe5" stroke="#3b657f" stroke-width="2"/>
+<circle cx="180" cy="236" r="7" fill="#24332e" stroke="#24332e" stroke-width="2"/>
+<line x1="281" y1="225" x2="355" y2="225" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="365" y="132" width="251" height="170" rx="8" fill="#e3eee7" stroke="#2c7568" stroke-width="2"/>
+<text x="490" y="173" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Depth</text>
+<text x="490" y="206" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Instance identity</text>
+<text x="490" y="239" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Triangle identity</text>
+<text x="490" y="272" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">â†’ surface address</text>
+<line x1="625" y1="225" x2="689" y2="225" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M719 292 L799.0 132 L879 292 Z" fill="#c8dbe5" stroke="#3b657f" stroke-width="2"/>
+<circle cx="784" cy="241" r="7" fill="#2c7568" stroke="#2c7568" stroke-width="2"/>
+<text x="803" y="339" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Recover attributes</text>
+<text x="803" y="368" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">and derivatives</text>
+<text x="803" y="397" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Evaluate material</text>
+<path d="M803 409 L803 439 L490 439 L490 449" fill="none" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="490" y="477" fill="#24332e" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" font-weight="normal">Lighting consumes depth and shaded surface properties.</text>
+</svg>

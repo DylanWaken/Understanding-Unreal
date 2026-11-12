@@ -1,0 +1,306 @@
+[
+  {
+    "id": "cluster-limits",
+    "path": "Engine/Shaders/Shared/NaniteDefinitions.h",
+    "line": 21,
+    "end_line": 28,
+    "claim": "Triangle cluster capacity is 128 triangles and 256 vertices.",
+    "sha256": "71b7953f88bbac5c0f5c7ca44d1556576daf99cf53e6a37d4bae2c3bd287c16d"
+  },
+  {
+    "id": "page-limits",
+    "path": "Engine/Shaders/Shared/NaniteDefinitions.h",
+    "line": 49,
+    "end_line": 61,
+    "claim": "Root and streaming GPU page sizes are separately defined as 32 KiB and 128 KiB.",
+    "sha256": "96f9c55743144776e7fc6f33b20042e302148fabfaefcf25799b9e9a76fdedc7"
+  },
+  {
+    "id": "boundary-locks",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/Cluster.cpp",
+    "line": 1023,
+    "end_line": 1040,
+    "claim": "External-edge endpoints are locked during triangle simplification.",
+    "sha256": "3107f8a4239d6a2ac9cd473f0c7b1d92fd32bdc8eb75c352f0330f01d3e29c1a"
+  },
+  {
+    "id": "reduce-group",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/ClusterDAG.cpp",
+    "line": 1373,
+    "end_line": 1600,
+    "claim": "Grouped children are merged, reduced, repartitioned and assigned shared monotonic LOD data; newer curve and voxel branches are explicit.",
+    "sha256": "0c3d9cd27cfa98ab687c25cbea137f7d7100545d0059b1a55497f1891b7455ac"
+  },
+  {
+    "id": "cluster-selection",
+    "path": "Engine/Shaders/Private/Nanite/NaniteClusterCulling.usf",
+    "line": 256,
+    "end_line": 311,
+    "claim": "Projected bounds and LOD errors guide selection and hardware raster preference.",
+    "sha256": "fe8df65160917c5ada05b3574b56fd08d71473f8e70141fa2e76ca086058f9f5"
+  },
+  {
+    "id": "raster-controls",
+    "path": "Engine/Source/Runtime/Renderer/Private/Nanite/NaniteCullRaster.cpp",
+    "line": 78,
+    "end_line": 151,
+    "claim": "Compute and programmable raster and tessellation controls initialize enabled; separate pixel thresholds and VSM LOD invalidation control are present.",
+    "sha256": "270a937f79858fc74d7fa14a6da0d4e769a6c487abcbe5db0a1609bd8517a271"
+  },
+  {
+    "id": "streaming-budgets",
+    "path": "Engine/Source/Runtime/Engine/Private/Rendering/NaniteStreamingManager.cpp",
+    "line": 57,
+    "end_line": 96,
+    "claim": "Streaming pool, pending-page and installation budgets have explicit defaults.",
+    "sha256": "97c6116139ec6ea8e4f7909e2b67bb9f75873bbb90cc401734aeb9b3316664b1"
+  },
+  {
+    "id": "two-pass",
+    "path": "Engine/Source/Runtime/Renderer/Private/Nanite/NaniteCullRaster.cpp",
+    "line": 307,
+    "end_line": 313,
+    "claim": "Two-pass Nanite occlusion initializes enabled.",
+    "sha256": "29aac3fad17f43a1102f8e14cb29fe9bb61cd6377f7ccbc476240b83f3f808c4"
+  },
+  {
+    "id": "instance-culling",
+    "path": "Engine/Shaders/Private/Nanite/NaniteInstanceCulling.usf",
+    "line": 353,
+    "end_line": 421,
+    "claim": "Instance culling distinguishes main and post occlusion passes with visible and previously occluded state.",
+    "sha256": "f58afb21c43d01361eb2951da70a4bdd1912635c92b91e3b29327a5b593ac6b5"
+  },
+  {
+    "id": "visibility-write",
+    "path": "Engine/Shaders/Private/Nanite/NaniteWritePixel.ush",
+    "line": 19,
+    "end_line": 92,
+    "claim": "Pixel writes combine depth and identity in the 64-bit visibility path and use atomic maximum.",
+    "sha256": "796a9e580452663c02e336ea75554b855e6f7a409f1f7fccda81de57efff4310"
+  },
+  {
+    "id": "barycentrics",
+    "path": "Engine/Shaders/Private/Barycentrics.ush",
+    "line": 11,
+    "end_line": 103,
+    "claim": "Barycentric values carry partial derivatives for attribute interpolation and perspective-correct triangle reconstruction.",
+    "sha256": "cb10f215d06fbb4e19806ba2113080ad8561b92cef7cb7780037c2153fa773bb"
+  },
+  {
+    "id": "attributes",
+    "path": "Engine/Shaders/Private/Nanite/NaniteAttributeDecode.ush",
+    "line": 893,
+    "end_line": 943,
+    "claim": "Texture coordinates are decoded and interpolated through barycentric values.",
+    "sha256": "496f0cc833d4d17a2f2ab351c35cf78acc9ff8d42a6c51cb8a6c38eda4a1fb52"
+  },
+  {
+    "id": "shading-bins",
+    "path": "Engine/Source/Runtime/Renderer/Private/Nanite/NaniteShading.cpp",
+    "line": 433,
+    "end_line": 551,
+    "claim": "Nanite shading bin building and reservation write GPU dispatch arguments.",
+    "sha256": "f709c0e72f057483ed707291b2742fa8ecb7a457ff08e6a032e7f92d27b58554"
+  },
+  {
+    "id": "vsm-invalidation",
+    "path": "Engine/Source/Runtime/Renderer/Private/VirtualShadowMaps/VirtualShadowMapCacheManager.cpp",
+    "line": 97,
+    "end_line": 115,
+    "claim": "VSM caching and deformable-mesh invalidation have separate controls.",
+    "sha256": "9272803b69e0002eea529baa2d891571a506fc5531fc23530620a823d33a79c1"
+  },
+  {
+    "id": "screen-trace-controls",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeTracing.cpp",
+    "line": 13,
+    "end_line": 40,
+    "claim": "Screen probes initialize screen tracing and HZB traversal enabled.",
+    "sha256": "92a3646f8ecc562890371353cb62372912e1d9c78ca368021017ea1f75378b14"
+  },
+  {
+    "id": "trace-routing",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeTracing.cpp",
+    "line": 711,
+    "end_line": 921,
+    "claim": "Screen tracing is conditional; subsequent work compacts traces and chooses hardware or software paths including mesh fields, heightfields and global field/cache work.",
+    "sha256": "a8ef6c986a55549d45894c173d21ff0cad42394a42630338d937006eaedcbb93"
+  },
+  {
+    "id": "ray-modes",
+    "path": "Engine/Source/Runtime/Engine/Private/Rendering/NaniteResources.cpp",
+    "line": 192,
+    "end_line": 267,
+    "claim": "Nanite ray tracing defaults to fallback geometry, exposes stream-out and CLAS modes, and checks cluster-operation support.",
+    "sha256": "1469961b706e8371b1c010d716a64821e1958f3d4b1bdeb76f906a6caab5ca33"
+  },
+  {
+    "id": "card-capture",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneCardCapture.cpp",
+    "line": 20,
+    "end_line": 90,
+    "claim": "Surface capture has static and Nanite LOD controls and material/domain/vertex-factory/platform eligibility including conditional translucent support.",
+    "sha256": "6f8e63934facbc9a6ba26b67f0716089ca349c128cc3cdce6407eee5872e1b6e"
+  },
+  {
+    "id": "card-budgets",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneRendering.cpp",
+    "line": 104,
+    "end_line": 142,
+    "claim": "Card capture and material refresh have page/texel budgets and invalidation controls.",
+    "sha256": "d5a67a3b81f84267e140ab807a6b98d974cb42a2ab8353a55128354e60532a56"
+  },
+  {
+    "id": "lighting-budgets",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneLighting.cpp",
+    "line": 17,
+    "end_line": 60,
+    "claim": "Direct-lighting and radiosity update factors are separate from material capture.",
+    "sha256": "88f2564e8fc22c4d196e44da772549013b81673c365f0f68b2140ecbca7e04ab"
+  },
+  {
+    "id": "probe-placement",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp",
+    "line": 86,
+    "end_line": 155,
+    "claim": "Screen-probe tile sizing and geometry-sensitive interpolation are configurable.",
+    "sha256": "cedab70dcaa546fb10971bff9e7c3269b815389175b1fdf70b6194055aa326ec"
+  },
+  {
+    "id": "probe-quality",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp",
+    "line": 479,
+    "end_line": 510,
+    "claim": "Final-gather quality and texture capacity constrain effective downsample factor.",
+    "sha256": "74b2f90d1f4c218db0f144edbce493249fecb40c89e968d44a2dff2fd21cfa98"
+  },
+  {
+    "id": "radiance-cache-controls",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp",
+    "line": 602,
+    "end_line": 632,
+    "claim": "World-space radiance-cache clipmap extents, spacing and probe update budget are explicit.",
+    "sha256": "e357c6b532727ca20fa30d7d367d9dde835ff59179eef0d379da4c3bfce16aec"
+  },
+  {
+    "id": "radiance-cache-budget",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp",
+    "line": 735,
+    "end_line": 746,
+    "claim": "Radiance-cache update budget is scaled by lighting update speed and editor activity.",
+    "sha256": "eb020f35aeaca4da22d845cc56d6279f78589ac633dbb1d99e4379e5de87efde"
+  },
+  {
+    "id": "reflection-controls",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenReflections.cpp",
+    "line": 29,
+    "end_line": 140,
+    "claim": "Reflection tracing has separate resolution, optional radiance-cache reuse and roughness controls.",
+    "sha256": "8549f3418b2ecc07ca5cf24d32ab96b3ed18cf0aece758868337a8a429c1c1c7"
+  },
+  {
+    "id": "hit-lighting",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenHardwareRayTracingCommon.cpp",
+    "line": 16,
+    "end_line": 99,
+    "claim": "Hardware tracing defaults enabled when available; hit lighting has distinct modes, retained cache use and shadow/opacity controls.",
+    "sha256": "1b111c15b71de0146b69bd86e5af2dbe4c6d618e665d2bffba16140fb5d8aad9"
+  },
+  {
+    "id": "temporal-controls",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeGather.cpp",
+    "line": 171,
+    "end_line": 245,
+    "claim": "History validation and moving-lighting responsiveness are separate controls; maximum accumulation initializes to ten.",
+    "sha256": "71c574436f2a7b8342af803d9423bf6feb824298044e95fca4ceeb2710b27e7b"
+  },
+  {
+    "id": "temporal-shader",
+    "path": "Engine/Shaders/Private/Lumen/LumenScreenProbeGatherTemporal.usf",
+    "line": 80,
+    "end_line": 110,
+    "claim": "Diffuse, backface, rough-specular and short-range histories are separately represented.",
+    "sha256": "c5ad8ba3e039e7841867aa52748b161c417f1a2d9f60bfd89a1ad376131d5d3a"
+  },
+  {
+    "id": "skeletal-card-enable",
+    "path": "Engine/Source/Runtime/Engine/Private/SkeletalMeshSceneProxy.cpp",
+    "line": 73,
+    "end_line": 86,
+    "claim": "Skeletal card generation initializes enabled and requires Lumen platform support.",
+    "sha256": "3c00436b14d4832d76f1215d2e72c82547e2eff101fb0dfb4f635a56cb2dcf15"
+  },
+  {
+    "id": "skeletal-cards",
+    "path": "Engine/Source/Runtime/Engine/Private/Rendering/NaniteResources.cpp",
+    "line": 3343,
+    "end_line": 3369,
+    "claim": "Nanite skeletal cards derive from pre-skinned bounds and use permissive two-sided sampling for pose mismatch.",
+    "sha256": "e4c4394c6c29240322c35048ec04e96bd615073d319c9c5466afe66c25f0f2cc"
+  },
+  {
+    "id": "spline-proxy",
+    "path": "Engine/Source/Runtime/Engine/Private/SplineMeshSceneProxy.cpp",
+    "line": 488,
+    "end_line": 503,
+    "claim": "Nanite spline proxy explicitly disables distance-field representation.",
+    "sha256": "c1551bcb401cbf809335f96ddc57918c28d43c9414f9dd3f9313bcbcf6f86367"
+  },
+  {
+    "id": "spline-cards",
+    "path": "Engine/Source/Runtime/Engine/Private/SplineMeshSceneProxy.cpp",
+    "line": 568,
+    "end_line": 610,
+    "claim": "Spline card handling can construct cards from bounds after distorted-bounds consideration.",
+    "sha256": "bed6e82a8d7ff88c9f38f7721e2b98c81483cf967ab4793894c2a395c364b1c3"
+  },
+  {
+    "id": "dynamic-ray-fallback",
+    "path": "Engine/Source/Runtime/Engine/Private/Rendering/NaniteResources.cpp",
+    "line": 2107,
+    "end_line": 2144,
+    "claim": "The dynamic spline/WPO ray-tracing branch documents and selects fallback geometry rather than stream-out.",
+    "sha256": "741abe80d35cf72f83556b6e4a5e002393ec44e92cc68aa6b895498c01c5f45c"
+  },
+  {
+    "id": "far-field",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScene.cpp",
+    "line": 85,
+    "end_line": 117,
+    "claim": "Far Field initializes disabled and maximum trace distance to 1.0e6 units in this checkout.",
+    "sha256": "2b493746562146e577ba71cc5d725cedfa178a5a232fcfb867802e8cd29c20f8"
+  },
+  {
+    "id": "position-quantization",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/Encode/NaniteEncode.cpp",
+    "line": 204,
+    "end_line": 311,
+    "claim": "Position encoding chooses uniform-grid precision and stores quantized cluster positions.",
+    "sha256": "e3ac03859c94bb78a0a6e7f26ce1e717498840d344406aa4d9b045df36c2a78c"
+  },
+  {
+    "id": "normal-encoding",
+    "path": "Engine/Source/Developer/NaniteBuilder/Private/Encode/NaniteEncodeGeometryData.cpp",
+    "line": 143,
+    "end_line": 164,
+    "claim": "Normals have octahedral encode/decode routines with explicit quantization bits.",
+    "sha256": "c58dcef8e66bbd315c1214426ddb9f017165fc34f446e2251fe3a9cde18b4e7a"
+  },
+  {
+    "id": "page-transcode",
+    "path": "Engine/Source/Runtime/Engine/Private/Nanite/NaniteStreamingPageUploader.cpp",
+    "line": 47,
+    "end_line": 109,
+    "claim": "The uploader dispatches GPU page transcoding with independent and parent-dependent passes.",
+    "sha256": "5bb7c7a5a8348e3720ee112c60a731a9f1ead2598f7fd9625609fc511d97ca83"
+  },
+  {
+    "id": "radiosity",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenRadiosity.cpp",
+    "line": 20,
+    "end_line": 65,
+    "claim": "Surface-cache radiosity provides multibounce diffuse with explicit probe and filtering controls.",
+    "sha256": "fe77caa88f8f6776154e1a4978e4692636dd9a5acaedeeb26180b1c1e76556c0"
+  }
+]

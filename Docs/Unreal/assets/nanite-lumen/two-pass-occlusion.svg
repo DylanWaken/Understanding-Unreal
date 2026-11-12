@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-labelledby="title desc"><title id="title">Recovering visibility in two passes</title><desc id="desc">Previous depth predicts occlusion for a main pass, then current depth is used to retest occluded candidates. This recovers newly visible geometry.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#2c7568"/></marker></defs><rect width="960" height="470" fill="#fcfaf5"/>
+<text x="32" y="40" fill="#24332e" font-family="Arial, sans-serif" font-size="25" text-anchor="start" font-weight="bold">A previous occluder may have moved out of the way</text>
+<text x="160" y="92" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">1. Previous depth</text>
+<rect x="30" y="114" width="270" height="202" rx="0" fill="#edf0e9" stroke="#586960" stroke-width="1"/>
+<text x="475" y="92" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">2. Main-pass depth</text>
+<rect x="345" y="114" width="270" height="202" rx="0" fill="#edf0e9" stroke="#586960" stroke-width="1"/>
+<text x="790" y="92" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">3. Post-pass test</text>
+<rect x="660" y="114" width="270" height="202" rx="0" fill="#edf0e9" stroke="#586960" stroke-width="1"/>
+<rect x="93" y="161" width="120" height="109" rx="0" fill="#c9aaa0" stroke="#a04d33" stroke-width="2"/>
+<rect x="420" y="161" width="62" height="109" rx="0" fill="#c9aaa0" stroke="#a04d33" stroke-width="2"/>
+<rect x="735" y="161" width="62" height="109" rx="0" fill="#c9aaa0" stroke="#a04d33" stroke-width="2"/>
+<rect x="157" y="193" width="48" height="61" rx="0" fill="none" stroke="#3b657f" stroke-width="3" stroke-dasharray="5 4"/>
+<rect x="493" y="193" width="48" height="61" rx="0" fill="none" stroke="#3b657f" stroke-width="3" stroke-dasharray="5 4"/>
+<rect x="808" y="193" width="48" height="61" rx="0" fill="#b9d5e3" stroke="#3b657f" stroke-width="3"/>
+<line x1="305" y1="211" x2="339" y2="211" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="620" y1="211" x2="654" y2="211" stroke="#2c7568" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="165" y="354" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Crate was hidden.</text>
+<text x="165" y="383" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Defer candidate.</text>
+<text x="480" y="354" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Camera changes.</text>
+<text x="480" y="383" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Build current depth.</text>
+<text x="795" y="354" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Retest candidate.</text>
+<text x="795" y="383" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Crate now survives.</text>
+<text x="480" y="437" fill="#24332e" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" font-weight="normal">Temporal prediction saves work; the current view repairs stale rejection.</text>
+</svg>

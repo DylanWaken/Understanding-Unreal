@@ -1,0 +1,802 @@
+[
+  {
+    "id": "static-resources",
+    "path": "Engine/Source/Runtime/Engine/Public/StaticMeshResources.h",
+    "line": 193,
+    "end_line": 500,
+    "claim": "Static-mesh sections describe material slots and triangle ranges; LOD resources carry geometry and optional distance-field, card and ray products.",
+    "sha256": "91c66b4d224e66fa575994457fa088d64635f8884de1ffec3bd1ecae6c5b4f55"
+  },
+  {
+    "id": "scene-component",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/SceneComponent.h",
+    "line": 76,
+    "end_line": 100,
+    "claim": "Scene components inherit actor components and add spatial behavior.",
+    "sha256": "04f0c11822586407b27d0ebdf37669c774cc62d18a56c1662d68729dbf944f0f"
+  },
+  {
+    "id": "primitive-component",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h",
+    "line": 284,
+    "end_line": 320,
+    "claim": "Primitive components derive from scene components and provide rendering/collision integration.",
+    "sha256": "32d5a157a34357e40b9679fda8d6a4ab333f92613e48f55bb539b6f2b8cf407a"
+  },
+  {
+    "id": "mesh-component",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/MeshComponent.h",
+    "line": 15,
+    "end_line": 48,
+    "claim": "Mesh components derive from primitive components and manage material-related mesh properties.",
+    "sha256": "2babd58fa17115e15cbc7b8a33ea2b739b942fa1ba2cc48da5e08008ad0f4c66"
+  },
+  {
+    "id": "actor-root",
+    "path": "Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h",
+    "line": 1014,
+    "end_line": 1030,
+    "claim": "Actors reference a scene root component for their transform hierarchy.",
+    "sha256": "48c0c152e7ed1ce803b5b4dcc843199468c46f94e954b69515c5e690cf67741a"
+  },
+  {
+    "id": "scene-arrays",
+    "path": "Engine/Source/Runtime/Renderer/Private/ScenePrivate.h",
+    "line": 1689,
+    "end_line": 1719,
+    "claim": "FScene stores dense aligned primitive arrays including transforms, bounds, flags and IDs.",
+    "sha256": "e97bda5992c0a8292948b3b21cd57be3ba360186a382bb01234573e24e281812"
+  },
+  {
+    "id": "proxy-contract",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneProxy.h",
+    "line": 287,
+    "end_line": 317,
+    "claim": "Primitive proxies mirror rendering data for parallel rendering and support primitive-specific subclasses.",
+    "sha256": "e0bfd8cd71ffef555d18566f835d2988d75b772f5c3060df2f00aa684734f57a"
+  },
+  {
+    "id": "component-registration",
+    "path": "Engine/Source/Runtime/Engine/Private/Components/PrimitiveComponent.cpp",
+    "line": 620,
+    "end_line": 668,
+    "claim": "Component render registration adds primitives to the scene; transform updates update bounds and the scene transform.",
+    "sha256": "b13f3ab205b414ca9e5f1e955b737e91bb41f7e1ebc7b5e166ff0f8b24e5b069"
+  },
+  {
+    "id": "scene-info",
+    "path": "Engine/Source/Runtime/Renderer/Public/PrimitiveSceneInfo.h",
+    "line": 265,
+    "end_line": 402,
+    "claim": "Primitive scene information owns renderer-internal scene membership and deferred cleanup, separate from the engine proxy.",
+    "sha256": "8ae00d9d402c1af981a8d88fac2f1337154a72d7fc7056263690703f3f5e35df"
+  },
+  {
+    "id": "add-command",
+    "path": "Engine/Source/Runtime/Renderer/Private/RendererScene.cpp",
+    "line": 1470,
+    "end_line": 1529,
+    "claim": "Scene registration captures transforms and bounds then enqueues ordered proxy initialization and render-side insertion.",
+    "sha256": "1380532c9e2e4e10495a1546005052dd5b4aa65b6f765d6d72c40fb798a7130f"
+  },
+  {
+    "id": "packed-and-debug",
+    "path": "Engine/Source/Runtime/Renderer/Public/PrimitiveSceneInfo.h",
+    "line": 594,
+    "end_line": 616,
+    "claim": "Packed indices may move; debugging component pointers must not be dereferenced by the rendering thread.",
+    "sha256": "7db3e9a658c824595dbb272d6ef75d05ce10099ea32ad8ef25b00d1bf6f7f8c6"
+  },
+  {
+    "id": "actor-component-updates",
+    "path": "Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp",
+    "line": 2650,
+    "end_line": 2746,
+    "claim": "Component updates distinguish render-state, transform and dynamic-data dirty states.",
+    "sha256": "8d81140ae8d7bae6b2a74e6d841461c7112f36119c4798a54dfbc3f5a02d3b3c"
+  },
+  {
+    "id": "scene-update",
+    "path": "Engine/Source/Runtime/Renderer/Private/RendererScene.cpp",
+    "line": 5385,
+    "end_line": 5569,
+    "claim": "FScene coordinates batched scene updates and deferred material-uniform updates.",
+    "sha256": "57a0e12b090ac1c39fb2fc743d6ba30ed8b6873472cd226b9928579f74319e11"
+  },
+  {
+    "id": "remove-command",
+    "path": "Engine/Source/Runtime/Renderer/Private/RendererScene.cpp",
+    "line": 1996,
+    "end_line": 2065,
+    "claim": "Primitive removal is queued and executed through ordered render commands.",
+    "sha256": "11026f3c0dafa8157d19bad2b81167bf5d0e632fc9e2fa298c42fa0e99307df0"
+  },
+  {
+    "id": "gpu-scene",
+    "path": "Engine/Source/Runtime/Renderer/Private/GPUScene.h",
+    "line": 218,
+    "end_line": 380,
+    "claim": "GPU Scene tracks primitive updates, dynamic data, instance allocations, separate upload buffers and tiled data-layout parameters.",
+    "sha256": "ac165aeea265cbf9c56afe1a75e8677733726256f15e7633ad63994caa7f516e"
+  },
+  {
+    "id": "instance-shader-data",
+    "path": "Engine/Shaders/Private/SceneData.ush",
+    "line": 227,
+    "end_line": 261,
+    "claim": "Instance shader data includes identity, primitive relation, current/previous transforms, bounds and payload addressing.",
+    "sha256": "582014f23dc4609793a9c4f6eb3c5b399c120b54f4ada015b36a5733b12fe22c"
+  },
+  {
+    "id": "primitive-shader-data",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneShaderData.h",
+    "line": 14,
+    "end_line": 43,
+    "claim": "Primitive scene shader data explicitly packs CPU primitive parameters into float4 storage.",
+    "sha256": "d113cef172bc51745ba017d4aa3135d821b9697cc3e2ae833ebb9be790c4fefa"
+  },
+  {
+    "id": "persistent-map",
+    "path": "Engine/Source/Runtime/Renderer/Private/ScenePrivate.h",
+    "line": 2532,
+    "end_line": 2545,
+    "claim": "FScene maps persistent primitive IDs to current packed array indices.",
+    "sha256": "66312f23932cda4e098c53685db841b9fad0ec4bf6485219757b47b861751bbc"
+  },
+  {
+    "id": "mesh-batch",
+    "path": "Engine/Source/Runtime/Engine/Public/MeshBatch.h",
+    "line": 231,
+    "end_line": 402,
+    "claim": "Mesh elements describe index ranges and instances; mesh batches combine vertex factory and material render proxy with pass relevance.",
+    "sha256": "0705d4b729c22a93710aa444507e8bad84b5f76fe8202f4e7cd841dff9e66c85"
+  },
+  {
+    "id": "local-vf",
+    "path": "Engine/Shaders/Private/LocalVertexFactory.ush",
+    "line": 496,
+    "end_line": 545,
+    "claim": "A vertex factory adapts geometry-specific attributes to the material pixel interface.",
+    "sha256": "35e3cb7f5a69bf704b5059a255401586874a5fdc8147d936273924f864cdb4c0"
+  },
+  {
+    "id": "mesh-processor",
+    "path": "Engine/Source/Runtime/Renderer/Public/MeshPassProcessor.h",
+    "line": 2255,
+    "end_line": 2325,
+    "claim": "Mesh pass processors transform mesh batches into pass-specific mesh draw commands.",
+    "sha256": "a9822952bf7801aaf2f92101d488acab7d184a7f2cc26633bc711cedcb53afa2"
+  },
+  {
+    "id": "proxy-draw-paths",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneProxy.h",
+    "line": 425,
+    "end_line": 505,
+    "claim": "Proxies expose static and view-dependent dynamic mesh gathering as well as ray-tracing integration.",
+    "sha256": "00fec106c1f99cb30747bcc772588136d1813597e6d97ff75c7a71124ed14bb2"
+  },
+  {
+    "id": "primitive-topology",
+    "path": "Engine/Source/Runtime/RHI/Public/RHIDefinitions.h",
+    "line": 815,
+    "end_line": 836,
+    "claim": "RHI primitive topology distinguishes triangle, line and point lists.",
+    "sha256": "67dffe7d29c76bea48dfc2b8e9c2d88d5841ffbb6bc7e45673c89d16e2e9013f"
+  },
+  {
+    "id": "landscape",
+    "path": "Engine/Source/Runtime/Landscape/Classes/LandscapeComponent.h",
+    "line": 550,
+    "end_line": 584,
+    "claim": "Landscape component data includes heightmap and weightmap textures.",
+    "sha256": "fb5e3189b5404176a68a51098f5f244ad37485d0b3d4a70a1e2e799b90ea0203"
+  },
+  {
+    "id": "virtual-heightfield",
+    "path": "Engine/Plugins/Experimental/VirtualHeightfieldMesh/Source/VirtualHeightfieldMesh/Public/VirtualHeightfieldMeshComponent.h",
+    "line": 10,
+    "end_line": 55,
+    "claim": "Virtual Heightfield Mesh is a specialized primitive component supplied by a plugin.",
+    "sha256": "6ed25f419bd41eb3a89449d38c3e02e323a8aa2eaf5c6f6739775317c7aba346"
+  },
+  {
+    "id": "water-mesh",
+    "path": "Engine/Plugins/Experimental/Water/Source/Runtime/Public/WaterMeshComponent.h",
+    "line": 10,
+    "end_line": 66,
+    "claim": "The Water plugin supplies a specialized mesh component for water surfaces.",
+    "sha256": "a796709736bdcbdcfbc6c2a25b286963407132d199ab8983a2385edcb3f50758"
+  },
+  {
+    "id": "skeletal-update",
+    "path": "Engine/Source/Runtime/Engine/Public/SkeletalRenderPublic.h",
+    "line": 73,
+    "end_line": 253,
+    "claim": "Skeletal render objects expose morph updates and current/previous bone-transform policies and data.",
+    "sha256": "db963a9f5050a8929404bf31e534c32ad70b53f4a855ee3e59a9834b4d4c0497"
+  },
+  {
+    "id": "geometry-cache",
+    "path": "Engine/Plugins/Runtime/GeometryCache/Source/GeometryCache/Classes/GeometryCacheComponent.h",
+    "line": 25,
+    "end_line": 92,
+    "claim": "Geometry caches have a mesh component with animation playback controls.",
+    "sha256": "c22db612ceee60bd1fb37705039bb43864a73630e671096ca223ecba8b51b125"
+  },
+  {
+    "id": "spline-mesh",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/SplineMeshComponent.h",
+    "line": 114,
+    "end_line": 137,
+    "claim": "Spline mesh components derive from static mesh components and deform between endpoint/tangent controls.",
+    "sha256": "c09de16650bfc869cc86572172e657136d3bffc37f7c70b3c421ec1c8a727225"
+  },
+  {
+    "id": "procedural-mesh",
+    "path": "Engine/Plugins/Runtime/ProceduralMeshComponent/Source/ProceduralMeshComponent/Public/ProceduralMeshComponent.h",
+    "line": 144,
+    "end_line": 179,
+    "claim": "Procedural Mesh Component accepts custom triangle sections and is marked experimental.",
+    "sha256": "ba4a2b8a3208c2453b3e235b8d21ddcc4785afc9978f5160e3c08ffcdd523504"
+  },
+  {
+    "id": "dynamic-mesh",
+    "path": "Engine/Source/Runtime/GeometryFramework/Public/Components/DynamicMeshComponent.h",
+    "line": 159,
+    "end_line": 178,
+    "claim": "Dynamic Mesh Component wraps UDynamicMesh/FDynamicMesh3 and supports partial render updates and chunking.",
+    "sha256": "84fd7ea62eeef79d49b1cf440573552cfaf50537f70c7af1e86517a685f57419"
+  },
+  {
+    "id": "model-component",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/ModelComponent.h",
+    "line": 21,
+    "end_line": 49,
+    "claim": "Model components provide a specialized primitive representation for level model geometry.",
+    "sha256": "567ffb69e9b776001ab10e590d5768624691cc19f8992640395c7b4fcc06091d"
+  },
+  {
+    "id": "brush-component",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/BrushComponent.h",
+    "line": 14,
+    "end_line": 42,
+    "claim": "Brush components are specialized primitives rather than a universal surface representation.",
+    "sha256": "636eae7fd644a8b6ee9a4043350e1b3c36d0ee368d21ef7eb09809375af4044a"
+  },
+  {
+    "id": "instanced-mesh",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/InstancedStaticMeshComponent.h",
+    "line": 156,
+    "end_line": 194,
+    "claim": "Instanced static mesh components store shared-mesh placements, previous transforms and optional custom data.",
+    "sha256": "dbe55250a6c8dbbd60ddbb0dfe5acf05ee9224001211a5bfd169729d54ff72b1"
+  },
+  {
+    "id": "geometry-collection",
+    "path": "Engine/Source/Runtime/Experimental/GeometryCollectionEngine/Public/GeometryCollection/GeometryCollectionComponent.h",
+    "line": 553,
+    "end_line": 596,
+    "claim": "Geometry Collection Component integrates a mesh component with Chaos notifications and simulation state.",
+    "sha256": "d3472b3704945ccdb4704dbcd4c19a00bf8bd1c97d3a82c24fdd2c6e9bf673ec"
+  },
+  {
+    "id": "niagara-sprites",
+    "path": "Engine/Plugins/FX/Niagara/Source/Niagara/Public/NiagaraRendererSprites.h",
+    "line": 16,
+    "end_line": 70,
+    "claim": "Niagara has a specialized sprite renderer separate from particle simulation.",
+    "sha256": "5223403bbc8c4501b30ae96b68f1fbbe3b3a57bb30b6522eb2684f168faec1f1"
+  },
+  {
+    "id": "niagara-ribbons",
+    "path": "Engine/Plugins/FX/Niagara/Source/Niagara/Public/NiagaraRendererRibbons.h",
+    "line": 297,
+    "end_line": 344,
+    "claim": "Niagara has a specialized ribbon renderer.",
+    "sha256": "2dfa946b4de95e936354da7a20a234bb8ef7195c0901499a3f8c9d6194a92bad"
+  },
+  {
+    "id": "niagara-meshes",
+    "path": "Engine/Plugins/FX/Niagara/Source/Niagara/Public/NiagaraRendererMeshes.h",
+    "line": 18,
+    "end_line": 70,
+    "claim": "Niagara has a specialized mesh renderer.",
+    "sha256": "0e80a6aa5420e9704833cad01b63a6e797ada1d0fb8697969eaa134b6fb6b089"
+  },
+  {
+    "id": "groom",
+    "path": "Engine/Plugins/Runtime/HairStrands/Source/HairStrandsCore/Public/GroomComponent.h",
+    "line": 24,
+    "end_line": 56,
+    "claim": "Groom component references groom and binding assets.",
+    "sha256": "047150fe40ea244021532f1caf3c0b9c88551d080756a18e30b631f463a7b907"
+  },
+  {
+    "id": "heterogeneous-volume",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/HeterogeneousVolumeComponent.h",
+    "line": 14,
+    "end_line": 75,
+    "claim": "Heterogeneous volumes use a specialized component and material/SVT playback state.",
+    "sha256": "08706f0e9143d06a54dc4c4c778940bdd34ce74e8ace34ad930a126a77ef3d4c"
+  },
+  {
+    "id": "material-resource",
+    "path": "Engine/Source/Runtime/Engine/Public/MaterialShared.h",
+    "line": 3207,
+    "end_line": 3265,
+    "claim": "FMaterialResource derives from FMaterial and connects authoring materials to compiled rendering resources.",
+    "sha256": "419dc96174fff10af8d7988cf77c5163d29c331ba3f4ed67f193a6bdafd4227d"
+  },
+  {
+    "id": "material-proxy",
+    "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialRenderProxy.h",
+    "line": 45,
+    "end_line": 110,
+    "claim": "Material render proxies expose cached uniform-expression state to rendering.",
+    "sha256": "75e9f17b7135c18db394c037c33c72dc3920e80bb92e6bb78a44886296bff60d"
+  },
+  {
+    "id": "light-component",
+    "path": "Engine/Source/Runtime/Engine/Private/Components/LightComponent.cpp",
+    "line": 964,
+    "end_line": 1001,
+    "claim": "Light components register and update renderer-facing light state.",
+    "sha256": "38f08b4b52cd8022fdbc3262c2054ac88db8b1b97b351bb75528a0abd58b73f1"
+  },
+  {
+    "id": "light-proxy",
+    "path": "Engine/Source/Runtime/Engine/Public/LightSceneProxy.h",
+    "line": 39,
+    "end_line": 73,
+    "claim": "Light proxies are created from components and owned by rendering with specialized light behavior.",
+    "sha256": "d065d939ecb618c226d7413d7925833a9dde90023b37b00b710e0575a01bc364"
+  },
+  {
+    "id": "gbuffer",
+    "path": "Engine/Shaders/Private/DeferredShadingCommon.ush",
+    "line": 379,
+    "end_line": 439,
+    "claim": "The decoded logical GBuffer includes normal, color, roughness, shading-model and depth-related fields.",
+    "sha256": "0e4f6be600f236f61c55198acd7e462818eb781ccc08d7e56c3b187b6a1fb24e"
+  },
+  {
+    "id": "deferred-frame",
+    "path": "Engine/Source/Runtime/Renderer/Private/DeferredShadingRenderer.cpp",
+    "line": 3041,
+    "end_line": 3068,
+    "claim": "The deferred renderer schedules Lumen scene lighting and its main base pass.",
+    "sha256": "3a761850733d7f7778a466d9b5369adf9c39cdf2e83e09bc1164013809fee9fe"
+  },
+  {
+    "id": "deferred-lighting",
+    "path": "Engine/Source/Runtime/Renderer/Private/DeferredShadingRenderer.cpp",
+    "line": 3420,
+    "end_line": 3567,
+    "claim": "The deferred frame includes indirect illumination, direct lights and hair-lighting work.",
+    "sha256": "425ee203e65baaa81bccb854efe7b706c77a52306e4227d9c3b20674eb4ea4fe"
+  },
+  {
+    "id": "deferred-translucency",
+    "path": "Engine/Source/Runtime/Renderer/Private/DeferredShadingRenderer.cpp",
+    "line": 3960,
+    "end_line": 4019,
+    "claim": "The deferred frame includes specialized translucency and reflection work.",
+    "sha256": "fc3608db1e93274c344d1730aa02a8fd8ff8eb8e24bbbdef92d0d3bd148caaae"
+  },
+  {
+    "id": "ray-scene",
+    "path": "Engine/Source/Runtime/Renderer/Private/RayTracing/RayTracingScene.cpp",
+    "line": 497,
+    "end_line": 545,
+    "claim": "Ray-tracing scene builds explicitly declare TLAS instance buffers and acceleration-structure dependencies.",
+    "sha256": "2a130017149f2caccf9fff0784f76beb4e44d179e20dcf6541aae1fe473bcb9c"
+  },
+  {
+    "id": "lumen-scene",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneData.h",
+    "line": 1094,
+    "end_line": 1137,
+    "claim": "Lumen owns specialized persistent card, primitive-group and heightfield scene data.",
+    "sha256": "92f014e5fe17c9ab98a689bf6b277ad73d9f8c0647a9d22ae0dc73db86259408"
+  },
+  {
+    "id": "buffer-view-definitions",
+    "path": "Engine/Config/BaseEngine.ini",
+    "line": 3138,
+    "end_line": 3162,
+    "claim": "Editor buffer visualization names include BaseColor, Roughness, SceneDepth, and WorldNormal.",
+    "sha256": "036937fb33b686b482e630b7899a226f906fae1ef5df5af3ace2fddf23b322b5"
+  },
+  {
+    "id": "bounds-showflag",
+    "path": "Engine/Source/Runtime/Engine/Public/ShowFlagsValues.inl",
+    "line": 269,
+    "end_line": 276,
+    "claim": "Bounds is an advanced editor show flag.",
+    "sha256": "e42080edabef1ab7b19c2759b90254fe88af189398aeb204bb1377285cf2a722"
+  },
+  {
+    "id": "lumen-card-visualization",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenVisualize.cpp",
+    "line": 204,
+    "end_line": 217,
+    "claim": "The CardPlacement visualization console variable toggles card visualization.",
+    "sha256": "ce51fcdde3fdab621402663775cf9d83bb4519900ea77dc20ef5e35129c1fba2"
+  },
+  {
+    "id": "lumen-screen-traces-toggle",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenScreenProbeTracing.cpp",
+    "line": 12,
+    "end_line": 19,
+    "claim": "Screen probe tracing has a console switch for screen tracing before other tracing methods.",
+    "sha256": "16ec0898880b1d7d74b068c99987b26ad5fa2a82895f44855e21adc925e01f7b"
+  },
+  {
+    "id": "table-mesh-resources",
+    "path": "Engine/Source/Runtime/Engine/Public/StaticMeshResources.h",
+    "line": 193,
+    "end_line": 500,
+    "claim": "Sections, static-mesh attribute buffers and LOD resources provide reusable geometry.",
+    "sha256": "91c66b4d224e66fa575994457fa088d64635f8884de1ffec3bd1ecae6c5b4f55"
+  },
+  {
+    "id": "table-mesh-lods",
+    "path": "Engine/Source/Runtime/Engine/Public/StaticMeshResources.h",
+    "line": 769,
+    "end_line": 810,
+    "claim": "FStaticMeshRenderData groups per-LOD resources.",
+    "sha256": "fd8c2c10099ac0265a6bebdab9e7de921f44a17ca94dfb2096c06789957fa661"
+  },
+  {
+    "id": "table-mesh-asset-access",
+    "path": "Engine/Source/Runtime/Engine/Classes/Engine/StaticMesh.h",
+    "line": 630,
+    "end_line": 650,
+    "claim": "UStaticMesh exposes its built render data.",
+    "sha256": "fa8d1189270e813074803e9c39652165526c22f50fd39d8ba56124f0e92cd5d1"
+  },
+  {
+    "id": "table-world-scene",
+    "path": "Engine/Source/Runtime/Engine/Classes/Engine/World.h",
+    "line": 1498,
+    "end_line": 1507,
+    "claim": "UWorld holds its renderer-facing scene interface.",
+    "sha256": "ab3fef9a6a4a3294948d010e3d35a0252828e1850b0c09564dcb792aadf0d594"
+  },
+  {
+    "id": "table-component-fields",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/SceneComponent.h",
+    "line": 100,
+    "end_line": 151,
+    "claim": "Scene components carry attachment, bounds and relative placement.",
+    "sha256": "3a5ea3b877e740278fd61d25bb120b7028ea9618bbe963dda9c86e5c055621ae"
+  },
+  {
+    "id": "table-component-world-transform",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/SceneComponent.h",
+    "line": 360,
+    "end_line": 372,
+    "claim": "Scene components cache ComponentToWorld.",
+    "sha256": "1597db92c07599c9376a8e92546c966d288413322f32dde51cc843f6561b55c2"
+  },
+  {
+    "id": "table-mesh-material-overrides",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/MeshComponent.h",
+    "line": 15,
+    "end_line": 48,
+    "claim": "Mesh components carry material overrides.",
+    "sha256": "2babd58fa17115e15cbc7b8a33ea2b739b942fa1ba2cc48da5e08008ad0f4c66"
+  },
+  {
+    "id": "table-mesh-component-asset",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/StaticMeshComponent.h",
+    "line": 125,
+    "end_line": 138,
+    "claim": "Static mesh components refer to a shared mesh asset.",
+    "sha256": "4567d7fdf2fe6ef69aea9872fd9e7bf634570acd4e613cc8c9040f92a6fb76a7"
+  },
+  {
+    "id": "table-scene-arrays",
+    "path": "Engine/Source/Runtime/Renderer/Private/ScenePrivate.h",
+    "line": 1689,
+    "end_line": 1719,
+    "claim": "FScene maintains packed primitive data and component lookup.",
+    "sha256": "e97bda5992c0a8292948b3b21cd57be3ba360186a382bb01234573e24e281812"
+  },
+  {
+    "id": "table-scene-persistent-map",
+    "path": "Engine/Source/Runtime/Renderer/Private/ScenePrivate.h",
+    "line": 2532,
+    "end_line": 2545,
+    "claim": "Persistent primitive indices map to packed scene storage.",
+    "sha256": "66312f23932cda4e098c53685db841b9fad0ec4bf6485219757b47b861751bbc"
+  },
+  {
+    "id": "table-proxy-state",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneProxy.h",
+    "line": 1735,
+    "end_line": 1804,
+    "claim": "Primitive proxies retain copied placement, identity, scene links and a primitive uniform buffer.",
+    "sha256": "a18798fea9c8ceff2c60e3f5d5eb21a1a0f8d3476464411dac5cfed916fc3df7"
+  },
+  {
+    "id": "table-proxy-behavior",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneProxy.h",
+    "line": 433,
+    "end_line": 542,
+    "claim": "Primitive proxies provide conventional drawing, ray instance and per-view relevance hooks.",
+    "sha256": "a87a1318e1c3ff2f2400853f0df094e9a18df22bde56e34cb3f692d1b738d5d4"
+  },
+  {
+    "id": "table-proxy-policy",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneProxy.h",
+    "line": 790,
+    "end_line": 863,
+    "claim": "Proxy getters expose rendering policy and primitive shader bindings.",
+    "sha256": "49f307abfa50fb3dd4b8a3eab63b8698cac48f7cd873fe389fc79ec389300db9"
+  },
+  {
+    "id": "table-proxy-instances",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneProxy.h",
+    "line": 1220,
+    "end_line": 1240,
+    "claim": "Proxies expose instance data through an accessor.",
+    "sha256": "7bc8f097cac0a90c61bb74a83425aab9e62ff1454bb1ed1248af84a8722f95ad"
+  },
+  {
+    "id": "table-scene-interface",
+    "path": "Engine/Source/Runtime/Engine/Public/SceneInterface.h",
+    "line": 119,
+    "end_line": 170,
+    "claim": "FSceneInterface exposes primitive registration and transform-update operations.",
+    "sha256": "dfbcd821325568f4c667fa8aa5d79013c884996970822079e1e546bdea08a709"
+  },
+  {
+    "id": "table-scene-info-members",
+    "path": "Engine/Source/Runtime/Renderer/Public/PrimitiveSceneInfo.h",
+    "line": 265,
+    "end_line": 405,
+    "claim": "Scene info stores membership, cached mesh metadata, lighting links and specialized path integration.",
+    "sha256": "405f84c4ce444e751b137ba79fe79cce790653d0e3946fd28d0d3bba0984d4fa"
+  },
+  {
+    "id": "table-scene-info-identity",
+    "path": "Engine/Source/Runtime/Renderer/Public/PrimitiveSceneInfo.h",
+    "line": 451,
+    "end_line": 508,
+    "claim": "Packed and persistent indices differ from instance and lightmap allocations.",
+    "sha256": "8156339d0b5a7389eb039f3fc725b93b1b77986ef968237fe4da99c9156a3d96"
+  },
+  {
+    "id": "table-scene-info-storage",
+    "path": "Engine/Source/Runtime/Renderer/Public/PrimitiveSceneInfo.h",
+    "line": 781,
+    "end_line": 824,
+    "claim": "Scene info owns instance allocation metadata and cached-command cleanup contracts.",
+    "sha256": "a9417e1c242d5a3df06b7969132fb32dae87819887014cd75877e36082cff0f3"
+  },
+  {
+    "id": "table-view-state",
+    "path": "Engine/Source/Runtime/Engine/Public/SceneView.h",
+    "line": 1480,
+    "end_line": 1526,
+    "claim": "FSceneView separates per-observation data from a persistent state reference.",
+    "sha256": "b456e978279d18512369fd429eb35e7cfde6bc143da1beb26b57e827210db3e9"
+  },
+  {
+    "id": "table-view-filter",
+    "path": "Engine/Source/Runtime/Engine/Public/SceneView.h",
+    "line": 1636,
+    "end_line": 1644,
+    "claim": "Views can hide or show only particular primitive identities.",
+    "sha256": "1590855f97d4346a0d23cd85b51052c6482a6460089ce25e4912d20742b80a0c"
+  },
+  {
+    "id": "table-view-family",
+    "path": "Engine/Source/Runtime/Engine/Public/SceneView.h",
+    "line": 2417,
+    "end_line": 2439,
+    "claim": "A view family carries shared views, scene, render target and show flags.",
+    "sha256": "832d9778f361a559d3cfd0bef3f1b0e97cee498cabeb96a6dd5b470b4538c77e"
+  },
+  {
+    "id": "table-view-working-data",
+    "path": "Engine/Source/Runtime/Renderer/Private/SceneRendering.h",
+    "line": 1254,
+    "end_line": 1318,
+    "claim": "FViewInfo supplies per-view renderer visibility and relevance arrays.",
+    "sha256": "440d4aa2675fe35ce4289785595d234a808092c0cbf3122d6aa231f72848c5d5"
+  },
+  {
+    "id": "table-gpu-scene-storage",
+    "path": "Engine/Source/Runtime/Renderer/Private/GPUScene.h",
+    "line": 218,
+    "end_line": 354,
+    "claim": "FGPUScene manages separate buffers, allocations and update/upload operations.",
+    "sha256": "29d0454a06ea52cd36429a1e269485d4c2a4e95859b80ac4f94a1dd58df4fa06"
+  },
+  {
+    "id": "table-primitive-parameters",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveUniformShaderParameters.h",
+    "line": 18,
+    "end_line": 75,
+    "claim": "Typed primitive shader parameters include placement, bounds and custom data.",
+    "sha256": "5f8742c13bb6baaf84c4819cb554372834b471f12ad8164217ff0736f2319b67"
+  },
+  {
+    "id": "table-primitive-packer",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveSceneShaderData.h",
+    "line": 14,
+    "end_line": 43,
+    "claim": "The primitive packer creates a fixed-stride array for GPU consumption.",
+    "sha256": "d113cef172bc51745ba017d4aa3135d821b9697cc3e2ae833ebb9be790c4fefa"
+  },
+  {
+    "id": "table-primitive-shader-record",
+    "path": "Engine/Shaders/Private/SceneData.ush",
+    "line": 67,
+    "end_line": 127,
+    "claim": "The decoded primitive shader record groups shared policy, placement, extent and addressing.",
+    "sha256": "a363ba6decdd7ae0f40ec39cffeb59971e46e6f7ee028779d9f9d0ab78da8684"
+  },
+  {
+    "id": "table-instance-shader-record",
+    "path": "Engine/Shaders/Private/SceneData.ush",
+    "line": 217,
+    "end_line": 261,
+    "claim": "The decoded instance shader record exposes placement-specific data and optional payload addresses.",
+    "sha256": "4436087d7c523fc4d3d3728df6f3555e7b4b0cae19a7206fcbe3a9834a82d8d7"
+  },
+  {
+    "id": "table-mesh-batch-fields",
+    "path": "Engine/Source/Runtime/Engine/Public/MeshBatch.h",
+    "line": 231,
+    "end_line": 445,
+    "claim": "Mesh batches separate geometry/material selection from element-level draw ranges and primitive bindings.",
+    "sha256": "0fd8158086145abf4bc3f0ae9fad44bd0b23777815b63e932ff30c68ed7873b6"
+  },
+  {
+    "id": "table-vertex-factory",
+    "path": "Engine/Source/Runtime/RenderCore/Public/VertexFactory.h",
+    "line": 655,
+    "end_line": 755,
+    "claim": "Vertex factories expose geometry stream/type contracts.",
+    "sha256": "ec6232c1f4b14a3e1ee97f0ee23b35cb9e3d88defa98f27e25e6f3ea4a0d930e"
+  },
+  {
+    "id": "table-view-relevance",
+    "path": "Engine/Source/Runtime/Engine/Public/PrimitiveViewRelevance.h",
+    "line": 13,
+    "end_line": 45,
+    "claim": "Primitive relevance describes categories of work for a view.",
+    "sha256": "11e99f349f5fb41d42cfbe8285ebd4351a57316d6d0217728805ee7fcd4bf083"
+  },
+  {
+    "id": "table-draw-command-fields",
+    "path": "Engine/Source/Runtime/Renderer/Public/MeshPassProcessor.h",
+    "line": 1281,
+    "end_line": 1325,
+    "claim": "Mesh draw commands record bindings, pipeline identity and arguments.",
+    "sha256": "94cd5b686fd1a0c7e2d53cad0f3fcf74f08bea707ea721bc28121e5c95514df0"
+  },
+  {
+    "id": "table-pass-processor",
+    "path": "Engine/Source/Runtime/Renderer/Public/MeshPassProcessor.h",
+    "line": 2255,
+    "end_line": 2325,
+    "claim": "Pass processors translate mesh descriptions into RHI-ready drawing commands.",
+    "sha256": "a9822952bf7801aaf2f92101d488acab7d184a7f2cc26633bc711cedcb53afa2"
+  },
+  {
+    "id": "table-skinned-component-history",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/SkinnedMeshComponent.h",
+    "line": 391,
+    "end_line": 421,
+    "claim": "Skinned components retain previous component-space transforms.",
+    "sha256": "ecdd6e5a99b1512c370b0ad35c8062902a1c571e4b4a3771afefaa74b053c2e6"
+  },
+  {
+    "id": "table-skinned-component-render-object",
+    "path": "Engine/Source/Runtime/Engine/Classes/Components/SkinnedMeshComponent.h",
+    "line": 1035,
+    "end_line": 1060,
+    "claim": "Skinned components reference their rendering object.",
+    "sha256": "7fc00b5a9681e45f02a4418180fb44effa1f5b3ed732a5f50543e40ff3617202"
+  },
+  {
+    "id": "table-skeletal-object",
+    "path": "Engine/Source/Runtime/Engine/Public/SkeletalRenderPublic.h",
+    "line": 140,
+    "end_line": 203,
+    "claim": "Skeletal render objects define dynamic updates, skin vertex factories and frame-limited matrix access.",
+    "sha256": "99a7745585966015accee5e7b5f8083e6b882749dc2bc6183088746698ee385a"
+  },
+  {
+    "id": "table-material-settings",
+    "path": "Engine/Source/Runtime/Engine/Public/Materials/Material.h",
+    "line": 472,
+    "end_line": 492,
+    "claim": "Authored materials select domain and blending.",
+    "sha256": "cebca10bcfce0747af2108a37474334d726502fc6a04ea4cf038f33089d5eb34"
+  },
+  {
+    "id": "table-material-parent",
+    "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialInstance.h",
+    "line": 640,
+    "end_line": 650,
+    "claim": "Material instances reference a parent.",
+    "sha256": "a2e74000430569cb7a151943870ff610555d316ba5b98e2926ccf055344b384c"
+  },
+  {
+    "id": "table-material-parameters",
+    "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialInstance.h",
+    "line": 765,
+    "end_line": 805,
+    "claim": "Material instances store typed parameter overrides.",
+    "sha256": "478313bfe28cc3c8e1eb63150b2b6130b6840e9ce4d76d6c862ec3cbe23757c2"
+  },
+  {
+    "id": "table-material-compiled-interface",
+    "path": "Engine/Source/Runtime/Engine/Public/MaterialShared.h",
+    "line": 2408,
+    "end_line": 2500,
+    "claim": "FMaterial provides compiled-material policy queries.",
+    "sha256": "4c41854a1d06ca1a94a96aea64a08484300a2fdef9dfc2eded73cf402d5c8868"
+  },
+  {
+    "id": "table-material-resource",
+    "path": "Engine/Source/Runtime/Engine/Public/MaterialShared.h",
+    "line": 3211,
+    "end_line": 3260,
+    "claim": "FMaterialResource implements the compiled material interface.",
+    "sha256": "262e6fcbc5ce98b2628b93123bcfb649cf4215a00e9851084bd4284bcb9a2909"
+  },
+  {
+    "id": "table-material-binding-cache",
+    "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialRenderProxy.h",
+    "line": 48,
+    "end_line": 176,
+    "claim": "Material proxies resolve resources/parameters and keep uniform-expression caches.",
+    "sha256": "7c1a87f9caeb9cb4ac3a959dad48affa8321e3c09e0363098b7754c85ee834e6"
+  },
+  {
+    "id": "table-light-proxy-properties",
+    "path": "Engine/Source/Runtime/Engine/Public/LightSceneProxy.h",
+    "line": 44,
+    "end_line": 225,
+    "claim": "Light proxies expose shape, placement, color and shadow operations.",
+    "sha256": "e5cdf4af22e10b66d49ef2e7d135768275eadab27084813eb9a199953e361552"
+  },
+  {
+    "id": "table-light-info",
+    "path": "Engine/Source/Runtime/Renderer/Private/LightSceneInfo.h",
+    "line": 207,
+    "end_line": 285,
+    "claim": "Light scene info stores renderer membership, interactions and validity state.",
+    "sha256": "46793834a440a4638d8691c64da7bf2d2ae2d3168d8e6ee41ed49bc6e98643fc"
+  },
+  {
+    "id": "table-gbuffer-fields",
+    "path": "Engine/Shaders/Private/DeferredShadingCommon.ush",
+    "line": 379,
+    "end_line": 439,
+    "claim": "FGBufferData is a logical decoded surface record, with configuration-dependent texture encoding.",
+    "sha256": "0e4f6be600f236f61c55198acd7e462818eb781ccc08d7e56c3b187b6a1fb24e"
+  },
+  {
+    "id": "table-lumen-maintained-data",
+    "path": "Engine/Source/Runtime/Renderer/Private/Lumen/LumenSceneData.h",
+    "line": 1094,
+    "end_line": 1200,
+    "claim": "Lumen maintains surface representations, atlas resources, mappings, feedback and pending changes.",
+    "sha256": "dc41ecd7a97bea85bbd3ef61df5a5fb300d15bd8225ff73c8192333c141d428d"
+  },
+  {
+    "id": "table-view-persistent-history",
+    "path": "Engine/Source/Runtime/Renderer/Private/SceneViewState.h",
+    "line": 56,
+    "end_line": 65,
+    "claim": "The renderer view-state implementation is associated with a camera across frames.",
+    "sha256": "1f96c7bdea34de28d7153a0a8fcc6398d471b3a16032addfa49713d251697345"
+  }
+]

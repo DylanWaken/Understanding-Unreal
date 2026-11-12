@@ -1,0 +1,252 @@
+{
+  "engine": "5.8.1-0+UE5",
+  "source_scene": "Seven separate cube StaticMeshActors sharing /Engine/BasicShapes/Cube.Cube; UE cm = (-100*CPU x,100*CPU y,100*CPU z)",
+  "capture_method": "Persistent Unreal editor level viewport, explicit FSceneViewport::Draw calls and ordinary FScreenshotRequest; 1280x720, no screenshot UI",
+  "warmup": "200 initial draw requests, then 90 draw requests after each state change before capture; not a convergence-rate or performance measurement",
+  "exposure_ev100": 4.0,
+  "sdf_debug_exposure_ev100": -1.0,
+  "mesh_sdf_limitation": "Nonuniformly scaled shared cube SDFs approximate these boxes; this is not the analytic teaching lab SDF",
+  "captures": [
+    {
+      "name": "lumen-lit",
+      "commands": [
+        "viewmode lit"
+      ],
+      "frame": 290
+    },
+    {
+      "name": "lumen-scene",
+      "commands": [
+        "r.Lumen.Visualize 3"
+      ],
+      "frame": 400
+    },
+    {
+      "name": "lumen-surface-cache",
+      "commands": [
+        "r.Lumen.Visualize 5"
+      ],
+      "frame": 510
+    },
+    {
+      "name": "lumen-cache-albedo",
+      "commands": [
+        "r.Lumen.Visualize 8"
+      ],
+      "frame": 620
+    },
+    {
+      "name": "lumen-cache-normals",
+      "commands": [
+        "r.Lumen.Visualize 9"
+      ],
+      "frame": 730
+    },
+    {
+      "name": "lumen-cache-direct",
+      "commands": [
+        "r.Lumen.Visualize 12"
+      ],
+      "frame": 840
+    },
+    {
+      "name": "lumen-cache-indirect",
+      "commands": [
+        "r.Lumen.Visualize 13"
+      ],
+      "frame": 950
+    },
+    {
+      "name": "lumen-reflection-view",
+      "commands": [
+        "r.Lumen.Visualize 4"
+      ],
+      "frame": 1060
+    },
+    {
+      "name": "lumen-cards",
+      "commands": [
+        "r.Lumen.Visualize 0",
+        "r.Lumen.Visualize.CardPlacement 1"
+      ],
+      "frame": 1170
+    },
+    {
+      "name": "lumen-mesh-sdf",
+      "commands": [
+        "r.Lumen.Visualize.CardPlacement 0",
+        "showflag.VisualizeMeshDistanceFields 1"
+      ],
+      "frame": 1280
+    },
+    {
+      "name": "lumen-global-sdf",
+      "commands": [
+        "showflag.VisualizeMeshDistanceFields 0",
+        "showflag.VisualizeGlobalDistanceField 1"
+      ],
+      "frame": 1390
+    },
+    {
+      "name": "lumen-screen-probes",
+      "commands": [
+        "showflag.VisualizeGlobalDistanceField 0",
+        "r.ShaderPrint.Enable 1",
+        "r.Lumen.ScreenProbeGather.Debug 1",
+        "r.Lumen.ScreenProbeGather.Debug.ProbePlacement 1"
+      ],
+      "frame": 1500
+    },
+    {
+      "name": "lumen-probe-traces",
+      "commands": [
+        "r.Lumen.ScreenProbeGather.Debug 0",
+        "r.Lumen.ScreenProbeGather.Debug.ProbePlacement 0",
+        "r.Lumen.ScreenProbeGather.VisualizeTraces 1"
+      ],
+      "frame": 1610
+    },
+    {
+      "name": "lumen-radiance-cache",
+      "commands": [
+        "r.Lumen.ScreenProbeGather.VisualizeTraces 0",
+        "r.Lumen.RadianceCache.Visualize 1",
+        "r.Lumen.RadianceCache.VisualizeRadiusScale 1"
+      ],
+      "frame": 1720
+    },
+    {
+      "name": "lumen-radiosity-probes",
+      "commands": [
+        "r.Lumen.RadianceCache.Visualize 0",
+        "r.LumenScene.Radiosity.VisualizeProbes 1",
+        "r.LumenScene.Radiosity.VisualizeProbeRadius 3"
+      ],
+      "frame": 1830
+    },
+    {
+      "name": "lumen-no-screen-traces",
+      "commands": [
+        "r.LumenScene.Radiosity.VisualizeProbes 0",
+        "r.Lumen.ScreenProbeGather.ScreenTraces 0",
+        "r.Lumen.Reflections.ScreenTraces 0"
+      ],
+      "frame": 1940
+    },
+    {
+      "name": "lumen-hardware-tracing",
+      "commands": [
+        "r.Lumen.HardwareRayTracing 1"
+      ],
+      "frame": 2050
+    },
+    {
+      "name": "lumen-direct-only",
+      "commands": [
+        "r.Lumen.HardwareRayTracing 0",
+        "r.DynamicGlobalIlluminationMethod 0",
+        "r.ReflectionMethod 0"
+      ],
+      "frame": 2160
+    },
+    {
+      "name": "scene-lit",
+      "commands": [
+        "r.DynamicGlobalIlluminationMethod 1",
+        "r.ReflectionMethod 1",
+        "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+        "r.Lumen.Reflections.ScreenTraces 1",
+        "viewmode lit"
+      ],
+      "frame": 2270
+    },
+    {
+      "name": "scene-base-color",
+      "commands": [
+        "viewmode buffervisualization",
+        "r.BufferVisualizationTarget BaseColor"
+      ],
+      "frame": 2380
+    },
+    {
+      "name": "scene-world-normal",
+      "commands": [
+        "r.BufferVisualizationTarget WorldNormal"
+      ],
+      "frame": 2490
+    },
+    {
+      "name": "scene-roughness",
+      "commands": [
+        "r.BufferVisualizationTarget Roughness"
+      ],
+      "frame": 2600
+    },
+    {
+      "name": "scene-metallic",
+      "commands": [
+        "r.BufferVisualizationTarget Metallic"
+      ],
+      "frame": 2710
+    },
+    {
+      "name": "scene-depth",
+      "commands": [
+        "viewmode lit"
+      ],
+      "frame": 2820
+    },
+    {
+      "name": "scene-wireframe",
+      "commands": [
+        "viewmode wireframe"
+      ],
+      "frame": 2930
+    },
+    {
+      "name": "scene-bounds",
+      "commands": [
+        "viewmode lit",
+        "showflag.Bounds 1"
+      ],
+      "frame": 3040
+    },
+    {
+      "name": "scene-moved-box",
+      "commands": [
+        "showflag.Bounds 0",
+        "viewmode lit"
+      ],
+      "frame": 3150
+    },
+    {
+      "name": "scene-changed-light",
+      "commands": [
+        "viewmode lit"
+      ],
+      "frame": 3260
+    }
+  ],
+  "scene_depth_display": "Native postprocess material: SceneDepth (linear centimeters) / 1000, after tonemapping. White corresponds to 10m; not raw device Z.",
+  "moved_box": {
+    "before_cm": [
+      77.5,
+      284.99999999999994,
+      52.5
+    ],
+    "after_cm": [
+      -22.5,
+      204.99999999999994,
+      52.5
+    ]
+  },
+  "changed_light": {
+    "intensity_lumens": 7200,
+    "linear_color": [
+      1,
+      0.55,
+      0.25
+    ]
+  },
+  "elapsed_seconds": 31.876354694366455
+}

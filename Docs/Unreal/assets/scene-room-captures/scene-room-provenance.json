@@ -1,0 +1,28 @@
+{
+  "engine_git_commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "rhi": "Direct3D 12, SM6",
+  "capture_report": "scene-room-capture-report.json",
+  "scene_inventory": "scene-room-inventory.json",
+  "baseline_verification": "All seven original StaticMeshActor transforms, mesh references, and materials match the recorded LumenRoom inventory.",
+  "source_sha256_lf_normalized": {
+    "capture_scene_room.py": "4eb159801012cf76dbfdf0427dd9e079eec5c4f2e5e52fa3609b4cf7103012d2",
+    "publish_scene_room.py": "3ff88f04cfd9384daec5c758868f3f63c50fe7b90c19554aaedd21e6b8a572c5",
+    "run.ps1": "e44dd7838ee98764d091ee482960bd5690bb7db15944d1875d40e20761c836bf",
+    "Source/ArdaLabCapture/ArdaLabCapture.h": "3ba19a81d2841eac8fbfbd435ce756420cf5f7ac76d025ca658579a7d91f1e8e",
+    "Source/ArdaLabCapture/ArdaLabCapture.cpp": "41d26d515f092ea4160d84bbf4acc50ddf1e5cadb7eab1059e3356c7fa6c58f5"
+  },
+  "template_asset_sha256": {
+    "Character/Mesh/SK_Mannequin.uasset": "96715b1161c74113f335304c421d7cedec084b5215297006bb13a0dc713cbf94",
+    "Character/Mesh/SK_Mannequin_Skeleton.uasset": "5afc7a146ea934c94cd0bc46cbaf640ce61f46acbb32431c0d874846b5deded5",
+    "Animations/ThirdPersonWalk.uasset": "ab4a007fbf76f7d638321f76d82ad25dabcf94489181cdfc9fa6f8603077181d"
+  },
+  "publication": "Screenshots are unchanged Unreal viewport output. Epic mannequin template assets are used locally and are not redistributed. Procedural door and foliage are created by the published script.",
+  "limitations": [
+    "Frozen animation samples, not an Animation Blueprint/controller, cloth, or physics demonstration.",
+    "Three instancing components contain a total of 30 instances; instance count is not draw-call count.",
+    "Leaf opacity masks are analytic material masks on planar triangles. This scene does not demonstrate WPO wind.",
+    "The attached indicator is emissive geometry, not a LightComponent.",
+    "Stochastic lighting noise remains; warm-up counts do not establish convergence."
+  ]
+}

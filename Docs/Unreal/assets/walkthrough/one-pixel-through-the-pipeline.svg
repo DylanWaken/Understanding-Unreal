@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1040 980" role="img" aria-labelledby="title desc"><title id="title">Follow one room floor pixel from triangle to logical GBuffer</title><desc id="desc">The room floor triangle from chapter one is projected to 190,120; 250,120; and 250,60. Pixel center 230.5,100.5 has barycentric weights 0.325,0.35,0.325. Its interpolated position and UV feed a depth comparison and material sample, producing explicit logical GBuffer values.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#237665"/></marker></defs>
+<rect width="1040" height="980" fill="#fcfaf5"/>
+<text x="30" y="40" font-family="Arial, sans-serif" font-size="26" fill="#263a36" text-anchor="start" font-weight="bold">Follow one room floor pixel from triangle to logical GBuffer</text>
+<text x="30" y="77" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="start" font-weight="normal">One continuous numeric example; lengths in cm, image coordinates in pixels.</text>
+<polygon points="90.00,394.00 354.00,394.00 354.00,130.00" fill="#e1eadf" stroke="#237665" stroke-width="2"/>
+<line x1="310" y1="174" x2="354" y2="174" stroke="#bccabb" stroke-width="1"/>
+<line x1="134" y1="350" x2="134" y2="394" stroke="#bccabb" stroke-width="1"/>
+<line x1="266" y1="218" x2="354" y2="218" stroke="#bccabb" stroke-width="1"/>
+<line x1="178" y1="306" x2="178" y2="394" stroke="#bccabb" stroke-width="1"/>
+<line x1="222" y1="262" x2="354" y2="262" stroke="#bccabb" stroke-width="1"/>
+<line x1="222" y1="262" x2="222" y2="394" stroke="#bccabb" stroke-width="1"/>
+<line x1="178" y1="306" x2="354" y2="306" stroke="#bccabb" stroke-width="1"/>
+<line x1="266" y1="218" x2="266" y2="394" stroke="#bccabb" stroke-width="1"/>
+<line x1="134" y1="350" x2="354" y2="350" stroke="#bccabb" stroke-width="1"/>
+<line x1="310" y1="174" x2="310" y2="394" stroke="#bccabb" stroke-width="1"/>
+<circle cx="90.0" cy="394.0" r="7" fill="#bd4939" stroke="#bd4939" stroke-width="2"/>
+<circle cx="354.0" cy="394.0" r="7" fill="#287c6b" stroke="#287c6b" stroke-width="2"/>
+<circle cx="354.0" cy="130.0" r="7" fill="#3d72b0" stroke="#3d72b0" stroke-width="2"/>
+<text x="52" y="424" font-family="Arial, sans-serif" font-size="20" fill="#bd4939" text-anchor="start" font-weight="normal">v0 (190,120)</text>
+<text x="304" y="424" font-family="Arial, sans-serif" font-size="20" fill="#287c6b" text-anchor="start" font-weight="normal">v1 (250,120)</text>
+<text x="286" y="111" font-family="Arial, sans-serif" font-size="20" fill="#3d72b0" text-anchor="start" font-weight="normal">v2 (250,60)</text>
+<circle cx="268.20000000000005" cy="308.20000000000005" r="6" fill="#263a36" stroke="#263a36" stroke-width="2"/>
+<line x1="254.20000000000005" y1="308.20000000000005" x2="282.20000000000005" y2="308.20000000000005" stroke="#263a36" stroke-width="1"/>
+<line x1="268.20000000000005" y1="294.20000000000005" x2="268.20000000000005" y2="322.20000000000005" stroke="#263a36" stroke-width="1"/>
+<text x="119" y="290" font-family="Arial, sans-serif" font-size="24" fill="#263a36" text-anchor="start" font-weight="bold">P</text>
+<line x1="142" y1="287" x2="257.20000000000005" y2="304.20000000000005" stroke="#263a36" stroke-width="1"/>
+<text x="75" y="464" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">P = (230.5,100.5), enlarged view</text>
+<text x="529" y="122" font-family="Arial, sans-serif" font-size="24" fill="#263a36" text-anchor="start" font-weight="bold">Barycentric interpolation</text>
+<circle cx="540" cy="156" r="6" fill="#bd4939" stroke="#bd4939" stroke-width="2"/>
+<text x="555" y="163" font-family="Arial, sans-serif" font-size="22" fill="#bd4939" text-anchor="start" font-weight="normal">v0: .325 × (0,0,0)</text>
+<circle cx="540" cy="194" r="6" fill="#287c6b" stroke="#287c6b" stroke-width="2"/>
+<text x="555" y="201" font-family="Arial, sans-serif" font-size="22" fill="#287c6b" text-anchor="start" font-weight="normal">v1: .350 × (100,0,0)</text>
+<circle cx="540" cy="232" r="6" fill="#3d72b0" stroke="#3d72b0" stroke-width="2"/>
+<text x="555" y="239" font-family="Arial, sans-serif" font-size="22" fill="#3d72b0" text-anchor="start" font-weight="normal">v2: .325 × (100,100,0)</text>
+<text x="529" y="288" font-family="Arial, sans-serif" font-size="22" fill="#263a36" text-anchor="start" font-weight="bold">Local = (67.5,32.5,0)</text>
+<text x="529" y="323" font-family="Arial, sans-serif" font-size="22" fill="#263a36" text-anchor="start" font-weight="normal">World = (17.5,232.5,0)</text>
+<text x="529" y="358" font-family="Arial, sans-serif" font-size="22" fill="#263a36" text-anchor="start" font-weight="normal">Camera = (117.5,32.5,400)</text>
+<text x="529" y="389" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">400 is positive forward depth.</text>
+<text x="529" y="429" font-family="Arial, sans-serif" font-size="22" fill="#326f96" text-anchor="start" font-weight="normal">UV = (.675,.325)</text>
+<text x="529" y="462" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">World normal = (0,0,1) at all vertices</text>
+<line x1="30" y1="491" x2="1010" y2="491" stroke="#c5cec0" stroke-width="2"/>
+<text x="30" y="532" font-family="Arial, sans-serif" font-size="23" fill="#263a36" text-anchor="start" font-weight="bold">The room floor wins the depth comparison</text>
+<text x="30" y="569" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Compare positive view depth in cm:</text>
+<line x1="72" y1="642" x2="441" y2="642" stroke="#53665f" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="72" y1="642" x2="272" y2="642" stroke="#237665" stroke-width="7"/>
+<circle cx="72" cy="642" r="9" fill="#326f96" stroke="#326f96" stroke-width="2"/>
+<text x="46" y="610" font-family="Arial, sans-serif" font-size="19" fill="#326f96" text-anchor="start" font-weight="normal">Camera</text>
+<line x1="272" y1="597" x2="272" y2="688" stroke="#237665" stroke-width="6"/>
+<line x1="372" y1="597" x2="372" y2="688" stroke="#a74834" stroke-width="6"/>
+<text x="272" y="721" font-family="Arial, sans-serif" font-size="21" fill="#237665" text-anchor="middle" font-weight="normal">400 cm</text>
+<text x="372" y="721" font-family="Arial, sans-serif" font-size="21" fill="#a74834" text-anchor="middle" font-weight="normal">600 cm</text>
+<text x="272" y="758" font-family="Arial, sans-serif" font-size="20" fill="#237665" text-anchor="middle" font-weight="normal">room floor</text>
+<text x="372" y="758" font-family="Arial, sans-serif" font-size="20" fill="#a74834" text-anchor="middle" font-weight="normal">behind it</text>
+<text x="30" y="812" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">400 &lt; 600: keep the floor’s sample.</text>
+<text x="30" y="842" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">This uses view depth, not hardware Z.</text>
+<text x="30" y="872" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Depth-test encoding can differ by renderer.</text>
+<text x="529" y="532" font-family="Arial, sans-serif" font-size="22" fill="#263a36" text-anchor="start" font-weight="bold">Sample material, then write surface data</text>
+<text x="529" y="573" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="start" font-weight="normal">Texture at UV: (.4,.3,.2)</text>
+<text x="529" y="604" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="start" font-weight="normal">Tint: (.8,1,.8)</text>
+<text x="529" y="635" font-family="Arial, sans-serif" font-size="21" fill="#263a36" text-anchor="start" font-weight="normal">Multiply → (.32,.30,.16)</text>
+<rect x="529" y="675" width="80" height="80" rx="0" fill="#99956f" stroke="none" stroke-width="0"/>
+<text x="631" y="700" font-family="Arial, sans-serif" font-size="19" fill="#263a36" text-anchor="start" font-weight="normal">Base color patch</text>
+<text x="631" y="727" font-family="Arial, sans-serif" font-size="19" fill="#263a36" text-anchor="start" font-weight="normal">sRGB encoded for display</text>
+<text x="529" y="799" font-family="Arial, sans-serif" font-size="22" fill="#263a36" text-anchor="start" font-weight="bold">Logical GBuffer fields</text>
+<text x="529" y="835" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">BaseColor = (.32,.30,.16)</text>
+<text x="529" y="865" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">WorldNormal = (0,0,1); Roughness = .8</text>
+<text x="529" y="895" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">Floor patch: Metallic = 0</text>
+<text x="30" y="936" font-family="Arial, sans-serif" font-size="20" fill="#263a36" text-anchor="start" font-weight="normal">All triangle vertices share 400 cm depth, so perspective-correct weights equal screen weights.</text>
+</svg>
