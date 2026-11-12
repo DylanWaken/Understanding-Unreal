@@ -112,7 +112,16 @@ The exact engine-capture scripts, modes, camera settings and limitations are doc
 
 `.github/workflows/pages.yml` runs on pushes to `main` and on `workflow_dispatch`. It checks the generated essays, the offline equation cache, the frozen laboratory evidence and the published links, then uploads `Docs/` with `actions/upload-pages-artifact` and deploys it with `actions/deploy-pages`. `.nojekyll` is included so Pages serves the asset paths directly.
 
-Pages must be enabled once in the repository's **Settings → Pages** with **GitHub Actions** as the source; the workflow cannot enable Pages itself. After the first successful deployment the site is published at `https://dylanwaken.github.io/Understanding-Unreal/`. This migration does not claim that the site has already been deployed.
+The site is live at [dylanwaken.github.io/Understanding-Unreal](https://dylanwaken.github.io/Understanding-Unreal/). The first publication on 12 November 2026 used the `gh-pages` branch, containing exactly the `Docs/` subtree. GitHub's Pages build and deployment completed successfully.
+
+The same publication can be reproduced from a validated commit without changing the local `main` checkout:
+
+```powershell
+$siteCommit = git subtree split --prefix=Docs HEAD
+git push origin "${siteCommit}:refs/heads/gh-pages"
+```
+
+This preserves the source and authoring tools on `main`, while the publication branch contains only the static site. On a new repository, enabling a custom Actions publishing source through Settings requires repository administration access; pushing source code alone does not grant the workflow that access.
 
 ## Migration record
 
