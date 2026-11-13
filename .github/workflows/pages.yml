@@ -7,6 +7,7 @@ on:
     paths:
       - "Docs/**"
       - "Scripts/Docs/unreal_articles/**"
+      - "Scripts/Docs/check_site_independence.py"
       - ".github/workflows/pages.yml"
       - "README.md"
       - "MIGRATION.md"
@@ -59,6 +60,9 @@ jobs:
 
       - name: Validate essays, links and figures
         run: python3 Scripts/Docs/unreal_articles/validate.py
+
+      - name: Check standalone site independence
+        run: python3 Scripts/Docs/check_site_independence.py
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
