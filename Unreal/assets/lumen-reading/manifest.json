@@ -1,0 +1,97 @@
+{
+  "cpu_reference": {
+    "channel_mismatches": 0,
+    "clean_png_bytes": 117635,
+    "clean_png_sha256": "c0df1b89be73940b307aa2fa0ae2238e9aff93315cf36782a2a0179b7118f02e",
+    "compared_rows": 165,
+    "file": "assets/lumen-reading/cpu-reference.svg",
+    "footer_rows": 35,
+    "height": 640,
+    "max_channel_error": 0,
+    "original_png_sha256": "b98d08d9db3130c7bb84e7a2c19165846a69bfe8e809bef90b55f016adb32a6c",
+    "pfm_sha256": "2c6b8f8ca490d449c581d65c8c9834a0808169dbd17128d9004cd3e31c2a514e",
+    "raster_height": 200,
+    "raster_width": 280,
+    "sha256": "44a3c5b82e4ada0cf2597a19e698dc766e73df71740de5747f92b82084650f0d",
+    "width": 760
+  },
+  "diagrams": [
+    {
+      "evidence": "Adjacent matched Lumen/path-traced image pair (also discussed in \u00a708) is a convergence/path comparison, not a sample-direction dump.",
+      "file": "assets/lumen-reading/diagrams/solid-angle-sampling.svg",
+      "height": 760,
+      "placement": "lumen.html, #path-geometry, after the M09\u2013M10 projected-solid-angle paragraph",
+      "sha256": "e137e28b94a268459379b4631a98e6f686820644dd75a8442d3a227b59a6b95c",
+      "slug": "solid-angle-sampling",
+      "title": "Projected area becomes solid angle; a sample is a cone",
+      "width": 1100
+    },
+    {
+      "evidence": "M27 selected NEE sample (0.159154943) and M28 power-heuristic weights; no new numeric claim.",
+      "file": "assets/lumen-reading/diagrams/sampling-mis.svg",
+      "height": 760,
+      "placement": "lumen.html, #sampling-and-mis, after the M29 MIS partition proof",
+      "sha256": "8c53fd89163bf69818619462a0d7355d0ee5a62c58bb23ea19b16b63ebda6626",
+      "slug": "sampling-mis",
+      "title": "Light sampling and BSDF sampling propose the same path family",
+      "width": 1100
+    },
+    {
+      "evidence": "replays/surface-cache/cache-texel-replay.json: page 35, 8x8 texels, atlas (1067,4), weights (1,0,0,0).",
+      "file": "assets/lumen-reading/diagrams/surface-cache-lookup.svg",
+      "height": 780,
+      "placement": "lumen-engineering-v2.html, #tracing-representations, after the hit-to-card lookup equation",
+      "sha256": "515d888aa3bd8981f2cfee18d8cc7dce109e8026900b9fb1260927f6cf53dbcd",
+      "slug": "surface-cache-lookup",
+      "title": "A hit becomes card UV, a page-table entry, and an atlas texel",
+      "width": 1100
+    },
+    {
+      "evidence": "figure-manifest.json and the captured probe radiance / lighting-PDF / trace-hit buffers.",
+      "file": "assets/lumen-reading/diagrams/screen-probe-angular.svg",
+      "height": 780,
+      "placement": "lumen-engineering-v2.html, #screen-probes, before the probe buffer triplet",
+      "sha256": "94e03635ec26ffdbf99e3ecf450b7c784e024dcc2cb7b46217e72e4d3154ed91",
+      "slug": "screen-probe-angular",
+      "title": "Screen probes: a square direction map and a compacted ray list",
+      "width": 1100
+    },
+    {
+      "evidence": "replays/world-cache/world-cache-replay.json: cell [24,30,25], 8 probes, weights sum 1.000000008, radiance (11.7408,14.5248,10.6913).",
+      "file": "assets/lumen-reading/diagrams/radiance-cache.svg",
+      "height": 800,
+      "placement": "lumen-engineering-v2.html, #radiance-cache, after the trilinear/parallax equations",
+      "sha256": "45b0593da16e0e0bc36ef550dfe44c0100c8e3fff576db8ec00d1719e605253d",
+      "slug": "radiance-cache",
+      "title": "Sparse clipmap cell, eight probe corners, octahedral directions",
+      "width": 1100
+    },
+    {
+      "evidence": "pixel temporal alpha and history rejection: max 10 frames, distance 0.01 (0.03 foliage), normal 45 degrees; source-referenced.",
+      "file": "assets/lumen-reading/diagrams/temporal-history.svg",
+      "height": 760,
+      "placement": "lumen-engineering-v2.html, #time-and-invalidation, after the history-rejection paragraph",
+      "sha256": "6c42d4cd4fc6c986769c91de026343116c92b30b756bec1c441064edf4f7f06d",
+      "slug": "temporal-history",
+      "title": "Reproject the previous sample; reject what does not correspond",
+      "width": 1100
+    },
+    {
+      "evidence": "figure-manifest.json: captured GBufferB group; the metallic/roughness/specular triplet plus selective-mask and shading-model metadata.",
+      "file": "assets/lumen-reading/diagrams/deferred-direct-cached.svg",
+      "height": 760,
+      "placement": "lumen-deferred.html, #material-evaluation, after the default-lit GBuffer explanation",
+      "sha256": "c3d099cfa99da7e78d34234be0fa3f6fe386e45a01c675020c82c321df1c74cc",
+      "slug": "deferred-direct-cached",
+      "title": "One visible point, two lighting owners",
+      "width": 1100
+    }
+  ],
+  "engine_commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+  "generator": {
+    "path": "Scripts/Docs/unreal_articles/labs/lumen-reading/generate.py",
+    "sha256": "30c11515f1b7226f78fbe5a87136e2d652fc9e562d65715e94226aadc8afce34"
+  },
+  "not_runtime_images": true,
+  "schema": "lumen-reading-visuals/1"
+}

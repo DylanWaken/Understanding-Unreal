@@ -71,7 +71,7 @@
   function initializeTheme() {
     let saved = "";
     try {
-      saved = localStorage.getItem("arda-theme") || "";
+      saved = localStorage.getItem("understanding-unreal-theme") || "";
     } catch (_error) {
       saved = "";
     }
@@ -83,7 +83,7 @@
         const next = doc.documentElement.dataset.theme === "dark" ? "light" : "dark";
         setTheme(next);
         try {
-          localStorage.setItem("arda-theme", next);
+          localStorage.setItem("understanding-unreal-theme", next);
         } catch (_error) {
           // Theme still applies when storage is unavailable.
         }

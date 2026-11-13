@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780" width="1100" height="780" role="img" aria-labelledby="title desc" data-schematic="true">
+<title id="title">A hit becomes card UV, a page-table entry, and an atlas texel</title>
+<desc id="desc">A world hit and normal select directional cards; card-local coordinates map to UV, the virtual page table resolves a mapped page and bias, and four atlas taps are weighted by bilinear and depth-validity terms. Schematic; the captured replay resolves one real texel.</desc>
+<defs>
+<marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker>
+<marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker>
+<marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#22312d"/></marker>
+</defs>
+<rect width="1100" height="780" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<rect x="36" y="2" width="252" height="22" rx="4" fill="#f0f1e9" stroke="#93661e" stroke-width="1.5" opacity="1"/>
+<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC · NOT CAPTURED GEOMETRY</text>
+<text x="36" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#22312d" font-weight="600" text-anchor="start">A hit becomes card UV, a page-table entry, and an atlas texel</text>
+<text x="36" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#586760" font-weight="400" text-anchor="start">World point → card space → virtual page → physical atlas → four weighted taps. One real texel is resolved in the replay.</text>
+<rect x="36" y="104" width="560" height="448" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M46 105H586" stroke="#286c56" stroke-width="4"/>
+<text x="52" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286c56" font-weight="600" text-anchor="start">3D · a geometric hit selects a directional card</text>
+<path d="M159.6 260.4L313.20000000000005 260.4L313.20000000000005 394.79999999999995L159.6 394.79999999999995Z" fill="#edf3ee" stroke="#22312d" stroke-width="1.2" opacity="0.35"/>
+<path d="M102.0 330.0L159.6 260.4L159.6 394.79999999999995L102.0 464.4Z" fill="#edf3ee" stroke="#22312d" stroke-width="1.2" opacity="0.35"/>
+<path d="M102.0 464.4L159.6 394.79999999999995L313.20000000000005 394.79999999999995L255.60000000000002 464.4Z" fill="#edf3ee" stroke="#22312d" stroke-width="1.2" opacity="0.35"/>
+<path d="M102.0 330.0L255.60000000000002 330.0" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M255.60000000000002 330.0L255.60000000000002 464.4" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M255.60000000000002 464.4L102.0 464.4" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M102.0 464.4L102.0 330.0" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M159.6 260.4L313.20000000000005 260.4" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M313.20000000000005 260.4L313.20000000000005 394.79999999999995" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M313.20000000000005 394.79999999999995L159.6 394.79999999999995" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M159.6 394.79999999999995L159.6 260.4" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M102.0 330.0L159.6 260.4" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M255.60000000000002 330.0L313.20000000000005 260.4" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M102.0 464.4L159.6 394.79999999999995" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<path d="M255.60000000000002 464.4L313.20000000000005 394.79999999999995" fill="none" stroke="#22312d" stroke-width="1.4"/>
+<circle cx="240.7776" cy="424.31039999999996" r="6" fill="#aa5343" stroke="#aa5343" stroke-width="1.5"/>
+<text x="250.7776" y="414.31039999999996" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#aa5343" font-weight="600" text-anchor="start">x</text>
+<path d="M240.7776 424.31039999999996L284.7776 368.31039999999996" fill="none" stroke="#aa5343" stroke-width="2" marker-end="url(#arrow-red)"/>
+<text x="288.7776" y="366.31039999999996" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#aa5343" font-weight="600" text-anchor="start">n</text>
+<text x="80" y="510" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#586760" font-weight="400" text-anchor="start">object · six directional card sets</text>
+<path d="M385 238L486 208L514 296L413 326Z" fill="#f0f1e9" stroke="#93661e" stroke-width="3" opacity="1"/>
+<text x="392" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#93661e" font-weight="600" text-anchor="start">candidate card</text>
+<path d="M246.7776 418.31039999999996L402 272" fill="none" stroke="#93661e" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow-gold)"/>
+<text x="404" y="206" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#93661e" font-weight="400" text-anchor="start">bounds + facing test</text>
+<path d="M424 312L472 298" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-gold)"/>
+<path d="M424 312L438 264" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-gold)"/>
+<text x="476" y="300" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#93661e" font-weight="600" text-anchor="start">u</text>
+<text x="440" y="254" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#93661e" font-weight="600" text-anchor="start">v</text>
+<circle cx="424" cy="312" r="4" fill="#93661e" stroke="#93661e" stroke-width="1.5"/>
+<text x="388" y="342" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">p = card-local hit</text>
+<rect x="80" y="366" width="264" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="92" y="390" font-family="Cascadia Code, Consolas, monospace" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">u = ½ + ½ p_x/a_x</text>
+<rect x="80" y="402" width="264" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="92" y="426" font-family="Cascadia Code, Consolas, monospace" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">v = ½ − ½ p_y/a_y</text>
+<rect x="620" y="104" width="444" height="264" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M630 105H1054" stroke="#93661e" stroke-width="4"/>
+<text x="636" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#93661e" font-weight="600" text-anchor="start">2D · virtual page table resolves a mapped page</text>
+<rect x="646" y="150" width="128" height="128" rx="2" fill="#fffdf8" stroke="#22312d" stroke-width="1.5" opacity="1"/>
+<path d="M678.0 150L678.0 278" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M646 182.0L774 182.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M710.0 150L710.0 278" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M646 214.0L774 214.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M742.0 150L742.0 278" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M646 246.0L774 246.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<rect x="742.0" y="150" width="32.0" height="32.0" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<text x="646" y="296" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">requested page</text>
+<rect x="820" y="150" width="220" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="832" y="174" font-family="Cascadia Code, Consolas, monospace" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">page entry (8 bytes)</text>
+<rect x="820" y="188" width="220" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="832" y="212" font-family="Cascadia Code, Consolas, monospace" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">bias X/Y · res X/Y · page</text>
+<path d="M778 196L812 166" fill="none" stroke="#586760" stroke-width="2" marker-end="url(#arrow-muted)"/>
+<rect x="820" y="244" width="96" height="96" rx="2" fill="#fffdf8" stroke="#286788" stroke-width="1.5" opacity="1"/>
+<path d="M836.0 244L836.0 340" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M820 260.0L916 260.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M852.0 244L852.0 340" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M820 276.0L916 276.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M868.0 244L868.0 340" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M820 292.0L916 292.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M884.0 244L884.0 340" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M820 308.0L916 308.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M900.0 244L900.0 340" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M820 324.0L916 324.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<rect x="821" y="245" width="14.0" height="14.0" rx="1" fill="#286788" stroke="#286788" stroke-width="1.5" opacity="0.35"/>
+<text x="820" y="236" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#286788" font-weight="600" text-anchor="start">physical atlas (one page shown)</text>
+<path d="M930 212L904 244" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<text x="178" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">mapped fallback</text>
+<text x="646" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">A zero mapped X resolution is invalid, not black lighting.</text>
+<rect x="620" y="386" width="444" height="166" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M630 387H1054" stroke="#286788" stroke-width="4"/>
+<text x="636" y="416" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286788" font-weight="600" text-anchor="start">2D · four taps, depth validity, one value</text>
+<rect x="650" y="436" width="46" height="46" rx="2" fill="#f0f1e9" stroke="#286c56" stroke-width="1.5" opacity="1"/>
+<text x="673" y="464" font-family="Cascadia Code, Consolas, monospace" font-size="15" fill="#286c56" font-weight="600" text-anchor="middle">1.0</text>
+<rect x="704" y="436" width="46" height="46" rx="2" fill="#fffdf8" stroke="#586760" stroke-width="1.5" opacity="1"/>
+<text x="727" y="464" font-family="Cascadia Code, Consolas, monospace" font-size="15" fill="#586760" font-weight="600" text-anchor="middle">0.0</text>
+<rect x="650" y="490" width="46" height="46" rx="2" fill="#fffdf8" stroke="#586760" stroke-width="1.5" opacity="1"/>
+<text x="673" y="518" font-family="Cascadia Code, Consolas, monospace" font-size="15" fill="#586760" font-weight="600" text-anchor="middle">0.0</text>
+<rect x="704" y="490" width="46" height="46" rx="2" fill="#fffdf8" stroke="#586760" stroke-width="1.5" opacity="1"/>
+<text x="727" y="518" font-family="Cascadia Code, Consolas, monospace" font-size="15" fill="#586760" font-weight="600" text-anchor="middle">0.0</text>
+<text x="778" y="456" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="600" text-anchor="start">β_i · depth validity v_i</text>
+<text x="778" y="478" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">invalid texels contribute 0 to w_i,</text>
+<text x="778" y="496" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">not a valid black radiance.</text>
+<rect x="778" y="512" width="238" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="790" y="536" font-family="Cascadia Code, Consolas, monospace" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">L = Σ w_i L_i / Σ w_i / e_c</text>
+<rect x="36" y="572" width="1028" height="144" rx="8" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="54" y="600" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#286c56" font-weight="600" text-anchor="start">The lookup chain</text>
+<rect x="54" y="620" width="118" height="34" rx="4" fill="#fffdf8" stroke="#286c56" stroke-width="1.2" opacity="1"/>
+<text x="113.0" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">world hit x, n</text>
+<path d="M174 637L184 637" fill="none" stroke="#586760" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
+<rect x="186" y="620" width="133" height="34" rx="4" fill="#fffdf8" stroke="#c4cec7" stroke-width="1.2" opacity="1"/>
+<text x="252.5" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">mesh-card record</text>
+<path d="M321 637L331 637" fill="none" stroke="#586760" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
+<rect x="333" y="620" width="104" height="34" rx="4" fill="#fffdf8" stroke="#c4cec7" stroke-width="1.2" opacity="1"/>
+<text x="385.0" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">card-local p</text>
+<path d="M439 637L449 637" fill="none" stroke="#586760" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
+<rect x="451" y="620" width="72" height="34" rx="4" fill="#fffdf8" stroke="#c4cec7" stroke-width="1.2" opacity="1"/>
+<text x="487.0" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">(u,v)</text>
+<path d="M525 637L535 637" fill="none" stroke="#586760" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
+<rect x="537" y="620" width="90" height="34" rx="4" fill="#fffdf8" stroke="#c4cec7" stroke-width="1.2" opacity="1"/>
+<text x="582.0" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">page table</text>
+<path d="M629 637L639 637" fill="none" stroke="#586760" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
+<rect x="641" y="620" width="97" height="34" rx="4" fill="#fffdf8" stroke="#c4cec7" stroke-width="1.2" opacity="1"/>
+<text x="689.5" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">physical UV</text>
+<path d="M740 637L750 637" fill="none" stroke="#586760" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
+<rect x="752" y="620" width="118" height="34" rx="4" fill="#fffdf8" stroke="#c4cec7" stroke-width="1.2" opacity="1"/>
+<text x="811.0" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">4 taps + depth</text>
+<path d="M872 637L882 637" fill="none" stroke="#586760" stroke-width="1.5" marker-end="url(#arrow-muted)"/>
+<rect x="884" y="620" width="72" height="34" rx="4" fill="#fffdf8" stroke="#286c56" stroke-width="1.2" opacity="1"/>
+<text x="920.0" y="643" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#22312d" font-weight="400" text-anchor="middle">L / e_c</text>
+<text x="54" y="688" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Schematic simplifies to one card and four taps. The replay resolves card page 35 at 8×8 texels.</text>
+<text x="54" y="706" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Atlas coordinate (1067, 4); bilinear weights (1, 0, 0, 0); unrelated pages are omitted.</text>
+<path d="M36 736L1064 736" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<text x="36" y="760" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">Schematic. Real atlas is 4096² and sparse; the diagram draws one page and omits unrelated pages. Not captured geometry.</text>
+</g></svg>

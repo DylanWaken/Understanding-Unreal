@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" width="1100" height="760" role="img" aria-labelledby="title desc" data-schematic="true">
+<title id="title">Light sampling and BSDF sampling propose the same path family</title>
+<desc id="desc">A receiver x and one emitter y are reached by a light-sampling connection and by a BSDF continuation. A small 3D hemisphere inset shows the same two directions, and the directional densities overlap; MIS partitions the contribution with weights that sum to one. Schematic; no captured geometry or GPU samples.</desc>
+<defs>
+<marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker>
+<marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker>
+<marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#22312d"/></marker>
+</defs>
+<rect width="1100" height="760" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<rect x="36" y="2" width="252" height="22" rx="4" fill="#f0f1e9" stroke="#93661e" stroke-width="1.5" opacity="1"/>
+<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC · NOT CAPTURED GEOMETRY</text>
+<text x="36" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#22312d" font-weight="600" text-anchor="start">Light sampling and BSDF sampling propose the same path family</text>
+<text x="36" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#586760" font-weight="400" text-anchor="start">Two proposals for the same direct path: light sampling and BSDF sampling. MIS only partitions where both can generate it.</text>
+<rect x="36" y="104" width="520" height="404" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M46 105H546" stroke="#286c56" stroke-width="4"/>
+<text x="52" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286c56" font-weight="600" text-anchor="start">2D plan view · two techniques, one receiver</text>
+<rect x="92" y="208" width="54" height="190" rx="2" fill="#f0f1e9" stroke="#93661e" stroke-width="2" opacity="1"/>
+<text x="84" y="198" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#93661e" font-weight="600" text-anchor="start">emitter area</text>
+<circle cx="500" cy="304" r="9" fill="#22312d" stroke="#22312d" stroke-width="1.5"/>
+<path d="M500 304L522 292L522 316Z" fill="#22312d" stroke="#22312d" stroke-width="1.5" opacity="1"/>
+<text x="528" y="310" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#22312d" font-weight="600" text-anchor="start">camera</text>
+<circle cx="310" cy="304" r="6" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<text x="318" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#286c56" font-weight="600" text-anchor="start">x</text>
+<path d="M310 304L500 304" fill="none" stroke="#22312d" stroke-width="2" marker-end="url(#arrow-ink)"/>
+<text x="390" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#586760" font-weight="400" text-anchor="start">fixed ω_o</text>
+<path d="M310 304L118 250" fill="none" stroke="#286c56" stroke-width="3" marker-end="url(#arrow-green)"/>
+<circle cx="118" cy="250" r="4" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<text x="176" y="242" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#286c56" font-weight="600" text-anchor="start">light sample · p_L</text>
+<path d="M310 304L118 350" fill="none" stroke="#286788" stroke-width="3" marker-end="url(#arrow-blue)"/>
+<circle cx="118" cy="350" r="4" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<text x="176" y="366" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#286788" font-weight="600" text-anchor="start">BSDF sample · p_B</text>
+<text x="70" y="486" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#586760" font-weight="400" text-anchor="start">Both arrows estimate the same direct contribution F at x;</text>
+<text x="70" y="505" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#586760" font-weight="400" text-anchor="start">the two proposals are not two different physical paths.</text>
+<rect x="70" y="418" width="436" height="34" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="82" y="442" font-family="Cascadia Code, Consolas, monospace" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">C = β f_s(x;ω→ω_o) L_e(y→x) V |n_x·ω| / p</text>
+<ellipse cx="482" cy="194" rx="42" ry="27" fill="#fffdf8" stroke="#c4cec7" stroke-width="1.5"/>
+<path d="M440 194A42 27 0 0 1 524 194" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1.2"/>
+<ellipse cx="482" cy="194" rx="20" ry="27" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<circle cx="482" cy="194" r="4" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<path d="M482 194L452 164" fill="none" stroke="#286c56" stroke-width="2" marker-end="url(#arrow-green)"/>
+<path d="M482 194L458 226" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<path d="M453.47 184.73A30 30 0 0 1 472.73 165.47" fill="none" stroke="#93661e" stroke-width="2"/>
+<text x="430" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="600" text-anchor="start">3D at x</text>
+<text x="528" y="176" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286c56" font-weight="600" text-anchor="start">ω_L</text>
+<text x="528" y="218" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">ω_B</text>
+<text x="390" y="248" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#586760" font-weight="400" text-anchor="start">same hemisphere, two proposals</text>
+<rect x="580" y="104" width="484" height="244" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M590 105H1054" stroke="#286788" stroke-width="4"/>
+<text x="596" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286788" font-weight="600" text-anchor="start">Directional densities over the same ω</text>
+<path d="M620 306L1040 306" fill="none" stroke="#22312d" stroke-width="1.5" marker-end="url(#arrow-ink)"/>
+<text x="1024" y="328" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#22312d" font-weight="600" text-anchor="start">ω</text>
+<path d="M640 306C700 186 760 186 812 306L824 306C878 236 932 236 984 306" fill="none" stroke="#286c56" stroke-width="3"/>
+<path d="M640 306C700 186 760 186 812 306L824 306C878 236 932 236 984 306" fill="#93661e" opacity="0.10"/>
+<path d="M752 306C790 214 846 214 886 306" fill="none" stroke="#286788" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="648" y="214" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286c56" font-weight="600" text-anchor="start">p_L</text>
+<text x="858" y="240" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286788" font-weight="600" text-anchor="start">p_B</text>
+<text x="792" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#93661e" font-weight="600" text-anchor="start">overlap</text>
+<rect x="620" y="152" width="200" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="632" y="176" font-family="Cascadia Code, Consolas, monospace" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">w_L = p_L²/(p_L²+p_B²)</text>
+<rect x="826" y="152" width="200" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="838" y="176" font-family="Cascadia Code, Consolas, monospace" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">w_B = p_B²/(p_L²+p_B²)</text>
+<rect x="580" y="366" width="484" height="142" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M590 367H1054" stroke="#93661e" stroke-width="4"/>
+<text x="596" y="396" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#93661e" font-weight="600" text-anchor="start">The weights partition one integral</text>
+<rect x="604" y="414" width="153" height="25" rx="4" fill="#fffdf8" stroke="#286c56" stroke-width="1.2" opacity="1"/>
+<text x="613" y="429" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#286c56" font-weight="600" text-anchor="start">light sample · w_L</text>
+<rect x="604" y="456" width="146" height="25" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="613" y="471" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#286788" font-weight="600" text-anchor="start">BSDF sample · w_B</text>
+<path d="M790 432L852 432" fill="none" stroke="#286c56" stroke-width="2" marker-end="url(#arrow-green)"/>
+<path d="M790 474L852 474" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<rect x="858" y="414" width="170" height="34" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="870" y="438" font-family="Cascadia Code, Consolas, monospace" font-size="16" fill="#22312d" font-weight="400" text-anchor="start">∫ F dσ</text>
+<text x="858" y="472" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#93661e" font-weight="600" text-anchor="start">w_L + w_B = 1</text>
+<text x="604" y="500" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">zero support ⇒ zero weight; a delta branch carries mass, not a density.</text>
+<rect x="36" y="532" width="320" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="52" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#286c56" font-weight="600" text-anchor="start">Common measure</text>
+<text x="52" y="590" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">p_L and p_B must both be solid-angle densities</text>
+<text x="52" y="614" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">at the same receiver and for the same emitter</text>
+<rect x="390" y="532" width="320" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="406" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#286c56" font-weight="600" text-anchor="start">Support</text>
+<text x="406" y="590" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">more samples cannot repair a technique with zero support</text>
+<text x="406" y="614" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">MIS only combines what each sampler can generate</text>
+<rect x="744" y="532" width="320" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="760" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#286c56" font-weight="600" text-anchor="start">Delta events</text>
+<text x="760" y="590" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">a mirror direction is not a finite density</text>
+<text x="760" y="614" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="400" text-anchor="start">use its branch mass, not a huge p_B value</text>
+<path d="M36 716L1064 716" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<text x="36" y="740" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">Schematic. The real convergence comparison is the matched Lumen path-traced pair; these arrows are not captured sample directions.</text>
+</g></svg>

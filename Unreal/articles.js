@@ -16,13 +16,13 @@
     theme.setAttribute('aria-label', `Switch to ${value === 'dark' ? 'light' : 'dark'} appearance`);
   }
   let preference = 'light';
-  try { preference = localStorage.getItem('arda-essay-theme') || 'light'; } catch (_) { /* Storage can be disabled. */ }
+  try { preference = localStorage.getItem('understanding-unreal-essay-theme') || 'light'; } catch (_) { /* Storage can be disabled. */ }
   applyTheme(preference);
   theme.hidden = false;
   theme.addEventListener('click', () => {
     const value = root.dataset.theme === 'dark' ? 'light' : 'dark';
     applyTheme(value);
-    try { localStorage.setItem('arda-essay-theme', value); } catch (_) { /* Reading still works. */ }
+    try { localStorage.setItem('understanding-unreal-essay-theme', value); } catch (_) { /* Reading still works. */ }
   });
   links.forEach(link => link.addEventListener('click', () => {
     contents.open = false;
@@ -55,6 +55,22 @@
   addEventListener('resize', schedule);
   addEventListener('load', schedule);
   update();
+  const printTables = document.querySelector('details.lumen-table')
+    ? [...document.querySelectorAll('details')].filter(details => details.querySelector('table'))
+    : [];
+  const printOpen = new Map();
+  function expandTablesForPrint() {
+    printTables.forEach(details => {
+      if (!printOpen.has(details)) printOpen.set(details, details.open);
+      details.open = true;
+    });
+  }
+  function restoreTablesAfterPrint() {
+    printOpen.forEach((wasOpen, details) => { details.open = wasOpen; });
+    printOpen.clear();
+  }
+  addEventListener('beforeprint', expandTablesForPrint);
+  addEventListener('afterprint', restoreTablesAfterPrint);
   const definition = document.createElement('div');
   definition.id = 'term-definition'; definition.className = 'term-definition';
   definition.role = 'tooltip'; definition.hidden = true; document.body.append(definition);

@@ -1,0 +1,197 @@
+/* Lumen reading: local concept diagrams and grouped capture figures.
+   Scoped so the global figure negative margins and the mobile 900px scroll
+   floor cannot turn a comparison grid into a page-wide horizontal scroller. */
+
+.concept-comparison,
+.concept-grid,
+.buffer-grid {
+  min-width: 0;
+  margin: 2.2rem 0;
+}
+
+.concept-comparison > :first-child { margin-top: 0; }
+.concept-comparison > :last-child { margin-bottom: 0; }
+
+/* Keep a long inline expression together and scroll it locally if necessary. */
+.inline-math { display: inline-block; max-width: 100%; overflow-x: auto; vertical-align: middle; }
+.katex { position: relative; }
+
+.concept-comparison figure,
+.concept-grid figure,
+.buffer-grid figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.concept-diagram {
+  margin: 0 0 1.1rem;
+}
+
+.concept-diagram img,
+.concept-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fffdf8;
+}
+
+.concept-comparison figcaption,
+.concept-grid figcaption,
+.buffer-grid figcaption {
+  max-width: none;
+  margin: .65rem 0 0;
+  padding: 0;
+  font-size: .76rem;
+  line-height: 1.65;
+}
+
+.buffer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1.15rem;
+  align-items: start;
+}
+
+.buffer-grid > figure {
+  padding: .55rem;
+  border: 1px solid var(--rule, #dedfd7);
+  border-radius: 4px;
+  background: var(--paper, #fffefb);
+}
+
+.buffer-grid > figure img,
+.buffer-grid > figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.buffer-grid figcaption {
+  margin-top: .5rem;
+  font-size: .71rem;
+}
+
+.buffer-grid .figure-scroll,
+.concept-grid .figure-scroll,
+.concept-comparison .figure-scroll {
+  overflow-x: auto;
+  background: transparent;
+}
+
+.buffer-grid .figure-scroll img,
+.concept-grid .figure-scroll img,
+.concept-comparison .figure-scroll img {
+  min-width: 0;
+}
+
+.concept-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
+  align-items: start;
+  margin: 1.2rem 0;
+}
+
+.concept-pair > figure {
+  margin: 0;
+}
+
+.evidence-note {
+  margin: 1rem 0 0;
+  padding: .8rem 1rem;
+  border-left: 3px solid var(--accent, #455c35);
+  background: var(--wash, #f0f1e9);
+  font-size: .85rem;
+  line-height: 1.7;
+}
+
+.evidence-note strong { font-weight: 600; }
+
+.concept-kicker {
+  display: block;
+  margin: 1.4rem 0 .35rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted, #686a61);
+}
+
+@media (min-width: 1200px) {
+  .concept-comparison > .concept-diagram {
+    width: calc(100% + 16rem);
+    margin-left: -8rem;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Wide math and figures have their own local scrollers. */
+  main { overflow-x: clip; }
+  .concept-comparison,
+  .concept-grid,
+  .buffer-grid,
+  .concept-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .concept-comparison,
+  .concept-grid,
+  .buffer-grid,
+  .concept-pair {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .buffer-grid > figure {
+    padding: .45rem;
+  }
+
+  /* Local scroll keeps a wide diagram or channel view legible without
+     widening the article. The grid itself stays one column. */
+  .concept-diagram .figure-scroll img {
+    min-width: 54rem;
+  }
+
+  .buffer-grid .figure-scroll img {
+    min-width: 34rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concept-comparison,
+  .concept-grid,
+  .buffer-grid,
+  .concept-pair {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  .concept-comparison,
+  .concept-grid,
+  .buffer-grid,
+  .concept-pair {
+    display: block;
+    margin: 1.2rem 0;
+  }
+
+  .buffer-grid > figure,
+  .concept-diagram {
+    break-inside: avoid;
+    margin: 1rem 0;
+  }
+
+  .buffer-grid .figure-scroll,
+  .concept-grid .figure-scroll,
+  .concept-comparison .figure-scroll {
+    overflow: visible;
+  }
+
+  .buffer-grid .figure-scroll img,
+  .concept-grid .figure-scroll img,
+  .concept-comparison .figure-scroll img,
+  .concept-diagram .figure-scroll img {
+    min-width: 0;
+  }
+}
