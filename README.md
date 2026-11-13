@@ -19,7 +19,7 @@ The Lumen essay includes a [frame explorer](https://dylanwaken.github.io/Underst
 | --- | --- |
 | `Docs/index.html` | Understanding Unreal homepage and essay index. |
 | `Docs/Unreal/` | Built/published essay pages, diagrams, math assets, lab evidence and progressive-enhancement scripts. |
-| `Docs/glossary.html` | Shared glossary; Arda-specific entries are retained as comparative notes and their source links point at the companion Ardashir site. |
+| `Docs/glossary.html` | Shared glossary; Arda-specific entries are retained as comparative notes, with their sources attributed in the definitions. |
 | `Docs/assets/` | Site shell (`site.css`, `site.js`) and glossary data used by the homepage and glossary. |
 | `Scripts/Docs/unreal_articles/` | Authored chapter fragments, figure placements, evidence records, generators, validators, math cache and reproducible labs. |
 | `.github/workflows/pages.yml` | Validates the standalone site and deploys `Docs/` to GitHub Pages. |

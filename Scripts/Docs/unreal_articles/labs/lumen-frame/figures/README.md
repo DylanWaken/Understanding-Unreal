@@ -13,16 +13,50 @@ work is performed. The raw dump is read-only.
 ## Run
 
 ```powershell
-python figures\decode_figures.py --capture D:\UnrealEngine\UnrealUnderstandingCapture\capture\buffers\gpudump\binary-20261112-153914 --graph 0001 --output figures
-python figures\verify_figures.py --capture D:\UnrealEngine\UnrealUnderstandingCapture\capture\buffers\gpudump\binary-20261112-153914 --output figures
+$pkg = Join-Path $env:TEMP "lumen-figures-graph0001"
+if (Test-Path $pkg) { Remove-Item -Recurse -Force $pkg }
+New-Item -ItemType Directory -Force "$pkg\evidence" | Out-Null
+Copy-Item figures\evidence\* "$pkg\evidence" -Recurse
+python figures\decode_figures.py --capture D:\UnrealEngine\UnrealUnderstandingCapture\capture\buffers\gpudump\binary-20261112-153914 --report "$pkg\evidence" --run "$pkg\evidence\run.json" --graph 0001 --output $pkg
+python figures\verify_figures.py --capture D:\UnrealEngine\UnrealUnderstandingCapture\capture\buffers\gpudump\binary-20261112-153914 --output $pkg
 ```
 
-`decode_figures.py` writes `png/*.png`, `figure-manifest.json`, `index.html` and
+`decode_figures.py` writes `svg/*.svg`, the text-free data backing
+`png/*.png`, `figure-manifest.json`, `index.html` and
 `inventory/{passes,resources,payloads,graph-index,summary}.json`.
 `verify_figures.py` re-checks the manifest against the raw dump, the packaged
-evidence manifest and the exact payload bytes; the final graph 0001 run reports
-**79/79 checks passed**. Both scripts are deterministic: running the decoder
-twice produces byte-identical figures and manifests.
+evidence manifest, the exact payload bytes, the SVG text vectors and the
+gallery defaults; the final graph 0001 run reports **86/86 checks passed**.
+Both scripts are deterministic: running the decoder twice produces
+byte-identical figures and manifests.
+
+The published package is copied from the temporary output to
+`Docs/Unreal/assets/lumen-v2/buffers/` (`svg/`, `png/`, `figure-manifest.json`,
+`index.html`; inventory and evidence are unchanged).
+
+## Vector typography
+
+Every figure is an SVG at `svg/<slug>.svg` with the same `<slug>` as the PNG
+backing and the same canvas dimensions. The SVG embeds the lossless PNG data
+(`data:image/png;base64`) and draws every title, subtitle, legend label, panel
+heading, note and in-panel annotation as real SVG `<text>` over system sans
+serif or system monospace. `Raster.draw_text` never paints pixels; it records a
+text overlay, and `Raster.blit`/`Raster.scaled` transform those overlays with
+the same geometry as the data.
+
+Layout is reserved before rendering: body text is 14 px, titles are 22 px, and
+panel headings sit in a separate 22 px band above their data, never over it.
+The decoder fails if an estimated text line is clipped or overlaps another line,
+or if its background is not a flat presentation colour (which proves no data is
+obscured). The verifier independently checks the SVG geometry and text nodes and
+re-hashes the embedded PNG backing against the retained `image` record.
+
+`figure-manifest.json` keeps the original scientific `image` record (the PNG
+backing) and adds a `vector_image` record with `file`, `bytes`, `sha256`,
+`width`, `height`, `format`, the embedded-backing declaration and a `text`
+object (`is_vector`, element count, minimum/maximum font size, title lines and
+font stacks). The gallery defaults to the SVG; a package without
+`vector_image` still falls back to the PNG record.
 
 The portable form is `--capture <dump> --graph 0001 --output <dir>`: by default
 `--report` is `figures/evidence` and `--run` is `figures/evidence/run.json`, so

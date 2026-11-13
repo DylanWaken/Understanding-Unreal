@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 800" width="1100" height="800" role="img" aria-labelledby="title desc" data-schematic="true">
+<title id="title">Sparse clipmap cell, eight probe corners, octahedral directions</title>
+<desc id="desc">A query point lies inside one clipmap cell; its eight allocated probe corners are interpolated with trilinear weights. Each probe stores directional radiance in an equal-area octahedral map. Schematic; the captured replay resolves one real query and eight real neighbors.</desc>
+<defs>
+<marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker>
+<marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker>
+<marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#22312d"/></marker>
+</defs>
+<rect width="1100" height="800" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<rect x="36" y="2" width="252" height="22" rx="4" fill="#f0f1e9" stroke="#93661e" stroke-width="1.5" opacity="1"/>
+<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC · NOT CAPTURED GEOMETRY</text>
+<text x="36" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#22312d" font-weight="600" text-anchor="start">Sparse clipmap cell, eight probe corners, octahedral directions</text>
+<text x="36" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#586760" font-weight="400" text-anchor="start">Trilinear space and octahedral direction are two different interpolations; one query uses both.</text>
+<rect x="36" y="104" width="600" height="464" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M46 105H626" stroke="#286788" stroke-width="4"/>
+<text x="52" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286788" font-weight="600" text-anchor="start">3D · one clipmap cell and eight probe corners</text>
+<path d="M117.104 292.416L181.904 292.416L181.904 357.216L117.104 357.216Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 330.0L117.104 292.416L117.104 357.216L86.0 394.8Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 394.8L117.104 357.216L181.904 357.216L150.8 394.8Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 330.0L150.8 330.0" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 330.0L150.8 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 394.8L86.0 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 394.8L86.0 330.0" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 292.416L181.904 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 292.416L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 357.216L117.104 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 357.216L117.104 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 330.0L117.104 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 330.0L181.904 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 394.8L117.104 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 394.8L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 357.216L181.904 357.216L181.904 422.016L117.104 422.016Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 394.8L117.104 357.216L117.104 422.016L86.0 459.6Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 459.6L117.104 422.016L181.904 422.016L150.8 459.6Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 394.8L150.8 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 394.8L150.8 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 459.6L86.0 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 459.6L86.0 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 357.216L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 357.216L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 422.016L117.104 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 422.016L117.104 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 394.8L117.104 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 394.8L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 459.6L117.104 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 459.6L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 422.016L181.904 422.016L181.904 486.816L117.104 486.816Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 459.6L117.104 422.016L117.104 486.816L86.0 524.4Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 524.4L117.104 486.816L181.904 486.816L150.8 524.4Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M86.0 459.6L150.8 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 459.6L150.8 524.4" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 524.4L86.0 524.4" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 524.4L86.0 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 422.016L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 422.016L181.904 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 486.816L117.104 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M117.104 486.816L117.104 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 459.6L117.104 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 459.6L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M86.0 524.4L117.104 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 524.4L181.904 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 292.416L246.704 292.416L246.704 357.216L181.904 357.216Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 330.0L181.904 292.416L181.904 357.216L150.8 394.8Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 394.8L181.904 357.216L246.704 357.216L215.6 394.8Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 330.0L215.6 330.0" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 330.0L215.6 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 394.8L150.8 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 394.8L150.8 330.0" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 292.416L246.704 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 292.416L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 357.216L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 357.216L181.904 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 330.0L181.904 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 330.0L246.704 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 394.8L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 394.8L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 357.216L246.704 357.216L246.704 422.016L181.904 422.016Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 394.8L181.904 357.216L181.904 422.016L150.8 459.6Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 459.6L181.904 422.016L246.704 422.016L215.6 459.6Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 394.8L215.6 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 394.8L215.6 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 459.6L150.8 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 459.6L150.8 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 357.216L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 357.216L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 422.016L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 422.016L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 394.8L181.904 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 394.8L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 459.6L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 459.6L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 422.016L246.704 422.016L246.704 486.816L181.904 486.816Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 459.6L181.904 422.016L181.904 486.816L150.8 524.4Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 524.4L181.904 486.816L246.704 486.816L215.6 524.4Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M150.8 459.6L215.6 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 459.6L215.6 524.4" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 524.4L150.8 524.4" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 524.4L150.8 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 422.016L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 422.016L246.704 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 486.816L181.904 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M181.904 486.816L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 459.6L181.904 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 459.6L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M150.8 524.4L181.904 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 524.4L246.704 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 292.416L311.50399999999996 292.416L311.50399999999996 357.216L246.704 357.216Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 330.0L246.704 292.416L246.704 357.216L215.6 394.8Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 394.8L246.704 357.216L311.50399999999996 357.216L280.4 394.8Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 330.0L280.4 330.0" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 330.0L280.4 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 394.8L215.6 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 394.8L215.6 330.0" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 292.416L311.50399999999996 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M311.50399999999996 292.416L311.50399999999996 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M311.50399999999996 357.216L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 357.216L246.704 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 330.0L246.704 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 330.0L311.50399999999996 292.416" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 394.8L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 394.8L311.50399999999996 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 357.216L311.50399999999996 357.216L311.50399999999996 422.016L246.704 422.016Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 394.8L246.704 357.216L246.704 422.016L215.6 459.6Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 459.6L246.704 422.016L311.50399999999996 422.016L280.4 459.6Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 394.8L280.4 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 394.8L280.4 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 459.6L215.6 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 459.6L215.6 394.8" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 357.216L311.50399999999996 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M311.50399999999996 357.216L311.50399999999996 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M311.50399999999996 422.016L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 422.016L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 394.8L246.704 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 394.8L311.50399999999996 357.216" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 459.6L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 459.6L311.50399999999996 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 422.016L311.50399999999996 422.016L311.50399999999996 486.816L246.704 486.816Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 459.6L246.704 422.016L246.704 486.816L215.6 524.4Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 524.4L246.704 486.816L311.50399999999996 486.816L280.4 524.4Z" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.2" opacity="0.1"/>
+<path d="M215.6 459.6L280.4 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 459.6L280.4 524.4" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 524.4L215.6 524.4" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 524.4L215.6 459.6" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 422.016L311.50399999999996 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M311.50399999999996 422.016L311.50399999999996 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M311.50399999999996 486.816L246.704 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M246.704 486.816L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 459.6L246.704 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 459.6L311.50399999999996 422.016" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M215.6 524.4L246.704 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M280.4 524.4L311.50399999999996 486.816" fill="none" stroke="#c4cec7" stroke-width="1.4"/>
+<path d="M195.296 283.18399999999997L310.496 283.18399999999997L310.496 398.384L195.296 398.384Z" fill="#edf3ee" stroke="#286788" stroke-width="1.2" opacity="0.2"/>
+<path d="M140.0 350.0L195.296 283.18399999999997L195.296 398.384L140.0 465.2Z" fill="#edf3ee" stroke="#286788" stroke-width="1.2" opacity="0.2"/>
+<path d="M140.0 465.2L195.296 398.384L310.496 398.384L255.2 465.2Z" fill="#edf3ee" stroke="#286788" stroke-width="1.2" opacity="0.2"/>
+<path d="M140.0 350.0L255.2 350.0" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M255.2 350.0L255.2 465.2" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M255.2 465.2L140.0 465.2" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M140.0 465.2L140.0 350.0" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M195.296 283.18399999999997L310.496 283.18399999999997" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M310.496 283.18399999999997L310.496 398.384" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M310.496 398.384L195.296 398.384" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M195.296 398.384L195.296 283.18399999999997" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M140.0 350.0L195.296 283.18399999999997" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M255.2 350.0L310.496 283.18399999999997" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M140.0 465.2L195.296 398.384" fill="none" stroke="#286788" stroke-width="1.4"/>
+<path d="M255.2 465.2L310.496 398.384" fill="none" stroke="#286788" stroke-width="1.4"/>
+<circle cx="211.7696" cy="368.27840000000003" r="7" fill="#aa5343" stroke="#aa5343" stroke-width="1.5"/>
+<text x="221.7696" y="390.27840000000003" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#aa5343" font-weight="600" text-anchor="start">x</text>
+<circle cx="140.0" cy="350.0" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L140.0 350.0" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="98.0" y="378.0" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="107.0" y="391.0" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.027</text>
+<circle cx="195.296" cy="283.18399999999997" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L195.296 283.18399999999997" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="153.296" y="269.18399999999997" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="162.296" y="282.18399999999997" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.197</text>
+<circle cx="140.0" cy="465.2" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L140.0 465.2" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="98.0" y="511.2" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="107.0" y="524.2" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.051</text>
+<circle cx="195.296" cy="398.384" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L195.296 398.384" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="153.296" y="396.384" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="162.296" y="409.384" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.376</text>
+<circle cx="255.2" cy="350.0" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L255.2 350.0" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="271.2" y="378.0" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="280.2" y="391.0" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.014</text>
+<circle cx="310.496" cy="283.18399999999997" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L310.496 283.18399999999997" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="326.496" y="269.18399999999997" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="335.496" y="282.18399999999997" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.105</text>
+<circle cx="255.2" cy="465.2" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L255.2 465.2" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="271.2" y="511.2" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="280.2" y="524.2" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.028</text>
+<circle cx="310.496" cy="398.384" r="5" fill="#286788" stroke="#286788" stroke-width="1.5"/>
+<path d="M211.7696 368.27840000000003L310.496 398.384" fill="none" stroke="#286788" stroke-width="1" stroke-dasharray="8 6"/>
+<rect x="326.496" y="396.384" width="58" height="23" rx="4" fill="#fffdf8" stroke="#286788" stroke-width="1.2" opacity="1"/>
+<text x="335.496" y="409.384" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286788" font-weight="600" text-anchor="start">0.202</text>
+<text x="86" y="540" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">ProbeCoordFloat = (worldPos − clipmapCorner) / cellSize</text>
+<text x="86" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">lower corner = floor(ProbeCoordFloat − 0.5); alphas = frac(...)</text>
+<text x="552" y="510" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#286788" font-weight="600" text-anchor="start">cell [24, 30, 25]</text>
+<text x="552" y="532" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">clipmap 0</text>
+<rect x="660" y="104" width="404" height="260" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M670 105H1054" stroke="#93661e" stroke-width="4"/>
+<text x="676" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#93661e" font-weight="600" text-anchor="start">2D · octahedral directions per probe</text>
+<rect x="706" y="158" width="142" height="142" rx="2" fill="#fffdf8" stroke="#93661e" stroke-width="1.5" opacity="1"/>
+<path d="M706 229.0L848 229.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M777.0 158L777.0 300" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M777.0 158L706 229.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M777.0 158L848 229.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M777.0 300L706 229.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M777.0 300L848 229.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M723.75 158L723.75 300" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M706 175.75L848 175.75" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M741.5 158L741.5 300" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M706 193.5L848 193.5" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M759.25 158L759.25 300" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M706 211.25L848 211.25" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M777.0 158L777.0 300" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M706 229.0L848 229.0" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M794.75 158L794.75 300" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M706 246.75L848 246.75" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M812.5 158L812.5 300" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M706 264.5L848 264.5" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M830.25 158L830.25 300" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<path d="M706 282.25L848 282.25" fill="none" stroke="#c4cec7" stroke-width="0.7"/>
+<rect x="794.75" y="193.5" width="17.75" height="17.75" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.38"/>
+<path d="M860 229.0L986 209.0" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-gold)"/>
+<text x="880" y="148" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#93661e" font-weight="600" text-anchor="start">32×32 radiance directions</text>
+<text x="880" y="176" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">final map 34×34 with border</text>
+<text x="880" y="206" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">one cell → a cone</text>
+<text x="880" y="228" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">cone α = acos(1 − 1/N²)</text>
+<text x="706" y="322" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Sampling is not one exact ray at the cell center.</text>
+<rect x="660" y="384" width="404" height="184" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M670 385H1054" stroke="#93661e" stroke-width="4"/>
+<text x="676" y="414" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#93661e" font-weight="600" text-anchor="start">2D · eight neighbors become one value</text>
+<rect x="680" y="430" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="689" y="443" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p54</text>
+<rect x="772" y="430" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="781" y="443" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p66</text>
+<rect x="864" y="430" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="873" y="443" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p56</text>
+<rect x="956" y="430" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="965" y="443" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p68</text>
+<rect x="680" y="470" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="689" y="483" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p55</text>
+<rect x="772" y="470" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="781" y="483" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p67</text>
+<rect x="864" y="470" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="873" y="483" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p57</text>
+<rect x="956" y="470" width="76" height="23" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.2" opacity="1"/>
+<text x="965" y="483" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">p69</text>
+<path d="M1042 452L1042 486" fill="none" stroke="#93661e" stroke-width="2"/>
+<text x="676" y="530" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#586760" font-weight="400" text-anchor="start">Σ w_p = 1.000000008 in the replay; parallax is applied per probe.</text>
+<rect x="676" y="540" width="370" height="28" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<text x="688" y="564" font-family="Cascadia Code, Consolas, monospace" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">L(x,ω) = Σ w_p c_p L_p</text>
+<rect x="36" y="604" width="320" height="148" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="52" y="632" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">Sparse occupancy</text>
+<text x="52" y="660" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">indirection word 0xFFFFFFFF is invalid</text>
+<text x="52" y="683" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">a used cell without a probe allocates one</text>
+<text x="52" y="706" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">cache keeps probes for 8 frames</text>
+<rect x="390" y="604" width="320" height="148" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="406" y="632" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">Trilinear eight corners</text>
+<text x="406" y="660" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">lower cell + eight offsets</text>
+<text x="406" y="683" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">weights from frac(ProbeCoordFloat − 0.5)</text>
+<text x="406" y="706" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">invalid neighbor contributes zero</text>
+<rect x="744" y="604" width="320" height="148" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="760" y="632" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">Directional footprint</text>
+<text x="760" y="660" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">32×32 radiance directions per probe</text>
+<text x="760" y="683" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">cone half-angle ≈0.0884 rad in replay</text>
+<text x="760" y="706" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">32 radiance taps for the captured query</text>
+<path d="M36 756L1064 756" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<text x="36" y="780" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">Schematic. The real capture selects cell [24,30,25], probes 54,66,56,68,55,67,57,69; atlas radiance (11.7408, 14.5248, 10.6913).</text>
+</g></svg>

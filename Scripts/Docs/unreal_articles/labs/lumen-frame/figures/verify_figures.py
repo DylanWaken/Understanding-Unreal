@@ -13,11 +13,13 @@ failure (all failures are collected and printed).
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import json
 import re
 import struct
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 FIG_DIR = Path(__file__).resolve().parent
@@ -25,6 +27,8 @@ ROOT = FIG_DIR.parent
 MANIFEST = FIG_DIR / "figure-manifest.json"
 INV = FIG_DIR / "inventory"
 PNG = FIG_DIR / "png"
+SVG = FIG_DIR / "svg"
+SVG_NS = "{http://www.w3.org/2000/svg}"
 
 
 def load(path: Path):
@@ -58,7 +62,7 @@ def iter_json_objects(path: Path):
 
 
 def main():
-    global FIG_DIR, MANIFEST, INV, PNG
+    global FIG_DIR, MANIFEST, INV, PNG, SVG
     ap = argparse.ArgumentParser()
     ap.add_argument("--capture", "--dump", dest="dump", default=None)
     ap.add_argument("--report", default=None)
@@ -68,6 +72,7 @@ def main():
     MANIFEST = FIG_DIR / "figure-manifest.json"
     INV = FIG_DIR / "inventory"
     PNG = FIG_DIR / "png"
+    SVG = FIG_DIR / "svg"
     failures = []
     checks = []
 
@@ -186,6 +191,7 @@ def main():
     check("figures.no_duplicate_slugs", len(slugs) == len(man["figures"]), str(len(slugs)))
 
     passed_figures = 0
+    vector_figures = 0
     for f in man["figures"]:
         ok = True
         def figcheck(cond, name, detail=""):
@@ -226,6 +232,70 @@ def main():
         if img.exists():
             figcheck(sha256(img) == f["image"]["sha256"], "image_sha256", str(img))
             figcheck(img.stat().st_size == f["image"]["bytes"], "image_bytes", str(img))
+        # Vector record: caption text is SVG <text>, data is the embedded PNG.
+        vec = f.get("vector_image")
+        if vec:
+            vector_figures += 1
+            vfile = FIG_DIR / vec["file"]
+            figcheck(str(vec["file"]).endswith(".svg"), "vector_suffix", str(vec["file"]))
+            figcheck(vfile.exists(), "vector_exists", str(vfile))
+            figcheck(vec.get("backing_image") == f["image"]["file"], "vector_backing",
+                     f"{vec.get('backing_image')} vs {f['image']['file']}")
+            figcheck(vec.get("width") == f["image"]["width"]
+                     and vec.get("height") == f["image"]["height"], "vector_dimensions",
+                     f"{vec.get('width')}x{vec.get('height')} vs "
+                     f"{f['image']['width']}x{f['image']['height']}")
+            if vfile.exists():
+                figcheck(sha256(vfile) == vec["sha256"], "vector_sha256", str(vfile))
+                figcheck(vfile.stat().st_size == vec["bytes"], "vector_bytes", str(vfile))
+                try:
+                    root = ET.parse(vfile).getroot()
+                except Exception as e:  # malformed SVG is a hard failure
+                    root = None
+                    figcheck(False, "vector_xml", repr(e))
+                if root is not None:
+                    vt = vec.get("text") or {}
+                    figcheck(root.tag == SVG_NS + "svg", "vector_root", root.tag)
+                    figcheck(root.get("width") == str(vec["width"])
+                             and root.get("height") == str(vec["height"])
+                             and root.get("viewBox") == "0 0 %d %d" % (vec["width"], vec["height"]),
+                             "vector_canvas",
+                             f"{root.get('width')}x{root.get('height')} viewBox={root.get('viewBox')}")
+                    images = root.findall(".//" + SVG_NS + "image")
+                    figcheck(len(images) == 1, "vector_embedded_png_count", str(len(images)))
+                    if images:
+                        href = (images[0].get("href")
+                                or images[0].get("{http://www.w3.org/1999/xlink}href") or "")
+                        embedded_ok = False
+                        if href.startswith("data:image/png;base64,"):
+                            try:
+                                raw = base64.b64decode(href.split(",", 1)[1], validate=True)
+                                embedded_ok = (
+                                    len(raw) == f["image"]["bytes"]
+                                    and hashlib.sha256(raw).hexdigest() == f["image"]["sha256"])
+                            except Exception:
+                                embedded_ok = False
+                        figcheck(embedded_ok, "vector_embedded_png",
+                                 "embedded bytes/hash must equal png backing")
+                    texts = [t for t in root.findall(".//" + SVG_NS + "text")
+                             if (t.text or "").strip()]
+                    figcheck(vt.get("is_vector") is True, "vector_text_flag", str(vt.get("is_vector")))
+                    figcheck(len(texts) == int(vt.get("elements") or -1),
+                             "vector_text_count", f"{len(texts)} vs {vt.get('elements')}")
+                    elem_sizes = [float(t.get("font-size") or 0) for t in texts]
+                    figcheck(bool(elem_sizes) and min(elem_sizes) >= 12
+                             and int(vt.get("min_font_px") or 0) >= 12, "vector_min_font",
+                             f"elements={min(elem_sizes) if elem_sizes else None} "
+                             f"record={vt.get('min_font_px')}")
+                    figcheck(bool(elem_sizes) and max(elem_sizes) >= 20
+                             and int(vt.get("max_font_px") or 0) >= 20, "vector_title_font",
+                             f"elements={max(elem_sizes) if elem_sizes else None} "
+                             f"record={vt.get('max_font_px')}")
+                    text_set = {(t.text or "").strip() for t in texts}
+                    title_lines = [str(x).strip() for x in (vt.get("title_lines") or []) if str(x).strip()]
+                    figcheck(bool(title_lines), "vector_title_lines", str(title_lines))
+                    figcheck(all(line in text_set for line in title_lines),
+                             "vector_title_is_text", str(title_lines))
         # Source pass must be the exact pass that owns the version pointer.
         if f["pass"]["pointer"] is not None:
             vp = f["payload_version"]["version_pointer"]
@@ -235,6 +305,9 @@ def main():
             passed_figures += 1
     check("figures.identity_checks", passed_figures == len(man["figures"]),
           f"{passed_figures}/{len(man['figures'])}")
+    check("vectors.present_for_all", vector_figures == len(man["figures"]),
+          f"{vector_figures}/{len(man['figures'])}")
+    check("vectors.all_34", vector_figures == 34, str(vector_figures))
 
     # 2b. Exact-pass card capture proof: one pass rect AND one Target1.a mask.
     figs = {f["slug"]: f for f in man["figures"]}
@@ -404,6 +477,21 @@ def main():
         check("html.has_selected_graph", selected in html, selected)
         check("html.has_all_graphs", all(g["prefix"] in html for g in man["selection"]["graphs"]),
               ",".join(g["prefix"] for g in man["selection"]["graphs"]))
+        imgs = re.findall(r"<img[^>]+src='([^']+)'", html)
+        check("html.image_sources_are_svg",
+              len(imgs) == len(man["figures"]) and all(src.endswith(".svg") for src in imgs),
+              f"{len(imgs)} images; {sorted(set(src.rsplit('.', 1)[-1] for src in imgs))}")
+        check("html.vector_files_linked",
+              all(f["vector_image"]["file"] in html for f in man["figures"]
+                  if f.get("vector_image")),
+              "missing vector href")
+        check("html.figure_anchors",
+              all(("id='%s'" % f["slug"]) in html for f in man["figures"]),
+              "missing per-figure slug anchor")
+        check("html.raw_explorer_links",
+              all(("#resource/" + f["source"]["resource_id"]) in html for f in man["figures"]),
+              "missing raw explorer link")
+        check("html.manifest_link", "figure-manifest.json" in html, "manifest link")
 
     # Print deterministic result.
     print("final figure verifier")

@@ -47,6 +47,9 @@ jobs:
       - name: Validate Lumen derivation and captured reference evidence
         run: python3 Scripts/Docs/unreal_articles/validate_lumen_v2.py
 
+      - name: Verify explanatory diagrams and reference presentation
+        run: python3 Scripts/Docs/unreal_articles/labs/lumen-reading/generate.py --check
+
       - name: Check frame decoders and actual package reads
         run: |
           python3 -m unittest discover -s Scripts/Docs/unreal_articles/labs/lumen-frame/tests -q

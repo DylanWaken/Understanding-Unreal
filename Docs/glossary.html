@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Definitions for graphics, computer science, mathematics, and Unreal Engine terminology used in Understanding Unreal, with comparative notes on the companion Ardashir project.">
+  <meta name="description" content="Definitions for graphics, computer science, mathematics, and Unreal Engine terminology used in Understanding Unreal, with comparative notes on the Ardashir project.">
   <title>Glossary | Understanding Unreal</title>
   <link rel="stylesheet" href="assets/site.css">
   <script src="assets/glossary-data.js" defer></script>
-  <script src="assets/site.js" defer></script>
+  <script src="assets/site.js?v=583ab08ff265" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +42,7 @@
         <header>
           <p class="eyebrow">Shared vocabulary</p>
           <h1>Global glossary</h1>
-          <p class="lede">Concise definitions for graphics, computer science, mathematics, and rendering terms used throughout Understanding Unreal. Entries marked &#x201C;In Ardashir&#x201D; preserve comparative notes from the companion project.</p>
+          <p class="lede">Concise definitions for graphics, computer science, mathematics, and rendering terms used throughout Understanding Unreal. Entries marked &#x201C;In Ardashir&#x201D; preserve comparative notes about the Ardashir project.</p>
         </header>
 
         <section id="using-glossary" aria-labelledby="using-heading">
@@ -217,7 +217,6 @@
           <p>A dependency chain with the greatest total duration. Its duration is a lower bound on completion time when all dependency constraints must be respected.</p>
           <p><strong>In Ardashir:</strong> ArdaInductor computes each node&#x27;s estimated duration plus the longest successor tail and uses this priority in an efficiency seed. Queue contention, CUDA handoffs and added memory ordering also affect the final schedule cost.</p>
           <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-list-scheduling">List scheduling</a></li><li><a href="#term-makespan">Makespan</a></li></ul></div>
-          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#seeds">Critical-path scheduling seeds</a></p>
         </article>
         <article class="glossary-entry" id="term-cuda" data-glossary-entry data-category="Graphics" data-search="CUDA Graphics NVIDIA&#x27;s parallel-compute platform and device instruction/launch model. Arda launches precompiled native kernels through D3D12 CiG capture, Vulkan CiG external compute queues or ordinary CUDA contexts, with provider-owned synchronization.">
           <div class="glossary-entry__meta"><h3>CUDA</h3><span class="category">Graphics</span></div>
@@ -320,7 +319,6 @@
           <p>A smoothed estimate updated as previous estimate plus alpha times the difference between a new sample and that estimate. Older samples receive exponentially decreasing weight; this is not a fixed-size window average.</p>
           <p><strong>In Ardashir:</strong> ArdaInductor initializes each node estimate from its first completed timing sample, then updates it in collection order. The default alpha of 0.2 gives each new sample 20 percent weight. Adaptive scheduling can use these estimates, while raw timing history is stored separately with a bounded capacity.</p>
           <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-makespan">Makespan</a></li><li><a href="#term-queue">Queue</a></li><li><a href="#term-incumbent">Incumbent</a></li></ul></div>
-          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#adaptive">Timing estimates and adaptive scheduling</a></p>
         </article>
         <article class="glossary-entry" id="term-external-device-provider" data-glossary-entry data-category="Project" data-search="External device provider Project A host-owned adapter that supplies an existing native graphics device and queues to an abstraction layer. ArdaBackend copies the provider&#x27;s D3D12 or Vulkan descriptor and optional lifetime token during initialization; callbacks are serialized and non-reentrant.">
           <div class="glossary-entry__meta"><h3>External device provider</h3><span class="category">Project</span></div>
@@ -435,7 +433,6 @@
           <p>The best feasible candidate found so far during an optimization search, measured under the chosen objective and constraints.</p>
           <p><strong>In Ardashir:</strong> ArdaInductor retains an accepted order and allocation plan while exploring alternatives, replacing it when a candidate improves the configured cost and memory comparison. A bounded search can return this best-known plan without proving global optimality.</p>
           <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-list-scheduling">List scheduling</a></li><li><a href="#term-makespan">Makespan</a></li><li><a href="#term-resource-aliasing">Resource aliasing</a></li></ul></div>
-          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#search">Searching from the best accepted candidate</a></p>
         </article>
         <article class="glossary-entry" id="term-index-buffer" data-glossary-entry data-category="Graphics" data-search="Index buffer Graphics A buffer of indices selecting vertices for indexed drawing. ArdaBackend binds an index format and buffer before indexed draw commands.">
           <div class="glossary-entry__meta"><h3>Index buffer</h3><span class="category">Graphics</span></div>
@@ -479,7 +476,6 @@
           <p>A scheduling heuristic that repeatedly selects a ready operation according to a priority rule. An operation becomes ready when its required predecessors have been selected.</p>
           <p><strong>In Ardashir:</strong> ArdaInductor constructs deterministic starting orders using critical-path priority or estimated memory released minus memory first needed. The allocator checks each completed seed against the memory constraints; the heuristic alone does not prove feasibility or the best schedule.</p>
           <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-topological-order">Topological order</a></li><li><a href="#term-critical-path">Critical path</a></li><li><a href="#term-incumbent">Incumbent</a></li></ul></div>
-          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#seeds">Constructing scheduling seeds</a></p>
         </article>
         <article class="glossary-entry" id="term-liveness" data-glossary-entry data-category="Computer science" data-search="Liveness Computer science The property that work or data can still contribute to an observable result and therefore must be retained. ArdaInductor traces required predecessors from output resources and side-effect nodes, then plans storage for the surviving work.">
           <div class="glossary-entry__meta"><h3>Liveness</h3><span class="category">Computer science</span></div>
@@ -504,7 +500,6 @@
           <p>The elapsed time from the start of a workload until its last operation finishes. With parallel execution, it differs from the sum of operation durations.</p>
           <p><strong>In Ardashir:</strong> ArdaInductor simulates queue availability and predecessor completion, then adds CUDA handoff and texture alias penalties to the maximum queue finish time. This cost uses relative hint units; it is not a direct measurement of frame latency or GPU utilization.</p>
           <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-queue">Queue</a></li><li><a href="#term-critical-path">Critical path</a></li><li><a href="#term-exponential-moving-average">Exponential moving average (EMA)</a></li></ul></div>
-          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#cost">Estimating schedule cost</a></p>
         </article>
         <article class="glossary-entry" id="term-matrix" data-glossary-entry data-category="Mathematics" data-search="Matrix Mathematics A rectangular array of values used to represent linear mappings and related computations. ArdaBackend preserves matrix memory layout across C++ parameter metadata and shader ABI boundaries.">
           <div class="glossary-entry__meta"><h3>Matrix</h3><span class="category">Mathematics</span></div>
@@ -676,7 +671,6 @@
           <p>Whether a directed path connects one vertex to another. In a dependency graph, a path from A to B requires A to precede B in every valid topological order.</p>
           <p><strong>In Ardashir:</strong> ArdaInductor uses graph reachability to prove that every previous user of aliased storage precedes its next first user. Candidate order alone is insufficient; a memory policy may instead add explicit ordering edges to make reuse safe.</p>
           <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-topological-order">Topological order</a></li><li><a href="#term-resource-aliasing">Resource aliasing</a></li></ul></div>
-          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#search">Legal search candidates and memory ordering</a></p>
         </article>
         <article class="glossary-entry" id="term-registration-order" data-glossary-entry data-category="Project" data-search="Registration order Project The sequence in which graph operation calls successfully record node instances. Operation call order fixes hazards on regions with repeated writers; single-producer regions remain independent of call order. Every invocation records a distinct operation. Canceling an edit restores its starting declarations and order; the next frame records its desired construction from scratch.">
           <div class="glossary-entry__meta"><h3>Registration order</h3><span class="category">Project</span></div>
@@ -905,7 +899,6 @@
           <p>A linear ordering of a directed acyclic graph in which the source of every edge appears before its destination. Independent nodes may appear in either order.</p>
           <p><strong>In Ardashir:</strong> ArdaInductor searches orders that respect resource dependencies and explicit edges. An order is an input to queue and memory planning; it does not require independent GPU queues to execute serially or follow node attachment order.</p>
           <div class="glossary-related"><strong>Related:</strong><ul class="related-links"><li><a href="#term-dag">DAG</a></li><li><a href="#term-registration-order">Registration order</a></li><li><a href="#term-dependency-edge">Dependency edge</a></li><li><a href="#term-list-scheduling">List scheduling</a></li></ul></div>
-          <p><strong>Read more:</strong> <a href="https://dylanwaken.github.io/Ardashir/ArdaRDG/compilation.html#objectives">Compilation objectives and legal orders</a></p>
         </article>
         <article class="glossary-entry" id="term-transform" data-glossary-entry data-category="Mathematics" data-search="Transform Mathematics A mapping that changes coordinates between spaces, commonly represented by a matrix. Rendering shaders consume transforms prepared by higher-level systems; layout and multiplication convention must agree.">
           <div class="glossary-entry__meta"><h3>Transform</h3><span class="category">Mathematics</span></div>
@@ -991,7 +984,7 @@
   <footer class="site-footer">
     <div class="site-footer__inner">
       <p>Understanding Unreal · independent Unreal Engine rendering studies</p>
-      <p><a href="index.html">Home</a> · <a href="https://dylanwaken.github.io/Ardashir/">Companion Ardashir project</a></p>
+      <p><a href="index.html">Home</a></p>
     </div>
   </footer>
 </body>

@@ -4,9 +4,10 @@ python Scripts/Docs/unreal_articles/build.py [--check]
 The chapter HTML is the prose source. This shell adds only reading navigation.
 """
 from pathlib import Path
-from html import escape
+from html import escape, unescape
 from html.parser import HTMLParser
 import argparse
+import hashlib
 import json
 import math
 import re
@@ -60,6 +61,245 @@ class Headings(HTMLParser):
             assert self.chapter, 'Every chapter heading needs a section ID'
             self.items.append((self.chapter, ''.join(self.heading)))
             self.heading = None
+
+
+VOID_ELEMENTS = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+                 'link', 'meta', 'param', 'source', 'track', 'wbr'}
+HEADING_TAGS = {'h1', 'h2', 'h3', 'h4', 'h5', 'h6'}
+TABLE_WRAPPERS = {'table-scroll', 'table-wrap'}
+
+
+class _Element:
+    """One parsed element with source offsets, enough for a lossless splice."""
+    __slots__ = ('tag', 'attrs', 'start', 'tag_end', 'end', 'parent', 'children')
+
+    def __init__(self, tag, attrs, start, tag_end, end, parent):
+        self.tag, self.attrs = tag, attrs
+        self.start, self.tag_end, self.end = start, tag_end, end
+        self.parent, self.children = parent, []
+
+
+class TableDisclosures(HTMLParser):
+    """Locate top-level tables and splice native disclosures around their wrappers.
+
+    Table markup is kept byte-for-byte. The parser only finds element boundaries,
+    so nesting inside a table or an existing details element is never rewritten.
+    """
+    def __init__(self, text):
+        super().__init__(convert_charrefs=False)
+        self.source = text
+        self.line_offsets = [0]
+        for line in text.splitlines(keepends=True):
+            self.line_offsets.append(self.line_offsets[-1] + len(line))
+        self.root = _Element('__root__', {}, 0, 0, len(text), None)
+        self.stack = [self.root]
+        self.tables = []
+        self.headings = []
+
+    def position(self):
+        line, column = self.getpos()
+        return self.line_offsets[line - 1] + column
+
+    def add(self, tag, attrs, start, tag_end):
+        node = _Element(tag, dict(attrs), start, tag_end, None, self.stack[-1])
+        self.stack[-1].children.append(node)
+        if tag == 'table':
+            self.tables.append(node)
+        if tag in HEADING_TAGS:
+            self.headings.append(node)
+        return node
+
+    def handle_starttag(self, tag, attrs):
+        start = self.position()
+        raw = self.get_starttag_text() or ''
+        node = self.add(tag, attrs, start, start + len(raw))
+        if tag in VOID_ELEMENTS:
+            node.end = node.tag_end
+        else:
+            self.stack.append(node)
+
+    def handle_startendtag(self, tag, attrs):
+        start = self.position()
+        raw = self.get_starttag_text() or ''
+        node = self.add(tag, attrs, start, start + len(raw))
+        node.end = node.tag_end
+
+    def handle_endtag(self, tag):
+        for index in range(len(self.stack) - 1, 0, -1):
+            node = self.stack[index]
+            if node.tag != tag:
+                continue
+            close = self.source.find('>', self.position())
+            node.end = close + 1 if close >= 0 else node.tag_end
+            # Close any unclosed children at the same boundary rather than
+            # leaving stale nodes that would confuse wrapper detection.
+            for child in self.stack[index + 1:]:
+                if child.end is None:
+                    child.end = node.end
+            del self.stack[index:]
+            return
+
+
+def _descendants(node):
+    for child in node.children:
+        yield child
+        if child.tag != 'table':
+            yield from _descendants(child)
+
+
+def _text_of(node, source):
+    """Visible text of one element, ignoring code-like subtrees."""
+    if node is None:
+        return ''
+    class Text(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=False)
+            self.parts, self.skip = [], 0
+        def handle_starttag(self, tag, attrs):
+            if tag in ('script', 'style', 'annotation'):
+                self.skip += 1
+        def handle_endtag(self, tag):
+            if tag in ('script', 'style', 'annotation') and self.skip:
+                self.skip -= 1
+        def handle_data(self, data):
+            if not self.skip:
+                self.parts.append(data)
+        def handle_entityref(self, name):
+            if not self.skip:
+                self.parts.append('&' + name + ';')
+        def handle_charref(self, name):
+            if not self.skip:
+                self.parts.append('&#' + name + ';')
+    parsed = Text()
+    parsed.feed(source[node.start:node.end or node.tag_end])
+    parsed.close()
+    return re.sub(r'\s+', ' ', unescape(''.join(parsed.parts))).strip()
+
+
+def _table_columns(table, source):
+    heads = [child for child in _descendants(table) if child.tag == 'thead']
+    cells = list(_descendants(heads[0])) if heads else []
+    if not cells:
+        rows = [child for child in _descendants(table) if child.tag == 'tr']
+        if rows:
+            cells = list(_descendants(rows[0]))
+    columns = []
+    for cell in cells:
+        if cell.tag != 'th':
+            continue
+        label = _text_of(cell, source)
+        if label and label not in columns:
+            columns.append(label)
+    return columns
+
+
+def _table_summary(table, heading, source):
+    captions = [child for child in table.children if child.tag == 'caption']
+    if captions:
+        caption = _text_of(captions[0], source)
+        if caption:
+            return (f'<span class="lumen-table-title">{escape(caption)}</span>',
+                    'Table: ' + caption)
+    heading_text = _text_of(heading, source) if heading else ''
+    heading_text = re.sub(r'^\d+(?:\.\d+)*[.)]\s+', '', heading_text)
+    columns = _table_columns(table, source)
+    title = heading_text or 'Table'
+    parts = [f'<span class="lumen-table-title">{escape(title)}</span>']
+    label = title
+    if columns:
+        shown = columns[:5]
+        text = ' · '.join(shown)
+        if len(columns) > len(shown):
+            text += f' · and {len(columns) - len(shown)} more'
+        parts.append(f'<span class="lumen-table-columns">Columns: {escape(text)}</span>')
+        label += ': ' + ', '.join(shown)
+        if len(columns) > len(shown):
+            label += f', and {len(columns) - len(shown)} more'
+    return ''.join(parts), 'Table: ' + label
+
+
+def _with_attributes(tag_text, additions):
+    if not additions:
+        return tag_text
+    extra = ''.join(f' {name}="{escape(str(value), quote=True)}"'
+                    for name, value in additions.items())
+    if tag_text.endswith('/>'):
+        return tag_text[:-2] + extra + '/>'
+    return tag_text[:-1] + extra + '>'
+
+
+def disclose_lumen_tables(body):
+    """Wrap every top-level Lumen table in a closed native details/summary."""
+    parser = TableDisclosures(body)
+    parser.feed(body)
+    parser.close()
+    edits = []
+    for table in parser.tables:
+        if table.end is None:
+            continue
+        if any(ancestor.tag in ('table', 'details') for ancestor in _ancestors(table)):
+            continue
+        wrapper = table.parent if (table.parent.tag == 'div' and
+                                   TABLE_WRAPPERS.intersection(
+                                       table.parent.attrs.get('class', '').split())) else None
+        outer_start = wrapper.start if wrapper else table.start
+        outer_end = wrapper.end if wrapper and wrapper.end is not None else table.end
+        heading = max((h for h in parser.headings
+                       if h.end is not None and h.end <= table.start),
+                      key=lambda h: h.start, default=None)
+        summary, label = _table_summary(table, heading, body)
+        if wrapper:
+            additions = {}
+            if 'tabindex' not in wrapper.attrs:
+                additions['tabindex'] = '0'
+            if 'role' not in wrapper.attrs:
+                additions['role'] = 'group'
+            if 'aria-label' not in wrapper.attrs:
+                additions['aria-label'] = label
+            start_tag = _with_attributes(body[wrapper.start:wrapper.tag_end], additions)
+            replacement = f'<details class="lumen-table"><summary>{summary}</summary>{start_tag}'
+            close = '</details>'
+        else:
+            start_tag = body[table.start:table.tag_end]
+            replacement = (f'<details class="lumen-table"><summary>{summary}</summary>'
+                           f'<div class="table-scroll" role="group" aria-label="{escape(label, quote=True)}" tabindex="0">'
+                           f'{start_tag}')
+            outer_end = table.end
+            close = '</div></details>'
+        edits.append((outer_start, (wrapper or table).tag_end, replacement))
+        edits.append((outer_end, outer_end, close))
+    # Apply from the end of the document so earlier offsets stay valid.
+    for start, end, replacement in sorted(edits, key=lambda item: (item[0], item[1]), reverse=True):
+        body = body[:start] + replacement + body[end:]
+    return body
+
+
+def _ancestors(node):
+    while node.parent is not None:
+        yield node.parent
+        node = node.parent
+
+
+BUFFER_PATH = re.compile(r'assets/lumen-v2/buffers/png/([^"\s<>]+?)\.png')
+
+
+def rewrite_lumen_buffer_images(body):
+    """Serve the vector buffers and let SVG viewBoxes supply fresh dimensions."""
+    def vector(match):
+        return 'assets/lumen-v2/buffers/svg/' + match.group(1) + '.svg'
+
+    def image(match):
+        tag = match[0]
+        rewritten = BUFFER_PATH.sub(vector, tag)
+        if rewritten != tag:
+            # The PNG dimensions describe the old raster; image_dimensions()
+            # reads the local SVG viewBox instead of preserving stale values.
+            rewritten = re.sub(r'\s+(?:width|height)="[^"]*"', '', rewritten)
+        return rewritten
+
+    body = re.sub(r'<img\b[^>]*>', image, body)
+    body = re.sub(r'<a\b[^>]*>', lambda match: BUFFER_PATH.sub(vector, match[0]), body)
+    return body
 
 
 class TermLinks(HTMLParser):
@@ -142,6 +382,11 @@ def image_dimensions(match):
     return re.sub(r'\s*(/?>)$', lambda m: ' ' + ' '.join(additions) + m[1], tag)
 
 
+def asset_url(path):
+    content = (OUT / path).read_bytes().replace(b'\r\n', b'\n')
+    return path + '?v=' + hashlib.sha256(content).hexdigest()[:12]
+
+
 def render(article, body):
     equations = []
     def protect_math(match):
@@ -150,12 +395,18 @@ def render(article, body):
     body = MATH_PATTERN.sub(protect_math, body)
     terms = TermLinks(); terms.feed(body); body = ''.join(terms.out)
     body = re.sub(r'MATHPLACEHOLDER(\d+)END', lambda m: equations[int(m[1])], body)
-    def collapse_reference(match):
-        wrapper, table, title_id, title, rows = match.groups()
-        return (f'<details class="reference-table"><summary id="{title_id}">{title}</summary>'
-                f'{wrapper}{table[:-1]} aria-labelledby="{title_id}">{rows}</table></div></details>')
-    body = re.sub(r'(<div class="table-scroll"[^>]*>)\s*(<table class="data-table">)<caption id="([^"]+)">(.*?)</caption>(.*?)</table>\s*</div>',
-                  collapse_reference, body, flags=re.S)
+    if article['key'] == 'lumen':
+        # The Lumen essay owns its table disclosures and vector buffers; other
+        # essays keep the reference-table transform below unchanged.
+        body = rewrite_lumen_buffer_images(body)
+        body = disclose_lumen_tables(body)
+    else:
+        def collapse_reference(match):
+            wrapper, table, title_id, title, rows = match.groups()
+            return (f'<details class="reference-table"><summary id="{title_id}">{title}</summary>'
+                    f'{wrapper}{table[:-1]} aria-labelledby="{title_id}">{rows}</table></div></details>')
+        body = re.sub(r'(<div class="table-scroll"[^>]*>)\s*(<table class="data-table">)<caption id="([^"]+)">(.*?)</caption>(.*?)</table>\s*</div>',
+                      collapse_reference, body, flags=re.S)
     body = re.sub(r'(<h2>)\s*\d+[.)]\s+', r'\1', body)
     body = re.sub(r'<img\b[^>]*>', image_dimensions, body)
     # Wide diagrams remain readable on phones; the surrounding article never scrolls sideways.
@@ -185,17 +436,19 @@ def render(article, body):
     chapter_number = iter(range(1, len(parsed.items) + 1))
     body = re.sub(r'<h2>', lambda _: '<h2><span class="chapter-number" aria-hidden="true">'
                   f'{next(chapter_number):02}</span>', body)
+    concepts = (f'\n<link rel="stylesheet" href="{asset_url("assets/lumen-concepts.css")}">'
+                if article['key'] == 'lumen' else '')
     page = f'''<!doctype html>
 <!-- Generated by Scripts/Docs/unreal_articles/build.py from authored chapter fragments and figure placements. -->
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{escape(article['deck'])}">
 <title>{title} · Understanding Unreal</title>
-<link rel="stylesheet" href="articles.css">
+<link rel="stylesheet" href="{asset_url('articles.css')}">
 <link rel="stylesheet" href="assets/math/katex.min.css">
-<link rel="stylesheet" href="assets/math/math.css">
+<link rel="stylesheet" href="assets/math/math.css">{concepts}
 <script src="../assets/glossary-data.js" defer></script>
-<script src="articles.js" defer></script>
+<script src="{asset_url('articles.js')}" defer></script>
 </head><body>
 <a class="skip-link" href="#article">Skip to article</a>
 <header class="masthead" id="top"><a class="wordmark" href="../index.html">Understanding Unreal</a><span class="publication">Technical essays</span><a class="docs-link" href="../index.html">All essays ↗</a></header>

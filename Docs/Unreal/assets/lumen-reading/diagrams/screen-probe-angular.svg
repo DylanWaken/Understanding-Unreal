@@ -1,0 +1,312 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780" width="1100" height="780" role="img" aria-labelledby="title desc" data-schematic="true">
+<title id="title">Screen probes: a square direction map and a compacted ray list</title>
+<desc id="desc">A screen-space probe grid is reconstructed at pixels; each probe traces an equal-area square direction map and fallback stages run on a compacted list of remaining misses. Schematic; the real probe, PDF and trace buffers are captured separately.</desc>
+<defs>
+<marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker>
+<marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker>
+<marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#93661e"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#aa5343"/></marker>
+<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#586760"/></marker>
+<marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#22312d"/></marker>
+</defs>
+<rect width="1100" height="780" fill="#fffdf8"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<rect x="36" y="2" width="252" height="22" rx="4" fill="#f0f1e9" stroke="#93661e" stroke-width="1.5" opacity="1"/>
+<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC · NOT CAPTURED GEOMETRY</text>
+<text x="36" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#22312d" font-weight="600" text-anchor="start">Screen probes: a square direction map and a compacted ray list</text>
+<text x="36" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#586760" font-weight="400" text-anchor="start">The trace atlas keeps every probe; fallback reads only the compacted misses. A cell is a cone, not a blur.</text>
+<rect x="36" y="104" width="330" height="404" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M46 105H356" stroke="#286c56" stroke-width="4"/>
+<text x="52" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286c56" font-weight="600" text-anchor="start">2D · screen grid and nearest probes</text>
+<rect x="62" y="154" width="278" height="176" rx="2" fill="#f0f1e9" stroke="#22312d" stroke-width="1.5" opacity="1"/>
+<rect x="218" y="154" width="122" height="176" rx="0" fill="#edf3ee" stroke="#c4cec7" stroke-width="1.5" opacity="1" stroke-dasharray="8 6"/>
+<circle cx="62" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="62" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="62" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="62" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="62" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="62" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="62" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="90" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="90" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="90" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="90" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="90" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="90" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="90" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="118" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="118" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="118" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="118" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="118" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="118" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="118" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="146" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="146" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="146" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="146" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="146" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="146" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="146" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="174" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="174" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="174" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="174" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="174" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="174" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="174" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="202" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="202" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="202" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="202" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="202" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="202" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="202" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="230" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="230" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="230" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="230" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="230" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="230" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="230" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="258" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="258" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="258" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="258" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="258" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="258" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="258" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="286" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="286" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="286" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="286" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="286" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="286" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="286" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="314" cy="154" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="314" cy="182" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="314" cy="210" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="314" cy="238" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="314" cy="266" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="314" cy="294" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<circle cx="314" cy="322" r="3" fill="#286c56" stroke="#286c56" stroke-width="1.5"/>
+<rect x="239" y="259" width="14" height="14" rx="1" fill="#aa5343" stroke="#aa5343" stroke-width="1.5" opacity="0.35"/>
+<circle cx="246" cy="266" r="3" fill="#aa5343" stroke="#aa5343" stroke-width="1.5"/>
+<circle cx="240" cy="250" r="5" fill="#fffdf8" stroke="#286c56" stroke-width="2"/>
+<path d="M240 250L246 266" fill="none" stroke="#286c56" stroke-width="1" stroke-dasharray="8 6"/>
+<circle cx="268" cy="250" r="5" fill="#fffdf8" stroke="#286c56" stroke-width="2"/>
+<path d="M268 250L246 266" fill="none" stroke="#286c56" stroke-width="1" stroke-dasharray="8 6"/>
+<circle cx="240" cy="278" r="5" fill="#fffdf8" stroke="#286c56" stroke-width="2"/>
+<path d="M240 278L246 266" fill="none" stroke="#286c56" stroke-width="1" stroke-dasharray="8 6"/>
+<circle cx="268" cy="278" r="5" fill="#fffdf8" stroke="#286c56" stroke-width="2"/>
+<path d="M268 278L246 266" fill="none" stroke="#286c56" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M246 266L266 250" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-gold)"/>
+<text x="270" y="250" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#93661e" font-weight="400" text-anchor="start">tile jitter</text>
+<text x="62" y="352" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Wp = ceil(W / D), Hp = ceil(H / D)</text>
+<text x="62" y="374" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Four probes reconstruct a pixel.</text>
+<text x="62" y="396" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Adaptive probes cover discontinuities.</text>
+<text x="62" y="432" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Default spacing D = 16 px; atlas = Wp × Ha</text>
+<text x="62" y="454" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Ha = Hp + floor(Hp · 0.5)</text>
+<rect x="390" y="104" width="330" height="404" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M400 105H710" stroke="#286788" stroke-width="4"/>
+<text x="406" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286788" font-weight="600" text-anchor="start">3D · square → sphere directions</text>
+<rect x="456" y="274" width="150" height="150" rx="2" fill="#fffdf8" stroke="#286788" stroke-width="1.5" opacity="1"/>
+<path d="M456 349.0L606 349.0" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M531.0 274L531.0 424" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<path d="M456 274L606 274L606 424L456 424Z" fill="none" stroke="#c4cec7" stroke-width="1" opacity="1"/>
+<path d="M493.5 274L531.0 349.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M568.5 274L531.0 349.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M493.5 424L531.0 349.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M568.5 424L531.0 349.0" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<path d="M481.0 274L481.0 424" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M456 299.0L606 299.0" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M506.0 274L506.0 424" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M456 324.0L606 324.0" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M531.0 274L531.0 424" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M456 349.0L606 349.0" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M556.0 274L556.0 424" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M456 374.0L606 374.0" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M581.0 274L581.0 424" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<path d="M456 399.0L606 399.0" fill="none" stroke="#c4cec7" stroke-width="0.8"/>
+<rect x="556.0" y="299.0" width="25.0" height="25.0" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="456" y="264" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#286788" font-weight="600" text-anchor="start">direction map P_oct</text>
+<ellipse cx="555" cy="190" rx="72" ry="50" fill="#fffdf8" stroke="#286788" stroke-width="1.5"/>
+<ellipse cx="555" cy="190" rx="72" ry="18" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<ellipse cx="555" cy="190" rx="34" ry="50" fill="none" stroke="#c4cec7" stroke-width="1" stroke-dasharray="8 6"/>
+<circle cx="604" cy="176" r="4" fill="#93661e" stroke="#93661e" stroke-width="1.5"/>
+<path d="M555 190L604 176" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-gold)"/>
+<text x="612" y="168" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#93661e" font-weight="600" text-anchor="start">ω</text>
+<path d="M610 349.0L631 210" fill="none" stroke="#586760" stroke-width="2" marker-end="url(#arrow-muted)"/>
+<text x="466" y="446" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">each cell has solid angle 4π/N²</text>
+<text x="466" y="466" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">a jittered cell is a cone, not one exact direction</text>
+<rect x="744" y="104" width="320" height="404" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<path d="M754 105H1054" stroke="#93661e" stroke-width="4"/>
+<text x="760" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#93661e" font-weight="600" text-anchor="start">2D · compacted misses feed fallback</text>
+<rect x="776" y="158" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="798" y="158" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="820" y="158" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="842" y="158" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="864" y="158" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="886" y="158" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="908" y="158" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="930" y="158" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="173" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="776" y="180" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="798" y="180" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="820" y="180" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="842" y="180" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="864" y="180" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="886" y="180" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="908" y="180" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="930" y="180" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="195" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="776" y="202" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="798" y="202" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="820" y="202" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="842" y="202" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="864" y="202" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="886" y="202" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="908" y="202" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="930" y="202" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="217" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="776" y="224" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="798" y="224" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="820" y="224" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="842" y="224" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="864" y="224" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="886" y="224" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="908" y="224" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="930" y="224" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="239" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="776" y="246" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="798" y="246" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="820" y="246" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="842" y="246" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="864" y="246" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="886" y="246" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="908" y="246" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="930" y="246" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="261" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="776" y="268" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="798" y="268" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="820" y="268" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="842" y="268" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="864" y="268" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="886" y="268" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="908" y="268" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="930" y="268" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="283" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="776" y="290" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="798" y="290" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="820" y="290" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="842" y="290" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="864" y="290" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="886" y="290" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="908" y="290" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="930" y="290" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="305" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="776" y="312" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="787.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="798" y="312" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="809.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="820" y="312" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="831.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="842" y="312" width="21" height="21" rx="1" fill="#286c56" stroke="#286c56" stroke-width="1.5" opacity="0.35"/>
+<text x="853.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#286c56" font-weight="600" text-anchor="middle">H</text>
+<rect x="864" y="312" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="875.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="886" y="312" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="897.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="908" y="312" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="919.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<rect x="930" y="312" width="21" height="21" rx="1" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.35"/>
+<text x="941.0" y="327" font-family="Cascadia Code, Consolas, monospace" font-size="10" fill="#93661e" font-weight="600" text-anchor="middle">M</text>
+<text x="776" y="148" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="600" text-anchor="start">trace atlas · H = hit, M = miss</text>
+<path d="M778 350L778 382" fill="none" stroke="#586760" stroke-width="2" marker-end="url(#arrow-muted)"/>
+<text x="786" y="370" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">compact</text>
+<rect x="776" y="388" width="250" height="70" rx="4" fill="#fffdf8" stroke="#93661e" stroke-width="1.5" opacity="1"/>
+<text x="790" y="412" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#93661e" font-weight="600" text-anchor="start">compacted miss list</text>
+<rect x="790" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="811" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="832" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="853" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="874" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="895" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="916" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="937" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="958" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<rect x="979" y="422" width="16" height="22" rx="2" fill="#93661e" stroke="#93661e" stroke-width="1.5" opacity="0.25"/>
+<text x="776" y="470" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#586760" font-weight="400" text-anchor="start">only !bHit lanes continue; hits stay in the atlas</text>
+<text x="790" y="488" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#586760" font-weight="400" text-anchor="start">fallback dispatch length = compacted count</text>
+<rect x="36" y="532" width="222" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="50" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">Direction</text>
+<text x="50" y="588" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">ω = P_oct⁻¹(u, v)</text>
+<text x="50" y="611" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">square cell → sphere direction</text>
+<text x="50" y="634" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">one direction per trace texel</text>
+<rect x="286" y="532" width="222" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="300" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">Cone</text>
+<text x="300" y="588" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">α = acos(1 − 1/N²)</text>
+<text x="300" y="611" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">used by SDF cone tracing</text>
+<text x="300" y="634" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">not a screen-space blur radius</text>
+<rect x="536" y="532" width="222" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="550" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">PDF</text>
+<text x="550" y="588" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">jittered cell: N²/(4π) inside</text>
+<text x="550" y="611" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">uniform cell choice: 1/(4π)</text>
+<text x="550" y="634" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">cell-center: quadrature weight 4π/N²</text>
+<rect x="786" y="532" width="222" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
+<text x="800" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">What to inspect</text>
+<text x="800" y="588" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">trace hit flag and distance</text>
+<text x="800" y="611" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">PDF is a separate normalized buffer</text>
+<text x="800" y="634" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">radiance atlas is sampled directions</text>
+<path d="M36 736L1064 736" fill="none" stroke="#c4cec7" stroke-width="1"/>
+<text x="36" y="760" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">Schematic. Real 8×8 trace directions and 6×6 irradiance maps are captured buffers; this diagram does not draw their stochastic samples.</text>
+</g></svg>

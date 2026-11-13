@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import array
+import base64
 import hashlib
 import json
 import math
@@ -27,6 +28,7 @@ from pathlib import Path
 FIG_DIR = Path(__file__).resolve().parent
 ROOT = FIG_DIR.parent
 PNG_DIR = FIG_DIR / "png"
+SVG_DIR = FIG_DIR / "svg"
 INV_DIR = FIG_DIR / "inventory"
 
 DEFAULT_DUMP = Path(
@@ -54,72 +56,60 @@ ORANGE = (255, 150, 20)
 BLUE = (60, 130, 255)
 LIGHTGREY = (215, 215, 215)
 
-# 3x5 bitmap font.  Every glyph is five rows of three characters.
-_FONT = {
-    "A": ("111", "101", "111", "101", "101"),
-    "B": ("110", "101", "110", "101", "110"),
-    "C": ("111", "100", "100", "100", "111"),
-    "D": ("110", "101", "101", "101", "110"),
-    "E": ("111", "100", "110", "100", "111"),
-    "F": ("111", "100", "110", "100", "100"),
-    "G": ("111", "100", "101", "101", "111"),
-    "H": ("101", "101", "111", "101", "101"),
-    "I": ("111", "010", "010", "010", "111"),
-    "J": ("001", "001", "001", "101", "111"),
-    "K": ("101", "101", "110", "101", "101"),
-    "L": ("100", "100", "100", "100", "111"),
-    "M": ("101", "111", "111", "101", "101"),
-    "N": ("101", "111", "111", "111", "101"),
-    "O": ("111", "101", "101", "101", "111"),
-    "P": ("111", "101", "111", "100", "100"),
-    "Q": ("111", "101", "101", "111", "001"),
-    "R": ("111", "101", "111", "110", "101"),
-    "S": ("111", "100", "111", "001", "111"),
-    "T": ("111", "010", "010", "010", "010"),
-    "U": ("101", "101", "101", "101", "111"),
-    "V": ("101", "101", "101", "101", "010"),
-    "W": ("101", "101", "111", "111", "101"),
-    "X": ("101", "101", "010", "101", "101"),
-    "Y": ("101", "101", "010", "010", "010"),
-    "Z": ("111", "001", "010", "100", "111"),
-    "0": ("111", "101", "101", "101", "111"),
-    "1": ("010", "110", "010", "010", "111"),
-    "2": ("111", "001", "111", "100", "111"),
-    "3": ("111", "001", "111", "001", "111"),
-    "4": ("101", "101", "111", "001", "001"),
-    "5": ("111", "100", "111", "001", "111"),
-    "6": ("111", "100", "111", "101", "111"),
-    "7": ("111", "001", "001", "001", "001"),
-    "8": ("111", "101", "111", "101", "111"),
-    "9": ("111", "101", "111", "001", "111"),
-    ".": ("000", "000", "000", "000", "010"),
-    ",": ("000", "000", "000", "010", "100"),
-    ":": ("000", "010", "000", "010", "000"),
-    ";": ("000", "010", "000", "010", "100"),
-    "-": ("000", "000", "111", "000", "000"),
-    "_": ("000", "000", "000", "000", "111"),
-    "/": ("001", "001", "010", "100", "100"),
-    "(": ("001", "010", "010", "010", "001"),
-    ")": ("100", "010", "010", "010", "100"),
-    "[": ("011", "010", "010", "010", "011"),
-    "]": ("110", "010", "010", "010", "110"),
-    "+": ("000", "010", "111", "010", "000"),
-    "=": ("000", "111", "000", "111", "000"),
-    "%": ("101", "001", "010", "100", "101"),
-    "<": ("001", "010", "100", "010", "001"),
-    ">": ("100", "010", "001", "010", "100"),
-    "#": ("101", "111", "101", "111", "101"),
-    "*": ("101", "010", "111", "010", "101"),
-    "'": ("010", "010", "000", "000", "000"),
-    '"': ("101", "101", "000", "000", "000"),
-    "?": ("111", "001", "011", "000", "010"),
-    "!": ("010", "010", "010", "000", "010"),
-    " ": ("000", "000", "000", "000", "000"),
+# Presentation text is SVG text (system fonts), never a bitmap glyph atlas.
+FONT_SANS = "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+FONT_MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace"
+BODY_PX = 14
+TITLE_PX = 22
+PANEL_PX = 14
+BODY_LH = 20
+TITLE_LH = 30
+PANEL_BAND = 22
+
+# Conservative advance-width estimates used only for layout/wrapping.  Browser
+# text is the authority; these bounds keep every line inside its reserved box.
+_SANS_EM = {
+    " ": 0.30, "i": 0.26, "l": 0.26, "I": 0.26, "j": 0.26, "t": 0.34,
+    "f": 0.34, "r": 0.38, ".": 0.28, ",": 0.28, ":": 0.28, ";": 0.28,
+    "'": 0.20, '"': 0.34, "|": 0.24, "!": 0.28, "(": 0.34, ")": 0.34,
+    "[": 0.34, "]": 0.34, "-": 0.34, "m": 0.84, "w": 0.78, "M": 0.84,
+    "W": 0.86, "@": 0.92, "%": 0.86, "&": 0.72, "#": 0.62,
 }
 
 
-def glyph(ch):
-    return _FONT.get(ch.upper(), _FONT["?"])
+def estimate_text_px(text: str, size: int = BODY_PX, family: str = "sans",
+                     weight: str = "normal") -> int:
+    if not text:
+        return 0
+    if family == "mono":
+        em = 0.602 * len(text)
+    else:
+        em = 0.0
+        for ch in text:
+            if ch in _SANS_EM:
+                em += _SANS_EM[ch]
+            elif ch.isupper():
+                em += 0.68
+            elif ch.isdigit():
+                em += 0.58
+            elif ch in "()[]{}<>/\\+=":
+                em += 0.42
+            else:
+                em += 0.54
+    if weight == "bold":
+        em *= 1.04
+    return int(math.ceil(em * size)) + 1
+
+
+def _css_color(color):
+    if isinstance(color, str):
+        return color
+    return "#%02X%02X%02X" % (int(color[0]), int(color[1]), int(color[2]))
+
+
+def _svg_escape(text: str) -> str:
+    return (str(text).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;"))
 
 
 # ---------------------------------------------------------------- basic IO
@@ -172,14 +162,21 @@ def pct(sorted_values, q):
 
 
 class Raster:
-    """Tightly packed RGB8 raster."""
+    """Tightly packed RGB8 DATA raster plus a list of vector-text overlays.
 
-    __slots__ = ("w", "h", "rows")
+    ``draw_text`` never paints pixels.  It records a text annotation that the
+    SVG composer emits as real ``<text>``.  ``blit`` and ``scaled`` transform
+    those annotations with the same geometry as the data so a composed figure
+    keeps its labels in the correct place.
+    """
+
+    __slots__ = ("w", "h", "rows", "overlays")
 
     def __init__(self, w: int, h: int, fill=BG):
         self.w = w
         self.h = h
         self.rows = [bytearray(bytes(fill) * w) for _ in range(h)]
+        self.overlays = []
 
     def set(self, x, y, color):
         if 0 <= x < self.w and 0 <= y < self.h:
@@ -208,6 +205,11 @@ class Raster:
             if n <= 0:
                 continue
             self.rows[ty][dx * 3:dx * 3 + n * 3] = src.rows[y][:n * 3]
+        for o in src.overlays:
+            moved = dict(o)
+            moved["x"] = o["x"] + dx
+            moved["y"] = o["y"] + dy
+            self.overlays.append(moved)
 
     def scaled(self, w: int, h: int) -> "Raster":
         out = Raster(w, h)
@@ -220,20 +222,81 @@ class Raster:
                 i = sx * 3
                 j = x * 3
                 row[j:j + 3] = src[i:i + 3]
+        sx = w / self.w if self.w else 1.0
+        sy = h / self.h if self.h else 1.0
+        for o in self.overlays:
+            moved = dict(o)
+            moved["x"] = int(round(o["x"] * sx))
+            moved["y"] = int(round(o["y"] * sy))
+            moved["size"] = max(1, int(round(o["size"] * sy)))
+            out.overlays.append(moved)
         return out
 
-    def draw_text(self, x: int, y: int, text: str, color=WHITE, scale: int = 2):
-        cx = x
-        for ch in text:
-            g = glyph(ch)
-            for gy, grow in enumerate(g):
-                for gx, bit in enumerate(grow):
-                    if bit == "1":
-                        self.rect(cx + gx * scale, y + gy * scale, scale, scale, color)
-            cx += 4 * scale
+    def draw_text(self, x: int, y: int, text: str, color=WHITE,
+                  size: int = BODY_PX, family: str = "sans",
+                  weight: str = "normal", anchor: str = "start",
+                  role: str = "body"):
+        """Record vector text; ``y`` is the top of the line box."""
+        if text is None or str(text) == "":
+            return
+        self.overlays.append({
+            "x": int(x), "y": int(y), "text": str(text),
+            "size": int(size), "color": _css_color(color),
+            "family": family, "weight": weight,
+            "anchor": anchor, "role": role,
+        })
 
-    def text_width(self, text: str, scale: int = 2) -> int:
-        return max(0, len(text) * 4 * scale - scale)
+    def text_width(self, text: str, size: int = BODY_PX,
+                   family: str = "sans", weight: str = "normal") -> int:
+        return estimate_text_px(text, size, family, weight)
+
+
+def _region_uniform(rast: Raster, x0: int, y0: int, x1: int, y1: int) -> bool:
+    """True when a rectangle is one flat presentation colour (no data pixels)."""
+    x0, y0 = max(0, x0), max(0, y0)
+    x1, y1 = min(rast.w, x1), min(rast.h, y1)
+    if x0 >= x1 or y0 >= y1:
+        return False
+    first = bytes(rast.rows[y0][x0 * 3:x0 * 3 + 3])
+    for yy in range(y0, y1):
+        row = rast.rows[yy]
+        for xx in range(x0, x1):
+            if row[xx * 3:xx * 3 + 3] != first:
+                return False
+    return True
+
+
+def validate_text_overlays(rast: Raster):
+    """Prove every vector line fits, does not overlap, and does not cover data."""
+    boxes = []
+    for o in rast.overlays:
+        tw = estimate_text_px(o["text"], o["size"], o["family"], o["weight"])
+        if o["anchor"] == "middle":
+            x0 = o["x"] - tw / 2.0
+        elif o["anchor"] == "end":
+            x0 = o["x"] - tw
+        else:
+            x0 = float(o["x"])
+        x1 = x0 + tw
+        y0 = float(o["y"])
+        y1 = y0 + o["size"] * 1.25
+        if x0 < -1.0 or x1 > rast.w + 1.0 or y0 < -1.0 or y1 > rast.h + 1.0:
+            raise RuntimeError(
+                "vector text clipped in %dx%d raster: %r at x=%.1f..%.1f y=%.1f..%.1f"
+                % (rast.w, rast.h, o["text"], x0, x1, y0, y1))
+        if not _region_uniform(rast, int(math.floor(x0)), int(math.floor(y0)),
+                               int(math.ceil(x1)), int(math.ceil(y1))):
+            raise RuntimeError(
+                "vector text would obscure data in %dx%d raster: %r at x=%.1f..%.1f y=%.1f..%.1f"
+                % (rast.w, rast.h, o["text"], x0, x1, y0, y1))
+        boxes.append((x0, y0, x1, y1, o["text"]))
+    boxes.sort(key=lambda b: (b[1], b[0]))
+    for i, a in enumerate(boxes):
+        for b in boxes[i + 1:]:
+            if b[1] >= a[3] - 0.5:
+                continue
+            if a[0] < b[2] - 0.5 and b[0] < a[2] - 0.5:
+                raise RuntimeError("vector text overlap: %r / %r" % (a[4], b[4]))
 
 
 def png_bytes(rast: Raster) -> bytes:
@@ -257,8 +320,9 @@ def png_bytes(rast: Raster) -> bytes:
     return out
 
 
-def write_png(path: Path, rast: Raster) -> dict:
-    data = png_bytes(rast)
+def write_png(path: Path, rast: Raster, data: bytes | None = None) -> dict:
+    if data is None:
+        data = png_bytes(rast)
     path.write_bytes(data)
     return {
         "file": path.relative_to(FIG_DIR).as_posix(),
@@ -267,59 +331,161 @@ def write_png(path: Path, rast: Raster) -> dict:
         "width": rast.w,
         "height": rast.h,
         "mode": "RGB8",
+        "pixel_text": "none; text is vector in the SVG",
     }
 
 
-def wrap_text(text: str, max_chars: int):
-    words = text.split()
+def write_svg(path: Path, rast: Raster, png_data: bytes | None = None,
+              title: str = "", title_lines=None) -> dict:
+    """Compose a self-contained SVG: embedded lossless PNG data + real text."""
+    data = png_data if png_data is not None else png_bytes(rast)
+    b64 = base64.b64encode(data).decode("ascii")
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" '
+        'viewBox="0 0 %d %d" role="img" aria-label="%s">'
+        % (rast.w, rast.h, rast.w, rast.h, _svg_escape(title)),
+        '<title>%s</title>' % _svg_escape(title),
+        '<desc>%s</desc>' % _svg_escape('Captured buffer visualization. ' + ' '.join(o['text'] for o in rast.overlays)),
+        '<rect width="100%%" height="100%%" fill="#%02X%02X%02X"/>' % BG,
+        '<image x="0" y="0" width="%d" height="%d" preserveAspectRatio="none" '
+        'image-rendering="pixelated" href="data:image/png;base64,%s"/>'
+        % (rast.w, rast.h, b64),
+    ]
+    for o in rast.overlays:
+        baseline = o["y"] + o["size"] * 0.80
+        family = FONT_MONO if o["family"] == "mono" else FONT_SANS
+        lines.append(
+            '<text class="vector-text vector-%s" data-role="%s" x="%d" y="%.2f" '
+            'font-family="%s" font-size="%d" font-weight="%s" fill="%s" '
+            'text-anchor="%s" xml:space="preserve">%s</text>'
+            % (o["role"], o["role"], o["x"], baseline, _svg_escape(family),
+               o["size"], o["weight"], o["color"], o["anchor"],
+               _svg_escape(o["text"])))
+    lines.append("</svg>")
+    svg = ("\n".join(lines) + "\n").encode("utf-8")
+    path.write_bytes(svg)
+    sizes = [o["size"] for o in rast.overlays]
+    return {
+        "file": path.relative_to(FIG_DIR).as_posix(),
+        "bytes": len(svg),
+        "sha256": hashlib.sha256(svg).hexdigest(),
+        "width": rast.w,
+        "height": rast.h,
+        "format": "SVG with embedded lossless PNG data",
+        "pixel_text": "none; all labels are SVG <text>",
+        "text": {
+            "is_vector": True,
+            "elements": len(rast.overlays),
+            "min_font_px": (min(sizes) if sizes else None),
+            "max_font_px": (max(sizes) if sizes else None),
+            "title_lines": list(title_lines or []),
+            "sans_family": FONT_SANS,
+            "mono_family": FONT_MONO,
+            "backing_image": "data:image/png;base64",
+        },
+        "backing_image": "png/" + path.with_suffix(".png").name,
+    }
+
+
+def wrap_text(text: str, max_width: int, size: int = BODY_PX,
+              family: str = "sans", weight: str = "normal"):
+    """Wrap to a measured pixel width, breaking over-long tokens safely."""
+    words = str(text).split()
+    if not words:
+        return []
+    if max_width <= 8:
+        return [str(text)]
     lines = []
     cur = ""
-    for w in words:
-        cand = (cur + " " + w).strip()
-        if len(cand) <= max_chars:
+    for word in words:
+        cand = (cur + " " + word).strip()
+        if estimate_text_px(cand, size, family, weight) <= max_width:
             cur = cand
-        else:
-            if cur:
-                lines.append(cur)
-            cur = w
+            continue
+        if cur:
+            lines.append(cur)
+            cur = ""
+        if estimate_text_px(word, size, family, weight) <= max_width:
+            cur = word
+            continue
+        chunk = ""
+        for ch in word:
+            if chunk and estimate_text_px(chunk + ch, size, family, weight) > max_width:
+                lines.append(chunk)
+                chunk = ch
+            else:
+                chunk += ch
+        cur = chunk
     if cur:
         lines.append(cur)
     return lines
 
 
 def compose_figure(content: Raster, title: str, subtitle: str, legend, notes):
-    """Add a readable title/footer around the decoded data image."""
+    """Reserve real layout space and annotate the data raster with SVG text."""
     width = max(640, min(1280, content.w + 16))
-    header = 46
+    pad = 8
+    inner = width - 2 * pad
+    title_lines = wrap_text(title, inner, TITLE_PX, "sans", "bold")
+    sub_lines = wrap_text(subtitle, inner, BODY_PX, "sans")
+
+    y = pad
+    title_y = []
+    for _ in title_lines:
+        title_y.append(y)
+        y += TITLE_LH
+    sub_y = []
+    for _ in sub_lines:
+        sub_y.append(y)
+        y += BODY_LH
+    header = y + 8
+
     legend = list(legend)
-    max_chars = max(20, (width - 16) // 8)
+    cols = 2 if width >= 1000 else 1
+    colw = inner // cols
+    legend_items = []
+    for i, (label, color) in enumerate(legend):
+        lines = wrap_text(str(label), colw - 20, BODY_PX, "sans")
+        legend_items.append((i % cols, i // cols, lines, color))
+    rows = (len(legend_items) + cols - 1) // cols
+    row_heights = {}
+    for _col, row, lines, _color in legend_items:
+        row_heights[row] = max(row_heights.get(row, 0), max(1, len(lines)) * BODY_LH + 6)
+    legend_h = sum(row_heights.get(i, 0) for i in range(rows))
+
     note_lines = []
     for n in notes:
-        note_lines.extend(wrap_text(n, max_chars))
-    cols = 2 if width >= 1000 else 1
-    rows = (len(legend) + cols - 1) // cols
-    footer = 10 + rows * 18 + (len(note_lines) * 14 if note_lines else 0) + 8
+        note_lines.extend(wrap_text(n, inner, BODY_PX, "mono"))
+    footer = 10 + legend_h + (4 if note_lines else 0) + len(note_lines) * BODY_LH + 8
     height = header + content.h + footer
     c = Raster(width, height, BG)
-    c.draw_text(8, 8, title, WHITE, 3)
-    c.draw_text(8, 30, subtitle, GREY, 2)
+    for line, yy in zip(title_lines, title_y):
+        c.draw_text(pad, yy, line, WHITE, TITLE_PX, "sans", "bold", "start", "title")
+    for line, yy in zip(sub_lines, sub_y):
+        c.draw_text(pad, yy, line, GREY, BODY_PX, "sans", "normal", "start", "subtitle")
     c.blit(content, (width - content.w) // 2, header)
-    y = header + content.h + 8
-    colw = width // cols
-    for i, item in enumerate(legend):
-        col = i % cols
-        row = i // cols
-        x = 8 + col * colw
-        yy = y + row * 18
-        label, color = item
-        c.rect(x, yy + 2, 10, 10, color)
-        c.rect(x, yy + 2, 10, 1, GREY)
-        c.rect(x, yy + 11, 10, 1, GREY)
-        c.draw_text(x + 15, yy + 1, label, WHITE, 2)
-    y += rows * 18 + 4
+
+    row_y = {}
+    yy = header + content.h + 10
+    for i in range(rows):
+        row_y[i] = yy
+        yy += row_heights.get(i, 0)
+    for col, row, lines, color in legend_items:
+        x = pad + col * colw
+        ry = row_y[row]
+        c.rect(x, ry + 3, 10, 10, color)
+        c.rect(x, ry + 3, 10, 1, GREY)
+        c.rect(x, ry + 12, 10, 1, GREY)
+        for li, line in enumerate(lines):
+            c.draw_text(x + 16, ry + li * BODY_LH, line, WHITE, BODY_PX,
+                        "sans", "normal", "start", "legend")
+
+    ny = header + content.h + 10 + legend_h + (4 if note_lines else 0)
     for line in note_lines:
-        c.draw_text(8, y, line, GREY, 2)
-        y += 14
+        c.draw_text(pad, ny, line, GREY, BODY_PX, "mono", "normal", "start", "note")
+        ny += BODY_LH
+    validate_text_overlays(c)
     return c
 
 
@@ -1578,30 +1744,36 @@ def fit_panel(src: Raster, w: int, h: int, fill=(0, 0, 0)) -> Raster:
     return out
 
 
-def panel_label(rast: Raster, text: str):
-    rast.rect(0, 0, rast.w, 12, (0, 0, 0))
-    rast.draw_text(3, 2, text, WHITE, 1)
+def draw_panel_heading(rast: Raster, x: int, y: int, w: int, text: str):
+    """A vector panel heading in its own reserved band; never over data."""
+    rast.rect(x, y, w, PANEL_BAND, (0, 0, 0))
+    rast.draw_text(x + 4, y + 3, text, WHITE, PANEL_PX,
+                   "sans", "bold", "start", "panel")
 
 
 def contact_sheet(panels, cols: int, panel_w: int, panel_h: int, labels):
+    """Grid of exact data panels, each under a separate vector heading band."""
     rows = (len(panels) + cols - 1) // cols
-    out = Raster(cols * panel_w, rows * panel_h, (0, 0, 0))
+    cell_h = panel_h + PANEL_BAND
+    out = Raster(cols * panel_w, rows * cell_h, (0, 0, 0))
     for i, p in enumerate(panels):
         x = (i % cols) * panel_w
-        y = (i // cols) * panel_h
-        fit = fit_panel(p, panel_w, panel_h)
+        y = (i // cols) * cell_h
         if labels and i < len(labels):
-            panel_label(fit, labels[i])
-        out.blit(fit, x, y)
+            draw_panel_heading(out, x, y, panel_w, labels[i])
+        fit = fit_panel(p, panel_w, panel_h)
+        out.blit(fit, x, y + PANEL_BAND)
     return out
 
 
 def composite_sheet(placements, width: int, height: int):
-    """Place exact-size panels at absolute positions; labels are drawn in place."""
+    """Absolute-size panels; each label occupies the band directly above it."""
     out = Raster(width, height, (0, 0, 0))
     for x, y, panel, label in placements:
         if label:
-            panel_label(panel, label)
+            if y < PANEL_BAND:
+                raise RuntimeError("composite panel has no room for its heading band")
+            draw_panel_heading(out, x, y - PANEL_BAND, panel.w, label)
         out.blit(panel, x, y)
     return out
 
@@ -1652,9 +1824,12 @@ def add_figure(ctx: Context, slug: str, title: str, subtitle: str, content: Rast
                kind: str, extra: dict | None = None):
     payload = ctx.verify_source(layout)
     p = ctx.pass_of(layout)
-    image = write_png(PNG_DIR / (slug + ".png"), compose_figure(
-        content, title, subtitle, legend, notes
-    ))
+    composed = compose_figure(content, title, subtitle, legend, notes)
+    data = png_bytes(composed)
+    image = write_png(PNG_DIR / (slug + ".png"), composed, data=data)
+    title_lines = wrap_text(title, composed.w - 16, TITLE_PX, "sans", "bold")
+    vector = write_svg(SVG_DIR / (slug + ".svg"), composed, data,
+                       title=title, title_lines=title_lines)
     invalid = dict(invalid or {})
     invalid.setdefault("source", INVALID_SOURCES.get(
         slug, "Semantics are stated in the figure notes and channel mapping; no sentinel is inferred."
@@ -1708,13 +1883,14 @@ def add_figure(ctx: Context, slug: str, title: str, subtitle: str, content: Rast
         "stats": stats,
         "legend": legend_manifest(legend),
         "image": image,
+        "vector_image": vector,
         "note": extra.get("note") if extra else None,
     }
     if extra:
         entry.update({k: v for k, v in extra.items() if k != "note"})
     ctx.figures.append(entry)
-    print(f"  {slug:42s} {image['width']}x{image['height']}  {image['bytes']:8d} B  "
-          f"res={tex.rid}  pass={entry['pass']['id']}")
+    print(f"  {slug:42s} {image['width']}x{image['height']}  {image['bytes']:8d} B PNG  "
+          f"{vector['bytes']:8d} B SVG  res={tex.rid}  pass={entry['pass']['id']}")
     return entry
 
 
@@ -2171,15 +2347,12 @@ def fig_scene_color(ctx: Context):
     # Comparison: exact same transform, side by side, each downsampled 2x.
     left = rb_img.scaled(640, 360)
     right = ra_img.scaled(640, 360)
-    comp = Raster(1280, 360, (0, 0, 0))
-    comp.blit(left, 0, 0)
-    comp.blit(right, 640, 0)
-    comp.rect(639, 0, 2, 360, WHITE)
-    panel_label(comp, "BEFORE: RenderLight")
-    panel_label(right, "")
-    comp.draw_text(650, 2, "AFTER: DiffuseIndirectComposite", WHITE, 1)
-    comp.draw_text(6, 346, "BEFORE", WHITE, 1)
-    comp.draw_text(646, 346, "AFTER", WHITE, 1)
+    comp = Raster(1280, 360 + PANEL_BAND, (0, 0, 0))
+    comp.blit(left, 0, PANEL_BAND)
+    comp.blit(right, 640, PANEL_BAND)
+    comp.rect(639, PANEL_BAND, 2, 360, WHITE)
+    draw_panel_heading(comp, 0, 0, 640, "BEFORE: RenderLight")
+    draw_panel_heading(comp, 640, 0, 640, "AFTER: DiffuseIndirectComposite")
     add_figure(
         ctx, "scene-color-before-after",
         "SceneColor before/after: one common display transform",
@@ -2200,7 +2373,10 @@ def fig_scene_color(ctx: Context):
         ["left half = before (RenderLight)", "right half = after (DiffuseIndirectComposite)"],
         {"rule": "non-finite", "semantics": "invalid; yellow", "color": color_hex(YELLOW)},
         {"transform": transform, "content_rect_xywh": [0, 0, 1280, 720],
-         "display_rect_xywh": [0, 0, 1280, 360], "resample": "each half 2x nearest downsample"},
+         "display_rect_xywh": [0, 0, 1280, 360],
+         "data_rect_xywh": [0, PANEL_BAND, 1280, 360],
+         "label_band_px": PANEL_BAND,
+         "resample": "each half 2x nearest downsample"},
         "scene-color",
     )
 
@@ -2763,12 +2939,13 @@ def fig_surface_cache(ctx: Context):
     p_rd, _ = surface_hdr_panel_log(rd, (0, 0, 512, 512), 512, 512, p99_rd, cap_mask, sentinel=False)
     p_ri, _ = surface_hdr_panel_log(ri, (0, 0, 512, 512), 512, 512, p99_ri, cap_mask, sentinel=False)
     scene_w, scene_h = w, h
+    band = PANEL_BAND
     sheet = composite_sheet(
-        [(0, 0, p_dl, "SCENE DIRECT (irradiance)"),
-         (0, scene_h, p_fl, "SCENE FINAL (radiance)"),
-         (0, 2 * scene_h, p_rd, "RESAMPLED CARD DIRECT"),
-         (512, 2 * scene_h, p_ri, "RESAMPLED CARD INDIRECT")],
-        max(scene_w, 1024), 2 * scene_h + 512,
+        [(0, band, p_dl, "SCENE DIRECT (irradiance)"),
+         (0, scene_h + 2 * band, p_fl, "SCENE FINAL (radiance)"),
+         (0, 2 * scene_h + 3 * band, p_rd, "RESAMPLED CARD DIRECT"),
+         (512, 2 * scene_h + 3 * band, p_ri, "RESAMPLED CARD INDIRECT")],
+        max(scene_w, 1024), 2 * scene_h + 3 * band + 512,
     )
     p99_map = {"scene_direct": p99_dl, "resampled_direct": p99_rd,
                "resampled_indirect": p99_ri, "scene_final": p99_fl}
@@ -2893,12 +3070,21 @@ def fig_world_cache(ctx: Context):
         stats["slices"].append({"z": z, "source_crop_xywh": [x0, y0, cw, ch], **counts})
         panel = fit_panel(base, 768, 192)
         panels.append(panel)
-    sheet = Raster(768, len(panels) * 208, (0, 0, 0))
+    slice_labels = [
+        "Z SLICE %d / %d | crop x=%d y=%d w=%d h=%d | magenta = invalid 0xFFFFFFFF" % (
+            zs[i], t.depth - 1, x0, y0, cw, ch) for i in range(len(panels))
+    ]
+    slice_lines = [wrap_text(lbl, 760, BODY_PX, "mono") for lbl in slice_labels]
+    band_h = max(len(lines) for lines in slice_lines) * BODY_LH + 6
+    row_h = 192 + band_h
+    sheet = Raster(768, len(panels) * row_h, (0, 0, 0))
     for i, p in enumerate(panels):
-        y = i * 208
+        y = i * row_h
         sheet.blit(p, 0, y)
-        sheet.draw_text(4, y + 194, "Z SLICE %d / %d | crop x=%d y=%d w=%d h=%d | magenta = invalid 0xFFFFFFFF" % (
-            zs[i], t.depth - 1, x0, y0, cw, ch), WHITE, 1)
+        ly = y + 192 + 4
+        for line in slice_lines[i]:
+            sheet.draw_text(4, ly, line, WHITE, BODY_PX, "mono", "normal", "start", "slice-label")
+            ly += BODY_LH
     add_figure(
         ctx, "world-cache-radiance-indirection-slices",
         "World radiance cache: representative indirection slices",
@@ -3638,11 +3824,22 @@ def fig_vsm(ctx: Context):
         for x in range(1280):
             v = pt.raw_u32(min(pt.w - 1, best_x + x), y)
             zoom.set(x, y, vsm_state_color(v))
-    sheet = Raster(1280, 30 + 14 + pt.h + 16, (0, 0, 0))
-    sheet.blit(overview, 0, 0)
-    sheet.draw_text(4, 32, "FULL PAGE TABLE %dx%d (x-downsampled) | invalid=0 | mapped LOD0=green | coarser=blue | renderable=orange | secondary=magenta | dummy=white" % (pt.w, pt.h), WHITE, 1)
-    sheet.blit(zoom, 0, 48)
-    sheet.draw_text(4, 48 + pt.h + 2, "NATIVE 1280x%d WINDOW at x=%d (densest region)" % (pt.h, best_x), WHITE, 1)
+    overview_label = ("FULL PAGE TABLE %dx%d (x-downsampled) | invalid=0 | mapped LOD0=green | "
+                      "coarser=blue | renderable=orange | secondary=magenta | dummy=white" % (pt.w, pt.h))
+    zoom_label = "NATIVE 1280x%d WINDOW at x=%d (densest region)" % (pt.h, best_x)
+    ov_lines = wrap_text(overview_label, 1272, BODY_PX, "mono")
+    zoom_lines = wrap_text(zoom_label, 1272, BODY_PX, "mono")
+    ov_top = 2
+    overview_y = ov_top + len(ov_lines) * BODY_LH + 4
+    zoom_top = overview_y + 30 + 4
+    zoom_y = zoom_top + len(zoom_lines) * BODY_LH + 4
+    sheet = Raster(1280, zoom_y + pt.h, (0, 0, 0))
+    for i, line in enumerate(ov_lines):
+        sheet.draw_text(4, ov_top + i * BODY_LH, line, WHITE, BODY_PX, "mono", "normal", "start", "overview-label")
+    sheet.blit(overview, 0, overview_y)
+    for i, line in enumerate(zoom_lines):
+        sheet.draw_text(4, zoom_top + i * BODY_LH, line, WHITE, BODY_PX, "mono", "normal", "start", "zoom-label")
+    sheet.blit(zoom, 0, zoom_y)
     add_figure(
         ctx, "vsm-page-table-state",
         "Virtual Shadow Map: page table state",
@@ -3924,7 +4121,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
 </style>
 </head><body>
 <header><h1>Unreal final capture: decoded GPU figures</h1>
-<div class="small">Selected graph <b>__SELECTED__</b> by exact 1280x720 FViewUniformShaderParameters bytes; all graphs remain browsable below.</div>
+<div class="small">Selected graph <b>__SELECTED__</b> by exact 1280x720 FViewUniformShaderParameters bytes; all graphs remain browsable below. Figure labels are SVG vector text over lossless data pixels.</div>
 <p><a href="../../../frame-explorer.html">Open the full frame explorer</a></p>
 </header><main>
 """.replace("__SELECTED__", esc(ctx.selected_graph)))
@@ -3933,17 +4130,31 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
                      esc(ctx.dump.name), esc(portable_path(ctx.run_path)), esc(ctx.selected_view["content"]),
                      esc(ctx.selected_view["bin_sha256"]), esc(ctx.selected_view["view_rect_min"]),
                      esc(ctx.selected_view["view_size_and_inv_size"]), esc(ctx.selected_view["max_pass_id"])))
-    parts.append("<h2>Figures (%d)</h2><div class='grid'>" % len(manifest["figures"]))
+    parts.append("<h2>Figures (%d)</h2>" % len(manifest["figures"]))
+    parts.append("<p class='small'>Every card renders the same-slug SVG: vector text over the "
+                 "lossless, text-free PNG data backing. The PNG remains available as an exact data view.</p>")
+    parts.append("<div class='grid'>")
     for f in manifest["figures"]:
-        parts.append("<figure id='%s'><a href='%s'><img loading='lazy' src='%s' alt='%s' width='%s' height='%s'></a><figcaption><b>%s</b><br>"
-                     "<span class='small'>%s</span><br>"
-                     "<span class='small'>resource <code>%s</code> (%s) | pass %s %s | stored %s (%s B/texel)</span>"
-                     "</figcaption></figure>" % (
-                         esc(f["slug"]), esc(f["image"]["file"]), esc(f["image"]["file"]),
-                         esc(f["title"]), esc(f["image"]["width"]), esc(f["image"]["height"]), esc(f["title"]),
-                         esc(f["subtitle"]), esc(f["source"]["resource_id"]), esc(f["source"]["name"]),
-                         esc(f["pass"]["id"]), esc(f["pass"]["event"]), esc(f["source"]["stored_format"]),
-                         esc(f["source"]["storage_bytes_per_texel"])))
+        vec = f.get("vector_image")
+        main = vec if vec else f["image"]
+        raw_href = "../../../frame-explorer.html#resource/%s" % f["source"]["resource_id"]
+        vector_link = ""
+        if vec:
+            vector_link = " · <a href='%s'>Vector SVG</a>" % esc(vec["file"])
+        parts.append(
+            "<figure id='%s'><a href='%s'><img loading='lazy' src='%s' alt='%s' width='%s' height='%s'></a>"
+            "<figcaption><b>%s</b> <span class='badge'>%s</span><br>"
+            "<span class='small'>%s</span><br>"
+            "<span class='small'>resource <code>%s</code> (%s) | pass %s %s | stored %s (%s B/texel)</span><br>"
+            "<span class='small'><a href='%s'>Raw explorer</a>%s · "
+            "<a href='figure-manifest.json'>manifest record</a></span>"
+            "</figcaption></figure>" % (
+                esc(f["slug"]), esc(main["file"]), esc(main["file"]),
+                esc(f["title"]), esc(main["width"]), esc(main["height"]), esc(f["title"]),
+                "SVG vector text" if vec else "PNG",
+                esc(f["subtitle"]), esc(f["source"]["resource_id"]), esc(f["source"]["name"]),
+                esc(f["pass"]["id"]), esc(f["pass"]["event"]), esc(f["source"]["stored_format"]),
+                esc(f["source"]["storage_bytes_per_texel"]), esc(raw_href), vector_link))
     parts.append("</div>")
     parts.append("<h2>Figure details</h2>")
     for f in manifest["figures"]:
@@ -3958,7 +4169,16 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
         parts.append("<p><b>Payload:</b> <code>%s</code> %s bytes sha256 <code>%s</code> version pass %s</p>" % (
             esc(f["payload"]["file"]), esc(f["payload"]["bytes"]), esc(f["payload"]["sha256"]),
             esc(f["payload_version"]["pass_id"])))
-        parts.append("<p><b>Image:</b> <code>%s</code> %sx%s sha256 <code>%s</code></p>" % (
+        vec = f.get("vector_image")
+        if vec:
+            vt = vec.get("text") or {}
+            parts.append(
+                "<p><b>Vector image:</b> <code>%s</code> %sx%s sha256 <code>%s</code> | "
+                "text: %s SVG &lt;text&gt; elements, %s..%s px, vector=%s, pixel text=%s</p>" % (
+                    esc(vec["file"]), esc(vec["width"]), esc(vec["height"]), esc(vec["sha256"]),
+                    esc(vt.get("elements")), esc(vt.get("min_font_px")), esc(vt.get("max_font_px")),
+                    esc(vt.get("is_vector")), esc(vec.get("pixel_text"))))
+        parts.append("<p><b>Raster backing:</b> <code>%s</code> %sx%s sha256 <code>%s</code></p>" % (
             esc(f["image"]["file"]), esc(f["image"]["width"]), esc(f["image"]["height"]), esc(f["image"]["sha256"])))
         for key, label in (("card_capture", "Card capture proof"),
                            ("card_capture_atlas", "Card atlas proof"),
@@ -4012,7 +4232,7 @@ render('');
 
 
 def main():
-    global FIG_DIR, PNG_DIR, INV_DIR
+    global FIG_DIR, PNG_DIR, SVG_DIR, INV_DIR
     ap = argparse.ArgumentParser()
     ap.add_argument("--capture", "--dump", dest="dump", default=str(DEFAULT_DUMP))
     ap.add_argument("--report", default=str(DEFAULT_REPORT))
@@ -4028,8 +4248,10 @@ def main():
     run = _resolve(args.run, FIG_DIR)
     FIG_DIR = args.output
     PNG_DIR = FIG_DIR / "png"
+    SVG_DIR = FIG_DIR / "svg"
     INV_DIR = FIG_DIR / "inventory"
     PNG_DIR.mkdir(parents=True, exist_ok=True)
+    SVG_DIR.mkdir(parents=True, exist_ok=True)
     INV_DIR.mkdir(parents=True, exist_ok=True)
     ctx = Context(dump, report, run, args.graph)
     print(f"dump={dump}")

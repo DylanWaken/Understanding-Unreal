@@ -19,7 +19,7 @@ const os = require('node:os');
     for (const width of [1440, 768, 390, 640]) {
       await page.setViewportSize({width, height:1000});
       assert.equal((await page.goto(url)).status(), 200);
-      await page.evaluate(() => localStorage.removeItem('arda-essay-theme'));
+      await page.evaluate(() => localStorage.removeItem('understanding-unreal-essay-theme'));
       assert.equal(await page.locator('h1').count(), 1);
       assert(await page.locator('.chapter').count() >= 10);
       const dimensions = await page.evaluate(() => ({width:innerWidth, full:document.documentElement.scrollWidth}));
