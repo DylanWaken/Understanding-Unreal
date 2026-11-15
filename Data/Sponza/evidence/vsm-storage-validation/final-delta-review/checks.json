@@ -1,0 +1,137 @@
+{
+  "workspace": "D:/UnrealUnderstanding-Review/vsm-delta",
+  "scope": "final two VSM integration corrections only; prior native-buffer audit not repeated",
+  "status": "pass",
+  "artifacts": {
+    "producer": {
+      "path": "D:/UnrealUnderstanding/Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_vsm_storage.py",
+      "sha256": "101e393db566069c747b5e399a28f3eb940a0643d8cde23de0628618ebbcd3c2"
+    },
+    "published_report": {
+      "path": "D:/UnrealUnderstanding/Docs/Unreal/assets/lumen-sponza/vsm-storage/report.md",
+      "sha256": "685cce0611553b4cee8b729c2a8b09d5aba8585f88094cdc1a09f4f34ef6d2c3"
+    },
+    "published_checks": {
+      "path": "D:/UnrealUnderstanding/Docs/Unreal/assets/lumen-sponza/vsm-storage/checks.json",
+      "sha256": "d1f49abfbb72bae4a54f014ae4a6e8c3d8c2b4db176b1e1df7c37feddf622757",
+      "summary": {
+        "PASS": 33,
+        "FAIL": 0,
+        "SKIP": 0
+      }
+    },
+    "root_integration_check": {
+      "path": "D:/UnrealUnderstanding/Data/Sponza/evidence/vsm-storage-validation/root-integration-check.json",
+      "sha256": "bfeef30d3b19bca335b82255186916b2f4c63c56ea4660be0a6be70409ff93a4",
+      "candidate_npz_sha256_claim": "40668b394aac1d2cce8f08ec1a08043e3208860904ab5f29e706c3f81c76ed45",
+      "decoder_sha256_claim": "101e393db566069c747b5e399a28f3eb940a0643d8cde23de0628618ebbcd3c2"
+    }
+  },
+  "npz": {
+    "candidate": "D:/UnrealUnderstanding-Review/vsm-final/output/publish/data/vsm_storage.npz",
+    "final": "D:/UnrealUnderstanding/Docs/Unreal/assets/lumen-sponza/vsm-storage/publish/data/vsm_storage.npz",
+    "candidate_sha256": "40668b394aac1d2cce8f08ec1a08043e3208860904ab5f29e706c3f81c76ed45",
+    "final_sha256": "40668b394aac1d2cce8f08ec1a08043e3208860904ab5f29e706c3f81c76ed45",
+    "sha256_equal": true,
+    "array_count_candidate": 45,
+    "array_count_final": 45,
+    "all_arrays_byte_identical": true,
+    "comparison": "exact tobytes() equality per array after shape/dtype check",
+    "nan_note": "depth_mosaic_z_f32 carries 255808 NaN invalid cells; np.array_equal would falsely differ, exact bytes do not"
+  },
+  "engine_pin": {
+    "VirtualShadowMapProjectionCommon.ush": {
+      "sha256": "82a6dfe247336c813a935e11648ddb38935f661a69c09fb61de66dc642d7cdf3",
+      "lines": "41-75"
+    },
+    "VirtualShadowMapProjectionDirectional.ush": {
+      "sha256": "452d5c8335c4cef85a9ba5a18f728df3defd0b9a2a6f7c66841a549044f2d551",
+      "lines": "38-43, 62-70"
+    },
+    "VirtualShadowMapPhysicalPageManagement.usf": {
+      "sha256": "54cf1b9ca99014551b2830ff139b3be1f963be356c1a040d715a506c4d2dbc70",
+      "lines": "804-811"
+    }
+  },
+  "contract_checks": {
+    "per_level_bias_selection": {
+      "code_lines": "813-821",
+      "engine_match": true,
+      "detail": "unbiased_index=int(max(0,abs-base)); bias from proj[base.id+unbiased_index] if <remaining else base; biased=abs+bias; index=max(0,floor(biased)-base)"
+    },
+    "invalid_uv_rejection": {
+      "code_lines": "869-870",
+      "engine_match": "replay contract: reject instead of clamp",
+      "detail": "raises ValueError when projected UV is nonfinite or outside [0,1)"
+    },
+    "descriptor_identity": {
+      "code_lines": "552-563",
+      "detail": "selected-graph prefix required; exactly one in-inputs/same descriptor; ambiguous or missing raises"
+    },
+    "dof_bias_excluded": {
+      "code_lines": "846-855",
+      "detail": "optional DOF bias, slope/normal bias and SMRT ray work declared not applied; not claimed as full SMRT"
+    },
+    "writer_provenance": {
+      "report_lines": [
+        7,
+        12,
+        13,
+        17
+      ],
+      "json_path": "snapshot_lineage.physical_page_pool.writer_scope",
+      "shader_lines": "VirtualShadowMapPhysicalPageManagement.usf:804-811",
+      "detail": "resource binding 811 named, but writer_scope and report line 17 say merge writes slice0 only; output recorded as [0].mip0; not a slice1 producer identity"
+    },
+    "zero_depth_wording": {
+      "report_line": 100,
+      "code_lines": "296-302, 2209",
+      "npz_zeros": 0,
+      "npz_nonpositive": 0,
+      "detail": "compact atlas masks nonfinite/nonpositive; native-page and mosaic views call depth_rgb directly"
+    }
+  },
+  "captured_biases": {
+    "decoded_from_npz_offset_300_float32": true,
+    "count": 17,
+    "unique": [
+      0.6639266014099121
+    ],
+    "all_equal": true,
+    "A": {
+      "selected_vsm": 8196,
+      "clipmap_index": 4,
+      "unbiased_index": 3,
+      "bias_projection_id": 8195
+    },
+    "B": {
+      "selected_vsm": 8196,
+      "clipmap_index": 4,
+      "unbiased_index": 3,
+      "bias_projection_id": 8195
+    }
+  },
+  "synthetic_unequal_bias": {
+    "abs_level": 10.3,
+    "base_clip": 6,
+    "base_bias": 0.0,
+    "level4_bias": 0.9,
+    "corrected_index": 5,
+    "base_bias_only_index": 4,
+    "note": "with unequal per-level biases the corrected lookup selects VSM 8197 instead of 8196; for this capture all biases are equal so A/B are unchanged"
+  },
+  "json_numeric_spotcheck": {
+    "A_B_selected_vsm_clipmap_level_bias_equal": true,
+    "counts_equal": true,
+    "sun_ids_and_levels_equal": true
+  },
+  "not_performed": [
+    "raw capture decode",
+    "99-page audit",
+    "whole-file hash loops",
+    "GPU execution",
+    "producer function import",
+    "repository edits"
+  ],
+  "residual_nonblocking": "bias lookup proj[base.id+unbiased_index] is guarded by unbiased_index<remaining but not by list length; safe here (8209 slots, base 8192, remaining 17) and only reachable for an inconsistent capture."
+}

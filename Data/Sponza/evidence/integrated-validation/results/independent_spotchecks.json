@@ -1,0 +1,501 @@
+{
+  "schema": "lumen-independent-spotchecks-v1",
+  "radiosity": {
+    "samples": [
+      8815,
+      46721,
+      9750
+    ],
+    "probe_count": 94787,
+    "raw_sha_ok": true
+  },
+  "worldcache": {
+    "allocator": 925,
+    "free": 47,
+    "active": 878,
+    "positions_sha256": "99b36a6b4cd3c12ff373ecdcf1f8dad2f77f29a2995f03add1221dbb65ff6483",
+    "sample_pids": [
+      0,
+      310,
+      608,
+      460,
+      924
+    ],
+    "sample_max_error_cm": 0.0,
+    "indirection_extent": [
+      192,
+      48,
+      48
+    ],
+    "translucency_extent": [
+      72,
+      24
+    ]
+  },
+  "checks": [
+    {
+      "name": "rad.raw_sha_all",
+      "ok": true,
+      "detail": "8 native operands SHA-256 match publication"
+    },
+    {
+      "name": "rad.sample0.page_mapped",
+      "ok": true,
+      "detail": "probe[8815] page=317 card=175 mapped=True last_indirect=365"
+    },
+    {
+      "name": "rad.sample0.page_card",
+      "ok": true,
+      "detail": "page.card_index=175 published card=175"
+    },
+    {
+      "name": "rad.sample0.jitter",
+      "ok": true,
+      "detail": "recomputed jitter (2, 0) published (2, 0)"
+    },
+    {
+      "name": "rad.sample0.coord_in_page",
+      "ok": true,
+      "detail": "CoordInCardPage=(90,68) page size=(128.0, 128.0)"
+    },
+    {
+      "name": "rad.sample0.atlas_uv",
+      "ok": true,
+      "detail": "recomputed (0.959594726562,0.016723632812) published (0.9595947265625, 0.0167236328125)"
+    },
+    {
+      "name": "rad.sample0.depth_texel",
+      "ok": true,
+      "detail": "recomputed (3930, 68) published (3930, 68)"
+    },
+    {
+      "name": "rad.sample0.depth_raw",
+      "ok": true,
+      "detail": "native u16=27613 published=27613"
+    },
+    {
+      "name": "rad.sample0.depth_offset",
+      "ok": true,
+      "detail": "recomputed byte offset=564916 published=564916"
+    },
+    {
+      "name": "rad.sample0.card_uv",
+      "ok": true,
+      "detail": "recomputed (0.354896545410,0.535156250000) published (0.35489654541015625, 0.53515625)"
+    },
+    {
+      "name": "rad.sample0.world_position",
+      "ok": true,
+      "detail": "max |reconstructed-published| = 8.975e-06 cm (declared float32 publication precision 1e-3 cm)",
+      "reconstructed": [
+        -259.322897518985,
+        160.3530984799813,
+        227.02041375339013
+      ],
+      "published": [
+        -259.3229064941406,
+        160.3531036376953,
+        227.02041625976562
+      ],
+      "error_cm": 8.975155651569366e-06
+    },
+    {
+      "name": "rad.sample0.normal",
+      "ok": true,
+      "detail": "max |normal diff| = 2.412e-08"
+    },
+    {
+      "name": "rad.sample0.sh_address",
+      "ok": true,
+      "detail": "recomputed (982, 17) published (982, 17)"
+    },
+    {
+      "name": "rad.sample0.sh_atlas_bounds",
+      "ok": true,
+      "detail": "(982,17) inside 1024x1024"
+    },
+    {
+      "name": "rad.sample0.sh12",
+      "ok": true,
+      "detail": "12 native half coefficients identical; max diff = 0.000e+00",
+      "native": [
+        0.63720703125,
+        -0.27734375,
+        0.334228515625,
+        0.76806640625,
+        0.7939453125,
+        -0.1888427734375,
+        0.5888671875,
+        1.12109375,
+        1.0322265625,
+        -0.27685546875,
+        0.7333984375,
+        1.462890625
+      ],
+      "published": [
+        0.63720703125,
+        -0.27734375,
+        0.334228515625,
+        0.76806640625,
+        0.7939453125,
+        -0.1888427734375,
+        0.5888671875,
+        1.12109375,
+        1.0322265625,
+        -0.27685546875,
+        0.7333984375,
+        1.462890625
+      ]
+    },
+    {
+      "name": "rad.sample0.sh_offset",
+      "ok": true,
+      "detail": "recomputed 147120 published 147120"
+    },
+    {
+      "name": "rad.sample0.e_normal",
+      "ok": true,
+      "detail": "max |E_raw diff| = 5.615e-08 (published e_normal_raw)"
+    },
+    {
+      "name": "rad.sample1.page_mapped",
+      "ok": true,
+      "detail": "probe[46721] page=560 card=477 mapped=True last_indirect=358"
+    },
+    {
+      "name": "rad.sample1.page_card",
+      "ok": true,
+      "detail": "page.card_index=477 published card=477"
+    },
+    {
+      "name": "rad.sample1.jitter",
+      "ok": true,
+      "detail": "recomputed jitter (1, 2) published (1, 2)"
+    },
+    {
+      "name": "rad.sample1.coord_in_page",
+      "ok": true,
+      "detail": "CoordInCardPage=(29,2) page size=(128.0, 128.0)"
+    },
+    {
+      "name": "rad.sample1.atlas_uv",
+      "ok": true,
+      "detail": "recomputed (0.100952148438,0.156860351562) published (0.1009521484375, 0.1568603515625)"
+    },
+    {
+      "name": "rad.sample1.depth_texel",
+      "ok": true,
+      "detail": "recomputed (413, 642) published (413, 642)"
+    },
+    {
+      "name": "rad.sample1.depth_raw",
+      "ok": true,
+      "detail": "native u16=11239 published=11239"
+    },
+    {
+      "name": "rad.sample1.depth_offset",
+      "ok": true,
+      "detail": "recomputed byte offset=5260090 published=5260090"
+    },
+    {
+      "name": "rad.sample1.card_uv",
+      "ok": true,
+      "detail": "recomputed (0.230468750000,0.019531250000) published (0.23046875, 0.01953125)"
+    },
+    {
+      "name": "rad.sample1.world_position",
+      "ok": true,
+      "detail": "max |reconstructed-published| = 6.104e-06 cm (declared float32 publication precision 1e-3 cm)",
+      "reconstructed": [
+        79.72351507544522,
+        -148.89087524414072,
+        32.63332435431536
+      ],
+      "published": [
+        79.72351837158203,
+        -148.890869140625,
+        32.633323669433594
+      ],
+      "error_cm": 6.10351571594947e-06
+    },
+    {
+      "name": "rad.sample1.normal",
+      "ok": true,
+      "detail": "max |normal diff| = 1.911e-10"
+    },
+    {
+      "name": "rad.sample1.sh_address",
+      "ok": true,
+      "detail": "recomputed (103, 160) published (103, 160)"
+    },
+    {
+      "name": "rad.sample1.sh_atlas_bounds",
+      "ok": true,
+      "detail": "(103,160) inside 1024x1024"
+    },
+    {
+      "name": "rad.sample1.sh12",
+      "ok": true,
+      "detail": "12 native half coefficients identical; max diff = 0.000e+00",
+      "native": [
+        1.4775390625,
+        0.10400390625,
+        0.9169921875,
+        1.1396484375,
+        1.51953125,
+        0.159423828125,
+        0.94482421875,
+        1.154296875,
+        1.8427734375,
+        0.2607421875,
+        1.2978515625,
+        1.3212890625
+      ],
+      "published": [
+        1.4775390625,
+        0.10400390625,
+        0.9169921875,
+        1.1396484375,
+        1.51953125,
+        0.159423828125,
+        0.94482421875,
+        1.154296875,
+        1.8427734375,
+        0.2607421875,
+        1.2978515625,
+        1.3212890625
+      ]
+    },
+    {
+      "name": "rad.sample1.sh_offset",
+      "ok": true,
+      "detail": "recomputed 1311544 published 1311544"
+    },
+    {
+      "name": "rad.sample1.e_normal",
+      "ok": true,
+      "detail": "max |E_raw diff| = 1.173e-08 (published e_normal_raw)"
+    },
+    {
+      "name": "rad.sample2.page_mapped",
+      "ok": true,
+      "detail": "probe[9750] page=324 card=194 mapped=True last_indirect=365"
+    },
+    {
+      "name": "rad.sample2.page_card",
+      "ok": true,
+      "detail": "page.card_index=194 published card=194"
+    },
+    {
+      "name": "rad.sample2.jitter",
+      "ok": true,
+      "detail": "recomputed jitter (2, 0) published (2, 0)"
+    },
+    {
+      "name": "rad.sample2.coord_in_page",
+      "ok": true,
+      "detail": "CoordInCardPage=(106,44) page size=(128.0, 128.0)"
+    },
+    {
+      "name": "rad.sample2.atlas_uv",
+      "ok": true,
+      "detail": "recomputed (0.119750976562,0.042114257812) published (0.1197509765625, 0.0421142578125)"
+    },
+    {
+      "name": "rad.sample2.depth_texel",
+      "ok": true,
+      "detail": "recomputed (490, 172) published (490, 172)"
+    },
+    {
+      "name": "rad.sample2.depth_raw",
+      "ok": true,
+      "detail": "native u16=35711 published=35711"
+    },
+    {
+      "name": "rad.sample2.depth_offset",
+      "ok": true,
+      "detail": "recomputed byte offset=1410004 published=1410004"
+    },
+    {
+      "name": "rad.sample2.card_uv",
+      "ok": true,
+      "detail": "recomputed (0.417640686035,0.347656250000) published (0.41764068603515625, 0.34765625)"
+    },
+    {
+      "name": "rad.sample2.world_position",
+      "ok": true,
+      "detail": "max |reconstructed-published| = 6.127e-06 cm (declared float32 publication precision 1e-3 cm)",
+      "reconstructed": [
+        129.24614867717025,
+        -276.7499369240521,
+        260.7188049077988
+      ],
+      "published": [
+        129.24615478515625,
+        -276.74993896484375,
+        260.71881103515625
+      ],
+      "error_cm": 6.127357437435421e-06
+    },
+    {
+      "name": "rad.sample2.normal",
+      "ok": true,
+      "detail": "max |normal diff| = 8.422e-09"
+    },
+    {
+      "name": "rad.sample2.sh_address",
+      "ok": true,
+      "detail": "recomputed (122, 43) published (122, 43)"
+    },
+    {
+      "name": "rad.sample2.sh_atlas_bounds",
+      "ok": true,
+      "detail": "(122,43) inside 1024x1024"
+    },
+    {
+      "name": "rad.sample2.sh12",
+      "ok": true,
+      "detail": "12 native half coefficients identical; max diff = 0.000e+00",
+      "native": [
+        0.2093505859375,
+        -0.09429931640625,
+        -0.256103515625,
+        0.06561279296875,
+        0.236083984375,
+        -0.1015625,
+        -0.282958984375,
+        0.08538818359375,
+        0.28564453125,
+        -0.11865234375,
+        -0.340087890625,
+        0.10955810546875
+      ],
+      "published": [
+        0.2093505859375,
+        -0.09429931640625,
+        -0.256103515625,
+        0.06561279296875,
+        0.236083984375,
+        -0.1015625,
+        -0.282958984375,
+        0.08538818359375,
+        0.28564453125,
+        -0.11865234375,
+        -0.340087890625,
+        0.10955810546875
+      ]
+    },
+    {
+      "name": "rad.sample2.sh_offset",
+      "ok": true,
+      "detail": "recomputed 353232 published 353232"
+    },
+    {
+      "name": "rad.sample2.e_normal",
+      "ok": true,
+      "detail": "max |E_raw diff| = 8.760e-09 (published e_normal_raw)"
+    },
+    {
+      "name": "wc.selection_0004",
+      "ok": true,
+      "detail": "view prefix=0004; indirection prefix=0004"
+    },
+    {
+      "name": "wc.invocation_consistent",
+      "ok": true,
+      "detail": "selection.invocation_consistent=True"
+    },
+    {
+      "name": "wc.mark_48x4",
+      "ok": true,
+      "detail": "MarkRadianceProbes(ScreenProbes) res=48 num=4"
+    },
+    {
+      "name": "wc.indirection_extent",
+      "ok": true,
+      "detail": "indirection words=442368 == 48^3*4=442368"
+    },
+    {
+      "name": "wc.indirection_bytes",
+      "ok": true,
+      "detail": "1769472 bytes == 192*48*48*4"
+    },
+    {
+      "name": "wc.translucency_24x3",
+      "ok": true,
+      "detail": "rejected mark res/num=24/3 indirection extent=[72, 24] = (24*3)x24x24"
+    },
+    {
+      "name": "wc.indirection_sha",
+      "ok": true,
+      "detail": "indirection SHA-256 matches publication"
+    },
+    {
+      "name": "wc.allocator_bits",
+      "ok": true,
+      "detail": "allocator=925 free=47 alloc-free=878"
+    },
+    {
+      "name": "wc.published_counts",
+      "ok": true,
+      "detail": "published 925/47/878"
+    },
+    {
+      "name": "wc.valid_count",
+      "ok": true,
+      "detail": "valid entries=878 unique pids=878 marks=0"
+    },
+    {
+      "name": "wc.pid_capacity",
+      "ok": true,
+      "detail": "max physical id=924 == allocator-1=924"
+    },
+    {
+      "name": "wc.free_list",
+      "ok": true,
+      "detail": "47 unique free ids, no overlap with 878 active ids"
+    },
+    {
+      "name": "wc.mark_parameter_offset",
+      "ok": true,
+      "detail": "ClipmapCornerTWSAndCellSizeForMark at 352 (RadianceCacheMarkParameters base 336 + field 16)"
+    },
+    {
+      "name": "wc.corners_raw",
+      "ok": true,
+      "detail": "raw corners at Structures/0004000001ffc120cce0.bin+352 equal published corners"
+    },
+    {
+      "name": "wc.corners_48_4",
+      "ok": true,
+      "detail": "four captured clipmap corners with cell sizes"
+    },
+    {
+      "name": "wc.pre_view_translation_raw",
+      "ok": true,
+      "detail": "raw FPackedView PreViewTranslation = high(720)+low(832) = [850.0, 0.0, -90.0]"
+    },
+    {
+      "name": "wc.world_offset_sha",
+      "ok": true,
+      "detail": "ProbeWorldOffset SHA-256 matches publication"
+    },
+    {
+      "name": "wc.world_offset_zero",
+      "ok": true,
+      "detail": "all 878 active ProbeWorldOffset xyz are exactly zero"
+    },
+    {
+      "name": "wc.positions_sha256",
+      "ok": true,
+      "detail": "recomputed all-878 position hash 99b36a6b4cd3c12f\u2026 == published 99b36a6b4cd3c12f\u2026"
+    },
+    {
+      "name": "wc.sample_positions",
+      "ok": true,
+      "detail": "5 published probes recomputed; max coordinate error 0.000e+00 cm; pids=[0, 310, 608, 460, 924]"
+    }
+  ],
+  "failures": [],
+  "ok": true
+}

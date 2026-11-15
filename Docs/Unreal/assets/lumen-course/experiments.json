@@ -1,0 +1,265 @@
+{
+  "kind": "original educational arithmetic; not Unreal measurements",
+  "seed": 20261115,
+  "samples": 100000,
+  "checks": [
+    {
+      "name": "small_area_irradiance",
+      "value": 0.2,
+      "expected": 0.2,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "distance_doubling_ratio",
+      "value": 0.25,
+      "expected": 0.25,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "diffuse_cosine_estimator",
+      "value": 1.2,
+      "expected": 1.2,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "diffuse_uniform_estimator_mean",
+      "value": 1.2011484668447452,
+      "expected": 1.2,
+      "tolerance": 0.015,
+      "passed": true
+    },
+    {
+      "name": "roulette_mean_weight",
+      "value": 0.30011249999999995,
+      "expected": 0.3,
+      "tolerance": 0.006,
+      "passed": true
+    },
+    {
+      "name": "mis_complement",
+      "value": 1.0,
+      "expected": 1,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "sphere_average_sh_irradiance",
+      "value": 3.1415926535897927,
+      "expected": 3.141592653589793,
+      "tolerance": 1e-13,
+      "passed": true
+    },
+    {
+      "name": "ten_update_step_response",
+      "value": 0.6513215599,
+      "expected": 0.6513215599,
+      "tolerance": 1e-12,
+      "passed": true
+    },
+    {
+      "name": "cache_fixed_point_second_surface",
+      "value": 0.3191489361702128,
+      "expected": 0.3191489361702128,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "directional_light_diffuse_response",
+      "value": 1.5278874536821954,
+      "expected": 1.5278874536821951,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "point_light_diffuse_response_at_two_metres",
+      "value": 3.819718634205488,
+      "expected": 3.819718634205488,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "uniform_normalized_pixel_weight",
+      "value": 1.0,
+      "expected": 1,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "name": "snell_air_glass_45_degrees",
+      "value": 28.12550570205571,
+      "expected": 28.125505702055705,
+      "tolerance": 1e-12,
+      "passed": true
+    },
+    {
+      "name": "ggx_projected_distribution_normalization",
+      "value": 0.9999999892187534,
+      "expected": 1,
+      "tolerance": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "ggx_sampler_vs_hemisphere_quadrature",
+      "value": 0.02755903661344222,
+      "expected": 0.02755903653849252,
+      "tolerance": 1e-07,
+      "passed": true
+    }
+  ],
+  "cache_iterations": [
+    {
+      "iteration": 0,
+      "exact_model": [
+        1.0,
+        0.0
+      ],
+      "changed_model": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "iteration": 1,
+      "exact_model": [
+        1.0,
+        0.3
+      ],
+      "changed_model": [
+        1.0,
+        0.25
+      ]
+    },
+    {
+      "iteration": 2,
+      "exact_model": [
+        1.06,
+        0.3
+      ],
+      "changed_model": [
+        1.05,
+        0.25
+      ]
+    },
+    {
+      "iteration": 3,
+      "exact_model": [
+        1.06,
+        0.318
+      ],
+      "changed_model": [
+        1.05,
+        0.2625
+      ]
+    },
+    {
+      "iteration": 4,
+      "exact_model": [
+        1.0636,
+        0.318
+      ],
+      "changed_model": [
+        1.0525,
+        0.2625
+      ]
+    },
+    {
+      "iteration": 5,
+      "exact_model": [
+        1.0636,
+        0.31908000000000003
+      ],
+      "changed_model": [
+        1.0525,
+        0.263125
+      ]
+    },
+    {
+      "iteration": 6,
+      "exact_model": [
+        1.063816,
+        0.31908000000000003
+      ],
+      "changed_model": [
+        1.052625,
+        0.263125
+      ]
+    },
+    {
+      "iteration": 7,
+      "exact_model": [
+        1.063816,
+        0.3191448
+      ],
+      "changed_model": [
+        1.052625,
+        0.26315625
+      ]
+    },
+    {
+      "iteration": 8,
+      "exact_model": [
+        1.06382896,
+        0.3191448
+      ],
+      "changed_model": [
+        1.05263125,
+        0.26315625
+      ]
+    },
+    {
+      "iteration": 9,
+      "exact_model": [
+        1.06382896,
+        0.31914868799999996
+      ],
+      "changed_model": [
+        1.05263125,
+        0.2631578125
+      ]
+    },
+    {
+      "iteration": 10,
+      "exact_model": [
+        1.0638297375999999,
+        0.31914868799999996
+      ],
+      "changed_model": [
+        1.0526315625,
+        0.2631578125
+      ]
+    },
+    {
+      "iteration": 11,
+      "exact_model": [
+        1.0638297375999999,
+        0.31914892127999994
+      ],
+      "changed_model": [
+        1.0526315625,
+        0.263157890625
+      ]
+    },
+    {
+      "iteration": 12,
+      "exact_model": [
+        1.063829784256,
+        0.31914892127999994
+      ],
+      "changed_model": [
+        1.052631578125,
+        0.263157890625
+      ]
+    }
+  ],
+  "ggx_example": {
+    "alpha": 0.5,
+    "f0": 0.04,
+    "viewer": "along normal",
+    "incident_radiance": 1,
+    "midpoint_samples": 20000,
+    "null_event_fraction": 0.2
+  }
+}

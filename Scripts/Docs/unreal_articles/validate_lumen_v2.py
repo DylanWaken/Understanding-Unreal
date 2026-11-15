@@ -90,7 +90,9 @@ def main():
         check_summary([max(s['namedInclusiveEventSpansMs'][name]) for s in samples],summary)
     frame=HERE/'labs/lumen-frame'
     package=ROOT/'Docs/Unreal/assets/lumen-frame'
-    package_manifest=read(frame/'publication/archive-manifest.json')
+    package_manifest=read(frame/'publication/site-package-manifest.json')
+    assert package_manifest['format']=='unreal-frame-explorer-site-manifest'
+    assert package_manifest['capture']=='binary-20261112-153914'
     package_files={p.relative_to(package).as_posix() for p in package.rglob('*') if p.is_file()}
     assert package_files=={r['path'] for r in package_manifest['entries']}
     for row in package_manifest['entries']:

@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "Docs/**"
+      - "Data/Sponza/**"
       - "Scripts/Docs/unreal_articles/**"
       - "Scripts/Docs/check_site_independence.py"
       - ".github/workflows/pages.yml"
@@ -36,6 +37,14 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Set up the evidence decoder runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install CPU evidence decoder dependencies
+        run: python3 -m pip install -r Scripts/Docs/unreal_articles/labs/lumen-sponza/requirements.txt
+
       - name: Check generated essays
         run: python3 Scripts/Docs/unreal_articles/build.py --check
 
@@ -51,12 +60,30 @@ jobs:
       - name: Verify explanatory diagrams and reference presentation
         run: python3 Scripts/Docs/unreal_articles/labs/lumen-reading/generate.py --check
 
+      - name: Verify the forward-design teaching experiments
+        run: |
+          python3 Scripts/Docs/unreal_articles/labs/lumen-course/generate.py --check
+          node --check Docs/Unreal/assets/lumen-course/course.js
+          node --check Docs/Unreal/assets/lumen-course/temporal.js
+
       - name: Check frame decoders and actual package reads
         run: |
           python3 -m unittest discover -s Scripts/Docs/unreal_articles/labs/lumen-frame/tests -q
           python3 -m unittest discover -s Scripts/Docs/unreal_articles/labs/lumen-frame -p test_verify_frame_evidence.py -q
+          node Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_metadata_browser.cjs
           node Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_codec.cjs
           node Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_read_path.cjs
+
+      - name: Verify published Sponza evidence
+        run: |
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/verify_package_copy.py
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_receivers.py --out Docs/Unreal/assets/lumen-sponza/receivers --stage verify
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/cache-replay/verify_queries.py
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_context.py --out Docs/Unreal/assets/lumen-sponza/context --stage verify
+          python3 -c "import shutil; shutil.copytree('Docs/Unreal/assets/lumen-sponza/vsm-storage', '/tmp/vsm-storage')"
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_vsm_storage.py --out /tmp/vsm-storage --verify
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/build_temporal_manifest.py --check
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/archive_temporal.py verify --package Data/Sponza/temporal-native/package --out /tmp/temporal-native-verification.json
 
       - name: Validate essays, links and figures
         run: python3 Scripts/Docs/unreal_articles/validate.py

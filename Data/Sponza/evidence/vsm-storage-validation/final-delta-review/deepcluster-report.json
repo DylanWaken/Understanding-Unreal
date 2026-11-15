@@ -1,0 +1,25 @@
+{
+  "operationId": "7d30736f-7cea-43fd-969e-c2f559093fa4",
+  "status": "completed",
+  "error": null,
+  "steps": [
+    {
+      "id": "review",
+      "role": "reviewer",
+      "status": "pass",
+      "attempts": 1,
+      "summary": "Read the current repository's decoder, report, JSON, checks, and pinned UE VSM shaders, and independently compared the candidate vs final 45-array NPZ. Both prior defects are corrected and all numeric arrays are unchanged; saved results/checks.json and results/report.md.",
+      "checks": [
+        "final per-level bias selection and invalid UV handling match the declared replay contract: yes — decode_vsm_storage.py:813-821 follows Common.ush:60-72 and Directional.ush:38-43 (unbiased index then that level's bias, base only out of range, then floor); UV outside [0,1) raises at :869-870; ambiguous/cross-graph descriptors raise at :552-563; DOF is declared excluded at :846-855; all 17 biases are 0.6639266014099121 and A/B remain VSM 8196.",
+        "final writer provenance distinguishes resource bindings from slice writes: yes — report.md:7,12-13,17 labels pass 811 as a resource-level binding and states it writes slice 0 only; vsm_storage.json snapshot_lineage.physical_page_pool.writer_scope says the same; VirtualShadowMapPhysicalPageManagement.usf:804-811 writes only uint3(PixelCoord,0); final snapshot_writer_lineage check passes.",
+        "final numeric arrays preserve the independently verified candidate: yes — both NPZ files contain 45 arrays, every array is byte-identical, and both are SHA-256 40668b394aac1d2cce8f08ec1a08043e3208860904ab5f29e706c3f81c76ed45; root-integration-check.json agrees; depth_mosaic_z_f32's 255,808 NaNs were compared as exact bytes, not np.array_equal; final checks.json is 33 PASS / 0 FAIL."
+      ],
+      "changed": [
+        "results/checks.json",
+        "results/npz_compare.json",
+        "results/report.md"
+      ]
+    }
+  ],
+  "open": []
+}

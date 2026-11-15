@@ -1,0 +1,57 @@
+{
+  "operationId": "7e1280ff-5f6b-4812-ae4c-db2c1d2ebbb1",
+  "status": "failed",
+  "error": null,
+  "steps": [
+    {
+      "id": "refine",
+      "role": "developer",
+      "status": "pass",
+      "attempts": 1,
+      "summary": "Refined the copied decoder to treat PageTable hardware mip0 as containing all logical shadow mips 0–7, corrected the separate PageFlags 0–6 hierarchy and pass-840 consumer/writer lineage, renamed the 96 earlier-frame metadata records as unreferenced rather than stale, and added the contiguous virtual-depth mosaic. Regenerated all outputs with --all and re-ran portable --verify with no engine or raw arguments.",
+      "checks": [
+        "logical mips hardware mips and snapshot lineage are accurate: yes — PageTable descriptor NumMips=1; all 8 logical regions decoded (mip0: 99 render-valid, mips 1–7 present but empty); PageFlags NumMips=7 maps separate H0–H6; pass-840 consumer snapshots with last writers 792/811/790-791 and metadata pass 810; checks page_table_logical_mips_complete, page_flags_hierarchy_semantics, snapshot_writer_lineage all PASS.",
+        "contiguous virtual depth mosaic maps all selected pages with a fixed range: yes — vsm_virtual_depth.png is 1792×1536, bbox [55,58,68,69], all 99 pages placed in virtual-address order, fixed device-Z [0.4998,0.5003], 69 fallback / 0 unmapped page cells, one uniform scale 1.0; restore check verified 4 known page coordinates and 12 exact RGB samples; virtual_depth_mosaic_complete and verify_virtual_depth_mosaic PASS.",
+        "portable verification passes and original numerical mappings are preserved: yes — python tools/decode_vsm_storage.py --out output --verify exited 0 with 33 PASS / 0 FAIL (18 decode + 15 verify); A/B stored depth, receiver Z, delta (-1.856e-08), addresses and all prior counts match the original JSON exactly; total output is 2.91 MB."
+      ],
+      "changed": [
+        "output/checks.json",
+        "output/publish/data/schema.json",
+        "output/publish/data/vsm_storage.json",
+        "output/publish/data/vsm_storage.npz",
+        "output/publish/figures/vsm_depth_pages.png",
+        "output/publish/figures/vsm_page_table_sun.png",
+        "output/publish/figures/vsm_pool_occupancy.png",
+        "output/publish/figures/vsm_virtual_depth.png",
+        "output/publish/manifest.json",
+        "output/report.md",
+        "output/source-ranges.json",
+        "tools/decode_vsm_storage.py"
+      ]
+    },
+    {
+      "id": "review",
+      "role": "reviewer",
+      "status": "fail",
+      "attempts": 1,
+      "summary": "Independently reconstructed the logical mip regions, PageFlags hierarchy, all 99 selected page records, F3/F4 pixels and A/B mappings from the raw capture and pinned engine without importing producer methods. Both assigned acceptance checks pass, but two non-numerical defects remain: the receiver replay still uses the base level's ResolutionLodBias, and the report attributes pool slice1 to pass 811 even though the shader writes slice0 only; `review/verify_vsm_storage.py` records 14 PASS / 2 FAIL.",
+      "checks": [
+        "logical mip packing and terminology match pinned source: yes — independently reproduced all eight non-overlapping logical regions (mip0 [640,0] 128 pages with 99 render-valid/16384 entries; mips 1–7 empty), NumMips=1, separate PageFlags H0–H6 with zero parent-OR mismatches, no H7, and no packed 8×6-bit claim.",
+        "mosaic native samples and original A B mappings remain correct: yes — F4 1792×1536 bbox [55,58,68,69] scale 1.0, all 2,752,512 pixels and mask match raw pool (0 mismatches), 69 fallback/0 unmapped, four samples match; F3 six native pages are bit-exact with 0 non-marker pixel mismatches; A/B UV, entries, physical texels, raw depth, receiver Z and Δ (−1.856e−08 / +2.714e−04) match raw and the earlier publication.",
+        "no false stale/missing-mip/producer claims: no — the 96 earlier-frame records are correctly “unreferenced” and all eight logical mips are present, but the slice1 row says “last writer 811”; `MergePhysicalPixel` writes only `OutPhysicalPagePool[uint3(PixelCoord,0)]`, and the recorded writer output is `.[0].mip0`, so this is a resource-level record, not a slice-1 write.",
+        "receiver replay matches the pinned clipmap-selection formula: no — `tools/decode_vsm_storage.py:806-808` adds `sun[0]`'s base bias before selecting the level, while `VirtualShadowMapProjectionCommon.ush:62-72` selects the initial level and adds that level's bias; latent here because all 17 biases equal 0.6639266."
+      ],
+      "changed": [
+        "review/__pycache__/passes_probe.cpython-314.pyc",
+        "review/checks.json",
+        "review/report.md",
+        "review/verify_vsm_storage.py"
+      ]
+    }
+  ],
+  "open": [],
+  "failure": {
+    "stepId": "review",
+    "output": "[[DEEPCLUSTER]]\nstatus: fail\nsummary: Independently reconstructed the logical mip regions, PageFlags hierarchy, all 99 selected page records, F3/F4 pixels and A/B mappings from the raw capture and pinned engine without importing producer methods. Both assigned acceptance checks pass, but two non-numerical defects remain: the receiver replay still uses the base level's ResolutionLodBias, and the report attributes pool slice1 to pass 811 even though the shader writes slice0 only; `review/verify_vsm_storage.py` records 14 PASS / 2 FAIL.\nchecks:\n- logical mip packing and terminology match pinned source: yes — independently reproduced all eight non-overlapping logical regions (mip0 [640,0] 128 pages with 99 render-valid/16384 entries; mips 1–7 empty), NumMips=1, separate PageFlags H0–H6 with zero parent-OR mismatches, no H7, and no packed 8×6-bit claim.\n- mosaic native samples and original A B mappings remain correct: yes — F4 1792×1536 bbox [55,58,68,69] scale 1.0, all 2,752,512 pixels and mask match raw pool (0 mismatches), 69 fallback/0 unmapped, four samples match; F3 six native pages are bit-exact with 0 non-marker pixel mismatches; A/B UV, entries, physical texels, raw depth, receiver Z and Δ (−1.856e−08 / +2.714e−04) match raw and the earlier publication.\n- no false stale/missing-mip/producer claims: no — the 96 earlier-frame records are correctly “unreferenced” and all eight logical mips are present, but the slice1 row says “last writer 811”; `MergePhysicalPixel` writes only `OutPhysicalPagePool[uint3(PixelCoord,0)]`, and the recorded writer output is `.[0].mip0`, so this is a resource-level record, not a slice-1 write.\n- receiver replay matches the pinned clipmap-selection formula: no — `tools/decode_vsm_storage.py:806-808` adds `sun[0]`'s base bias before selecting the level, while `VirtualShadowMapProjectionCommon.ush:62-72` selects the initial level and adds that level's bias; latent here because all 17 biases equal 0.6639266.\nimprovisation: no\n[[/DEEPCLUSTER]]"
+  }
+}

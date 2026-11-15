@@ -26,14 +26,24 @@ ARTICLES = [
     dict(key='nanite', slug='nanite', title='Nanite: From a Scanned Bunny to Visible Pixels',
          short='Nanite',
          deck='Build, select, stream, and rasterize virtual geometry: a source-guided essay with a computed Stanford bunny experiment and real Unreal Engine captures.'),
-    dict(key='lumen', slug='lumen', title='Lumen: From the Path Integral to a Frame',
+    dict(key='lumen', slug='lumen', title='Building Lumen: From Light Paths to a Real-Time Atrium',
          short='Lumen',
-         date='2026-11-13', date_label='13 November 2026', append_lab_sources=False,
-         deck='Derive light transport, follow its real-time approximation, and inspect the actual deferred shading, shadows, surface caches, probes, and reflections in one Unreal frame.'),
+         date='2026-11-15', date_label='15 November 2026', append_lab_sources=False,
+         authored_sources=['lumen-course.html', 'lumen-course-system.html',
+                           'lumen-course-caches.html', 'lumen-course-reconstruction.html',
+                           'lumen-course-evidence.html'],
+         deck='Build a path tracer from geometric optics, give it a frame budget, and design the caches, probes, shadows, and reflections that make Lumen practical—with experiments inside Unreal’s Sponza atrium.'),
     dict(key='material', slug='material-compiler', title='How Unreal Compiles a Material Graph',
          short='Material graph compilation',
          deck='Follow an expression graph from the Material Editor through analysis, shader generation, caching, compilation, and the GPU programs used to shade a surface.'),
 ]
+
+# Keep the detailed, reproducible room capture available as a separately named
+# reference. It is not appended to the teaching narrative or relabeled Sponza.
+REFERENCES = [dict(key='lumen', slug='lumen-reference', short='Lumen reference',
+                   title='Lumen Implementation Reference and Controlled Room Capture',
+                   date='2026-11-15', date_label='15 November 2026', append_lab_sources=False,
+                   deck='Detailed source contracts, buffer inventories, and numerical replays from the controlled Unreal 5.8.1 room capture. Read the Sponza teaching article for the forward design narrative.')]
 
 
 class Headings(HTMLParser):
@@ -410,14 +420,27 @@ def render(article, body):
     body = re.sub(r'(<h2>)\s*\d+[.)]\s+', r'\1', body)
     body = re.sub(r'<img\b[^>]*>', image_dimensions, body)
     # Wide diagrams remain readable on phones; the surrounding article never scrolls sideways.
+    # A figure may link the SVG directly (figure > a > img); wrap the whole anchor so
+    # the scroll container keeps the existing href and the caption link can see through it.
     def diagram(match):
-        tag, image = match.groups()
+        tag, anchor, image = match.group(1), match.group(2), match.group(3)
         alt = re.search(r'alt="([^"]*)"', image)
         label = alt.group(1) if alt else 'Technical diagram'
-        return f'{tag}<div class="figure-scroll" tabindex="0" role="region" aria-label="{label}">{image}</div>'
-    body = re.sub(r'(<figure[^>]*>)\s*(<img\b[^>]*src="[^"]+\.svg"[^>]*>)', diagram, body)
-    body = re.sub(r'(<figure[^>]*>\s*<div class="figure-scroll"[^>]*><img\b[^>]*src="([^"]+\.svg)"[^>]*></div>\s*<figcaption>)(.*?)(</figcaption>)',
-                  lambda m: m[1] + m[3] + f' <a href="{m[2]}">Open diagram at full size</a>.' + m[4], body, flags=re.S)
+        linked = f'{anchor}{image}</a>' if anchor else image
+        return f'{tag}<div class="figure-scroll" tabindex="0" role="region" aria-label="{label}">{linked}</div>'
+    body = re.sub(r'(<figure[^>]*>)\s*(<a\b[^>]*>\s*)?(<img\b[^>]*src="[^"]+\.svg"[^>]*>)(?(2)\s*</a>)',
+                  diagram, body)
+    def diagram_caption(match):
+        start, anchor, image, source, middle, caption, end = match.groups()
+        if f'href="{source}"' in caption:
+            return match.group(0)
+        linked = f'{anchor}{image}</a>' if anchor else image
+        return (f'{start}{linked}{middle}{caption} '
+                f'<a href="{source}">Open diagram at full size</a>.{end}')
+    body = re.sub(r'(<figure[^>]*>\s*<div class="figure-scroll"[^>]*>)(?:(<a\b[^>]*>)\s*)?'
+                  r'(<img\b[^>]*src="([^"]+\.svg)"[^>]*>)(?(2)\s*</a>)'
+                  r'(</div>\s*<figcaption>)(.*?)(</figcaption>)',
+                  diagram_caption, body, flags=re.S)
     body = re.sub(r'(<figure[^>]*>\s*<img\b[^>]*src="([^"]+\.(?:png|jpg|webp))"[^>]*>\s*<figcaption>)(.*?)(</figcaption>)',
                   lambda m: m[1] + m[3] + f' <a href="{m[2]}">Open image at full size</a>.' + m[4], body, flags=re.S)
     parsed = Headings()
@@ -438,6 +461,10 @@ def render(article, body):
                   f'{next(chapter_number):02}</span>', body)
     concepts = (f'\n<link rel="stylesheet" href="{asset_url("assets/lumen-concepts.css")}">'
                 if article['key'] == 'lumen' else '')
+    if article.get('authored_sources'):
+        concepts += (f'\n<link rel="stylesheet" href="{asset_url("assets/lumen-course/course.css")}">'
+                     f'\n<script src="{asset_url("assets/lumen-course/course.js")}" defer></script>'
+                     f'\n<script src="{asset_url("assets/lumen-course/temporal.js")}" defer></script>')
     page = f'''<!doctype html>
 <!-- Generated by Scripts/Docs/unreal_articles/build.py from authored chapter fragments and figure placements. -->
 <html lang="en"><head>
@@ -472,7 +499,16 @@ def render(article, body):
 
 
 def article_source(article):
+    if article.get('authored_sources'):
+        return '\n'.join((HERE / 'chapters' / name).read_text(encoding='utf-8')
+                         for name in article['authored_sources'])
     body = (HERE / 'chapters' / (article['key'] + '.html')).read_text(encoding='utf-8')
+    if article['slug'] == 'lumen-reference':
+        body = ('<aside class="reference-note"><p><strong>Controlled room reference.</strong> '
+                'This page preserves the detailed source and raw-data study from the room capture. '
+                'Its images and measurements are not Sponza. Start with '
+                '<a href="lumen.html">Building Lumen: From Light Paths to a Real-Time Atrium</a> '
+                'for the continuous teaching sequence and Sponza experiments.</p></aside>\n' + body)
     placements = HERE / (article['key'] + '-placements.json')
     if placements.exists():
         for item in json.loads(placements.read_text(encoding='utf-8')):
@@ -528,7 +564,7 @@ def main():
     ap.add_argument('--check', action='store_true')
     ap.add_argument('--article', choices=[a['key'] for a in ARTICLES])
     args = ap.parse_args()
-    for article in ARTICLES:
+    for article in ARTICLES + REFERENCES:
         if args.article and article['key'] != args.article:
             continue
         content, count, chapters = render(article, article_source(article))
@@ -562,7 +598,7 @@ def migration_page():
 <main class="prose"><h1>Two independent essays</h1>
 <p>The former combined article has been replaced by two expanded, independently readable studies.</p>
 <p><a href="nanite.html">Nanite: From a Scanned Bunny to Visible Pixels</a> follows an actual mesh through building, LOD selection, rasterization, tessellation and shading.</p>
-<p><a href="lumen.html">Lumen: From the Path Integral to a Frame</a> derives path tracing, then follows deferred lighting, shadows, caches, probes and reflections through the real-time approximation.</p>
+<p><a href="lumen.html">Building Lumen: From Light Paths to a Real-Time Atrium</a> develops the physics, estimators, and engineering decisions in a continuous teaching sequence with Sponza experiments.</p>
 <p><a href="../index.html">Return to the Understanding Unreal homepage</a>.</p>''' + marker + '\n</main></body></html>\n'
 
 

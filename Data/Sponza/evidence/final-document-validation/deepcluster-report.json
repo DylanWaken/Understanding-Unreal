@@ -1,0 +1,60 @@
+{
+  "operationId": "c06cc148-a7eb-49ea-8ffd-703f22368aa6",
+  "status": "completed",
+  "error": null,
+  "steps": [
+    {
+      "id": "check",
+      "role": "tester",
+      "status": "pass",
+      "attempts": 1,
+      "summary": "Ran all five assigned checks, the validator's pinned-source mode, and the portable VSM `--verify` on a copy of `vsm-storage`; all product checks passed (VSM 33/33, no raw capture or engine). One initial VSM invocation hit an empty destination from a copy mistake and was rerun after fixing the copy; independently confirmed 31 native-text SVGs, all four VSM PNGs, exact-once anchors, 10/10 tables inside details, 1,100 resolved local links, and no placeholders or cross-site links.",
+      "checks": [
+        "final generated content equations links and diagrams pass: yes — `build.py --check` exit 0 (all five pages byte-identical); 1,028 LaTeX expressions; 31 SVGs + 15 numerical checks; `validate.py` PASS (157 SVGs, 313 ranges); 77/77 Lumen images resolve; 97 source ranges match pinned engine HEAD `71fe36a`.",
+        "published VSM numerical verification passes without raw input or engine: yes — `decode_vsm_storage.py --out results/vsm-copy --verify` exit 0 with `{\"PASS\": 33, \"FAIL\": 0, \"SKIP\": 0}`; no `--dump`, `--engine`, or raw capture.",
+        "final site has no placeholder missing-image or accidental cross-site entry: yes — 0 `ROOT_INSERT`/`TODO-new-shadow`; 0 missing of 1,100 local targets across 11 pages; `check_site_independence.py` PASS (11 pages); external hosts limited to the project GitHub, Epic, and cited references."
+      ],
+      "changed": [
+        "results/checks-scripts/_hostscheck.py",
+        "results/checks-scripts/_sitecheck.py",
+        "results/checks-scripts/_svgcheck.py",
+        "results/checks-scripts/_tablecheck.py",
+        "results/checks.json",
+        "results/logs/build-check.err",
+        "results/logs/build-check.exit",
+        "results/logs/build-check.out",
+        "results/logs/generate-check.err",
+        "results/logs/generate-check.exit",
+        "results/logs/generate-check.out",
+        "results/logs/independence.err",
+        "results/logs/independence.exit",
+        "results/logs/independence.out",
+        "results/logs/math-check.err",
+        "results/logs/math-check.exit",
+        "results/logs/math-check.out",
+        "results/logs/validate-source-hashes.err",
+        "results/logs/validate-source-hashes.exit",
+        "results/logs/validate-source-hashes.out",
+        "results/logs/validate.err",
+        "results/logs/validate.exit",
+        "results/logs/validate.out",
+        "results/logs/vsm-verify.err",
+        "results/logs/vsm-verify.exit",
+        "results/logs/vsm-verify.out",
+        "results/report.md",
+        "results/vsm-copy/checks.json",
+        "results/vsm-copy/publish/data/schema.json",
+        "results/vsm-copy/publish/data/vsm_storage.json",
+        "results/vsm-copy/publish/data/vsm_storage.npz",
+        "results/vsm-copy/publish/figures/vsm_depth_pages.png",
+        "results/vsm-copy/publish/figures/vsm_page_table_sun.png",
+        "results/vsm-copy/publish/figures/vsm_pool_occupancy.png",
+        "results/vsm-copy/publish/figures/vsm_virtual_depth.png",
+        "results/vsm-copy/publish/manifest.json",
+        "results/vsm-copy/report.md",
+        "results/vsm-copy/source-ranges.json"
+      ]
+    }
+  ],
+  "open": []
+}

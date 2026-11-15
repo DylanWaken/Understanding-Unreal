@@ -9,14 +9,25 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import unittest
 from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+TOOLS = HERE.parent / "tools"
+sys.path.insert(0, str(TOOLS))
+from package_metadata import read_package_json, resolve_metadata_path  # noqa: E402
 
 PACKAGE = Path(os.environ.get("FRAME_PACKAGE_DIR", "")).resolve() if os.environ.get("FRAME_PACKAGE_DIR") else None
 if PACKAGE is None:
     PACKAGE = next((parent / 'Docs/Unreal/assets/lumen-frame' for parent in Path(__file__).resolve().parents
                     if (parent / 'Docs/Unreal/assets/lumen-frame/index.json').is_file()), None)
 HAS_PACKAGE = bool(PACKAGE and (PACKAGE / "index.json").exists())
+
+
+def read_metadata(package: Path, rel: str) -> object:
+    """Read generated metadata whether the package stores it raw or gzipped."""
+    return read_package_json(package, rel)
 
 
 def parse_json_sequence(path: Path) -> list:
@@ -41,7 +52,21 @@ class RealPackageViewportTests(unittest.TestCase):
         assert PACKAGE is not None
         cls.package = PACKAGE
         cls.index = json.loads((PACKAGE / "index.json").read_text(encoding="utf-8"))
-        cls.resources = json.loads((PACKAGE / "resources.json").read_text(encoding="utf-8"))["items"]
+        cls.resources = read_metadata(PACKAGE, "resources.json")["items"]
+
+    def test_metadata_layout_resolves_raw_or_gzip(self) -> None:
+        assert PACKAGE is not None
+        for logical in ("resources.json", "passes.json", "inventory.json",
+                        "coverage.json", "schema.json", "native-inputs.json"):
+            actual = resolve_metadata_path(self.package, logical)
+            self.assertIsNotNone(actual, logical)
+            self.assertTrue(actual.is_file(), logical)
+            raw = self.package / logical
+            gz = self.package / (logical + ".gz")
+            self.assertFalse(raw.is_file() and gz.is_file(),
+                             f"{logical}: raw and gzip metadata must not coexist")
+        self.assertEqual(read_metadata(self.package, "inventory.json")["counts"]["payloadFiles"],
+                         self.index["counts"]["payloadFiles"])
 
     def resource(self, unique_name: str) -> dict:
         return next(item for item in self.resources if item["uniqueName"] == unique_name)
@@ -131,7 +156,7 @@ class RealPackageViewportTests(unittest.TestCase):
         for item in self.resources:
             if not item.get("hasSubresourceLayouts"):
                 continue
-            record = json.loads((self.package / item["record"]).read_text(encoding="utf-8"))
+            record = read_metadata(self.package, item["record"])
             for layout_item in record["subresourceLayouts"]:
                 self.assertEqual(layout_item["layout"], raw_by_file[layout_item["file"]], layout_item["file"])
                 seen += 1
@@ -155,13 +180,13 @@ class RealPackageViewportTests(unittest.TestCase):
         self.assertEqual(counts["packageFiles"], 6410)
 
     def test_all_native_uniform_payloads_resolve_to_final_inventory(self) -> None:
-        inventory = json.loads((self.package / "inventory.json").read_text(encoding="utf-8"))
+        inventory = read_metadata(self.package, "inventory.json")
         payloads = {payload["id"]: payload for payload in inventory["payloads"]}
-        passes = json.loads((self.package / "passes.json").read_text(encoding="utf-8"))["items"]
+        passes = read_metadata(self.package, "passes.json")["items"]
         resolved = 0
         chosen = None
         for item in passes:
-            record = json.loads((self.package / item["record"]).read_text(encoding="utf-8"))
+            record = read_metadata(self.package, item["record"])
             for native in record.get("nativeUniformBuffers", []):
                 embedded = native.get("uniformBufferPayload")
                 if embedded is None:
@@ -187,7 +212,7 @@ class RealPackageViewportTests(unittest.TestCase):
     def test_six_descriptive_resampled_card_schemas_never_extract(self) -> None:
         matches = []
         for item in self.resources:
-            record = json.loads((self.package / item["record"]).read_text(encoding="utf-8"))
+            record = read_metadata(self.package, item["record"])
             for match in record.get("schemaMatches") or []:
                 if match.get("schemaId") in {
                     "cards.resource.resampled-card-capture-direct",

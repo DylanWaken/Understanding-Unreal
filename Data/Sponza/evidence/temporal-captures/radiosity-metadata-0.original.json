@@ -1,0 +1,180 @@
+{
+ "schema": "arda-radiosity-probe-npz-schema-v1",
+ "arrays": {
+  "position_world_cm": {
+   "dtype": "float32",
+   "shape": "[N,3]",
+   "unit": "cm",
+   "frame": "world"
+  },
+  "normal_world": {
+   "dtype": "float32",
+   "shape": "[N,3]",
+   "unit": "unit",
+   "note": "PF_BC5 expanded XY decoded, Z reconstructed, card basis rotated"
+  },
+  "sh_coeffs_raw": {
+   "dtype": "float32",
+   "shape": "[N,3,4]",
+   "unit": "pre-exposed radiance*steradian",
+   "order": "b0,bY,bZ,bX per channel R,G,B"
+  },
+  "sh_coeffs_radiance": {
+   "dtype": "float32",
+   "shape": "[N,3,4]",
+   "unit": "scene-referred radiance*steradian",
+   "note": "raw / CachedLightingPreExposure"
+  },
+  "e_normal_raw": {
+   "dtype": "float32",
+   "shape": "[N,3]",
+   "unit": "pre-exposed irradiance"
+  },
+  "e_normal_radiance": {
+   "dtype": "float32",
+   "shape": "[N,3]",
+   "unit": "scene-referred irradiance"
+  },
+  "lambert_radiance_unit_albedo": {
+   "dtype": "float32",
+   "shape": "[N,3]",
+   "unit": "scene-referred radiance",
+   "note": "e_normal_radiance/pi"
+  },
+  "page_index": {
+   "dtype": "uint16",
+   "shape": "[N]"
+  },
+  "card_index": {
+   "dtype": "uint16",
+   "shape": "[N]"
+  },
+  "grid_ix": {
+   "dtype": "uint8",
+   "shape": "[N]"
+  },
+  "grid_iy": {
+   "dtype": "uint8",
+   "shape": "[N]"
+  },
+  "jitter_x": {
+   "dtype": "uint8",
+   "shape": "[N]"
+  },
+  "jitter_y": {
+   "dtype": "uint8",
+   "shape": "[N]"
+  },
+  "temporal_index": {
+   "dtype": "uint32",
+   "shape": "[N]",
+   "note": "PageBuffer v4.z, verbatim"
+  },
+  "last_indirect_lighting_update": {
+   "dtype": "uint32",
+   "shape": "[N]",
+   "note": "PageBuffer v4.y, verbatim"
+  },
+  "nf_raw_unorm8": {
+   "dtype": "uint8",
+   "shape": "[N]",
+   "note": "NumFramesAccumulatedAtlas byte; count = raw byte"
+  },
+  "nf_xy": {
+   "dtype": "uint16",
+   "shape": "[N,2]"
+  },
+  "probe_atlas_xy": {
+   "dtype": "uint16",
+   "shape": "[N,2]"
+  },
+  "depth_texel_xy": {
+   "dtype": "uint16",
+   "shape": "[N,2]"
+  },
+  "depth_raw_u16": {
+   "dtype": "uint16",
+   "shape": "[N]"
+  },
+  "depth_unorm": {
+   "dtype": "float32",
+   "shape": "[N]",
+   "note": "raw/65535; valid iff <1"
+  },
+  "depth_byte_offset": {
+   "dtype": "uint32",
+   "shape": "[N]",
+   "note": "(y*4096+x)*2 in Lumen.SceneDepth"
+  },
+  "sh_byte_offset_r": {
+   "dtype": "uint32",
+   "shape": "[N]",
+   "note": "(ay*1024+ax)*8 in each SH atlas"
+  },
+  "atlas_uv": {
+   "dtype": "float32",
+   "shape": "[N,2]"
+  },
+  "card_uv": {
+   "dtype": "float32",
+   "shape": "[N,2]"
+  },
+  "card_tile_in_capture": {
+   "dtype": "bool",
+   "shape": "[N]",
+   "note": "page/tile appears in captured RadiosityTileData"
+  },
+  "on_screen": {
+   "dtype": "bool",
+   "shape": "[N]"
+  },
+  "visible_primary_depth": {
+   "dtype": "bool",
+   "shape": "[N]"
+  },
+  "occluded_primary_depth": {
+   "dtype": "bool",
+   "shape": "[N]"
+  },
+  "screen_xy": {
+   "dtype": "float32",
+   "shape": "[N,2]",
+   "unit": "pixels"
+  },
+  "view_z_cm": {
+   "dtype": "float32",
+   "shape": "[N]",
+   "unit": "cm"
+  },
+  "scene_depth_cm": {
+   "dtype": "float32",
+   "shape": "[N]",
+   "unit": "cm"
+  },
+  "depth_rel_error": {
+   "dtype": "float32",
+   "shape": "[N]"
+  },
+  "sh_nonzero": {
+   "dtype": "bool",
+   "shape": "[N]"
+  }
+ },
+ "sh_definition": {
+  "basis": [
+   0.282095,
+   "-0.488603*y",
+   "0.488603*z",
+   "-0.488603*x"
+  ],
+  "transfer": [
+   "pi",
+   "2*pi/3",
+   "2*pi/3",
+   "2*pi/3"
+  ],
+  "projection": "irradianceSH = mean_over_hemisphere_samples(SHBasis(dir) * traceRadiance / PDF), PDF=1/(2*pi)",
+  "evaluation": "E(n) = dot(coeffs, SHBasis(n)*transfer)",
+  "preexposure": "traceRadiance stored as radiance*CachedLightingPreExposure; divide coefficients by CachedLightingPreExposure for scene-referred values"
+ }
+}

@@ -1,0 +1,4607 @@
+{
+  "schema": "sponza-world-radiance-cache-query-v1",
+  "scope": "one declared World Radiance Cache lookup reconstructed from a captured presented-graph compacted screen-probe trace lane; not a recorded shader-local query and not proof that a dispatched ray chose it",
+  "engine": {
+    "root": "D:/UnrealEngine",
+    "version": "5.8.1",
+    "commit": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43"
+  },
+  "capture": {
+    "root": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654",
+    "infos": {
+      "Project": "UnrealLab",
+      "EngineMajorVersion": 5,
+      "EngineMinorVersion": 8,
+      "EnginePatchVersion": 1,
+      "BuildBranch": "UE5",
+      "BuildDate": "Aug  8 2026",
+      "BuildVersion": "UE5-CL-0",
+      "BuildTarget": "Editor",
+      "BuildConfiguration": "Development",
+      "Build64Bits": 1,
+      "Platform": "Windows",
+      "OS": "Windows 11 (23H2) [10.0.22631.5624]",
+      "DeviceName": "WIN-R9FOID8ODG8",
+      "CPUVendor": "AuthenticAMD",
+      "CPUBrand": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+      "CPUNumberOfCores": 16,
+      "CPUNumberOfCoresIncludingHyperthreads": 32,
+      "GPUVendor": "NVIDIA",
+      "GPUDeviceDescription": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+      "GPUDriverUserVersion": "610.62",
+      "GPUDriverInternalVersion": "610.62",
+      "GPUDriverDate": "6-11-2026",
+      "MemoryTotalPhysical": 66190659584,
+      "MemoryPageSize": 4096,
+      "RHI": "D3D12",
+      "RHIMaxFeatureLevel": "SM6",
+      "DumpTime": "2026.11.15-16.36.59",
+      "DumpContext": "DumpGPUCommand",
+      "LogFilename": "UnrealLab.log"
+    },
+    "pass": {
+      "EventName": "TraceGlobalSDFAndApplyRadianceCache",
+      "ParametersName": "FParameters",
+      "Parameters": "00040000020c1328c610",
+      "ParametersMetadata": "000400007ffc1e2f2150",
+      "Pointer": "00040000020c1328ca80",
+      "Id": 747,
+      "ParentEventScopes": [
+        "LumenScreenProbeGather",
+        "DiffuseIndirectAndAO",
+        "Scene",
+        "Frame 302 (Delta=0.013059s)"
+      ],
+      "InputResources": [
+        "00040000020bef074510",
+        "00040000020bef074648",
+        "00040000020bef0743d8",
+        "00040000020bef074780",
+        "00040000020bef070f48",
+        "00040000020bef0710e0",
+        "00040000020bef071280",
+        "00040000020bef0731b0",
+        "00040000020b9d70e280",
+        "00040000020b9d70e280",
+        "00040000020bef073590",
+        "00040000020bef0736c8",
+        "00040000020bef073800",
+        "00040000020bef073d30",
+        "00040000020bef073e68",
+        "00040000020bef07b240.mip0",
+        "00040000020bef07b240.mip0",
+        "00040000020bef07f840",
+        "00040000020b9d703d00",
+        "00040000020bef07e1e8",
+        "00040000020b9d70b5f8",
+        "000400000208f3779340.[0].mip0",
+        "000400000208f3779340.[0].mip1",
+        "000400000208f3779340.[0].mip2",
+        "000400000208f3779340.[0].mip3",
+        "000400000208f3779340.[0].mip4",
+        "000400000208f3779340.[0].mip5",
+        "000400000208f3779340.[0].mip6",
+        "000400000208f3779340.[0].mip7",
+        "000400000208f3779340.[0].mip8",
+        "000400000208f3779340.[1].mip0",
+        "000400000208f3779340.[1].mip1",
+        "000400000208f3779340.[1].mip2",
+        "000400000208f3779340.[1].mip3",
+        "000400000208f3779340.[1].mip4",
+        "000400000208f3779340.[1].mip5",
+        "000400000208f3779340.[1].mip6",
+        "000400000208f3779340.[1].mip7",
+        "000400000208f3779340.[1].mip8",
+        "000400000208f3779340.[2].mip0",
+        "000400000208f3779340.[2].mip1",
+        "000400000208f3779340.[2].mip2",
+        "000400000208f3779340.[2].mip3",
+        "000400000208f3779340.[2].mip4",
+        "000400000208f3779340.[2].mip5",
+        "000400000208f3779340.[2].mip6",
+        "000400000208f3779340.[2].mip7",
+        "000400000208f3779340.[2].mip8",
+        "000400000208f3779340.[3].mip0",
+        "000400000208f3779340.[3].mip1",
+        "000400000208f3779340.[3].mip2",
+        "000400000208f3779340.[3].mip3",
+        "000400000208f3779340.[3].mip4",
+        "000400000208f3779340.[3].mip5",
+        "000400000208f3779340.[3].mip6",
+        "000400000208f3779340.[3].mip7",
+        "000400000208f3779340.[3].mip8",
+        "000400000208f3779340.[4].mip0",
+        "000400000208f3779340.[4].mip1",
+        "000400000208f3779340.[4].mip2",
+        "000400000208f3779340.[4].mip3",
+        "000400000208f3779340.[4].mip4",
+        "000400000208f3779340.[4].mip5",
+        "000400000208f3779340.[4].mip6",
+        "000400000208f3779340.[4].mip7",
+        "000400000208f3779340.[4].mip8",
+        "000400000208f3779340.[5].mip0",
+        "000400000208f3779340.[5].mip1",
+        "000400000208f3779340.[5].mip2",
+        "000400000208f3779340.[5].mip3",
+        "000400000208f3779340.[5].mip4",
+        "000400000208f3779340.[5].mip5",
+        "000400000208f3779340.[5].mip6",
+        "000400000208f3779340.[5].mip7",
+        "000400000208f3779340.[5].mip8",
+        "00040000020bef07cf70.mip0",
+        "00040000020bef07b240.mip0",
+        "00040000020b9d700010.mip0",
+        "00040000020b9d700010.mip0",
+        "00040000020b9d701250.mip0",
+        "00040000020b9d701710.mip0",
+        "00040000020b9d7019d0.mip0",
+        "00040000020b9d701c90.mip0",
+        "00040000020bef07b240.mip0",
+        "00040000020b9d701f50.mip0",
+        "00040000020bef07b240.mip0",
+        "00040000020bef07b240.mip0",
+        "00040000020bef07a760.mip0",
+        "00040000020bef07b240.mip0",
+        "00040000020bef07c1b0.mip0",
+        "0004000002090c6ba6f8",
+        "0004000002090c6b35d8.mip0",
+        "00040000020b9718fa60.mip0",
+        "00040000020bd35c8dd0",
+        "00040000020bef067740.mip0",
+        "00040000020b979a0c60.mip0",
+        "00040000020b979a09a0.mip0",
+        "00040000020b979ace00",
+        "00040000020c13288560",
+        "00040000020c13288c18",
+        "00040000020c1328b9e0",
+        "00040000020bef07d230.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07d230.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020ba06cf840.linear.mip0",
+        "00040000020ba06cf840.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020ba06cfe40.linear.mip0",
+        "00040000020c132e0450.linear.mip0",
+        "00040000020c132e0a10.linear.mip0",
+        "00040000020c132e12a0.mip0",
+        "NativeBuffer.00040000020bc4a9f300.o0.n8",
+        "000400000208f327e830.linear.mip0",
+        "0004000002094bdb3460.linear.mip0",
+        "0004000002094bdb3770.linear.mip0",
+        "00040000020bef07cf70.linear.mip0",
+        "00040000020bef07cf70.linear.mip0",
+        "NativeBuffer.000400000208e7644800.o0.n4096",
+        "NativeBuffer.0004000002094a251800.o0.n4096",
+        "00040000020c132e3420.linear.mip0",
+        "00040000020c132e39e0.linear.mip0",
+        "00040000020c132e3fe0.linear.mip0",
+        "00040000020c132e45e0.linear.mip0",
+        "00040000020bef07b240.linear.mip0",
+        "00040000020c132e4f20.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07b240.linear.mip0",
+        "00040000020bef07b240.linear.mip0",
+        "00040000020c132e5920.[0].linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020bef07ccb0.linear.mip0",
+        "00040000020c132e5f20.linear.mip0",
+        "00040000020c132e5920.[0].linear.mip0",
+        "00040000020ba06cf840.linear.mip0",
+        "00040000020bef07a760.linear.mip0",
+        "NativeBuffer.0004000002095a572d00.o0.n1",
+        "NativeBuffer.0004000002095a572a00.o0.n1",
+        "00040000020bef07b240.linear.mip0",
+        "00040000020bef07b7c0.[0].linear.mip0",
+        "NativeBuffer.0004000002093aff2700.o0.n1",
+        "NativeBuffer.0004000002093aff2700.o0.n1",
+        "NativeBuffer.0004000002095a6f6900.o0.n2621440",
+        "NativeBuffer.0004000002095a6f7b00.o0.n1",
+        "NativeBuffer.0004000002095a6f0000.o0.n1",
+        "NativeBuffer.0004000002095a6f3900.o0.n21",
+        "00040000020c132e86a0.linear.mip0",
+        "00040000020c132e86a0.linear.mip0",
+        "0004000002094bdb0320.linear.mip0"
+      ],
+      "OutputResources": [
+        "00040000020ba1b729e0.mip0",
+        "00040000020ba1b72cf0.mip0"
+      ],
+      "BindingEdgesCollectedDuringGraphBuild": true
+    },
+    "parameterPayloads": [
+      {
+        "path": "StructuresMetadata\\000400007ffc1e2f2150.json",
+        "bytes": 2386,
+        "sha256": "3a3eec16b1ba36939a2393499fc4cdce1ece1baf730d9dc9f8ef7fcbc7ee01b5"
+      },
+      {
+        "path": "Structures\\00040000020c1328c610.bin",
+        "bytes": 1136,
+        "sha256": "634c4b52772ac466f9dfae5d70f6c0309f40ed90759cc8019e5b79d22d569466"
+      },
+      {
+        "path": "StructuresMetadata\\000400007ffc2e7779f0.json",
+        "bytes": 102382,
+        "sha256": "a8967122baefb6a1ab9778fd87a65d4bda8b34f3ca2ab7de5cd1c2006ac5b100"
+      },
+      {
+        "path": "Structures\\00040000020bc4c24980.bin",
+        "bytes": 6752,
+        "sha256": "17c4516f223946e23fe4acb3c05526ef5c9d9edfbe56f8588ca210fce77ce5b7"
+      },
+      {
+        "path": "StructuresMetadata\\0004000002091155e740.json",
+        "bytes": 2601,
+        "sha256": "09c4f977abefc46429b0b1b1298b51ca3a93dd7ec8cfb1f20ececa6109c87cb2"
+      },
+      {
+        "path": "Structures\\000400000208eeb58e60.bin",
+        "bytes": 336,
+        "sha256": "fe35a3dd7607c7965e1646d559201b2167fdc7e818b5341b5fd803ff4738907b"
+      },
+      {
+        "path": "StructuresMetadata\\000400007ffc1e2bffd0.json",
+        "bytes": 2758,
+        "sha256": "23bde2c71f7644d1714d67410b714769c4746e80217684d4613e89f49df9de78"
+      },
+      {
+        "path": "Structures\\00040000020ba1b73e80.bin",
+        "bytes": 80,
+        "sha256": "d7da3e56ab9021e689e420503e02b8eebf5be64afaba4f9745978ec367a9c302"
+      },
+      {
+        "path": "StructuresMetadata\\000400007ffc1e28d9f0.json",
+        "bytes": 7647,
+        "sha256": "7d06fac3ffa332ab07ac23d5b5996cedcfff953c39f1183f97a532872ca919c1"
+      },
+      {
+        "path": "Structures\\00040000020ba1b73fe0.bin",
+        "bytes": 256,
+        "sha256": "6c053f84fd5cf2932463aef5f6914670f96df8d339cb7cc94567a39712a413ef"
+      },
+      {
+        "path": "StructuresMetadata\\000400007ffc1e2716f0.json",
+        "bytes": 497,
+        "sha256": "56ef85e2bd02d09c36aa4f47b5302d210d5a17fb6deeeb752825cdbfe144a506"
+      },
+      {
+        "path": "Structures\\00040000020bc4a5e700.bin",
+        "bytes": 48,
+        "sha256": "770011387829ab66d1477def49553ad21b812cae3537733f9872328fac12b1df"
+      },
+      {
+        "path": "StructuresMetadata\\000400007ffc2e7775f0.json",
+        "bytes": 4397,
+        "sha256": "5286c0f6ee629c86f740302ab1050ddc582464391aacbf64359b1eef5b97b6d1"
+      },
+      {
+        "path": "Structures\\0004000002097acfa880.bin",
+        "bytes": 128,
+        "sha256": "f710cb0eb226c61597d9f87c18f59e16511f9ff0b3d0d855ec1bd29e71449ea0"
+      }
+    ],
+    "consoleVariables": {
+      "r.Lumen.ScreenProbeGather.RadianceCache": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      },
+      "r.Lumen.ScreenProbeGather.ImportanceSample": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      },
+      "r.Lumen.ScreenProbeGather.ImportanceSample.NumLevels": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      },
+      "r.Lumen.HardwareRayTracing": {
+        "type": "int32",
+        "source": "Console",
+        "value": "1"
+      },
+      "r.Lumen.ScreenProbeGather.HardwareRayTracing": {
+        "type": "int32",
+        "source": "Constructor",
+        "value": "1"
+      }
+    }
+  },
+  "referencedStructs": [
+    {
+      "name": "TracingParameters.View",
+      "null": false,
+      "contentAvailable": true,
+      "byteSize": 6752,
+      "contentKind": "RHIUniformBufferContentMap",
+      "status": "validated",
+      "structTypeName": "FViewUniformShaderParameters",
+      "payload": "Structures\\00040000020bc4c24980.bin",
+      "metadata": "StructuresMetadata\\000400007ffc2e7779f0.json"
+    },
+    {
+      "name": "TracingParameters.Scene",
+      "null": false,
+      "contentAvailable": true,
+      "byteSize": 336,
+      "contentKind": "RDGUniformBufferParameters",
+      "status": "validated",
+      "structTypeName": "FSceneUniformParameters",
+      "payload": "Structures\\000400000208eeb58e60.bin",
+      "metadata": "StructuresMetadata\\0004000002091155e740.json"
+    },
+    {
+      "name": "TracingParameters.ReflectionStruct",
+      "null": false,
+      "contentAvailable": true,
+      "byteSize": 80,
+      "contentKind": "RDGUniformBufferParameters",
+      "status": "validated",
+      "structTypeName": "FReflectionUniformParameters",
+      "payload": "Structures\\00040000020ba1b73e80.bin",
+      "metadata": "StructuresMetadata\\000400007ffc1e2bffd0.json"
+    },
+    {
+      "name": "TracingParameters.LumenCardScene",
+      "null": true,
+      "contentAvailable": null,
+      "byteSize": null,
+      "contentKind": "RDGUniformBufferUnbound",
+      "status": "explicit-unbound-gap"
+    },
+    {
+      "name": "TracingParameters.FogUniformParameters",
+      "null": false,
+      "contentAvailable": true,
+      "byteSize": 256,
+      "contentKind": "RDGUniformBufferParameters",
+      "status": "validated",
+      "structTypeName": "FFogUniformParameters",
+      "payload": "Structures\\00040000020ba1b73fe0.bin",
+      "metadata": "StructuresMetadata\\000400007ffc1e28d9f0.json"
+    },
+    {
+      "name": "ScreenProbeParameters.BlueNoise",
+      "null": false,
+      "contentAvailable": true,
+      "byteSize": 48,
+      "contentKind": "RHIUniformBufferContentMap",
+      "status": "validated",
+      "structTypeName": "FBlueNoise",
+      "payload": "Structures\\00040000020bc4a5e700.bin",
+      "metadata": "StructuresMetadata\\000400007ffc1e2716f0.json"
+    },
+    {
+      "name": "SceneTexturesStruct",
+      "null": false,
+      "contentAvailable": true,
+      "byteSize": 128,
+      "contentKind": "RDGUniformBufferParameters",
+      "status": "validated",
+      "structTypeName": "FSceneTextureUniformParameters",
+      "payload": "Structures\\0004000002097acfa880.bin",
+      "metadata": "StructuresMetadata\\000400007ffc2e7775f0.json"
+    },
+    {
+      "name": "HairStrandsVoxel",
+      "null": true,
+      "contentAvailable": null,
+      "byteSize": null,
+      "contentKind": "RDGUniformBufferUnbound",
+      "status": "explicit-unbound-gap"
+    }
+  ],
+  "parameterBindings": {
+    "RadianceCacheParameters.RadianceProbeIndirectionTexture": {
+      "BaseType": "UBMT_RDG_TEXTURE",
+      "Offset": 752,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020bef067740",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "RadianceCacheParameters.RadianceCacheFinalRadianceAtlas": {
+      "BaseType": "UBMT_RDG_TEXTURE",
+      "Offset": 760,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020b979a0c60",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "RadianceCacheParameters.RadianceCacheDepthAtlas": {
+      "BaseType": "UBMT_RDG_TEXTURE",
+      "Offset": 800,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020b979a09a0",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "RadianceCacheParameters.ProbeWorldOffset": {
+      "BaseType": "UBMT_RDG_BUFFER_SRV",
+      "Offset": 808,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "0004000002090ec6bf30",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "ScreenProbeParameters.ImportanceSampling.StructuredImportanceSampledRayInfosForTracing": {
+      "BaseType": "UBMT_RDG_TEXTURE",
+      "Offset": 552,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020b9718fa60",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "ScreenProbeParameters.ScreenProbeSceneDepth": {
+      "BaseType": "UBMT_RDG_TEXTURE",
+      "Offset": 480,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "0004000002090c6b35d8",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture": {
+      "BaseType": "UBMT_TEXTURE",
+      "Offset": 40,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020c0fd2af00",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "ScreenProbeParameters.RWTraceHit": {
+      "BaseType": "UBMT_RDG_TEXTURE_UAV",
+      "Offset": 528,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020ba1b72fb0",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "ScreenProbeParameters.RWTraceRadiance": {
+      "BaseType": "UBMT_RDG_TEXTURE_UAV",
+      "Offset": 520,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020ba1b72ca0",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "CompactedTraceParameters.CompactedTraceTexelAllocator": {
+      "BaseType": "UBMT_RDG_BUFFER_SRV",
+      "Offset": 1104,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020c1328c558",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    },
+    "CompactedTraceParameters.CompactedTraceTexelData": {
+      "BaseType": "UBMT_RDG_BUFFER_SRV",
+      "Offset": 1112,
+      "NumElements": 1,
+      "ElementStrideBytes": 8,
+      "Null": false,
+      "Pointer": "00040000020c1328c5a8",
+      "StateCaptured": false,
+      "Source": "PassParameterBlock"
+    }
+  },
+  "bindingChecks": {
+    "RadianceCacheParameters.RadianceProbeIndirectionTexture": {
+      "binding": "00040000020bef067740",
+      "resource": "00040000020bef067740",
+      "matches": true
+    },
+    "RadianceCacheParameters.RadianceCacheFinalRadianceAtlas": {
+      "binding": "00040000020b979a0c60",
+      "resource": "00040000020b979a0c60",
+      "matches": true
+    },
+    "RadianceCacheParameters.RadianceCacheDepthAtlas": {
+      "binding": "00040000020b979a09a0",
+      "resource": "00040000020b979a09a0",
+      "matches": true
+    },
+    "ScreenProbeParameters.ImportanceSampling.StructuredImportanceSampledRayInfosForTracing": {
+      "binding": "00040000020b9718fa60",
+      "resource": "00040000020b9718fa60",
+      "matches": true
+    },
+    "ScreenProbeParameters.ScreenProbeSceneDepth": {
+      "binding": "0004000002090c6b35d8",
+      "resource": "0004000002090c6b35d8",
+      "matches": true
+    }
+  },
+  "blueNoise": {
+    "binding": {
+      "BaseType": "UBMT_TEXTURE",
+      "MemberBaseOffset": 40,
+      "MemberOffset": 40,
+      "ElementStrideBytes": 8,
+      "ArrayNumElements": 1,
+      "StateCaptured": false,
+      "Source": "ReferencedUniformBufferContentMap",
+      "ResourceKind": "Texture",
+      "Pointer": "00040000020c0fd2af00",
+      "Null": false,
+      "NativeTextureName": "FastBlueNoise_vec2_128x128x64",
+      "NativeDimension": "Texture2D",
+      "NativeFormat": "PF_B8G8R8A8",
+      "NativeExtentX": 128,
+      "NativeExtentY": 8192,
+      "NativeDepth": 1,
+      "NativeArraySize": 1,
+      "NativeNumMips": 1,
+      "DumpedAs": "NativeTexture.00040000020c0fd2af00.mip0_1.a0_1.f0_1.dim1.plane0",
+      "DiagnosticResource": "0004000002094bdb0320",
+      "NativePointer": "00040000020c0fd2af00",
+      "NativeBindingPath": "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture",
+      "ExportSubresourceCount": 0,
+      "ExportFirstFile": "Resources/0004000002094bdb0320.linear.mip0.v000400000208f327f220.bin",
+      "ExportSRGB": false,
+      "ExportUsesWholeNativeResource": true,
+      "ExportScope": "WholeNativeResource",
+      "ExportRisk": "BindIsWholeTexture",
+      "ExportMipFirst": 0,
+      "ExportMipCount": 1,
+      "ExportArrayFirstInViewUnits": 0,
+      "ExportArrayCountInViewUnits": 1,
+      "ExportFaceFirst": 0,
+      "ExportFaceCount": 1,
+      "ExportViewFormat": "PF_B8G8R8A8",
+      "ReadStateBasis": "OwnerPassSRVBinding",
+      "OwnerPassExecutionDependencyClaimed": false,
+      "SourceStateProvenAtScheduling": false,
+      "TimingRisk": "OwnerPassNotExecutedAtCPUCollection;NativeResourceHasNoRDGExecutionDependency",
+      "RegistryMutation": false,
+      "FileVerified": false,
+      "ReadbackStatusFile": "Base/DumpReadbackStatus.json",
+      "CrossUniformBufferAliasObservable": false,
+      "ReusedScheduledReadback": true,
+      "FirstScheduledByPass": "000400000208f327f220",
+      "DumpStatus": "ScheduledByEarlierPass"
+    },
+    "exportFile": "Resources/0004000002094bdb0320.linear.mip0.v000400000208f327f220.bin",
+    "layout": {
+      "Resource": "0004000002094bdb0320",
+      "Name": "DumpGPU.NativeUniformBufferBinding",
+      "File": "Resources/0004000002094bdb0320.linear.mip0.v000400000208f327f220.bin",
+      "Dimension": "Texture2D",
+      "MipLevel": 0,
+      "FirstArraySlice": 0,
+      "NumArraySlices": 0,
+      "ExtentX": 128,
+      "ExtentY": 8192,
+      "Depth": 1,
+      "ZSliceCount": 1,
+      "ZSliceStrideBytes": 4194304,
+      "RowPitchBytes": 512,
+      "ZSliceOrder": "single slice",
+      "NativeFormat": "PF_B8G8R8A8",
+      "ViewFormat": "PF_B8G8R8A8",
+      "ViewFormatMatchesNativeFormat": true,
+      "StagingFormat": "PF_B8G8R8A8",
+      "StoredFormat": "PF_B8G8R8A8",
+      "NativeFormatExpanded": false,
+      "NativeSRGB": false,
+      "ViewSRGB": false,
+      "SRGBOverride": "ForceDisable",
+      "SRGBViewUsedForReadback": false,
+      "StoredBytesAreNativeStorage": false,
+      "NativeValueInterpretation": "DecodedFloat",
+      "BitExact": false,
+      "ValuePreserving": true,
+      "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+      "MipExtentClampedToMinimum": false,
+      "StencilSubresource": false,
+      "Readback": "ComputeThenCopy",
+      "DumpStatus": "ScheduledForReadback",
+      "FileVerifiedAtSchedule": false,
+      "ByteSize": 4194304,
+      "StagingByteSize": 4194304
+    },
+    "payload": {
+      "path": "Resources\\0004000002094bdb0320.linear.mip0.v000400000208f327f220.bin",
+      "bytes": 4194304,
+      "sha256": "cd7286ea0fd5374282ac76deb74e47be42a0a175991a293468b506c4c5a19ad0"
+    },
+    "decode": "memory B,G,R,A; shader R,G = bytes 2,1; jitter = byte/255",
+    "dimensions": [
+      128,
+      128,
+      64
+    ],
+    "moduloMasks": [
+      127,
+      127,
+      63
+    ]
+  },
+  "inputs": {
+    "indirection": {
+      "name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+      "file": "Resources\\00040000020bef067740.mip0.v0004000002090ec68b08.bin",
+      "bytes": 1769472,
+      "sha256": "eadc4a4bc04502434105e39d98ef10d99c566397da006481a16ffa8b90dde8eb",
+      "uniqueResource": "00040000020bef067740",
+      "version": "0004000002090ec68b08",
+      "producerPass": {
+        "id": 716,
+        "eventName": "AllocateUsedProbes",
+        "pointer": "0004000002090ec68b08"
+      },
+      "descriptor": {
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "UniqueResourceName": "00040000020bef067740",
+        "ByteSize": 1769472,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture3D",
+        "Format": "PF_R32_UINT",
+        "ExtentX": 192,
+        "ExtentY": 48,
+        "Depth": 48,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "Tiling3D",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020bef067740",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/00040000020bef067740.mip0.v0004000002090ec68b08.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 192,
+        "ExtentY": 48,
+        "Depth": 48,
+        "ZSliceCount": 48,
+        "ZSliceStrideBytes": 36864,
+        "RowPitchBytes": 768,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 1769472,
+        "StagingByteSize": 1769472
+      }
+    },
+    "finalRadianceAtlas": {
+      "name": "Lumen.RadianceCache.FinalRadianceAtlas",
+      "file": "Resources\\00040000020b979a0c60.mip0.v00040000020b97184f50.bin",
+      "bytes": 75759616,
+      "sha256": "3544d0bb898575b53ba4fcf6538eb75b4189abbb95248a8ceaa3e9b7ac40a9ea",
+      "uniqueResource": "00040000020b979a0c60",
+      "version": "00040000020b97184f50",
+      "producerPass": {
+        "id": 733,
+        "eventName": "FixupBordersAndGenerateMips",
+        "pointer": "00040000020b97184f50"
+      },
+      "descriptor": {
+        "Name": "Lumen.RadianceCache.FinalRadianceAtlas",
+        "UniqueResourceName": "00040000020b979a0c60",
+        "ByteSize": 75759616,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_FloatR11G11B10",
+        "ExtentX": 4352,
+        "ExtentY": 4352,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020b979a0c60",
+        "Name": "Lumen.RadianceCache.FinalRadianceAtlas",
+        "File": "Resources/00040000020b979a0c60.mip0.v00040000020b97184f50.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 4352,
+        "ExtentY": 4352,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 75759616,
+        "RowPitchBytes": 17408,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatR11G11B10",
+        "ViewFormat": "PF_FloatR11G11B10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatR11G11B10",
+        "StoredFormat": "PF_FloatR11G11B10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 75759616,
+        "StagingByteSize": 75759616
+      }
+    },
+    "depthProbeAtlas": {
+      "name": "Lumen.RadianceCache.DepthProbeAtlasTexture",
+      "file": "Resources\\00040000020b979a09a0.mip0.v00040000020ba06fb8c0.bin",
+      "bytes": 33554432,
+      "sha256": "7d100d782f59679ac1a6dec91526628fc94210e18802069de309e15438494a41",
+      "uniqueResource": "00040000020b979a09a0",
+      "version": "00040000020ba06fb8c0",
+      "producerPass": {
+        "id": 730,
+        "eventName": "CompositeTracesIntoAtlas",
+        "pointer": "00040000020ba06fb8c0"
+      },
+      "descriptor": {
+        "Name": "Lumen.RadianceCache.DepthProbeAtlasTexture",
+        "UniqueResourceName": "00040000020b979a09a0",
+        "ByteSize": 33554432,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_R16_UINT",
+        "ExtentX": 4096,
+        "ExtentY": 4096,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020b979a09a0",
+        "Name": "Lumen.RadianceCache.DepthProbeAtlasTexture",
+        "File": "Resources/00040000020b979a09a0.mip0.v00040000020ba06fb8c0.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 4096,
+        "ExtentY": 4096,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 33554432,
+        "RowPitchBytes": 8192,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16_UINT",
+        "ViewFormat": "PF_R16_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16_UINT",
+        "StoredFormat": "PF_R16_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 33554432,
+        "StagingByteSize": 33554432
+      }
+    },
+    "probeWorldOffset": {
+      "name": "Lumen.RadianceCache.ProbeWorldOffset",
+      "file": "Resources\\00040000020b979ace00.v0004000002090ec68b08.bin",
+      "bytes": 131072,
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "uniqueResource": "00040000020b979ace00",
+      "version": "0004000002090ec68b08",
+      "producerPass": {
+        "id": 716,
+        "eventName": "AllocateUsedProbes",
+        "pointer": "0004000002090ec68b08"
+      },
+      "descriptor": {
+        "Name": "Lumen.RadianceCache.ProbeWorldOffset",
+        "UniqueResourceName": "00040000020b979ace00",
+        "ByteSize": 131072,
+        "Desc": "FRDGBufferDesc",
+        "BytesPerElement": 8,
+        "NumElements": 16384,
+        "Metadata": "00000000000000000000",
+        "Usage": [
+          "Static",
+          "UnorderedAccess",
+          "ShaderResource",
+          "VertexBuffer"
+        ]
+      },
+      "layout": null
+    },
+    "rayInfosForTracing": {
+      "name": "Lumen.ScreenProbeGather.RayInfosForTracing",
+      "file": "Resources\\00040000020b9718fa60.mip0.v00040000020ba1b70010.bin",
+      "bytes": 860160,
+      "sha256": "deaad7bffc582c72a30f8a85249aa86ecbf65cad7ed41fd67bf684c7e843823b",
+      "uniqueResource": "00040000020b9718fa60",
+      "version": "00040000020ba1b70010",
+      "producerPass": {
+        "id": 736,
+        "eventName": "GenerateRays 8x8",
+        "pointer": "00040000020ba1b70010"
+      },
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.RayInfosForTracing",
+        "UniqueResourceName": "00040000020b9718fa60",
+        "ByteSize": 860160,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_R16_UINT",
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020b9718fa60",
+        "Name": "Lumen.ScreenProbeGather.RayInfosForTracing",
+        "File": "Resources/00040000020b9718fa60.mip0.v00040000020ba1b70010.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 860160,
+        "RowPitchBytes": 1280,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R16_UINT",
+        "ViewFormat": "PF_R16_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R16_UINT",
+        "StoredFormat": "PF_R16_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 860160,
+        "StagingByteSize": 860160
+      }
+    },
+    "screenProbeSceneDepth": {
+      "name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+      "file": "Resources\\0004000002090c6b35d8.mip0.v00040000020bd35c1b10.bin",
+      "bytes": 26880,
+      "sha256": "219c8bc0784637ca04022bf921ca9ff7866355fecdd109ea75aae93e6e916184",
+      "uniqueResource": "0004000002090c6b35d8",
+      "version": "00040000020bd35c1b10",
+      "producerPass": {
+        "id": 706,
+        "eventName": "AdaptivePlacementSpawn",
+        "pointer": "00040000020bd35c1b10"
+      },
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+        "UniqueResourceName": "0004000002090c6b35d8",
+        "ByteSize": 26880,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_R32_UINT",
+        "ExtentX": 80,
+        "ExtentY": 84,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "0004000002090c6b35d8",
+        "Name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+        "File": "Resources/0004000002090c6b35d8.mip0.v00040000020bd35c1b10.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 80,
+        "ExtentY": 84,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 26880,
+        "RowPitchBytes": 320,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 26880,
+        "StagingByteSize": 26880
+      }
+    },
+    "compactedTraceTexelAllocator": {
+      "name": "Lumen.ScreenProbeGather.CompactedTraceTexelAllocator",
+      "file": "Resources\\00040000020c13288560.v00040000020c13288f10.bin",
+      "bytes": 4,
+      "sha256": "3a5627bcff3614ad6882679f936619f119a1674c52e030af6b152053f6e24766",
+      "uniqueResource": "00040000020c13288560",
+      "version": "00040000020c13288f10",
+      "producerPass": {
+        "id": 745,
+        "eventName": "CompactTraces WaveOps:1",
+        "pointer": "00040000020c13288f10"
+      },
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.CompactedTraceTexelAllocator",
+        "UniqueResourceName": "00040000020c13288560",
+        "ByteSize": 4,
+        "Desc": "FRDGBufferDesc",
+        "BytesPerElement": 4,
+        "NumElements": 1,
+        "Metadata": "00000000000000000000",
+        "Usage": [
+          "Static",
+          "UnorderedAccess",
+          "ShaderResource",
+          "VertexBuffer"
+        ]
+      },
+      "layout": null
+    },
+    "compactedTraceTexelData": {
+      "name": "Lumen.ScreenProbeGather.CompactedTraceTexelData",
+      "file": "Resources\\00040000020c13288c18.v00040000020c13288f10.bin",
+      "bytes": 1720320,
+      "sha256": "8e10de16fa2f9109e541808d3e5c5777d749610432a02a2244573758656a22a3",
+      "uniqueResource": "00040000020c13288c18",
+      "version": "00040000020c13288f10",
+      "producerPass": {
+        "id": 745,
+        "eventName": "CompactTraces WaveOps:1",
+        "pointer": "00040000020c13288f10"
+      },
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.CompactedTraceTexelData",
+        "UniqueResourceName": "00040000020c13288c18",
+        "ByteSize": 1720320,
+        "Desc": "FRDGBufferDesc",
+        "BytesPerElement": 4,
+        "NumElements": 430080,
+        "Metadata": "00000000000000000000",
+        "Usage": [
+          "Static",
+          "UnorderedAccess",
+          "ShaderResource",
+          "VertexBuffer"
+        ]
+      },
+      "layout": null
+    },
+    "compactTracingIndirectArgs": {
+      "name": "Lumen.ScreenProbeGather.CompactTracingIndirectArgs",
+      "file": "Resources\\00040000020c1328b9e0.v00040000020c1328bd08.bin",
+      "bytes": 48,
+      "sha256": "3dbf7927957b88b821ed48d0b0e39e456f6c1e30e1a8e281ba295e424da29cf5",
+      "uniqueResource": "00040000020c1328b9e0",
+      "version": "00040000020c1328bd08",
+      "producerPass": {
+        "id": 746,
+        "eventName": "SetupCompactedTracesIndirectArgs",
+        "pointer": "00040000020c1328bd08"
+      },
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.CompactTracingIndirectArgs",
+        "UniqueResourceName": "00040000020c1328b9e0",
+        "ByteSize": 48,
+        "Desc": "FRDGBufferDesc",
+        "BytesPerElement": 12,
+        "NumElements": 4,
+        "Metadata": "00000000000000000000",
+        "Usage": [
+          "Static",
+          "UnorderedAccess",
+          "DrawIndirect",
+          "ShaderResource",
+          "VertexBuffer"
+        ]
+      },
+      "layout": null
+    },
+    "traceHit": {
+      "name": "Lumen.ScreenProbeGather.TraceHit",
+      "file": "Resources\\00040000020ba1b72cf0.mip0.v00040000020c1328ca80.bin",
+      "bytes": 1720320,
+      "sha256": "2ebc93e83d5d523367a37af46e723128a0556b41c6b754bf9f8dc10ae3f6866a",
+      "uniqueResource": "00040000020ba1b72cf0",
+      "version": "00040000020c1328ca80",
+      "producerPass": {
+        "id": 747,
+        "eventName": "TraceGlobalSDFAndApplyRadianceCache",
+        "pointer": "00040000020c1328ca80"
+      },
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.TraceHit",
+        "UniqueResourceName": "00040000020ba1b72cf0",
+        "ByteSize": 1720320,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_R32_UINT",
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020ba1b72cf0",
+        "Name": "Lumen.ScreenProbeGather.TraceHit",
+        "File": "Resources/00040000020ba1b72cf0.mip0.v00040000020c1328ca80.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 1720320,
+        "RowPitchBytes": 2560,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 1720320,
+        "StagingByteSize": 1720320
+      }
+    },
+    "traceRadiance": {
+      "name": "Lumen.ScreenProbeGather.TraceRadiance",
+      "file": "Resources\\00040000020ba1b729e0.mip0.v00040000020c1328ca80.bin",
+      "bytes": 1720320,
+      "sha256": "ba7608e1d58dff38f73596067a7ccc71a0b7d10073e6e94bf62d60a7c27e4301",
+      "uniqueResource": "00040000020ba1b729e0",
+      "version": "00040000020c1328ca80",
+      "producerPass": {
+        "id": 747,
+        "eventName": "TraceGlobalSDFAndApplyRadianceCache",
+        "pointer": "00040000020c1328ca80"
+      },
+      "descriptor": {
+        "Name": "Lumen.ScreenProbeGather.TraceRadiance",
+        "UniqueResourceName": "00040000020ba1b729e0",
+        "ByteSize": 1720320,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_FloatR11G11B10",
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020ba1b729e0",
+        "Name": "Lumen.ScreenProbeGather.TraceRadiance",
+        "File": "Resources/00040000020ba1b729e0.mip0.v00040000020c1328ca80.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 640,
+        "ExtentY": 672,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 1720320,
+        "RowPitchBytes": 2560,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatR11G11B10",
+        "ViewFormat": "PF_FloatR11G11B10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatR11G11B10",
+        "StoredFormat": "PF_FloatR11G11B10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 1720320,
+        "StagingByteSize": 1720320
+      }
+    }
+  },
+  "parameters": {
+    "radianceCache": {
+      "ClipmapCornerTWSAndCellSize": [
+        [
+          -2639.583251953125,
+          -2552.083251953125,
+          -2642.083251953125,
+          104.16666412353516
+        ],
+        [
+          -5295.8330078125,
+          -5104.16650390625,
+          -5194.16650390625,
+          208.3333282470703
+        ],
+        [
+          -10608.3330078125,
+          -10208.3330078125,
+          -10298.3330078125,
+          416.6666564941406
+        ],
+        [
+          -21233.33203125,
+          -20416.666015625,
+          -20506.666015625,
+          833.3333129882812
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "RadianceProbeSettings": [
+        [
+          180.4219512939453,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          360.8439025878906,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          721.6878051757812,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1443.3756103515625,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "NumRadianceProbeClipmaps": 4,
+      "RadianceProbeClipmapResolution": 48,
+      "RadianceProbeResolution": 32,
+      "FinalProbeResolution": 34,
+      "FinalRadianceAtlasMaxMip": 0,
+      "ReprojectionRadiusScale": 1.5,
+      "InvClipmapFadeSize": 1.0,
+      "InvProbeFinalRadianceAtlasResolution": [
+        0.0002297794126207009,
+        0.0002297794126207009
+      ],
+      "RadianceCacheOneOverCachedLightingPreExposure": 16.0,
+      "ProbeAtlasResolutionModuloMask": 127,
+      "ProbeAtlasResolutionDivideShift": 7,
+      "UseSkyVisibility": 0,
+      "ShowBlackRadianceCacheLighting": 0
+    },
+    "view": {
+      "ViewRectMinAndSize": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "ViewSizeAndInvSize": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "BufferSizeAndInvSize": [
+        1280.0,
+        888.0,
+        0.0007812500116415322,
+        0.0011261261533945799
+      ],
+      "ScreenPositionScaleBias": [
+        0.5,
+        -0.4054054021835327,
+        0.4054054021835327,
+        0.5
+      ],
+      "ScreenToTranslatedWorld": [
+        0.0,
+        0.7002076506614685,
+        0.0,
+        0.0,
+        -0.08860074728727341,
+        0.0,
+        0.38377201557159424,
+        0.0,
+        0.9743700623512268,
+        0.0,
+        0.22495105862617493,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ViewToClip": [
+        1.428147792816162,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.5389294624328613,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        10.0,
+        0.0
+      ],
+      "PreExposure": 0.00048828125,
+      "PreExposureNote": "View.PreExposure = 0.00048828125 (1/2048) is the camera pre-exposure applied after the cache lookup at LumenScreenProbeTracing.usf:851; it is not the cache's CachedLightingPreExposure (1/16).",
+      "StateFrameIndex": 905,
+      "StateFrameIndexMod8": 1,
+      "TranslatedWorldCameraOrigin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SkylightLeakingColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SampleHeightFogOnGI": 0,
+      "NumGlobalSDFClipmaps": 0
+    },
+    "screenProbe": {
+      "ScreenProbeViewSize": [
+        80,
+        45
+      ],
+      "ScreenProbeAtlasViewSize": [
+        80,
+        67
+      ],
+      "ScreenProbeAtlasBufferSize": [
+        80,
+        84
+      ],
+      "NumUniformScreenProbes": 3600,
+      "ScreenProbeDownsampleFactor": 16,
+      "FixedJitterIndex": -1,
+      "ScreenProbeRayDirectionFrameIndex": 1,
+      "ScreenProbeTracingOctahedronResolution": 8,
+      "MaxImportanceSamplingOctahedronResolution": 16,
+      "TargetFormatQuantizationError": [
+        0.015625,
+        0.015625,
+        0.03125
+      ]
+    }
+  },
+  "dispatch": {
+    "allocator": 104483,
+    "compactedTraceTexelDataElements": 430080,
+    "compactedTraceCoordsUnique": 104483,
+    "indirectArgs": [
+      [
+        1633,
+        1,
+        1
+      ],
+      [
+        3266,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "dispatchNote": "The pass binds both Div64 and Div32 indirect-arg triples; DumpGPU does not record which triple the dispatch consumed. The selected lane is below the allocator."
+  },
+  "selection": {
+    "rule": "ascending compacted lane; uniform screen probe; valid scene depth; valid clipmap coverage; eight allocated neighbors; fractional weights in [0.05,0.95]; captured final TraceHit.bHit=false; non-zero replayed cache radiance; replayed depth matches captured TraceHit within 0.001 cm",
+    "selectedLane": 11,
+    "selectedTraceBufferOccurrences": 1,
+    "rejectionsUpToSelection": {
+      "fractional weights too close to a cell boundary": 11
+    }
+  },
+  "queryWitness": {
+    "dispatchIndex": 11,
+    "packedCompactedTraceWord": 135266999,
+    "screenProbeIndex": 695,
+    "probeAtlasXY": [
+      55,
+      8
+    ],
+    "uniformScreenTileXY": [
+      55,
+      8
+    ],
+    "traceTexelXY": [
+      1,
+      4
+    ],
+    "traceBufferXY": [
+      441,
+      68
+    ],
+    "screenTemporalIndex": 1,
+    "tileJitter": [
+      2,
+      8
+    ],
+    "screenXY": [
+      882,
+      136
+    ],
+    "screenXYClamped": [
+      882.0,
+      136.0
+    ],
+    "screenUV": [
+      0.689453125,
+      0.15371622145175934
+    ],
+    "packedSceneDepth": 1141360982,
+    "sceneDepth": 543.1458740234375,
+    "sceneDepthCM": 543.1458740234375,
+    "sceneDepthUnits": "cm (translated-world depth)",
+    "screenPosition": [
+      0.37890625,
+      0.6208333373069763
+    ],
+    "orthographic": false,
+    "homogeneousPosition": [
+      205.80136108398438,
+      337.20306396484375,
+      543.1458740234375,
+      1.0
+    ],
+    "screenToTranslatedWorld": [
+      [
+        0.0,
+        0.7002076506614685,
+        0.0,
+        0.0
+      ],
+      [
+        -0.08860074728727341,
+        0.0,
+        0.38377201557159424,
+        0.0
+      ],
+      [
+        0.9743700623512268,
+        0.0,
+        0.22495105862617493,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "screenTileXY": [
+      55,
+      8
+    ],
+    "blueNoiseFrameIndex": 1,
+    "blueNoiseTextureXY": [
+      55,
+      136
+    ],
+    "blueNoiseRawBGRA": [
+      0,
+      1,
+      218,
+      255
+    ],
+    "blueNoiseShaderRG": [
+      218.0,
+      1.0
+    ],
+    "blueNoiseDecoded": [
+      0.8549019694328308,
+      0.003921568859368563
+    ],
+    "rayInfoPacked": 4294,
+    "angularRay": {
+      "packedRayInfo": 4294,
+      "structuredImportance": true,
+      "cell": [
+        6,
+        3
+      ],
+      "level": 1,
+      "cellResolution": 8,
+      "jitter": [
+        0.8549019694328308,
+        0.003921568859368563
+      ],
+      "uv": [
+        0.8568627238273621,
+        0.3754901885986328
+      ],
+      "direction": [
+        0.9161319732666016,
+        -0.3941513001918793,
+        0.07312190532684326
+      ],
+      "coneHalfAngle": 0.17708249390125275,
+      "angularCellSolidAngle": 0.19634954084936207,
+      "coneSolidAngleFromApproximateAngle": 0.09825755288975985
+    }
+  },
+  "directionalEncoding": {
+    "rayInfoField": "ScreenProbeParameters.ImportanceSampling.StructuredImportanceSampledRayInfosForTracing (PF_R16_UINT)",
+    "cell": [
+      6,
+      3
+    ],
+    "level": 1,
+    "cellResolution": 8,
+    "jitter": [
+      0.8549019694328308,
+      0.003921568859368563
+    ],
+    "equalAreaUV": [
+      0.8568627238273621,
+      0.3754901885986328
+    ],
+    "direction": [
+      0.9161319732666016,
+      -0.3941513001918793,
+      0.07312190532684326
+    ],
+    "coneHalfAngle": 0.17708249390125275,
+    "formula": "cell=(rayInfo&63,(rayInfo>>6)&63); level=(rayInfo>>12)&15; size=16>>level; uv=(cell+jitter)/size; direction=EqualAreaToSphere(uv); alpha=acosFast(1-1/size^2)"
+  },
+  "formulas": {
+    "clipmapSelection": "for level: q=(x-ClipmapCornerTWS)/CellSize; bottom=clip((q-0.5)*InvClipmapFadeSize,0,1); top=clip((Res-0.5-q)*InvClipmapFadeSize,0,1); first level with min(bottom,top)>0",
+    "grid": "cellCoordinateFloat = (translatedWorldPosition - ClipmapCornerTWS)/CellSize (cell units); base=floor(cellCoordinateFloat-0.5); a=frac(cellCoordinateFloat-0.5). The raw (x-corner) values are cm.",
+    "indirection": "word=Indirection[base+offset+(level*Res,0,0)]; index=word&0xFFFF; 0xFFFFFFFF is unallocated",
+    "probeCenter": "center = corner + (cell + 0.5)*CellSize + ProbeWorldOffset[index]",
+    "atlasUV": "(FinalProbeResolution*tile + RadianceProbeResolution*uv + (1<<FinalRadianceAtlasMaxMip)) * InvProbeFinalRadianceAtlasResolution",
+    "bilinear": "q=atlasUV*tileExtent-0.5; lo=floor(q); t=q-lo; four taps at lo+(0,0),(1,0),(0,1),(1,1)",
+    "parallax": "t=(-B+sqrt(B^2-4AC))/(2A) with A=dot(omega,omega), B=2*dot(omega,v), C=dot(v,v)-radius^2; correction=t^2/(radius*dot(reprojected,omega))",
+    "combine": "nested Z/Y/X lerp of eight neighborRadiance values with weights a",
+    "radianceScale": "neighborRadiance = storedBilinear * RadianceCacheOneOverCachedLightingPreExposure * correction (un-pre-exposed); forwardModel = cacheRadiance * View.PreExposure (view-pre-exposed TraceRadiance space)"
+  },
+  "cacheLookup": {
+    "scope": "source-derived actual-query cache lookup; not the complete TraceVoxels result",
+    "units": {
+      "translatedWorldPosition": "cm",
+      "direction": "unit vector",
+      "coneHalfAngle": "radians",
+      "clipmapCorner": "cm (translated-world)",
+      "clipmapCellSize": "cm",
+      "minimumLocalTraceDistance": "cm",
+      "cacheTraceHitDistance": "cm"
+    },
+    "query": {
+      "translatedWorldPosition": [
+        499.3486633300781,
+        144.1036834716797,
+        251.59033203125
+      ],
+      "direction": [
+        0.9161319732666016,
+        -0.3941513001918793,
+        0.07312190532684326
+      ],
+      "coneHalfAngle": 0.17708249390125275
+    },
+    "clipmapCandidates": [
+      {
+        "level": 0,
+        "coordinate": [
+          30.133747100830078,
+          25.88339614868164,
+          27.779266357421875
+        ],
+        "bottomFades": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "topFades": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "edgeConfidence": 1.0
+      }
+    ],
+    "selectedClipmap": 0,
+    "clipmapCornerTWSAndCellSize": [
+      -2639.583251953125,
+      -2552.083251953125,
+      -2642.083251953125
+    ],
+    "clipmapCellSize": 104.16666412353516,
+    "minimumLocalTraceDistance": 360.8439025878906,
+    "positionMinusClipmapCornerCM": [
+      3138.931884765625,
+      2696.18701171875,
+      2893.673583984375
+    ],
+    "positionMinusClipmapCornerUnits": "cm (translated-world)",
+    "cellCoordinateFloat": [
+      30.133747100830078,
+      25.88339614868164,
+      27.779266357421875
+    ],
+    "cellCoordinateUnits": "clipmap cell/probe-grid units; 1 cell = 104.1667 cm",
+    "bottomCell": [
+      29,
+      25,
+      27
+    ],
+    "fractionalWeights": [
+      0.6337471008300781,
+      0.3833961486816406,
+      0.279266357421875
+    ],
+    "angularFootprintTexels": 4.001685619354248,
+    "mipLevel": 0.0,
+    "radianceTaps": [
+      {
+        "neighborIndex": 0,
+        "offsetBits": [
+          0,
+          0,
+          0
+        ],
+        "probeIndex": 38,
+        "atlasXY": [
+          1321,
+          14
+        ],
+        "bilinearWeight": 0.03248083218932152,
+        "neighborWeight": 0.16276541352272034,
+        "effectiveWeight": 0.005286756082857003,
+        "packed": 2699621681,
+        "decodedRadiance": [
+          56.5,
+          47.0,
+          35.0
+        ]
+      },
+      {
+        "neighborIndex": 0,
+        "offsetBits": [
+          0,
+          0,
+          0
+        ],
+        "probeIndex": 38,
+        "atlasXY": [
+          1322,
+          14
+        ],
+        "bilinearWeight": 0.03874051943421364,
+        "neighborWeight": 0.16276541352272034,
+        "effectiveWeight": 0.0063056166657947665,
+        "packed": 2598845689,
+        "decodedRadiance": [
+          30.25,
+          25.75,
+          21.5
+        ]
+      },
+      {
+        "neighborIndex": 0,
+        "offsetBits": [
+          0,
+          0,
+          0
+        ],
+        "probeIndex": 38,
+        "atlasXY": [
+          1321,
+          15
+        ],
+        "bilinearWeight": 0.4235738515853882,
+        "neighborWeight": 0.16276541352272034,
+        "effectiveWeight": 0.06894317311070708,
+        "packed": 2397269095,
+        "decodedRadiance": [
+          6.4375,
+          6.8125,
+          7.375
+        ]
+      },
+      {
+        "neighborIndex": 0,
+        "offsetBits": [
+          0,
+          0,
+          0
+        ],
+        "probeIndex": 38,
+        "atlasXY": [
+          1322,
+          15
+        ],
+        "bilinearWeight": 0.5052047967910767,
+        "neighborWeight": 0.16276541352272034,
+        "effectiveWeight": 0.08222986766336149,
+        "packed": 2254535720,
+        "decodedRadiance": [
+          3.25,
+          3.46875,
+          3.5625
+        ]
+      },
+      {
+        "neighborIndex": 1,
+        "offsetBits": [
+          0,
+          0,
+          1
+        ],
+        "probeIndex": 715,
+        "atlasXY": [
+          2581,
+          183
+        ],
+        "bilinearWeight": 0.8609640598297119,
+        "neighborWeight": 0.06306754797697067,
+        "effectiveWeight": 0.054298892149757805,
+        "packed": 1864184778,
+        "decodedRadiance": [
+          1.15625,
+          0.796875,
+          0.46875
+        ]
+      },
+      {
+        "neighborIndex": 1,
+        "offsetBits": [
+          0,
+          0,
+          1
+        ],
+        "probeIndex": 715,
+        "atlasXY": [
+          2582,
+          183
+        ],
+        "bilinearWeight": 0.00422455370426178,
+        "neighborWeight": 0.06306754797697067,
+        "effectiveWeight": 0.00026643224342481897,
+        "packed": 2590399680,
+        "decodedRadiance": [
+          16.0,
+          18.75,
+          20.5
+        ]
+      },
+      {
+        "neighborIndex": 1,
+        "offsetBits": [
+          0,
+          0,
+          1
+        ],
+        "probeIndex": 715,
+        "atlasXY": [
+          2581,
+          184
+        ],
+        "bilinearWeight": 0.13415314257144928,
+        "neighborWeight": 0.06306754797697067,
+        "effectiveWeight": 0.008460709755386264,
+        "packed": 2002719750,
+        "decodedRadiance": [
+          2.1875,
+          1.53125,
+          0.953125
+        ]
+      },
+      {
+        "neighborIndex": 1,
+        "offsetBits": [
+          0,
+          0,
+          1
+        ],
+        "probeIndex": 715,
+        "atlasXY": [
+          2582,
+          184
+        ],
+        "bilinearWeight": 0.0006582587957382202,
+        "neighborWeight": 0.06306754797697067,
+        "effectiveWeight": 4.151476818148314e-05,
+        "packed": 1864145838,
+        "decodedRadiance": [
+          0.859375,
+          0.6484375,
+          0.46875
+        ]
+      },
+      {
+        "neighborIndex": 2,
+        "offsetBits": [
+          0,
+          1,
+          0
+        ],
+        "probeIndex": 42,
+        "atlasXY": [
+          1454,
+          11
+        ],
+        "bilinearWeight": 0.3464861512184143,
+        "neighborWeight": 0.10120537877082825,
+        "effectiveWeight": 0.03506626217290609,
+        "packed": 2800366922,
+        "decodedRadiance": [
+          74.0,
+          70.0,
+          59.0
+        ]
+      },
+      {
+        "neighborIndex": 2,
+        "offsetBits": [
+          0,
+          1,
+          0
+        ],
+        "probeIndex": 42,
+        "atlasXY": [
+          1455,
+          11
+        ],
+        "bilinearWeight": 0.1104382798075676,
+        "neighborWeight": 0.10120537877082825,
+        "effectiveWeight": 0.011176947938723591,
+        "packed": 2363860136,
+        "decodedRadiance": [
+          13.0,
+          14.5,
+          6.375
+        ]
+      },
+      {
+        "neighborIndex": 2,
+        "offsetBits": [
+          0,
+          1,
+          0
+        ],
+        "probeIndex": 42,
+        "atlasXY": [
+          1454,
+          12
+        ],
+        "bilinearWeight": 0.4118146300315857,
+        "neighborWeight": 0.10120537877082825,
+        "effectiveWeight": 0.04167785561571513,
+        "packed": 2082390995,
+        "decodedRadiance": [
+          1.296875,
+          1.375,
+          1.5
+        ]
+      },
+      {
+        "neighborIndex": 2,
+        "offsetBits": [
+          0,
+          1,
+          0
+        ],
+        "probeIndex": 42,
+        "atlasXY": [
+          1455,
+          12
+        ],
+        "bilinearWeight": 0.1312609314918518,
+        "neighborWeight": 0.10120537877082825,
+        "effectiveWeight": 0.0132843122894446,
+        "packed": 2615682315,
+        "decodedRadiance": [
+          37.5,
+          34.0,
+          23.5
+        ]
+      },
+      {
+        "neighborIndex": 3,
+        "offsetBits": [
+          0,
+          1,
+          1
+        ],
+        "probeIndex": 719,
+        "atlasXY": [
+          2713,
+          179
+        ],
+        "bilinearWeight": 0.05309486389160156,
+        "neighborWeight": 0.039214566349983215,
+        "effectiveWeight": 0.0020820920629205375,
+        "packed": 2237820031,
+        "decodedRadiance": [
+          7.9375,
+          4.8125,
+          3.3125
+        ]
+      },
+      {
+        "neighborIndex": 3,
+        "offsetBits": [
+          0,
+          1,
+          1
+        ],
+        "probeIndex": 719,
+        "atlasXY": [
+          2714,
+          179
+        ],
+        "bilinearWeight": 0.15784263610839844,
+        "neighborWeight": 0.039214566349983215,
+        "effectiveWeight": 0.006189730526529047,
+        "packed": 2330213613,
+        "decodedRadiance": [
+          27.25,
+          8.875,
+          5.375
+        ]
+      },
+      {
+        "neighborIndex": 3,
+        "offsetBits": [
+          0,
+          1,
+          1
+        ],
+        "probeIndex": 719,
+        "atlasXY": [
+          2713,
+          180
+        ],
+        "bilinearWeight": 0.19861412048339844,
+        "neighborWeight": 0.039214566349983215,
+        "effectiveWeight": 0.007788566605739788,
+        "packed": 2535867586,
+        "decodedRadiance": [
+          16.5,
+          18.0,
+          15.0
+        ]
+      },
+      {
+        "neighborIndex": 3,
+        "offsetBits": [
+          0,
+          1,
+          1
+        ],
+        "probeIndex": 719,
+        "atlasXY": [
+          2714,
+          180
+        ],
+        "bilinearWeight": 0.5904483795166016,
+        "neighborWeight": 0.039214566349983215,
+        "effectiveWeight": 0.023154177154793842,
+        "packed": 2225173645,
+        "decodedRadiance": [
+          9.625,
+          3.4375,
+          3.125
+        ]
+      },
+      {
+        "neighborIndex": 4,
+        "offsetBits": [
+          1,
+          0,
+          0
+        ],
+        "probeIndex": 39,
+        "atlasXY": [
+          1353,
+          13
+        ],
+        "bilinearWeight": 0.0466482937335968,
+        "neighborWeight": 0.28164175152778625,
+        "effectiveWeight": 0.013138107152912859,
+        "packed": 2225155108,
+        "decodedRadiance": [
+          3.125,
+          3.15625,
+          3.125
+        ]
+      },
+      {
+        "neighborIndex": 4,
+        "offsetBits": [
+          1,
+          0,
+          0
+        ],
+        "probeIndex": 39,
+        "atlasXY": [
+          1354,
+          13
+        ],
+        "bilinearWeight": 0.4257161319255829,
+        "neighborWeight": 0.28164175152778625,
+        "effectiveWeight": 0.11989943704915529,
+        "packed": 2695408934,
+        "decodedRadiance": [
+          51.0,
+          42.5,
+          34.0
+        ]
+      },
+      {
+        "neighborIndex": 4,
+        "offsetBits": [
+          1,
+          0,
+          0
+        ],
+        "probeIndex": 39,
+        "atlasXY": [
+          1353,
+          14
+        ],
+        "bilinearWeight": 0.0521065890789032,
+        "neighborWeight": 0.28164175152778625,
+        "effectiveWeight": 0.014675391014320915,
+        "packed": 2766728467,
+        "decodedRadiance": [
+          41.5,
+          46.5,
+          51.0
+        ]
+      },
+      {
+        "neighborIndex": 4,
+        "offsetBits": [
+          1,
+          0,
+          0
+        ],
+        "probeIndex": 39,
+        "atlasXY": [
+          1354,
+          14
+        ],
+        "bilinearWeight": 0.4755289852619171,
+        "neighborWeight": 0.28164175152778625,
+        "effectiveWeight": 0.1339288163113972,
+        "packed": 2707995942,
+        "decodedRadiance": [
+          51.0,
+          43.5,
+          37.0
+        ]
+      },
+      {
+        "neighborIndex": 5,
+        "offsetBits": [
+          1,
+          0,
+          1
+        ],
+        "probeIndex": 716,
+        "atlasXY": [
+          2613,
+          181
+        ],
+        "bilinearWeight": 0.04342219606041908,
+        "neighborWeight": 0.1091291680932045,
+        "effectiveWeight": 0.004738628132853556,
+        "packed": 2569262169,
+        "decodedRadiance": [
+          5.5625,
+          7.625,
+          18.0
+        ]
+      },
+      {
+        "neighborIndex": 5,
+        "offsetBits": [
+          1,
+          0,
+          1
+        ],
+        "probeIndex": 716,
+        "atlasXY": [
+          2614,
+          181
+        ],
+        "bilinearWeight": 0.04811527952551842,
+        "neighborWeight": 0.1091291680932045,
+        "effectiveWeight": 0.00525078042719182,
+        "packed": 2808802692,
+        "decodedRadiance": [
+          136.0,
+          93.0,
+          61.0
+        ]
+      },
+      {
+        "neighborIndex": 5,
+        "offsetBits": [
+          1,
+          0,
+          1
+        ],
+        "probeIndex": 716,
+        "atlasXY": [
+          2613,
+          182
+        ],
+        "bilinearWeight": 0.4309430420398712,
+        "neighborWeight": 0.1091291680932045,
+        "effectiveWeight": 0.047028455673366,
+        "packed": 2649093290,
+        "decodedRadiance": [
+          13.25,
+          15.75,
+          27.5
+        ]
+      },
+      {
+        "neighborIndex": 5,
+        "offsetBits": [
+          1,
+          0,
+          1
+        ],
+        "probeIndex": 716,
+        "atlasXY": [
+          2614,
+          182
+        ],
+        "bilinearWeight": 0.4775194823741913,
+        "neighborWeight": 0.1091291680932045,
+        "effectiveWeight": 0.05211130385979312,
+        "packed": 2548499715,
+        "decodedRadiance": [
+          33.5,
+          24.0,
+          15.75
+        ]
+      },
+      {
+        "neighborIndex": 6,
+        "offsetBits": [
+          1,
+          1,
+          0
+        ],
+        "probeIndex": 45,
+        "atlasXY": [
+          1554,
+          10
+        ],
+        "bilinearWeight": 0.3032895028591156,
+        "neighborWeight": 0.17512112855911255,
+        "effectiveWeight": 0.053112400020820516,
+        "packed": 2069957648,
+        "decodedRadiance": [
+          2.5,
+          3.03125,
+          1.40625
+        ]
+      },
+      {
+        "neighborIndex": 6,
+        "offsetBits": [
+          1,
+          1,
+          0
+        ],
+        "probeIndex": 45,
+        "atlasXY": [
+          1555,
+          10
+        ],
+        "bilinearWeight": 0.5472916960716248,
+        "neighborWeight": 0.17512112855911255,
+        "effectiveWeight": 0.09584233946709375,
+        "packed": 2493912207,
+        "decodedRadiance": [
+          9.875,
+          16.5,
+          12.5
+        ]
+      },
+      {
+        "neighborIndex": 6,
+        "offsetBits": [
+          1,
+          1,
+          0
+        ],
+        "probeIndex": 45,
+        "atlasXY": [
+          1554,
+          11
+        ],
+        "bilinearWeight": 0.0532778799533844,
+        "neighborWeight": 0.17512112855911255,
+        "effectiveWeight": 0.009330082464673595,
+        "packed": 2645009657,
+        "decodedRadiance": [
+          30.25,
+          29.0,
+          27.0
+        ]
+      },
+      {
+        "neighborIndex": 6,
+        "offsetBits": [
+          1,
+          1,
+          0
+        ],
+        "probeIndex": 45,
+        "atlasXY": [
+          1555,
+          11
+        ],
+        "bilinearWeight": 0.09614095091819763,
+        "neighborWeight": 0.17512112855911255,
+        "effectiveWeight": 0.016836311825541017,
+        "packed": 2342775944,
+        "decodedRadiance": [
+          9.0,
+          7.8125,
+          5.75
+        ]
+      },
+      {
+        "neighborIndex": 7,
+        "offsetBits": [
+          1,
+          1,
+          1
+        ],
+        "probeIndex": 720,
+        "atlasXY": [
+          2746,
+          178
+        ],
+        "bilinearWeight": 0.3830777108669281,
+        "neighborWeight": 0.06785508245229721,
+        "effectiveWeight": 0.025993769656512677,
+        "packed": 2313462943,
+        "decodedRadiance": [
+          11.875,
+          10.5,
+          4.875
+        ]
+      },
+      {
+        "neighborIndex": 7,
+        "offsetBits": [
+          1,
+          1,
+          1
+        ],
+        "probeIndex": 720,
+        "atlasXY": [
+          2747,
+          178
+        ],
+        "bilinearWeight": 0.1201571524143219,
+        "neighborWeight": 0.06785508245229721,
+        "effectiveWeight": 0.008153273484307055,
+        "packed": 2552689938,
+        "decodedRadiance": [
+          41.0,
+          23.5,
+          16.0
+        ]
+      },
+      {
+        "neighborIndex": 7,
+        "offsetBits": [
+          1,
+          1,
+          1
+        ],
+        "probeIndex": 720,
+        "atlasXY": [
+          2746,
+          179
+        ],
+        "bilinearWeight": 0.3781527578830719,
+        "neighborWeight": 0.06785508245229721,
+        "effectiveWeight": 0.025659586565719428,
+        "packed": 2561105116,
+        "decodedRadiance": [
+          23.0,
+          26.75,
+          17.0
+        ]
+      },
+      {
+        "neighborIndex": 7,
+        "offsetBits": [
+          1,
+          1,
+          1
+        ],
+        "probeIndex": 720,
+        "atlasXY": [
+          2747,
+          179
+        ],
+        "bilinearWeight": 0.1186123788356781,
+        "neighborWeight": 0.06785508245229721,
+        "effectiveWeight": 0.00804845274575805,
+        "packed": 2263024770,
+        "decodedRadiance": [
+          8.25,
+          6.0,
+          3.6875
+        ]
+      }
+    ],
+    "radianceTapCount": 32,
+    "neighbors": [
+      {
+        "offsetBits": [
+          0,
+          0,
+          0
+        ],
+        "cell": [
+          29,
+          25,
+          27
+        ],
+        "indirectionXYZ": [
+          29,
+          25,
+          27
+        ],
+        "indirectionPacked": 38,
+        "probeIndex": 38,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.16276541352272034,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          433.333251953125,
+          104.166748046875,
+          222.5
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          93.72954559326172,
+          -66442.9453125
+        ],
+        "discriminant": 274556.9375,
+        "farIntersection": 215.1261749267578,
+        "reprojectedDirection": [
+          263.099365234375,
+          -44.855323791503906,
+          44.820770263671875
+        ],
+        "correctionDenominator": 70903.3671875,
+        "correctionFactor": 0.6527090668678284,
+        "probeUV": [
+          0.9076228141784668,
+          0.45089930295944214
+        ],
+        "atlasTile": [
+          38,
+          0
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.3037784695625305,
+            0.0035452155862003565
+          ],
+          "texelCoordinate": [
+            1321.5439453125,
+            14.928778648376465
+          ],
+          "taps": [
+            {
+              "xy": [
+                1321,
+                14
+              ],
+              "weight": 0.03248083218932152,
+              "packed": 2699621681,
+              "decodedRadiance": [
+                56.5,
+                47.0,
+                35.0
+              ]
+            },
+            {
+              "xy": [
+                1322,
+                14
+              ],
+              "weight": 0.03874051943421364,
+              "packed": 2598845689,
+              "decodedRadiance": [
+                30.25,
+                25.75,
+                21.5
+              ]
+            },
+            {
+              "xy": [
+                1321,
+                15
+              ],
+              "weight": 0.4235738515853882,
+              "packed": 2397269095,
+              "decodedRadiance": [
+                6.4375,
+                6.8125,
+                7.375
+              ]
+            },
+            {
+              "xy": [
+                1322,
+                15
+              ],
+              "weight": 0.5052047967910767,
+              "packed": 2254535720,
+              "decodedRadiance": [
+                3.25,
+                3.46875,
+                3.5625
+              ]
+            }
+          ],
+          "value": [
+            7.375740051269531,
+            7.162193298339844,
+            6.893399238586426
+          ]
+        },
+        "storedRadiance": [
+          7.375740051269531,
+          7.162193298339844,
+          6.893399238586426
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          77.02739715576172,
+          74.79725646972656,
+          71.99015045166016
+        ],
+        "depthAtlasXY": [
+          1245,
+          14
+        ],
+        "depth": {
+          "packed": 58830,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 1486.0
+        }
+      },
+      {
+        "offsetBits": [
+          0,
+          0,
+          1
+        ],
+        "cell": [
+          29,
+          25,
+          28
+        ],
+        "indirectionXYZ": [
+          29,
+          25,
+          28
+        ],
+        "indirectionPacked": 715,
+        "probeIndex": 715,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.06306754797697067,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          433.333251953125,
+          104.166748046875,
+          326.666748046875
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          78.49580383300781,
+          -61652.7265625
+        ],
+        "discriminant": 252772.453125,
+        "farIntersection": 212.134521484375,
+        "reprojectedDirection": [
+          260.358642578125,
+          -43.67616271972656,
+          -59.564727783203125
+        ],
+        "correctionDenominator": 68032.359375,
+        "correctionFactor": 0.6614654660224915,
+        "probeUV": [
+          0.9532766342163086,
+          0.39483803510665894
+        ],
+        "atlasTile": [
+          75,
+          5
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.5931766629219055,
+            0.04219549894332886
+          ],
+          "texelCoordinate": [
+            2581.0048828125,
+            183.1348114013672
+          ],
+          "taps": [
+            {
+              "xy": [
+                2581,
+                183
+              ],
+              "weight": 0.8609640598297119,
+              "packed": 1864184778,
+              "decodedRadiance": [
+                1.15625,
+                0.796875,
+                0.46875
+              ]
+            },
+            {
+              "xy": [
+                2582,
+                183
+              ],
+              "weight": 0.00422455370426178,
+              "packed": 2590399680,
+              "decodedRadiance": [
+                16.0,
+                18.75,
+                20.5
+              ]
+            },
+            {
+              "xy": [
+                2581,
+                184
+              ],
+              "weight": 0.13415314257144928,
+              "packed": 2002719750,
+              "decodedRadiance": [
+                2.1875,
+                1.53125,
+                0.953125
+              ]
+            },
+            {
+              "xy": [
+                2582,
+                184
+              ],
+              "weight": 0.0006582587957382202,
+              "packed": 1864145838,
+              "decodedRadiance": [
+                0.859375,
+                0.6484375,
+                0.46875
+              ]
+            }
+          ],
+          "value": [
+            1.357108235359192,
+            0.9711399674415588,
+            0.618353545665741
+          ]
+        },
+        "storedRadiance": [
+          1.357108235359192,
+          0.9711399674415588,
+          0.618353545665741
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          14.362883567810059,
+          10.278008460998535,
+          6.544312477111816
+        ],
+        "depthAtlasXY": [
+          2430,
+          172
+        ],
+        "depth": {
+          "packed": 58864,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 1520.0
+        }
+      },
+      {
+        "offsetBits": [
+          0,
+          1,
+          0
+        ],
+        "cell": [
+          29,
+          26,
+          27
+        ],
+        "indirectionXYZ": [
+          29,
+          26,
+          27
+        ],
+        "indirectionPacked": 42,
+        "probeIndex": 42,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.10120537877082825,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          433.333251953125,
+          208.333251953125,
+          222.5
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          175.84426879882812,
+          -63912.46875
+        ],
+        "discriminant": 286571.03125,
+        "farIntersection": 179.7395477294922,
+        "reprojectedDirection": [
+          230.6805419921875,
+          -135.0741424560547,
+          42.23321533203125
+        ],
+        "correctionDenominator": 72438.0546875,
+        "correctionFactor": 0.44598525762557983,
+        "probeUV": [
+          0.8044289350509644,
+          0.3450961112976074
+        ],
+        "atlasTile": [
+          42,
+          0
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.3342697024345398,
+            0.0027672508731484413
+          ],
+          "texelCoordinate": [
+            1454.24169921875,
+            11.543075561523438
+          ],
+          "taps": [
+            {
+              "xy": [
+                1454,
+                11
+              ],
+              "weight": 0.3464861512184143,
+              "packed": 2800366922,
+              "decodedRadiance": [
+                74.0,
+                70.0,
+                59.0
+              ]
+            },
+            {
+              "xy": [
+                1455,
+                11
+              ],
+              "weight": 0.1104382798075676,
+              "packed": 2363860136,
+              "decodedRadiance": [
+                13.0,
+                14.5,
+                6.375
+              ]
+            },
+            {
+              "xy": [
+                1454,
+                12
+              ],
+              "weight": 0.4118146300315857,
+              "packed": 2082390995,
+              "decodedRadiance": [
+                1.296875,
+                1.375,
+                1.5
+              ]
+            },
+            {
+              "xy": [
+                1455,
+                12
+              ],
+              "weight": 0.1312609314918518,
+              "packed": 2615682315,
+              "decodedRadiance": [
+                37.5,
+                34.0,
+                23.5
+              ]
+            }
+          ],
+          "value": [
+            32.53202819824219,
+            30.884502410888672,
+            24.849079132080078
+          ]
+        },
+        "storedRadiance": [
+          32.53202819824219,
+          30.884502410888672,
+          24.849079132080078
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          232.14088439941406,
+          220.384521484375,
+          177.31716918945312
+        ],
+        "depthAtlasXY": [
+          1369,
+          11
+        ],
+        "depth": {
+          "packed": 58168,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 924.0
+        }
+      },
+      {
+        "offsetBits": [
+          0,
+          1,
+          1
+        ],
+        "cell": [
+          29,
+          26,
+          28
+        ],
+        "indirectionXYZ": [
+          29,
+          26,
+          28
+        ],
+        "indirectionPacked": 719,
+        "probeIndex": 719,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.039214566349983215,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          433.333251953125,
+          208.333251953125,
+          326.666748046875
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          160.61053466796875,
+          -59122.24609375
+        ],
+        "discriminant": 262284.6875,
+        "farIntersection": 175.76345825195312,
+        "reprojectedDirection": [
+          227.0379638671875,
+          -133.5069580078125,
+          -62.2242431640625
+        ],
+        "correctionDenominator": 69300.6328125,
+        "correctionFactor": 0.44577938318252563,
+        "probeUV": [
+          0.8515126705169678,
+          0.29028332233428955
+        ],
+        "atlasTile": [
+          79,
+          5
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.6236783862113953,
+            0.04142671450972557
+          ],
+          "texelCoordinate": [
+            2713.748291015625,
+            179.7890625
+          ],
+          "taps": [
+            {
+              "xy": [
+                2713,
+                179
+              ],
+              "weight": 0.05309486389160156,
+              "packed": 2237820031,
+              "decodedRadiance": [
+                7.9375,
+                4.8125,
+                3.3125
+              ]
+            },
+            {
+              "xy": [
+                2714,
+                179
+              ],
+              "weight": 0.15784263610839844,
+              "packed": 2330213613,
+              "decodedRadiance": [
+                27.25,
+                8.875,
+                5.375
+              ]
+            },
+            {
+              "xy": [
+                2713,
+                180
+              ],
+              "weight": 0.19861412048339844,
+              "packed": 2535867586,
+              "decodedRadiance": [
+                16.5,
+                18.0,
+                15.0
+              ]
+            },
+            {
+              "xy": [
+                2714,
+                180
+              ],
+              "weight": 0.5904483795166016,
+              "packed": 2225173645,
+              "decodedRadiance": [
+                9.625,
+                3.4375,
+                3.125
+              ]
+            }
+          ],
+          "value": [
+            13.68285083770752,
+            7.2610931396484375,
+            5.848644256591797
+          ]
+        },
+        "storedRadiance": [
+          13.68285083770752,
+          7.2610931396484375,
+          5.848644256591797
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          97.59252166748047,
+          51.78953170776367,
+          41.71527862548828
+        ],
+        "depthAtlasXY": [
+          2555,
+          169
+        ],
+        "depth": {
+          "packed": 58166,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 923.0
+        }
+      },
+      {
+        "offsetBits": [
+          1,
+          0,
+          0
+        ],
+        "cell": [
+          30,
+          25,
+          27
+        ],
+        "indirectionXYZ": [
+          30,
+          25,
+          27
+        ],
+        "indirectionPacked": 39,
+        "probeIndex": 39,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.28164175152778625,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          537.5,
+          104.166748046875,
+          222.5
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          -97.13143157958984,
+          -69345.453125
+        ],
+        "discriminant": 286816.25,
+        "farIntersection": 316.3419189453125,
+        "reprojectedDirection": [
+          251.65960693359375,
+          -84.74964141845703,
+          52.22186279296875
+        ],
+        "correctionDenominator": 72469.046875,
+        "correctionFactor": 1.380895972251892,
+        "probeUV": [
+          0.8562901020050049,
+          0.40711361169815063
+        ],
+        "atlasTile": [
+          39,
+          0
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.31121352314949036,
+            0.003223261795938015
+          ],
+          "texelCoordinate": [
+            1353.9012451171875,
+            13.52763557434082
+          ],
+          "taps": [
+            {
+              "xy": [
+                1353,
+                13
+              ],
+              "weight": 0.0466482937335968,
+              "packed": 2225155108,
+              "decodedRadiance": [
+                3.125,
+                3.15625,
+                3.125
+              ]
+            },
+            {
+              "xy": [
+                1354,
+                13
+              ],
+              "weight": 0.4257161319255829,
+              "packed": 2695408934,
+              "decodedRadiance": [
+                51.0,
+                42.5,
+                34.0
+              ]
+            },
+            {
+              "xy": [
+                1353,
+                14
+              ],
+              "weight": 0.0521065890789032,
+              "packed": 2766728467,
+              "decodedRadiance": [
+                41.5,
+                46.5,
+                51.0
+              ]
+            },
+            {
+              "xy": [
+                1354,
+                14
+              ],
+              "weight": 0.4755289852619171,
+              "packed": 2707995942,
+              "decodedRadiance": [
+                51.0,
+                43.5,
+                37.0
+              ]
+            }
+          ],
+          "value": [
+            48.27170181274414,
+            41.348636627197266,
+            34.87213134765625
+          ]
+        },
+        "storedRadiance": [
+          48.27170181274414,
+          41.348636627197266,
+          34.87213134765625
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          1066.5311279296875,
+          913.5706787109375,
+          770.4765625
+        ],
+        "depthAtlasXY": [
+          1275,
+          13
+        ],
+        "depth": {
+          "packed": 58420,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 1076.0
+        }
+      },
+      {
+        "offsetBits": [
+          1,
+          0,
+          1
+        ],
+        "cell": [
+          30,
+          25,
+          28
+        ],
+        "indirectionXYZ": [
+          30,
+          25,
+          28
+        ],
+        "indirectionPacked": 716,
+        "probeIndex": 716,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.1091291680932045,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          537.5,
+          104.166748046875,
+          326.666748046875
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          -112.36517333984375,
+          -64555.234375
+        ],
+        "discriminant": 270846.8125,
+        "farIntersection": 316.3973693847656,
+        "reprojectedDirection": [
+          251.71044921875,
+          -84.77149963378906,
+          -51.940826416015625
+        ],
+        "correctionDenominator": 70422.6875,
+        "correctionFactor": 1.4215205907821655,
+        "probeUV": [
+          0.9070490002632141,
+          0.3565143942832947
+        ],
+        "atlasTile": [
+          76,
+          5
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.6006492972373962,
+            0.0419137105345726
+          ],
+          "texelCoordinate": [
+            2613.525634765625,
+            181.90846252441406
+          ],
+          "taps": [
+            {
+              "xy": [
+                2613,
+                181
+              ],
+              "weight": 0.04342219606041908,
+              "packed": 2569262169,
+              "decodedRadiance": [
+                5.5625,
+                7.625,
+                18.0
+              ]
+            },
+            {
+              "xy": [
+                2614,
+                181
+              ],
+              "weight": 0.04811527952551842,
+              "packed": 2808802692,
+              "decodedRadiance": [
+                136.0,
+                93.0,
+                61.0
+              ]
+            },
+            {
+              "xy": [
+                2613,
+                182
+              ],
+              "weight": 0.4309430420398712,
+              "packed": 2649093290,
+              "decodedRadiance": [
+                13.25,
+                15.75,
+                27.5
+              ]
+            },
+            {
+              "xy": [
+                2614,
+                182
+              ],
+              "weight": 0.4775194823741913,
+              "packed": 2548499715,
+              "decodedRadiance": [
+                33.5,
+                24.0,
+                15.75
+              ]
+            }
+          ],
+          "value": [
+            28.492111206054688,
+            23.053634643554688,
+            23.088497161865234
+          ]
+        },
+        "storedRadiance": [
+          28.492111206054688,
+          23.053634643554688,
+          23.088497161865234
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          648.033935546875,
+          524.3394775390625,
+          525.1323852539062
+        ],
+        "depthAtlasXY": [
+          2461,
+          171
+        ],
+        "depth": {
+          "packed": 58404,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 1060.0
+        }
+      },
+      {
+        "offsetBits": [
+          1,
+          1,
+          0
+        ],
+        "cell": [
+          30,
+          26,
+          27
+        ],
+        "indirectionXYZ": [
+          30,
+          26,
+          27
+        ],
+        "indirectionPacked": 45,
+        "probeIndex": 45,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.17512112855911255,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          537.5,
+          208.333251953125,
+          222.5
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          -15.016703605651855,
+          -66814.9765625
+        ],
+        "discriminant": 267485.34375,
+        "farIntersection": 266.1033630371094,
+        "reprojectedDirection": [
+          205.63446044921875,
+          -169.11456298828125,
+          48.548309326171875
+        ],
+        "correctionDenominator": 69984.3125,
+        "correctionFactor": 1.011812448501587,
+        "probeUV": [
+          0.7544825077056885,
+          0.30154433846473694
+        ],
+        "atlasTile": [
+          45,
+          0
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.3573399484157562,
+            0.0024470172356814146
+          ],
+          "texelCoordinate": [
+            1554.6434326171875,
+            10.149418830871582
+          ],
+          "taps": [
+            {
+              "xy": [
+                1554,
+                10
+              ],
+              "weight": 0.3032895028591156,
+              "packed": 2069957648,
+              "decodedRadiance": [
+                2.5,
+                3.03125,
+                1.40625
+              ]
+            },
+            {
+              "xy": [
+                1555,
+                10
+              ],
+              "weight": 0.5472916960716248,
+              "packed": 2493912207,
+              "decodedRadiance": [
+                9.875,
+                16.5,
+                12.5
+              ]
+            },
+            {
+              "xy": [
+                1554,
+                11
+              ],
+              "weight": 0.0532778799533844,
+              "packed": 2645009657,
+              "decodedRadiance": [
+                30.25,
+                29.0,
+                27.0
+              ]
+            },
+            {
+              "xy": [
+                1555,
+                11
+              ],
+              "weight": 0.09614095091819763,
+              "packed": 2342775944,
+              "decodedRadiance": [
+                9.0,
+                7.8125,
+                5.75
+              ]
+            }
+          ],
+          "value": [
+            8.639653205871582,
+            12.245819091796875,
+            9.258960723876953
+          ]
+        },
+        "storedRadiance": [
+          8.639653205871582,
+          12.245819091796875,
+          9.258960723876953
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          139.86734008789062,
+          198.24755859375,
+          149.893310546875
+        ],
+        "depthAtlasXY": [
+          1464,
+          9
+        ],
+        "depth": {
+          "packed": 57584,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 632.0
+        }
+      },
+      {
+        "offsetBits": [
+          1,
+          1,
+          1
+        ],
+        "cell": [
+          30,
+          26,
+          28
+        ],
+        "indirectionXYZ": [
+          30,
+          26,
+          28
+        ],
+        "indirectionPacked": 720,
+        "probeIndex": 720,
+        "adaptiveCount": 0,
+        "probeOffsetRawHalf4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "trilinearWeight": 0.06785508245229721,
+        "probeOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probeTranslatedWorldPosition": [
+          537.5,
+          208.333251953125,
+          326.666748046875
+        ],
+        "sphereRadius": 270.6329345703125,
+        "quadraticABC": [
+          0.9999998211860657,
+          -30.250446319580078,
+          -62024.7578125
+        ],
+        "discriminant": 249014.078125,
+        "farIntersection": 264.6318359375,
+        "reprojectedDirection": [
+          204.286376953125,
+          -168.5345458984375,
+          -55.726043701171875
+        ],
+        "correctionDenominator": 67524.703125,
+        "correctionFactor": 1.0371021032333374,
+        "probeUV": [
+          0.8043403625488281,
+          0.2498989701271057
+        ],
+        "atlasTile": [
+          80,
+          5
+        ],
+        "radianceSampling": {
+          "dimensions": [
+            4352,
+            4352
+          ],
+          "uv": [
+            0.6311440467834473,
+            0.04112977162003517
+          ],
+          "texelCoordinate": [
+            2746.23876953125,
+            178.49676513671875
+          ],
+          "taps": [
+            {
+              "xy": [
+                2746,
+                178
+              ],
+              "weight": 0.3830777108669281,
+              "packed": 2313462943,
+              "decodedRadiance": [
+                11.875,
+                10.5,
+                4.875
+              ]
+            },
+            {
+              "xy": [
+                2747,
+                178
+              ],
+              "weight": 0.1201571524143219,
+              "packed": 2552689938,
+              "decodedRadiance": [
+                41.0,
+                23.5,
+                16.0
+              ]
+            },
+            {
+              "xy": [
+                2746,
+                179
+              ],
+              "weight": 0.3781527578830719,
+              "packed": 2561105116,
+              "decodedRadiance": [
+                23.0,
+                26.75,
+                17.0
+              ]
+            },
+            {
+              "xy": [
+                2747,
+                179
+              ],
+              "weight": 0.1186123788356781,
+              "packed": 2263024770,
+              "decodedRadiance": [
+                8.25,
+                6.0,
+                3.6875
+              ]
+            }
+          ],
+          "value": [
+            19.15155601501465,
+            17.673269271850586,
+            10.655998229980469
+          ]
+        },
+        "storedRadiance": [
+          19.15155601501465,
+          17.673269271850586,
+          10.655998229980469
+        ],
+        "exposureInverse": 16.0,
+        "radianceBeforeWeight": [
+          317.7939147949219,
+          293.2637634277344,
+          176.8217315673828
+        ],
+        "depthAtlasXY": [
+          2585,
+          167
+        ],
+        "depth": {
+          "packed": 57586,
+          "hit": true,
+          "frontface": true,
+          "twoSided": false,
+          "distance": 633.0
+        }
+      }
+    ],
+    "sumWeights": 1.000000037252903,
+    "cacheRadiance": [
+      457.92095947265625,
+      406.2947998046875,
+      344.264892578125
+    ],
+    "cacheTraceHitDistance": 1039.7930908203125,
+    "cacheTraceHitDistanceWeightedSum": 1039.793212890625,
+    "limitations": [
+      "eight-neighbor screen-probe route only; sky visibility disabled",
+      "CPU float32 expressions can differ from compiled GPU FMA/half behavior",
+      "GPU cache-only shader-local subtotal is not independently captured"
+    ]
+  },
+  "validity": {
+    "allEightIndirectionAllocated": true,
+    "neighborCount": 8,
+    "uniqueProbeIndices": 8,
+    "radianceTapCount": 32,
+    "neighborWeightsSum": 1.000000037252903,
+    "fractionalWeights": [
+      0.6337471008300781,
+      0.3833961486816406,
+      0.279266357421875
+    ],
+    "mipLevel": 0.0,
+    "probeWorldOffsetNonZeroBytes": 0,
+    "probeWorldOffsetNote": "all 16384 half4 offsets are zero in this captured version"
+  },
+  "radianceScale": {
+    "storedTap": "R11G11B10 word decoded to linear float; this is the cache-pre-exposed atlas value (linear radiance * CachedLightingPreExposure)",
+    "parallaxCorrection": "t*t/(radius*dot(reprojectedDirection,omega))",
+    "cachedLightingPreExposureInverse": 16.0,
+    "cachedLightingPreExposure": 0.0625,
+    "cachedLightingPreExposureNote": "inverse of the captured RadianceCacheOneOverCachedLightingPreExposure=16.0; the cache atlas stores radiance*1/16",
+    "neighborRadiance": "storedBilinear * cachedLightingPreExposureInverse * parallaxCorrection",
+    "cacheRadiance": "nested Z/Y/X lerp of the eight neighborRadiance values after the *16 cache-exposure inverse; un-pre-exposed cached-lighting radiance",
+    "viewPreExposure": 0.00048828125,
+    "forwardTraceRadianceModel": "cacheRadiance * View.PreExposure; this is the view-pre-exposed TraceRadiance buffer space, not display-linear",
+    "note": "cacheRadiance is un-pre-exposed cached-lighting radiance: the stored atlas is multiplied by RadianceCacheOneOverCachedLightingPreExposure (16) at LumenRadianceCacheInterpolation.ush:272, cancelling CachedLightingPreExposure. The consumer then multiplies by View.PreExposure at LumenScreenProbeTracing.usf:851 before storing TraceRadiance. Therefore forwardModel = cacheRadiance*View.PreExposure is view-pre-exposed scene-linear, not display-linear."
+  },
+  "comparison": {
+    "capturedHitWord": 1149368672,
+    "capturedHitWordHex": "4481f960",
+    "capturedDistance": 1039.79296875,
+    "replayedCacheDepth": 1039.7930908203125,
+    "depthAbsDiff": 0.0001220703125,
+    "capturedDistanceUnits": "cm",
+    "replayedCacheDepthUnits": "cm",
+    "depthAbsDiffUnits": "cm",
+    "finalRadianceWord": 1658401587,
+    "finalRadiance": [
+      0.224609375,
+      0.19921875,
+      0.16796875
+    ],
+    "forwardModel": [
+      0.22359421849250793,
+      0.19838613271713257,
+      0.1680980920791626
+    ],
+    "absDiff": [
+      0.0010151565074920654,
+      0.0008326172828674316,
+      0.00012934207916259766
+    ],
+    "tolerance": [
+      0.0034936596639454365,
+      0.0030997833237051964,
+      0.005253065377473831
+    ],
+    "forwardConsistent": true,
+    "equalityClaimed": false,
+    "forwardModelSpace": "view-pre-exposed scene-linear (after *View.PreExposure, matching LumenScreenProbeTracing.usf:851); cacheRadiance remains un-pre-exposed",
+    "capturedTraceRadianceSpace": "view-pre-exposed scene-linear R11G11B10 store",
+    "boundary": "cache-subtotal boundary; the preceding GDF/voxel result, skylight leaking, height fog and final R11G11B10 quantization are not asserted equal"
+  },
+  "sourceEvidence": [
+    {
+      "label": "cache probe, parallax, interpolation and apply",
+      "file": "Engine/Shaders/Private/Lumen/LumenRadianceCacheInterpolation.ush",
+      "sha256": "16db4c628da14c6277d3b06c03b01dfb90f60493f9a35ef01315e07be2e39ed6",
+      "lines": [
+        {
+          "line": 245,
+          "text": "FRadianceCacheSample SampleRadianceCacheProbe(uint ProbeIndex, float3 WorldSpaceDirection, float MipLevel)"
+        },
+        {
+          "line": 246,
+          "text": "{"
+        },
+        {
+          "line": 247,
+          "text": "\tFRadianceCacheSample Sample;"
+        },
+        {
+          "line": 248,
+          "text": "\tSample.Radiance = 0.0f;"
+        },
+        {
+          "line": 249,
+          "text": "\tSample.SkyVisibility = 0.0f;"
+        },
+        {
+          "line": 250,
+          "text": "\tSample.TraceHitDistance = 0.0f;"
+        },
+        {
+          "line": 251,
+          "text": ""
+        },
+        {
+          "line": 252,
+          "text": "\tfloat2 ProbeUV = InverseEquiAreaSphericalMapping(WorldSpaceDirection);"
+        },
+        {
+          "line": 253,
+          "text": ""
+        },
+        {
+          "line": 257,
+          "text": "\t\tuint2 ProbeAtlasCoord = RadianceProbeResolution * uint2(ProbeIndex & ProbeAtlasResolutionModuloMask, ProbeIndex >> ProbeAtlasResolutionDivideShift);"
+        },
+        {
+          "line": 263,
+          "text": "\t\tuint2 ProbeAtlasCoord = FinalProbeResolution * uint2(ProbeIndex & ProbeAtlasResolutionModuloMask, ProbeIndex >> ProbeAtlasResolutionDivideShift);"
+        },
+        {
+          "line": 264,
+          "text": "\t\tfloat2 ProbeTexelCoord = ProbeUV * RadianceProbeResolution + (1u << FinalRadianceAtlasMaxMip);"
+        },
+        {
+          "line": 265,
+          "text": "\t\tfloat2 ProbeAtlasUV = (ProbeAtlasCoord + ProbeTexelCoord) * InvProbeFinalRadianceAtlasResolution;"
+        },
+        {
+          "line": 272,
+          "text": "\t\t\tSample.Radiance = RadianceCacheFinalRadianceAtlas.SampleLevel(GlobalTrilinearClampedSampler, ProbeAtlasUV, MipLevel) * RadianceCacheOneOverCachedLightingPreExposure;"
+        },
+        {
+          "line": 284,
+          "text": "\t{"
+        },
+        {
+          "line": 285,
+          "text": "\t\tuint2 ProbeAtlasCoord = RadianceProbeResolution * uint2(ProbeIndex & ProbeAtlasResolutionModuloMask, ProbeIndex >> ProbeAtlasResolutionDivideShift);"
+        },
+        {
+          "line": 286,
+          "text": "\t\tfloat2 ProbeTexelCoord = ProbeUV * RadianceProbeResolution;"
+        },
+        {
+          "line": 287,
+          "text": "\t\tFProbeDepth ProbeDepth = DecodeProbeDepth(RadianceCacheDepthAtlas[ProbeAtlasCoord + ProbeTexelCoord].x);"
+        },
+        {
+          "line": 288,
+          "text": "\t\tSample.TraceHitDistance = ProbeDepth.HitDistance;"
+        },
+        {
+          "line": 289,
+          "text": "\t\tSample.bBackface = !ProbeDepth.bFrontface && !ProbeDepth.bTwoSided;"
+        },
+        {
+          "line": 332,
+          "text": "FRadianceCacheSample SampleRadianceCacheProbeWithParallaxCorrection(uint3 ProbeCoord, uint ProbeClipmapIndex, float3 TranslatedWorldSpacePosition, float3 WorldSpaceDirection, float MipLevel)"
+        },
+        {
+          "line": 334,
+          "text": "\tfloat ProbeTMin = GetRadianceProbeTMin(ProbeClipmapIndex);"
+        },
+        {
+          "line": 335,
+          "text": "\tProbeTMin = ProbeTMin == 0.0f ? 1000.0f : ProbeTMin;\t"
+        },
+        {
+          "line": 337,
+          "text": "\tuint ProbeIndex = GetProbeIndexFromIndirectionTexture(ProbeCoord, ProbeClipmapIndex);"
+        },
+        {
+          "line": 338,
+          "text": "\tfloat3 ProbeTranslatedWorldPosition = GetProbeTranslatedWorldPosition(ProbeCoord, ProbeClipmapIndex, ProbeIndex);"
+        },
+        {
+          "line": 339,
+          "text": ""
+        },
+        {
+          "line": 340,
+          "text": "\tfloat3 ReprojectedDirection = WorldSpaceDirection;"
+        },
+        {
+          "line": 341,
+          "text": "\tfloat CorrectionFactor = 1.0f;"
+        },
+        {
+          "line": 343,
+          "text": "#define SIMPLE_SPHERE_PARALLAX 1"
+        },
+        {
+          "line": 346,
+          "text": "#if SIMPLE_SPHERE_PARALLAX"
+        },
+        {
+          "line": 348,
+          "text": "\tfloat ReprojectionRadius = ReprojectionRadiusScale * ProbeTMin;"
+        },
+        {
+          "line": 349,
+          "text": "\tfloat T = RayIntersectSphere(TranslatedWorldSpacePosition, WorldSpaceDirection, float4(ProbeTranslatedWorldPosition, ReprojectionRadius)).y;"
+        },
+        {
+          "line": 350,
+          "text": "\tfloat3 TranslatedIntersectionPosition = TranslatedWorldSpacePosition + WorldSpaceDirection * T;"
+        },
+        {
+          "line": 351,
+          "text": "\tReprojectedDirection = TranslatedIntersectionPosition - ProbeTranslatedWorldPosition;"
+        },
+        {
+          "line": 352,
+          "text": "\t// Cancel out the attenuation effect when moving towards/away from a probe texel to mitigate the grid like pattern"
+        },
+        {
+          "line": 353,
+          "text": "\t// CorrectionFactor = T^2 / R^2 / dot(normalize(ReprojectedDirection), WorldSpaceDirection)"
+        },
+        {
+          "line": 354,
+          "text": "\tCorrectionFactor = T * T / (ReprojectionRadius * dot(ReprojectedDirection, WorldSpaceDirection));"
+        },
+        {
+          "line": 401,
+          "text": "\tFRadianceCacheSample RadianceCacheSample = SampleRadianceCacheProbe(ProbeIndex, ReprojectedDirection, MipLevel);"
+        },
+        {
+          "line": 402,
+          "text": "\tRadianceCacheSample.Radiance *= CorrectionFactor;"
+        },
+        {
+          "line": 403,
+          "text": "\treturn RadianceCacheSample;"
+        },
+        {
+          "line": 429,
+          "text": "FRadianceCacheSample SampleRadianceCacheInterpolated(FRadianceCacheCoverage Coverage, float3 TranslatedWorldSpacePosition, float3 WorldSpaceDirection, float ConeHalfAngle, float RandomScalarForStochasticInterpolation)"
+        },
+        {
+          "line": 440,
+          "text": "\tfloat3 ProbeCoordFloat = GetRadianceProbeCoordFloat(TranslatedWorldSpacePosition, Coverage.ClipmapIndex);"
+        },
+        {
+          "line": 443,
+          "text": "\tfloat NumTexels = sqrt(1.0f - cos(ConeHalfAngle)) * RadianceProbeResolution;"
+        },
+        {
+          "line": 444,
+          "text": "\tfloat MipLevel = clamp(log2(NumTexels), 0, (float)FinalRadianceAtlasMaxMip);"
+        },
+        {
+          "line": 446,
+          "text": "\tfloat3 CornerProbeCoordFloat = ProbeCoordFloat - 0.5f;"
+        },
+        {
+          "line": 447,
+          "text": "\tint3 CornerProbeCoord = floor(CornerProbeCoordFloat);"
+        },
+        {
+          "line": 448,
+          "text": "\tfloat3 LerpAlphas = frac(CornerProbeCoordFloat);"
+        },
+        {
+          "line": 450,
+          "text": "#if RADIANCE_CACHE_STOCHASTIC_INTERPOLATION"
+        },
+        {
+          "line": 475,
+          "text": "\tFRadianceCacheSample Sample000 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 0, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 476,
+          "text": "\tFRadianceCacheSample Sample001 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 0, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 477,
+          "text": "\tFRadianceCacheSample Sample010 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 1, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 478,
+          "text": "\tFRadianceCacheSample Sample011 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(0, 1, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 479,
+          "text": "\tFRadianceCacheSample Sample100 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 0, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 480,
+          "text": "\tFRadianceCacheSample Sample101 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 0, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 481,
+          "text": "\tFRadianceCacheSample Sample110 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 1, 0), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 482,
+          "text": "\tFRadianceCacheSample Sample111 = SampleRadianceCacheProbeWithParallaxCorrection(CornerProbeCoord + int3(1, 1, 1), Coverage.ClipmapIndex, TranslatedWorldSpacePosition, WorldSpaceDirection, MipLevel);"
+        },
+        {
+          "line": 484,
+          "text": "\tFRadianceCacheSample ZLerp00 = LerpRadianceCacheSample(Sample000, Sample001, LerpAlphas.z);"
+        },
+        {
+          "line": 485,
+          "text": "\tFRadianceCacheSample ZLerp01 = LerpRadianceCacheSample(Sample010, Sample011, LerpAlphas.z);"
+        },
+        {
+          "line": 486,
+          "text": "\tFRadianceCacheSample ZLerp10 = LerpRadianceCacheSample(Sample100, Sample101, LerpAlphas.z);"
+        },
+        {
+          "line": 487,
+          "text": "\tFRadianceCacheSample ZLerp11 = LerpRadianceCacheSample(Sample110, Sample111, LerpAlphas.z);"
+        },
+        {
+          "line": 488,
+          "text": ""
+        },
+        {
+          "line": 489,
+          "text": "\tFRadianceCacheSample YLerp0 = LerpRadianceCacheSample(ZLerp00, ZLerp01, LerpAlphas.y);"
+        },
+        {
+          "line": 490,
+          "text": "\tFRadianceCacheSample YLerp1 = LerpRadianceCacheSample(ZLerp10, ZLerp11, LerpAlphas.y);"
+        },
+        {
+          "line": 491,
+          "text": ""
+        },
+        {
+          "line": 492,
+          "text": "\tFRadianceCacheSample InterpolatedSample = LerpRadianceCacheSample(YLerp0, YLerp1, LerpAlphas.x);"
+        },
+        {
+          "line": 499,
+          "text": "void SampleRadianceCacheAndApply(FRadianceCacheCoverage Coverage, float3 TranslatedWorldSpacePosition, float3 WorldSpaceDirection, float ConeHalfAngle, float RandomScalarForStochasticInterpolation, inout float3 Lighting, inout float Transparency, inout float TraceHitDistance)"
+        },
+        {
+          "line": 501,
+          "text": "\tif (Transparency > 0.0f)"
+        },
+        {
+          "line": 502,
+          "text": "\t{"
+        },
+        {
+          "line": 503,
+          "text": "\t\tFRadianceCacheSample RadianceCacheSample = SampleRadianceCacheInterpolated(Coverage, TranslatedWorldSpacePosition, WorldSpaceDirection, ConeHalfAngle, RandomScalarForStochasticInterpolation);"
+        },
+        {
+          "line": 505,
+          "text": "\t\tif (ShowBlackRadianceCacheLighting == 0)"
+        },
+        {
+          "line": 507,
+          "text": "\t\t\tLighting += RadianceCacheSample.Radiance * Transparency;"
+        },
+        {
+          "line": 510,
+          "text": "\t\tTraceHitDistance = RadianceCacheSample.TraceHitDistance;"
+        },
+        {
+          "line": 511,
+          "text": "\t\tTransparency = 0.0f;"
+        }
+      ]
+    },
+    {
+      "label": "trace dispatch guard and cache call",
+      "file": "Engine/Shaders/Private/Lumen/LumenScreenProbeTracing.usf",
+      "sha256": "397de6574bd4a8d38413834953ea4b175fe24e25b1b4ca9414e826378497b49f",
+      "lines": [
+        {
+          "line": 685,
+          "text": "#if THREADGROUP_SIZE_32"
+        },
+        {
+          "line": 686,
+          "text": "\t#define PROBE_TRACE_THREADGROUP_SIZE_1D 32"
+        },
+        {
+          "line": 687,
+          "text": "#else"
+        },
+        {
+          "line": 688,
+          "text": "\t#define PROBE_TRACE_THREADGROUP_SIZE_1D 64"
+        },
+        {
+          "line": 693,
+          "text": "[numthreads(PROBE_TRACE_THREADGROUP_SIZE_1D, 1, 1)]"
+        },
+        {
+          "line": 699,
+          "text": "\tif (DispatchThreadId.x < CompactedTraceTexelAllocator[0])"
+        },
+        {
+          "line": 700,
+          "text": "\t{"
+        },
+        {
+          "line": 701,
+          "text": "\t\tuint ScreenProbeIndex;"
+        },
+        {
+          "line": 702,
+          "text": "\t\tuint2 TraceTexelCoord;"
+        },
+        {
+          "line": 703,
+          "text": "\t\tReadTraceTexel(DispatchThreadId.x, ScreenProbeIndex, TraceTexelCoord);"
+        },
+        {
+          "line": 704,
+          "text": ""
+        },
+        {
+          "line": 719,
+          "text": "\tuint2 ScreenProbeScreenPosition = GetScreenProbeScreenPosition(ScreenProbeIndex);"
+        },
+        {
+          "line": 720,
+          "text": "\tuint2 ScreenTileCoord = GetScreenTileCoord(ScreenProbeScreenPosition);"
+        },
+        {
+          "line": 727,
+          "text": "\t{"
+        },
+        {
+          "line": 828,
+          "text": "\t\t\t\tfloat TransparencyBeforeRadianceCache = TraceResult.Transparency;"
+        },
+        {
+          "line": 829,
+          "text": "\t\t\t\t// Extra AO, Skylight Leaking and fogging need hit distances further than what screen probes trace"
+        },
+        {
+          "line": 830,
+          "text": "\t\t\t\tfloat RadianceCacheHitDistance = TraceHitDistance;"
+        },
+        {
+          "line": 831,
+          "text": "\t\t\t\tSampleRadianceCacheAndApply(Coverage, TranslatedWorldPosition, RayWorldDirection, ConeHalfAngle, /*RandomScalarForStochasticIterpolation*/ 0.5f, TraceResult.Lighting, TraceResult.Transparency, RadianceCacheHitDistance);"
+        },
+        {
+          "line": 832,
+          "text": ""
+        },
+        {
+          "line": 833,
+          "text": "\t\t\t\tif (TransparencyBeforeRadianceCache > 0.0f)"
+        },
+        {
+          "line": 849,
+          "text": "\t\t\tTraceResult.Lighting += GetSkylightLeaking(RayWorldDirection, TraceHitDistance);"
+        },
+        {
+          "line": 851,
+          "text": "\t\t\tTraceResult.Lighting *= View.PreExposure;"
+        },
+        {
+          "line": 859,
+          "text": "\t\t\t\tRWTraceRadiance[TraceBufferCoord] = float3(0, 0, .5f) * View.PreExposure;"
+        },
+        {
+          "line": 860,
+          "text": "\t\t\t#else"
+        },
+        {
+          "line": 861,
+          "text": "\t\t\t\tRWTraceRadiance[TraceBufferCoord] = QuantizeForFloatRenderTarget(TraceResult.Lighting, int3(TraceBufferCoord, View.StateFrameIndexMod8));"
+        },
+        {
+          "line": 862,
+          "text": "\t\t\t#endif"
+        },
+        {
+          "line": 870,
+          "text": "\t\tWriteTraceHit(TraceBufferCoord, TraceHitDistanceForSpatialFiltering, bHit, false, /*bReachedRadianceCache*/ false);"
+        },
+        {
+          "line": 874,
+          "text": "[numthreads(PROBE_TRACE_THREADGROUP_SIZE_1D, 1, 1)]"
+        },
+        {
+          "line": 875,
+          "text": "void ScreenProbeTraceVoxelsCS("
+        },
+        {
+          "line": 876,
+          "text": "\tuint3 GroupId : SV_GroupID,"
+        },
+        {
+          "line": 877,
+          "text": "\tuint3 DispatchThreadId : SV_DispatchThreadID,"
+        },
+        {
+          "line": 878,
+          "text": "\tuint3 GroupThreadId : SV_GroupThreadID)"
+        },
+        {
+          "line": 879,
+          "text": "{"
+        },
+        {
+          "line": 880,
+          "text": "\tif (DispatchThreadId.x < CompactedTraceTexelAllocator[0])"
+        }
+      ]
+    },
+    {
+      "label": "equi-area mapping",
+      "file": "Engine/Shaders/Private/MonteCarlo.ush",
+      "sha256": "a4bfdbb5a1c1bfeef0e3b009850fceda902829fbb215dfc8cd82beeb65b51436",
+      "lines": [
+        {
+          "line": 159,
+          "text": "float3 EquiAreaSphericalMapping(float2 UV)"
+        },
+        {
+          "line": 160,
+          "text": "{"
+        },
+        {
+          "line": 161,
+          "text": "\tUV = 2 * UV - 1;"
+        },
+        {
+          "line": 162,
+          "text": "\tfloat D = 1 - (abs(UV.x) + abs(UV.y));"
+        },
+        {
+          "line": 163,
+          "text": "\tfloat R = 1 - abs(D);"
+        },
+        {
+          "line": 164,
+          "text": "\t// Branch to avoid dividing by 0."
+        },
+        {
+          "line": 165,
+          "text": "\t// Only happens with (0.5, 0.5), usually occurs in odd number resolutions which use the very central texel"
+        },
+        {
+          "line": 166,
+          "text": "\tfloat Phi = R == 0 ? 0 : (PI / 4) * ((abs(UV.y) - abs(UV.x)) / R + 1);"
+        },
+        {
+          "line": 167,
+          "text": "\tfloat F = R * sqrt(2 - R * R);"
+        },
+        {
+          "line": 168,
+          "text": "\treturn float3("
+        },
+        {
+          "line": 169,
+          "text": "\t\tF * sign(UV.x) * abs(cos(Phi)),"
+        },
+        {
+          "line": 170,
+          "text": "\t\tF * sign(UV.y) * abs(sin(Phi)),"
+        },
+        {
+          "line": 171,
+          "text": "\t\tsign(D) * (1 - R * R)"
+        },
+        {
+          "line": 172,
+          "text": "\t);"
+        },
+        {
+          "line": 173,
+          "text": "}"
+        },
+        {
+          "line": 174,
+          "text": ""
+        },
+        {
+          "line": 175,
+          "text": "// Based on: [Clarberg 2008, \"Fast Equal-Area Mapping of the (Hemi)Sphere using SIMD\"]"
+        },
+        {
+          "line": 176,
+          "text": "// Removed branch before division by using a small epsilon"
+        },
+        {
+          "line": 177,
+          "text": "// https://fileadmin.cs.lth.se/graphics/research/papers/2008/simdmapping/clarberg_simdmapping08_preprint.pdf"
+        },
+        {
+          "line": 178,
+          "text": "float2 InverseEquiAreaSphericalMapping(float3 Direction)"
+        },
+        {
+          "line": 179,
+          "text": "{"
+        },
+        {
+          "line": 180,
+          "text": "\t// Most use cases of this func generate Direction by diffing two positions and thus unnormalized"
+        },
+        {
+          "line": 181,
+          "text": "\tDirection = normalize(Direction);"
+        },
+        {
+          "line": 182,
+          "text": "\t"
+        },
+        {
+          "line": 183,
+          "text": "\tfloat3 AbsDir = abs(Direction);"
+        },
+        {
+          "line": 184,
+          "text": "\tfloat R = sqrt(1 - AbsDir.z);"
+        },
+        {
+          "line": 185,
+          "text": "\tfloat Epsilon = 5.42101086243e-20; // 2^-64 (this avoids 0/0 without changing the rest of the mapping)"
+        },
+        {
+          "line": 186,
+          "text": "\tfloat x = min(AbsDir.x, AbsDir.y) / (max(AbsDir.x, AbsDir.y) + Epsilon);"
+        },
+        {
+          "line": 187,
+          "text": ""
+        },
+        {
+          "line": 188,
+          "text": "\t// Coefficients for 6th degree minimax approximation of atan(x)*2/pi, x=[0,1]."
+        },
+        {
+          "line": 189,
+          "text": "\tconst float t1 = 0.406758566246788489601959989e-5f;"
+        },
+        {
+          "line": 190,
+          "text": "\tconst float t2 = 0.636226545274016134946890922156f;"
+        },
+        {
+          "line": 191,
+          "text": "\tconst float t3 = 0.61572017898280213493197203466e-2f;"
+        },
+        {
+          "line": 192,
+          "text": "\tconst float t4 = -0.247333733281268944196501420480f;"
+        },
+        {
+          "line": 193,
+          "text": "\tconst float t5 = 0.881770664775316294736387951347e-1f;"
+        },
+        {
+          "line": 194,
+          "text": "\tconst float t6 = 0.419038818029165735901852432784e-1f;"
+        },
+        {
+          "line": 195,
+          "text": "\tconst float t7 = -0.251390972343483509333252996350e-1f;"
+        },
+        {
+          "line": 196,
+          "text": ""
+        },
+        {
+          "line": 197,
+          "text": "\t// Polynomial approximation of atan(x)*2/pi"
+        },
+        {
+          "line": 198,
+          "text": "\tfloat Phi = t6 + t7 * x;"
+        },
+        {
+          "line": 199,
+          "text": "\tPhi = t5 + Phi * x;"
+        },
+        {
+          "line": 200,
+          "text": "\tPhi = t4 + Phi * x;"
+        },
+        {
+          "line": 201,
+          "text": "\tPhi = t3 + Phi * x;"
+        },
+        {
+          "line": 202,
+          "text": "\tPhi = t2 + Phi * x;"
+        },
+        {
+          "line": 203,
+          "text": "\tPhi = t1 + Phi * x;"
+        },
+        {
+          "line": 204,
+          "text": ""
+        },
+        {
+          "line": 205,
+          "text": "\tPhi = (AbsDir.x < AbsDir.y) ? 1 - Phi : Phi;"
+        },
+        {
+          "line": 206,
+          "text": "\tfloat2 UV = float2(R - Phi * R, Phi * R);"
+        }
+      ]
+    },
+    {
+      "label": "RayIntersectSphere far root",
+      "file": "Engine/Shaders/Private/Common.ush",
+      "sha256": "d6d43d5200e269bc38136cf644054e5c0ae372a61dce21d3a97ef6e9450ec8e5",
+      "lines": [
+        {
+          "line": 1962,
+          "text": "float2 RayIntersectSphere(float3 RayOrigin, float3 RayDirection, float4 Sphere)"
+        },
+        {
+          "line": 1963,
+          "text": "{"
+        },
+        {
+          "line": 1964,
+          "text": "\tfloat3 LocalPosition = RayOrigin - Sphere.xyz;"
+        },
+        {
+          "line": 1965,
+          "text": "\tfloat LocalPositionSqr = dot(LocalPosition, LocalPosition);"
+        },
+        {
+          "line": 1966,
+          "text": ""
+        },
+        {
+          "line": 1967,
+          "text": "\tfloat3 QuadraticCoef;"
+        },
+        {
+          "line": 1968,
+          "text": "\tQuadraticCoef.x = dot(RayDirection, RayDirection);"
+        },
+        {
+          "line": 1969,
+          "text": "\tQuadraticCoef.y = 2 * dot(RayDirection, LocalPosition);"
+        },
+        {
+          "line": 1970,
+          "text": "\tQuadraticCoef.z = LocalPositionSqr - Sphere.w * Sphere.w;"
+        },
+        {
+          "line": 1971,
+          "text": ""
+        },
+        {
+          "line": 1972,
+          "text": "\tfloat Discriminant = QuadraticCoef.y * QuadraticCoef.y - 4 * QuadraticCoef.x * QuadraticCoef.z;"
+        },
+        {
+          "line": 1973,
+          "text": ""
+        },
+        {
+          "line": 1974,
+          "text": "\tfloat2 Intersections = -1;"
+        },
+        {
+          "line": 1975,
+          "text": ""
+        },
+        {
+          "line": 1976,
+          "text": "\t// Only continue if the ray intersects the sphere"
+        },
+        {
+          "line": 1977,
+          "text": "\tFLATTEN"
+        },
+        {
+          "line": 1978,
+          "text": "\tif (Discriminant >= 0)"
+        },
+        {
+          "line": 1979,
+          "text": "\t{"
+        },
+        {
+          "line": 1980,
+          "text": "\t\tfloat SqrtDiscriminant = sqrt(Discriminant);"
+        }
+      ]
+    },
+    {
+      "label": "GetBlueNoiseVec2",
+      "file": "Engine/Shaders/Private/BlueNoiseCommon.ush",
+      "sha256": "2c517aebf448403954199a5092edad45df6372fef38a51a22e5ac8a4d5b19baf",
+      "lines": [
+        {
+          "line": 11,
+          "text": ""
+        },
+        {
+          "line": 12,
+          "text": "float2 GetBlueNoiseVec2(Texture2D<float2> InTexture, int3 InDimensions, int3 InModuloMasks, uint2 InScreenCoord, uint InFrameIndex)"
+        },
+        {
+          "line": 13,
+          "text": "{"
+        },
+        {
+          "line": 14,
+          "text": "\tuint3 WrappedCoordinate = uint3(InScreenCoord, InFrameIndex) & InModuloMasks;"
+        },
+        {
+          "line": 15,
+          "text": "\tuint3 TextureCoordinate = uint3(WrappedCoordinate.x, WrappedCoordinate.z * BlueNoise.Dimensions.y + WrappedCoordinate.y, 0);"
+        },
+        {
+          "line": 16,
+          "text": "\treturn InTexture.Load(TextureCoordinate, 0).xy;"
+        },
+        {
+          "line": 17,
+          "text": "}"
+        },
+        {
+          "line": 18,
+          "text": ""
+        },
+        {
+          "line": 19,
+          "text": "float GetBlueNoiseDitheredCoverage(Texture2D<float> InTexture, int3 InDimensions, int3 InModuloMasks, uint2 InScreenCoord, uint InFrameIndex, float InCoverage)"
+        }
+      ]
+    },
+    {
+      "label": "screen position, tile and compacted texel encoding",
+      "file": "Engine/Shaders/Private/Lumen/LumenScreenProbeCommon.ush",
+      "sha256": "7da63b360f9c5e9c540d21a5e32a1374324cfcba4c171694e2779aec50a0a84e",
+      "lines": [
+        {
+          "line": 122,
+          "text": "uint2 GetScreenProbeScreenPosition(uint ScreenProbeIndex)"
+        },
+        {
+          "line": 123,
+          "text": "{"
+        },
+        {
+          "line": 124,
+          "text": "\tuint2 ScreenProbeAtlasCoord = uint2(ScreenProbeIndex % ScreenProbeViewSize.x, ScreenProbeIndex / ScreenProbeViewSize.x);"
+        },
+        {
+          "line": 125,
+          "text": "\tuint2 ScreenProbeScreenPosition = ScreenProbeAtlasCoord * ScreenProbeDownsampleFactor + GetScreenTileJitter(SCREEN_TEMPORAL_INDEX) + View.ViewRectMinAndSize.xy;"
+        },
+        {
+          "line": 135,
+          "text": "uint2 GetScreenTileCoord(uint2 ScreenProbeScreenPosition)"
+        },
+        {
+          "line": 136,
+          "text": "{"
+        },
+        {
+          "line": 137,
+          "text": "\treturn (ScreenProbeScreenPosition - GetScreenTileJitter(SCREEN_TEMPORAL_INDEX) - View.ViewRectMinAndSize.xy) / ScreenProbeDownsampleFactor;"
+        },
+        {
+          "line": 138,
+          "text": "}"
+        },
+        {
+          "line": 202,
+          "text": "uint EncodeScreenProbeTraceTexel(uint ScreenProbeIndex, uint2 TraceTexelCoord)"
+        },
+        {
+          "line": 203,
+          "text": "{"
+        },
+        {
+          "line": 204,
+          "text": "\treturn (ScreenProbeIndex & 0xFFFFF) | ((TraceTexelCoord.x & 0x1F) << 20) | ((TraceTexelCoord.y & 0x1F) << 25);"
+        },
+        {
+          "line": 207,
+          "text": "void DecodeScreenProbeTraceTexel(uint TraceTexelData, out uint ScreenProbeIndex, out uint2 TraceTexelCoord)"
+        },
+        {
+          "line": 208,
+          "text": "{"
+        },
+        {
+          "line": 209,
+          "text": "\tScreenProbeIndex = TraceTexelData & 0xFFFFF;"
+        },
+        {
+          "line": 210,
+          "text": "\tTraceTexelCoord.x = (TraceTexelData >> 20) & 0x1F;"
+        },
+        {
+          "line": 211,
+          "text": "\tTraceTexelCoord.y = (TraceTexelData >> 25) & 0x1F;"
+        }
+      ]
+    }
+  ],
+  "coverageGaps": [
+    "The exact compiled shader permutation is not recorded by DumpGPU; structured importance sampling is evidenced by captured CVars, the non-null ray-info binding and a valid packed RayInfo, not by a permutation bit.",
+    "NumGlobalSDFClipmaps is 0 in the captured view; the cache call is replayed, not the preceding voxel trace.",
+    "The GPU cache-only shader-local subtotal is not independently captured; the depth output is compared with the captured TraceHit word.",
+    "The selected query is reconstructed from captured compacted-trace state by a declared rule, not read from a per-thread shader register."
+  ],
+  "previews": {
+    "neighborhood": "figures/world-cache-neighborhood.png",
+    "taps": "figures/world-cache-taps.png",
+    "probeGrid": "figures/world-cache-probe-grid.png",
+    "metrics": "figures/world-cache-preview-metrics.json"
+  }
+}

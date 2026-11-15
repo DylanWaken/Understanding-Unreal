@@ -6,6 +6,8 @@ The lossless frame is in `sponza-20261115-083654/`. [Open it in the frame explor
 
 ## What is preserved
 
+The separate [temporal native archive](temporal-native/README.md) contains thirteen accepted selected-resource observations for scene-anchored cards, screen probes, SH, surface radiosity and world-cache placement over time. It preserves all 23,923 files from those state directories, totaling 27,141,983,250 native bytes. It is a separate package and timeline from the full static frame below.
+
 - 12,458 source files: 11,446 versioned resource/structure payloads and 1,012 native metadata files.
 - 95,161,036,158 payload bytes, stored losslessly through SHA-256 chunk deduplication and gzip. The complete package occupies 657,904,432 bytes in 6,852 files.
 - 886 passes, 1,529 normalized resources, 6,675 subresource layouts, 803 native parameter-binding records, 521 native uniform records with 35,648 bindings, and 9,262 console variables.

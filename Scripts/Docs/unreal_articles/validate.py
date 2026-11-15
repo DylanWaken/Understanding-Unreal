@@ -1,13 +1,22 @@
 """Validate the four articles, local links, original SVGs, and optional source hashes."""
 from pathlib import Path
 from html.parser import HTMLParser
-from urllib.parse import urlsplit, unquote
+from urllib.parse import urlsplit, unquote, parse_qs
 import argparse
 import hashlib
 import json
 import re
+import sys
 import xml.etree.ElementTree as ET
-from build import ROOT, OUT, HERE, ARTICLES, Headings, article_source
+from build import ROOT, OUT, HERE, ARTICLES, REFERENCES, Headings, article_source
+
+# Share the frame package's raw/gzip metadata resolver instead of assuming a
+# raw inventory.json.  index.json stays the raw bootstrap; every other
+# generated document may be stored as <logical>.json.gz.
+FRAME_TOOLS = HERE / 'labs' / 'lumen-frame' / 'tools'
+if str(FRAME_TOOLS) not in sys.path:
+    sys.path.insert(0, str(FRAME_TOOLS))
+from package_metadata import MetadataError, read_package_json, resolve_metadata_path
 
 
 class Page(HTMLParser):
@@ -40,25 +49,37 @@ def main():
     ap.add_argument('--article', choices=[a['key'] for a in ARTICLES])
     args = ap.parse_args()
     parsed, errors = {}, []
-    explorer_routes = None
+    explorer_routes = {}
 
     def parse(path):
         if path not in parsed:
             p = Page(); p.feed(path.read_text(encoding='utf-8-sig')); parsed[path] = p
         return parsed[path]
 
-    def has_fragment(target, fragment):
-        nonlocal explorer_routes
+    def has_fragment(target, fragment, query=''):
         if target == (OUT / 'frame-explorer.html').resolve() and fragment.startswith(('resource/', 'pass/')):
-            if explorer_routes is None:
-                inventory = json.loads((OUT / 'assets/lumen-frame/inventory.json').read_text(encoding='utf-8'))
-                explorer_routes = {kind + '/' + record['id']
-                                   for kind, key in [('resource', 'resources'), ('pass', 'passes')]
-                                   for record in inventory[key]}
-            return fragment in explorer_routes
+            package = parse_qs(query).get('package', ['assets/lumen-frame/'])[0]
+            parts = urlsplit(package)
+            if parts.scheme or parts.netloc:
+                return True  # External datasets are not available to the offline validator.
+            folder = (OUT / unquote(parts.path)).resolve()
+            if not folder.is_relative_to(OUT.resolve()):
+                return False
+            try:
+                inventory_path = resolve_metadata_path(folder, 'inventory.json', require=False)
+                if inventory_path is None:
+                    return False
+                if folder not in explorer_routes:
+                    inventory = read_package_json(folder, 'inventory.json')
+                    explorer_routes[folder] = {kind + '/' + record['id']
+                                       for kind, key in [('resource', 'resources'), ('pass', 'passes')]
+                                       for record in inventory[key]}
+            except MetadataError:
+                return False
+            return fragment in explorer_routes[folder]
         return fragment in parse(target).ids
 
-    for article in ARTICLES:
+    for article in ARTICLES + REFERENCES:
         if args.article and article['key'] != args.article: continue
         path = OUT / (article['slug'] + '.html')
         text = path.read_text(encoding='utf-8')
@@ -69,6 +90,7 @@ def main():
         for before, after in zip(p.headings, p.headings[1:]):
             if after > before + 1: errors.append(f'{path}: heading level jumps {before} to {after}')
         if re.search(r'\[\[|\bTODO\b|\bTBD\b', text): errors.append(f'{path}: unresolved authoring marker')
+        if re.search(r'<!--\s*SPONZA_', text): errors.append(f'{path}: unresolved Sponza evidence placement')
         if re.search(r'class="[^"]*(?:api-entry|card-grid|checkpoint|learning-objectives)', text):
             errors.append(f'{path}: directory-oriented presentation in article')
         for image in p.images:
@@ -82,7 +104,7 @@ def main():
             if parts.path.startswith('/'): errors.append(f'{path}: root-relative URL {url}'); continue
             target = (path.parent / unquote(parts.path)).resolve() if parts.path else path
             if not target.exists(): errors.append(f'{path}: missing link {url}'); continue
-            if parts.fragment and target.suffix == '.html' and not has_fragment(target, unquote(parts.fragment)):
+            if parts.fragment and target.suffix == '.html' and not has_fragment(target, unquote(parts.fragment), parts.query):
                 errors.append(f'{path}: missing fragment {url}')
         source = article_source(article)
         headings = Headings(); headings.feed(source)
@@ -100,7 +122,7 @@ def main():
     for path in (HERE / 'evidence').glob('*.json'):
         related = {'scene': {'scene', 'compatibility', 'unreal-lab'},
                    'nanite': {'nanite', 'nanite-lumen', 'nanite-lab', 'unreal-lab'},
-                   'lumen': {'lumen', 'nanite-lumen', 'lumen-lab', 'unreal-lab'},
+                   'lumen': {'lumen', 'lumen-course', 'nanite-lumen', 'lumen-lab', 'unreal-lab'},
                    'material': {'material'}}
         if args.article and path.stem not in related[args.article]: continue
         records = json.loads(path.read_text(encoding='utf-8'))

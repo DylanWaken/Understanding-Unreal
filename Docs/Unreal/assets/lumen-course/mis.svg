@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc"><title id="title">Two routes to one light connection</title><desc id="desc">Light and BSDF sampling can generate the same segment; complementary MIS weights avoid counting it twice.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="620" rx="12" fill="#101b2d"/>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<path d="M120 410L1080 410" stroke="#65baff" stroke-width="4" fill="none"/>
+<path d="M720 145L850 145" stroke="#ffd36f" stroke-width="8" fill="none"/>
+<circle cx="420" cy="410" r="9" stroke="#6ce1b5" stroke-width="2" fill="#6ce1b5"/>
+<path d="M420 410L770 150" stroke="#65baff" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+<path d="M800 160L450 400" stroke="#ffd36f" stroke-width="3" fill="none" marker-end="url(#arrow)" stroke-dasharray="8 7"/>
+<rect x="805" y="265" width="335" height="130" rx="5" stroke="#6ce1b5" stroke-width="2" fill="#18283e"/>
+<text x="40" y="49" font-size="28" fill="#eef4ff" text-anchor="start">Two routes to one light connection</text>
+<text x="40" y="588" font-size="16" fill="#a7b9d3" text-anchor="start">SCHEMATIC · geometry and colors explain a model; this is not an Unreal buffer</text>
+<text x="125" y="145" font-size="23" fill="#65baff" text-anchor="start">BSDF chooses a direction</text>
+<text x="730" y="100" font-size="23" fill="#ffd36f" text-anchor="start">light chooses a point</text>
+<text x="100" y="500" font-size="25" fill="#eef4ff" text-anchor="start">Both can estimate the same direct path.</text>
+<text x="821" y="299" font-size="23" fill="#6ce1b5" text-anchor="start">Use the same measure</text>
+<text x="821" y="333" font-size="19" fill="#a7b9d3" text-anchor="start">compare both PDFs per sr</text>
+<text x="821" y="362" font-size="19" fill="#a7b9d3" text-anchor="start">w_light + w_BSDF = 1</text>
+</g></svg>

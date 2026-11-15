@@ -1,0 +1,4268 @@
+{
+  "atlas_xy": [
+    31,
+    42
+  ],
+  "probe_index_uniform": 3391,
+  "screen_xy_from_projection": [
+    498.50001664389754,
+    680.5000454195194
+  ],
+  "screen_tile_xy": [
+    31,
+    42
+  ],
+  "translated_world_cm": [
+    830.2819213867188,
+    -122.0387191772461,
+    -92.00521087646484
+  ],
+  "world_cm": [
+    -19.71807861328125,
+    -122.0387191772461,
+    -2.0052108764648438
+  ],
+  "world_m": [
+    -0.1971807861328125,
+    -1.220387191772461,
+    -0.020052108764648437
+  ],
+  "probe_scene_depth_cm": 788.30517578125,
+  "probe_scene_depth_m": 7.8830517578125,
+  "probe_normal_world": [
+    0.012532789155969727,
+    0.05430875300920239,
+    0.9984455360922585
+  ],
+  "sample_uv": [
+    0.38945313800304493,
+    0.9451389519715548
+  ],
+  "blue_noise": {
+    "texture_xy": [
+      31,
+      170
+    ],
+    "raw_bgra": [
+      0,
+      247,
+      248,
+      255
+    ],
+    "shader_rg": [
+      0.9725490196078431,
+      0.9686274509803922
+    ]
+  },
+  "rayinfo_consistent": true,
+  "ray_count": 64,
+  "hit_count": 27,
+  "projected_hit_count": 27,
+  "depth_consistent_hit_count": 21,
+  "depth_check": "hit point = probe + direction*hit_distance; predicted view depth = probe_depth + dot(dir,forward)*distance; compared with SceneDepthZ at the projected pixel (<5% passes)",
+  "sh_rgb_9coeff": [
+    [
+      0.232421875,
+      0.01776123046875,
+      0.10076904296875,
+      -0.06915283203125,
+      -0.0016536712646484375,
+      -0.0018939971923828125,
+      0.01605224609375,
+      0.094970703125,
+      0.08544921875
+    ],
+    [
+      0.24609375,
+      0.001804351806640625,
+      0.15966796875,
+      -0.0404052734375,
+      0.0177764892578125,
+      -0.01264190673828125,
+      0.07867431640625,
+      0.09002685546875,
+      0.0810546875
+    ],
+    [
+      0.296875,
+      -0.0254364013671875,
+      0.2724609375,
+      -0.0115203857421875,
+      0.026214599609375,
+      -0.04290771484375,
+      0.204833984375,
+      0.09368896484375,
+      0.087890625
+    ]
+  ],
+  "sh_coefficient_semantics": "stored SH3 sphere-average radiance coefficients",
+  "sh_replay_raw_evaluate_sh_irradiance": [
+    0.3157184731053253,
+    0.4199814361120942,
+    0.6449494076050307
+  ],
+  "physical_irradiance_4pi": [
+    3.9674353428411067,
+    5.277642377335384,
+    8.104673283476215
+  ],
+  "unit_albedo_lambert_response": [
+    1.2628738924213012,
+    1.6799257444483768,
+    2.579797630420123
+  ],
+  "sh_unit_note": "raw EvaluateSHIrradiance output is not physical irradiance; physical irradiance = 4*pi*raw, and the single-probe unit-albedo Lambert response = 4*raw; captured per-pixel DiffuseIndirect additionally includes spatial integration and active occlusion rules",
+  "captured_diffuse_indirect_at_probe_px": [
+    1.203125,
+    1.5625,
+    2.375
+  ],
+  "diffuse_pixel_xy": [
+    498,
+    680
+  ],
+  "diffuse_vs_sh_relative_error": [
+    0.04966141707744517,
+    0.07515247644696117,
+    0.08623058122952543
+  ],
+  "sh_replay_tile_check": {
+    "sample_count": 768,
+    "median": 0.021949414881438464,
+    "mean": 0.0275787771143258,
+    "p90": 0.055325851967276275,
+    "max": 0.2099422871375645
+  },
+  "sh_replay_tile_check_note": "the 16x16 tile is a valid single-probe approximation on the planar A/B floor (median ~2% for 4*raw vs captured DiffuseIndirect); at C it spans a curved metal sphere plus background, so only the centre-pixel comparison is used",
+  "ray_layout": {
+    "structured_trace_slot": "8x8 per-probe RayInfo/TraceRadiance/TraceHit layout; [i,j] is a structured trace slot",
+    "regular_reconstructed_field": "ScreenProbeRadiance is the regular reconstructed angular field; [i,j] is not the filtered value of the structured ray at the same integer slot",
+    "same_integer_slot_is_same_ray": false,
+    "figure_rule": "screenprobe_rays_A uses radiance_trace_native for line colour; filtered radiance is shown only in its own labelled regular-field panel"
+  },
+  "rays": [
+    {
+      "trace_texel_xy": [
+        0,
+        0
+      ],
+      "trace_buffer_xy": [
+        248,
+        336
+      ],
+      "packed_rayinfo": 519,
+      "rayinfo_hex": "0x0207",
+      "cell_xy": [
+        7,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        -0.007590621810676732,
+        0.17523536049841382,
+        0.9844973087274125
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        9.875,
+        12.625,
+        19.5
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x475470c4",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        0
+      ],
+      "trace_buffer_xy": [
+        249,
+        336
+      ],
+      "packed_rayinfo": 582,
+      "rayinfo_hex": "0x0246",
+      "cell_xy": [
+        6,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        -0.2620034822575865,
+        0.43840297591602195,
+        0.8597424067666282
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.158203125,
+        0.19140625,
+        0.25
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x4415e4a0",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        0
+      ],
+      "trace_buffer_xy": [
+        250,
+        336
+      ],
+      "packed_rayinfo": 583,
+      "rayinfo_hex": "0x0247",
+      "cell_xy": [
+        7,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        -0.007502435452975893,
+        0.3472438555702526,
+        0.9377448577470204
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        1.765625,
+        2.34375,
+        3.5625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x44d80438",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        0
+      ],
+      "trace_buffer_xy": [
+        251,
+        336
+      ],
+      "packed_rayinfo": 521,
+      "rayinfo_hex": "0x0209",
+      "cell_xy": [
+        9,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6232843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        0.43636112367518526,
+        0.24829072735670016,
+        0.8648356401384083
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        4.0625,
+        6.75,
+        12.25
+      ],
+      "radiance_filtered_native": [
+        1.78125,
+        1.765625,
+        1.5
+      ],
+      "hit_word_hex": "0x472de1ac",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 21.0,
+      "decoded_hitdistance8_cm": 445.99365446966186,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        0
+      ],
+      "trace_buffer_xy": [
+        252,
+        336
+      ],
+      "packed_rayinfo": 584,
+      "rayinfo_hex": "0x0248",
+      "cell_xy": [
+        8,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.5607843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        0.24920409472655336,
+        0.4358401481253288,
+        0.8648356401384083
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.181640625,
+        0.21875,
+        0.265625
+      ],
+      "radiance_filtered_native": [
+        0.026611328125,
+        0.04248046875,
+        0.0126953125
+      ],
+      "hit_word_hex": "0x4424e5a8",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 11.0,
+      "decoded_hitdistance8_cm": 122.36728423652924,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        0
+      ],
+      "trace_buffer_xy": [
+        253,
+        336
+      ],
+      "packed_rayinfo": 585,
+      "rayinfo_hex": "0x0249",
+      "cell_xy": [
+        9,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6232843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        0.46214987941829516,
+        0.4614281116515192,
+        0.7572988754325259
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.0859375,
+        0.0908203125,
+        0.103515625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x443f7c6c",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        0
+      ],
+      "trace_buffer_xy": [
+        254,
+        336
+      ],
+      "packed_rayinfo": 391,
+      "rayinfo_hex": "0x0187",
+      "cell_xy": [
+        7,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        -0.0075870404885281205,
+        -0.18619931003387713,
+        0.9824826989619377
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        2.28125,
+        2.9375,
+        4.375
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x4634adec",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        0
+      ],
+      "trace_buffer_xy": [
+        255,
+        336
+      ],
+      "packed_rayinfo": 454,
+      "rayinfo_hex": "0x01c6",
+      "cell_xy": [
+        6,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        -0.18615201959312377,
+        -0.008670169656224894,
+        0.9824826989619377
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        8.75,
+        12.0,
+        19.0
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x477f0aa4",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        0,
+        1
+      ],
+      "trace_buffer_xy": [
+        248,
+        337
+      ],
+      "packed_rayinfo": 455,
+      "rayinfo_hex": "0x01c7",
+      "cell_xy": [
+        7,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        -0.006957946969916222,
+        -0.007727582982306817,
+        0.9999459342560554
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        7.5625,
+        10.75,
+        17.5
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x4753eb84",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        1
+      ],
+      "trace_buffer_xy": [
+        249,
+        337
+      ],
+      "packed_rayinfo": 393,
+      "rayinfo_hex": "0x0189",
+      "cell_xy": [
+        9,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6232843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        0.4392944479848448,
+        -0.2629204601930992,
+        0.8590071126489811
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.0927734375,
+        0.078125,
+        0.0625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x43951a85",
+      "hit_distance_cm": 298.2071533203125,
+      "hit_distance_m": 2.982071533203125,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        961.2826681896975,
+        -200.44348116109677,
+        164.15685486848884
+      ],
+      "hit_point_world_cm": [
+        111.28266818969746,
+        -200.44348116109677,
+        254.15685486848884
+      ],
+      "hit_screen_xy": [
+        451.8185331038869,
+        412.84839176957263
+      ],
+      "predicted_view_depth_cm": 973.5723094809207,
+      "scene_view_depth_at_hit_px_cm": 972.9528589763524,
+      "view_depth_relative_error": 0.0006362655331667366,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        1
+      ],
+      "trace_buffer_xy": [
+        250,
+        337
+      ],
+      "packed_rayinfo": 456,
+      "rayinfo_hex": "0x01c8",
+      "cell_xy": [
+        8,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.5607843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        0.17655693960384072,
+        -0.008673686247674756,
+        0.9842522106881968
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        5.6875,
+        8.875,
+        15.25
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x472d4a64",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        1
+      ],
+      "trace_buffer_xy": [
+        251,
+        337
+      ],
+      "packed_rayinfo": 457,
+      "rayinfo_hex": "0x01c9",
+      "cell_xy": [
+        9,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6232843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        0.3485401039350581,
+        -0.008572930038073337,
+        0.9372546616685891
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        4.375,
+        7.25,
+        13.0
+      ],
+      "radiance_filtered_native": [
+        0.0458984375,
+        0.0751953125,
+        0.0234375
+      ],
+      "hit_word_hex": "0x472d6548",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 11.0,
+      "decoded_hitdistance8_cm": 122.36728423652924,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        1
+      ],
+      "trace_buffer_xy": [
+        252,
+        337
+      ],
+      "packed_rayinfo": 517,
+      "rayinfo_hex": "0x0205",
+      "cell_xy": [
+        5,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3732843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        -0.4462734753865669,
+        0.2483605829706495,
+        0.8597424067666282
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        5.875,
+        7.625,
+        11.5
+      ],
+      "radiance_filtered_native": [
+        0.0947265625,
+        0.16015625,
+        0.0556640625
+      ],
+      "hit_word_hex": "0x463d2fa8",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 11.0,
+      "decoded_hitdistance8_cm": 122.36728423652924,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        1
+      ],
+      "trace_buffer_xy": [
+        253,
+        337
+      ],
+      "packed_rayinfo": 580,
+      "rayinfo_hex": "0x0244",
+      "cell_xy": [
+        4,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3107843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        -0.6454102699637282,
+        0.4597399562862554,
+        0.6099875048058438
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.0732421875,
+        0.083984375,
+        0.083984375
+      ],
+      "radiance_filtered_native": [
+        4.5,
+        2.9375,
+        1.53125
+      ],
+      "hit_word_hex": "0x440ea9f8",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 8.0,
+      "decoded_hitdistance8_cm": 64.72133703875251,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        1
+      ],
+      "trace_buffer_xy": [
+        254,
+        337
+      ],
+      "packed_rayinfo": 581,
+      "rayinfo_hex": "0x0245",
+      "cell_xy": [
+        5,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3732843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        -0.47268545110744276,
+        0.46188016906479845,
+        0.7504899557862361
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.103515625,
+        0.1201171875,
+        0.15625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x44441424",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        1
+      ],
+      "trace_buffer_xy": [
+        255,
+        337
+      ],
+      "packed_rayinfo": 523,
+      "rayinfo_hex": "0x020b",
+      "cell_xy": [
+        11,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.7482843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        0.7488157206756714,
+        0.23815496079957552,
+        0.6185121107266436
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.18359375,
+        0.23046875,
+        0.296875
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x44e36c48",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        0,
+        2
+      ],
+      "trace_buffer_xy": [
+        248,
+        338
+      ],
+      "packed_rayinfo": 586,
+      "rayinfo_hex": "0x024a",
+      "cell_xy": [
+        10,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6857843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        0.63685515286428,
+        0.46028065694170434,
+        0.6185121107266436
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.0654296875,
+        0.0849609375,
+        0.0625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x441d66b0",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        2
+      ],
+      "trace_buffer_xy": [
+        249,
+        338
+      ],
+      "packed_rayinfo": 587,
+      "rayinfo_hex": "0x024b",
+      "cell_xy": [
+        11,
+        9
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.7482843137254902,
+        0.6230392156862745
+      ],
+      "direction_world": [
+        0.7754356739169966,
+        0.44448777219227475,
+        0.4484753460207612
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.06103515625,
+        0.064453125,
+        0.0400390625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x441d85e4",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        2
+      ],
+      "trace_buffer_xy": [
+        250,
+        338
+      ],
+      "packed_rayinfo": 389,
+      "rayinfo_hex": "0x0185",
+      "cell_xy": [
+        5,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3732843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        -0.44926417726537266,
+        -0.26301449278764255,
+        0.8538062283737025
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.150390625,
+        0.115234375,
+        0.0859375
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0xc397d80d",
+      "hit_distance_cm": 303.6878662109375,
+      "hit_distance_m": 3.036878662109375,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        693.8458420279853,
+        -201.91302927447725,
+        167.28538077595329
+      ],
+      "hit_point_world_cm": [
+        -156.15415797201467,
+        -201.91302927447725,
+        257.2853807759533
+      ],
+      "hit_screen_xy": [
+        381.4136208634285,
+        351.1421423339138
+      ],
+      "predicted_view_depth_cm": 713.6936377135427,
+      "scene_view_depth_at_hit_px_cm": 689.9650931230246,
+      "view_depth_relative_error": 0.03324752153674378,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        2
+      ],
+      "trace_buffer_xy": [
+        251,
+        338
+      ],
+      "packed_rayinfo": 452,
+      "rayinfo_hex": "0x01c4",
+      "cell_xy": [
+        4,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3107843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        -0.5205233779720613,
+        -0.008386738032612792,
+        0.8538062283737025
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        4.25,
+        6.25,
+        10.0
+      ],
+      "radiance_filtered_native": [
+        0.21875,
+        0.30859375,
+        0.095703125
+      ],
+      "hit_word_hex": "0x462c7500",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 12.0,
+      "decoded_hitdistance8_cm": 145.62792959703563,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        2
+      ],
+      "trace_buffer_xy": [
+        252,
+        338
+      ],
+      "packed_rayinfo": 453,
+      "rayinfo_hex": "0x01c5",
+      "cell_xy": [
+        5,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3732843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        -0.35777258843359305,
+        -0.00856526047697775,
+        0.9337694636678201
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        6.6875,
+        9.625,
+        15.75
+      ],
+      "radiance_filtered_native": [
+        0.044921875,
+        0.02783203125,
+        0.009521484375
+      ],
+      "hit_word_hex": "0x4754b7e8",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 13.0,
+      "decoded_hitdistance8_cm": 170.91123977149914,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        2
+      ],
+      "trace_buffer_xy": [
+        253,
+        338
+      ],
+      "packed_rayinfo": 395,
+      "rayinfo_hex": "0x018b",
+      "cell_xy": [
+        11,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.7482843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        0.7521346566585817,
+        -0.2523930819601384,
+        0.6087620146097654
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.107421875,
+        0.0693359375,
+        0.056640625
+      ],
+      "radiance_filtered_native": [
+        0.02783203125,
+        0.052734375,
+        0.01708984375
+      ],
+      "hit_word_hex": "0x44347c50",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 12.0,
+      "decoded_hitdistance8_cm": 145.62792959703563,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        2
+      ],
+      "trace_buffer_xy": [
+        254,
+        338
+      ],
+      "packed_rayinfo": 458,
+      "rayinfo_hex": "0x01ca",
+      "cell_xy": [
+        10,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6857843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        0.5118947606061891,
+        -0.00839848095747068,
+        0.8590071126489811
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        3.09375,
+        5.1875,
+        9.0
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x472a0360",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        2
+      ],
+      "trace_buffer_xy": [
+        255,
+        338
+      ],
+      "packed_rayinfo": 459,
+      "rayinfo_hex": "0x01cb",
+      "cell_xy": [
+        11,
+        7
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.7482843137254902,
+        0.4980392156862745
+      ],
+      "direction_world": [
+        0.6619433748445284,
+        -0.00814754733294541,
+        0.7495095636293734
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        1.15625,
+        1.59375,
+        2.375
+      ],
+      "radiance_filtered_native": [
+        3.59375,
+        2.53125,
+        1.71875
+      ],
+      "hit_word_hex": "0x44909cec",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 2.0,
+      "decoded_hitdistance8_cm": 4.041392620040142,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        0,
+        3
+      ],
+      "trace_buffer_xy": [
+        248,
+        339
+      ],
+      "packed_rayinfo": 135,
+      "rayinfo_hex": "0x0087",
+      "cell_xy": [
+        7,
+        2
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.18553921568627452
+      ],
+      "direction_world": [
+        -0.006818048586039942,
+        -0.7998736075367376,
+        0.6001297577854672
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.234375,
+        0.37890625,
+        0.140625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x42ea5db5",
+      "hit_distance_cm": 117.18301391601562,
+      "hit_distance_m": 1.1718301391601562,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        829.4829619043808,
+        -215.77031926027723,
+        -21.680197118475363
+      ],
+      "hit_point_world_cm": [
+        -20.517038095619228,
+        -215.77031926027723,
+        68.31980288152464
+      ],
+      "hit_screen_xy": [
+        394.5053743353084,
+        596.3325815988127
+      ],
+      "predicted_view_depth_cm": 803.3463798733883,
+      "scene_view_depth_at_hit_px_cm": 802.673638599077,
+      "view_depth_relative_error": 0.0008374236707425432,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        3
+      ],
+      "trace_buffer_xy": [
+        249,
+        339
+      ],
+      "packed_rayinfo": 198,
+      "rayinfo_hex": "0x00c6",
+      "cell_xy": [
+        6,
+        3
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.24803921568627452
+      ],
+      "direction_world": [
+        -0.25088595817323156,
+        -0.7595396696762164,
+        0.6001297577854672
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.19921875,
+        0.34375,
+        0.123046875
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x42f8ede9",
+      "hit_distance_cm": 124.46466064453125,
+      "hit_distance_m": 1.2446466064453126,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        799.0554857422094,
+        -216.57456640955576,
+        -17.310264231011942
+      ],
+      "hit_point_world_cm": [
+        -50.944514257790615,
+        -216.57456640955576,
+        72.68973576898806
+      ],
+      "hit_screen_xy": [
+        384.4727399528891,
+        591.9777842919318
+      ],
+      "predicted_view_depth_cm": 774.6817790572231,
+      "scene_view_depth_at_hit_px_cm": 773.6592744746408,
+      "view_depth_relative_error": 0.0013199027138945856,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        3
+      ],
+      "trace_buffer_xy": [
+        250,
+        339
+      ],
+      "packed_rayinfo": 199,
+      "rayinfo_hex": "0x00c7",
+      "cell_xy": [
+        7,
+        3
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.24803921568627452
+      ],
+      "direction_world": [
+        -0.007115043537866329,
+        -0.6697051760174457,
+        0.7425929930795848
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.1796875,
+        0.111328125,
+        0.0380859375
+      ],
+      "radiance_filtered_native": [
+        0.123046875,
+        0.0947265625,
+        0.06640625
+      ],
+      "hit_word_hex": "0x430c4cb1",
+      "hit_distance_cm": 140.299560546875,
+      "hit_distance_m": 1.40299560546875,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 18.0,
+      "decoded_hitdistance8_cm": 327.6677628531728,
+      "hit_point_translated_world_cm": [
+        829.2836839050842,
+        -215.9980610684613,
+        12.180259717789497
+      ],
+      "hit_point_world_cm": [
+        -20.716316094915783,
+        -215.9980610684613,
+        102.1802597177895
+      ],
+      "hit_screen_xy": [
+        396.49619014788027,
+        556.9243852965076
+      ],
+      "predicted_view_depth_cm": 810.7691549676722,
+      "scene_view_depth_at_hit_px_cm": 808.4621799077153,
+      "view_depth_relative_error": 0.0028454154253671777,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        3
+      ],
+      "trace_buffer_xy": [
+        251,
+        339
+      ],
+      "packed_rayinfo": 7,
+      "rayinfo_hex": "0x0007",
+      "cell_xy": [
+        7,
+        0
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.06053921568627451
+      ],
+      "direction_world": [
+        -0.005956943486044974,
+        -0.9751527861898587,
+        0.2214532871972319
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.1064453125,
+        0.169921875,
+        0.05078125
+      ],
+      "radiance_filtered_native": [
+        0.16796875,
+        0.1328125,
+        0.072265625
+      ],
+      "hit_word_hex": "0xc2bfd995",
+      "hit_distance_cm": 95.92495727539062,
+      "hit_distance_m": 0.9592495727539062,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 15.0,
+      "decoded_hitdistance8_cm": 227.54585456229736,
+      "hit_point_translated_world_cm": [
+        829.710501837328,
+        -215.5802085294864,
+        -70.76231376357556
+      ],
+      "hit_point_world_cm": [
+        -20.289498162671975,
+        -215.5802085294864,
+        19.237686236424437
+      ],
+      "hit_screen_xy": [
+        391.3732006997917,
+        654.7731397518493
+      ],
+      "predicted_view_depth_cm": 792.5270138731128,
+      "scene_view_depth_at_hit_px_cm": 621.7746077535058,
+      "view_depth_relative_error": 0.21545310523250524,
+      "depth_consistent": false
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        3
+      ],
+      "trace_buffer_xy": [
+        252,
+        339
+      ],
+      "packed_rayinfo": 70,
+      "rayinfo_hex": "0x0046",
+      "cell_xy": [
+        6,
+        1
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.12303921568627452
+      ],
+      "direction_world": [
+        -0.2210237777489894,
+        -0.94979309918482,
+        0.2214532871972319
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.0732421875,
+        0.12109375,
+        0.0361328125
+      ],
+      "radiance_filtered_native": [
+        0.671875,
+        0.8046875,
+        1.125
+      ],
+      "hit_word_hex": "0xc2c935d9",
+      "hit_distance_cm": 100.60516357421875,
+      "hit_distance_m": 1.0060516357421876,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 18.0,
+      "decoded_hitdistance8_cm": 327.6677628531728,
+      "hit_point_translated_world_cm": [
+        808.0457880724899,
+        -217.5928092823991,
+        -69.72586669393888
+      ],
+      "hit_point_world_cm": [
+        -41.95421192751007,
+        -217.5928092823991,
+        20.274133306061117
+      ],
+      "hit_screen_xy": [
+        382.26292113984607,
+        655.7791309702421
+      ],
+      "predicted_view_depth_cm": 771.6507152367708,
+      "scene_view_depth_at_hit_px_cm": 615.560398414935,
+      "view_depth_relative_error": 0.20228104988400297,
+      "depth_consistent": false
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        3
+      ],
+      "trace_buffer_xy": [
+        253,
+        339
+      ],
+      "packed_rayinfo": 71,
+      "rayinfo_hex": "0x0047",
+      "cell_xy": [
+        7,
+        1
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4982843137254902,
+        0.12303921568627452
+      ],
+      "direction_world": [
+        -0.006437352095336808,
+        -0.9045040131720726,
+        0.42641652249134954
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.142578125,
+        0.26171875,
+        0.080078125
+      ],
+      "radiance_filtered_native": [
+        0.111328125,
+        0.0830078125,
+        0.0595703125
+      ],
+      "hit_word_hex": "0xc2cf1429",
+      "hit_distance_cm": 103.53936767578125,
+      "hit_distance_m": 1.0353936767578125,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 15.0,
+      "decoded_hitdistance8_cm": 227.54585456229736,
+      "hit_point_translated_world_cm": [
+        829.6154020212612,
+        -215.69049276128902,
+        -47.85431377120496
+      ],
+      "hit_point_world_cm": [
+        -20.38459797873884,
+        -215.69049276128902,
+        42.14568622879504
+      ],
+      "hit_screen_xy": [
+        392.82429987131223,
+        627.2992162498871
+      ],
+      "predicted_view_depth_cm": 797.5875303086943,
+      "scene_view_depth_at_hit_px_cm": 796.7498916448998,
+      "view_depth_relative_error": 0.00105021534560648,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        3
+      ],
+      "trace_buffer_xy": [
+        254,
+        339
+      ],
+      "packed_rayinfo": 4359,
+      "rayinfo_hex": "0x1107",
+      "cell_xy": [
+        7,
+        4
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.9965686274509804,
+        0.621078431372549
+      ],
+      "direction_world": [
+        0.9096283976730474,
+        0.012823781033377257,
+        -0.4152249134948097
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        3.59375,
+        2.53125,
+        1.71875
+      ],
+      "radiance_filtered_native": [
+        0.240234375,
+        0.154296875,
+        0.09765625
+      ],
+      "hit_word_hex": "0x3f9402d9",
+      "hit_distance_cm": 1.156336784362793,
+      "hit_distance_m": 0.01156336784362793,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 14.0,
+      "decoded_hitdistance8_cm": 198.21721475991973,
+      "hit_point_translated_world_cm": [
+        831.3337581630491,
+        -122.02389056752259,
+        -92.48535071772275
+      ],
+      "hit_point_world_cm": [
+        -18.666241836950917,
+        -122.02389056752259,
+        -2.4853507177227527
+      ],
+      "hit_screen_xy": [
+        498.681576064438,
+        680.9435412416286
+      ],
+      "predicted_view_depth_cm": 789.2220460810067,
+      "scene_view_depth_at_hit_px_cm": 788.3051871059821,
+      "view_depth_relative_error": 0.0011617249918162203,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        3
+      ],
+      "trace_buffer_xy": [
+        255,
+        339
+      ],
+      "packed_rayinfo": 4484,
+      "rayinfo_hex": "0x1184",
+      "cell_xy": [
+        4,
+        6
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.6215686274509804,
+        0.871078431372549
+      ],
+      "direction_world": [
+        0.37782436658070917,
+        0.925416863200911,
+        0.029195501730103657
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.03662109375,
+        0.04296875,
+        0.0517578125
+      ],
+      "radiance_filtered_native": [
+        7.0,
+        5.625,
+        4.25
+      ],
+      "hit_word_hex": "0xc38fc6fd",
+      "hit_distance_cm": 287.5545654296875,
+      "hit_distance_m": 2.875545654296875,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 13.0,
+      "decoded_hitdistance8_cm": 170.91123977149914,
+      "hit_point_translated_world_cm": [
+        938.9270429275815,
+        144.06912476179645,
+        -83.6099110639632
+      ],
+      "hit_point_world_cm": [
+        88.92704292758151,
+        144.06912476179645,
+        6.390088936036804
+      ],
+      "hit_screen_xy": [
+        786.9568161346749,
+        658.5460422723702
+      ],
+      "predicted_view_depth_cm": 896.0542612114834,
+      "scene_view_depth_at_hit_px_cm": 898.8814305462621,
+      "view_depth_relative_error": 0.003155131845426715,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        0,
+        4
+      ],
+      "trace_buffer_xy": [
+        248,
+        340
+      ],
+      "packed_rayinfo": 4483,
+      "rayinfo_hex": "0x1183",
+      "cell_xy": [
+        3,
+        6
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.4965686274509804,
+        0.871078431372549
+      ],
+      "direction_world": [
+        -0.012930894427854708,
+        0.8984088481768099,
+        0.4389696270665129
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.12890625,
+        0.1044921875,
+        0.0625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x439cf971",
+      "hit_distance_cm": 313.94873046875,
+      "hit_distance_m": 3.1394873046875,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        826.2222834972683,
+        160.0155981497553,
+        45.8087462554075
+      ],
+      "hit_point_world_cm": [
+        -23.777716502731664,
+        160.0155981497553,
+        135.8087462554075
+      ],
+      "hit_screen_xy": [
+        819.3786894447288,
+        518.3141826961829
+      ],
+      "predicted_view_depth_cm": 815.3509817080597,
+      "scene_view_depth_at_hit_px_cm": 801.6100438863843,
+      "view_depth_relative_error": 0.016852788713015137,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        4
+      ],
+      "trace_buffer_xy": [
+        249,
+        340
+      ],
+      "packed_rayinfo": 4421,
+      "rayinfo_hex": "0x1145",
+      "cell_xy": [
+        5,
+        5
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.7465686274509804,
+        0.746078431372549
+      ],
+      "direction_world": [
+        0.7073575019792611,
+        0.7062527784528622,
+        0.029195501730103657
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        3.53125,
+        3.4375,
+        2.9375
+      ],
+      "radiance_filtered_native": [
+        0.080078125,
+        0.080078125,
+        0.080078125
+      ],
+      "hit_word_hex": "0x44085374",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 32.0,
+      "decoded_hitdistance8_cm": 1035.6004477381505,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        4
+      ],
+      "trace_buffer_xy": [
+        250,
+        340
+      ],
+      "packed_rayinfo": 4418,
+      "rayinfo_hex": "0x1142",
+      "cell_xy": [
+        2,
+        5
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.3715686274509804,
+        0.746078431372549
+      ],
+      "direction_world": [
+        -0.4609315922501375,
+        0.7712637251802001,
+        0.4389696270665129
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.00146484375,
+        0.001190185546875,
+        0.001495361328125
+      ],
+      "radiance_filtered_native": [
+        2.6875,
+        3.96875,
+        6.25
+      ],
+      "hit_word_hex": "0x43a67ef5",
+      "hit_distance_cm": 332.9918212890625,
+      "hit_distance_m": 3.329918212890625,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 34.0,
+      "decoded_hitdistance8_cm": 1169.0963254593173,
+      "hit_point_translated_world_cm": [
+        676.7954709936779,
+        134.78579336469573,
+        54.168084730993826
+      ],
+      "hit_point_world_cm": [
+        -173.2045290063221,
+        134.78579336469573,
+        144.16808473099383
+      ],
+      "hit_screen_xy": [
+        823.427440397495,
+        495.36153253802814
+      ],
+      "predicted_view_depth_cm": 671.634411131489,
+      "scene_view_depth_at_hit_px_cm": 799.1381998261866,
+      "view_depth_relative_error": 0.18984106022783223,
+      "depth_consistent": false
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        4
+      ],
+      "trace_buffer_xy": [
+        251,
+        340
+      ],
+      "packed_rayinfo": 4226,
+      "rayinfo_hex": "0x1082",
+      "cell_xy": [
+        2,
+        2
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.3715686274509804,
+        0.37107843137254903
+      ],
+      "direction_world": [
+        -0.47868844172464564,
+        -0.4801228210896652,
+        0.7350778546712804
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.076171875,
+        0.0673828125,
+        0.02685546875
+      ],
+      "radiance_filtered_native": [
+        7.75,
+        10.25,
+        15.75
+      ],
+      "hit_word_hex": "0xc343f525",
+      "hit_distance_cm": 195.95758056640625,
+      "hit_distance_m": 1.9595758056640624,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 110.0,
+      "decoded_hitdistance8_cm": 12237.118187432454,
+      "hit_point_translated_world_cm": [
+        736.479292501254,
+        -216.1224255726944,
+        52.03886705286365
+      ],
+      "hit_point_world_cm": [
+        -113.52070749874599,
+        -216.1224255726944,
+        142.03886705286365
+      ],
+      "hit_screen_xy": [
+        369.14238737962864,
+        504.08315524281744
+      ],
+      "predicted_view_depth_cm": 729.3095702444444,
+      "scene_view_depth_at_hit_px_cm": 672.592514826119,
+      "view_depth_relative_error": 0.07776814912673567,
+      "depth_consistent": false
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        4
+      ],
+      "trace_buffer_xy": [
+        252,
+        340
+      ],
+      "packed_rayinfo": 4422,
+      "rayinfo_hex": "0x1146",
+      "cell_xy": [
+        6,
+        5
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.8715686274509804,
+        0.746078431372549
+      ],
+      "direction_world": [
+        0.7860011650518993,
+        0.4580288634467097,
+        -0.4152249134948097
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        2.125,
+        1.5,
+        1.09375
+      ],
+      "radiance_filtered_native": [
+        7.1875,
+        10.25,
+        17.0
+      ],
+      "hit_word_hex": "0x3f916355",
+      "hit_distance_cm": 1.1358437538146973,
+      "hit_distance_m": 0.011358437538146972,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 210.0,
+      "decoded_hitdistance8_cm": 44599.755210745716,
+      "hit_point_translated_world_cm": [
+        831.1746959005341,
+        -121.5184699536333,
+        -92.47684150088617
+      ],
+      "hit_point_world_cm": [
+        -18.82530409946594,
+        -121.5184699536333,
+        -2.4768415008861666
+      ],
+      "hit_screen_xy": [
+        499.2396134793397,
+        680.9547500068603
+      ],
+      "predicted_view_depth_cm": 789.0689747316977,
+      "scene_view_depth_at_hit_px_cm": 788.3051871059821,
+      "view_depth_relative_error": 0.0009679605334569493,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        4
+      ],
+      "trace_buffer_xy": [
+        253,
+        340
+      ],
+      "packed_rayinfo": 4353,
+      "rayinfo_hex": "0x1101",
+      "cell_xy": [
+        1,
+        4
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.2465686274509804,
+        0.621078431372549
+      ],
+      "direction_world": [
+        -0.7851099604344155,
+        0.4369302193025302,
+        0.4389696270665129
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.072265625,
+        0.0654296875,
+        0.0546875
+      ],
+      "radiance_filtered_native": [
+        3.1875,
+        5.25,
+        9.25
+      ],
+      "hit_word_hex": "0x44381ad8",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 45.0,
+      "decoded_hitdistance8_cm": 2047.9441871236688,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        4
+      ],
+      "trace_buffer_xy": [
+        254,
+        340
+      ],
+      "packed_rayinfo": 4230,
+      "rayinfo_hex": "0x1086",
+      "cell_xy": [
+        6,
+        2
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.8715686274509804,
+        0.37107843137254903
+      ],
+      "direction_world": [
+        0.9195433157460162,
+        -0.3929837777314264,
+        -0.0019598231449442505
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        2.78125,
+        2.6875,
+        2.3125
+      ],
+      "radiance_filtered_native": [
+        0.3359375,
+        0.45703125,
+        0.671875
+      ],
+      "hit_word_hex": "0x441ce9a0",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 35.0,
+      "decoded_hitdistance8_cm": 1238.8782615408372,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        4
+      ],
+      "trace_buffer_xy": [
+        255,
+        340
+      ],
+      "packed_rayinfo": 4164,
+      "rayinfo_hex": "0x1044",
+      "cell_xy": [
+        4,
+        1
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.6215686274509804,
+        0.24607843137254903
+      ],
+      "direction_world": [
+        0.43819585147189816,
+        -0.7860429924779786,
+        0.43602845059592465
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.02783203125,
+        0.052734375,
+        0.01708984375
+      ],
+      "radiance_filtered_native": [
+        0.1328125,
+        0.1123046875,
+        0.095703125
+      ],
+      "hit_word_hex": "0xc2fa753d",
+      "hit_distance_cm": 125.22897338867188,
+      "hit_distance_m": 1.2522897338867187,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 29.0,
+      "decoded_hitdistance8_cm": 850.5266172610776,
+      "hit_point_translated_world_cm": [
+        885.1567380097194,
+        -220.4740761646229,
+        -37.40181564008397
+      ],
+      "hit_point_world_cm": [
+        35.15673800971945,
+        -220.4740761646229,
+        52.59818435991603
+      ],
+      "hit_screen_xy": [
+        404.04782723185053,
+        612.0973543178989
+      ],
+      "predicted_view_depth_cm": 854.0566458387227,
+      "scene_view_depth_at_hit_px_cm": 827.4051813412411,
+      "view_depth_relative_error": 0.031205733984200342,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        0,
+        5
+      ],
+      "trace_buffer_xy": [
+        248,
+        341
+      ],
+      "packed_rayinfo": 4295,
+      "rayinfo_hex": "0x10c7",
+      "cell_xy": [
+        7,
+        3
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.9965686274509804,
+        0.49607843137254903
+      ],
+      "direction_world": [
+        0.9999398621961793,
+        -0.01079032364327859,
+        -0.0019598231449442505
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        4.1875,
+        2.9375,
+        1.9375
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x43149c3d",
+      "hit_distance_cm": 148.61029052734375,
+      "hit_distance_m": 1.4861029052734376,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        978.883274817565,
+        -123.6422723087578,
+        -92.29646076341722
+      ],
+      "hit_point_world_cm": [
+        128.88327481756505,
+        -123.6422723087578,
+        -2.2964607634172154
+      ],
+      "hit_screen_xy": [
+        518.8778996025492,
+        663.8104003456838
+      ],
+      "predicted_view_depth_cm": 933.0323688187457,
+      "scene_view_depth_at_hit_px_cm": 933.2096843176384,
+      "view_depth_relative_error": 0.0001900421730462099,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        5
+      ],
+      "trace_buffer_xy": [
+        249,
+        341
+      ],
+      "packed_rayinfo": 4162,
+      "rayinfo_hex": "0x1042",
+      "cell_xy": [
+        2,
+        1
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.3715686274509804,
+        0.24607843137254903
+      ],
+      "direction_world": [
+        -0.4580288634467098,
+        -0.7860011650518993,
+        0.4152249134948097
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.169921875,
+        0.22265625,
+        0.064453125
+      ],
+      "radiance_filtered_native": [
+        1.828125,
+        1.78125,
+        1.53125
+      ],
+      "hit_word_hex": "0xc2eeb6c1",
+      "hit_distance_cm": 119.35693359375,
+      "hit_distance_m": 1.1935693359375,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 28.0,
+      "decoded_hitdistance8_cm": 792.880670063301,
+      "hit_point_translated_world_cm": [
+        775.613000748289,
+        -215.85340803895576,
+        -42.44523844999425
+      ],
+      "hit_point_world_cm": [
+        -74.38699925171102,
+        -215.85340803895576,
+        47.55476155000575
+      ],
+      "hit_screen_xy": [
+        375.5978707221786,
+        624.3763218821204
+      ],
+      "predicted_view_depth_cm": 746.1859844329275,
+      "scene_view_depth_at_hit_px_cm": 626.230497036296,
+      "view_depth_relative_error": 0.16075816203890914,
+      "depth_consistent": false
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        5
+      ],
+      "trace_buffer_xy": [
+        250,
+        341
+      ],
+      "packed_rayinfo": 4229,
+      "rayinfo_hex": "0x1085",
+      "cell_xy": [
+        5,
+        2
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.7465686274509804,
+        0.37107843137254903
+      ],
+      "direction_world": [
+        0.7721945045218168,
+        -0.46216321517102926,
+        0.43602845059592465
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.212890625,
+        0.13671875,
+        0.083984375
+      ],
+      "radiance_filtered_native": [
+        0.0908203125,
+        0.0869140625,
+        0.076171875
+      ],
+      "hit_word_hex": "0x4333ac69",
+      "hit_distance_cm": 179.6734619140625,
+      "hit_distance_m": 1.796734619140625,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 25.0,
+      "decoded_hitdistance8_cm": 632.0788173537131,
+      "hit_point_translated_world_cm": [
+        969.0247812851678,
+        -205.07718401635867,
+        -13.662469664870287
+      ],
+      "hit_point_world_cm": [
+        119.02478128516782,
+        -205.07718401635867,
+        76.33753033512971
+      ],
+      "hit_screen_xy": [
+        440.82830672697,
+        584.6349717130793
+      ],
+      "predicted_view_depth_cm": 941.115347402514,
+      "scene_view_depth_at_hit_px_cm": 924.997905762951,
+      "view_depth_relative_error": 0.01712589395555741,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        5
+      ],
+      "trace_buffer_xy": [
+        251,
+        341
+      ],
+      "packed_rayinfo": 4547,
+      "rayinfo_hex": "0x11c3",
+      "cell_xy": [
+        3,
+        7
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.4965686274509804,
+        0.996078431372549
+      ],
+      "direction_world": [
+        -0.010790323643278843,
+        0.9999398621961793,
+        0.0019598231449442505
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        3.5625,
+        3.46875,
+        2.9375
+      ],
+      "radiance_filtered_native": [
+        0.0654296875,
+        0.078125,
+        0.1015625
+      ],
+      "hit_word_hex": "0x44100a3c",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 25.0,
+      "decoded_hitdistance8_cm": 632.0788173537131,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        5
+      ],
+      "trace_buffer_xy": [
+        252,
+        341
+      ],
+      "packed_rayinfo": 4294,
+      "rayinfo_hex": "0x10c6",
+      "cell_xy": [
+        6,
+        3
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.8715686274509804,
+        0.49607843137254903
+      ],
+      "direction_world": [
+        0.8998117842073139,
+        -0.01476290190199199,
+        0.43602845059592465
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.1328125,
+        0.1123046875,
+        0.095703125
+      ],
+      "radiance_filtered_native": [
+        0.484375,
+        0.640625,
+        0.953125
+      ],
+      "hit_word_hex": "0x4448761c",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 26.0,
+      "decoded_hitdistance8_cm": 683.6567701096186,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        5
+      ],
+      "trace_buffer_xy": [
+        253,
+        341
+      ],
+      "packed_rayinfo": 4100,
+      "rayinfo_hex": "0x1004",
+      "cell_xy": [
+        4,
+        0
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.6215686274509804,
+        0.12107843137254902
+      ],
+      "direction_world": [
+        0.3716183753255335,
+        -0.9283835103089948,
+        -0.0019598231449442505
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        4.5,
+        2.9375,
+        1.53125
+      ],
+      "radiance_filtered_native": [
+        0.0380859375,
+        0.0439453125,
+        0.0419921875
+      ],
+      "hit_word_hex": "0xc24b4635",
+      "hit_distance_cm": 50.81855773925781,
+      "hit_distance_m": 0.5081855773925781,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 26.0,
+      "decoded_hitdistance8_cm": 683.6567701096186,
+      "hit_point_translated_world_cm": [
+        849.1670312501685,
+        -169.2178302000586,
+        -92.10480626211492
+      ],
+      "hit_point_world_cm": [
+        -0.8329687498314797,
+        -169.2178302000586,
+        -2.10480626211492
+      ],
+      "hit_screen_xy": [
+        448.2674353434136,
+        678.1215055831818
+      ],
+      "predicted_view_depth_cm": 806.6838573689731,
+      "scene_view_depth_at_hit_px_cm": 802.9735291544241,
+      "view_depth_relative_error": 0.004599482412664573,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        5
+      ],
+      "trace_buffer_xy": [
+        254,
+        341
+      ],
+      "packed_rayinfo": 4227,
+      "rayinfo_hex": "0x1083",
+      "cell_xy": [
+        3,
+        2
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.4965686274509804,
+        0.37107843137254903
+      ],
+      "direction_world": [
+        -0.014971611964041833,
+        -0.36742967458980064,
+        0.9299307958477508
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.0869140625,
+        0.0576171875,
+        0.02978515625
+      ],
+      "radiance_filtered_native": [
+        0.0152587890625,
+        0.01611328125,
+        0.010009765625
+      ],
+      "hit_word_hex": "0xc3a0cb5d",
+      "hit_distance_cm": 321.5887451171875,
+      "hit_distance_m": 3.215887451171875,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 26.0,
+      "decoded_hitdistance8_cm": 683.6567701096186,
+      "hit_point_translated_world_cm": [
+        825.4672194828211,
+        -240.19996714739665,
+        207.05006680604083
+      ],
+      "hit_point_world_cm": [
+        -24.532780517178935,
+        -240.19996714739665,
+        297.05006680604083
+      ],
+      "hit_screen_xy": [
+        381.97942030845695,
+        342.7552973667926
+      ],
+      "predicted_view_depth_cm": 850.886675689371,
+      "scene_view_depth_at_hit_px_cm": 692.7976715368806,
+      "view_depth_relative_error": 0.18579325387180376,
+      "depth_consistent": false
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        5
+      ],
+      "trace_buffer_xy": [
+        255,
+        341
+      ],
+      "packed_rayinfo": 4358,
+      "rayinfo_hex": "0x1106",
+      "cell_xy": [
+        6,
+        4
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.8715686274509804,
+        0.621078431372549
+      ],
+      "direction_world": [
+        0.9260062650700994,
+        0.3763774963114192,
+        0.029195501730103657
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        1.0625,
+        1.03125,
+        0.90625
+      ],
+      "radiance_filtered_native": [
+        1.0625,
+        1.03125,
+        0.90625
+      ],
+      "hit_word_hex": "0x4433f028",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 28.0,
+      "decoded_hitdistance8_cm": 792.880670063301,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        0,
+        6
+      ],
+      "trace_buffer_xy": [
+        248,
+        342
+      ],
+      "packed_rayinfo": 4228,
+      "rayinfo_hex": "0x1084",
+      "cell_xy": [
+        4,
+        2
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.6215686274509804,
+        0.37107843137254903
+      ],
+      "direction_world": [
+        0.4575683065155405,
+        -0.4791683543459611,
+        0.749018646674356
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.080078125,
+        0.0576171875,
+        0.0400390625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x433bfb25",
+      "hit_distance_cm": 187.98101806640625,
+      "hit_distance_m": 1.8798101806640626,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        916.2960774804314,
+        -212.11327425240438,
+        48.79607687610243
+      ],
+      "hit_point_world_cm": [
+        66.29607748043145,
+        -212.11327425240438,
+        138.79607687610243
+      ],
+      "hit_screen_xy": [
+        425.4866573194312,
+        520.3706326391813
+      ],
+      "predicted_view_depth_cm": 903.7881931532377,
+      "scene_view_depth_at_hit_px_cm": 913.8558832979065,
+      "view_depth_relative_error": 0.011139435346619844,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        6
+      ],
+      "trace_buffer_xy": [
+        249,
+        342
+      ],
+      "packed_rayinfo": 4289,
+      "rayinfo_hex": "0x10c1",
+      "cell_xy": [
+        1,
+        3
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.2465686274509804,
+        0.49607843137254903
+      ],
+      "direction_world": [
+        -0.677788495633382,
+        -0.016226606512299565,
+        0.7350778546712804
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        1.140625,
+        1.71875,
+        2.75
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x448a8a40",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        6
+      ],
+      "trace_buffer_xy": [
+        250,
+        342
+      ],
+      "packed_rayinfo": 4288,
+      "rayinfo_hex": "0x10c0",
+      "cell_xy": [
+        0,
+        3
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.12156862745098039,
+        0.49607843137254903
+      ],
+      "direction_world": [
+        -0.9096007281043317,
+        -0.014655601157829925,
+        0.4152249134948097
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.080078125,
+        0.080078125,
+        0.080078125
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x446dc52c",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        6
+      ],
+      "trace_buffer_xy": [
+        251,
+        342
+      ],
+      "packed_rayinfo": 4352,
+      "rayinfo_hex": "0x1100",
+      "cell_xy": [
+        0,
+        4
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.12156862745098039,
+        0.621078431372549
+      ],
+      "direction_world": [
+        -0.9283835103089948,
+        0.3716183753255335,
+        0.0019598231449442505
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        1.828125,
+        1.78125,
+        1.53125
+      ],
+      "radiance_filtered_native": [
+        0.00146484375,
+        0.001190185546875,
+        0.001495361328125
+      ],
+      "hit_word_hex": "0x443d067c",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 19.0,
+      "decoded_hitdistance8_cm": 365.08706191137867,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        6
+      ],
+      "trace_buffer_xy": [
+        252,
+        342
+      ],
+      "packed_rayinfo": 4420,
+      "rayinfo_hex": "0x1144",
+      "cell_xy": [
+        4,
+        5
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.6215686274509804,
+        0.746078431372549
+      ],
+      "direction_world": [
+        0.44090346673012726,
+        0.7711086467479064,
+        0.4593425605536331
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.01123046875,
+        0.021484375,
+        0.0107421875
+      ],
+      "radiance_filtered_native": [
+        0.099609375,
+        0.0712890625,
+        0.0537109375
+      ],
+      "hit_word_hex": "0x43a64c4d",
+      "hit_distance_cm": 332.5960693359375,
+      "hit_distance_m": 3.325960693359375,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 22.0,
+      "decoded_hitdistance8_cm": 489.480947969739,
+      "hit_point_translated_world_cm": [
+        976.9246813777473,
+        134.42898576206153,
+        60.77031924237838
+      ],
+      "hit_point_world_cm": [
+        126.92468137774733,
+        134.42898576206153,
+        150.77031924237838
+      ],
+      "hit_screen_xy": [
+        767.2530946027091,
+        511.9773519593306
+      ],
+      "predicted_view_depth_cm": 965.5565082094733,
+      "scene_view_depth_at_hit_px_cm": 960.6059749922949,
+      "view_depth_relative_error": 0.005127129458594484,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        6
+      ],
+      "trace_buffer_xy": [
+        253,
+        342
+      ],
+      "packed_rayinfo": 4419,
+      "rayinfo_hex": "0x1143",
+      "cell_xy": [
+        3,
+        5
+      ],
+      "level": 1,
+      "mip_resolution": 8,
+      "probe_uv": [
+        0.4965686274509804,
+        0.746078431372549
+      ],
+      "direction_world": [
+        -0.014263446878185088,
+        0.6601715294648584,
+        0.7509794309880815
+      ],
+      "cone_half_angle_rad": 0.17700768628803093,
+      "radiance_trace_native": [
+        0.099609375,
+        0.0712890625,
+        0.0537109375
+      ],
+      "radiance_filtered_native": [
+        0.01123046875,
+        0.021484375,
+        0.0107421875
+      ],
+      "hit_word_hex": "0x43d95980",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 19.0,
+      "decoded_hitdistance8_cm": 365.08706191137867,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        6
+      ],
+      "trace_buffer_xy": [
+        254,
+        342
+      ],
+      "packed_rayinfo": 6,
+      "rayinfo_hex": "0x0006",
+      "cell_xy": [
+        6,
+        0
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.06053921568627451
+      ],
+      "direction_world": [
+        -0.19040781474437174,
+        -0.9815957357050453,
+        -0.014651816608996504
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        7.125,
+        7.0625,
+        6.0
+      ],
+      "radiance_filtered_native": [
+        3.53125,
+        3.4375,
+        2.9375
+      ],
+      "hit_word_hex": "0x43c722e0",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 24.0,
+      "decoded_hitdistance8_cm": 582.5235294117646,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        6
+      ],
+      "trace_buffer_xy": [
+        255,
+        342
+      ],
+      "packed_rayinfo": 134,
+      "rayinfo_hex": "0x0086",
+      "cell_xy": [
+        6,
+        2
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.18553921568627452
+      ],
+      "direction_world": [
+        -0.23810365208789405,
+        -0.8726256930716579,
+        0.42641652249134954
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.1103515625,
+        0.1796875,
+        0.056640625
+      ],
+      "radiance_filtered_native": [
+        2.125,
+        1.5,
+        1.09375
+      ],
+      "hit_word_hex": "0xc2d86fc9",
+      "hit_distance_cm": 108.21832275390625,
+      "hit_distance_m": 1.0821832275390626,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": true,
+      "encoded_hitdistance8": 2.0,
+      "decoded_hitdistance8_cm": 4.041392620040142,
+      "hit_point_translated_world_cm": [
+        804.5147435161872,
+        -216.4728080734259,
+        -45.859130017897655
+      ],
+      "hit_point_world_cm": [
+        -45.485256483812805,
+        -216.4728080734259,
+        44.140869982102345
+      ],
+      "hit_screen_xy": [
+        384.2287096795252,
+        626.6265746583977
+      ],
+      "predicted_view_depth_cm": 773.5790188135088,
+      "scene_view_depth_at_hit_px_cm": 775.1389857343743,
+      "view_depth_relative_error": 0.0020165579506772192,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        0,
+        7
+      ],
+      "trace_buffer_xy": [
+        248,
+        343
+      ],
+      "packed_rayinfo": 394,
+      "rayinfo_hex": "0x018a",
+      "cell_xy": [
+        10,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6857843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        0.6085382849357054,
+        -0.26060807699612204,
+        0.7495095636293734
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.03515625,
+        0.024169921875,
+        0.0185546875
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x4361afe1",
+      "hit_distance_cm": 225.68701171875,
+      "hit_distance_m": 2.2568701171875,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        967.6211084303113,
+        -180.85457730427078,
+        77.14936279367274
+      ],
+      "hit_point_world_cm": [
+        117.62110843031132,
+        -180.85457730427078,
+        167.14936279367274
+      ],
+      "hit_screen_xy": [
+        467.8401624968583,
+        495.6447748001481
+      ],
+      "predicted_view_depth_cm": 960.1758684427389,
+      "scene_view_depth_at_hit_px_cm": 953.0367634900219,
+      "view_depth_relative_error": 0.00743520555697311,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        1,
+        7
+      ],
+      "trace_buffer_xy": [
+        249,
+        343
+      ],
+      "packed_rayinfo": 388,
+      "rayinfo_hex": "0x0184",
+      "cell_xy": [
+        4,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3107843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        -0.6170957972196893,
+        -0.26028527365738496,
+        0.7425929930795848
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.4921875,
+        0.37890625,
+        0.265625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x438d2aad",
+      "hit_distance_cm": 282.3333740234375,
+      "hit_distance_m": 2.823333740234375,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": [
+        656.0551828620008,
+        -195.52593869754935,
+        117.65357438585752
+      ],
+      "hit_point_world_cm": [
+        -193.94481713799917,
+        -195.52593869754935,
+        207.65357438585752
+      ],
+      "hit_screen_xy": [
+        371.54314582844006,
+        405.2295742651216
+      ],
+      "predicted_view_depth_cm": 665.706823396707,
+      "scene_view_depth_at_hit_px_cm": 687.3242262526632,
+      "view_depth_relative_error": 0.03247285756461883,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        2,
+        7
+      ],
+      "trace_buffer_xy": [
+        250,
+        343
+      ],
+      "packed_rayinfo": 522,
+      "rayinfo_hex": "0x020a",
+      "cell_xy": [
+        10,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.6857843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        0.605003385904967,
+        0.24590509614921993,
+        0.7572988754325259
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        1.15625,
+        1.84375,
+        3.0625
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x44f9077c",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        3,
+        7
+      ],
+      "trace_buffer_xy": [
+        251,
+        343
+      ],
+      "packed_rayinfo": 516,
+      "rayinfo_hex": "0x0204",
+      "cell_xy": [
+        4,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.3107843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        -0.6135529947424765,
+        0.245596312892747,
+        0.7504899557862361
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        1.984375,
+        2.6875,
+        4.0
+      ],
+      "radiance_filtered_native": [
+        3.5625,
+        3.46875,
+        2.9375
+      ],
+      "hit_word_hex": "0x463b514c",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 25.0,
+      "decoded_hitdistance8_cm": 632.0788173537131,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        4,
+        7
+      ],
+      "trace_buffer_xy": [
+        252,
+        343
+      ],
+      "packed_rayinfo": 392,
+      "rayinfo_hex": "0x0188",
+      "cell_xy": [
+        8,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.5607843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        0.2407809242844407,
+        -0.2521472698270382,
+        0.9372546616685891
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.068359375,
+        0.04736328125,
+        0.02978515625
+      ],
+      "radiance_filtered_native": [
+        0.12890625,
+        0.1044921875,
+        0.0625
+      ],
+      "hit_word_hex": "0x4395a829",
+      "hit_distance_cm": 299.313720703125,
+      "hit_distance_m": 2.99313720703125,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 19.0,
+      "decoded_hitdistance8_cm": 365.08706191137867,
+      "hit_point_translated_world_cm": [
+        902.3509557086321,
+        -197.50985667431172,
+        188.5279691539091
+      ],
+      "hit_point_world_cm": [
+        52.350955708632114,
+        -197.50985667431172,
+        278.5279691539091
+      ],
+      "hit_screen_xy": [
+        444.12287011750936,
+        379.1293353909525
+      ],
+      "predicted_view_depth_cm": 921.6333210746855,
+      "scene_view_depth_at_hit_px_cm": 921.7935582214825,
+      "view_depth_relative_error": 0.00017386214575032633,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        5,
+        7
+      ],
+      "trace_buffer_xy": [
+        253,
+        343
+      ],
+      "packed_rayinfo": 390,
+      "rayinfo_hex": "0x0186",
+      "cell_xy": [
+        6,
+        6
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.4355392156862745
+      ],
+      "direction_world": [
+        -0.25267705774354954,
+        -0.2534341989779094,
+        0.9337694636678201
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        0.21484375,
+        0.1484375,
+        0.09375
+      ],
+      "radiance_filtered_native": [
+        0.03662109375,
+        0.04296875,
+        0.0517578125
+      ],
+      "hit_word_hex": "0x439d3f15",
+      "hit_distance_cm": 314.4927978515625,
+      "hit_distance_m": 3.144927978515625,
+      "b_hit": true,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 18.0,
+      "decoded_hitdistance8_cm": 327.6677628531728,
+      "hit_point_translated_world_cm": [
+        750.8168065440491,
+        -201.7419494850784,
+        201.65856030078083
+      ],
+      "hit_point_world_cm": [
+        -99.18319345595091,
+        -201.7419494850784,
+        291.65856030078083
+      ],
+      "hit_screen_xy": [
+        402.6639612558069,
+        327.5386211864286
+      ],
+      "predicted_view_depth_cm": 776.9367230837267,
+      "scene_view_depth_at_hit_px_cm": 777.038297515123,
+      "view_depth_relative_error": 0.00013073707082998794,
+      "depth_consistent": true
+    },
+    {
+      "trace_texel_xy": [
+        6,
+        7
+      ],
+      "trace_buffer_xy": [
+        254,
+        343
+      ],
+      "packed_rayinfo": 520,
+      "rayinfo_hex": "0x0208",
+      "cell_xy": [
+        8,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.5607843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        0.23942774852544657,
+        0.2386691692199364,
+        0.9411224048442907
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        5.6875,
+        9.0,
+        15.5
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x472df638",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    },
+    {
+      "trace_texel_xy": [
+        7,
+        7
+      ],
+      "trace_buffer_xy": [
+        255,
+        343
+      ],
+      "packed_rayinfo": 518,
+      "rayinfo_hex": "0x0206",
+      "cell_xy": [
+        6,
+        8
+      ],
+      "level": 0,
+      "mip_resolution": 16,
+      "probe_uv": [
+        0.4357843137254902,
+        0.5605392156862745
+      ],
+      "direction_world": [
+        -0.25121389471821265,
+        0.23984611914627116,
+        0.9377448577470204
+      ],
+      "cone_half_angle_rad": 0.08841714521444943,
+      "radiance_trace_native": [
+        9.875,
+        12.0,
+        17.5
+      ],
+      "radiance_filtered_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hit_word_hex": "0x47547380",
+      "hit_distance_cm": null,
+      "hit_distance_m": null,
+      "b_hit": false,
+      "b_moving": false,
+      "b_reached_radiance_cache": false,
+      "encoded_hitdistance8": 0.0,
+      "decoded_hitdistance8_cm": null,
+      "hit_point_translated_world_cm": null,
+      "hit_point_world_cm": null,
+      "hit_screen_xy": null,
+      "predicted_view_depth_cm": null,
+      "scene_view_depth_at_hit_px_cm": null,
+      "view_depth_relative_error": null,
+      "depth_consistent": null
+    }
+  ],
+  "sources": {
+    "rayinfo": {
+      "name": "Lumen.ScreenProbeGather.RayInfosForTracing",
+      "resource": "00040000020b9718fa60",
+      "version": "00040000020ba1b70010",
+      "producer_pass_id": 736,
+      "producer_pass_name": "GenerateRays 8x8",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_R16_UINT",
+      "native_format": "PF_R16_UINT",
+      "extent": [
+        640,
+        672,
+        1
+      ],
+      "row_pitch_bytes": 1280,
+      "bytes_per_pixel": 2,
+      "z_slice_stride_bytes": 860160,
+      "coordinate": [
+        248,
+        336
+      ],
+      "address_byte": 430576,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020b9718fa60.mip0.v00040000020ba1b70010.bin",
+      "file_bytes": 860160,
+      "file_sha256": "deaad7bffc582c72a30f8a85249aa86ecbf65cad7ed41fd67bf684c7e843823b",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "UnsignedIntegerBits",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "trace_radiance": {
+      "name": "Lumen.ScreenProbeGather.TraceRadiance",
+      "resource": "00040000020ba1b729e0",
+      "version": "00040000020c1328ca80",
+      "producer_pass_id": 747,
+      "producer_pass_name": "TraceGlobalSDFAndApplyRadianceCache",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_FloatR11G11B10",
+      "native_format": "PF_FloatR11G11B10",
+      "extent": [
+        640,
+        672,
+        1
+      ],
+      "row_pitch_bytes": 2560,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 1720320,
+      "coordinate": [
+        248,
+        336
+      ],
+      "address_byte": 861152,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020ba1b729e0.mip0.v00040000020c1328ca80.bin",
+      "file_bytes": 1720320,
+      "file_sha256": "ba7608e1d58dff38f73596067a7ccc71a0b7d10073e6e94bf62d60a7c27e4301",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "trace_hit": {
+      "name": "Lumen.ScreenProbeGather.TraceHit",
+      "resource": "00040000020ba1b72cf0",
+      "version": "00040000020c1328ca80",
+      "producer_pass_id": 747,
+      "producer_pass_name": "TraceGlobalSDFAndApplyRadianceCache",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_R32_UINT",
+      "native_format": "PF_R32_UINT",
+      "extent": [
+        640,
+        672,
+        1
+      ],
+      "row_pitch_bytes": 2560,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 1720320,
+      "coordinate": [
+        248,
+        336
+      ],
+      "address_byte": 861152,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020ba1b72cf0.mip0.v00040000020c1328ca80.bin",
+      "file_bytes": 1720320,
+      "file_sha256": "2ebc93e83d5d523367a37af46e723128a0556b41c6b754bf9f8dc10ae3f6866a",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "UnsignedIntegerBits",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "filtered_radiance": {
+      "name": "Lumen.ScreenProbeGather.ScreenProbeRadiance",
+      "resource": "0004000002094be0b370",
+      "version": "0004000002094be0c130",
+      "producer_pass_id": 748,
+      "producer_pass_name": "CompositeTraces",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_FloatR11G11B10",
+      "native_format": "PF_FloatR11G11B10",
+      "extent": [
+        640,
+        672,
+        1
+      ],
+      "row_pitch_bytes": 2560,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 1720320,
+      "coordinate": [
+        248,
+        336
+      ],
+      "address_byte": 861152,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/0004000002094be0b370.mip0.v0004000002094be0c130.bin",
+      "file_bytes": 1720320,
+      "file_sha256": "4e05eda4ebd91e12e4086ebe01c72b6dead85a289ddf7a9d9614b55687041508",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "hitdistance8": {
+      "name": "Lumen.ScreenProbeGather.ScreenProbeHitDistance",
+      "resource": "0004000002094be0b630",
+      "version": "0004000002094be0c130",
+      "producer_pass_id": 748,
+      "producer_pass_name": "CompositeTraces",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_R8",
+      "native_format": "PF_R8",
+      "extent": [
+        640,
+        672,
+        1
+      ],
+      "row_pitch_bytes": 640,
+      "bytes_per_pixel": 1,
+      "z_slice_stride_bytes": 430080,
+      "coordinate": [
+        248,
+        336
+      ],
+      "address_byte": 215288,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/0004000002094be0b630.mip0.v0004000002094be0c130.bin",
+      "file_bytes": 430080,
+      "file_sha256": "6d68d264d7477979f403e560c4bf418f6e91193417253ad3f873bc7be5ca5298",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "sh_ambient": {
+      "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHAmbient",
+      "resource": "000400000208f3733bf0",
+      "version": "000400000208f37343a0",
+      "producer_pass_id": 753,
+      "producer_pass_name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_FloatR11G11B10",
+      "native_format": "PF_FloatR11G11B10",
+      "extent": [
+        80,
+        84,
+        1
+      ],
+      "row_pitch_bytes": 320,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 26880,
+      "coordinate": [
+        31,
+        42
+      ],
+      "address_byte": 13564,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f3733bf0.mip0.v000400000208f37343a0.bin",
+      "file_bytes": 26880,
+      "file_sha256": "38330f55abfa974ee1ee8c999887a68b46d3d942da5ccb428a5bb53198885191",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "sh_directional_R0": {
+      "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional",
+      "resource": "000400000208f3733eb0",
+      "version": "000400000208f37343a0",
+      "producer_pass_id": 753,
+      "producer_pass_name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_FloatRGBA",
+      "native_format": "PF_FloatRGBA",
+      "extent": [
+        480,
+        84,
+        1
+      ],
+      "row_pitch_bytes": 3840,
+      "bytes_per_pixel": 8,
+      "z_slice_stride_bytes": 322560,
+      "coordinate": [
+        31,
+        42
+      ],
+      "address_byte": 161528,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f3733eb0.mip0.v000400000208f37343a0.bin",
+      "file_bytes": 322560,
+      "file_sha256": "18f6a78733ff0d314ffec243351dced824467fb9837959eb4619c0d9361ed162",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "sh_directional_R1": {
+      "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional",
+      "resource": "000400000208f3733eb0",
+      "version": "000400000208f37343a0",
+      "producer_pass_id": 753,
+      "producer_pass_name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_FloatRGBA",
+      "native_format": "PF_FloatRGBA",
+      "extent": [
+        480,
+        84,
+        1
+      ],
+      "row_pitch_bytes": 3840,
+      "bytes_per_pixel": 8,
+      "z_slice_stride_bytes": 322560,
+      "coordinate": [
+        111,
+        42
+      ],
+      "address_byte": 162168,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f3733eb0.mip0.v000400000208f37343a0.bin",
+      "file_bytes": 322560,
+      "file_sha256": "18f6a78733ff0d314ffec243351dced824467fb9837959eb4619c0d9361ed162",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": true,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "blue_noise": {
+      "name": "DumpGPU.NativeUniformBufferBinding",
+      "resource": "0004000002094bdb0320",
+      "version": "000400000208f327f220",
+      "producer_pass_id": 637,
+      "producer_pass_name": "DistantSkyLightLut",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2D",
+      "stored_format": "PF_B8G8R8A8",
+      "native_format": "PF_B8G8R8A8",
+      "extent": [
+        128,
+        8192,
+        1
+      ],
+      "row_pitch_bytes": 512,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 4194304,
+      "coordinate": [
+        31,
+        170
+      ],
+      "address_byte": 87164,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/0004000002094bdb0320.linear.mip0.v000400000208f327f220.bin",
+      "file_bytes": 4194304,
+      "file_sha256": "cd7286ea0fd5374282ac76deb74e47be42a0a175991a293468b506c4c5a19ad0",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "diffuse": {
+      "name": "Lumen.ScreenProbeGather.DiffuseIndirect",
+      "resource": "000400000208f373fc00",
+      "version": "000400000208f36d6770",
+      "producer_pass_id": 761,
+      "producer_pass_name": "ScreenProbeIntegrate SupportAll DownsampleFactor:1",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_FloatR11G11B10",
+      "native_format": "PF_FloatR11G11B10",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 5120,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 4546560,
+      "coordinate": [
+        498,
+        680
+      ],
+      "address_byte": 3483592,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f373fc00.[0].mip0.v000400000208f36d6770.bin",
+      "file_bytes": 4546560,
+      "file_sha256": "0fd41619577167dedd59994cdf471f7f9e5ca72f68c454306555e5cfcbd9fbe8",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    }
+  },
+  "receiver": "A",
+  "covering_receiver": true,
+  "world_delta_to_receiver_cm": 1.7249138327604039,
+  "screenprobe_parameters": {
+    "parameter_block_file": "Structures/00040000020b9718fd30.bin",
+    "parameter_block_bytes": 368,
+    "parameter_block_sha256": "cf3fe00cc9b1bf506cee5a388d14e4ec73984f8f241450cf86cb8c6518a68f64",
+    "metadata_file": "StructuresMetadata/000400007ffc1e2cdb40.json",
+    "metadata_struct": "FScreenProbeParameters",
+    "included_struct_offset_in_FParameters": 64,
+    "fields": {
+      "ScreenProbeTracingOctahedronResolution": 8,
+      "ScreenProbeGatherOctahedronResolution": 8,
+      "ScreenProbeGatherOctahedronResolutionWithBorder": 10,
+      "ScreenProbeDownsampleFactor": 16,
+      "ScreenProbeViewSize": [
+        80,
+        45
+      ],
+      "ScreenProbeAtlasViewSize": [
+        80,
+        67
+      ],
+      "ScreenProbeAtlasBufferSize": [
+        80,
+        84
+      ],
+      "NumUniformScreenProbes": 3600,
+      "MaxNumAdaptiveProbes": 1800,
+      "FixedJitterIndex": -1,
+      "ScreenProbeRayDirectionFrameIndex": 1,
+      "bSupportsHairScreenTraces": 1,
+      "MaxImportanceSamplingOctahedronResolution": 16,
+      "ScreenProbeBRDFOctahedronResolution": 8
+    },
+    "producer_pass": {
+      "id": 736,
+      "name": "GenerateRays 8x8"
+    },
+    "validity": {
+      "file_exists": true,
+      "bytes_match_declared_FParameters_size": true,
+      "readback_status": null,
+      "note": "shader parameter payload, not an RDG resource version; DumpGPU does not attach a DumpReadbackStatus record to this structure payload"
+    },
+    "address_mapping": "FScreenProbeParameters starts at byte 64 of the captured FParameters payload; field addresses are 64+metadata Offset",
+    "preexposure": 0.00048828125
+  },
+  "blue_noise_uniform": {
+    "layout": "FBlueNoiseParameters",
+    "content_file": "Structures/00040000020bc4a5e700.bin",
+    "content_bytes": 48,
+    "content_sha256": "770011387829ab66d1477def49553ad21b812cae3537733f9872328fac12b1df",
+    "dimensions": [
+      128,
+      128,
+      64
+    ],
+    "modulo_masks": [
+      127,
+      127,
+      63
+    ],
+    "texture_binding": "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture",
+    "validity": {
+      "file_exists": true,
+      "bytes_match_declared_48": true,
+      "readback_status": null
+    },
+    "address_mapping": "wrapped texture coordinate = ((screenTileX & maskX), (frame & maskZ)*dimY + (screenTileY & maskY))",
+    "preexposure": 0.00048828125
+  }
+}

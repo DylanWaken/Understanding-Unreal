@@ -1,0 +1,3238 @@
+{
+  "schema": "arda-sponza-final-path-tracer-v1",
+  "status": "ok",
+  "started_utc": "2026-11-15T07:52:00Z",
+  "started_monotonic": 111168.531,
+  "resolution": [
+    1280,
+    720
+  ],
+  "targets": [
+    {
+      "camera": "hero",
+      "spp": 256
+    },
+    {
+      "camera": "hero",
+      "spp": 1024
+    },
+    {
+      "camera": "material",
+      "spp": 256
+    },
+    {
+      "camera": "material",
+      "spp": 1024
+    }
+  ],
+  "warm_spp": 16,
+  "script_sha256": "6b58d7d7f24b226886b480af9bba7d4bb1f810310a9dad343a376c2955482089",
+  "map_sha256_start": "3ef49eddd474fc16e6129dac3bcbb16bb4937529d9213296a865d368ede72c64",
+  "attempts": [
+    {
+      "stem": "pt-hero-256spp",
+      "camera": "hero",
+      "camera_actor": "CAM_Hero_Reference",
+      "spp_target": 256,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-256spp.png",
+      "capture_draw": 96,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "256",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2529949,
+      "sha256": "15208d89c172985c1f16febc5f4649d0df24b85ea8b315a6d1fa0ac9d51bda79",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 73.39,
+      "std_display_luma": 71.314,
+      "near_black_fraction": 0.09308,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-256spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2529813,
+        "sha256": "536d5ba99020524f3f1480216d7d6ae9aec54b6a5d2f97d64e31fe5324b41ead"
+      }
+    },
+    {
+      "stem": "pt-hero-1024spp",
+      "camera": "hero",
+      "camera_actor": "CAM_Hero_Reference",
+      "spp_target": 1024,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-1024spp.png",
+      "capture_draw": 441,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "1024",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2231679,
+      "sha256": "ba39bb9ed97ab8b22cc0a93c9109a912fd3df94a01a7dbba18e9e92ecb06cf01",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 73.878,
+      "std_display_luma": 70.499,
+      "near_black_fraction": 0.04992,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-1024spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2231492,
+        "sha256": "98b03de3008a8627dbb8d7c090eca70847567f2daebed36e902dffd2823fd5f8"
+      }
+    },
+    {
+      "stem": "pt-material-256spp",
+      "camera": "material",
+      "camera_actor": "CAM_Materials",
+      "spp_target": 256,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-256spp.png",
+      "capture_draw": 444,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 0,
+        "sample_count": 1024
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 0,
+        "sample_count": 1024
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1,
+        "sample_count": 256
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Materials",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0059814453125,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            250.0,
+            0.0,
+            168.0
+          ],
+          "rotation": {
+            "pitch": -10.20397,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 0,
+        "sample_count": 256
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "256",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": false,
+      "bytes": 409980,
+      "sha256": "dc4bbca282e7c26b8d6f911895a539d133f6e0230d8d6ec0edc24509de74f71c",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 21.289,
+      "std_display_luma": 66.16,
+      "near_black_fraction": 0.89914,
+      "near_white_fraction": 0.02619,
+      "reject_reason": "sample index dropped below target across screenshot/readback, or screenshot missing",
+      "rejected_file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\rejected\\pt-material-256spp-attempt1.png"
+    },
+    {
+      "stem": "pt-material-256spp",
+      "camera": "material",
+      "camera_actor": "CAM_Materials",
+      "spp_target": 256,
+      "attempt": 2,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-256spp.png",
+      "capture_draw": 532,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Materials",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0059814453125,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            250.0,
+            0.0,
+            168.0
+          ],
+          "rotation": {
+            "pitch": -10.20397,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "256",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2447106,
+      "sha256": "078673e2268ddc993893190b0ba9200f7de9d595ee400c8854cb39d53558d764",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 84.237,
+      "std_display_luma": 77.632,
+      "near_black_fraction": 0.09533,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-256spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2447586,
+        "sha256": "6a59ab987bffd0817d5a7c55f39f7a72325fdd80554444503ac7a83cbd0367fc"
+      }
+    },
+    {
+      "stem": "pt-material-1024spp",
+      "camera": "material",
+      "camera_actor": "CAM_Materials",
+      "spp_target": 1024,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-1024spp.png",
+      "capture_draw": 877,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Materials",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0059814453125,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            250.0,
+            0.0,
+            168.0
+          ],
+          "rotation": {
+            "pitch": -10.20397,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "1024",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2132240,
+      "sha256": "6bcd396d9ed02bfea17fcfdbb407675c3906482c506823d26e4d41117c539248",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 84.772,
+      "std_display_luma": 76.875,
+      "near_black_fraction": 0.05055,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-1024spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2132513,
+        "sha256": "4027648a9170d38f3fef3c852f568c371e8eadebcf3925f4c1392e95266f2660"
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "stem": "pt-material-256spp",
+      "camera": "material",
+      "camera_actor": "CAM_Materials",
+      "spp_target": 256,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-256spp.png",
+      "capture_draw": 444,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 0,
+        "sample_count": 1024
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 0,
+        "sample_count": 1024
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1,
+        "sample_count": 256
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Materials",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0059814453125,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            250.0,
+            0.0,
+            168.0
+          ],
+          "rotation": {
+            "pitch": -10.20397,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 0,
+        "sample_count": 256
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "256",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": false,
+      "bytes": 409980,
+      "sha256": "dc4bbca282e7c26b8d6f911895a539d133f6e0230d8d6ec0edc24509de74f71c",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 21.289,
+      "std_display_luma": 66.16,
+      "near_black_fraction": 0.89914,
+      "near_white_fraction": 0.02619,
+      "reject_reason": "sample index dropped below target across screenshot/readback, or screenshot missing",
+      "rejected_file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\rejected\\pt-material-256spp-attempt1.png"
+    }
+  ],
+  "target_records": [
+    {
+      "stem": "pt-hero-256spp",
+      "camera": "hero",
+      "camera_actor": "CAM_Hero_Reference",
+      "spp_target": 256,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-256spp.png",
+      "capture_draw": 96,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "256",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2529949,
+      "sha256": "15208d89c172985c1f16febc5f4649d0df24b85ea8b315a6d1fa0ac9d51bda79",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 73.39,
+      "std_display_luma": 71.314,
+      "near_black_fraction": 0.09308,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-256spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2529813,
+        "sha256": "536d5ba99020524f3f1480216d7d6ae9aec54b6a5d2f97d64e31fe5324b41ead"
+      }
+    },
+    {
+      "stem": "pt-hero-1024spp",
+      "camera": "hero",
+      "camera_actor": "CAM_Hero_Reference",
+      "spp_target": 1024,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-1024spp.png",
+      "capture_draw": 441,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "1024",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2231679,
+      "sha256": "ba39bb9ed97ab8b22cc0a93c9109a912fd3df94a01a7dbba18e9e92ecb06cf01",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 73.878,
+      "std_display_luma": 70.499,
+      "near_black_fraction": 0.04992,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-hero-1024spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2231492,
+        "sha256": "98b03de3008a8627dbb8d7c090eca70847567f2daebed36e902dffd2823fd5f8"
+      }
+    },
+    {
+      "stem": "pt-material-256spp",
+      "camera": "material",
+      "camera_actor": "CAM_Materials",
+      "spp_target": 256,
+      "attempt": 2,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-256spp.png",
+      "capture_draw": 532,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Materials",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0059814453125,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            250.0,
+            0.0,
+            168.0
+          ],
+          "rotation": {
+            "pitch": -10.20397,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 256,
+        "sample_count": 256
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "256",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2447106,
+      "sha256": "078673e2268ddc993893190b0ba9200f7de9d595ee400c8854cb39d53558d764",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 84.237,
+      "std_display_luma": 77.632,
+      "near_black_fraction": 0.09533,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-256spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 256,
+          "sample_count": 256
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2447586,
+        "sha256": "6a59ab987bffd0817d5a7c55f39f7a72325fdd80554444503ac7a83cbd0367fc"
+      }
+    },
+    {
+      "stem": "pt-material-1024spp",
+      "camera": "material",
+      "camera_actor": "CAM_Materials",
+      "spp_target": 1024,
+      "attempt": 1,
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-1024spp.png",
+      "capture_draw": 877,
+      "before_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "before_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "after_screenshot": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "camera_readback": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Materials",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0059814453125,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            250.0,
+            0.0,
+            168.0
+          ],
+          "rotation": {
+            "pitch": -10.20397,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 27,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "after_camera_readback": {
+        "view_mode_index": 27,
+        "is_path_tracing_view_mode": true,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true,
+        "samples": 1024,
+        "sample_count": 1024
+      },
+      "cvars": {
+        "r.PathTracing.SamplesPerPixel": {
+          "name": "r.PathTracing.SamplesPerPixel",
+          "found": true,
+          "value": "1024",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MaxBounces": {
+          "name": "r.PathTracing.MaxBounces",
+          "found": true,
+          "value": "8",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.Denoiser": {
+          "name": "r.PathTracing.Denoiser",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.VisibleLights": {
+          "name": "r.PathTracing.VisibleLights",
+          "found": true,
+          "value": "2",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceAtmosphere": {
+          "name": "r.PathTracing.EnableReferenceAtmosphere",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.SkylightCaching": {
+          "name": "r.PathTracing.SkylightCaching",
+          "found": true,
+          "value": "0",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISMode": {
+          "name": "r.PathTracing.MISMode",
+          "found": true,
+          "value": "2",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.MISCompensation": {
+          "name": "r.PathTracing.MISCompensation",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.FilterWidth": {
+          "name": "r.PathTracing.FilterWidth",
+          "found": true,
+          "value": "3",
+          "default": "3.000000",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableEmissive": {
+          "name": "r.PathTracing.EnableEmissive",
+          "found": true,
+          "value": "1",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.EnableReferenceDOF": {
+          "name": "r.PathTracing.EnableReferenceDOF",
+          "found": true,
+          "value": "0",
+          "default": "-1",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.PathTracing.ProgressDisplay": {
+          "name": "r.PathTracing.ProgressDisplay",
+          "found": true,
+          "value": "false",
+          "default": "true",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.SkyLight.RealTimeReflectionCapture": {
+          "name": "r.SkyLight.RealTimeReflectionCapture",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Constructor",
+          "flags": 320
+        }
+      },
+      "accepted": true,
+      "bytes": 2132240,
+      "sha256": "6bcd396d9ed02bfea17fcfdbb407675c3906482c506823d26e4d41117c539248",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 84.772,
+      "std_display_luma": 76.875,
+      "near_black_fraction": 0.05055,
+      "near_white_fraction": 2e-05,
+      "stability_repeat": {
+        "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\pt-material-1024spp-stability-repeat.png",
+        "before_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "after_screenshot": {
+          "view_mode_index": 27,
+          "is_path_tracing_view_mode": true,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true,
+          "samples": 1024,
+          "sample_count": 1024
+        },
+        "accepted": true,
+        "role": "stability repeat, not an independent sample",
+        "bytes": 2132513,
+        "sha256": "4027648a9170d38f3fef3c852f568c371e8eadebcf3925f4c1392e95266f2660"
+      }
+    }
+  ],
+  "notes": [],
+  "limits": [],
+  "sample_counter_contract": {
+    "accumulation_index": "GetPathTracingSampleIndex (FSceneViewState::SampleIndex)",
+    "target_only": "GetPathTracingSampleCount returns LastConfig.PathTracingData.MaxSamples, not an observation",
+    "acceptance_rule": "accept only if sample index >= target before screenshot, after screenshot and after camera readback"
+  },
+  "pre_apply_saved_state": {
+    "hero_camera": {
+      "actor": "CAM_Hero_Reference",
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0
+    },
+    "material_camera": {
+      "actor": "CAM_Materials",
+      "location_cm": [
+        250.0,
+        0.0,
+        168.0
+      ],
+      "rotation_degrees": {
+        "pitch": -10.20397,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0059814453125
+    },
+    "sun": {
+      "rotation_degrees": {
+        "pitch": -75.0,
+        "yaw": -35.0,
+        "roll": -0.0
+      },
+      "intensity_lux": 80000.0,
+      "temperature_k": 5500.0,
+      "atmosphere_sun_light": true
+    },
+    "sky_light": {
+      "intensity": 16.0,
+      "real_time_capture": true
+    },
+    "exposure": {
+      "auto_exposure_min_brightness": 11.0,
+      "auto_exposure_max_brightness": 11.0,
+      "auto_exposure_bias": 0.0,
+      "override_auto_exposure_min_brightness": true,
+      "override_auto_exposure_max_brightness": true,
+      "override_auto_exposure_bias": true,
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+    }
+  },
+  "applied_readbacks": {
+    "pre_apply_saved_state": {
+      "hero_camera": {
+        "actor": "CAM_Hero_Reference",
+        "location_cm": [
+          -850.0,
+          0.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "material_camera": {
+        "actor": "CAM_Materials",
+        "location_cm": [
+          250.0,
+          0.0,
+          168.0
+        ],
+        "rotation_degrees": {
+          "pitch": -10.20397,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0059814453125
+      },
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "sky_light": {
+        "intensity": 16.0,
+        "real_time_capture": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "override_auto_exposure_min_brightness": true,
+        "override_auto_exposure_max_brightness": true,
+        "override_auto_exposure_bias": true,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      }
+    },
+    "hero_camera_spawned": false,
+    "material_camera_spawned": false,
+    "renamed_duplicate_hero_cameras": [],
+    "renamed_duplicate_material_cameras": [],
+    "post_apply_saved_state": {
+      "hero_camera": {
+        "actor": "CAM_Hero_Reference",
+        "location_cm": [
+          -850.0,
+          0.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "material_camera": {
+        "actor": "CAM_Materials",
+        "location_cm": [
+          250.0,
+          0.0,
+          168.0
+        ],
+        "rotation_degrees": {
+          "pitch": -10.20397,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0059814453125
+      },
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "sky_light": {
+        "intensity": 16.0,
+        "real_time_capture": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "override_auto_exposure_min_brightness": true,
+        "override_auto_exposure_max_brightness": true,
+        "override_auto_exposure_bias": true,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      }
+    },
+    "hero_camera_readback": {
+      "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+      "pilot_actor": "CAM_Hero_Reference",
+      "pilot_matches": true,
+      "actual_view_fov": 70.0,
+      "exact_camera_view": true,
+      "allows_cinematic_control": true,
+      "viewport_camera": {
+        "location_cm": [
+          -850.0,
+          0.0,
+          90.0
+        ],
+        "rotation": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        }
+      },
+      "render_status": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 3,
+        "viewport_size": [
+          1612,
+          1166
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      }
+    },
+    "material_camera_readback": {
+      "actor": "CAM_Materials",
+      "location_cm": [
+        250.0,
+        0.0,
+        168.0
+      ],
+      "rotation_degrees": {
+        "pitch": -10.20397,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0059814453125
+    },
+    "material_camera_note": "material detail camera is saved and read back from its actor; the viewport is deliberately left piloted on the hero camera",
+    "cvars_applied": {
+      "r.DynamicGlobalIlluminationMethod": {
+        "name": "r.DynamicGlobalIlluminationMethod",
+        "found": true,
+        "value": "1",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.ReflectionMethod": {
+        "name": "r.ReflectionMethod",
+        "found": true,
+        "value": "1",
+        "default": "2",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.HardwareRayTracing": {
+        "name": "r.Lumen.HardwareRayTracing",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.LumenScene.FarField": {
+        "name": "r.LumenScene.FarField",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.ScreenProbeGather.ScreenTraces": {
+        "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.Reflections.ScreenTraces": {
+        "name": "r.Lumen.Reflections.ScreenTraces",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.LumenScene.SurfaceCache.AtlasSize": {
+        "name": "r.LumenScene.SurfaceCache.AtlasSize",
+        "found": true,
+        "value": "4096",
+        "default": "4096",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.Visualize": {
+        "name": "r.Lumen.Visualize",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.SamplesPerPixel": {
+        "name": "r.PathTracing.SamplesPerPixel",
+        "found": true,
+        "value": "-1",
+        "default": "-1",
+        "set_by": "Constructor",
+        "flags": 32
+      },
+      "r.PathTracing.MaxBounces": {
+        "name": "r.PathTracing.MaxBounces",
+        "found": true,
+        "value": "-1",
+        "default": "-1",
+        "set_by": "Constructor",
+        "flags": 32
+      },
+      "r.PathTracing.Denoiser": {
+        "name": "r.PathTracing.Denoiser",
+        "found": true,
+        "value": "-1",
+        "default": "-1",
+        "set_by": "Constructor",
+        "flags": 32
+      },
+      "r.PathTracing.VisibleLights": {
+        "name": "r.PathTracing.VisibleLights",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Constructor",
+        "flags": 32
+      },
+      "r.PathTracing.EnableReferenceAtmosphere": {
+        "name": "r.PathTracing.EnableReferenceAtmosphere",
+        "found": true,
+        "value": "1",
+        "default": "-1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.SkylightCaching": {
+        "name": "r.PathTracing.SkylightCaching",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Constructor",
+        "flags": 32
+      },
+      "r.PathTracing.MISMode": {
+        "name": "r.PathTracing.MISMode",
+        "found": true,
+        "value": "2",
+        "default": "2",
+        "set_by": "Constructor",
+        "flags": 32
+      },
+      "r.PathTracing.MISCompensation": {
+        "name": "r.PathTracing.MISCompensation",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Constructor",
+        "flags": 32
+      },
+      "r.DistanceFields.Visualize.Monochrome": {
+        "name": "r.DistanceFields.Visualize.Monochrome",
+        "found": true,
+        "value": "1",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.SkyLight.RealTimeReflectionCapture": {
+        "name": "r.SkyLight.RealTimeReflectionCapture",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Constructor",
+        "flags": 320
+      }
+    }
+  },
+  "setup_path_tracer": {
+    "samples_per_pixel_targets": [
+      256,
+      1024
+    ],
+    "max_bounces": 8,
+    "denoiser": 0,
+    "visible_lights": 2,
+    "enable_reference_atmosphere": 0,
+    "skylight_caching": 0,
+    "mis_mode": 2,
+    "mis_compensation": 1,
+    "filter_width": 3.0,
+    "sample_counter_authority": "GetPathTracingSampleIndex is the accumulation index; GetPathTracingSampleCount is target-only (LastConfig MaxSamples) and is recorded but not used as observed spp",
+    "sky_model": "SkyAtmosphere_Sponza + SkyLight_Sponza real-time captured scene cubemap (intensity 16). PT integrates that same SkyLight cubemap; it does not use the separate volumetric reference-atmosphere path.",
+    "probe_decision": "PT probe at 32 spp, VisibleLights=2: EnableReferenceAtmosphere=0 kept the accumulation index at 32 before and after screenshot and produced a readable sky/sun frame. EnableReferenceAtmosphere=1 dropped the post-screenshot index to 3 and produced a dark, incorrect frame, so it is rejected for the final reference.",
+    "sky_model_mismatch_declared": false
+  },
+  "hero_readback_before": {
+    "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+    "pilot_actor": "CAM_Hero_Reference",
+    "pilot_matches": true,
+    "actual_view_fov": 70.0,
+    "exact_camera_view": true,
+    "allows_cinematic_control": true,
+    "viewport_camera": {
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      }
+    },
+    "render_status": {
+      "rhi": "D3D12",
+      "feature_level": 4,
+      "shader_platform": "PCD3D_SM6",
+      "view_mode_index": 3,
+      "viewport_size": [
+        1612,
+        1166
+      ],
+      "scene_hdr_enabled": false,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true
+    }
+  },
+  "warmup_start_status": {
+    "view_mode_index": 27,
+    "is_path_tracing_view_mode": true,
+    "ray_tracing_supported": true,
+    "ray_tracing_shaders_supported": true,
+    "path_tracing_shader_support": true,
+    "samples": 0,
+    "sample_count": 0
+  },
+  "render_status_start": {
+    "rhi": "D3D12",
+    "feature_level": 4,
+    "shader_platform": "PCD3D_SM6",
+    "view_mode_index": 27,
+    "viewport_size": [
+      1612,
+      1166
+    ],
+    "scene_hdr_enabled": false,
+    "ray_tracing_supported": true,
+    "ray_tracing_shaders_supported": true,
+    "path_tracing_shader_support": true
+  },
+  "warmup": {
+    "observed_index": 16,
+    "status": {
+      "view_mode_index": 27,
+      "is_path_tracing_view_mode": true,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true,
+      "samples": 16,
+      "sample_count": 16
+    },
+    "draws": 9,
+    "cvars": {
+      "r.PathTracing.SamplesPerPixel": {
+        "name": "r.PathTracing.SamplesPerPixel",
+        "found": true,
+        "value": "16",
+        "default": "-1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.MaxBounces": {
+        "name": "r.PathTracing.MaxBounces",
+        "found": true,
+        "value": "8",
+        "default": "-1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.Denoiser": {
+        "name": "r.PathTracing.Denoiser",
+        "found": true,
+        "value": "0",
+        "default": "-1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.VisibleLights": {
+        "name": "r.PathTracing.VisibleLights",
+        "found": true,
+        "value": "2",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.EnableReferenceAtmosphere": {
+        "name": "r.PathTracing.EnableReferenceAtmosphere",
+        "found": true,
+        "value": "0",
+        "default": "-1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.SkylightCaching": {
+        "name": "r.PathTracing.SkylightCaching",
+        "found": true,
+        "value": "0",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.MISMode": {
+        "name": "r.PathTracing.MISMode",
+        "found": true,
+        "value": "2",
+        "default": "2",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.MISCompensation": {
+        "name": "r.PathTracing.MISCompensation",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.FilterWidth": {
+        "name": "r.PathTracing.FilterWidth",
+        "found": true,
+        "value": "3",
+        "default": "3.000000",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.EnableEmissive": {
+        "name": "r.PathTracing.EnableEmissive",
+        "found": true,
+        "value": "1",
+        "default": "-1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.EnableReferenceDOF": {
+        "name": "r.PathTracing.EnableReferenceDOF",
+        "found": true,
+        "value": "0",
+        "default": "-1",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.PathTracing.ProgressDisplay": {
+        "name": "r.PathTracing.ProgressDisplay",
+        "found": true,
+        "value": "false",
+        "default": "true",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.DynamicGlobalIlluminationMethod": {
+        "name": "r.DynamicGlobalIlluminationMethod",
+        "found": true,
+        "value": "1",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.ReflectionMethod": {
+        "name": "r.ReflectionMethod",
+        "found": true,
+        "value": "1",
+        "default": "2",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.HardwareRayTracing": {
+        "name": "r.Lumen.HardwareRayTracing",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.LumenScene.FarField": {
+        "name": "r.LumenScene.FarField",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.SkyLight.RealTimeReflectionCapture": {
+        "name": "r.SkyLight.RealTimeReflectionCapture",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Constructor",
+        "flags": 320
+      }
+    }
+  },
+  "finished_utc": "2026-11-15T07:52:13Z",
+  "elapsed_seconds": 12.76,
+  "draws": 878,
+  "map_sha256_after": "3ef49eddd474fc16e6129dac3bcbb16bb4937529d9213296a865d368ede72c64",
+  "map_unchanged": true,
+  "script_sha256_final": "6b58d7d7f24b226886b480af9bba7d4bb1f810310a9dad343a376c2955482089",
+  "cvars_at_end": {
+    "r.PathTracing.SamplesPerPixel": {
+      "name": "r.PathTracing.SamplesPerPixel",
+      "found": true,
+      "value": "1024",
+      "default": "-1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.MaxBounces": {
+      "name": "r.PathTracing.MaxBounces",
+      "found": true,
+      "value": "8",
+      "default": "-1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.Denoiser": {
+      "name": "r.PathTracing.Denoiser",
+      "found": true,
+      "value": "0",
+      "default": "-1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.VisibleLights": {
+      "name": "r.PathTracing.VisibleLights",
+      "found": true,
+      "value": "2",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.EnableReferenceAtmosphere": {
+      "name": "r.PathTracing.EnableReferenceAtmosphere",
+      "found": true,
+      "value": "0",
+      "default": "-1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.SkylightCaching": {
+      "name": "r.PathTracing.SkylightCaching",
+      "found": true,
+      "value": "0",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.MISMode": {
+      "name": "r.PathTracing.MISMode",
+      "found": true,
+      "value": "2",
+      "default": "2",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.MISCompensation": {
+      "name": "r.PathTracing.MISCompensation",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.FilterWidth": {
+      "name": "r.PathTracing.FilterWidth",
+      "found": true,
+      "value": "3",
+      "default": "3.000000",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.EnableEmissive": {
+      "name": "r.PathTracing.EnableEmissive",
+      "found": true,
+      "value": "1",
+      "default": "-1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.EnableReferenceDOF": {
+      "name": "r.PathTracing.EnableReferenceDOF",
+      "found": true,
+      "value": "0",
+      "default": "-1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.PathTracing.ProgressDisplay": {
+      "name": "r.PathTracing.ProgressDisplay",
+      "found": true,
+      "value": "false",
+      "default": "true",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DynamicGlobalIlluminationMethod": {
+      "name": "r.DynamicGlobalIlluminationMethod",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.ReflectionMethod": {
+      "name": "r.ReflectionMethod",
+      "found": true,
+      "value": "1",
+      "default": "2",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.Lumen.HardwareRayTracing": {
+      "name": "r.Lumen.HardwareRayTracing",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.LumenScene.FarField": {
+      "name": "r.LumenScene.FarField",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.SkyLight.RealTimeReflectionCapture": {
+      "name": "r.SkyLight.RealTimeReflectionCapture",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Constructor",
+      "flags": 320
+    }
+  }
+}

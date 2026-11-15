@@ -1,0 +1,688 @@
+{
+  "schema": "sponza-lumen-integration-history-v2",
+  "scope": "captured presented-graph per-pixel Lumen screen-probe spatial integration and its temporal history; DiffuseIndirect is the ScreenProbeIntegrate output before material albedo",
+  "view_frame": 905,
+  "preexposure": 0.00048828125,
+  "receivers": {
+    "A": {
+      "diffuse_indirect_current": [
+        1.28125,
+        1.703125,
+        2.5625
+      ],
+      "diffuse_indirect_history": [
+        1.296875,
+        1.671875,
+        2.5
+      ],
+      "diffuse_indirect_new_history": [
+        1.296875,
+        1.671875,
+        2.5
+      ],
+      "history_minus_current": [
+        0.015625,
+        -0.03125,
+        -0.0625
+      ],
+      "history_minus_current_definition": "history - current, component-wise",
+      "relative_history_difference": [
+        0.012195121951219513,
+        0.01834862385321101,
+        0.024390243902439025
+      ],
+      "num_frames_accumulated_history": 10.0,
+      "num_frames_accumulated_new": 10.0,
+      "num_frames_accumulated_history_raw_byte": 15,
+      "num_frames_accumulated_new_raw_byte": 15,
+      "num_frames_accumulated_history_fast_update_code": 0,
+      "num_frames_accumulated_new_fast_update_code": 0,
+      "num_frames_accumulated_history_count_code": 15,
+      "num_frames_accumulated_new_count_code": 15,
+      "num_frames_accumulated_history_decode": {
+        "raw_byte": 15,
+        "raw_byte_hex": "0x0f",
+        "fast_update_mode_amount_code_high_nibble": 0,
+        "fast_update_mode_amount": 0.0,
+        "num_frames_accumulated_count_code_low_nibble": 15,
+        "max_frames_accumulated": 10.0,
+        "local_max_frames_accumulated_min15": 10.0,
+        "decoded_num_frames_accumulated": 10.0,
+        "decoded_rule": "low nibble == 15 -> captured MaxFramesAccumulated; else (low/15) * min(MaxFramesAccumulated,15)"
+      },
+      "num_frames_accumulated_new_decode": {
+        "raw_byte": 15,
+        "raw_byte_hex": "0x0f",
+        "fast_update_mode_amount_code_high_nibble": 0,
+        "fast_update_mode_amount": 0.0,
+        "num_frames_accumulated_count_code_low_nibble": 15,
+        "max_frames_accumulated": 10.0,
+        "local_max_frames_accumulated_min15": 10.0,
+        "decoded_num_frames_accumulated": 10.0,
+        "decoded_rule": "low nibble == 15 -> captured MaxFramesAccumulated; else (low/15) * min(MaxFramesAccumulated,15)"
+      },
+      "max_frames_accumulated_parameter": 10.0,
+      "sh_replay_raw_evaluate_sh_irradiance_at_probe": [
+        0.3157184731053253,
+        0.4199814361120942,
+        0.6449494076050307
+      ],
+      "sh_replay_unit_albedo_lambert_response_at_probe": [
+        1.2628738924213012,
+        1.6799257444483768,
+        2.579797630420123
+      ],
+      "sh_replay_physical_irradiance_4pi_at_probe": [
+        3.9674353428411067,
+        5.277642377335384,
+        8.104673283476215
+      ],
+      "sh_replay_vs_captured_diffuse_relative_error": [
+        0.04966141707744517,
+        0.07515247644696117,
+        0.08623058122952543
+      ],
+      "sh_replay_note": "stored SH3 coefficients are sphere-average radiance; raw EvaluateSHIrradiance is not physical irradiance. Physical irradiance = 4*pi*raw; the captured DiffuseIndirect (unit-albedo Lambert response, before material albedo) = 4*raw. 4*raw is what is compared here."
+    },
+    "B": {
+      "diffuse_indirect_current": [
+        1.046875,
+        1.46875,
+        2.3125
+      ],
+      "diffuse_indirect_history": [
+        0.984375,
+        1.40625,
+        2.1875
+      ],
+      "diffuse_indirect_new_history": [
+        0.984375,
+        1.40625,
+        2.1875
+      ],
+      "history_minus_current": [
+        -0.0625,
+        -0.0625,
+        -0.125
+      ],
+      "history_minus_current_definition": "history - current, component-wise",
+      "relative_history_difference": [
+        0.05970149253731343,
+        0.0425531914893617,
+        0.05405405405405406
+      ],
+      "num_frames_accumulated_history": 10.0,
+      "num_frames_accumulated_new": 10.0,
+      "num_frames_accumulated_history_raw_byte": 15,
+      "num_frames_accumulated_new_raw_byte": 15,
+      "num_frames_accumulated_history_fast_update_code": 0,
+      "num_frames_accumulated_new_fast_update_code": 0,
+      "num_frames_accumulated_history_count_code": 15,
+      "num_frames_accumulated_new_count_code": 15,
+      "num_frames_accumulated_history_decode": {
+        "raw_byte": 15,
+        "raw_byte_hex": "0x0f",
+        "fast_update_mode_amount_code_high_nibble": 0,
+        "fast_update_mode_amount": 0.0,
+        "num_frames_accumulated_count_code_low_nibble": 15,
+        "max_frames_accumulated": 10.0,
+        "local_max_frames_accumulated_min15": 10.0,
+        "decoded_num_frames_accumulated": 10.0,
+        "decoded_rule": "low nibble == 15 -> captured MaxFramesAccumulated; else (low/15) * min(MaxFramesAccumulated,15)"
+      },
+      "num_frames_accumulated_new_decode": {
+        "raw_byte": 15,
+        "raw_byte_hex": "0x0f",
+        "fast_update_mode_amount_code_high_nibble": 0,
+        "fast_update_mode_amount": 0.0,
+        "num_frames_accumulated_count_code_low_nibble": 15,
+        "max_frames_accumulated": 10.0,
+        "local_max_frames_accumulated_min15": 10.0,
+        "decoded_num_frames_accumulated": 10.0,
+        "decoded_rule": "low nibble == 15 -> captured MaxFramesAccumulated; else (low/15) * min(MaxFramesAccumulated,15)"
+      },
+      "max_frames_accumulated_parameter": 10.0,
+      "sh_replay_raw_evaluate_sh_irradiance_at_probe": [
+        0.2551659759735413,
+        0.36201030722078703,
+        0.5766054277018491
+      ],
+      "sh_replay_unit_albedo_lambert_response_at_probe": [
+        1.0206639038941652,
+        1.4480412288831481,
+        2.3064217108073963
+      ],
+      "sh_replay_physical_irradiance_4pi_at_probe": [
+        3.206510222258188,
+        4.5491556867544345,
+        7.245837502752519
+      ],
+      "sh_replay_vs_captured_diffuse_relative_error": [
+        0.04515983758762514,
+        0.053120893733198636,
+        0.05436421065480975
+      ],
+      "sh_replay_note": "stored SH3 coefficients are sphere-average radiance; raw EvaluateSHIrradiance is not physical irradiance. Physical irradiance = 4*pi*raw; the captured DiffuseIndirect (unit-albedo Lambert response, before material albedo) = 4*raw. 4*raw is what is compared here."
+    },
+    "C": {
+      "diffuse_indirect_current": [
+        0.515625,
+        0.5546875,
+        0.71875
+      ],
+      "diffuse_indirect_history": [
+        0.609375,
+        0.625,
+        0.765625
+      ],
+      "diffuse_indirect_new_history": [
+        0.6015625,
+        0.6171875,
+        0.75
+      ],
+      "history_minus_current": [
+        0.09375,
+        0.0703125,
+        0.046875
+      ],
+      "history_minus_current_definition": "history - current, component-wise",
+      "relative_history_difference": [
+        0.18181818181818182,
+        0.1267605633802817,
+        0.06521739130434782
+      ],
+      "num_frames_accumulated_history": 10.0,
+      "num_frames_accumulated_new": 10.0,
+      "num_frames_accumulated_history_raw_byte": 15,
+      "num_frames_accumulated_new_raw_byte": 15,
+      "num_frames_accumulated_history_fast_update_code": 0,
+      "num_frames_accumulated_new_fast_update_code": 0,
+      "num_frames_accumulated_history_count_code": 15,
+      "num_frames_accumulated_new_count_code": 15,
+      "num_frames_accumulated_history_decode": {
+        "raw_byte": 15,
+        "raw_byte_hex": "0x0f",
+        "fast_update_mode_amount_code_high_nibble": 0,
+        "fast_update_mode_amount": 0.0,
+        "num_frames_accumulated_count_code_low_nibble": 15,
+        "max_frames_accumulated": 10.0,
+        "local_max_frames_accumulated_min15": 10.0,
+        "decoded_num_frames_accumulated": 10.0,
+        "decoded_rule": "low nibble == 15 -> captured MaxFramesAccumulated; else (low/15) * min(MaxFramesAccumulated,15)"
+      },
+      "num_frames_accumulated_new_decode": {
+        "raw_byte": 15,
+        "raw_byte_hex": "0x0f",
+        "fast_update_mode_amount_code_high_nibble": 0,
+        "fast_update_mode_amount": 0.0,
+        "num_frames_accumulated_count_code_low_nibble": 15,
+        "max_frames_accumulated": 10.0,
+        "local_max_frames_accumulated_min15": 10.0,
+        "decoded_num_frames_accumulated": 10.0,
+        "decoded_rule": "low nibble == 15 -> captured MaxFramesAccumulated; else (low/15) * min(MaxFramesAccumulated,15)"
+      },
+      "max_frames_accumulated_parameter": 10.0,
+      "sh_replay_raw_evaluate_sh_irradiance_at_probe": [
+        0.12289255723705057,
+        0.13908635772436395,
+        0.18844081283055686
+      ],
+      "sh_replay_unit_albedo_lambert_response_at_probe": [
+        0.4915702289482023,
+        0.5563454308974558,
+        0.7537632513222274
+      ],
+      "sh_replay_physical_irradiance_4pi_at_probe": [
+        1.544313419987125,
+        1.747810718565695,
+        2.3680170928998665
+      ],
+      "sh_replay_vs_captured_diffuse_relative_error": [
+        0.006735828885918295,
+        0.002988945843300608,
+        0.005017668429636579
+      ],
+      "sh_replay_note": "stored SH3 coefficients are sphere-average radiance; raw EvaluateSHIrradiance is not physical irradiance. Physical irradiance = 4*pi*raw; the captured DiffuseIndirect (unit-albedo Lambert response, before material albedo) = 4*raw. 4*raw is what is compared here."
+    }
+  },
+  "sources": {
+    "diffuse_current": {
+      "name": "Lumen.ScreenProbeGather.DiffuseIndirect",
+      "resource": "000400000208f373fc00",
+      "version": "000400000208f36d6770",
+      "producer_pass_id": 761,
+      "producer_pass_name": "ScreenProbeIntegrate SupportAll DownsampleFactor:1",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_FloatR11G11B10",
+      "native_format": "PF_FloatR11G11B10",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 5120,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 4546560,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f373fc00.[0].mip0.v000400000208f36d6770.bin",
+      "file_bytes": 4546560,
+      "file_sha256": "0fd41619577167dedd59994cdf471f7f9e5ca72f68c454306555e5cfcbd9fbe8",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "diffuse_history": {
+      "name": "Lumen.ScreenProbeGather.DiffuseIndirect",
+      "resource": "000400000208f36de040",
+      "version": "00000000000000000000",
+      "producer_pass_id": null,
+      "producer_pass_name": null,
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_FloatR11G11B10",
+      "native_format": "PF_FloatR11G11B10",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 5120,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 4546560,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f36de040.[0].mip0.v00000000000000000000.bin",
+      "file_bytes": 4546560,
+      "file_sha256": "7ad312935114f1990158dfdc0549e2e9dbe45b809596a988f4f098829e39189a",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "diffuse_new_history": {
+      "name": "Lumen.ScreenProbeGather.DiffuseIndirect",
+      "resource": "000400000208f36deb40",
+      "version": "000400000208f36dfd28",
+      "producer_pass_id": 762,
+      "producer_pass_name": "TemporalReprojection(1280x720)",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_FloatR11G11B10",
+      "native_format": "PF_FloatR11G11B10",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 5120,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 4546560,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f36deb40.[0].mip0.v000400000208f36dfd28.bin",
+      "file_bytes": 4546560,
+      "file_sha256": "41b934e7b48dce42fdf31cd071f4387973f7e7528b0b27098bac9f6ebd794477",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "frames_history": {
+      "name": "Lumen.ScreenProbeGather.HistoryFastUpdateMode_NumFramesAccumulated",
+      "resource": "00040000020bd35c9f70",
+      "version": "00000000000000000000",
+      "producer_pass_id": null,
+      "producer_pass_name": null,
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_R8",
+      "native_format": "PF_R8",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 1280,
+      "bytes_per_pixel": 1,
+      "z_slice_stride_bytes": 1136640,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020bd35c9f70.[0].mip0.v00000000000000000000.bin",
+      "file_bytes": 1136640,
+      "file_sha256": "ea5b4859af650ec3e4f8831940fd637fea14b26cf8dc5b3c28dd69cc47fa35c4",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "frames_new": {
+      "name": "Lumen.ScreenProbeGather.HistoryFastUpdateMode_NumFramesAccumulated",
+      "resource": "000400000208f36df640",
+      "version": "000400000208f36dfd28",
+      "producer_pass_id": 762,
+      "producer_pass_name": "TemporalReprojection(1280x720)",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_R8",
+      "native_format": "PF_R8",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 1280,
+      "bytes_per_pixel": 1,
+      "z_slice_stride_bytes": 1136640,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/000400000208f36df640.[0].mip0.v000400000208f36dfd28.bin",
+      "file_bytes": 1136640,
+      "file_sha256": "ea5b4859af650ec3e4f8831940fd637fea14b26cf8dc5b3c28dd69cc47fa35c4",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "reflection_final": {
+      "name": "Lumen.Reflections.SpecularIndirect",
+      "resource": "00040000020b9dcdf8e0",
+      "version": "00040000020c948b0010",
+      "producer_pass_id": 827,
+      "producer_pass_name": "Spatial",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_FloatRGB",
+      "native_format": "PF_FloatRGB",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 5120,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 4546560,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020b9dcdf8e0.[0].mip0.v00040000020c948b0010.bin",
+      "file_bytes": 4546560,
+      "file_sha256": "030cca7715db82af4c3a8893a85212c699ba6da1d24160258912e1686db12aed",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "reflection_resolved": {
+      "name": "Lumen.Reflections.ResolvedSpecularIndirect",
+      "resource": "00040000020bb9f8d5e0",
+      "version": "00040000020b9dcd0950",
+      "producer_pass_id": 825,
+      "producer_pass_name": "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:1",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_FloatRGB",
+      "native_format": "PF_FloatRGB",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 5120,
+      "bytes_per_pixel": 4,
+      "z_slice_stride_bytes": 4546560,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020bb9f8d5e0.[0].mip0.v00040000020b9dcd0950.bin",
+      "file_bytes": 4546560,
+      "file_sha256": "a805c1ad7c45dbfc330ef23db39824c88bfb429e4ffdbcc6cd7ef5c9d3566f78",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "reflection_depth": {
+      "name": "Lumen.Reflections.ResolvedSpecularIndirectDepth",
+      "resource": "00040000020bb9f8d8a0",
+      "version": "00040000020b9dcd0950",
+      "producer_pass_id": 825,
+      "producer_pass_name": "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:1",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_R16F",
+      "native_format": "PF_R16F",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 2560,
+      "bytes_per_pixel": 2,
+      "z_slice_stride_bytes": 2273280,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020bb9f8d8a0.[0].mip0.v00040000020b9dcd0950.bin",
+      "file_bytes": 2273280,
+      "file_sha256": "2628657958217463d14df8b3189449ed2246c7b4e10b7e0cd36ad0ee2e1b21e9",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "reflection_frames": {
+      "name": "Lumen.Reflections.NumFramesAccumulated",
+      "resource": "00040000020b9dcd8030",
+      "version": "00040000020b9dcd86a0",
+      "producer_pass_id": 826,
+      "producer_pass_name": "TemporalAccumulation",
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_G8",
+      "native_format": "PF_G8",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 1280,
+      "bytes_per_pixel": 1,
+      "z_slice_stride_bytes": 1136640,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020b9dcd8030.[0].mip0.v00040000020b9dcd86a0.bin",
+      "file_bytes": 1136640,
+      "file_sha256": "7e1866371dddb99ab6fb4590f4d230e28cb8c18d570df2e3040f986fa1be3683",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    },
+    "reflection_frames_history": {
+      "name": "Lumen.Reflections.NumFramesAccumulated",
+      "resource": "00040000020b9dcd7d70",
+      "version": "00000000000000000000",
+      "producer_pass_id": null,
+      "producer_pass_name": null,
+      "mip": 0,
+      "array_slice": 0,
+      "dimension": "Texture2DArray",
+      "stored_format": "PF_G8",
+      "native_format": "PF_G8",
+      "extent": [
+        1280,
+        888,
+        1
+      ],
+      "row_pitch_bytes": 1280,
+      "bytes_per_pixel": 1,
+      "z_slice_stride_bytes": 1136640,
+      "coordinate": [
+        0,
+        0
+      ],
+      "address_byte": 0,
+      "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+      "file": "Resources/00040000020b9dcd7d70.[0].mip0.v00000000000000000000.bin",
+      "file_bytes": 1136640,
+      "file_sha256": "1ecc2e6c2b694d90567c8bd1b67238733cf5638a36432fe77a2b2e5edb36b175",
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "file_verified_at_schedule": true,
+      "stored_bytes_are_native_storage": false,
+      "native_value_interpretation": "DecodedFloat",
+      "preexposure": 0.00048828125,
+      "inv_preexposure": 2048.0
+    }
+  },
+  "frame_count_encoding": {
+    "pass": {
+      "id": 762,
+      "name": "TemporalReprojection(1280x720)"
+    },
+    "parameter": {
+      "pass_id": 762,
+      "pass_name": "TemporalReprojection(1280x720)",
+      "pass_pointer": "000400000208f36dfd28",
+      "parameters_name": "FParameters",
+      "parameter_block_file": "Structures/000400000208f36dfaa0.bin",
+      "parameter_block_bytes": 576,
+      "parameter_block_sha256": "f6c8dffc3e6f72921887bbbccd12f835d9b40393d694cb4ed6e3a2e72aaffae5",
+      "metadata_file": "StructuresMetadata/000400007ffc1e2ef870.json",
+      "metadata_struct": "FParameters",
+      "metadata_source": {
+        "file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeGather.cpp",
+        "line": 1212
+      },
+      "fields": {
+        "MaxFramesAccumulated": {
+          "offset": 460,
+          "uint32_bits": 1092616192,
+          "float32": 10.0
+        },
+        "MaxFastUpdateModeAmount": {
+          "offset": 456,
+          "float32": 0.8999999761581421
+        },
+        "InvFractionOfLightingMovingForFastUpdateMode": {
+          "offset": 452,
+          "float32": 10.0
+        }
+      },
+      "max_frames_accumulated": 10.0,
+      "packing_shader": {
+        "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeGatherTemporal.ush",
+        "lines": "72-91",
+        "pack": "((ceil(FastUpdateModeAmount*15)*16 + round(saturate(NumFramesAccumulated/min(MaxFramesAccumulated,15))*15)) / 255)",
+        "unpack": "low==15 ? MaxFramesAccumulated : low/15*min(MaxFramesAccumulated,15)",
+        "source_present": true
+      },
+      "validity": {
+        "file_exists": true,
+        "metadata_exists": true,
+        "bytes_match_metadata_size": true,
+        "readback_status": null,
+        "note": "shader parameter payload, not an RDG resource version; DumpGPU attaches no readback record"
+      }
+    },
+    "packing_shader": {
+      "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeGatherTemporal.ush",
+      "lines": "72-91",
+      "pack": "((ceil(FastUpdateModeAmount*15)*16 + round(saturate(NumFramesAccumulated/min(MaxFramesAccumulated,15))*15)) / 255)",
+      "unpack": "low==15 ? MaxFramesAccumulated : low/15*min(MaxFramesAccumulated,15)",
+      "source_present": true
+    },
+    "rule": "high nibble = ceil(FastUpdateModeAmount*15); low nibble = round(saturate(frames/min(Max,15))*15); low==15 -> MaxFramesAccumulated",
+    "raw_15_at_receivers": "low nibble 15 with MaxFramesAccumulated=10 decodes to 10.0 frames, not 15"
+  },
+  "sh_unit_conversion": {
+    "stored": "SH3 sphere-average radiance coefficients",
+    "raw_evaluate_sh_irradiance": "R",
+    "physical_irradiance": "4*pi*R",
+    "unit_albedo_lambert_response": "4*R = physical_irradiance/pi",
+    "captured_diffuse_indirect_unit_convention": "4*R before material albedo; spatial integration and active occlusion can change per-pixel values"
+  },
+  "notes": [
+    "DiffuseIndirect = DiffuseLighting * Diffuse_Lambert(1) = 4 * raw SH evaluate (unit-albedo Lambert response, before albedo); the composite pixel shader applies diffuse color later",
+    "history is the imported previous-frame texture (version 0); new_history is the TemporalReprojection output from pass 762",
+    "the captured MaxFramesAccumulated parameter is 10.0, so raw frame byte 15 (low nibble 15) decodes to 10 accumulated frames, not 15",
+    "history_minus_current is history minus current; the earlier current-minus-history sign was wrong",
+    "a high history value is evidence of accepted reprojection, not proof that the sample is correct"
+  ],
+  "gaps": [
+    "per-pixel probe interpolation weights are computed in the integrate shader and are not captured as a resource",
+    "the temporal filter's per-pixel blend factor and disocclusion decision are shader-local and are not captured"
+  ]
+}

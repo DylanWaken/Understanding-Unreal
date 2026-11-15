@@ -1,0 +1,431 @@
+{
+  "scope": "root integration changes after DeepCluster refinement, before publication",
+  "changes": [
+    "Strict selected-graph descriptor identity; ambiguous or missing records fail.",
+    "Use the unbiased-level projection to fetch its per-level resolution bias.",
+    "Reject out-of-range center-replay UV coordinates rather than clamp into a valid tile.",
+    "Identify last resource output bindings separately from proven per-slice writes; merge writes slice0.",
+    "Explicitly exclude optional DOF resolution bias from the declared center replay."
+  ],
+  "same_numeric_arrays": [
+    {
+      "array": "uniform_raw_u8",
+      "shape": [
+        368
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "projection_sun_raw_u8",
+      "shape": [
+        17,
+        368
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "projection_sun_shadow_view_to_clip",
+      "shape": [
+        17,
+        4,
+        4
+      ],
+      "dtype": "float64",
+      "equal": true
+    },
+    {
+      "array": "projection_sun_tw_to_shadow_uv",
+      "shape": [
+        17,
+        4,
+        4
+      ],
+      "dtype": "float64",
+      "equal": true
+    },
+    {
+      "array": "projection_sun_shadow_uv_to_tw",
+      "shape": [
+        17,
+        4,
+        4
+      ],
+      "dtype": "float64",
+      "equal": true
+    },
+    {
+      "array": "projection_sun_light_direction",
+      "shape": [
+        17,
+        3
+      ],
+      "dtype": "float64",
+      "equal": true
+    },
+    {
+      "array": "projection_sun_clipmap_level",
+      "shape": [
+        17
+      ],
+      "dtype": "int32",
+      "equal": true
+    },
+    {
+      "array": "projection_sun_flags",
+      "shape": [
+        17
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "page_table_entry_u32",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "page_table_phys_x",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint16",
+      "equal": true
+    },
+    {
+      "array": "page_table_phys_y",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint16",
+      "equal": true
+    },
+    {
+      "array": "page_table_lod",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "page_table_any",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "bool",
+      "equal": true
+    },
+    {
+      "array": "page_table_render",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "bool",
+      "equal": true
+    },
+    {
+      "array": "page_table_secondary",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "bool",
+      "equal": true
+    },
+    {
+      "array": "page_table_phys_index",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "page_table_logical_mip_entry_u32",
+      "shape": [
+        8,
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "page_table_logical_mip_render",
+      "shape": [
+        8,
+        128,
+        128
+      ],
+      "dtype": "bool",
+      "equal": true
+    },
+    {
+      "array": "page_table_logical_mip_lod",
+      "shape": [
+        8,
+        128,
+        128
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "page_table_logical_mip_dim",
+      "shape": [
+        8
+      ],
+      "dtype": "uint16",
+      "equal": true
+    },
+    {
+      "array": "page_table_logical_mip_base_texel",
+      "shape": [
+        8,
+        2
+      ],
+      "dtype": "int32",
+      "equal": true
+    },
+    {
+      "array": "page_table_flags_u32",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "page_table_flags_low6",
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "page_table_flags_hierarchy_h0_h6",
+      "shape": [
+        7,
+        128,
+        128
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "metadata_u32",
+      "shape": [
+        4096,
+        6
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "occupancy_category",
+      "shape": [
+        32,
+        128
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "meta_state_category",
+      "shape": [
+        32,
+        128
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "virtual_depth_mask_u8",
+      "shape": [
+        1536,
+        1792
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "virtual_depth_page_category_u8",
+      "shape": [
+        12,
+        14
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "depth_mosaic_rgb_u8",
+      "shape": [
+        256,
+        1024,
+        3
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "depth_mosaic_z_f32",
+      "shape": [
+        256,
+        1024
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "depth_pages_f32",
+      "shape": [
+        6,
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "depth_pages_raw_u32",
+      "shape": [
+        6,
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "depth_page_samples_f32",
+      "shape": [
+        99,
+        8,
+        8
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "compact_depth_pages_f32",
+      "shape": [
+        99,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "compact_depth_rgb_u8",
+      "shape": [
+        99,
+        64,
+        64,
+        3
+      ],
+      "dtype": "uint8",
+      "equal": true
+    },
+    {
+      "array": "depth_pages_all_f32",
+      "shape": [
+        99,
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "depth_pages_all_raw_u32",
+      "shape": [
+        99,
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "equal": true
+    },
+    {
+      "array": "receiver_depth_f32",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "receiver_z_f32",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "receiver_uv_f32",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "equal": true
+    },
+    {
+      "array": "receiver_virtual_page",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "equal": true
+    },
+    {
+      "array": "receiver_physical_page",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "equal": true
+    },
+    {
+      "array": "receiver_physical_texel",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "equal": true
+    },
+    {
+      "array": "receiver_page_table_texel",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "equal": true
+    }
+  ],
+  "candidate_npz_sha256": "40668b394aac1d2cce8f08ec1a08043e3208860904ab5f29e706c3f81c76ed45",
+  "final_npz_sha256": "40668b394aac1d2cce8f08ec1a08043e3208860904ab5f29e706c3f81c76ed45",
+  "decoder_sha256": "101e393db566069c747b5e399a28f3eb940a0643d8cde23de0628618ebbcd3c2",
+  "note": "All arrays are unchanged by these integration fixes for this capture. Regeneration returned33PASS0FAIL. This does not execute unrecorded SMRT sampling."
+}

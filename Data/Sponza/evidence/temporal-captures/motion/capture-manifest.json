@@ -1,0 +1,1498 @@
+{
+  "schema": "arda-motion-camera-manifest-v1",
+  "run_id": "20261115-104035",
+  "mode": "camera-motion",
+  "status": "ok",
+  "workspace": "D:\\UnrealUnderstanding-Motion",
+  "session": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\run-20261115-104035.json",
+  "timeline": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\timeline-20261115-104035.json",
+  "raw_root": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035",
+  "resolution": [
+    1280,
+    720
+  ],
+  "targets": [
+    1,
+    8,
+    64
+  ],
+  "camera": {
+    "start_cm": [
+      -850.0,
+      0.0,
+      90.0
+    ],
+    "target_cm": [
+      -850.0,
+      -150.0,
+      90.0
+    ],
+    "rotation_degrees": {
+      "pitch": 13.0,
+      "yaw": 0.0,
+      "roll": 0.0
+    },
+    "horizontal_fov_deg": 70.0,
+    "move_cm": -150.0,
+    "applied": true,
+    "readback": {
+      "location_cm": [
+        -850.0,
+        -150.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0
+    },
+    "pilot": {
+      "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+      "pilot_actor": "CAM_Hero_Reference",
+      "pilot_matches": true,
+      "actual_view_fov": 70.0,
+      "exact_camera_view": true,
+      "allows_cinematic_control": true,
+      "viewport_camera": {
+        "location_cm": [
+          -850.0,
+          -150.0,
+          90.0
+        ],
+        "rotation": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        }
+      },
+      "render_status": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 3,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      }
+    },
+    "prior_validation": {
+      "source": "D:\\UnrealUnderstanding-Temporal\\output\\temporal\\run-20261115-101923.json",
+      "available": true,
+      "run_id": "20261115-101923",
+      "applied": true,
+      "offset_cm": -150.0,
+      "target_cm": [
+        -850.0,
+        -150.0,
+        90.0
+      ],
+      "readback": {
+        "location_cm": [
+          -850.0,
+          -150.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "chosen_view_valid": true,
+      "chosen_empty_view": false,
+      "map_sha256_after": "3ef49eddd474fc16e6129dac3bcbb16bb4937529d9213296a865d368ede72c64",
+      "ok": true
+    },
+    "no_exploration": true
+  },
+  "sun": {
+    "actor": "Sun_Sponza",
+    "rotation_degrees": {
+      "pitch": -75.0,
+      "yaw": -35.0,
+      "roll": -0.0
+    },
+    "intensity_lux": 80000.0,
+    "temperature_k": 5500.0,
+    "atmosphere_sun_light": true
+  },
+  "exposure": {
+    "auto_exposure_min_brightness": 11.0,
+    "auto_exposure_max_brightness": 11.0,
+    "auto_exposure_bias": 0.0,
+    "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+  },
+  "states": [
+    {
+      "label": "baseline",
+      "stage": "baseline",
+      "required": true,
+      "target_update": null,
+      "actual_update": 3,
+      "actual_updates": [
+        3
+      ],
+      "target_matched": false,
+      "raw_frame": {
+        "engine_frames": [
+          127
+        ],
+        "engine_frame": 127,
+        "actual_phase_draw": 3,
+        "actual_phase_draws": [
+          3
+        ],
+        "source": "Base/Passes.json Frame N scopes matched to the bridge timeline"
+      },
+      "bridge_draw": 3,
+      "bridge_draw_total": 124,
+      "engine_frame": 127,
+      "camera": {
+        "location_cm": [
+          -850.0,
+          0.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "pilot": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "sun": {
+        "actor": "Sun_Sponza",
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      },
+      "layers": {
+        "experimental_lit": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-lit.png",
+        "experimental_depth": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-depth.png",
+        "native_rawframe": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\baseline\\Base\\Screenshot.png",
+        "native_rawframe_run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\baseline-rawframe.png"
+      },
+      "experimental_lit_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-lit.png",
+        "phase_draw_when_rendered": 3,
+        "phase_draw_offset_from_dump": 0,
+        "engine_frame_when_rendered": 128,
+        "engine_frame_offset_from_dump": 1,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "mean_display_luma": 60.475,
+        "std_display_luma": 70.015,
+        "bytes": 1803370,
+        "sha256": "696f33127fbaa202daca9426ca13edd388f62a6e7c713d1b63e0701de3d49763"
+      },
+      "experimental_depth_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-depth.png",
+        "phase_draw_when_rendered": 4,
+        "phase_draw_offset_from_dump": 1,
+        "engine_frame_when_rendered": 130,
+        "engine_frame_offset_from_dump": 3,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "depth-ok",
+        "mean_display_luma": 17.774,
+        "std_display_luma": 12.391,
+        "bytes": 65554,
+        "sha256": "d8a75069c582552eebe2745c89d70d4da5409a4280a6acedf7ef9e9e69a52d29"
+      },
+      "native_screenshot": {
+        "label": "baseline-rawframe",
+        "note": "native DumpGPU Base/Screenshot.png of the selected frame",
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\baseline\\Base\\Screenshot.png",
+        "exists": true,
+        "kind": "native-rawframe",
+        "bytes": 1831985,
+        "sha256": "4d851a18bf059997fe563acc4e6f74b41e0888cca29a12d11026a1b40d541111",
+        "width": 1280,
+        "height": 720,
+        "mean_display_luma": 64.089,
+        "std_display_luma": 69.861,
+        "near_black_fraction": 0.06769,
+        "near_white_fraction": 2e-05,
+        "empty_view": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "view_kind": "lit",
+        "run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\baseline-rawframe.png",
+        "run_copy_sha256": "4d851a18bf059997fe563acc4e6f74b41e0888cca29a12d11026a1b40d541111",
+        "same_frame_as_dump": true,
+        "engine_frame": 127,
+        "phase_draw": 3,
+        "source": "DumpGPU Base/Screenshot.png"
+      },
+      "lit_view_valid": true,
+      "depth_view_valid": true,
+      "lit_view_status": "ok",
+      "dump_directory": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\baseline",
+      "dump_status": "ok",
+      "dump_file_count": 3199,
+      "dump_total_bytes": 2990620330,
+      "present_resource_count": 59,
+      "missing_resource_count": 16,
+      "missing_resources": [
+        "Lumen.ScreenProbeGather.ScreenProbeIrradianceWithBorder",
+        "Lumen.ScreenProbeGather.ScreenProbeExtraAOWithBorder",
+        "Lumen.RadianceCache.ProbeValid",
+        "Lumen.RadianceCache.FinalIrradianceAtlas",
+        "Lumen.RadianceCache.ProbeOcclusionAtlas",
+        "Lumen.RadianceCache.FinalSkyVisibilityAtlas",
+        "Lumen.RadianceCache.RadianceProbeSH_PDF",
+        "Lumen.Radiosity.TraceRadianceAtlas",
+        "Lumen.Radiosity.TraceHitDistanceAtlas",
+        "Lumen.RadiosityTileAllocator",
+        "Lumen.RadiosityTiles",
+        "Lumen.RadiosityIndirectArgs",
+        "Lumen.RadiosityVisualizeProbeAllocator",
+        "Lumen.RadiosityVisualizeProbeData",
+        "Lumen.PrimitiveGroup",
+        "Lumen.CardPageLastUsedBuffer"
+      ]
+    },
+    {
+      "label": "camera-001",
+      "stage": "early",
+      "required": true,
+      "target_update": 1,
+      "actual_update": 1,
+      "actual_updates": [
+        1
+      ],
+      "target_matched": true,
+      "raw_frame": {
+        "engine_frames": [
+          133
+        ],
+        "engine_frame": 133,
+        "actual_phase_draw": 1,
+        "actual_phase_draws": [
+          1
+        ],
+        "source": "Base/Passes.json Frame N scopes matched to the bridge timeline"
+      },
+      "bridge_draw": 1,
+      "bridge_draw_total": 127,
+      "engine_frame": 133,
+      "camera": {
+        "location_cm": [
+          -850.0,
+          -150.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "pilot": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            -150.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "sun": {
+        "actor": "Sun_Sponza",
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      },
+      "layers": {
+        "experimental_lit": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-lit.png",
+        "experimental_depth": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-depth.png",
+        "native_rawframe": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-001\\Base\\Screenshot.png",
+        "native_rawframe_run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-001-rawframe.png"
+      },
+      "experimental_lit_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-lit.png",
+        "phase_draw_when_rendered": 1,
+        "phase_draw_offset_from_dump": 0,
+        "engine_frame_when_rendered": 134,
+        "engine_frame_offset_from_dump": 1,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "mean_display_luma": 40.433,
+        "std_display_luma": 64.469,
+        "bytes": 1550903,
+        "sha256": "b13d58d06488664fa311a2ac42a9ebdecd75decc0aace5b3bd9a2ac499f2d547"
+      },
+      "experimental_depth_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-depth.png",
+        "phase_draw_when_rendered": 2,
+        "phase_draw_offset_from_dump": 1,
+        "engine_frame_when_rendered": 136,
+        "engine_frame_offset_from_dump": 3,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "depth-ok",
+        "mean_display_luma": 16.158,
+        "std_display_luma": 13.655,
+        "bytes": 57740,
+        "sha256": "510b3ff362aa27464109c087680f5d8679747819d0820c0c345b79ba67cf1716"
+      },
+      "native_screenshot": {
+        "label": "camera-001-rawframe",
+        "note": "native DumpGPU Base/Screenshot.png of the selected frame",
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-001\\Base\\Screenshot.png",
+        "exists": true,
+        "kind": "native-rawframe",
+        "bytes": 1123970,
+        "sha256": "0ea030c04aecbb85c052cfca617a474ade12f806f267cb096c6513e6bd407979",
+        "width": 1280,
+        "height": 720,
+        "mean_display_luma": 39.075,
+        "std_display_luma": 65.579,
+        "near_black_fraction": 0.45682,
+        "near_white_fraction": 0.0,
+        "empty_view": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "view_kind": "lit",
+        "run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-001-rawframe.png",
+        "run_copy_sha256": "0ea030c04aecbb85c052cfca617a474ade12f806f267cb096c6513e6bd407979",
+        "same_frame_as_dump": true,
+        "engine_frame": 133,
+        "phase_draw": 1,
+        "source": "DumpGPU Base/Screenshot.png"
+      },
+      "lit_view_valid": true,
+      "depth_view_valid": true,
+      "lit_view_status": "ok",
+      "dump_directory": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-001",
+      "dump_status": "ok",
+      "dump_file_count": 3212,
+      "dump_total_bytes": 2990386206,
+      "present_resource_count": 59,
+      "missing_resource_count": 16,
+      "missing_resources": [
+        "Lumen.ScreenProbeGather.ScreenProbeIrradianceWithBorder",
+        "Lumen.ScreenProbeGather.ScreenProbeExtraAOWithBorder",
+        "Lumen.RadianceCache.ProbeValid",
+        "Lumen.RadianceCache.FinalIrradianceAtlas",
+        "Lumen.RadianceCache.ProbeOcclusionAtlas",
+        "Lumen.RadianceCache.FinalSkyVisibilityAtlas",
+        "Lumen.RadianceCache.RadianceProbeSH_PDF",
+        "Lumen.Radiosity.TraceRadianceAtlas",
+        "Lumen.Radiosity.TraceHitDistanceAtlas",
+        "Lumen.RadiosityTileAllocator",
+        "Lumen.RadiosityTiles",
+        "Lumen.RadiosityIndirectArgs",
+        "Lumen.RadiosityVisualizeProbeAllocator",
+        "Lumen.RadiosityVisualizeProbeData",
+        "Lumen.PrimitiveGroup",
+        "Lumen.CardPageLastUsedBuffer"
+      ]
+    },
+    {
+      "label": "camera-064",
+      "stage": "settled",
+      "required": true,
+      "target_update": 64,
+      "actual_update": 63,
+      "actual_updates": [
+        63
+      ],
+      "target_matched": true,
+      "raw_frame": {
+        "engine_frames": [
+          198
+        ],
+        "engine_frame": 198,
+        "actual_phase_draw": 63,
+        "actual_phase_draws": [
+          63
+        ],
+        "source": "Base/Passes.json Frame N scopes matched to the bridge timeline"
+      },
+      "bridge_draw": 63,
+      "bridge_draw_total": 189,
+      "engine_frame": 198,
+      "camera": {
+        "location_cm": [
+          -850.0,
+          -150.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "pilot": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            -150.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "sun": {
+        "actor": "Sun_Sponza",
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      },
+      "layers": {
+        "experimental_lit": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-lit.png",
+        "experimental_depth": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-depth.png",
+        "native_rawframe": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-064\\Base\\Screenshot.png",
+        "native_rawframe_run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-064-rawframe.png"
+      },
+      "experimental_lit_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-lit.png",
+        "phase_draw_when_rendered": 63,
+        "phase_draw_offset_from_dump": 0,
+        "engine_frame_when_rendered": 199,
+        "engine_frame_offset_from_dump": 1,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "mean_display_luma": 56.301,
+        "std_display_luma": 64.641,
+        "bytes": 1881655,
+        "sha256": "d74e81cbcb3981aedc5c146069077cd6c0e665b8c768175358f0348223247725"
+      },
+      "experimental_depth_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-depth.png",
+        "phase_draw_when_rendered": 64,
+        "phase_draw_offset_from_dump": 1,
+        "engine_frame_when_rendered": 201,
+        "engine_frame_offset_from_dump": 3,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "depth-ok",
+        "mean_display_luma": 16.158,
+        "std_display_luma": 13.655,
+        "bytes": 57740,
+        "sha256": "510b3ff362aa27464109c087680f5d8679747819d0820c0c345b79ba67cf1716"
+      },
+      "native_screenshot": {
+        "label": "camera-064-rawframe",
+        "note": "native DumpGPU Base/Screenshot.png of the selected frame",
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-064\\Base\\Screenshot.png",
+        "exists": true,
+        "kind": "native-rawframe",
+        "bytes": 1898869,
+        "sha256": "4cde47317d96329c8b845c5338bc07093c8d71e91c1e3c71b5afe882ed093882",
+        "width": 1280,
+        "height": 720,
+        "mean_display_luma": 58.744,
+        "std_display_luma": 64.436,
+        "near_black_fraction": 0.02709,
+        "near_white_fraction": 0.0,
+        "empty_view": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "view_kind": "lit",
+        "run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-064-rawframe.png",
+        "run_copy_sha256": "4cde47317d96329c8b845c5338bc07093c8d71e91c1e3c71b5afe882ed093882",
+        "same_frame_as_dump": true,
+        "engine_frame": 198,
+        "phase_draw": 63,
+        "source": "DumpGPU Base/Screenshot.png"
+      },
+      "lit_view_valid": true,
+      "depth_view_valid": true,
+      "lit_view_status": "ok",
+      "dump_directory": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-064",
+      "dump_status": "ok",
+      "dump_file_count": 3215,
+      "dump_total_bytes": 2991210068,
+      "present_resource_count": 59,
+      "missing_resource_count": 16,
+      "missing_resources": [
+        "Lumen.ScreenProbeGather.ScreenProbeIrradianceWithBorder",
+        "Lumen.ScreenProbeGather.ScreenProbeExtraAOWithBorder",
+        "Lumen.RadianceCache.ProbeValid",
+        "Lumen.RadianceCache.FinalIrradianceAtlas",
+        "Lumen.RadianceCache.ProbeOcclusionAtlas",
+        "Lumen.RadianceCache.FinalSkyVisibilityAtlas",
+        "Lumen.RadianceCache.RadianceProbeSH_PDF",
+        "Lumen.Radiosity.TraceRadianceAtlas",
+        "Lumen.Radiosity.TraceHitDistanceAtlas",
+        "Lumen.RadiosityTileAllocator",
+        "Lumen.RadiosityTiles",
+        "Lumen.RadiosityIndirectArgs",
+        "Lumen.RadiosityVisualizeProbeAllocator",
+        "Lumen.RadiosityVisualizeProbeData",
+        "Lumen.PrimitiveGroup",
+        "Lumen.CardPageLastUsedBuffer"
+      ]
+    }
+  ],
+  "baseline": {
+    "label": "baseline",
+    "stage": "baseline",
+    "required": true,
+    "target_update": null,
+    "actual_update": 3,
+    "actual_updates": [
+      3
+    ],
+    "target_matched": false,
+    "raw_frame": {
+      "engine_frames": [
+        127
+      ],
+      "engine_frame": 127,
+      "actual_phase_draw": 3,
+      "actual_phase_draws": [
+        3
+      ],
+      "source": "Base/Passes.json Frame N scopes matched to the bridge timeline"
+    },
+    "bridge_draw": 3,
+    "bridge_draw_total": 124,
+    "engine_frame": 127,
+    "camera": {
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0
+    },
+    "pilot": {
+      "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+      "pilot_actor": "CAM_Hero_Reference",
+      "pilot_matches": true,
+      "actual_view_fov": 70.0,
+      "exact_camera_view": true,
+      "allows_cinematic_control": true,
+      "viewport_camera": {
+        "location_cm": [
+          -850.0,
+          0.0,
+          90.0
+        ],
+        "rotation": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        }
+      },
+      "render_status": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 3,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      }
+    },
+    "sun": {
+      "actor": "Sun_Sponza",
+      "rotation_degrees": {
+        "pitch": -75.0,
+        "yaw": -35.0,
+        "roll": -0.0
+      },
+      "intensity_lux": 80000.0,
+      "temperature_k": 5500.0,
+      "atmosphere_sun_light": true
+    },
+    "exposure": {
+      "auto_exposure_min_brightness": 11.0,
+      "auto_exposure_max_brightness": 11.0,
+      "auto_exposure_bias": 0.0,
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+    },
+    "layers": {
+      "experimental_lit": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-lit.png",
+      "experimental_depth": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-depth.png",
+      "native_rawframe": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\baseline\\Base\\Screenshot.png",
+      "native_rawframe_run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\baseline-rawframe.png"
+    },
+    "experimental_lit_offset": {
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-lit.png",
+      "phase_draw_when_rendered": 3,
+      "phase_draw_offset_from_dump": 0,
+      "engine_frame_when_rendered": 128,
+      "engine_frame_offset_from_dump": 1,
+      "same_frame_as_dump": false,
+      "view_valid": true,
+      "view_status": "ok",
+      "mean_display_luma": 60.475,
+      "std_display_luma": 70.015,
+      "bytes": 1803370,
+      "sha256": "696f33127fbaa202daca9426ca13edd388f62a6e7c713d1b63e0701de3d49763"
+    },
+    "experimental_depth_offset": {
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-dump-depth.png",
+      "phase_draw_when_rendered": 4,
+      "phase_draw_offset_from_dump": 1,
+      "engine_frame_when_rendered": 130,
+      "engine_frame_offset_from_dump": 3,
+      "same_frame_as_dump": false,
+      "view_valid": true,
+      "view_status": "depth-ok",
+      "mean_display_luma": 17.774,
+      "std_display_luma": 12.391,
+      "bytes": 65554,
+      "sha256": "d8a75069c582552eebe2745c89d70d4da5409a4280a6acedf7ef9e9e69a52d29"
+    },
+    "native_screenshot": {
+      "label": "baseline-rawframe",
+      "note": "native DumpGPU Base/Screenshot.png of the selected frame",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\baseline\\Base\\Screenshot.png",
+      "exists": true,
+      "kind": "native-rawframe",
+      "bytes": 1831985,
+      "sha256": "4d851a18bf059997fe563acc4e6f74b41e0888cca29a12d11026a1b40d541111",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 64.089,
+      "std_display_luma": 69.861,
+      "near_black_fraction": 0.06769,
+      "near_white_fraction": 2e-05,
+      "empty_view": false,
+      "view_valid": true,
+      "view_status": "ok",
+      "view_kind": "lit",
+      "run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\baseline-rawframe.png",
+      "run_copy_sha256": "4d851a18bf059997fe563acc4e6f74b41e0888cca29a12d11026a1b40d541111",
+      "same_frame_as_dump": true,
+      "engine_frame": 127,
+      "phase_draw": 3,
+      "source": "DumpGPU Base/Screenshot.png"
+    },
+    "lit_view_valid": true,
+    "depth_view_valid": true,
+    "lit_view_status": "ok",
+    "dump_directory": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\baseline",
+    "dump_status": "ok",
+    "dump_file_count": 3199,
+    "dump_total_bytes": 2990620330,
+    "present_resource_count": 59,
+    "missing_resource_count": 16,
+    "missing_resources": [
+      "Lumen.ScreenProbeGather.ScreenProbeIrradianceWithBorder",
+      "Lumen.ScreenProbeGather.ScreenProbeExtraAOWithBorder",
+      "Lumen.RadianceCache.ProbeValid",
+      "Lumen.RadianceCache.FinalIrradianceAtlas",
+      "Lumen.RadianceCache.ProbeOcclusionAtlas",
+      "Lumen.RadianceCache.FinalSkyVisibilityAtlas",
+      "Lumen.RadianceCache.RadianceProbeSH_PDF",
+      "Lumen.Radiosity.TraceRadianceAtlas",
+      "Lumen.Radiosity.TraceHitDistanceAtlas",
+      "Lumen.RadiosityTileAllocator",
+      "Lumen.RadiosityTiles",
+      "Lumen.RadiosityIndirectArgs",
+      "Lumen.RadiosityVisualizeProbeAllocator",
+      "Lumen.RadiosityVisualizeProbeData",
+      "Lumen.PrimitiveGroup",
+      "Lumen.CardPageLastUsedBuffer"
+    ]
+  },
+  "camera_states": [
+    {
+      "label": "camera-001",
+      "stage": "early",
+      "required": true,
+      "target_update": 1,
+      "actual_update": 1,
+      "actual_updates": [
+        1
+      ],
+      "target_matched": true,
+      "raw_frame": {
+        "engine_frames": [
+          133
+        ],
+        "engine_frame": 133,
+        "actual_phase_draw": 1,
+        "actual_phase_draws": [
+          1
+        ],
+        "source": "Base/Passes.json Frame N scopes matched to the bridge timeline"
+      },
+      "bridge_draw": 1,
+      "bridge_draw_total": 127,
+      "engine_frame": 133,
+      "camera": {
+        "location_cm": [
+          -850.0,
+          -150.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "pilot": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            -150.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "sun": {
+        "actor": "Sun_Sponza",
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      },
+      "layers": {
+        "experimental_lit": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-lit.png",
+        "experimental_depth": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-depth.png",
+        "native_rawframe": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-001\\Base\\Screenshot.png",
+        "native_rawframe_run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-001-rawframe.png"
+      },
+      "experimental_lit_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-lit.png",
+        "phase_draw_when_rendered": 1,
+        "phase_draw_offset_from_dump": 0,
+        "engine_frame_when_rendered": 134,
+        "engine_frame_offset_from_dump": 1,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "mean_display_luma": 40.433,
+        "std_display_luma": 64.469,
+        "bytes": 1550903,
+        "sha256": "b13d58d06488664fa311a2ac42a9ebdecd75decc0aace5b3bd9a2ac499f2d547"
+      },
+      "experimental_depth_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-001-dump-depth.png",
+        "phase_draw_when_rendered": 2,
+        "phase_draw_offset_from_dump": 1,
+        "engine_frame_when_rendered": 136,
+        "engine_frame_offset_from_dump": 3,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "depth-ok",
+        "mean_display_luma": 16.158,
+        "std_display_luma": 13.655,
+        "bytes": 57740,
+        "sha256": "510b3ff362aa27464109c087680f5d8679747819d0820c0c345b79ba67cf1716"
+      },
+      "native_screenshot": {
+        "label": "camera-001-rawframe",
+        "note": "native DumpGPU Base/Screenshot.png of the selected frame",
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-001\\Base\\Screenshot.png",
+        "exists": true,
+        "kind": "native-rawframe",
+        "bytes": 1123970,
+        "sha256": "0ea030c04aecbb85c052cfca617a474ade12f806f267cb096c6513e6bd407979",
+        "width": 1280,
+        "height": 720,
+        "mean_display_luma": 39.075,
+        "std_display_luma": 65.579,
+        "near_black_fraction": 0.45682,
+        "near_white_fraction": 0.0,
+        "empty_view": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "view_kind": "lit",
+        "run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-001-rawframe.png",
+        "run_copy_sha256": "0ea030c04aecbb85c052cfca617a474ade12f806f267cb096c6513e6bd407979",
+        "same_frame_as_dump": true,
+        "engine_frame": 133,
+        "phase_draw": 1,
+        "source": "DumpGPU Base/Screenshot.png"
+      },
+      "lit_view_valid": true,
+      "depth_view_valid": true,
+      "lit_view_status": "ok",
+      "dump_directory": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-001",
+      "dump_status": "ok",
+      "dump_file_count": 3212,
+      "dump_total_bytes": 2990386206,
+      "present_resource_count": 59,
+      "missing_resource_count": 16,
+      "missing_resources": [
+        "Lumen.ScreenProbeGather.ScreenProbeIrradianceWithBorder",
+        "Lumen.ScreenProbeGather.ScreenProbeExtraAOWithBorder",
+        "Lumen.RadianceCache.ProbeValid",
+        "Lumen.RadianceCache.FinalIrradianceAtlas",
+        "Lumen.RadianceCache.ProbeOcclusionAtlas",
+        "Lumen.RadianceCache.FinalSkyVisibilityAtlas",
+        "Lumen.RadianceCache.RadianceProbeSH_PDF",
+        "Lumen.Radiosity.TraceRadianceAtlas",
+        "Lumen.Radiosity.TraceHitDistanceAtlas",
+        "Lumen.RadiosityTileAllocator",
+        "Lumen.RadiosityTiles",
+        "Lumen.RadiosityIndirectArgs",
+        "Lumen.RadiosityVisualizeProbeAllocator",
+        "Lumen.RadiosityVisualizeProbeData",
+        "Lumen.PrimitiveGroup",
+        "Lumen.CardPageLastUsedBuffer"
+      ]
+    },
+    {
+      "label": "camera-064",
+      "stage": "settled",
+      "required": true,
+      "target_update": 64,
+      "actual_update": 63,
+      "actual_updates": [
+        63
+      ],
+      "target_matched": true,
+      "raw_frame": {
+        "engine_frames": [
+          198
+        ],
+        "engine_frame": 198,
+        "actual_phase_draw": 63,
+        "actual_phase_draws": [
+          63
+        ],
+        "source": "Base/Passes.json Frame N scopes matched to the bridge timeline"
+      },
+      "bridge_draw": 63,
+      "bridge_draw_total": 189,
+      "engine_frame": 198,
+      "camera": {
+        "location_cm": [
+          -850.0,
+          -150.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "pilot": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            -150.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "sun": {
+        "actor": "Sun_Sponza",
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      },
+      "layers": {
+        "experimental_lit": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-lit.png",
+        "experimental_depth": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-depth.png",
+        "native_rawframe": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-064\\Base\\Screenshot.png",
+        "native_rawframe_run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-064-rawframe.png"
+      },
+      "experimental_lit_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-lit.png",
+        "phase_draw_when_rendered": 63,
+        "phase_draw_offset_from_dump": 0,
+        "engine_frame_when_rendered": 199,
+        "engine_frame_offset_from_dump": 1,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "mean_display_luma": 56.301,
+        "std_display_luma": 64.641,
+        "bytes": 1881655,
+        "sha256": "d74e81cbcb3981aedc5c146069077cd6c0e665b8c768175358f0348223247725"
+      },
+      "experimental_depth_offset": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\camera-064-dump-depth.png",
+        "phase_draw_when_rendered": 64,
+        "phase_draw_offset_from_dump": 1,
+        "engine_frame_when_rendered": 201,
+        "engine_frame_offset_from_dump": 3,
+        "same_frame_as_dump": false,
+        "view_valid": true,
+        "view_status": "depth-ok",
+        "mean_display_luma": 16.158,
+        "std_display_luma": 13.655,
+        "bytes": 57740,
+        "sha256": "510b3ff362aa27464109c087680f5d8679747819d0820c0c345b79ba67cf1716"
+      },
+      "native_screenshot": {
+        "label": "camera-064-rawframe",
+        "note": "native DumpGPU Base/Screenshot.png of the selected frame",
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-064\\Base\\Screenshot.png",
+        "exists": true,
+        "kind": "native-rawframe",
+        "bytes": 1898869,
+        "sha256": "4cde47317d96329c8b845c5338bc07093c8d71e91c1e3c71b5afe882ed093882",
+        "width": 1280,
+        "height": 720,
+        "mean_display_luma": 58.744,
+        "std_display_luma": 64.436,
+        "near_black_fraction": 0.02709,
+        "near_white_fraction": 0.0,
+        "empty_view": false,
+        "view_valid": true,
+        "view_status": "ok",
+        "view_kind": "lit",
+        "run_copy": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035\\camera-064-rawframe.png",
+        "run_copy_sha256": "4cde47317d96329c8b845c5338bc07093c8d71e91c1e3c71b5afe882ed093882",
+        "same_frame_as_dump": true,
+        "engine_frame": 198,
+        "phase_draw": 63,
+        "source": "DumpGPU Base/Screenshot.png"
+      },
+      "lit_view_valid": true,
+      "depth_view_valid": true,
+      "lit_view_status": "ok",
+      "dump_directory": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035\\camera-064",
+      "dump_status": "ok",
+      "dump_file_count": 3215,
+      "dump_total_bytes": 2991210068,
+      "present_resource_count": 59,
+      "missing_resource_count": 16,
+      "missing_resources": [
+        "Lumen.ScreenProbeGather.ScreenProbeIrradianceWithBorder",
+        "Lumen.ScreenProbeGather.ScreenProbeExtraAOWithBorder",
+        "Lumen.RadianceCache.ProbeValid",
+        "Lumen.RadianceCache.FinalIrradianceAtlas",
+        "Lumen.RadianceCache.ProbeOcclusionAtlas",
+        "Lumen.RadianceCache.FinalSkyVisibilityAtlas",
+        "Lumen.RadianceCache.RadianceProbeSH_PDF",
+        "Lumen.Radiosity.TraceRadianceAtlas",
+        "Lumen.Radiosity.TraceHitDistanceAtlas",
+        "Lumen.RadiosityTileAllocator",
+        "Lumen.RadiosityTiles",
+        "Lumen.RadiosityIndirectArgs",
+        "Lumen.RadiosityVisualizeProbeAllocator",
+        "Lumen.RadiosityVisualizeProbeData",
+        "Lumen.PrimitiveGroup",
+        "Lumen.CardPageLastUsedBuffer"
+      ]
+    }
+  ],
+  "clean_states": {
+    "baseline": {
+      "lit": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-lit.png",
+        "phase_draw": 1,
+        "engine_frame": 124,
+        "view_valid": true,
+        "view_status": "ok",
+        "mean_display_luma": 69.844,
+        "std_display_luma": 69.594,
+        "sha256": "3ed785f1825c52ab04d016abe02e5a16a09803c88901a8c8e30c4818edf962b5"
+      },
+      "depth": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\baseline-depth.png",
+        "phase_draw": 2,
+        "engine_frame": 125,
+        "view_valid": true,
+        "view_status": "depth-ok",
+        "mean_display_luma": 17.774,
+        "std_display_luma": 12.391,
+        "sha256": "d8a75069c582552eebe2745c89d70d4da5409a4280a6acedf7ef9e9e69a52d29"
+      }
+    },
+    "final": {
+      "lit": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\final-lit.png",
+        "phase_draw": 25,
+        "engine_frame": 264,
+        "view_valid": true,
+        "view_status": "ok",
+        "mean_display_luma": 69.44,
+        "std_display_luma": 69.572,
+        "sha256": "6331418ceedebd06c2ab542672a0a589bfc7bac58a377100f277fd16d9ef2db6"
+      },
+      "depth": {
+        "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035\\final-depth.png",
+        "phase_draw": 26,
+        "engine_frame": 265,
+        "view_valid": true,
+        "view_status": "depth-ok",
+        "mean_display_luma": 17.774,
+        "std_display_luma": 12.391,
+        "sha256": "d8a75069c582552eebe2745c89d70d4da5409a4280a6acedf7ef9e9e69a52d29"
+      },
+      "camera": {
+        "location_cm": [
+          -850.0,
+          0.0,
+          90.0
+        ],
+        "rotation_degrees": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        },
+        "horizontal_fov_deg": 70.0
+      },
+      "sun": {
+        "actor": "Sun_Sponza",
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "exposure": {
+        "auto_exposure_min_brightness": 11.0,
+        "auto_exposure_max_brightness": 11.0,
+        "auto_exposure_bias": 0.0,
+        "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+      }
+    }
+  },
+  "debug_observations": [
+    {
+      "view": "probe-placement",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-probe-placement.png",
+      "phase_draw": 68,
+      "engine_frame": 205,
+      "label": "camera-settled-probe-placement",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "probe-history",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-probe-history.png",
+      "phase_draw": 71,
+      "engine_frame": 209,
+      "label": "camera-settled-probe-history",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "radiosity-probes",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-radiosity-probes.png",
+      "phase_draw": 74,
+      "engine_frame": 213,
+      "label": "camera-settled-radiosity-probes",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "radiosity-history",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-radiosity-history.png",
+      "phase_draw": 77,
+      "engine_frame": 217,
+      "label": "camera-settled-radiosity-history",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "worldcache-probes",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-worldcache-probes.png",
+      "phase_draw": 80,
+      "engine_frame": 221,
+      "label": "camera-settled-worldcache-probes",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "card-placement",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-card-placement.png",
+      "phase_draw": 83,
+      "engine_frame": 225,
+      "label": "camera-settled-card-placement",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "lumen-scene",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-lumen-scene.png",
+      "phase_draw": 86,
+      "engine_frame": 229,
+      "label": "camera-settled-lumen-scene",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "surface-cache",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-surface-cache.png",
+      "phase_draw": 89,
+      "engine_frame": 233,
+      "label": "camera-settled-surface-cache",
+      "view_valid": true,
+      "view_status": "ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    },
+    {
+      "view": "depth",
+      "file": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035\\camera-settled-depth.png",
+      "phase_draw": 92,
+      "engine_frame": 237,
+      "label": "camera-settled-depth",
+      "view_valid": true,
+      "view_status": "depth-ok",
+      "empty_view": false,
+      "note": "post-settled display observation; not a same-frame raw buffer"
+    }
+  ],
+  "missing_coverage": {
+    "union_missing_names": [
+      "Lumen.CardPageLastUsedBuffer",
+      "Lumen.PrimitiveGroup",
+      "Lumen.RadianceCache.FinalIrradianceAtlas",
+      "Lumen.RadianceCache.FinalSkyVisibilityAtlas",
+      "Lumen.RadianceCache.ProbeOcclusionAtlas",
+      "Lumen.RadianceCache.ProbeValid",
+      "Lumen.RadianceCache.RadianceProbeSH_PDF",
+      "Lumen.Radiosity.TraceHitDistanceAtlas",
+      "Lumen.Radiosity.TraceRadianceAtlas",
+      "Lumen.RadiosityIndirectArgs",
+      "Lumen.RadiosityTileAllocator",
+      "Lumen.RadiosityTiles",
+      "Lumen.RadiosityVisualizeProbeAllocator",
+      "Lumen.RadiosityVisualizeProbeData",
+      "Lumen.ScreenProbeGather.ScreenProbeExtraAOWithBorder",
+      "Lumen.ScreenProbeGather.ScreenProbeIrradianceWithBorder"
+    ],
+    "per_dump_present_counts": [
+      59,
+      59,
+      59
+    ],
+    "note": "Exact-name absences are reported; they are not replaced by schematic data. Selected resources that the frame did not create/bind are listed per state."
+  },
+  "budget": {
+    "workspace_budget_bytes": 10737418240,
+    "workspace_budget_gib": 10.0,
+    "workspace_used_bytes": 8972216604,
+    "workspace_used_gib": 8.356,
+    "workspace_used_all_runs_bytes": 8972216604,
+    "workspace_used_all_runs_gib": 8.356,
+    "workspace_exceeded": false,
+    "existing_temporal_raw_bytes": 20995466101,
+    "existing_temporal_raw_gib": 19.5536,
+    "cumulative_budget_bytes": 37580963840,
+    "cumulative_budget_gib": 35.0,
+    "cumulative_used_bytes": 29967682705,
+    "cumulative_used_gib": 27.9096,
+    "cumulative_exceeded": false,
+    "exceeded": false,
+    "approved_by_supervisor": true,
+    "note": "10 GiB cap for this workspace raw data and 35 GiB cumulative with the existing Temporal 19.5536 GiB; both explicitly approved."
+  },
+  "checks": {
+    "same_process_run": true,
+    "required_states_present": true,
+    "required_dumps_ok": true,
+    "full_filter_count": 136,
+    "camera_move_applied": true,
+    "camera_target_cm": [
+      -850.0,
+      -150.0,
+      90.0
+    ],
+    "camera_readback": {
+      "location_cm": [
+        -850.0,
+        -150.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0
+    },
+    "map_unchanged": true,
+    "workspace_budget_ok": true,
+    "cumulative_budget_ok": true,
+    "native_screenshots_valid": true,
+    "experimental_views_valid": true
+  },
+  "images": {
+    "experimental": {
+      "directory": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\images-20261115-104035",
+      "note": "bridge capture_viewport at a later engine frame; offsets recorded per state"
+    },
+    "native_rawframe": {
+      "directory": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\raw-screenshots-20261115-104035",
+      "note": "copy of DumpGPU Base/Screenshot.png, same frame as the dump"
+    },
+    "debug": {
+      "directory": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\debug-20261115-104035",
+      "note": "post-settled display observations, not same-frame raw buffers"
+    }
+  },
+  "decoded": {
+    "status": "pending_decode",
+    "note": "decode must use ViewData.PrimaryViews and SceneDepthZ from the same dump frame; the experimental screenshots are not projection sources"
+  },
+  "report": "D:\\UnrealUnderstanding-Motion\\output\\capture-report.md",
+  "launcher_record": "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\logs\\gpu-dump-20261115-104022-launcher.json",
+  "validation_record": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\capture-plan-validation.json",
+  "superseded_attempt": {
+    "record": "D:\\UnrealUnderstanding-Motion\\output\\temporal\\superseded-attempt-20261115-103742.json",
+    "run_id": "20261115-103742",
+    "reason": "captured baseline + camera 1/7; the budget guard skipped camera-064 because each valid-view full-filter dump is ~2.99 GB, so four would exceed the 10 GiB cap",
+    "raw_removed_after_successful_rerun": true,
+    "raw_bytes_removed": 8971992023,
+    "note": "session, timeline and manifest records are retained; the raw was removed only after the replacement run reported all required states ok"
+  },
+  "acceptance": {
+    "same_process_run": true,
+    "required_states_present": true,
+    "required_dumps_ok": true,
+    "full_filter_count": 136,
+    "camera_move_applied": true,
+    "map_unchanged": true,
+    "workspace_budget_ok": true,
+    "cumulative_budget_ok": true,
+    "native_screenshots_valid": true,
+    "experimental_views_valid": true,
+    "baseline_early_settled_available": true,
+    "baseline_actual_update": 3,
+    "early_actual_update": 1,
+    "settled_actual_update": 63,
+    "baseline_engine_frame": 127,
+    "early_engine_frame": 133,
+    "settled_engine_frame": 198,
+    "full_selected_buffer_families": true,
+    "present_per_state": 59,
+    "expected_resources": 75,
+    "missing_per_state": 16,
+    "no_empty_views": true,
+    "empty_capture_count": 0,
+    "raw_workspace_bytes": 8972216604,
+    "raw_workspace_gib": 8.356,
+    "cumulative_bytes": 29967682705,
+    "cumulative_gib": 27.9096,
+    "target8_optional_skipped": true
+  }
+}

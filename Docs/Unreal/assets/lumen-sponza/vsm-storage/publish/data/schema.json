@@ -1,0 +1,297 @@
+{
+  "schema": "vsm-storage-schema-v1",
+  "json": "publish/data/vsm_storage.json",
+  "npz": "publish/data/vsm_storage.npz",
+  "npz_arrays": {
+    "uniform_raw_u8": {
+      "shape": [
+        368
+      ],
+      "dtype": "uint8",
+      "desc": "captured FVirtualShadowMapUniformParameters bytes"
+    },
+    "projection_sun_raw_u8": {
+      "shape": [
+        17,
+        368
+      ],
+      "dtype": "uint8",
+      "desc": "raw projection records for the 17 sun VSMs"
+    },
+    "projection_sun_*": {
+      "dtype": "float64/int32/uint32",
+      "desc": "decoded projection record fields"
+    },
+    "page_table_entry_u32": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "desc": "selected sun VSM mip0 page-table entries"
+    },
+    "page_table_phys_x/y": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint16",
+      "desc": "decoded physical page x/y"
+    },
+    "page_table_lod": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint8",
+      "desc": "LOD offset 0..7"
+    },
+    "page_table_any/render/secondary": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "bool",
+      "desc": "decoded page-table flag bits"
+    },
+    "page_table_logical_mip_entry_u32": {
+      "shape": [
+        8,
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "desc": "all eight logical page-table mips 0..7 packed in the selected VSM hardware mip0; entry lm occupies [:dim_lm,:dim_lm] with dim from page_table_logical_mip_dim"
+    },
+    "page_table_logical_mip_render": {
+      "shape": [
+        8,
+        128,
+        128
+      ],
+      "dtype": "bool",
+      "desc": "valid_for_rendering per logical mip region"
+    },
+    "page_table_logical_mip_lod": {
+      "shape": [
+        8,
+        128,
+        128
+      ],
+      "dtype": "uint8",
+      "desc": "LOD offset per logical mip region"
+    },
+    "page_table_logical_mip_dim": {
+      "shape": [
+        8
+      ],
+      "dtype": "uint16",
+      "desc": "dim_pages of each logical mip region"
+    },
+    "page_table_logical_mip_base_texel": {
+      "shape": [
+        8,
+        2
+      ],
+      "dtype": "int32",
+      "desc": "block base texel of each logical mip region"
+    },
+    "page_table_flags_u32": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "desc": "PageFlags hardware mip0 exact-page (H0) words"
+    },
+    "page_table_flags_hierarchy_h0_h6": {
+      "shape": [
+        7,
+        128,
+        128
+      ],
+      "dtype": "uint8",
+      "desc": "H0..H6 from the separate PageFlags hardware mips 0..6; H_m parent texel = base >> m; H7 not generated"
+    },
+    "metadata_u32": {
+      "shape": [
+        4096,
+        6
+      ],
+      "dtype": "uint32",
+      "desc": "all FPhysicalPageMetaData records, field order per JSON"
+    },
+    "occupancy_category": {
+      "shape": [
+        32,
+        128
+      ],
+      "dtype": "uint8",
+      "desc": "F1 panel 0 categories"
+    },
+    "meta_state_category": {
+      "shape": [
+        32,
+        128
+      ],
+      "dtype": "uint8",
+      "desc": "F1 panel 2 categories"
+    },
+    "virtual_depth_mask_u8": {
+      "shape": [
+        1536,
+        1792
+      ],
+      "dtype": "uint8",
+      "desc": "F4 categorical mask: 0=mapped depth, 1=coarser-clipmap fallback, 2=unmapped"
+    },
+    "virtual_depth_page_category_u8": {
+      "shape": [
+        12,
+        14
+      ],
+      "dtype": "uint8",
+      "desc": "F4 categories at virtual-page resolution in the bbox (row-major)"
+    },
+    "depth_pages_f32": {
+      "shape": [
+        6,
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "desc": "native selected depth pages, F3 order"
+    },
+    "depth_pages_raw_u32": {
+      "shape": [
+        6,
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "desc": "same pages as raw bits"
+    },
+    "depth_page_samples_f32": {
+      "shape": [
+        99,
+        8,
+        8
+      ],
+      "dtype": "float32",
+      "desc": "8x8 block means for every mapped page"
+    },
+    "compact_depth_pages_f32": {
+      "shape": [
+        99,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "desc": "F1 middle panel: every current selected page, 2x2 box mean, sorted by physical page index"
+    },
+    "compact_depth_rgb_u8": {
+      "shape": [
+        99,
+        64,
+        64,
+        3
+      ],
+      "dtype": "uint8",
+      "desc": "display RGB for compact_depth_pages_f32 using the declared fixed range"
+    },
+    "depth_pages_all_f32": {
+      "shape": [
+        99,
+        128,
+        128
+      ],
+      "dtype": "float32",
+      "desc": "full-resolution native depth for every current selected-VSM page used by the compact atlas, sorted by physical page index (same order as compact tile_order)"
+    },
+    "depth_pages_all_raw_u32": {
+      "shape": [
+        99,
+        128,
+        128
+      ],
+      "dtype": "uint32",
+      "desc": "raw uint32 bits of depth_pages_all_f32"
+    },
+    "depth_mosaic_rgb_u8": {
+      "shape": [
+        256,
+        1024,
+        3
+      ],
+      "dtype": "uint8",
+      "desc": "physical-layout depth sample raster (retained; F1 uses the compact atlas instead)"
+    },
+    "depth_mosaic_z_f32": {
+      "shape": [
+        256,
+        1024
+      ],
+      "dtype": "float32",
+      "desc": "sampled device Z in physical layout; NaN = masked"
+    },
+    "receiver_depth_f32": {
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "desc": "A,B stored depth"
+    },
+    "receiver_z_f32": {
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "desc": "A,B receiver projected device Z"
+    },
+    "receiver_uv_f32": {
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "desc": "A,B shadow UV"
+    },
+    "receiver_virtual_page": {
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "desc": "A,B virtual page"
+    },
+    "receiver_physical_page": {
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "desc": "A,B physical page"
+    },
+    "receiver_physical_texel": {
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "desc": "A,B physical texel"
+    },
+    "receiver_page_table_texel": {
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "int32",
+      "desc": "A,B page-table texel"
+    }
+  },
+  "record_layouts": {
+    "FPhysicalPageMetaData": "Flags u32 @0, LastRequestedSceneFrameNumber u32 @4, VirtualShadowMapId u32 @8, MipLevel u32 @12, PageAddress.x u32 @16, PageAddress.y u32 @20 (24 B)",
+    "PageTableEntry": "physical_x[0:9], physical_y[10:19], lod_offset[20:25], secondary[29], render_valid[30], any_valid[31]",
+    "PageFlags": "32-bit exact-page flags; H0..H6 are separate PageFlags hardware mips 0..6 (parent texel >> m); H7 not generated"
+  }
+}

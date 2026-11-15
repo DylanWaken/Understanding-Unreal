@@ -1,0 +1,23 @@
+{
+  "operationId": "a4974108-ca9b-41d5-87b7-f1027b86058e",
+  "status": "completed",
+  "error": null,
+  "steps": [
+    {
+      "id": "collect",
+      "role": "reviewer",
+      "status": "pass",
+      "attempts": 1,
+      "summary": "Produced 8 exact source anchors plus captured/source-derived boundaries for the dedicated Direct lighting and Reflections chapters, with scalar facts and approximation limits. No blocking implementation defect was found; residual items are non-blocking wording/anchor consistency checks, not missing evidence.",
+      "checks": [
+        "direct-light and reflection stage contracts have exact inspected source anchors: yes — notes/anchors.json contains 8 anchors; all 27 declared source blobs match `git rev-parse HEAD:<file>` and are clean via `git status --porcelain`; every primary/supporting range is within its file length; JSON parsed and all excerpts are ≤15 lines.",
+        "captured examples distinguished from source-derived operations: yes — notes/facts.md §3 labels each statement; captured C/A values were re-read from reflection.json and receivers.json and cross-checked in PowerShell; per-ray, per-pixel, SMRT, and unquantized-VSM gaps are explicitly listed as not captured."
+      ],
+      "changed": [
+        "notes/anchors.json",
+        "notes/facts.md"
+      ]
+    }
+  ],
+  "open": []
+}

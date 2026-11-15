@@ -35,10 +35,33 @@ from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 
+try:  # package_frame is both a script and an imported module (tests/validators).
+    from package_metadata import (
+        METADATA_GZIP_LEVEL,
+        MetadataError,
+        gzip_bytes,
+        metadata_block,
+        metadata_rel,
+        read_package_bytes,
+        read_package_json,
+    )
+except ImportError:  # pragma: no cover - direct import without tools/ on sys.path
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from package_metadata import (
+        METADATA_GZIP_LEVEL,
+        MetadataError,
+        gzip_bytes,
+        metadata_block,
+        metadata_rel,
+        read_package_bytes,
+        read_package_json,
+    )
+
 PACKAGE_FORMAT = "unreal-frame-explorer-package"
 PACKAGE_VERSION = 1
 CHUNK_SIZE = 1024 * 1024
 DEFAULT_GZIP_LEVEL = 6
+DEFAULT_METADATA_GZIP_LEVEL = METADATA_GZIP_LEVEL
 SAFE_DECODE_TAGS = {
     "none", "raw", "uint", "sint", "unorm", "float", "half", "float16",
     "float32", "r11g11b10", "a2b10g10r10", "a2b10g10r10_unorm",
@@ -503,7 +526,9 @@ class Payload:
 class FramePackage:
     def __init__(self, input_root: Path, output_root: Path | None, adapter: str,
                  schema_path: Path | None, estimate: bool, force: bool,
-                 gzip_level: int = DEFAULT_GZIP_LEVEL):
+                 gzip_level: int = DEFAULT_GZIP_LEVEL,
+                 metadata_gzip: bool = False,
+                 metadata_gzip_level: int = DEFAULT_METADATA_GZIP_LEVEL):
         # Instrumented native sidecars (DumpGPU export extensions).  They are
         # optional: a capture without them keeps the original DumpGPU behaviour.
         self.subresource_layouts: list[dict[str, Any]] = []
@@ -527,6 +552,14 @@ class FramePackage:
         self.estimate = estimate
         self.force = force
         self.gzip_level = gzip_level
+        if not 1 <= int(metadata_gzip_level) <= 9:
+            raise PackageError(f"metadata gzip level must be in 1..9, got {metadata_gzip_level!r}")
+        self.metadata_gzip = bool(metadata_gzip)
+        self.metadata_gzip_level = int(metadata_gzip_level)
+        self.metadata_raw_files = 0
+        self.metadata_raw_bytes = 0
+        self.metadata_written_bytes = 0
+        self.metadata_raw_sizes: dict[str, int] = {}
         self.dump_root = self.input_root
 
         self.native_files: list[NativeFile] = []
@@ -3278,7 +3311,7 @@ class FramePackage:
             # Package-relative path to the embedded schema; sourcePath records
             # where the supplied schema came from without pretending it is a
             # package file.
-            "path": "schema.json",
+            "path": self._metadata_rel("schema.json"),
             "sourcePath": self.schema_input_path,
             "sha256": self.schema_sha256,
             "bytes": self.schema_bytes,
@@ -3299,7 +3332,7 @@ class FramePackage:
                 if isinstance(field, dict) and field.get("appliesToFormats")
             ),
         }
-        return {
+        document = {
             "format": PACKAGE_FORMAT,
             "version": PACKAGE_VERSION,
             "generatedUtc": _dt.datetime.now(_dt.timezone.utc).isoformat(),
@@ -3323,14 +3356,14 @@ class FramePackage:
             },
             "files": {
                 "index": "index.json",
-                "resources": "resources.json",
-                "passes": "passes.json",
-                "coverage": "coverage.json",
-                "schema": "schema.json",
-                "structures": "structures.json",
-                "capture": "capture.json",
-                "inventory": "inventory.json",
-                "nativeInputs": "native-inputs.json",
+                "resources": self._metadata_rel("resources.json"),
+                "passes": self._metadata_rel("passes.json"),
+                "coverage": self._metadata_rel("coverage.json"),
+                "schema": self._metadata_rel("schema.json"),
+                "structures": self._metadata_rel("structures.json"),
+                "capture": self._metadata_rel("capture.json"),
+                "inventory": self._metadata_rel("inventory.json"),
+                "nativeInputs": self._metadata_rel("native-inputs.json"),
                 "chunks": "chunks/",
                 "records": "records/",
                 "native": "native/",
@@ -3339,6 +3372,9 @@ class FramePackage:
             "chunks": self.chunks_public(),
             "largestOutput": largest,
         }
+        if self.metadata_gzip:
+            document["metadata"] = metadata_block(self.metadata_gzip_level)
+        return document
 
     def _coverage_statement(self) -> str:
         counts = self.counts()
@@ -3390,7 +3426,7 @@ class FramePackage:
                     + " " + str(r.get("displayLabel") or "")
                     + (" scene " + str(r.get("sceneInvocation")) if r.get("sceneInvocation") else "")
                     + (" frame " + str(r.get("frameNumber")) if r.get("frameNumber") is not None else ""),
-                "record": f"records/resource/{r['id']}.json",
+                "record": self._metadata_rel(f"records/resource/{r['id']}.json"),
             })
         return {"format": f"{PACKAGE_FORMAT}-resources", "version": PACKAGE_VERSION,
                 "total": len(items), "items": items}
@@ -3416,7 +3452,7 @@ class FramePackage:
                 "hasSourceEquationFields": any((m.get("fieldSupport", {}).get("sourceEquationFields") or []) for m in p.get("schemaMatches", [])),
                 "gapCount": sum(1 for g in self.gaps if g.get("passId") == p["id"]),
                 "searchText": p.get("searchText", "") + " " + str(p.get("displayLabel") or ""),
-                "record": f"records/pass/{p['id']}.json",
+                "record": self._metadata_rel(f"records/pass/{p['id']}.json"),
             })
         return {"format": f"{PACKAGE_FORMAT}-passes", "version": PACKAGE_VERSION,
                 "total": len(items), "items": items}
@@ -3736,53 +3772,79 @@ class FramePackage:
             "gaps": self.gaps,
         }
 
+    def _metadata_rel(self, rel: str) -> str:
+        """Package-relative path for generated metadata (raw or ``.json.gz``)."""
+        return metadata_rel(rel, self.metadata_gzip)
+
+    def _write_metadata_bytes(self, out: Path, rel: str, data: bytes) -> str:
+        actual = self._metadata_rel(rel)
+        dest = out / actual
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        payload = gzip_bytes(data, self.metadata_gzip_level) if self.metadata_gzip else data
+        dest.write_bytes(payload)
+        self.metadata_raw_sizes[actual] = len(data)
+        return actual
+
+    def _write_metadata(self, out: Path, rel: str, value: Any) -> str:
+        return self._write_metadata_bytes(out, rel, json_bytes(value))
+
     def write(self) -> None:
         if self.estimate or self.output_root is None:
             return
         out = self.output_root
+        self.metadata_raw_files = 0
+        self.metadata_raw_bytes = 0
+        self.metadata_written_bytes = 0
+        self.metadata_raw_sizes = {}
         # Native metadata is retained byte-for-byte.
         for nf in self.native_files:
             dest = out / "native" / Path(nf.rel)
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(nf.abs_path, dest)
         for resource in self.resources:
-            path = out / "records" / "resource" / f"{resource['id']}.json"
-            path.write_bytes(json_bytes(self.resource_record(resource)))
+            self._write_metadata(out, f"records/resource/{resource['id']}.json",
+                                 self.resource_record(resource))
         for pas in self.passes:
-            path = out / "records" / "pass" / f"{pas['id']}.json"
-            path.write_bytes(json_bytes(self.pass_record(pas)))
+            self._write_metadata(out, f"records/pass/{pas['id']}.json",
+                                 self.pass_record(pas))
         # The joined source schema is evidence: retain its exact bytes so the
-        # package copy matches index.schema.sha256/bytes. Only the synthetic
-        # placeholder (no source schema) is serialized here.
+        # package copy matches index.schema.sha256/bytes even when the container
+        # is gzip. Only the synthetic placeholder (no source schema) is
+        # serialized here.
         schema_out = self.schema_raw if self.schema_raw is not None else json_bytes(self._schema_placeholder())
-        (out / "schema.json").write_bytes(schema_out)
-        (out / "structures.json").write_bytes(json_bytes({
+        self._write_metadata_bytes(out, "schema.json", schema_out)
+        self._write_metadata(out, "structures.json", {
             "format": f"{PACKAGE_FORMAT}-structures", "version": PACKAGE_VERSION,
             "count": len(self.structures), "byPointer": self.structures,
-        }))
-        (out / "capture.json").write_bytes(json_bytes(self.capture_document()))
-        (out / "resources.json").write_bytes(json_bytes(self.resources_document()))
-        (out / "passes.json").write_bytes(json_bytes(self.passes_document()))
-        (out / "coverage.json").write_bytes(json_bytes(self.coverage_document()))
+        })
+        self._write_metadata(out, "capture.json", self.capture_document())
+        self._write_metadata(out, "resources.json", self.resources_document())
+        self._write_metadata(out, "passes.json", self.passes_document())
+        self._write_metadata(out, "coverage.json", self.coverage_document())
         # File statistics before writing inventory/index (they reference each other's counts).
         package_files, largest = self._package_file_stats(out)
         inventory = self.inventory_document(package_files + 2, largest)
-        (out / "inventory.json").write_bytes(json_bytes(inventory))
-        (out / "native-inputs.json").write_bytes(json_bytes(self._native_inputs_document()))
+        self._write_metadata(out, "inventory.json", inventory)
+        self._write_metadata(out, "native-inputs.json", self._native_inputs_document())
         package_files, largest = self._package_file_stats(out)
         index = self.index_document(package_files + 1, largest)
+        # index.json is always the raw bootstrap, even for compressed metadata.
         (out / "index.json").write_bytes(json_bytes(index))
         package_files, largest = self._package_file_stats(out)
         # Rewrite inventory/index once with final file counts (their own sizes can
         # change the largest-file answer, not the count).
         inventory["counts"]["packageFiles"] = package_files
         inventory["counts"]["largestOutputBytes"] = largest["bytes"] if largest else None
-        (out / "inventory.json").write_bytes(json_bytes(inventory))
+        self._write_metadata(out, "inventory.json", inventory)
         package_files, largest = self._package_file_stats(out)
         index["counts"]["packageFiles"] = package_files
         index["counts"]["largestOutputBytes"] = largest["bytes"] if largest else None
         index["largestOutput"] = largest
         (out / "index.json").write_bytes(json_bytes(index))
+        self.metadata_raw_files = len(self.metadata_raw_sizes)
+        self.metadata_raw_bytes = sum(self.metadata_raw_sizes.values())
+        self.metadata_written_bytes = sum(
+            (out / rel).stat().st_size for rel in self.metadata_raw_sizes if (out / rel).is_file())
 
     def _schema_placeholder(self) -> dict[str, Any]:
         return self.schema_doc or {
@@ -3865,6 +3927,85 @@ def reconstruct_payload(package: Path, payload: dict[str, Any], cache: dict[str,
             "written": str(target) if target else None}
 
 
+def _verify_metadata_container(package: Path, index: dict[str, Any]) -> None:
+    """Validate the metadata container paths, gzip round-trips and schema bytes."""
+    if (package / "index.json.gz").exists():
+        raise PackageError("index.json must remain the raw bootstrap; found index.json.gz.")
+    files = index.get("files")
+    if not isinstance(files, dict):
+        raise PackageError("Package index.json has no files map.")
+    if files.get("index") != "index.json":
+        raise PackageError("index.files.index must name the raw index.json bootstrap.")
+    metadata = index.get("metadata")
+    compressed = isinstance(metadata, dict) and metadata.get("compression") == "gzip"
+    if compressed:
+        if metadata.get("bootstrap") != "index.json":
+            raise PackageError("Package metadata.bootstrap must be index.json.")
+        if metadata.get("nativeCompression") not in (None, "none"):
+            raise PackageError("Package metadata.nativeCompression must be 'none'.")
+        level = metadata.get("level")
+        if not isinstance(level, int) or not 1 <= level <= 9:
+            raise PackageError(f"Package metadata.level is invalid: {level!r}")
+    checked = 0
+    for key, value in files.items():
+        if not isinstance(value, str):
+            continue
+        base = value[:-3] if value.endswith(".gz") else value
+        if not base.endswith(".json"):
+            continue
+        if base == "index.json":
+            continue
+        if compressed and not value.endswith(".gz"):
+            raise PackageError(
+                f"Compressed package index.files[{key!r}] must name a .json.gz file: {value!r}")
+        if not compressed and value.endswith(".gz"):
+            raise PackageError(f"Raw package index.files[{key!r}] names gzip metadata: {value!r}")
+        try:
+            read_package_bytes(package, value)
+        except MetadataError as exc:
+            raise PackageError(f"Metadata check failed for {value!r}: {exc}") from exc
+        checked += 1
+    if checked == 0:
+        raise PackageError("Package index.json names no metadata files.")
+    schema_info = index.get("schema")
+    if not isinstance(schema_info, dict):
+        raise PackageError("Package index.json has no schema block.")
+    schema_path = schema_info.get("path")
+    if not isinstance(schema_path, str) or not schema_path:
+        raise PackageError("Package index.json has no schema.path.")
+    if files.get("schema") != schema_path:
+        raise PackageError("index.files.schema and index.schema.path disagree.")
+    try:
+        schema_data = read_package_bytes(package, schema_path)
+    except MetadataError as exc:
+        raise PackageError(f"Schema metadata is unreadable: {exc}") from exc
+    if schema_info.get("bytes") is not None and len(schema_data) != int(schema_info["bytes"]):
+        raise PackageError(
+            f"Schema byte length mismatch: {len(schema_data)} != {schema_info['bytes']}")
+    if schema_info.get("sha256") and sha256_bytes(schema_data) != schema_info["sha256"]:
+        raise PackageError("Schema SHA-256 mismatch for the uncompressed schema bytes.")
+    for doc_rel, key in (("resources.json", "resources"), ("passes.json", "passes")):
+        if not isinstance(files.get(key), str):
+            continue
+        try:
+            doc = read_package_json(package, doc_rel)
+        except MetadataError as exc:
+            raise PackageError(f"Summary metadata is unreadable: {exc}") from exc
+        items = doc.get("items") if isinstance(doc, dict) else None
+        if not isinstance(items, list):
+            raise PackageError(f"{doc_rel} has no items array.")
+        for item in items:
+            record = item.get("record") if isinstance(item, dict) else None
+            if not isinstance(record, str) or not record:
+                raise PackageError(f"{doc_rel} contains an item without a record path.")
+            if compressed and not record.endswith(".gz"):
+                raise PackageError(f"{doc_rel} record path is not compressed: {record!r}")
+            try:
+                read_package_bytes(package, record)
+            except MetadataError as exc:
+                raise PackageError(f"Record metadata is unreadable: {exc}") from exc
+
+
 def verify_package(package: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     package = package.resolve()
     index_path = package / "index.json"
@@ -3873,10 +4014,11 @@ def verify_package(package: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]
     index = json.loads(index_path.read_text(encoding="utf-8"))
     if index.get("format") != PACKAGE_FORMAT:
         raise PackageError(f"Unexpected package format: {index.get('format')!r}")
-    inventory_path = package / "inventory.json"
-    if not inventory_path.exists():
-        raise PackageError("Package has no inventory.json.")
-    inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    _verify_metadata_container(package, index)
+    try:
+        inventory = read_package_json(package, "inventory.json")
+    except MetadataError as exc:
+        raise PackageError(f"Package has no readable inventory.json: {exc}") from exc
     cache: dict[str, bytes] = {}
     verified_chunks = set()
     for chunk in inventory.get("chunks", []):
@@ -3940,7 +4082,9 @@ def build_command(args: argparse.Namespace) -> int:
     if not args.estimate and output_root is None:
         raise PackageError("--output is required unless --estimate is used.")
     pkg = FramePackage(input_root, output_root, args.adapter, schema_path,
-                       estimate=args.estimate, force=args.force, gzip_level=args.gzip_level)
+                       estimate=args.estimate, force=args.force, gzip_level=args.gzip_level,
+                       metadata_gzip=args.metadata_gzip,
+                       metadata_gzip_level=args.metadata_gzip_level)
     pkg.prepare()
     pkg.scan_native()
     pkg.load_adapter()
@@ -3972,6 +4116,10 @@ def build_command(args: argparse.Namespace) -> int:
     print(f"files: {output_files if not args.estimate else counts['chunkFiles']}; largest output: {largest['path'] if largest else '(none)'} ({largest['bytes'] if largest else 0} bytes)")
     print(f"gaps: {counts['gapCount']}; coverage complete: {str(len(pkg.gaps) == 0).lower()}")
     if not args.estimate:
+        print(f"metadata files: {pkg.metadata_raw_files}; metadata raw bytes: {pkg.metadata_raw_bytes}; "
+              f"metadata stored bytes: {pkg.metadata_written_bytes}")
+        print(f"metadata compression: "
+              f"{'gzip level ' + str(pkg.metadata_gzip_level) if pkg.metadata_gzip else 'none (raw)'}")
         print(f"output: {output_root}")
     return 0
 
@@ -3995,6 +4143,17 @@ def main(argv: list[str] | None = None) -> int:
     build.add_argument("--estimate", action="store_true", help="Compute and print sizes without writing package files.")
     build.add_argument("--force", action="store_true", help="Replace a previous package output directory.")
     build.add_argument("--gzip-level", type=int, default=DEFAULT_GZIP_LEVEL, choices=range(1, 10))
+    metadata_group = build.add_mutually_exclusive_group()
+    metadata_group.add_argument(
+        "--metadata-gzip", dest="metadata_gzip", action="store_true",
+        help="Store generated JSON metadata as deterministic .json.gz (index.json stays raw).")
+    metadata_group.add_argument(
+        "--no-metadata-gzip", dest="metadata_gzip", action="store_false",
+        help="Keep generated metadata raw (default; compatible with older readers).")
+    build.set_defaults(metadata_gzip=False)
+    build.add_argument(
+        "--metadata-gzip-level", type=int, default=DEFAULT_METADATA_GZIP_LEVEL,
+        choices=range(1, 10), help="gzip level for generated metadata (default 6).")
     build.set_defaults(func=build_command)
 
     verify = sub.add_parser("verify", help="Verify every chunk, payload hash/length and native file copy.")

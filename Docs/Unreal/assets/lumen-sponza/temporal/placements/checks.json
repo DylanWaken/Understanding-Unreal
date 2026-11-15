@@ -1,0 +1,1603 @@
+{
+  "schema": "arda-placement-checks-v1",
+  "generated_utc": "2026-11-15T11:29:19Z",
+  "status": "pass",
+  "check_count": 12,
+  "failed_count": 0,
+  "checks": [
+    {
+      "id": "cache_resources_and_transforms_same_invocation",
+      "status": "pass",
+      "detail": "Selected View, MarkRadianceProbes(ScreenProbes), AllocateUsedProbes and every cache buffer UID belong to one graph prefix; the projection matrices and PreViewTranslation are from that same View.",
+      "evidence": {
+        "states_checked": [
+          "light/baseline",
+          "light/lightstep-001",
+          "light/lightstep-008",
+          "light/lightstep-032",
+          "light/lightstep-064",
+          "motion/baseline",
+          "motion/camera-001",
+          "motion/camera-064"
+        ],
+        "failed_states": [],
+        "by_state": {
+          "light/baseline": {
+            "view_prefix": "0004",
+            "mark_prefix": "0004",
+            "alloc_prefix": "0004",
+            "cache_uids": {
+              "indirection": "0004000001fcad5ef710",
+              "world_offset": "0004000001ffdcf81490",
+              "allocator": "0004000001ffdcf81e20",
+              "free_list_allocator": "0004000001ffdcf80fb0",
+              "last_used": "0004000001ffdcf81220",
+              "last_traced": "0004000001ffdcf81358",
+              "free_list": "0004000001ffdcf810e8"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "0001000001ffef8ad290",
+              "graph_prefix": "0001",
+              "producer_id": 79,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          },
+          "light/lightstep-001": {
+            "view_prefix": "0003",
+            "mark_prefix": "0003",
+            "alloc_prefix": "0003",
+            "cache_uids": {
+              "indirection": "0003000001fcd565f710",
+              "world_offset": "0003000001fcaa3c1490",
+              "allocator": "0003000001fcaa3c1e20",
+              "free_list_allocator": "0003000001fcaa3c0fb0",
+              "last_used": "0003000001fcaa3c1220",
+              "last_traced": "0003000001fcaa3c1358",
+              "free_list": "0003000001fcaa3c10e8"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "0002000001ffc0dd7000",
+              "graph_prefix": "0002",
+              "producer_id": 212,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          },
+          "light/lightstep-008": {
+            "view_prefix": "0003",
+            "mark_prefix": "0003",
+            "alloc_prefix": "0003",
+            "cache_uids": {
+              "indirection": "0003000001fcad60cef0",
+              "world_offset": "00030000020009773840",
+              "allocator": "00030000020009774ac8",
+              "free_list_allocator": "00030000020009773360",
+              "last_used": "000300000200097735d0",
+              "last_traced": "00030000020009773708",
+              "free_list": "00030000020009773498"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "0002000001ffefad2da0",
+              "graph_prefix": "0002",
+              "producer_id": 35,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          },
+          "light/lightstep-032": {
+            "view_prefix": "0003",
+            "mark_prefix": "0003",
+            "alloc_prefix": "0003",
+            "cache_uids": {
+              "indirection": "0003000001ffecfa6460",
+              "world_offset": "0003000002000978cc90",
+              "allocator": "0003000002000978df18",
+              "free_list_allocator": "0003000002000978c7b0",
+              "last_used": "0003000002000978ca20",
+              "last_traced": "0003000002000978cb58",
+              "free_list": "0003000002000978c8e8"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "0002000001ffc0ebb060",
+              "graph_prefix": "0002",
+              "producer_id": 28,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          },
+          "light/lightstep-064": {
+            "view_prefix": "0003",
+            "mark_prefix": "0003",
+            "alloc_prefix": "0003",
+            "cache_uids": {
+              "indirection": "0003000001fd13676460",
+              "world_offset": "0003000001fcaa79cc90",
+              "allocator": "0003000001fcaa79df18",
+              "free_list_allocator": "0003000001fcaa79c7b0",
+              "last_used": "0003000001fcaa79ca20",
+              "last_traced": "0003000001fcaa79cb58",
+              "free_list": "0003000001fcaa79c8e8"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "0002000001fd1367dfd0",
+              "graph_prefix": "0002",
+              "producer_id": 29,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          },
+          "motion/baseline": {
+            "view_prefix": "0004",
+            "mark_prefix": "0004",
+            "alloc_prefix": "0004",
+            "cache_uids": {
+              "indirection": "00040000024c706c1e10",
+              "world_offset": "00040000024a55cd4e30",
+              "allocator": "00040000024a55cd57c0",
+              "free_list_allocator": "00040000024a55cd4950",
+              "last_used": "00040000024a55cd4bc0",
+              "last_traced": "00040000024a55cd4cf8",
+              "free_list": "00040000024a55cd4a88"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "00010000024cdb4a6000",
+              "graph_prefix": "0001",
+              "producer_id": 155,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          },
+          "motion/camera-001": {
+            "view_prefix": "0004",
+            "mark_prefix": "0004",
+            "alloc_prefix": "0004",
+            "cache_uids": {
+              "indirection": "00040000024cdb4cb5a0",
+              "world_offset": "000400000249e8e8eeb0",
+              "allocator": "000400000249e8e8f840",
+              "free_list_allocator": "000400000249e8e8e9d0",
+              "last_used": "000400000249e8e8ec40",
+              "last_traced": "000400000249e8e8ed78",
+              "free_list": "000400000249e8e8eb08"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "00010000024c706c1510",
+              "graph_prefix": "0001",
+              "producer_id": 155,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          },
+          "motion/camera-064": {
+            "view_prefix": "0004",
+            "mark_prefix": "0004",
+            "alloc_prefix": "0004",
+            "cache_uids": {
+              "indirection": "00040000024a54d58ef0",
+              "world_offset": "000400000249e847bdc0",
+              "allocator": "000400000249e847c750",
+              "free_list_allocator": "000400000249e847b8e0",
+              "last_used": "000400000249e847bb50",
+              "last_traced": "000400000249e847bc88",
+              "free_list": "000400000249e847ba18"
+            },
+            "indirection_extent": [
+              192,
+              48,
+              48
+            ],
+            "mark_resolution": 48,
+            "mark_num_clipmaps": 4,
+            "alloc_resolution": 48,
+            "alloc_num_clipmaps": 4,
+            "corner_max_abs_vs_mark_cm": 0.0,
+            "probe_resolution": 32,
+            "consumers": [
+              "FilterProbeRadiance Res=32x32",
+              "ComputeLightingPDF",
+              "TraceGlobalSDFAndApplyRadianceCache"
+            ],
+            "rejected_translucency": {
+              "mark_res": 24,
+              "mark_num": 3,
+              "indirection_extent": [
+                72,
+                24
+              ],
+              "consumers": [
+                "FilterProbeRadiance Res=8x8"
+              ]
+            },
+            "old_global_lowest_producer_probe": {
+              "uid": "000100000249e6af1510",
+              "graph_prefix": "0001",
+              "producer_id": 160,
+              "producer_name": "AllocateUsedProbes",
+              "extent": [
+                192,
+                48,
+                48
+              ],
+              "used_for_data": false,
+              "reason": "counter-example only: global lowest producer id ignores the selected renderer invocation"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "card_bounds_and_worldcache_positions_both_sequences",
+      "status": "pass",
+      "detail": "Both required sequence state sets decoded; numeric card/page/probe records exist for every state.",
+      "evidence": {
+        "sequences": {
+          "light": {
+            "expected_labels": [
+              "baseline",
+              "lightstep-001",
+              "lightstep-008",
+              "lightstep-032",
+              "lightstep-064"
+            ],
+            "decoded_labels": [
+              "baseline",
+              "lightstep-001",
+              "lightstep-008",
+              "lightstep-032",
+              "lightstep-064"
+            ],
+            "actual_updates": [
+              "baseline",
+              1,
+              7,
+              31,
+              63
+            ],
+            "expected_actual_updates": [
+              "baseline",
+              1,
+              7,
+              31,
+              63
+            ],
+            "ok": true
+          },
+          "motion": {
+            "expected_labels": [
+              "baseline",
+              "camera-001",
+              "camera-064"
+            ],
+            "decoded_labels": [
+              "baseline",
+              "camera-001",
+              "camera-064"
+            ],
+            "actual_updates": [
+              "baseline",
+              1,
+              63
+            ],
+            "expected_actual_updates": [
+              "baseline",
+              1,
+              63
+            ],
+            "ok": true
+          }
+        },
+        "by_state": {
+          "light/baseline": {
+            "valid_cards": 522,
+            "included_cards": 371,
+            "page_resident_cards": 371,
+            "active_probes": 878,
+            "allocator": 925,
+            "free": 47,
+            "frame_index": 370
+          },
+          "light/lightstep-001": {
+            "valid_cards": 522,
+            "included_cards": 371,
+            "page_resident_cards": 371,
+            "active_probes": 878,
+            "allocator": 925,
+            "free": 47,
+            "frame_index": 459
+          },
+          "light/lightstep-008": {
+            "valid_cards": 522,
+            "included_cards": 522,
+            "page_resident_cards": 522,
+            "active_probes": 878,
+            "allocator": 925,
+            "free": 47,
+            "frame_index": 475
+          },
+          "light/lightstep-032": {
+            "valid_cards": 522,
+            "included_cards": 522,
+            "page_resident_cards": 522,
+            "active_probes": 878,
+            "allocator": 925,
+            "free": 47,
+            "frame_index": 545
+          },
+          "light/lightstep-064": {
+            "valid_cards": 522,
+            "included_cards": 522,
+            "page_resident_cards": 522,
+            "active_probes": 878,
+            "allocator": 925,
+            "free": 47,
+            "frame_index": 638
+          },
+          "motion/baseline": {
+            "valid_cards": 522,
+            "included_cards": 386,
+            "page_resident_cards": 386,
+            "active_probes": 878,
+            "allocator": 925,
+            "free": 47,
+            "frame_index": 370
+          },
+          "motion/camera-001": {
+            "valid_cards": 522,
+            "included_cards": 395,
+            "page_resident_cards": 395,
+            "active_probes": 968,
+            "allocator": 972,
+            "free": 4,
+            "frame_index": 378
+          },
+          "motion/camera-064": {
+            "valid_cards": 522,
+            "included_cards": 395,
+            "page_resident_cards": 395,
+            "active_probes": 847,
+            "allocator": 972,
+            "free": 125,
+            "frame_index": 563
+          }
+        }
+      }
+    },
+    {
+      "id": "individual_scene_overlays_and_temporal_provenance",
+      "status": "pass",
+      "detail": "Each state has a native Base copy plus separate cards-only and worldcache-only composites (and separate xray variants); no mixed-family image is produced. Numeric records and source hashes back every overlay.",
+      "evidence": {
+        "by_state": {
+          "light/baseline": {
+            "cards_only": {
+              "file": "light/figures/baseline/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 21102,
+              "sha256": "79f135c69bc1eeb9a875b231753f815d3de1c408c057df610213ae57cca9515b"
+            },
+            "cards_xray": {
+              "file": "light/figures/baseline/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 128,
+              "changed_pixels_vs_base": 48675,
+              "sha256": "c302f1440feeb60549d94dea550e7a72eada67802b02716b7816ba0c4d4fd4a3"
+            },
+            "worldcache_only": {
+              "file": "light/figures/baseline/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 361,
+              "changed_pixels_vs_base": 12435,
+              "sha256": "ae7f9a820de7d1c3752761dffd040d3c3a74e435a6b99b65e109ef4f55ac7573"
+            },
+            "worldcache_xray": {
+              "file": "light/figures/baseline/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 408,
+              "changed_pixels_vs_base": 17173,
+              "sha256": "64f5f979b5d491229ce6c1a496256c6684d15f91c5b5fee0e216c7b3f2a7a0ca"
+            },
+            "ok": true
+          },
+          "light/lightstep-001": {
+            "cards_only": {
+              "file": "light/figures/lightstep-001/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 21102,
+              "sha256": "6890a64b5874f4d89bff7efccfbc5dd17af6f3bea096d568eca9597c4ae51dc5"
+            },
+            "cards_xray": {
+              "file": "light/figures/lightstep-001/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 128,
+              "changed_pixels_vs_base": 48675,
+              "sha256": "ca90d842153193211cddc6d8cb838183b09baa8e9299cffa937b3167c0ce13ef"
+            },
+            "worldcache_only": {
+              "file": "light/figures/lightstep-001/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 361,
+              "changed_pixels_vs_base": 12050,
+              "sha256": "360bdea919679b87118596f91b69dfc0e9aadf3ff57841d3edf69e3d7cdb1332"
+            },
+            "worldcache_xray": {
+              "file": "light/figures/lightstep-001/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 408,
+              "changed_pixels_vs_base": 16433,
+              "sha256": "b26d97b341dd86c98b962b6910544709954967abed7e1ce896b41a2e4b764e4f"
+            },
+            "ok": true
+          },
+          "light/lightstep-008": {
+            "cards_only": {
+              "file": "light/figures/lightstep-008/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 23333,
+              "sha256": "d8c6d69bf72934e2eaebd62ff1ca60da5134003d9791207e225330de9faf2c84"
+            },
+            "cards_xray": {
+              "file": "light/figures/lightstep-008/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 169,
+              "changed_pixels_vs_base": 66154,
+              "sha256": "8fc871542f75221aa259ea312e1f77d5856a39b4c73dadc29550a592f983c2ab"
+            },
+            "worldcache_only": {
+              "file": "light/figures/lightstep-008/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 361,
+              "changed_pixels_vs_base": 12338,
+              "sha256": "8f999603901a7900b628edfece974ea1b11bb3e8cae0c1542eb46244c0c4be65"
+            },
+            "worldcache_xray": {
+              "file": "light/figures/lightstep-008/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 408,
+              "changed_pixels_vs_base": 16812,
+              "sha256": "4a4b0ac7c91bff8e15326b52ea388b8686931531dfaf602a2e77884bb451962f"
+            },
+            "ok": true
+          },
+          "light/lightstep-032": {
+            "cards_only": {
+              "file": "light/figures/lightstep-032/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 23333,
+              "sha256": "6d2d6e258d731d47be45e1f9e19948b7e88d8d8192a91da0d5e2505ba74dfbe3"
+            },
+            "cards_xray": {
+              "file": "light/figures/lightstep-032/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 169,
+              "changed_pixels_vs_base": 66154,
+              "sha256": "8c598702a2341ee25e89990c8da9f6487cc3573851d778a9bb9db4ec3c936b99"
+            },
+            "worldcache_only": {
+              "file": "light/figures/lightstep-032/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 361,
+              "changed_pixels_vs_base": 12359,
+              "sha256": "9ddc9486030e577268ba770084959ff1b15a41fc29660988bd6111e1c082f7b4"
+            },
+            "worldcache_xray": {
+              "file": "light/figures/lightstep-032/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 408,
+              "changed_pixels_vs_base": 16857,
+              "sha256": "9f7c48163c814108b479890e60260c06f05b4a1cf2c1f4b6b7dc15e38ac462e8"
+            },
+            "ok": true
+          },
+          "light/lightstep-064": {
+            "cards_only": {
+              "file": "light/figures/lightstep-064/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 23333,
+              "sha256": "f2f70cbe29ecc8b2c3eea7d4a8b610d923e5e96e1af3218a4edd4d31dacd8acd"
+            },
+            "cards_xray": {
+              "file": "light/figures/lightstep-064/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 169,
+              "changed_pixels_vs_base": 66154,
+              "sha256": "e6c3910e161537e349e5ce8848a2bb62db266086c32ec8fbdecf2d74d837412f"
+            },
+            "worldcache_only": {
+              "file": "light/figures/lightstep-064/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 361,
+              "changed_pixels_vs_base": 12290,
+              "sha256": "e4c81783edc3e6e3e3ff5a62b904176c17557d2e41d787cf4f13a9b3f39a2aa6"
+            },
+            "worldcache_xray": {
+              "file": "light/figures/lightstep-064/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 408,
+              "changed_pixels_vs_base": 16601,
+              "sha256": "a8e8b21d671f6807feddc618fa04cb30d158b929687d5c8905f9294f334393af"
+            },
+            "ok": true
+          },
+          "motion/baseline": {
+            "cards_only": {
+              "file": "motion/figures/baseline/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 19882,
+              "sha256": "a70a47f238a7fec558257e7b55a0dd7cc886f3c9d0700e890533b439a5b407a5"
+            },
+            "cards_xray": {
+              "file": "motion/figures/baseline/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 131,
+              "changed_pixels_vs_base": 49386,
+              "sha256": "eefd20a07800a4d97866d868b62cfaf27eb97230383daaf51f4a8ea067cf07be"
+            },
+            "worldcache_only": {
+              "file": "motion/figures/baseline/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 361,
+              "changed_pixels_vs_base": 12436,
+              "sha256": "c99041b0e385e698af43af572a9c62144c05d97d1a34885de7bca6e8c9eb00f0"
+            },
+            "worldcache_xray": {
+              "file": "motion/figures/baseline/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 408,
+              "changed_pixels_vs_base": 17181,
+              "sha256": "00e900efb62e96f6efd3cf76b284497f4b271f78b8eabfe76693db0818823571"
+            },
+            "ok": true
+          },
+          "motion/camera-001": {
+            "cards_only": {
+              "file": "motion/figures/camera-001/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 22078,
+              "sha256": "dfa4f9459a3917044ccdafdb406ede51dced5cdb51f8f0970ef06e2130b637e1"
+            },
+            "cards_xray": {
+              "file": "motion/figures/camera-001/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 135,
+              "changed_pixels_vs_base": 47025,
+              "sha256": "3e354aeaefdb344ccb7fff81171838970aa6f90fb787e7dbc99f42f4c2885662"
+            },
+            "worldcache_only": {
+              "file": "motion/figures/camera-001/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 316,
+              "changed_pixels_vs_base": 10223,
+              "sha256": "68031abfb503c19776dc6fa3c886d9fb9496b4bad9eaf5006f2fed0c032c4f7e"
+            },
+            "worldcache_xray": {
+              "file": "motion/figures/camera-001/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 511,
+              "changed_pixels_vs_base": 19219,
+              "sha256": "664b32634945e012e157598c2201e9d4bb5df5f6c96d7abd79da97229c0b2580"
+            },
+            "ok": true
+          },
+          "motion/camera-064": {
+            "cards_only": {
+              "file": "motion/figures/camera-064/cards-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 24,
+              "changed_pixels_vs_base": 22078,
+              "sha256": "38a6aa457823102f35694096106879f2cc60a29ed82f5a02d45c347df4f19baa"
+            },
+            "cards_xray": {
+              "file": "motion/figures/camera-064/cards-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_cards": 135,
+              "changed_pixels_vs_base": 47025,
+              "sha256": "20efaf0ca95a724044cf797d0c257dcf7e75ac4c4a9d322cd8e8ce8b9943db9e"
+            },
+            "worldcache_only": {
+              "file": "motion/figures/camera-064/worldcache-only.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 315,
+              "changed_pixels_vs_base": 10741,
+              "sha256": "77a3e2a4266544abb7c60ed711074ddfdcddee51c98a6d4d1f1178c2c7c2e417"
+            },
+            "worldcache_xray": {
+              "file": "motion/figures/camera-064/worldcache-xray.png",
+              "width": 1280,
+              "height": 720,
+              "drawn_probes": 418,
+              "changed_pixels_vs_base": 17182,
+              "sha256": "456b22f568e8be96b34a3af55de2e885c8a46153e9cef2ad166910400b9a4101"
+            },
+            "ok": true
+          }
+        },
+        "sequence_files": {
+          "light": "light/data/sequence.json",
+          "motion": "motion/data/sequence.json"
+        }
+      }
+    },
+    {
+      "id": "projection_and_camera_verified",
+      "status": "pass",
+      "detail": "FPackedView matrices reconstruct consistently, packed forward matches the matrix, and the decoded camera matches the capture manifest where available.",
+      "evidence": {
+        "failed_states": [],
+        "by_state": {
+          "light/baseline": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 344,
+            "card_center_depth_pass": 170,
+            "card_center_depth_pass_fraction_of_on_screen": 0.4941860465116279,
+            "card_center_depth_error_median_cm_among_pass": 28.376680181468032,
+            "card_center_depth_error_p90_cm_among_pass": 828.1823113496276
+          },
+          "light/lightstep-001": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 344,
+            "card_center_depth_pass": 170,
+            "card_center_depth_pass_fraction_of_on_screen": 0.4941860465116279,
+            "card_center_depth_error_median_cm_among_pass": 28.376680181468032,
+            "card_center_depth_error_p90_cm_among_pass": 828.1823113496276
+          },
+          "light/lightstep-008": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 344,
+            "card_center_depth_pass": 170,
+            "card_center_depth_pass_fraction_of_on_screen": 0.4941860465116279,
+            "card_center_depth_error_median_cm_among_pass": 28.376680181468032,
+            "card_center_depth_error_p90_cm_among_pass": 828.1823113496276
+          },
+          "light/lightstep-032": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 344,
+            "card_center_depth_pass": 170,
+            "card_center_depth_pass_fraction_of_on_screen": 0.4941860465116279,
+            "card_center_depth_error_median_cm_among_pass": 28.376680181468032,
+            "card_center_depth_error_p90_cm_among_pass": 828.1823113496276
+          },
+          "light/lightstep-064": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 344,
+            "card_center_depth_pass": 170,
+            "card_center_depth_pass_fraction_of_on_screen": 0.4941860465116279,
+            "card_center_depth_error_median_cm_among_pass": 28.376680181468032,
+            "card_center_depth_error_p90_cm_among_pass": 828.1823113496276
+          },
+          "motion/baseline": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 344,
+            "card_center_depth_pass": 170,
+            "card_center_depth_pass_fraction_of_on_screen": 0.4941860465116279,
+            "card_center_depth_error_median_cm_among_pass": 28.376680181468032,
+            "card_center_depth_error_p90_cm_among_pass": 828.1823113496276
+          },
+          "motion/camera-001": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 333,
+            "card_center_depth_pass": 157,
+            "card_center_depth_pass_fraction_of_on_screen": 0.47147147147147145,
+            "card_center_depth_error_median_cm_among_pass": 22.235303702777742,
+            "card_center_depth_error_p90_cm_among_pass": 811.739373935453
+          },
+          "motion/camera-064": {
+            "tw_to_clip_product_max_abs": 6.734828161825135e-08,
+            "pre_high_plus_low_max_abs": 0.0,
+            "view_forward_packed_vs_matrix_max_abs": 0.0,
+            "view_axes_orthonormal_max_abs": 2.8166295962250842e-09,
+            "camera_error_vs_manifest_cm": 0.0,
+            "card_center_on_screen": 333,
+            "card_center_depth_pass": 157,
+            "card_center_depth_pass_fraction_of_on_screen": 0.47147147147147145,
+            "card_center_depth_error_median_cm_among_pass": 22.235303702777742,
+            "card_center_depth_error_p90_cm_among_pass": 811.739373935453
+          }
+        }
+      }
+    },
+    {
+      "id": "allocator_free_reference_counts",
+      "status": "pass",
+      "detail": "Allocator high-water minus free-list count equals the referenced physical-probe count; free ids are disjoint from referenced ids; no referenced id is at/above the allocator. Last-used/last-traced arrays are reported separately and can retain stale ids.",
+      "evidence": {
+        "failed_states": [],
+        "by_state": {
+          "light/baseline": {
+            "allocator_high_water": 925,
+            "free_count": 47,
+            "allocator_minus_free": 878,
+            "active_by_indirection": 878,
+            "active_by_last_used_window": 878,
+            "active_by_last_traced_window": 835,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 924,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 925,
+            "last_traced_nonzero": 966,
+            "stale_ids_with_timestamps": 47,
+            "num_frames_to_keep_cached_probes": 8
+          },
+          "light/lightstep-001": {
+            "allocator_high_water": 925,
+            "free_count": 47,
+            "allocator_minus_free": 878,
+            "active_by_indirection": 878,
+            "active_by_last_used_window": 878,
+            "active_by_last_traced_window": 839,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 924,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 925,
+            "last_traced_nonzero": 966,
+            "stale_ids_with_timestamps": 47,
+            "num_frames_to_keep_cached_probes": 8
+          },
+          "light/lightstep-008": {
+            "allocator_high_water": 925,
+            "free_count": 47,
+            "allocator_minus_free": 878,
+            "active_by_indirection": 878,
+            "active_by_last_used_window": 878,
+            "active_by_last_traced_window": 834,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 924,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 925,
+            "last_traced_nonzero": 966,
+            "stale_ids_with_timestamps": 47,
+            "num_frames_to_keep_cached_probes": 8
+          },
+          "light/lightstep-032": {
+            "allocator_high_water": 925,
+            "free_count": 47,
+            "allocator_minus_free": 878,
+            "active_by_indirection": 878,
+            "active_by_last_used_window": 878,
+            "active_by_last_traced_window": 836,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 924,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 925,
+            "last_traced_nonzero": 966,
+            "stale_ids_with_timestamps": 47,
+            "num_frames_to_keep_cached_probes": 8
+          },
+          "light/lightstep-064": {
+            "allocator_high_water": 925,
+            "free_count": 47,
+            "allocator_minus_free": 878,
+            "active_by_indirection": 878,
+            "active_by_last_used_window": 878,
+            "active_by_last_traced_window": 828,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 924,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 925,
+            "last_traced_nonzero": 966,
+            "stale_ids_with_timestamps": 47,
+            "num_frames_to_keep_cached_probes": 8
+          },
+          "motion/baseline": {
+            "allocator_high_water": 925,
+            "free_count": 47,
+            "allocator_minus_free": 878,
+            "active_by_indirection": 878,
+            "active_by_last_used_window": 878,
+            "active_by_last_traced_window": 870,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 924,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 925,
+            "last_traced_nonzero": 966,
+            "stale_ids_with_timestamps": 47,
+            "num_frames_to_keep_cached_probes": 8
+          },
+          "motion/camera-001": {
+            "allocator_high_water": 972,
+            "free_count": 4,
+            "allocator_minus_free": 968,
+            "active_by_indirection": 968,
+            "active_by_last_used_window": 968,
+            "active_by_last_traced_window": 918,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 971,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 972,
+            "last_traced_nonzero": 972,
+            "stale_ids_with_timestamps": 4,
+            "num_frames_to_keep_cached_probes": 8
+          },
+          "motion/camera-064": {
+            "allocator_high_water": 972,
+            "free_count": 125,
+            "allocator_minus_free": 847,
+            "active_by_indirection": 847,
+            "active_by_last_used_window": 847,
+            "active_by_last_traced_window": 839,
+            "free_ids_referenced": 0,
+            "max_referenced_pid": 971,
+            "ids_at_or_above_allocator": 0,
+            "last_used_nonzero": 972,
+            "last_traced_nonzero": 972,
+            "stale_ids_with_timestamps": 125,
+            "num_frames_to_keep_cached_probes": 8
+          }
+        }
+      }
+    },
+    {
+      "id": "static_card_geometry_hash",
+      "status": "pass",
+      "detail": "The exact float32 static geometry hash (origin, axes, extents, mesh-card transform) is constant within each sequence. A canonical sorted hash is also equal across light and motion; card index order differs between the two runs, so indices are never matched across sequences.",
+      "evidence": {
+        "failed_sequences": [],
+        "by_sequence": {
+          "light": {
+            "static_geometry_sha256": [
+              "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+              "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+              "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+              "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+              "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d"
+            ],
+            "canonical_sorted_geometry_sha256": [
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550",
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550",
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550",
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550",
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550"
+            ],
+            "index_order_stable_within_sequence": true
+          },
+          "motion": {
+            "static_geometry_sha256": [
+              "f0423fcf93bd0cb93641e0acf397528c2e43fc11d2a21fa9cb9dbea38c2892ee",
+              "f0423fcf93bd0cb93641e0acf397528c2e43fc11d2a21fa9cb9dbea38c2892ee",
+              "f0423fcf93bd0cb93641e0acf397528c2e43fc11d2a21fa9cb9dbea38c2892ee"
+            ],
+            "canonical_sorted_geometry_sha256": [
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550",
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550",
+              "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550"
+            ],
+            "index_order_stable_within_sequence": true
+          }
+        },
+        "cross_sequence_canonical_hashes": [
+          "dc5aaa1e99b30593bf127bcd7ff6425cbda343e09f56040a3339bae0f38f7550"
+        ],
+        "cross_sequence_index_order_hashes": [
+          "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+          "f0423fcf93bd0cb93641e0acf397528c2e43fc11d2a21fa9cb9dbea38c2892ee"
+        ],
+        "cross_sequence_geometry_set_equal": true,
+        "cross_sequence_index_order_equal": false
+      }
+    },
+    {
+      "id": "page_index_bounds_and_mapping",
+      "status": "pass",
+      "detail": "Every page span referenced by a valid card is inside the 1024-entry page-table/page-buffer capacity, every referenced PageBuffer card index is inside the inferred valid-card range, and every referenced PageTable sample-page index is the identity page.",
+      "evidence": {
+        "failed_states": [],
+        "by_state": {
+          "light/baseline": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 385,
+            "mapped_payload": 626,
+            "unreferenced_payload": 241,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          },
+          "light/lightstep-001": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 385,
+            "mapped_payload": 626,
+            "unreferenced_payload": 241,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          },
+          "light/lightstep-008": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 626,
+            "mapped_payload": 626,
+            "unreferenced_payload": 0,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          },
+          "light/lightstep-032": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 626,
+            "mapped_payload": 626,
+            "unreferenced_payload": 0,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          },
+          "light/lightstep-064": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 626,
+            "mapped_payload": 626,
+            "unreferenced_payload": 0,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          },
+          "motion/baseline": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 400,
+            "mapped_payload": 626,
+            "unreferenced_payload": 226,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          },
+          "motion/camera-001": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 408,
+            "mapped_payload": 626,
+            "unreferenced_payload": 218,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          },
+          "motion/camera-064": {
+            "page_buffer_capacity": 1024,
+            "page_table_capacity": 1024,
+            "referenced_pages": 408,
+            "mapped_payload": 626,
+            "unreferenced_payload": 218,
+            "out_of_bounds": 0,
+            "card_index_out_of_range": 0,
+            "sample_page_not_self": 0,
+            "owner_mismatch": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "imported_alias_identity_evidence",
+      "status": "pass",
+      "detail": "Lumen.Cards and Lumen.PageTable have only v0 imported payloads. Identity is established structurally (descriptor name, exact stride/capacity, contiguous valid cards, page bounds) and temporally (per-state payload hash changes only with flags/residency while the exact static geometry hash is constant).",
+      "evidence": {
+        "failed_states": [],
+        "by_state": {
+          "light/baseline": {
+            "cards_source": {
+              "uid": "0004000001ff80210010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "0004000001ff80210a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "11d1f720cb897bf2939903d122e677882482e68c5628141d151ac63bf3c527ae"
+          },
+          "light/lightstep-001": {
+            "cards_source": {
+              "uid": "0003000001ffb9720010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "0003000001ffb9720a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "11d1f720cb897bf2939903d122e677882482e68c5628141d151ac63bf3c527ae"
+          },
+          "light/lightstep-008": {
+            "cards_source": {
+              "uid": "0003000001ff806e0010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "0003000001ff806e0a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "23939f9cb9d7a0290f2b6575cfddb106b6430f475517563dd4acbc88872527a7"
+          },
+          "light/lightstep-032": {
+            "cards_source": {
+              "uid": "0003000001ffc0eb0010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "0003000001ffc0eb0a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "23939f9cb9d7a0290f2b6575cfddb106b6430f475517563dd4acbc88872527a7"
+          },
+          "light/lightstep-064": {
+            "cards_source": {
+              "uid": "0003000001fff88a0010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "05a046be0619bdcf90282563f64ca708a12338aa3150803f212c14242388b57d",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "0003000001fff88a0a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "23939f9cb9d7a0290f2b6575cfddb106b6430f475517563dd4acbc88872527a7"
+          },
+          "motion/baseline": {
+            "cards_source": {
+              "uid": "00040000024ce8ea0010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "f0423fcf93bd0cb93641e0acf397528c2e43fc11d2a21fa9cb9dbea38c2892ee",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "00040000024ce8ea0a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "b3ebe1e7dfddba861e47ebd73473802bb4b8c89183922bc08c3d22ece110fcf0"
+          },
+          "motion/camera-001": {
+            "cards_source": {
+              "uid": "00040000024a55cd0010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "f0423fcf93bd0cb93641e0acf397528c2e43fc11d2a21fa9cb9dbea38c2892ee",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "00040000024a55cd0a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "2e5bcb8af5592e1fd1d5abfeb80747cf9c8163566e5c17a5b912216328c00fb4"
+          },
+          "motion/camera-064": {
+            "cards_source": {
+              "uid": "00040000024cca320010",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.Cards",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_7_float4_stride_and_gpu_capacity": true,
+                "valid_cards_are_contiguous_then_zero": true,
+                "valid_card_count": 522,
+                "gpu_capacity_cards": 585,
+                "trailing_partial_float4_not_a_card": 1,
+                "static_geometry_sha256": "f0423fcf93bd0cb93641e0acf397528c2e43fc11d2a21fa9cb9dbea38c2892ee",
+                "imported_alias_reason": "Lumen.Cards is a persistent pooled buffer imported into every graph; no per-pass producer version is exported, so the captured v0 payload is used only after the structural and temporal identity checks above"
+              }
+            },
+            "page_table_source": {
+              "uid": "00040000024cca320a38",
+              "version": "00000000000000000000",
+              "producer": null,
+              "imported_alias": true,
+              "identity_evidence": {
+                "descriptor_name": "Lumen.PageTable",
+                "uid_graph_prefix_matches_invocation": true,
+                "byte_size_matches_1024_entries_x_2_uint": true,
+                "entry_count": 1024,
+                "referenced_entries_within_capacity": true,
+                "imported_alias_reason": "Lumen.PageTable is a persistent pooled ByteAddressBuffer imported into the graph; the v0 payload is used only after layout/bounds/ownership checks"
+              }
+            },
+            "cards_file_sha256": "649a5d34f488b49c508c6a0461e0583ddd48aef56e7253bf18dc948309146b34"
+          }
+        }
+      }
+    },
+    {
+      "id": "raw_inputs_hashed_before_and_after_zero_changed",
+      "status": "pass",
+      "detail": "2604 raw input files were hashed before and after decoding; changed count = 0.",
+      "evidence": {
+        "files_hashed": 2604,
+        "changed_count": 0,
+        "changed_files": [],
+        "nativebuffer_files_read": 0,
+        "excluded_retry_paths_read": []
+      }
+    },
+    {
+      "id": "no_radiosity_or_worldcache_sh",
+      "status": "pass",
+      "detail": "No radiosity, SH coefficients, or invented cache-content fields are present in the placement publication.",
+      "evidence": {
+        "forbidden_hits": []
+      }
+    },
+    {
+      "id": "accepted_datasets_only",
+      "status": "pass",
+      "detail": "Only the accepted 20261115-101057 light root and 20261115-104035 motion root are used; the narrow retry 20261115-101923 and rejected +Y150 states are not used.",
+      "evidence": {
+        "bad_roots": [],
+        "roots": [
+          "D:\\UnrealUnderstanding-Motion\\output\\gpu-dump\\raw\\20261115-104035",
+          "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057"
+        ],
+        "retry_present_in_sources": [],
+        "plus_y150_present_in_sources": []
+      }
+    },
+    {
+      "id": "no_burned_text_in_figures",
+      "status": "pass",
+      "detail": "Figures are drawn with PIL line/ellipse primitives only; the renderer source contains no text draw call. Legend and labels are native JSON.",
+      "evidence": {
+        "renderer_functions": [
+          "render_cards_image",
+          "render_worldcache_image"
+        ],
+        "source_draw_text_occurrences": 0,
+        "legend": "figures/legend.json"
+      }
+    }
+  ]
+}

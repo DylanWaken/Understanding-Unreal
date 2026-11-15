@@ -1,0 +1,115 @@
+{
+ "schema": "arda-radiosity-figure-legend-v1",
+ "no_baked_text": true,
+ "root_prose": "report.md",
+ "placement": {
+  "normal_classes": {
+   "floor_or_up": {
+    "rgb": [
+     70,
+     220,
+     90
+    ],
+    "rule": "|nz|>=|nx|,|ny| and nz>=0"
+   },
+   "ceiling_or_down": {
+    "rgb": [
+     255,
+     150,
+     40
+    ],
+    "rule": "|nz|>=|nx|,|ny| and nz<0"
+   },
+   "wall_x": {
+    "rgb": [
+     70,
+     150,
+     255
+    ],
+    "rule": "|nz|<max(|nx|,|ny|) and |nx|>=|ny|"
+   },
+   "wall_y": {
+    "rgb": [
+     255,
+     70,
+     120
+    ],
+    "rule": "|nz|<max(|nx|,|ny|) and |nx|<|ny|"
+   }
+  },
+  "panels": [
+   "native Base/Screenshot with visible probes",
+   "XY plan, all valid probes",
+   "XZ plan, all valid probes"
+  ],
+  "plan_bounds_cm": {
+   "x": [
+    -1536.7568115234376,
+    1439.9265380859374
+   ],
+   "y": [
+    -946.2457153320313,
+    884.3408325195312
+   ],
+   "z": [
+    -101.15400085449215,
+    1143.5465866088869
+   ]
+  },
+  "camera_marker": [
+   255,
+   255,
+   255
+  ],
+  "screenshot_legibility": "visible probes are drawn with a deterministic stride when more than ~26000 are visible; all probes remain in the NPZ"
+ },
+ "xray": {
+  "visible": [
+   60,
+   240,
+   255
+  ],
+  "hidden": [
+   255,
+   0,
+   255
+  ],
+  "hidden_rule": "on screen but view_z > primary depth + declared tolerance",
+  "hidden_legibility": "hidden probes are drawn 1:4 as 1px x; all hidden probes remain in the NPZ"
+ },
+ "sh_lobes": {
+  "direction_count": 48,
+  "lobe_radius_cm": 75.0,
+  "lobe_radiance_max": 20000.0,
+  "zero_clamp": "evaluated SH response is clamped to >= 0 before colour/radius",
+  "saturation": "values above lobe_radiance_max saturate; no per-state or per-probe normalisation",
+  "note": "lobe endpoints are function samples projected around the recorded probe; they are not traced rays and are not geometry"
+ },
+ "depth_test": {
+  "abs_cm": 10.0,
+  "relative": 0.02,
+  "source": "SceneDepthZ 1280x888, view rect at 0,0"
+ },
+ "fixed_scales": {
+  "lobe_radiance_max": 20000.0,
+  "radiance_units": "unit-albedo Lambertian outgoing radiance = e_normal_radiance/pi, scene-referred after /CachedLightingPreExposure",
+  "zero_clamp": "evaluated SH response is clamped to >= 0 before colour/radius",
+  "saturation": "values above lobe_radiance_max saturate; no per-state or per-probe normalisation",
+  "lobe_radius_cm": 75.0,
+  "placement_dot_radius_px": 1,
+  "plan_bounds_cm": {
+   "x": [
+    -1536.7568115234376,
+    1439.9265380859374
+   ],
+   "y": [
+    -946.2457153320313,
+    884.3408325195312
+   ],
+   "z": [
+    -101.15400085449215,
+    1143.5465866088869
+   ]
+  }
+ }
+}

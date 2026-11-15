@@ -1,0 +1,152 @@
+{
+ "hash": {
+  "screen-sh": {
+   "listed_files": 22,
+   "mismatches": [],
+   "unlisted_published_files": [],
+   "listed_but_absent": [],
+   "decoder_rename": {
+    "manifest_path": "decoder.py",
+    "source": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles\\labs\\lumen-sponza\\decode_temporal_sh.py",
+    "sha256_matches": true,
+    "listed": true,
+    "note": "light manifest lists the renamed decoder copy and its hash matches; motion manifest omits a decoder entry (14 publish/report files listed). No manifest self-hash is listed in either."
+   },
+   "ok": true
+  },
+  "motion-screen-sh": {
+   "listed_files": 15,
+   "mismatches": [],
+   "unlisted_published_files": [],
+   "listed_but_absent": [],
+   "decoder_rename": {
+    "manifest_path": null,
+    "source": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles\\labs\\lumen-sponza\\decode_temporal_sh.py",
+    "sha256_matches": true,
+    "listed": false,
+    "note": "light manifest lists the renamed decoder copy and its hash matches; motion manifest omits a decoder entry (14 publish/report files listed). No manifest self-hash is listed in either."
+   },
+   "ok": true
+  },
+  "screenshots": {
+   "ok": true,
+   "bad": []
+  }
+ },
+ "scales": {
+  "screen-sh": {
+   "lobe_response_scale_luminance": 1.4454,
+   "lobe_radius_world_cm": 60.0,
+   "rosette_radius_px": 55.0,
+   "npz_shape": [
+    5,
+    10,
+    162,
+    3
+   ],
+   "signed_min_luminance": -0.03150945020056157,
+   "clamped_max_luminance": 1.7858277544496612,
+   "negative_signed_fraction": 0.025802469135802468,
+   "display_saturated_fraction": 0.009753086419753086,
+   "checks": {
+    "lobe_radius_world_cm_60": true,
+    "rosette_radius_px_55": true,
+    "one_declared_lobe_scale": true,
+    "declared_fixed_across_states_and_probes": true,
+    "negative_display_clamp_declared": true,
+    "signed_coefficients_unsigned_clamp_declared": true,
+    "signed_retains_negatives": true,
+    "clamped_is_nonnegative": true,
+    "clamped_equals_channel_max_signed": true,
+    "luminance_clamped_equals_max_signed_luminance": true,
+    "negative_fraction_matches_summary": true,
+    "saturated_fraction_matches_summary": true,
+    "state_and_probe_axes_match": true,
+    "single_scale_for_all_states_probes": true,
+    "source_radius_constant_60": true,
+    "source_rosette_constant_55": true,
+    "source_one_lobe_max_passed_to_every_state": true
+   },
+   "ok": true
+  },
+  "motion-screen-sh": {
+   "lobe_response_scale_luminance": 1.5239,
+   "lobe_radius_world_cm": 60.0,
+   "rosette_radius_px": 55.0,
+   "npz_shape": [
+    3,
+    10,
+    162,
+    3
+   ],
+   "signed_min_luminance": -0.039884602774531736,
+   "clamped_max_luminance": 1.7302418433555748,
+   "negative_signed_fraction": 0.03580246913580247,
+   "display_saturated_fraction": 0.009670781893004115,
+   "checks": {
+    "lobe_radius_world_cm_60": true,
+    "rosette_radius_px_55": true,
+    "one_declared_lobe_scale": true,
+    "declared_fixed_across_states_and_probes": true,
+    "negative_display_clamp_declared": true,
+    "signed_coefficients_unsigned_clamp_declared": true,
+    "signed_retains_negatives": true,
+    "clamped_is_nonnegative": true,
+    "clamped_equals_channel_max_signed": true,
+    "luminance_clamped_equals_max_signed_luminance": true,
+    "negative_fraction_matches_summary": true,
+    "saturated_fraction_matches_summary": true,
+    "state_and_probe_axes_match": true,
+    "single_scale_for_all_states_probes": true,
+    "source_radius_constant_60": true,
+    "source_rosette_constant_55": true,
+    "source_one_lobe_max_passed_to_every_state": true
+   },
+   "ok": true
+  },
+  "cross_experiment_note": "Each experiment declares its own single fixed response scale (light 1.4454, motion 1.5239); neither experiment changes scale between its states or probes.",
+  "ok": true
+ },
+ "matching": {
+  "screen-sh": {
+   "flags": {
+    "atlas_changed": 18,
+    "identical": 10,
+    "incompatible": 24,
+    "same_atlas_but_moved": 22
+   },
+   "failures": [],
+   "ok": true
+  },
+  "motion-screen-sh": {
+   "flags": {
+    "atlas_changed": 20,
+    "identical": 10,
+    "incompatible": 14,
+    "same_atlas_but_moved": 0
+   },
+   "failures": [],
+   "ok": true
+  }
+ },
+ "ui": {
+  "experiments": [
+   "renderer-light-step",
+   "light-buffers",
+   "camera-buffers"
+  ],
+  "referenced_paths": 61,
+  "missing_or_url": [],
+  "timing_claims": [],
+  "builder_timing_claims": [],
+  "discrete_timing_statement_ok": true,
+  "caption_scale_mismatches": [],
+  "ok": true
+ },
+ "timing_claims": {
+  "manifest": [],
+  "builder": [],
+  "scope_note": "No 60fps/Hz/frame-time claim; timing is explicitly discrete capture spacing."
+ },
+ "ok": true
+}

@@ -1,0 +1,1022 @@
+{
+  "schema": "sponza-worldcache-neighborhood-integrated-v1",
+  "scope": "one declared World Radiance Cache lookup reconstructed from a captured presented-graph compacted screen-probe trace lane; not a recorded shader-local query and not proof that the dispatched ray chose it",
+  "provenance": {
+    "collector": "separate DeepCluster cache collector",
+    "source_json": "D:\\UnrealUnderstanding-Tools\\sponza-cache-queries\\world-cache-query.json",
+    "source_sha256": "0ec44e6871792023ccb16027d2074b12bbe4eecb59bc55a328610da37696d1bb",
+    "integration": "this record restates the collector's exact native versions/coordinates/values and re-verifies file bytes, producer passes and readback status against the preserved dump"
+  },
+  "capture": {
+    "root": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654",
+    "infos": {
+      "Project": "UnrealLab",
+      "EngineMajorVersion": 5,
+      "EngineMinorVersion": 8,
+      "EnginePatchVersion": 1,
+      "BuildBranch": "UE5",
+      "BuildDate": "Aug  8 2026",
+      "BuildVersion": "UE5-CL-0",
+      "BuildTarget": "Editor",
+      "BuildConfiguration": "Development",
+      "Build64Bits": 1,
+      "Platform": "Windows",
+      "OS": "Windows 11 (23H2) [10.0.22631.5624]",
+      "DeviceName": "WIN-R9FOID8ODG8",
+      "CPUVendor": "AuthenticAMD",
+      "CPUBrand": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+      "CPUNumberOfCores": 16,
+      "CPUNumberOfCoresIncludingHyperthreads": 32,
+      "GPUVendor": "NVIDIA",
+      "GPUDeviceDescription": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+      "GPUDriverUserVersion": "610.62",
+      "GPUDriverInternalVersion": "610.62",
+      "GPUDriverDate": "6-11-2026",
+      "MemoryTotalPhysical": 66190659584,
+      "MemoryPageSize": 4096,
+      "RHI": "D3D12",
+      "RHIMaxFeatureLevel": "SM6",
+      "DumpTime": "2026.11.15-16.36.59",
+      "DumpContext": "DumpGPUCommand",
+      "LogFilename": "UnrealLab.log"
+    }
+  },
+  "pass": {
+    "id": 747,
+    "name": "TraceGlobalSDFAndApplyRadianceCache"
+  },
+  "selection": {
+    "rule": "ascending compacted lane; uniform screen probe; valid scene depth; valid clipmap coverage; eight allocated neighbors; fractional weights in [0.05,0.95]; captured final TraceHit.bHit=false; non-zero replayed cache radiance; replayed depth matches captured TraceHit within 0.001 cm",
+    "selectedLane": 11,
+    "selectedTraceBufferOccurrences": 1,
+    "rejectionsUpToSelection": {
+      "fractional weights too close to a cell boundary": 11
+    }
+  },
+  "query_witness": {
+    "dispatchIndex": 11,
+    "packedCompactedTraceWord": 135266999,
+    "screenProbeIndex": 695,
+    "probeAtlasXY": [
+      55,
+      8
+    ],
+    "uniformScreenTileXY": [
+      55,
+      8
+    ],
+    "traceTexelXY": [
+      1,
+      4
+    ],
+    "traceBufferXY": [
+      441,
+      68
+    ],
+    "screenTemporalIndex": 1,
+    "tileJitter": [
+      2,
+      8
+    ],
+    "screenXY": [
+      882,
+      136
+    ],
+    "screenXYClamped": [
+      882.0,
+      136.0
+    ],
+    "screenUV": [
+      0.689453125,
+      0.15371622145175934
+    ],
+    "packedSceneDepth": 1141360982,
+    "sceneDepth": 543.1458740234375,
+    "sceneDepthCM": 543.1458740234375,
+    "sceneDepthUnits": "cm (translated-world depth)",
+    "screenPosition": [
+      0.37890625,
+      0.6208333373069763
+    ],
+    "orthographic": false,
+    "homogeneousPosition": [
+      205.80136108398438,
+      337.20306396484375,
+      543.1458740234375,
+      1.0
+    ],
+    "screenToTranslatedWorld": [
+      [
+        0.0,
+        0.7002076506614685,
+        0.0,
+        0.0
+      ],
+      [
+        -0.08860074728727341,
+        0.0,
+        0.38377201557159424,
+        0.0
+      ],
+      [
+        0.9743700623512268,
+        0.0,
+        0.22495105862617493,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "screenTileXY": [
+      55,
+      8
+    ],
+    "blueNoiseFrameIndex": 1,
+    "blueNoiseTextureXY": [
+      55,
+      136
+    ],
+    "blueNoiseRawBGRA": [
+      0,
+      1,
+      218,
+      255
+    ],
+    "blueNoiseShaderRG": [
+      218.0,
+      1.0
+    ],
+    "blueNoiseDecoded": [
+      0.8549019694328308,
+      0.003921568859368563
+    ],
+    "rayInfoPacked": 4294,
+    "angularRay": {
+      "packedRayInfo": 4294,
+      "structuredImportance": true,
+      "cell": [
+        6,
+        3
+      ],
+      "level": 1,
+      "cellResolution": 8,
+      "jitter": [
+        0.8549019694328308,
+        0.003921568859368563
+      ],
+      "uv": [
+        0.8568627238273621,
+        0.3754901885986328
+      ],
+      "direction": [
+        0.9161319732666016,
+        -0.3941513001918793,
+        0.07312190532684326
+      ],
+      "coneHalfAngle": 0.17708249390125275,
+      "angularCellSolidAngle": 0.19634954084936207,
+      "coneSolidAngleFromApproximateAngle": 0.09825755288975985
+    }
+  },
+  "angular_ray": {
+    "packedRayInfo": 4294,
+    "structuredImportance": true,
+    "cell": [
+      6,
+      3
+    ],
+    "level": 1,
+    "cellResolution": 8,
+    "jitter": [
+      0.8549019694328308,
+      0.003921568859368563
+    ],
+    "uv": [
+      0.8568627238273621,
+      0.3754901885986328
+    ],
+    "direction": [
+      0.9161319732666016,
+      -0.3941513001918793,
+      0.07312190532684326
+    ],
+    "coneHalfAngle": 0.17708249390125275,
+    "angularCellSolidAngle": 0.19634954084936207,
+    "coneSolidAngleFromApproximateAngle": 0.09825755288975985
+  },
+  "directional_encoding": {
+    "rayInfoField": "ScreenProbeParameters.ImportanceSampling.StructuredImportanceSampledRayInfosForTracing (PF_R16_UINT)",
+    "cell": [
+      6,
+      3
+    ],
+    "level": 1,
+    "cellResolution": 8,
+    "jitter": [
+      0.8549019694328308,
+      0.003921568859368563
+    ],
+    "equalAreaUV": [
+      0.8568627238273621,
+      0.3754901885986328
+    ],
+    "direction": [
+      0.9161319732666016,
+      -0.3941513001918793,
+      0.07312190532684326
+    ],
+    "coneHalfAngle": 0.17708249390125275,
+    "formula": "cell=(rayInfo&63,(rayInfo>>6)&63); level=(rayInfo>>12)&15; size=16>>level; uv=(cell+jitter)/size; direction=EqualAreaToSphere(uv); alpha=acosFast(1-1/size^2)"
+  },
+  "parameters": {
+    "radianceCache": {
+      "ClipmapCornerTWSAndCellSize": [
+        [
+          -2639.583251953125,
+          -2552.083251953125,
+          -2642.083251953125,
+          104.16666412353516
+        ],
+        [
+          -5295.8330078125,
+          -5104.16650390625,
+          -5194.16650390625,
+          208.3333282470703
+        ],
+        [
+          -10608.3330078125,
+          -10208.3330078125,
+          -10298.3330078125,
+          416.6666564941406
+        ],
+        [
+          -21233.33203125,
+          -20416.666015625,
+          -20506.666015625,
+          833.3333129882812
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "RadianceProbeSettings": [
+        [
+          180.4219512939453,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          360.8439025878906,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          721.6878051757812,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1443.3756103515625,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "NumRadianceProbeClipmaps": 4,
+      "RadianceProbeClipmapResolution": 48,
+      "RadianceProbeResolution": 32,
+      "FinalProbeResolution": 34,
+      "FinalRadianceAtlasMaxMip": 0,
+      "ReprojectionRadiusScale": 1.5,
+      "InvClipmapFadeSize": 1.0,
+      "InvProbeFinalRadianceAtlasResolution": [
+        0.0002297794126207009,
+        0.0002297794126207009
+      ],
+      "RadianceCacheOneOverCachedLightingPreExposure": 16.0,
+      "ProbeAtlasResolutionModuloMask": 127,
+      "ProbeAtlasResolutionDivideShift": 7,
+      "UseSkyVisibility": 0,
+      "ShowBlackRadianceCacheLighting": 0
+    },
+    "view": {
+      "ViewRectMinAndSize": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "ViewSizeAndInvSize": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "BufferSizeAndInvSize": [
+        1280.0,
+        888.0,
+        0.0007812500116415322,
+        0.0011261261533945799
+      ],
+      "ScreenPositionScaleBias": [
+        0.5,
+        -0.4054054021835327,
+        0.4054054021835327,
+        0.5
+      ],
+      "ScreenToTranslatedWorld": [
+        0.0,
+        0.7002076506614685,
+        0.0,
+        0.0,
+        -0.08860074728727341,
+        0.0,
+        0.38377201557159424,
+        0.0,
+        0.9743700623512268,
+        0.0,
+        0.22495105862617493,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ViewToClip": [
+        1.428147792816162,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.5389294624328613,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        10.0,
+        0.0
+      ],
+      "PreExposure": 0.00048828125,
+      "PreExposureNote": "View.PreExposure = 0.00048828125 (1/2048) is the camera pre-exposure applied after the cache lookup at LumenScreenProbeTracing.usf:851; it is not the cache's CachedLightingPreExposure (1/16).",
+      "StateFrameIndex": 905,
+      "StateFrameIndexMod8": 1,
+      "TranslatedWorldCameraOrigin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SkylightLeakingColor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "SampleHeightFogOnGI": 0,
+      "NumGlobalSDFClipmaps": 0
+    },
+    "screenProbe": {
+      "ScreenProbeViewSize": [
+        80,
+        45
+      ],
+      "ScreenProbeAtlasViewSize": [
+        80,
+        67
+      ],
+      "ScreenProbeAtlasBufferSize": [
+        80,
+        84
+      ],
+      "NumUniformScreenProbes": 3600,
+      "ScreenProbeDownsampleFactor": 16,
+      "FixedJitterIndex": -1,
+      "ScreenProbeRayDirectionFrameIndex": 1,
+      "ScreenProbeTracingOctahedronResolution": 8,
+      "MaxImportanceSamplingOctahedronResolution": 16,
+      "TargetFormatQuantizationError": [
+        0.015625,
+        0.015625,
+        0.03125
+      ]
+    }
+  },
+  "cache_lookup": {
+    "query": {
+      "translatedWorldPosition": [
+        499.3486633300781,
+        144.1036834716797,
+        251.59033203125
+      ],
+      "direction": [
+        0.9161319732666016,
+        -0.3941513001918793,
+        0.07312190532684326
+      ],
+      "coneHalfAngle": 0.17708249390125275
+    },
+    "selected_clipmap": 0,
+    "clipmap_corner_tws_and_cell_size": [
+      -2639.583251953125,
+      -2552.083251953125,
+      -2642.083251953125
+    ],
+    "clipmap_cell_size_cm": 104.16666412353516,
+    "probe_coord_float": null,
+    "bottom_cell": [
+      29,
+      25,
+      27
+    ],
+    "fractional_weights": [
+      0.6337471008300781,
+      0.3833961486816406,
+      0.279266357421875
+    ],
+    "mip_level": 0.0,
+    "angular_footprint_texels": 4.001685619354248,
+    "minimum_local_trace_distance_cm": 360.8439025878906,
+    "neighbors": [
+      {
+        "probe_index": 38,
+        "atlas_xy": [
+          1321,
+          14
+        ],
+        "offset_bits": [
+          0,
+          0,
+          0
+        ],
+        "bilinear_weight": 0.03248083218932152,
+        "neighbor_weight": 0.16276541352272034,
+        "first_tap_packed": 2699621681,
+        "first_tap_decoded_radiance": [
+          56.5,
+          47.0,
+          35.0
+        ]
+      },
+      {
+        "probe_index": 38,
+        "atlas_xy": [
+          1322,
+          14
+        ],
+        "offset_bits": [
+          0,
+          0,
+          0
+        ],
+        "bilinear_weight": 0.03874051943421364,
+        "neighbor_weight": 0.16276541352272034,
+        "first_tap_packed": 2598845689,
+        "first_tap_decoded_radiance": [
+          30.25,
+          25.75,
+          21.5
+        ]
+      },
+      {
+        "probe_index": 38,
+        "atlas_xy": [
+          1321,
+          15
+        ],
+        "offset_bits": [
+          0,
+          0,
+          0
+        ],
+        "bilinear_weight": 0.4235738515853882,
+        "neighbor_weight": 0.16276541352272034,
+        "first_tap_packed": 2397269095,
+        "first_tap_decoded_radiance": [
+          6.4375,
+          6.8125,
+          7.375
+        ]
+      },
+      {
+        "probe_index": 38,
+        "atlas_xy": [
+          1322,
+          15
+        ],
+        "offset_bits": [
+          0,
+          0,
+          0
+        ],
+        "bilinear_weight": 0.5052047967910767,
+        "neighbor_weight": 0.16276541352272034,
+        "first_tap_packed": 2254535720,
+        "first_tap_decoded_radiance": [
+          3.25,
+          3.46875,
+          3.5625
+        ]
+      },
+      {
+        "probe_index": 715,
+        "atlas_xy": [
+          2581,
+          183
+        ],
+        "offset_bits": [
+          0,
+          0,
+          1
+        ],
+        "bilinear_weight": 0.8609640598297119,
+        "neighbor_weight": 0.06306754797697067,
+        "first_tap_packed": 1864184778,
+        "first_tap_decoded_radiance": [
+          1.15625,
+          0.796875,
+          0.46875
+        ]
+      },
+      {
+        "probe_index": 715,
+        "atlas_xy": [
+          2582,
+          183
+        ],
+        "offset_bits": [
+          0,
+          0,
+          1
+        ],
+        "bilinear_weight": 0.00422455370426178,
+        "neighbor_weight": 0.06306754797697067,
+        "first_tap_packed": 2590399680,
+        "first_tap_decoded_radiance": [
+          16.0,
+          18.75,
+          20.5
+        ]
+      },
+      {
+        "probe_index": 715,
+        "atlas_xy": [
+          2581,
+          184
+        ],
+        "offset_bits": [
+          0,
+          0,
+          1
+        ],
+        "bilinear_weight": 0.13415314257144928,
+        "neighbor_weight": 0.06306754797697067,
+        "first_tap_packed": 2002719750,
+        "first_tap_decoded_radiance": [
+          2.1875,
+          1.53125,
+          0.953125
+        ]
+      },
+      {
+        "probe_index": 715,
+        "atlas_xy": [
+          2582,
+          184
+        ],
+        "offset_bits": [
+          0,
+          0,
+          1
+        ],
+        "bilinear_weight": 0.0006582587957382202,
+        "neighbor_weight": 0.06306754797697067,
+        "first_tap_packed": 1864145838,
+        "first_tap_decoded_radiance": [
+          0.859375,
+          0.6484375,
+          0.46875
+        ]
+      }
+    ],
+    "total_radiance_taps": 32
+  },
+  "validity": {
+    "allEightIndirectionAllocated": true,
+    "neighborCount": 8,
+    "uniqueProbeIndices": 8,
+    "radianceTapCount": 32,
+    "neighborWeightsSum": 1.000000037252903,
+    "fractionalWeights": [
+      0.6337471008300781,
+      0.3833961486816406,
+      0.279266357421875
+    ],
+    "mipLevel": 0.0,
+    "probeWorldOffsetNonZeroBytes": 0,
+    "probeWorldOffsetNote": "all 16384 half4 offsets are zero in this captured version"
+  },
+  "radiance_scale": {
+    "storedTap": "R11G11B10 word decoded to linear float; this is the cache-pre-exposed atlas value (linear radiance * CachedLightingPreExposure)",
+    "parallaxCorrection": "t*t/(radius*dot(reprojectedDirection,omega))",
+    "cachedLightingPreExposureInverse": 16.0,
+    "cachedLightingPreExposure": 0.0625,
+    "cachedLightingPreExposureNote": "inverse of the captured RadianceCacheOneOverCachedLightingPreExposure=16.0; the cache atlas stores radiance*1/16",
+    "neighborRadiance": "storedBilinear * cachedLightingPreExposureInverse * parallaxCorrection",
+    "cacheRadiance": "nested Z/Y/X lerp of the eight neighborRadiance values after the *16 cache-exposure inverse; un-pre-exposed cached-lighting radiance",
+    "viewPreExposure": 0.00048828125,
+    "forwardTraceRadianceModel": "cacheRadiance * View.PreExposure; this is the view-pre-exposed TraceRadiance buffer space, not display-linear",
+    "note": "cacheRadiance is un-pre-exposed cached-lighting radiance: the stored atlas is multiplied by RadianceCacheOneOverCachedLightingPreExposure (16) at LumenRadianceCacheInterpolation.ush:272, cancelling CachedLightingPreExposure. The consumer then multiplies by View.PreExposure at LumenScreenProbeTracing.usf:851 before storing TraceRadiance. Therefore forwardModel = cacheRadiance*View.PreExposure is view-pre-exposed scene-linear, not display-linear."
+  },
+  "comparison": {
+    "capturedHitWord": 1149368672,
+    "capturedHitWordHex": "4481f960",
+    "capturedDistance": 1039.79296875,
+    "replayedCacheDepth": 1039.7930908203125,
+    "depthAbsDiff": 0.0001220703125,
+    "capturedDistanceUnits": "cm",
+    "replayedCacheDepthUnits": "cm",
+    "depthAbsDiffUnits": "cm",
+    "finalRadianceWord": 1658401587,
+    "finalRadiance": [
+      0.224609375,
+      0.19921875,
+      0.16796875
+    ],
+    "forwardModel": [
+      0.22359421849250793,
+      0.19838613271713257,
+      0.1680980920791626
+    ],
+    "absDiff": [
+      0.0010151565074920654,
+      0.0008326172828674316,
+      0.00012934207916259766
+    ],
+    "tolerance": [
+      0.0034936596639454365,
+      0.0030997833237051964,
+      0.005253065377473831
+    ],
+    "forwardConsistent": true,
+    "equalityClaimed": false,
+    "forwardModelSpace": "view-pre-exposed scene-linear (after *View.PreExposure, matching LumenScreenProbeTracing.usf:851); cacheRadiance remains un-pre-exposed",
+    "capturedTraceRadianceSpace": "view-pre-exposed scene-linear R11G11B10 store",
+    "boundary": "cache-subtotal boundary; the preceding GDF/voxel result, skylight leaking, height fog and final R11G11B10 quantization are not asserted equal"
+  },
+  "native_inputs": {
+    "indirection": {
+      "name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+      "file": "Resources\\00040000020bef067740.mip0.v0004000002090ec68b08.bin",
+      "bytes": 1769472,
+      "sha256": "eadc4a4bc04502434105e39d98ef10d99c566397da006481a16ffa8b90dde8eb",
+      "uniqueResource": "00040000020bef067740",
+      "version": "0004000002090ec68b08",
+      "producerPass": {
+        "id": 716,
+        "eventName": "AllocateUsedProbes",
+        "pointer": "0004000002090ec68b08"
+      },
+      "descriptor": {
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "UniqueResourceName": "00040000020bef067740",
+        "ByteSize": 1769472,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture3D",
+        "Format": "PF_R32_UINT",
+        "ExtentX": 192,
+        "ExtentY": 48,
+        "Depth": 48,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "Tiling3D",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020bef067740",
+        "Name": "Lumen.RadianceCache.RadianceProbeIndirectionTexture",
+        "File": "Resources/00040000020bef067740.mip0.v0004000002090ec68b08.bin",
+        "Dimension": "Texture3D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 192,
+        "ExtentY": 48,
+        "Depth": 48,
+        "ZSliceCount": 48,
+        "ZSliceStrideBytes": 36864,
+        "RowPitchBytes": 768,
+        "ZSliceOrder": "ascending z, tightly packed",
+        "NativeFormat": "PF_R32_UINT",
+        "ViewFormat": "PF_R32_UINT",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_R32_UINT",
+        "StoredFormat": "PF_R32_UINT",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": false,
+        "NativeValueInterpretation": "UnsignedIntegerBits",
+        "BitExact": true,
+        "ValuePreserving": true,
+        "BitExactCondition": "Integer channels are copied through an integer typed SRV/UAV of the same format; all bits are preserved.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "SynchronousComputePerSlice",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 1769472,
+        "StagingByteSize": 1769472
+      }
+    },
+    "final_radiance_atlas": {
+      "name": "Lumen.RadianceCache.FinalRadianceAtlas",
+      "file": "Resources\\00040000020b979a0c60.mip0.v00040000020b97184f50.bin",
+      "bytes": 75759616,
+      "sha256": "3544d0bb898575b53ba4fcf6538eb75b4189abbb95248a8ceaa3e9b7ac40a9ea",
+      "uniqueResource": "00040000020b979a0c60",
+      "version": "00040000020b97184f50",
+      "producerPass": {
+        "id": 733,
+        "eventName": "FixupBordersAndGenerateMips",
+        "pointer": "00040000020b97184f50"
+      },
+      "descriptor": {
+        "Name": "Lumen.RadianceCache.FinalRadianceAtlas",
+        "UniqueResourceName": "00040000020b979a0c60",
+        "ByteSize": 75759616,
+        "Desc": "FRDGTextureDesc",
+        "Type": "Texture2D",
+        "Format": "PF_FloatR11G11B10",
+        "ExtentX": 4352,
+        "ExtentY": 4352,
+        "Depth": 1,
+        "ArraySize": 1,
+        "NumMips": 1,
+        "NumSamples": 1,
+        "Flags": [
+          "ShaderResource",
+          "UAV"
+        ]
+      },
+      "layout": {
+        "Resource": "00040000020b979a0c60",
+        "Name": "Lumen.RadianceCache.FinalRadianceAtlas",
+        "File": "Resources/00040000020b979a0c60.mip0.v00040000020b97184f50.bin",
+        "Dimension": "Texture2D",
+        "MipLevel": 0,
+        "FirstArraySlice": 0,
+        "NumArraySlices": 0,
+        "ExtentX": 4352,
+        "ExtentY": 4352,
+        "Depth": 1,
+        "ZSliceCount": 1,
+        "ZSliceStrideBytes": 75759616,
+        "RowPitchBytes": 17408,
+        "ZSliceOrder": "single slice",
+        "NativeFormat": "PF_FloatR11G11B10",
+        "ViewFormat": "PF_FloatR11G11B10",
+        "ViewFormatMatchesNativeFormat": true,
+        "StagingFormat": "PF_FloatR11G11B10",
+        "StoredFormat": "PF_FloatR11G11B10",
+        "NativeFormatExpanded": false,
+        "NativeSRGB": false,
+        "ViewSRGB": false,
+        "SRGBOverride": "Default",
+        "SRGBViewUsedForReadback": false,
+        "StoredBytesAreNativeStorage": true,
+        "NativeValueInterpretation": "DecodedFloat",
+        "BitExact": false,
+        "ValuePreserving": true,
+        "BitExactCondition": "Values are decoded to float32 and re-encoded into the same format. Finite values round trip, but native bit patterns are not guaranteed: NaN payloads may be canonicalised, FP32 subnormals may be flushed, and two's-complement SNORM endpoints (-128 and -127) decode to the same value.",
+        "MipExtentClampedToMinimum": false,
+        "StencilSubresource": false,
+        "Readback": "DirectCopy",
+        "DumpStatus": "ScheduledForReadback",
+        "FileVerifiedAtSchedule": false,
+        "ByteSize": 75759616,
+        "StagingByteSize": 75759616
+      }
+    }
+  },
+  "verification": {
+    "indirection": {
+      "file": "Resources/00040000020bef067740.mip0.v0004000002090ec68b08.bin",
+      "exists": true,
+      "expected_bytes": 1769472,
+      "actual_bytes": 1769472,
+      "sha256_expected": "eadc4a4bc04502434105e39d98ef10d99c566397da006481a16ffa8b90dde8eb",
+      "sha256_actual": "eadc4a4bc04502434105e39d98ef10d99c566397da006481a16ffa8b90dde8eb",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 716,
+      "producer_pass_name_actual": "AllocateUsedProbes",
+      "producer_pass_matches": true,
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "readback_file_exists": true
+    },
+    "finalRadianceAtlas": {
+      "file": "Resources/00040000020b979a0c60.mip0.v00040000020b97184f50.bin",
+      "exists": true,
+      "expected_bytes": 75759616,
+      "actual_bytes": 75759616,
+      "sha256_expected": "3544d0bb898575b53ba4fcf6538eb75b4189abbb95248a8ceaa3e9b7ac40a9ea",
+      "sha256_actual": "3544d0bb898575b53ba4fcf6538eb75b4189abbb95248a8ceaa3e9b7ac40a9ea",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 733,
+      "producer_pass_name_actual": "FixupBordersAndGenerateMips",
+      "producer_pass_matches": true,
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "readback_file_exists": true
+    },
+    "depthProbeAtlas": {
+      "file": "Resources/00040000020b979a09a0.mip0.v00040000020ba06fb8c0.bin",
+      "exists": true,
+      "expected_bytes": 33554432,
+      "actual_bytes": 33554432,
+      "sha256_expected": "7d100d782f59679ac1a6dec91526628fc94210e18802069de309e15438494a41",
+      "sha256_actual": "7d100d782f59679ac1a6dec91526628fc94210e18802069de309e15438494a41",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 730,
+      "producer_pass_name_actual": "CompositeTracesIntoAtlas",
+      "producer_pass_matches": true,
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "readback_file_exists": true
+    },
+    "probeWorldOffset": {
+      "file": "Resources/00040000020b979ace00.v0004000002090ec68b08.bin",
+      "exists": true,
+      "expected_bytes": 131072,
+      "actual_bytes": 131072,
+      "sha256_expected": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "sha256_actual": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 716,
+      "producer_pass_name_actual": "AllocateUsedProbes",
+      "producer_pass_matches": true,
+      "readback_status": null,
+      "readback_timing": null,
+      "readback_file_exists": false
+    },
+    "rayInfosForTracing": {
+      "file": "Resources/00040000020b9718fa60.mip0.v00040000020ba1b70010.bin",
+      "exists": true,
+      "expected_bytes": 860160,
+      "actual_bytes": 860160,
+      "sha256_expected": "deaad7bffc582c72a30f8a85249aa86ecbf65cad7ed41fd67bf684c7e843823b",
+      "sha256_actual": "deaad7bffc582c72a30f8a85249aa86ecbf65cad7ed41fd67bf684c7e843823b",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 736,
+      "producer_pass_name_actual": "GenerateRays 8x8",
+      "producer_pass_matches": true,
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "readback_file_exists": true
+    },
+    "screenProbeSceneDepth": {
+      "file": "Resources/0004000002090c6b35d8.mip0.v00040000020bd35c1b10.bin",
+      "exists": true,
+      "expected_bytes": 26880,
+      "actual_bytes": 26880,
+      "sha256_expected": "219c8bc0784637ca04022bf921ca9ff7866355fecdd109ea75aae93e6e916184",
+      "sha256_actual": "219c8bc0784637ca04022bf921ca9ff7866355fecdd109ea75aae93e6e916184",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 706,
+      "producer_pass_name_actual": "AdaptivePlacementSpawn",
+      "producer_pass_matches": true,
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "readback_file_exists": true
+    },
+    "compactedTraceTexelAllocator": {
+      "file": "Resources/00040000020c13288560.v00040000020c13288f10.bin",
+      "exists": true,
+      "expected_bytes": 4,
+      "actual_bytes": 4,
+      "sha256_expected": "3a5627bcff3614ad6882679f936619f119a1674c52e030af6b152053f6e24766",
+      "sha256_actual": "3a5627bcff3614ad6882679f936619f119a1674c52e030af6b152053f6e24766",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 745,
+      "producer_pass_name_actual": "CompactTraces WaveOps:1",
+      "producer_pass_matches": true,
+      "readback_status": null,
+      "readback_timing": null,
+      "readback_file_exists": false
+    },
+    "compactedTraceTexelData": {
+      "file": "Resources/00040000020c13288c18.v00040000020c13288f10.bin",
+      "exists": true,
+      "expected_bytes": 1720320,
+      "actual_bytes": 1720320,
+      "sha256_expected": "8e10de16fa2f9109e541808d3e5c5777d749610432a02a2244573758656a22a3",
+      "sha256_actual": "8e10de16fa2f9109e541808d3e5c5777d749610432a02a2244573758656a22a3",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 745,
+      "producer_pass_name_actual": "CompactTraces WaveOps:1",
+      "producer_pass_matches": true,
+      "readback_status": null,
+      "readback_timing": null,
+      "readback_file_exists": false
+    },
+    "compactTracingIndirectArgs": {
+      "file": "Resources/00040000020c1328b9e0.v00040000020c1328bd08.bin",
+      "exists": true,
+      "expected_bytes": 48,
+      "actual_bytes": 48,
+      "sha256_expected": "3dbf7927957b88b821ed48d0b0e39e456f6c1e30e1a8e281ba295e424da29cf5",
+      "sha256_actual": "3dbf7927957b88b821ed48d0b0e39e456f6c1e30e1a8e281ba295e424da29cf5",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 746,
+      "producer_pass_name_actual": "SetupCompactedTracesIndirectArgs",
+      "producer_pass_matches": true,
+      "readback_status": null,
+      "readback_timing": null,
+      "readback_file_exists": false
+    },
+    "traceHit": {
+      "file": "Resources/00040000020ba1b72cf0.mip0.v00040000020c1328ca80.bin",
+      "exists": true,
+      "expected_bytes": 1720320,
+      "actual_bytes": 1720320,
+      "sha256_expected": "2ebc93e83d5d523367a37af46e723128a0556b41c6b754bf9f8dc10ae3f6866a",
+      "sha256_actual": "2ebc93e83d5d523367a37af46e723128a0556b41c6b754bf9f8dc10ae3f6866a",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 747,
+      "producer_pass_name_actual": "TraceGlobalSDFAndApplyRadianceCache",
+      "producer_pass_matches": true,
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "readback_file_exists": true
+    },
+    "traceRadiance": {
+      "file": "Resources/00040000020ba1b729e0.mip0.v00040000020c1328ca80.bin",
+      "exists": true,
+      "expected_bytes": 1720320,
+      "actual_bytes": 1720320,
+      "sha256_expected": "ba7608e1d58dff38f73596067a7ccc71a0b7d10073e6e94bf62d60a7c27e4301",
+      "sha256_actual": "ba7608e1d58dff38f73596067a7ccc71a0b7d10073e6e94bf62d60a7c27e4301",
+      "sha256_matches": true,
+      "bytes_match": true,
+      "producer_pass_id_actual": 747,
+      "producer_pass_name_actual": "TraceGlobalSDFAndApplyRadianceCache",
+      "producer_pass_matches": true,
+      "readback_status": "Dumped",
+      "readback_timing": "GPUReadbackCompleted",
+      "readback_file_exists": true
+    }
+  },
+  "coverage_gaps": [
+    "The exact compiled shader permutation is not recorded by DumpGPU; structured importance sampling is evidenced by captured CVars, the non-null ray-info binding and a valid packed RayInfo, not by a permutation bit.",
+    "NumGlobalSDFClipmaps is 0 in the captured view; the cache call is replayed, not the preceding voxel trace.",
+    "The GPU cache-only shader-local subtotal is not independently captured; the depth output is compared with the captured TraceHit word.",
+    "The selected query is reconstructed from captured compacted-trace state by a declared rule, not read from a per-thread shader register."
+  ],
+  "observed_vs_replay": "replay_of_declared_query"
+}

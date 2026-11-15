@@ -1,0 +1,305 @@
+{
+  "schema": "lumen-final-validation-v1",
+  "step": "Final read-only validation of the integrated Lumen revision",
+  "workspace": "D:/UnrealUnderstanding-Review/final-validation",
+  "repo": "D:/UnrealUnderstanding",
+  "hardware": "none (no GPU work, no commits)",
+  "environment": {
+    "python": "3.14.6",
+    "node": "v24.22.1",
+    "PYTHONDONTWRITEBYTECODE": "1 for every command and check"
+  },
+  "final_pass_window_local": "2026-11-15T19:55:40+08:00 to 19:57:19+08:00",
+  "commands": [
+    {
+      "id": "01-build.py",
+      "command": "python.exe build.py --check",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 0.54,
+      "stdout_tail": [
+        "Verified scene-representation: 29,463 words, 18 chapters",
+        "Verified nanite: 15,369 words, 20 chapters",
+        "Verified lumen: 29,302 words, 16 chapters",
+        "Verified material-compiler: 12,214 words, 16 chapters",
+        "Verified lumen-reference: 65,579 words, 44 chapters"
+      ],
+      "stderr_tail": [],
+      "summary": "Verified lumen-reference: 65,579 words, 44 chapters"
+    },
+    {
+      "id": "02-math_typesetting.py",
+      "command": "python.exe math_typesetting.py --check --node node",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 0.28,
+      "stdout_tail": [
+        "Verified 1023 LaTeX expressions"
+      ],
+      "stderr_tail": [],
+      "summary": "Verified 1023 LaTeX expressions"
+    },
+    {
+      "id": "03-validate.py",
+      "command": "python.exe validate.py",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 1.01,
+      "stdout_tail": [
+        "Nanite: 15,224 words; 20 chapters; 29 figures; 165 links",
+        "Lumen: 29,030 words; 16 chapters; 71 figures; 280 links",
+        "Material graph compilation: 12,170 words; 16 chapters; 12 figures; 115 links",
+        "Lumen reference: 64,773 words; 44 chapters; 58 figures; 983 links",
+        "155 accessible SVGs; 289 recorded source ranges",
+        "PASS: article structure, links, figures"
+      ],
+      "stderr_tail": [],
+      "summary": "PASS: article structure, links, figures"
+    },
+    {
+      "id": "04-validate_labs.py",
+      "command": "python.exe validate_labs.py",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 0.22,
+      "stdout_tail": [
+        "Saved metrics, contraction bound, and accessible SVG metadata verified",
+        "Validated 12 Unreal screenshots, attachment transforms, 30 instances, 68-bone skeleton, and reproduction source hashes.",
+        "PASS: 129 laboratory sources/outputs, 84 PNGs, frozen hashes and numerical evidence"
+      ],
+      "stderr_tail": [],
+      "summary": "PASS: 129 laboratory sources/outputs, 84 PNGs, frozen hashes and numerical evidence"
+    },
+    {
+      "id": "05-validate_lumen_v2.py",
+      "command": "python.exe validate_lumen_v2.py",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 29.75,
+      "stdout_tail": [
+        "PASS: 245 resource layouts, 15 parameter layouts, 1547 source references.",
+        "PASS package bytes: 7,024 payloads / 888 native files / 7,912 input files / 3,136 chunks / 18,502,060,278 payload bytes (byte identity only; owner-time identity is not claimed).",
+        "PASS source schema: 1,286,023 bytes sha256=d2bd0620e9250f29d9788944be6a73ff80d007a9d5bf86a45fe52b2eefc81d2a; 245 resources / 15 parameters / 1,547 source refs.",
+        "PASS artifact hashes: 236 files / 47,440,343 bytes.",
+        "PASS all requested evidence checks.",
+        "PASS: CPU evidence, 8 diagrams, convergence arithmetic, reference image provenance; 6001 portable capture checks."
+      ],
+      "stderr_tail": [],
+      "summary": "PASS: CPU evidence, 8 diagrams, convergence arithmetic, reference image provenance; 6001 portable capture checks."
+    },
+    {
+      "id": "06-check_site_independence.py",
+      "command": "python.exe Scripts/Docs/check_site_independence.py",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 0.57,
+      "stdout_tail": [
+        "Site independence check passed: 11 HTML file(s) under D:\\UnrealUnderstanding\\Docs contain no links to Ardashir."
+      ],
+      "stderr_tail": [],
+      "summary": "Site independence check passed: 11 HTML file(s) under D:\\UnrealUnderstanding\\Docs contain no links to Ardashir."
+    },
+    {
+      "id": "07-labs/lumen-reading/generate.py",
+      "command": "python.exe labs/lumen-reading/generate.py --check",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 0.17,
+      "stdout_tail": [
+        "Verified 7 diagrams, CPU reference, clean PNG, and manifest."
+      ],
+      "stderr_tail": [],
+      "summary": "Verified 7 diagrams, CPU reference, clean PNG, and manifest."
+    },
+    {
+      "id": "08-labs/lumen-course/generate.py",
+      "command": "python.exe labs/lumen-course/generate.py --check",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 0.12,
+      "stdout_tail": [
+        "Verified 29 original SVG diagrams and 15 numerical checks"
+      ],
+      "stderr_tail": [],
+      "summary": "Verified 29 original SVG diagrams and 15 numerical checks"
+    },
+    {
+      "id": "09-node",
+      "command": "node --check Docs/Unreal/assets/lumen-course/course.js",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 0.03,
+      "stdout_tail": [],
+      "stderr_tail": [],
+      "summary": ""
+    },
+    {
+      "id": "10-node",
+      "command": "node --check Docs/Unreal/assets/lumen-course/temporal.js",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 0.03,
+      "stdout_tail": [],
+      "stderr_tail": [],
+      "summary": ""
+    },
+    {
+      "id": "11-build_temporal_manifest.py",
+      "command": "python.exe Scripts/Docs/unreal_articles/labs/lumen-sponza/build_temporal_manifest.py --check",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 0.58,
+      "stdout_tail": [
+        "Verified Docs\\Unreal\\assets\\lumen-sponza\\temporal\\manifest.json"
+      ],
+      "stderr_tail": [],
+      "summary": "Verified Docs\\Unreal\\assets\\lumen-sponza\\temporal\\manifest.json"
+    }
+  ],
+  "command_totals": {
+    "total": 11,
+    "passed": 11,
+    "failed": []
+  },
+  "temporal_manifest": {
+    "manifest": "D:\\UnrealUnderstanding\\Docs\\Unreal\\assets\\lumen-sponza\\temporal\\manifest.json",
+    "layers": [
+      "cards",
+      "radiosity",
+      "renderer",
+      "screen-probes",
+      "screen-sh",
+      "world-cache"
+    ],
+    "experiments": 4,
+    "states": 20,
+    "paths_checked": 153,
+    "images_checked": 44,
+    "checks": 507,
+    "failures": [],
+    "ok": true
+  },
+  "svg": {
+    "files_parsed": 157,
+    "checks": 158,
+    "frame_flow_strict": {
+      "Docs\\Unreal\\assets\\lumen-course\\frame-flow.svg": {
+        "width": 1200.0,
+        "height": 2500.0,
+        "elements": 149
+      }
+    },
+    "failures": [],
+    "ok": true
+  },
+  "independent_spotchecks": {
+    "checks": 69,
+    "failures": [],
+    "radiosity": {
+      "samples": [
+        8815,
+        46721,
+        9750
+      ],
+      "probe_count": 94787,
+      "raw_sha_ok": true
+    },
+    "worldcache": {
+      "allocator": 925,
+      "free": 47,
+      "active": 878,
+      "positions_sha256": "99b36a6b4cd3c12ff373ecdcf1f8dad2f77f29a2995f03add1221dbb65ff6483",
+      "sample_pids": [
+        0,
+        310,
+        608,
+        460,
+        924
+      ],
+      "sample_max_error_cm": 0.0,
+      "indirection_extent": [
+        192,
+        48,
+        48
+      ],
+      "translucency_extent": [
+        72,
+        24
+      ]
+    },
+    "ok": true
+  },
+  "prior_static_checks_not_rerun": {
+    "reason": "Step instruction: existing static context/receiver/cache replay checks passed and the 95 GB package must not be rerun. Frame Python/Node tests are rerun only if code changed.",
+    "code_set_files": 119,
+    "code_set_sha256": "7e82f43bdfaf0962a51c600f86fd34982b82f9ca2548b18ef0796e05da8bf5e2",
+    "unchanged_vs_static_tree_final": true,
+    "comparison": "All 119 files under labs/lumen-frame plus decode_receivers.py, decode_context.py and cache-replay have identical sizes and mtimes (within 1 ms timestamp conversion) to the saved static-final-checks/tree-final.txt snapshot.",
+    "prior_results": {
+      "frame_python_unittest": "39 tests OK",
+      "frame_verifier_unittest": "15 tests OK",
+      "node_metadata_browser": "6 ok checks",
+      "node_read_path": "15 ok checks",
+      "node_codec": "19 codec tests",
+      "receivers": "27/27 checks",
+      "context": "252/252 checks",
+      "cache_replay": "surface pass=694, world pass=747"
+    }
+  },
+  "integrity": {
+    "snapshot_roots": [
+      "Docs/Unreal",
+      "Scripts/Docs/unreal_articles",
+      "Data/Sponza/evidence",
+      "Data/Sponza/temporal-native",
+      "Data/Sponza/sponza-20261115-083654"
+    ],
+    "before_files": 24841,
+    "before_bytes": 3577116934,
+    "after_files": 24842,
+    "after_bytes": 3577118085,
+    "pre_existing_files_changed": [],
+    "pre_existing_files_removed": [],
+    "concurrently_added_by_root": [
+      {
+        "path": "Data/Sponza/evidence/temporal-captures/flagged-raw-identity.json",
+        "size": 1151,
+        "sha256": "8a5e099855b7382a2a97699c6ad433ec0a232f050ca677957588eaf07d15138f"
+      }
+    ],
+    "attribution": "The one added file is Data/Sponza/evidence/temporal-captures/flagged-raw-identity.json, a capture-identity report produced while the read-only validation ran. It is outside the article, temporal manifest and figure references. No validation process writes any repo path; the allowed write scope is results/.",
+    "validated_files_unchanged": true
+  },
+  "transient_observations": [
+    {
+      "when": "earlier pass, 2026-11-15T19:49+08:00",
+      "event": "python build.py --check exited 1 with 'Stale article: Docs/Unreal/lumen.html'",
+      "cause": "Root was mid-rebuild: lumen-course-reconstruction.html and lumen-course-system.html were written at 19:49:00 and the Docs pages were regenerated at 19:49:36. The probe build ran in that window.",
+      "resolution": "After root's rebuild settled, build.py --check exits 0 on the final revision; the transient failure is not reproducible on the validated snapshot."
+    },
+    {
+      "when": "earlier pass, final-pass window",
+      "event": "Root added 15 temporal-decoder evidence logs and updated temporal-reproduction.md during the first snapshot interval; revalidated after the writes.",
+      "resolution": "Final tight pass has zero changed/removed pre-existing files and one concurrent capture-identity addition."
+    }
+  ],
+  "acceptance_checks": [
+    {
+      "check": "generated article math diagrams and local references pass",
+      "passed": true,
+      "evidence": "11/11 commands exit 0: build.py --check (5 articles, lumen 29,302 words / 16 chapters); math_typesetting.py --check --node node (1,023 LaTeX); validate.py (155 accessible SVGs, 289 source ranges); validate_labs.py (129 sources/outputs, 84 PNGs); labs/lumen-reading/generate.py --check (7 diagrams); labs/lumen-course/generate.py --check (29 SVGs, 15 numerical checks); build_temporal_manifest.py --check; node --check both JS."
+    },
+    {
+      "check": "temporal assets and representative native numerical records agree",
+      "passed": true,
+      "evidence": "Temporal manifest: 6/6 layer families wired to article hosts, 4 experiments, 20 states, 153 declared paths all present, 44 images decoded with stable dimensions, 507 checks, 0 failures. Every displayed per-state count/frame/exposure matches its numeric record. All 8 age charts sum to 878/878/878/878/878/878/968/847 active probes with fixed max 1000 and exact source histograms (unit = View.ViewState->GetFrameIndex delta). No *_TEMPORAL_EVIDENCE placeholder remains. Independent raw checks: 69 checks, 0 failures (3 radiosity probes with 12 native SH coefficients exact and world error <= 8.98e-6 cm; all 878 world-cache positions reproduce hash 99b36a6b..., allocator 925-47=878)."
+    },
+    {
+      "check": "published files remain unchanged",
+      "passed": true,
+      "evidence": "24,841-file SHA-256 snapshot before/after: 0 pre-existing files changed, 0 removed. One root-produced capture report was added concurrently (Data/Sponza/evidence/temporal-captures/flagged-raw-identity.json), disclosed in integrity. The validation wrote only under results/."
+    }
+  ],
+  "unresolved_issues": [],
+  "ok": true
+}

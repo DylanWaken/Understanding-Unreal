@@ -1,0 +1,731 @@
+{
+ "schema": "arda-radiosity-probe-state-v1",
+ "state": "baseline",
+ "title": "baseline 80k lux warm",
+ "graph_prefix": "0004",
+ "view": {
+  "camera_world_cm": [
+   -850.0,
+   0.0,
+   90.0
+  ],
+  "view_rect": [
+   0,
+   0,
+   1280,
+   720
+  ],
+  "view_size": [
+   1280.0,
+   720.0,
+   0.0007812500116415322,
+   0.0013888889225199819
+  ],
+  "near_plane_cm": 10.0,
+  "hfov_deg": 70.00000864665033,
+  "vfov_deg": 42.995665106812666,
+  "frame_index_field": 365,
+  "pre_view_translation_cm": [
+   850.0,
+   -0.0,
+   -90.0
+  ],
+  "clip_convention": "math matrix = stored 4x4 block transposed; clip = M @ [x,y,z,1]",
+  "tw_to_clip_vs_product_max_abs": 0.0,
+  "all_graphs": [
+   {
+    "prefix": "0001",
+    "view_uid": "00010000026046775e60",
+    "view_file": "00010000026046775e60.v00000000000000000000.bin",
+    "frame_index_field": 363,
+    "camera_world_cm": [
+     -850.0,
+     0.0,
+     90.0
+    ]
+   },
+   {
+    "prefix": "0003",
+    "view_uid": "0003000002604473e440",
+    "view_file": "0003000002604473e440.v00000000000000000000.bin",
+    "frame_index_field": 364,
+    "camera_world_cm": [
+     -850.0,
+     0.0,
+     90.0
+    ]
+   },
+   {
+    "prefix": "0004",
+    "view_uid": "000400000260466ae440",
+    "view_file": "000400000260466ae440.v00000000000000000000.bin",
+    "frame_index_field": 365,
+    "camera_world_cm": [
+     -850.0,
+     0.0,
+     90.0
+    ]
+   }
+  ]
+ },
+ "preexposure": 0.0625,
+ "params": {
+  "BuildRadiosityTiles": {
+   "pass": {
+    "pass_id": 31,
+    "pointer_prefix": "0004",
+    "parameters_pointer": "00040000025d3391bd90",
+    "parameters_file": "D:\\UnrealUnderstanding-Radiosity\\output\\gpu-dump\\raw\\20261115-105951\\baseline\\Structures\\00040000025d3391bd90.bin",
+    "parameters_bytes": 464,
+    "parameters_sha256": "241bef73196c96da663acc1a3c5900d18fb8db428bc098c07ba65025f32fa283"
+   },
+   "RadiosityAtlasSize": [
+    4096,
+    4096
+   ],
+   "ProbeSpacingInCardTexels": 4,
+   "ProbeSpacingInCardTexelsDivideShift": 2,
+   "CardTileSizeInProbes": 2,
+   "RadiosityTileSizeInProbes": 1,
+   "HemisphereProbeResolution": 4,
+   "NumTracesPerProbe": 16,
+   "ProbeOcclusionStrength": 0.0,
+   "FixedJitterIndex": -1,
+   "MaxFramesAccumulated": 4,
+   "MaxRadiosityTiles": 16384,
+   "NumViews": 1,
+   "ViewIndex": 1,
+   "TargetFormatQuantizationError": [
+    0.015625,
+    0.015625,
+    0.03125
+   ],
+   "nested_offsets": {
+    "CardTileAllocator": 0,
+    "CardTileData": 8,
+    "RadiosityTileAllocator": 16,
+    "RadiosityTileData": 24,
+    "TraceRadianceAtlas": 32,
+    "TraceHitDistanceAtlas": 40,
+    "RadiosityAtlasSize": 48,
+    "ProbeSpacingInCardTexels": 56,
+    "ProbeSpacingInCardTexelsDivideShift": 60,
+    "CardTileSizeInProbes": 64,
+    "RadiosityTileSizeInProbes": 68,
+    "HemisphereProbeResolution": 72,
+    "NumTracesPerProbe": 76,
+    "ProbeOcclusionStrength": 80,
+    "FixedJitterIndex": 84,
+    "MaxFramesAccumulated": 88,
+    "NumViews": 92,
+    "ViewIndex": 96,
+    "MaxRadiosityTiles": 100,
+    "TargetFormatQuantizationError": 112,
+    "BlueNoise": 128
+   },
+   "nested_base_offset": 80
+  },
+  "ConvertToSH": {
+   "pass": {
+    "pass_id": 32,
+    "pointer_prefix": "0004",
+    "parameters_pointer": "000400000260466c37f0",
+    "parameters_file": "D:\\UnrealUnderstanding-Radiosity\\output\\gpu-dump\\raw\\20261115-105951\\baseline\\Structures\\000400000260466c37f0.bin",
+    "parameters_bytes": 224,
+    "parameters_sha256": "b54b88f3633f5cbfc8ce287e8d67174fef48f74d1f3bc3aa7ffc6f644b8323c9"
+   },
+   "RadiosityAtlasSize": [
+    4096,
+    4096
+   ],
+   "ProbeSpacingInCardTexels": 4,
+   "ProbeSpacingInCardTexelsDivideShift": 2,
+   "CardTileSizeInProbes": 2,
+   "RadiosityTileSizeInProbes": 1,
+   "HemisphereProbeResolution": 4,
+   "NumTracesPerProbe": 16,
+   "ProbeOcclusionStrength": 0.0,
+   "FixedJitterIndex": -1,
+   "MaxFramesAccumulated": 4,
+   "MaxRadiosityTiles": 16384,
+   "NumViews": 1,
+   "ViewIndex": 0,
+   "TargetFormatQuantizationError": [
+    0.015625,
+    0.015625,
+    0.03125
+   ],
+   "nested_offsets": {
+    "CardTileAllocator": 0,
+    "CardTileData": 8,
+    "RadiosityTileAllocator": 16,
+    "RadiosityTileData": 24,
+    "TraceRadianceAtlas": 32,
+    "TraceHitDistanceAtlas": 40,
+    "RadiosityAtlasSize": 48,
+    "ProbeSpacingInCardTexels": 56,
+    "ProbeSpacingInCardTexelsDivideShift": 60,
+    "CardTileSizeInProbes": 64,
+    "RadiosityTileSizeInProbes": 68,
+    "HemisphereProbeResolution": 72,
+    "NumTracesPerProbe": 76,
+    "ProbeOcclusionStrength": 80,
+    "FixedJitterIndex": 84,
+    "MaxFramesAccumulated": 88,
+    "NumViews": 92,
+    "ViewIndex": 96,
+    "MaxRadiosityTiles": 100,
+    "TargetFormatQuantizationError": 112,
+    "BlueNoise": 128
+   },
+   "nested_base_offset": 64
+  },
+  "Integrate": {
+   "pass": {
+    "pass_id": 33,
+    "pointer_prefix": "0004",
+    "parameters_pointer": "000400000260466c6670",
+    "parameters_file": "D:\\UnrealUnderstanding-Radiosity\\output\\gpu-dump\\raw\\20261115-105951\\baseline\\Structures\\000400000260466c6670.bin",
+    "parameters_bytes": 272,
+    "parameters_sha256": "a1775df1110252aa5ff7a0f3c26d9e5b8017b115195f484019dd2d78992c9d99"
+   },
+   "RadiosityAtlasSize": [
+    4096,
+    4096
+   ],
+   "ProbeSpacingInCardTexels": 4,
+   "ProbeSpacingInCardTexelsDivideShift": 2,
+   "CardTileSizeInProbes": 2,
+   "RadiosityTileSizeInProbes": 1,
+   "HemisphereProbeResolution": 4,
+   "NumTracesPerProbe": 16,
+   "ProbeOcclusionStrength": 0.0,
+   "FixedJitterIndex": -1,
+   "MaxFramesAccumulated": 4,
+   "MaxRadiosityTiles": 16384,
+   "NumViews": 1,
+   "ViewIndex": 1,
+   "TargetFormatQuantizationError": [
+    0.015625,
+    0.015625,
+    0.03125
+   ],
+   "nested_offsets": {
+    "CardTileAllocator": 0,
+    "CardTileData": 8,
+    "RadiosityTileAllocator": 16,
+    "RadiosityTileData": 24,
+    "TraceRadianceAtlas": 32,
+    "TraceHitDistanceAtlas": 40,
+    "RadiosityAtlasSize": 48,
+    "ProbeSpacingInCardTexels": 56,
+    "ProbeSpacingInCardTexelsDivideShift": 60,
+    "CardTileSizeInProbes": 64,
+    "RadiosityTileSizeInProbes": 68,
+    "HemisphereProbeResolution": 72,
+    "NumTracesPerProbe": 76,
+    "ProbeOcclusionStrength": 80,
+    "FixedJitterIndex": 84,
+    "MaxFramesAccumulated": 88,
+    "NumViews": 92,
+    "ViewIndex": 96,
+    "MaxRadiosityTiles": 100,
+    "TargetFormatQuantizationError": 112,
+    "BlueNoise": 128
+   },
+   "nested_base_offset": 80
+  },
+  "Batched lights": {
+   "pass": {
+    "pass_id": 30,
+    "pointer_prefix": "0004",
+    "parameters_pointer": "00040000025d33916080",
+    "parameters_file": "D:\\UnrealUnderstanding-Radiosity\\output\\gpu-dump\\raw\\20261115-105951\\baseline\\Structures\\00040000025d33916080.bin",
+    "parameters_bytes": 208,
+    "parameters_sha256": "8b014ad3b6287675598f2c37d81b161f10ba8f0504163148b9bcb6dbdbfa6091"
+   },
+   "CachedLightingPreExposure": 0.0625,
+   "CachedLightingPreExposure_offset": 204
+  }
+ },
+ "cards": {
+  "num_cards": 585,
+  "visible": 386,
+  "static_geometry_sha256": "07eae3e23367b7be59b8281354b26cf7410afdfc33486aa5274e8045114a1e46"
+ },
+ "pages": {
+  "npages": 1024,
+  "mapped": 626,
+  "indirect_initialized": 626
+ },
+ "card_tiles": {
+  "buffer_words": 4096,
+  "nonzero": 3957,
+  "active_count": 3957,
+  "page_count": 144,
+  "packing": "FCardTileData: page = packed & 0xFFFFFF, tile.x = (packed>>24)&0xF, tile.y = (packed>>28)&0xF"
+ },
+ "counts": {
+  "probes": 94787,
+  "card_tile_in_capture": 3772,
+  "visible": 43815,
+  "occluded": 25026,
+  "sh_nonzero": 83428,
+  "skipped": {
+   "invalid_depth": 104505
+  }
+ },
+ "ranges": {
+  "position_min_cm": [
+   -1531.916345055774,
+   -903.0681492805481,
+   -85.5547343254093
+  ],
+  "position_max_cm": [
+   1435.0860716182738,
+   855.3440096855163,
+   1138.8683436870579
+  ],
+  "sh_raw_min": -4496.0,
+  "sh_raw_max": 6372.0,
+  "e_raw_min": -1297.094132849761,
+  "e_raw_max": 7081.83117007266,
+  "lambert_radiance_p50": 3.7421282230693045,
+  "lambert_radiance_p95": 11070.619829959274,
+  "scene_indirect_corroboration": {
+   "samples": 15250,
+   "note": "SceneIndirectLighting at the surface texel vs SH E(normal); bilinear/weighting makes this a correlation check only",
+   "pearson_R": 0.8795318654272726,
+   "median_ratio_R": 1.9598145267357636,
+   "pearson_G": 0.8872605244767189,
+   "median_ratio_G": 1.9412844356116294,
+   "pearson_B": 0.8940553245384736,
+   "median_ratio_B": 1.9649598234330092
+  }
+ },
+ "resources": {
+  "Lumen.Cards": {
+   "role": "Lumen.Cards",
+   "name": "Lumen.Cards",
+   "unique_resource_name": "0004000002602a2c0010",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602a2c0010.v00000000000000000000.bin",
+   "bytes": 65536,
+   "sha256": "b3ebe1e7dfddba861e47ebd73473802bb4b8c89183922bc08c3d22ece110fcf0",
+   "descriptor": {
+    "Desc": "FRDGBufferDesc",
+    "Type": null,
+    "Format": null,
+    "ExtentX": null,
+    "ExtentY": null,
+    "ByteSize": 65536,
+    "BytesPerElement": 16,
+    "NumElements": 4096,
+    "NumMips": null
+   },
+   "readback": null,
+   "producer": null
+  },
+  "Lumen.PageBuffer": {
+   "role": "Lumen.PageBuffer",
+   "name": "Lumen.PageBuffer",
+   "unique_resource_name": "0004000002602a2c0bc0",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602a2c0bc0.v00000000000000000000.bin",
+   "bytes": 81920,
+   "sha256": "53ae53d58364f0ce300745ecae27601268d41c676d172c86714a8b4889430392",
+   "descriptor": {
+    "Desc": "FRDGBufferDesc",
+    "Type": null,
+    "Format": null,
+    "ExtentX": null,
+    "ExtentY": null,
+    "ByteSize": 81920,
+    "BytesPerElement": 16,
+    "NumElements": 5120,
+    "NumMips": null
+   },
+   "readback": null,
+   "producer": null
+  },
+  "Lumen.PageTable": {
+   "role": "Lumen.PageTable",
+   "name": "Lumen.PageTable",
+   "unique_resource_name": "0004000002602a2c0a38",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602a2c0a38.v00000000000000000000.bin",
+   "bytes": 8192,
+   "sha256": "5d418bfbc2c4dd1b977d2474b08e4d398445f1656968a1ec8f592ea17290c19e",
+   "descriptor": {
+    "Desc": "FRDGBufferDesc",
+    "Type": null,
+    "Format": null,
+    "ExtentX": null,
+    "ExtentY": null,
+    "ByteSize": 8192,
+    "BytesPerElement": 4,
+    "NumElements": 2048,
+    "NumMips": null
+   },
+   "readback": null,
+   "producer": null
+  },
+  "Lumen.CardTiles@33124": {
+   "role": "Lumen.CardTiles@33124",
+   "name": "Lumen.CardTiles",
+   "unique_resource_name": "0004000002602b7a1988",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602b7a1988.v00000000000000000000.bin",
+   "bytes": 33124,
+   "sha256": "4d8329d0adbd9c6fb48486b83d70c04abf750027c7c19addf7aa9c70f0e15f82",
+   "descriptor": {
+    "Desc": "FRDGBufferDesc",
+    "Type": null,
+    "Format": null,
+    "ExtentX": null,
+    "ExtentY": null,
+    "ByteSize": 33124,
+    "BytesPerElement": 4,
+    "NumElements": 8281,
+    "NumMips": null
+   },
+   "readback": null,
+   "producer": null
+  },
+  "Lumen.CardTiles@16384": {
+   "role": "Lumen.CardTiles@16384",
+   "name": "Lumen.CardTiles",
+   "unique_resource_name": "00040000025d33919e88",
+   "version_pointer": "00040000025d3391c120",
+   "file": "00040000025d33919e88.v00040000025d3391c120.bin",
+   "bytes": 16384,
+   "sha256": "9579d562d0dddd0640ffe17cd5a4d26236dec8bbfd5d151baec9b94591fca65e",
+   "descriptor": {
+    "Desc": "FRDGBufferDesc",
+    "Type": null,
+    "Format": null,
+    "ExtentX": null,
+    "ExtentY": null,
+    "ByteSize": 16384,
+    "BytesPerElement": 4,
+    "NumElements": 4096,
+    "NumMips": null
+   },
+   "readback": null,
+   "producer": {
+    "pass_id": 31,
+    "event_name": "BuildRadiosityTiles",
+    "pointer": "00040000025d3391c120"
+   }
+  },
+  "Lumen.CardCaptureRects": {
+   "role": "Lumen.CardCaptureRects",
+   "name": "Lumen.CardCaptureRects",
+   "unique_resource_name": "0004000002602a2c3ad0",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602a2c3ad0.v00000000000000000000.bin",
+   "bytes": 2048,
+   "sha256": "95aea051e7aff49be6bc3a143ef87fc92c0c5765de7b3fa3d2407d0c10554ee8",
+   "descriptor": {
+    "Desc": "FRDGBufferDesc",
+    "Type": null,
+    "Format": null,
+    "ExtentX": null,
+    "ExtentY": null,
+    "ByteSize": 2048,
+    "BytesPerElement": 16,
+    "NumElements": 128,
+    "NumMips": null
+   },
+   "readback": null,
+   "producer": null
+  },
+  "Lumen.MeshCards": {
+   "role": "Lumen.MeshCards",
+   "name": "Lumen.MeshCards",
+   "unique_resource_name": "0004000002602a2c05a0",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602a2c05a0.v00000000000000000000.bin",
+   "bytes": 8192,
+   "sha256": "905f0990d2df9f30a07bd71c864a97bb037dbdda1ef7c013546099da40389b48",
+   "descriptor": {
+    "Desc": "FRDGBufferDesc",
+    "Type": null,
+    "Format": null,
+    "ExtentX": null,
+    "ExtentY": null,
+    "ByteSize": 8192,
+    "BytesPerElement": 16,
+    "NumElements": 512,
+    "NumMips": null
+   },
+   "readback": null,
+   "producer": null
+  },
+  "Lumen.SceneDepth": {
+   "role": "Lumen.SceneDepth",
+   "name": "Lumen.SceneDepth",
+   "unique_resource_name": "0004000002602a2c1590",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602a2c1590.mip0.v00000000000000000000.bin",
+   "bytes": 33554432,
+   "sha256": "ddd5b823317b7b43a5f0d437d67a6c900196662e6feae545f52755e806416291",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_G16",
+    "ExtentX": 4096,
+    "ExtentY": 4096,
+    "ByteSize": 33554432,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": null
+  },
+  "Lumen.SceneNormal": {
+   "role": "Lumen.SceneNormal",
+   "name": "Lumen.SceneNormal",
+   "unique_resource_name": "0004000002602a2c1010",
+   "version_pointer": "00000000000000000000",
+   "file": "0004000002602a2c1010.mip0.v00000000000000000000.bin",
+   "bytes": 134217728,
+   "sha256": "94738fc00c86f3185eaaa8e5fc05b141f253c14ed303bcbb1fe4fede0b465581",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_BC5",
+    "ExtentX": 4096,
+    "ExtentY": 4096,
+    "ByteSize": 268435456,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": null
+  },
+  "Lumen.Radiosity.ProbeSHRedAtlas": {
+   "role": "Lumen.Radiosity.ProbeSHRedAtlas",
+   "name": "Lumen.Radiosity.ProbeSHRedAtlas",
+   "unique_resource_name": "00040000025d2cf5d700",
+   "version_pointer": "00000000000000000000",
+   "file": "00040000025d2cf5d700.mip0.v00000000000000000000.bin",
+   "bytes": 8388608,
+   "sha256": "813aacebdb99e617ba755e14f04f62ca5e86a06f3ce5d094a20b2826c34d1055",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_FloatRGBA",
+    "ExtentX": 1024,
+    "ExtentY": 1024,
+    "ByteSize": 8388608,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": null
+  },
+  "Lumen.Radiosity.ProbeSHGreenAtlas": {
+   "role": "Lumen.Radiosity.ProbeSHGreenAtlas",
+   "name": "Lumen.Radiosity.ProbeSHGreenAtlas",
+   "unique_resource_name": "00040000025d2cf5d9c0",
+   "version_pointer": "00000000000000000000",
+   "file": "00040000025d2cf5d9c0.mip0.v00000000000000000000.bin",
+   "bytes": 8388608,
+   "sha256": "9e6f4e6efba394884fb6cbf74920f3b50713e305e13fe595a6637bb70bd673b6",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_FloatRGBA",
+    "ExtentX": 1024,
+    "ExtentY": 1024,
+    "ByteSize": 8388608,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": null
+  },
+  "Lumen.Radiosity.ProbeSHBlueAtlas": {
+   "role": "Lumen.Radiosity.ProbeSHBlueAtlas",
+   "name": "Lumen.Radiosity.ProbeSHBlueAtlas",
+   "unique_resource_name": "00040000025d2cf5dc80",
+   "version_pointer": "00000000000000000000",
+   "file": "00040000025d2cf5dc80.mip0.v00000000000000000000.bin",
+   "bytes": 8388608,
+   "sha256": "ca75b3bfa7d82591342af6c33ffda1d9ed44ea75526f9e5e46b6a69fbfeb8f27",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_FloatRGBA",
+    "ExtentX": 1024,
+    "ExtentY": 1024,
+    "ByteSize": 8388608,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": null
+  },
+  "Lumen.Radiosity.NumFramesAccumulatedAtlas": {
+   "role": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+   "name": "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+   "unique_resource_name": "0004000002602a2c1dd0",
+   "version_pointer": "000400000260466c6780",
+   "file": "0004000002602a2c1dd0.mip0.v000400000260466c6780.bin",
+   "bytes": 262144,
+   "sha256": "228e594fabee9c1ea8e72c9ef2e996473d02c24cb0f98311232bce05ef431657",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_R8",
+    "ExtentX": 512,
+    "ExtentY": 512,
+    "ByteSize": 262144,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": {
+    "pass_id": 33,
+    "event_name": "Integrate",
+    "pointer": "000400000260466c6780"
+   }
+  },
+  "Lumen.Radiosity.SceneIndirectLighting": {
+   "role": "Lumen.Radiosity.SceneIndirectLighting",
+   "name": "Lumen.Radiosity.SceneIndirectLighting",
+   "unique_resource_name": "0004000002602a2c1b10",
+   "version_pointer": "000400000260466c6780",
+   "file": "0004000002602a2c1b10.mip0.v000400000260466c6780.bin",
+   "bytes": 67108864,
+   "sha256": "457ca694842a40e2c498ead15834b53e22430bc6b374b68064fe3935bdae3b8a",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_FloatR11G11B10",
+    "ExtentX": 4096,
+    "ExtentY": 4096,
+    "ByteSize": 67108864,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": {
+    "pass_id": 33,
+    "event_name": "Integrate",
+    "pointer": "000400000260466c6780"
+   }
+  },
+  "Lumen.Radiosity.FilteredTraceRadianceAtlas": {
+   "role": "Lumen.Radiosity.FilteredTraceRadianceAtlas",
+   "name": "Lumen.Radiosity.FilteredTraceRadianceAtlas",
+   "unique_resource_name": "000400000260466c2398",
+   "version_pointer": "00000000000000000000",
+   "file": "000400000260466c2398.mip0.v00000000000000000000.bin",
+   "bytes": 67108864,
+   "sha256": "3be2c1663190026f7fa75b703593f8d4de0abf3bc4dcaec0a39b882d94fd96ff",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_FloatR11G11B10",
+    "ExtentX": 4096,
+    "ExtentY": 4096,
+    "ByteSize": 67108864,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": null
+  },
+  "SceneDepthZ": {
+   "role": "SceneDepthZ",
+   "name": "SceneDepthZ",
+   "unique_resource_name": "000400000260466aebd0",
+   "version_pointer": "000400000260486a90c0",
+   "file": "000400000260466aebd0.mip0.v000400000260486a90c0.bin",
+   "bytes": 4546560,
+   "sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+   "descriptor": {
+    "Desc": "FRDGTextureDesc",
+    "Type": "Texture2D",
+    "Format": "PF_DepthStencil",
+    "ExtentX": 1280,
+    "ExtentY": 888,
+    "ByteSize": 5683200,
+    "BytesPerElement": null,
+    "NumElements": null,
+    "NumMips": 1
+   },
+   "readback": "Dumped",
+   "producer": {
+    "pass_id": 28,
+    "event_name": "DepthPassParallel",
+    "pointer": "000400000260486a90c0"
+   }
+  },
+  "ViewData.PrimaryViews": {
+   "role": "camera/view",
+   "name": "ViewData.PrimaryViews",
+   "unique_resource_name": "000400000260466ae440",
+   "version_pointer": "00000000000000000000",
+   "file": "000400000260466ae440.v00000000000000000000.bin",
+   "bytes": 1056,
+   "sha256": "0f69fb50f0426e0104b8bf7edc1e5cf80031239081c9a35471630694c76f6347",
+   "descriptor": {
+    "ByteSize": 1056,
+    "BytesPerElement": 1056,
+    "NumElements": 1
+   },
+   "readback": null,
+   "producer": null
+  }
+ },
+ "source_hashes": {
+  "Resources\\00040000025d2cf5d700.mip0.v00000000000000000000.bin": "813aacebdb99e617ba755e14f04f62ca5e86a06f3ce5d094a20b2826c34d1055",
+  "Resources\\00040000025d2cf5d9c0.mip0.v00000000000000000000.bin": "9e6f4e6efba394884fb6cbf74920f3b50713e305e13fe595a6637bb70bd673b6",
+  "Resources\\00040000025d2cf5dc80.mip0.v00000000000000000000.bin": "ca75b3bfa7d82591342af6c33ffda1d9ed44ea75526f9e5e46b6a69fbfeb8f27",
+  "Structures\\00040000025d33916080.bin": "8b014ad3b6287675598f2c37d81b161f10ba8f0504163148b9bcb6dbdbfa6091",
+  "Resources\\00040000025d33919e88.v00040000025d3391c120.bin": "9579d562d0dddd0640ffe17cd5a4d26236dec8bbfd5d151baec9b94591fca65e",
+  "Structures\\00040000025d3391bd90.bin": "241bef73196c96da663acc1a3c5900d18fb8db428bc098c07ba65025f32fa283",
+  "Resources\\0004000002602a2c0010.v00000000000000000000.bin": "b3ebe1e7dfddba861e47ebd73473802bb4b8c89183922bc08c3d22ece110fcf0",
+  "Resources\\0004000002602a2c05a0.v00000000000000000000.bin": "905f0990d2df9f30a07bd71c864a97bb037dbdda1ef7c013546099da40389b48",
+  "Resources\\0004000002602a2c0a38.v00000000000000000000.bin": "5d418bfbc2c4dd1b977d2474b08e4d398445f1656968a1ec8f592ea17290c19e",
+  "Resources\\0004000002602a2c0bc0.v00000000000000000000.bin": "53ae53d58364f0ce300745ecae27601268d41c676d172c86714a8b4889430392",
+  "Resources\\0004000002602a2c1010.mip0.v00000000000000000000.bin": "94738fc00c86f3185eaaa8e5fc05b141f253c14ed303bcbb1fe4fede0b465581",
+  "Resources\\0004000002602a2c1590.mip0.v00000000000000000000.bin": "ddd5b823317b7b43a5f0d437d67a6c900196662e6feae545f52755e806416291",
+  "Resources\\0004000002602a2c1b10.mip0.v000400000260466c6780.bin": "457ca694842a40e2c498ead15834b53e22430bc6b374b68064fe3935bdae3b8a",
+  "Resources\\0004000002602a2c1dd0.mip0.v000400000260466c6780.bin": "228e594fabee9c1ea8e72c9ef2e996473d02c24cb0f98311232bce05ef431657",
+  "Resources\\0004000002602a2c3ad0.v00000000000000000000.bin": "95aea051e7aff49be6bc3a143ef87fc92c0c5765de7b3fa3d2407d0c10554ee8",
+  "Resources\\0004000002602b7a1988.v00000000000000000000.bin": "4d8329d0adbd9c6fb48486b83d70c04abf750027c7c19addf7aa9c70f0e15f82",
+  "Resources\\000400000260466ae440.v00000000000000000000.bin": "0f69fb50f0426e0104b8bf7edc1e5cf80031239081c9a35471630694c76f6347",
+  "Resources\\000400000260466aebd0.mip0.v000400000260486a90c0.bin": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+  "Resources\\000400000260466c2398.mip0.v00000000000000000000.bin": "3be2c1663190026f7fa75b703593f8d4de0abf3bc4dcaec0a39b882d94fd96ff",
+  "Structures\\000400000260466c37f0.bin": "b54b88f3633f5cbfc8ce287e8d67174fef48f74d1f3bc3aa7ffc6f644b8323c9",
+  "Structures\\000400000260466c6670.bin": "a1775df1110252aa5ff7a0f3c26d9e5b8017b115195f484019dd2d78992c9d99",
+  "StructuresMetadata\\000400007ffc20e171d0.json": "da08815b5c54fd35102bd3763744647d0864e44933d9d1f98aad4a605ee0168b",
+  "StructuresMetadata\\000400007ffc20e172f0.json": "ea48b206d6e90c83588cb0d57c650dbd2b27428379f23b6bd9ecf42b6a2a7795",
+  "StructuresMetadata\\000400007ffc20e18310.json": "e493a3776fe7cab36f938e51acb423476780ce7d56d7e8d5c706bfc9360bf2d5",
+  "StructuresMetadata\\000400007ffc20e185f0.json": "36ee9f0d543433c6e2bc5d6e572590d3078e94c4fd7c1ee5b0fbeff75eaabb86",
+  "StructuresMetadata\\000400007ffc20e232c0.json": "88cf319866fbd4d28b7c6fbf19888c056bbf074b2fc5e3b5f241f8f229af1b0a",
+  "StructuresMetadata\\000400007ffc2fb979f0.json": "a8967122baefb6a1ab9778fd87a65d4bda8b34f3ca2ab7de5cd1c2006ac5b100",
+  "Base\\Passes.json": "91e33cf0a739a15108d30e4298935a23b8b0015c113428d3e729c10eb9037771",
+  "Base\\ResourceDescs.json": "359591f20f66097289c356a6c3f5e565370cc9cc743cd2f26d802fb3067f0262",
+  "Base\\DumpReadbackStatus.json": "054498e85275195f42ae7c7595cba8a9453c9d786131f57d3e80dea3041a3ad4",
+  "Base\\SubresourceLayouts.json": "7c90a416479f53442d702dff367117f81266635ed183f162527096bafbff6276",
+  "Base\\ParameterBindings.json": "941c2e9cf420fe5c187e4450ae130f8e666fe5314eb02ef789218b31b881c1af",
+  "Base\\NativeUniformBufferBindings.json": "dca4bc4774eb80c815d4807bde0c888e7aa328757ae70348072c05a18db2edd1",
+  "Base\\ReferencedStructs.json": "4f41856deca19a0c958fcef7f2c22a1818161fadc98a57e4dbc868a600bc3787",
+  "Base\\ConsoleVariables.csv": "b4b4954b63c830dc99b7061634681ced0e207d0f95ae2b9a6b604f69d57839e6",
+  "Base\\Screenshot.png": "8f0309c7a8b1699c6cbe93248cc790e90609acffd32eb6a39f0a2cc25884e217"
+ },
+ "decode_seconds": 2.0258238315582275
+}

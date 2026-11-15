@@ -17,6 +17,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 const crypto = require('crypto');
 const { pathToFileURL, fileURLToPath } = require('url');
 
@@ -28,8 +29,30 @@ const explorerModule = require(path.join(locations.assets, 'frame-explorer.js'))
 const codec = require(path.join(locations.assets, 'frame-codec.js'));
 const expected = JSON.parse(fs.readFileSync(path.join(__dirname, 'real_capture_evidence.json'), 'utf8'));
 
+// index.json is always the raw bootstrap.  Every other generated metadata
+// document may be stored as <logical>.json.gz; resolve the actual file and
+// inflate it exactly once, while native files and chunks stay untouched.
+function metadataPath(rel) {
+  if (rel.endsWith('.gz')) {
+    const gz = path.join(PACKAGE, rel);
+    assert(fs.existsSync(gz), 'missing package metadata ' + rel);
+    return gz;
+  }
+  const raw = path.join(PACKAGE, rel);
+  const gz = raw + '.gz';
+  const rawExists = fs.existsSync(raw);
+  const gzExists = fs.existsSync(gz);
+  assert(!(rawExists && gzExists), 'ambiguous metadata layout for ' + rel);
+  if (rawExists) return raw;
+  if (gzExists) return gz;
+  throw new Error('missing package metadata ' + rel);
+}
+
 function readJson(rel) {
-  return JSON.parse(fs.readFileSync(path.join(PACKAGE, rel), 'utf8'));
+  const actual = metadataPath(rel);
+  let data = fs.readFileSync(actual);
+  if (actual.endsWith('.gz')) data = zlib.gunzipSync(data);
+  return JSON.parse(data.toString('utf8'));
 }
 
 function makeStore() {
@@ -71,6 +94,31 @@ function findPayload(context, item) {
 
 async function runPackageTests() {
   console.log('using package ' + PACKAGE);
+  {
+    // Resolve every generated metadata document through its actual raw or
+    // gzip path.  index.json remains the raw bootstrap; records may be either.
+    const index = readJson('index.json');
+    assert.strictEqual(metadataPath('index.json'), path.join(PACKAGE, 'index.json'));
+    const generated = ['resources.json', 'passes.json', 'coverage.json', 'schema.json',
+      'structures.json', 'capture.json', 'inventory.json', 'native-inputs.json'];
+    for (const rel of generated) {
+      const actual = metadataPath(rel);
+      assert(fs.existsSync(actual), rel);
+      assert(!(fs.existsSync(path.join(PACKAGE, rel)) && fs.existsSync(path.join(PACKAGE, rel + '.gz'))),
+        rel + ': raw and gzip metadata must not coexist');
+      readJson(rel);
+    }
+    const resources = readJson(index.files.resources);
+    assert(resources.items.length === index.counts.resources,
+      'resources.json item count must survive raw/gzip resolution');
+    assert.strictEqual(readJson(index.files.inventory).counts.payloadFiles, index.counts.payloadFiles);
+    for (const rel of [resources.items[0].record, index.schema.path]) {
+      const actual = metadataPath(rel);
+      assert(fs.existsSync(actual), rel);
+      readJson(rel);
+    }
+    console.log('ok - raw/gzip metadata resolution keeps index.files, schema.path and record paths strict');
+  }
   for (const item of expected.cases) {
     const found = findPayload(null, item);
     const payload = found.payload;

@@ -233,34 +233,32 @@ def solid_angle() -> SVG:
 
     # Left: surface, target patch, ray, cosines.
     x_recv, y_recv = 280, 448
-    y_tgt = (392, 286)
+    y_tgt = (394, 293)
     s.line(74, y_recv, 500, y_recv, INK, 3)
     s.line(x_recv, y_recv, x_recv, y_recv - 126, INK, 2, arrow=True)
     s.text(x_recv + 8, y_recv - 132, 'n_x', 16, INK, True)
     # patch, tilted so its normal is not parallel to the incoming ray
-    s.line(352, 274, 436, 312, GOLD, 7)
-    s.line(392, 286, 344, 236, GOLD, 2, arrow=True)
-    s.text(330, 228, 'n_y', 16, GOLD, True)
+    s.line(352, 312, 436, 274, GOLD, 7)
+    # (38,84) is perpendicular to the drawn facet tangent (84,-38).
+    s.line(394, 293, 424, 359.3158, GOLD, 2, arrow=True)
+    s.text(431, 366, 'n_y', 16, GOLD, True)
     s.circle(*y_tgt, 5, GOLD)
-    s.text(y_tgt[0] + 10, y_tgt[1] + 24, 'y', 18, GOLD, True)
+    s.text(y_tgt[0] + 10, y_tgt[1] - 18, 'y', 18, GOLD, True)
     s.line(x_recv, y_recv, *y_tgt, GREEN, 3, arrow=True)
     s.text(314, 362, 'r', 17, GREEN, True)
     s.line(300, 366, 372, 344, GREEN, 1, dash=True)
     # cone outline and projected area
-    s.poly([(x_recv, y_recv), (352, 274), (436, 312)], fill=GOLD, stroke=GOLD, width=1, opacity=0.12)
-    s.line(356, 276, 428, 306, GOLD, 2, dash=True)
+    s.poly([(x_recv, y_recv), (352, 312), (436, 274)], fill=GOLD, stroke=GOLD, width=1, opacity=0.12)
     # angle at x
     s.arc(x_recv, y_recv, 38, -90, -53, GOLD, 2)
     s.text(x_recv + 18, y_recv - 48, 'θ_x', 16, GOLD, True)
     # angle at y between the target normal and the direction back to x
-    s.arc(y_tgt[0], y_tgt[1], 34, 126, 151, GOLD, 2)
-    s.text(y_tgt[0] - 24, y_tgt[1] - 10, 'θ_y', 16, GOLD, True)
+    s.arc(y_tgt[0], y_tgt[1], 34, math.degrees(math.atan2(84,38)), math.degrees(math.atan2(155,-114)), GOLD, 2)
+    s.text(378, 350, 'θ_y', 16, GOLD, True)
     s.text(70, 494, 'dA(y) is the target area; the cone it subtends is dσ at x.', 15, MUTED)
     s.formula(70, 150, 'dσ = |n_y · (−ω)| dA / r²', 270, 34, size=14)
     s.formula(70, 186, 'dσ_x⊥ = |n_x · ω| dσ', 270, 34, size=14)
-    # projected area annotation
-    s.line(392, 286, 448, 328, MUTED, 1.5, dash=True)
-    s.text(404, 342, '|n_y · (−ω)| dA', 14, MUTED)
+    s.text(358, 240, 'surface patch dA', 14, MUTED)
 
     # Right: sphere and cone.
     cx, cy = 812, 310
@@ -282,7 +280,7 @@ def solid_angle() -> SVG:
     # nearer same-area patch with a wider cone
     q1, q2, q3 = (760, 250), (800, 270), (778, 294)
     s.poly([q1, q2, q3], fill=BLUE, stroke=BLUE, width=1.5, opacity=0.16)
-    s.text(706, 232, 'same dA, larger r → smaller dσ', 14, BLUE)
+    s.text(650, 174, 'same dA, larger r → smaller dσ', 14, BLUE)
     s.line(cx, cy, q1[0], q1[1], BLUE, 1.5, dash=True)
     s.line(cx, cy, q3[0], q3[1], BLUE, 1.5, dash=True)
     # hemisphere labels
@@ -321,7 +319,7 @@ def sampling_mis() -> SVG:
     # camera
     s.circle(500, 304, 9, INK)
     s.poly([(500, 304), (522, 292), (522, 316)], fill=INK, stroke=INK)
-    s.text(528, 310, 'camera', 14, INK, True)
+    s.text(470, 340, 'camera', 14, INK, True)
     # receiver
     s.circle(310, 304, 6, GREEN)
     s.text(318, 330, 'x', 18, GREEN, True)
@@ -419,17 +417,18 @@ def surface_cache_lookup() -> SVG:
     box = s.box3(102, 330, 96, 0, 0, 0, 1.6, 1.4, 1.25, INK, LIGHT, 0.35)
     hit = s.ob(102, 330, 96, 1.1, 1.4, 0.72)
     s.circle(hit[0], hit[1], 6, RED)
-    s.text(hit[0] + 10, hit[1] - 10, 'x', 18, RED, True)
-    s.line(hit[0], hit[1], hit[0] + 44, hit[1] - 56, RED, 2, arrow=True)
-    s.text(hit[0] + 48, hit[1] - 58, 'n', 16, RED, True)
+    s.text(hit[0] - 23, hit[1] + 10, 'x', 18, RED, True)
+    # The hit lies on the y=max face. Its +Y normal projects downward.
+    s.line(hit[0], hit[1], hit[0], hit[1] + 60, RED, 2, arrow=True)
+    s.text(hit[0] + 14, hit[1] + 66, 'n', 16, RED, True)
     s.text(80, 510, 'object · six directional card sets', 14, MUTED)
 
     # One card drawn as a parallelogram.
     card = [(385, 238), (486, 208), (514, 296), (413, 326)]
     s.poly(card, fill=WASH, stroke=GOLD, width=3)
-    s.text(392, 220, 'candidate card', 14, GOLD, True)
+    s.text(392, 170, 'candidate card', 14, GOLD, True)
     s.line(hit[0] + 6, hit[1] - 6, 402, 272, GOLD, 2, dash=True, arrow=True)
-    s.text(404, 206, 'bounds + facing test', 13, GOLD)
+    s.text(392, 192, 'bounds + facing test', 13, GOLD)
     # local axes
     s.line(424, 312, 472, 298, GOLD, 2, arrow=True)
     s.line(424, 312, 438, 264, GOLD, 2, arrow=True)
@@ -437,8 +436,8 @@ def surface_cache_lookup() -> SVG:
     s.text(440, 254, 'v', 15, GOLD, True)
     s.circle(424, 312, 4, GOLD)
     s.text(388, 342, 'p = card-local hit', 13, MUTED)
-    s.formula(80, 366, 'u = ½ + ½ p_x/a_x', 264, 30, size=13)
-    s.formula(80, 402, 'v = ½ − ½ p_y/a_y', 264, 30, size=13)
+    s.formula(360, 380, 'u = ½ + ½ p_x/a_x', 210, 30, size=13)
+    s.formula(360, 416, 'v = ½ − ½ p_y/a_y', 210, 30, size=13)
 
     # Virtual pages + atlas.
     surface_patch(s, 620, 104, 444, 264, '2D · virtual page table resolves a mapped page', GOLD)
@@ -464,7 +463,7 @@ def surface_cache_lookup() -> SVG:
     s.text(ax, ay - 8, 'physical atlas (one page shown)', 13, BLUE, True)
     s.line(930, 212, 904, 244, BLUE, 2, arrow=True)
     s.text(178, 246, 'mapped fallback', 12, MUTED)
-    s.text(646, 330, 'A zero mapped X resolution is invalid, not black lighting.', 12, MUTED)
+    s.text(646, 354, 'A zero mapped X resolution is invalid, not black lighting.', 12, MUTED)
 
     # Taps + formula.
     surface_patch(s, 620, 386, 444, 166, '2D · four taps, depth validity, one value', BLUE)
@@ -626,8 +625,8 @@ def radiance_cache() -> SVG:
         ('c100', '0.014'), ('c101', '0.105'), ('c110', '0.028'), ('c111', '0.202'),
     ]
     offsets = {
-        'c000': (-42, 28), 'c001': (-42, -14), 'c010': (-42, 46), 'c011': (-42, -2),
-        'c100': (16, 28), 'c101': (16, -14), 'c110': (16, 46), 'c111': (16, -2),
+        'c000': (-42, 28), 'c001': (-42, -14), 'c010': (-42, 14), 'c011': (-42, -2),
+        'c100': (16, 28), 'c101': (16, -14), 'c110': (16, 14), 'c111': (16, -2),
     }
     for key, weight in labels:
         pt = corners[key]
@@ -637,8 +636,8 @@ def radiance_cache() -> SVG:
         s.chip(pt[0] + dx, pt[1] + dy, weight, BLUE, width=58, size=11)
     s.text(86, 540, 'ProbeCoordFloat = (worldPos − clipmapCorner) / cellSize', 13, MUTED)
     s.text(86, 560, 'lower corner = floor(ProbeCoordFloat − 0.5); alphas = frac(...)', 13, MUTED)
-    s.text(552, 510, 'cell [24, 30, 25]', 13, BLUE, True)
-    s.text(552, 532, 'clipmap 0', 12, MUTED)
+    s.text(460, 490, 'cell [24, 30, 25]', 13, BLUE, True)
+    s.text(460, 512, 'clipmap 0', 12, MUTED)
 
     # Octahedral map.
     surface_patch(s, 660, 104, 404, 260, '2D · octahedral directions per probe', GOLD)
@@ -654,7 +653,6 @@ def radiance_cache() -> SVG:
         s.line(ox + i * side / 8, oy, ox + i * side / 8, oy + side, RULE, 0.7)
         s.line(ox, oy + i * side / 8, ox + side, oy + i * side / 8, RULE, 0.7)
     s.rect(ox + 5 * side / 8, oy + 2 * side / 8, side / 8, side / 8, fill=GOLD, stroke=GOLD, rx=1, opacity=0.38)
-    s.line(ox + side + 12, oy + side / 2, 986, oy + side / 2 - 20, GOLD, 2, arrow=True)
     s.text(880, oy - 10, '32×32 radiance directions', 13, GOLD, True)
     s.text(880, oy + 18, 'final map 34×34 with border', 12, MUTED)
     s.text(880, oy + 48, 'one cell → a cone', 12, MUTED)
@@ -668,7 +666,6 @@ def radiance_cache() -> SVG:
         x = 680 + (i % 4) * 92
         y = 430 + (i // 4) * 40
         s.chip(x, y, f'p{pid}', GOLD, width=76, size=11)
-    s.line(1042, 452, 1042, 486, GOLD, 2)
     s.text(676, 530, 'Σ w_p = 1.000000008 in the replay; parallax is applied per probe.', 11, MUTED)
     s.formula(676, 540, 'L(x,ω) = Σ w_p c_p L_p', 370, 28, size=12)
 
@@ -694,9 +691,9 @@ def temporal_history() -> SVG:
     s = SVG(
         'Reproject the previous sample; reject what does not correspond',
         'A current pixel is reprojected into the previous frame and tested against a 2x2 depth footprint and normal. Accepted history is exposure-corrected and blended by a count-dependent alpha; rejected history is not used. A 3D inset shows a disocclusion. Schematic; the real history buffers and validity masks are separate captures.',
-        1100, 760, subtitle='Reprojection gives a candidate; depth, normal and validity decide whether it is usable history.',
+        1100, 792, subtitle='Reprojection gives a candidate; depth, normal and validity decide whether it is usable history.',
     )
-    surface_patch(s, 36, 104, 430, 424, '2D · reproject into the previous frame', BLUE)
+    surface_patch(s, 36, 104, 430, 456, '2D · reproject into the previous frame', BLUE)
     # previous grid
     s.rect(72, 154, 158, 118, fill=WASH, stroke=RULE, rx=2)
     s.text(76, 146, 'previous frame', 13, INK, True)
@@ -721,10 +718,10 @@ def temporal_history() -> SVG:
     s.text(90, 300, '2×2 depth taps', 12, GREEN, True)
     s.text(90, 320, 'depth Δ ≤ threshold', 12, MUTED)
     s.text(90, 340, 'normal dot ≥ cos(45°)', 12, MUTED)
-    s.text(90, 374, 'Accepted taps are exposure-corrected before blending.', 12, MUTED)
-    s.text(90, 394, 'A rejected tap is not zero radiance; it is no usable history.', 12, RED)
+    s.text(90, 450, 'Accepted taps are exposure-corrected before blending.', 12, MUTED)
+    s.text(90, 474, 'A rejected tap is not zero radiance; it is no usable history.', 12, RED)
 
-    surface_patch(s, 480, 104, 300, 424, '2D · count-dependent blend', GOLD)
+    surface_patch(s, 480, 104, 300, 456, '2D · count-dependent blend', GOLD)
     steps = [
         ('L(t−1) history', 'reprojected + validity', 154),
         ('exposure conversion', 'PrevSceneColorPreExposureCorrection', 228),
@@ -739,9 +736,11 @@ def temporal_history() -> SVG:
     s.line(630, 286, 630, 300, GOLD, 2, arrow=True)
     s.line(630, 360, 630, 434, GOLD, 2, arrow=True)
     s.formula(506, 378, 'N′ = min(N + 1, N_max)', 248, 30, size=12)
-    s.formula(506, 506, 'α = 1/(1 + N′)  ·  invalid current: 1/(1 + 4N′)', 248, 30, size=10)
+    s.rect(506, 502, 248, 46, fill=WASH, stroke=RULE, rx=5, width=1)
+    s.text(518, 520, 'α = 1/(1 + N′)', 12, INK, mono=True)
+    s.text(518, 540, 'invalid current: 1/(1 + 4N′)', 12, INK, mono=True)
 
-    surface_patch(s, 794, 104, 270, 424, '3D · disocclusion rejection', RED)
+    surface_patch(s, 794, 104, 270, 456, '3D · disocclusion rejection', RED)
     # camera
     s.circle(1018, 300, 8, INK)
     s.poly([(1018, 300), (1038, 288), (1038, 312)], fill=INK, stroke=INK)
@@ -762,8 +761,8 @@ def temporal_history() -> SVG:
     s.text(858, 222, 'same plane', 11, GREEN)
     s.line(882, 232, 920, 232, GREEN, 2, dash=True, arrow=True)
     s.text(900, 212, 'accept', 11, GREEN)
-    s.text(806, 398, 'History is correlated reconstruction state,', 12, MUTED)
-    s.text(806, 418, 'not another independent Monte Carlo sample.', 12, MUTED)
+    s.text(806, 490, 'History is correlated reconstruction state,', 12, MUTED)
+    s.text(806, 512, 'not another independent Monte Carlo sample.', 12, MUTED)
 
     # Bottom notes.
     rows = [
@@ -772,10 +771,10 @@ def temporal_history() -> SVG:
         (744, 'What to inspect', ['validity mask and previous count', 'exposure correction and clamp bounds', 'alpha and the effective history length']),
     ]
     for x, title, lines in rows:
-        s.rect(x, 552, 320, 152, fill=PALE)
-        s.text(x + 16, 580, title, 16, GREEN, True)
+        s.rect(x, 584, 320, 152, fill=PALE)
+        s.text(x + 16, 612, title, 16, GREEN, True)
         for i, line in enumerate(lines):
-            s.text(x + 16, 608 + i * 23, line, 12, INK)
+            s.text(x + 16, 640 + i * 23, line, 12, INK)
     s.footer('Schematic. Real Lumen screen-probe history uses at most 10 frames; distance threshold 0.01 (0.03 foliage), normal threshold 45°.')
     return s
 
@@ -801,14 +800,16 @@ def deferred_direct_cached() -> SVG:
         s.rect(66, y, 262, 52, fill=PAPER, stroke=color, rx=5, width=1.5)
         s.text(80, y + 22, title, 13, color, True)
         s.text(80, y + 40, note, 10, MUTED)
-    s.line(328, 250, 378, 220, BLUE, 2, arrow=True)
-    s.line(328, 250, 378, 300, GOLD, 2, arrow=True)
+    s.line(350,184,350,370,MUTED,1.5)
+    for i in range(4):s.line(328,184+i*62,350,184+i*62,MUTED,1.5)
+    s.line(350,220,378,220,BLUE,2,arrow=True)
+    s.line(350,300,378,300,GOLD,2,arrow=True)
     s.text(384, 210, 'deferred direct', 14, BLUE, True)
     s.text(384, 228, 'V(x↔light)', 11, MUTED)
     s.text(384, 316, 'Lumen indirect', 14, GOLD, True)
     s.text(384, 334, 'cached secondary', 11, MUTED)
-    s.formula(66, 430, 'L_o(x) = L_e + (ρ/π)(E_direct(x) + E_indirect(x))', 466, 30, size=12)
-    s.formula(66, 466, 'E_indirect(x) = ∫ (ρ(y)/π) E_direct(y) G dA(y)', 466, 30, size=12)
+    s.formula(66, 414, 'L_o(x) = L_e + (ρ/π)(E_direct(x) + E_indirect(x))', 466, 30, size=12)
+    s.formula(66, 450, 'E_indirect(x) = ∫ (ρ(y)/π) E_direct(y) G dA(y)', 466, 30, size=12)
     s.text(66, 504, 'Different path families: do not subtract cached direct at y', 12, RED)
     s.text(66, 520, 'as if it duplicated the direct pass at x.', 12, RED)
 
@@ -818,7 +819,7 @@ def deferred_direct_cached() -> SVG:
     s.poly([(700, 360), (1010, 400), (1010, 190), (700, 150)], fill=LIGHT, stroke=RULE, width=1, opacity=0.6)
     s.text(720, 176, 'secondary wall', 12, MUTED)
     # direct light and x
-    x = (860, 360)
+    x = (850, 430)
     y = (770, 300)
     s.circle(*x, 7, RED)
     s.text(x[0] + 12, x[1] + 22, 'x', 17, RED, True)
@@ -827,15 +828,15 @@ def deferred_direct_cached() -> SVG:
     # local light
     s.circle(900, 148, 8, GOLD)
     s.text(914, 152, 'L', 17, GOLD, True)
-    s.line(898, 158, 872, 340, BLUE, 3, arrow=True)
+    s.line(898, 158, 852, 415, BLUE, 3, arrow=True)
     s.text(900, 264, 'direct path', 13, BLUE, True)
     s.text(900, 282, 'V, shadow map', 11, MUTED)
     # indirect path via y
-    s.polyline([(898, 158), (780, 286), (850, 352)], GOLD, 2.5, dash=True, arrow=True)
+    s.polyline([(898, 158), y, (842, 417)], GOLD, 2.5, dash=True, arrow=True)
     s.text(712, 246, 'indirect path', 13, GOLD, True)
     s.text(712, 264, 'L → y → x', 11, MUTED)
-    s.text(636, 390, 'G(x↔y) includes both cosines and 1/r².', 11, MUTED)
-    s.text(636, 410, 'The tracer supplies an approximate visibility.', 11, MUTED)
+    s.text(636, 488, 'G(x↔y) includes both cosines and 1/r².', 11, MUTED)
+    s.text(636, 510, 'The tracer supplies an approximate visibility.', 11, MUTED)
 
     # Bottom GBuffer triplet note.
     s.rect(36, 552, 1028, 152, fill=WASH, stroke=RULE, rx=8)

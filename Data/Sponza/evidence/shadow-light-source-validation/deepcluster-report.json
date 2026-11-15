@@ -1,0 +1,24 @@
+{
+  "operationId": "0f2066d5-e9c1-43ea-8360-f98ca6b3baae",
+  "status": "completed",
+  "error": null,
+  "steps": [
+    {
+      "id": "facts",
+      "role": "reviewer",
+      "status": "pass",
+      "attempts": 1,
+      "summary": "Pinned 47 exact source ranges with SHA-256 hashes across 20 clean engine files at base 71fe36a, covering directional clipmaps, point/spot/rect projection, VSM raster/merge, marking, caster culling, and invalidation. Distinguished off-screen light/occluder behavior (light-space) from receiver demand (screen-depth + coarse pages).",
+      "checks": [
+        "light geometry projection raster and invalidation contracts have pinned source anchors: yes — 47 anchors recomputed with 0 hash mismatches; all 20 cited files return exit 0 from `git -C D:/UnrealEngine diff --quiet HEAD -- <file>` at commit 71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+        "offscreen light and caster behavior distinguished from screen receiver demand: yes — facts.md item 13 plus anchors d24/d29 (light-space caster culling), d32/d33 (visible-depth/light-grid marking), d34/d35/d42 (coarse pages only)",
+        "focused scope, <=150 lines, no GPU: yes — facts.md is 35 lines; only notes/ written; no GPU, build, or repo edits run"
+      ],
+      "changed": [
+        "notes/anchors.json",
+        "notes/facts.md"
+      ]
+    }
+  ],
+  "open": []
+}

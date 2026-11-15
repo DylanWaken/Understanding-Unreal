@@ -15,7 +15,7 @@
   },
   "schema": {
     "status": "joined",
-    "path": "schema.json",
+    "path": "schema.json.gz",
     "sourcePath": "source-schema.json",
     "sha256": "d2bd0620e9250f29d9788944be6a73ff80d007a9d5bf86a45fe52b2eefc81d2a",
     "bytes": 1286023,
@@ -4931,14 +4931,14 @@
   },
   "files": {
     "index": "index.json",
-    "resources": "resources.json",
-    "passes": "passes.json",
-    "coverage": "coverage.json",
-    "schema": "schema.json",
-    "structures": "structures.json",
-    "capture": "capture.json",
-    "inventory": "inventory.json",
-    "nativeInputs": "native-inputs.json",
+    "resources": "resources.json.gz",
+    "passes": "passes.json.gz",
+    "coverage": "coverage.json.gz",
+    "schema": "schema.json.gz",
+    "structures": "structures.json.gz",
+    "capture": "capture.json.gz",
+    "inventory": "inventory.json.gz",
+    "nativeInputs": "native-inputs.json.gz",
     "chunks": "chunks/",
     "records": "records/",
     "native": "native/",
@@ -23765,5 +23765,11 @@
   "largestOutput": {
     "path": "native/Base/NativeUniformBufferBindings.json",
     "bytes": 39687945
+  },
+  "metadata": {
+    "compression": "gzip",
+    "level": 6,
+    "bootstrap": "index.json",
+    "nativeCompression": "none"
   }
 }

@@ -1,0 +1,1269 @@
+{
+  "schema": "sponza-decode-verify-v1",
+  "checks": [
+    {
+      "check": "view_rect_1280x720",
+      "ok": true,
+      "detail": "[0, 0, 1280, 720]"
+    },
+    {
+      "check": "packed_view_matrix_product",
+      "ok": true,
+      "detail": "max |ViewToClip@TranslatedWorldToView - TranslatedWorldToClip| = 0.0"
+    },
+    {
+      "check": "tile_jitter_2_8",
+      "ok": true,
+      "detail": "[2, 8]"
+    },
+    {
+      "check": "ray_direction_frame_index_1",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "check": "receiver_A_world_finite",
+      "ok": true,
+      "detail": "[-19.71809667823777, -120.31380534460367, -2.0052018958359525]"
+    },
+    {
+      "check": "receiver_A_depth_positive",
+      "ok": true,
+      "detail": "788.3051871059821 cm"
+    },
+    {
+      "check": "receiver_A_covering_probe",
+      "ok": true,
+      "detail": "[31, 42]"
+    },
+    {
+      "check": "receiver_B_world_finite",
+      "ok": true,
+      "detail": "[-19.71986441323395, 69.42824881407203, -2.0050060095778406]"
+    },
+    {
+      "check": "receiver_B_depth_positive",
+      "ok": true,
+      "detail": "788.303508742692 cm"
+    },
+    {
+      "check": "receiver_B_covering_probe",
+      "ok": true,
+      "detail": "[45, 42]"
+    },
+    {
+      "check": "receiver_C_world_finite",
+      "ok": true,
+      "detail": "[828.4255142571726, -24.059876133230283, 61.37646909808765]"
+    },
+    {
+      "check": "receiver_C_depth_positive",
+      "ok": true,
+      "detail": "1628.9687294030603 cm"
+    },
+    {
+      "check": "receiver_C_covering_probe",
+      "ok": true,
+      "detail": "[39, 36]"
+    },
+    {
+      "check": "C_is_polished_gold",
+      "ok": true,
+      "detail": "metallic=1.0, roughness=0.0784313725490196"
+    },
+    {
+      "check": "A_sunlit_vsm",
+      "ok": true,
+      "detail": "VSM R=1.0, direct=[1.9306640625, 1.3037109375, 0.7900390625]"
+    },
+    {
+      "check": "B_C_shadowed",
+      "ok": true,
+      "detail": "B/C VSM R=0"
+    },
+    {
+      "check": "probe_A_64_rays",
+      "ok": true,
+      "detail": "64"
+    },
+    {
+      "check": "probe_A_rayinfo_consistent",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "check": "probe_A_sh_3x9",
+      "ok": true,
+      "detail": "(3, 9)"
+    },
+    {
+      "check": "probe_A_sh_units",
+      "ok": true,
+      "detail": "lambert/raw=0.0, physical-4pi*raw=0.0"
+    },
+    {
+      "check": "probe_A_ray_layout_explicit",
+      "ok": true,
+      "detail": "ScreenProbeRadiance is the regular reconstructed angular field; [i,j] is not the filtered value of the structured ray at the same integer slot"
+    },
+    {
+      "check": "probe_B_64_rays",
+      "ok": true,
+      "detail": "64"
+    },
+    {
+      "check": "probe_B_rayinfo_consistent",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "check": "probe_B_sh_3x9",
+      "ok": true,
+      "detail": "(3, 9)"
+    },
+    {
+      "check": "probe_B_sh_units",
+      "ok": true,
+      "detail": "lambert/raw=0.0, physical-4pi*raw=0.0"
+    },
+    {
+      "check": "probe_B_ray_layout_explicit",
+      "ok": true,
+      "detail": "ScreenProbeRadiance is the regular reconstructed angular field; [i,j] is not the filtered value of the structured ray at the same integer slot"
+    },
+    {
+      "check": "probe_C_64_rays",
+      "ok": true,
+      "detail": "64"
+    },
+    {
+      "check": "probe_C_rayinfo_consistent",
+      "ok": true,
+      "detail": "True"
+    },
+    {
+      "check": "probe_C_sh_3x9",
+      "ok": true,
+      "detail": "(3, 9)"
+    },
+    {
+      "check": "probe_C_sh_units",
+      "ok": true,
+      "detail": "lambert/raw=0.0, physical-4pi*raw=0.0"
+    },
+    {
+      "check": "probe_C_ray_layout_explicit",
+      "ok": true,
+      "detail": "ScreenProbeRadiance is the regular reconstructed angular field; [i,j] is not the filtered value of the structured ray at the same integer slot"
+    },
+    {
+      "check": "A_B_tile_sh_median_under_5pct",
+      "ok": true,
+      "detail": "A/B median over 16x16 tile"
+    },
+    {
+      "check": "C_center_sh_under_2pct",
+      "ok": true,
+      "detail": "[0.006735828885918295, 0.002988945843300608, 0.005017668429636579]"
+    },
+    {
+      "check": "gbuffer_shading_model_low_nibble",
+      "ok": true,
+      "detail": "A: alpha=0xb1 low=1 high=11, B: alpha=0xb1 low=1 high=11, C: alpha=0xa1 low=1 high=10"
+    },
+    {
+      "check": "diffuse_frames_raw15_decoded10",
+      "ok": true,
+      "detail": "raw=0x0f low=15 high=0 decoded=10.0 max=10.0"
+    },
+    {
+      "check": "history_minus_current_is_history_minus_current",
+      "ok": true,
+      "detail": "A: [0.015625, -0.03125, -0.0625] == hist-cur True; B: [-0.0625, -0.0625, -0.125] == hist-cur True; C: [0.09375, 0.0703125, 0.046875] == hist-cur True"
+    },
+    {
+      "check": "reflection_C_raw96_effective_12_0470588",
+      "ok": true,
+      "detail": "valid=True, raw=96, effective=12.047058823529412"
+    },
+    {
+      "check": "reflection_A_B_invalid",
+      "ok": true,
+      "detail": "raw frames=0 at A/B"
+    },
+    {
+      "check": "adaptive_allocation_bounded",
+      "ok": true,
+      "detail": "alloc=117 active_adaptive=117 finite_adaptive=240 stale=123 active_total=3686"
+    },
+    {
+      "check": "adaptive_count_not_inferred_from_rayinfo",
+      "ok": true,
+      "detail": "count buffer and header agree independently; rayinfo is not used for activity"
+    },
+    {
+      "check": "surfacecache_bytes_and_hashes",
+      "ok": true,
+      "detail": "13 native records"
+    },
+    {
+      "check": "surfacecache_query_present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "surfacecache_declared_replay",
+      "ok": true,
+      "detail": "replay_of_declared_query"
+    },
+    {
+      "check": "worldcache_bytes_and_hashes",
+      "ok": true,
+      "detail": "11 native records"
+    },
+    {
+      "check": "worldcache_8_neighbors",
+      "ok": true,
+      "detail": "8"
+    },
+    {
+      "check": "worldcache_direction_unit",
+      "ok": true,
+      "detail": "|d|=0.99999993"
+    },
+    {
+      "check": "worldcache_forward_consistent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "worldcache_declared_replay",
+      "ok": true,
+      "detail": "replay_of_declared_query"
+    },
+    {
+      "check": "figure_count_ge_20",
+      "ok": true,
+      "detail": "22"
+    },
+    {
+      "check": "figure_exists_figures/scene_clean.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/scene_clean.png",
+      "ok": true,
+      "detail": "(1280, 720)"
+    },
+    {
+      "check": "figure_no_alpha_figures/scene_clean.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/scene_clean.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/scene_clean.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/scene_clean.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": "(1280, 720)"
+    },
+    {
+      "check": "figure_no_alpha_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\screenprobe_placement_overlay.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/screenprobe_placement_overlay.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": "(1280, 720)"
+    },
+    {
+      "check": "figure_no_alpha_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\screenprobe_rays_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/screenprobe_rays_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": "(512, 512)"
+    },
+    {
+      "check": "figure_no_alpha_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\screenprobe_raybins_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/screenprobe_raybins_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": "(1024, 512)"
+    },
+    {
+      "check": "figure_no_alpha_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\screenprobe_radiance_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/screenprobe_radiance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": "(512, 512)"
+    },
+    {
+      "check": "figure_no_alpha_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\screenprobe_hitdistance_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/screenprobe_hitdistance_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": "(512, 512)"
+    },
+    {
+      "check": "figure_no_alpha_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\screenprobe_sh_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/screenprobe_sh_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": "(256, 168)"
+    },
+    {
+      "check": "figure_no_alpha_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\diffuseindirect_current_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/diffuseindirect_current_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": "(256, 168)"
+    },
+    {
+      "check": "figure_no_alpha_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\diffuseindirect_history_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/diffuseindirect_history_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": "(256, 168)"
+    },
+    {
+      "check": "figure_no_alpha_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": "L"
+    },
+    {
+      "check": "figure_mapping_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\diffuse_frames_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/diffuse_frames_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": "(256, 168)"
+    },
+    {
+      "check": "figure_no_alpha_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\diffuse_history_delta_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/diffuse_history_delta_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/reflection_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/reflection_C.png",
+      "ok": true,
+      "detail": "(256, 256)"
+    },
+    {
+      "check": "figure_no_alpha_figures/reflection_C.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/reflection_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/reflection_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/reflection_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/reflection_C.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\reflection_C.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/reflection_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/reflection_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": "(256, 256)"
+    },
+    {
+      "check": "figure_no_alpha_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\reflection_depth_C.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/reflection_depth_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": "(256, 256)"
+    },
+    {
+      "check": "figure_no_alpha_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": "L"
+    },
+    {
+      "check": "figure_mapping_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\reflection_frames_C.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/reflection_frames_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/basecolor_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/basecolor_C.png",
+      "ok": true,
+      "detail": "(256, 256)"
+    },
+    {
+      "check": "figure_no_alpha_figures/basecolor_C.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/basecolor_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/basecolor_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/basecolor_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/basecolor_C.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\basecolor_C.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/basecolor_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/basecolor_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": "(256, 168)"
+    },
+    {
+      "check": "figure_no_alpha_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": "L"
+    },
+    {
+      "check": "figure_mapping_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\vsm_shadow_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/vsm_shadow_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": "(256, 512)"
+    },
+    {
+      "check": "figure_no_alpha_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\worldcache_neighborhood.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/worldcache_neighborhood.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": "(256, 64)"
+    },
+    {
+      "check": "figure_no_alpha_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\surfacecache_query_channels.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/surfacecache_query_channels.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": "(512, 512)"
+    },
+    {
+      "check": "figure_no_alpha_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\surfacecache_query_tile.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/surfacecache_query_tile.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": "(256, 168)"
+    },
+    {
+      "check": "figure_no_alpha_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\scene_depth_A.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/scene_depth_A.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": "(256, 256)"
+    },
+    {
+      "check": "figure_no_alpha_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\worldnormal_C.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/worldnormal_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists_figures/material_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_dims_figures/material_C.png",
+      "ok": true,
+      "detail": "(768, 256)"
+    },
+    {
+      "check": "figure_no_alpha_figures/material_C.png",
+      "ok": true,
+      "detail": "RGB"
+    },
+    {
+      "check": "figure_mapping_figures/material_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_stats_figures/material_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recoverable_figures/material_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_exists_figures/material_C.png",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\data\\figure-native\\material_C.npz"
+    },
+    {
+      "check": "figure_npz_nonempty_figures/material_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_npz_finite_figures/material_C.png",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "no_raster_text_calls",
+      "ok": true,
+      "detail": "no ImageDraw.text call in the generator"
+    },
+    {
+      "check": "tone_inverse_formula_order",
+      "ok": true,
+      "detail": "display = sRGB_OETF(L/(1+L)) with L the native pre-exposed linear value; no exposure multiply, no per-image normalization; inverse: first sRGB_EOTF(code/255) -> t, then L=t/(1-t)"
+    },
+    {
+      "check": "sh_preview_units_explicit",
+      "ok": true,
+      "detail": "unit-albedo Lambert response 4*R (pre-exposed radiance); physical irradiance is 4*pi*R and is not displayed"
+    },
+    {
+      "check": "rays_figure_uses_structured_trace_radiance",
+      "ok": true,
+      "detail": "underlay captured sRGB; 64 segments from the probe pixel to the projected captured hit point (misses: 8 m along the reconstructed direction); colour derives from the structured trace-slot radiance_trace_native (display = 60 + 195*sRGB_OETF(L/(1+L)) for line legibility, L native pre-exposed); filtered ScreenProbeRadiance at the same integer slot is NOT used because the regular reconstructed field is a different angular layout"
+    },
+    {
+      "check": "reflection_frames_figure_effective_units",
+      "ok": true,
+      "detail": "effective accumulated frame count 0..32 stored as UNORM frames/32; raw byte 0..255"
+    },
+    {
+      "check": "decode_report_exists",
+      "ok": true,
+      "detail": "Docs\\Unreal\\assets\\lumen-sponza\\context\\decode-report.md"
+    },
+    {
+      "check": "decode_report_has_acceptance",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "decode_report_has_observed_vs_replay",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "total": 252,
+  "passed": 252,
+  "failed": 0,
+  "ok": true
+}

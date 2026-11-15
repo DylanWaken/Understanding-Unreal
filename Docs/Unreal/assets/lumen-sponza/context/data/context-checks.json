@@ -1,0 +1,312 @@
+{
+  "view_projection_matches_placement": {
+    "ok": true,
+    "detail": "every selected probe projects to atlas*16 + jitter within 0.75 px (see per-probe screen_xy_from_projection)"
+  },
+  "rayinfo_fields_consistent_with_max_resolution_16": true,
+  "ray_hit_depth_check": {
+    "A": {
+      "hit_count": 27,
+      "projected_hit_count": 27,
+      "depth_consistent_under_5pct": 21
+    },
+    "B": {
+      "hit_count": 20,
+      "projected_hit_count": 20,
+      "depth_consistent_under_5pct": 14
+    },
+    "C": {
+      "hit_count": 46,
+      "projected_hit_count": 46,
+      "depth_consistent_under_5pct": 40
+    }
+  },
+  "sh_irradiance_vs_captured_diffuse_indirect": {
+    "A": {
+      "raw_evaluate_sh_irradiance": [
+        0.3157184731053253,
+        0.4199814361120942,
+        0.6449494076050307
+      ],
+      "unit_albedo_lambert_response": [
+        1.2628738924213012,
+        1.6799257444483768,
+        2.579797630420123
+      ],
+      "physical_irradiance_4pi": [
+        3.9674353428411067,
+        5.277642377335384,
+        8.104673283476215
+      ],
+      "captured_diffuse": [
+        1.203125,
+        1.5625,
+        2.375
+      ],
+      "relative_error": [
+        0.04966141707744517,
+        0.07515247644696117,
+        0.08623058122952543
+      ],
+      "comparison": "captured DiffuseIndirect is compared with the unit-albedo Lambert response (4 * raw EvaluateSHIrradiance), not with physical irradiance"
+    },
+    "B": {
+      "raw_evaluate_sh_irradiance": [
+        0.2551659759735413,
+        0.36201030722078703,
+        0.5766054277018491
+      ],
+      "unit_albedo_lambert_response": [
+        1.0206639038941652,
+        1.4480412288831481,
+        2.3064217108073963
+      ],
+      "physical_irradiance_4pi": [
+        3.206510222258188,
+        4.5491556867544345,
+        7.245837502752519
+      ],
+      "captured_diffuse": [
+        0.9765625,
+        1.375,
+        2.1875
+      ],
+      "relative_error": [
+        0.04515983758762514,
+        0.053120893733198636,
+        0.05436421065480975
+      ],
+      "comparison": "captured DiffuseIndirect is compared with the unit-albedo Lambert response (4 * raw EvaluateSHIrradiance), not with physical irradiance"
+    },
+    "C": {
+      "raw_evaluate_sh_irradiance": [
+        0.12289255723705057,
+        0.13908635772436395,
+        0.18844081283055686
+      ],
+      "unit_albedo_lambert_response": [
+        0.4915702289482023,
+        0.5563454308974558,
+        0.7537632513222274
+      ],
+      "physical_irradiance_4pi": [
+        1.544313419987125,
+        1.747810718565695,
+        2.3680170928998665
+      ],
+      "captured_diffuse": [
+        0.48828125,
+        0.5546875,
+        0.75
+      ],
+      "relative_error": [
+        0.006735828885918295,
+        0.002988945843300608,
+        0.005017668429636579
+      ],
+      "comparison": "captured DiffuseIndirect is compared with the unit-albedo Lambert response (4 * raw EvaluateSHIrradiance), not with physical irradiance"
+    }
+  },
+  "sh_unit_conversion": {
+    "raw_evaluate_sh_irradiance": "R = evaluate_sh_irradiance(stored SH3, n, AO=1)",
+    "physical_irradiance": "4*pi*R; the stored coefficients are sphere-average radiance, so raw EvaluateSHIrradiance is not physical irradiance",
+    "unit_albedo_lambert_response": "4*R = physical_irradiance/pi; this is the unit convention of DiffuseIndirect before material albedo, not exact per-pixel equality with this single-probe replay"
+  },
+  "screenprobe_allocation": {
+    "num_adaptive_screen_probes": 117,
+    "active_probe_count": 3686,
+    "active_uniform_count": 3569,
+    "active_adaptive_count": 117,
+    "finite_storage_probe_count": 3809,
+    "finite_storage_adaptive_count": 240,
+    "stale_finite_adaptive_count": 123,
+    "header_nonzero_tile_count": 117,
+    "active_adaptive_to_header_bijection": true,
+    "activity_rule": "only adaptive index < captured NumAdaptiveScreenProbes is active; finite positive values beyond that are stale",
+    "rayinfo_used_for_activity": false
+  },
+  "gbuffer_b_shading_model": {
+    "A": {
+      "alpha_raw_code": 177,
+      "low_nibble_shading_model_id": 1,
+      "high_nibble_selective_output_mask": 11,
+      "rule": "ShadingModelID = GBufferB alpha & 0xF; the high nibble is SelectiveOutputMask"
+    },
+    "B": {
+      "alpha_raw_code": 177,
+      "low_nibble_shading_model_id": 1,
+      "high_nibble_selective_output_mask": 11,
+      "rule": "ShadingModelID = GBufferB alpha & 0xF; the high nibble is SelectiveOutputMask"
+    },
+    "C": {
+      "alpha_raw_code": 161,
+      "low_nibble_shading_model_id": 1,
+      "high_nibble_selective_output_mask": 10,
+      "rule": "ShadingModelID = GBufferB alpha & 0xF; the high nibble is SelectiveOutputMask"
+    }
+  },
+  "temporal_max_frames_accumulated": {
+    "pass_id": 762,
+    "pass_name": "TemporalReprojection(1280x720)",
+    "pass_pointer": "000400000208f36dfd28",
+    "parameters_name": "FParameters",
+    "parameter_block_file": "Structures/000400000208f36dfaa0.bin",
+    "parameter_block_bytes": 576,
+    "parameter_block_sha256": "f6c8dffc3e6f72921887bbbccd12f835d9b40393d694cb4ed6e3a2e72aaffae5",
+    "metadata_file": "StructuresMetadata/000400007ffc1e2ef870.json",
+    "metadata_struct": "FParameters",
+    "metadata_source": {
+      "file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeGather.cpp",
+      "line": 1212
+    },
+    "fields": {
+      "MaxFramesAccumulated": {
+        "offset": 460,
+        "uint32_bits": 1092616192,
+        "float32": 10.0
+      },
+      "MaxFastUpdateModeAmount": {
+        "offset": 456,
+        "float32": 0.8999999761581421
+      },
+      "InvFractionOfLightingMovingForFastUpdateMode": {
+        "offset": 452,
+        "float32": 10.0
+      }
+    },
+    "max_frames_accumulated": 10.0,
+    "packing_shader": {
+      "file": "D:\\UnrealEngine\\Engine\\Shaders\\Private\\Lumen\\LumenScreenProbeGatherTemporal.ush",
+      "lines": "72-91",
+      "pack": "((ceil(FastUpdateModeAmount*15)*16 + round(saturate(NumFramesAccumulated/min(MaxFramesAccumulated,15))*15)) / 255)",
+      "unpack": "low==15 ? MaxFramesAccumulated : low/15*min(MaxFramesAccumulated,15)",
+      "source_present": true
+    },
+    "validity": {
+      "file_exists": true,
+      "metadata_exists": true,
+      "bytes_match_metadata_size": true,
+      "readback_status": null,
+      "note": "shader parameter payload, not an RDG resource version; DumpGPU attaches no readback record"
+    }
+  },
+  "receiver_materials": {
+    "A": {
+      "shading_model": 1,
+      "shading_model_alpha_raw": 177,
+      "metallic": 0.0,
+      "roughness": 0.9411764705882353,
+      "basecolor_linear": [
+        0.11443537382697373,
+        0.0953074666309647,
+        0.06847816984440017
+      ],
+      "vsm_r": 1.0,
+      "direct_rgb": [
+        1.9306640625,
+        1.3037109375,
+        0.7900390625
+      ]
+    },
+    "B": {
+      "shading_model": 1,
+      "shading_model_alpha_raw": 177,
+      "metallic": 0.0,
+      "roughness": 0.8941176470588236,
+      "basecolor_linear": [
+        0.24228112246555486,
+        0.20155625379439707,
+        0.14412847085805777
+      ],
+      "vsm_r": 0.0,
+      "direct_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "C": {
+      "shading_model": 1,
+      "shading_model_alpha_raw": 161,
+      "metallic": 1.0,
+      "roughness": 0.0784313725490196,
+      "basecolor_linear": [
+        1.0,
+        0.768151147247507,
+        0.33716361504833037
+      ],
+      "vsm_r": 0.0,
+      "direct_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "peer_receiver_cross_check": {
+    "source": "D:\\UnrealUnderstanding-Review\\sponza-receivers\\data\\receivers.json",
+    "source_sha256": "5acf4aa10b3ae1ff6aebedaa7b1f0c34cd95b0dca442fa0de7fccf3accd75e66",
+    "receivers": {
+      "A": {
+        "peer_world_cm": [
+          -19.718095315186474,
+          -120.31380534460368,
+          -2.0051770147325243
+        ],
+        "our_world_cm": [
+          -19.71809667823777,
+          -120.31380534460367,
+          -2.0052018958359525
+        ],
+        "world_delta_cm": 2.4881103428242568e-05,
+        "peer_linear_w_value": 788.305175297177,
+        "our_view_depth_cm": 788.3051871059821,
+        "note": "peer field is named linear_w_m but its numeric value is centimetres (788.305 for A); ours is labelled cm and metres are given separately",
+        "material_match": true,
+        "direct_match": true,
+        "shadow_r_code_peer": 255,
+        "shadow_r_code_ours": 255
+      },
+      "B": {
+        "peer_world_cm": [
+          -19.719863050185495,
+          69.428248814072,
+          -2.0049811285273904
+        ],
+        "our_world_cm": [
+          -19.71986441323395,
+          69.42824881407203,
+          -2.0050060095778406
+        ],
+        "world_delta_cm": 2.488105045017619e-05,
+        "peer_linear_w_value": 788.3034969339122,
+        "our_view_depth_cm": 788.303508742692,
+        "note": "peer field is named linear_w_m but its numeric value is centimetres (788.305 for A); ours is labelled cm and metres are given separately",
+        "material_match": true,
+        "direct_match": true,
+        "shadow_r_code_peer": 0,
+        "shadow_r_code_ours": 0
+      },
+      "C": {
+        "peer_world_cm": [
+          828.4255183475354,
+          -24.05987613323031,
+          61.37652012095346
+        ],
+        "our_world_cm": [
+          828.4255142571726,
+          -24.059876133230283,
+          61.37646909808765
+        ],
+        "world_delta_cm": 5.102286581148974e-05,
+        "peer_linear_w_value": 1628.968704864181,
+        "our_view_depth_cm": 1628.9687294030603,
+        "note": "peer field is named linear_w_m but its numeric value is centimetres (788.305 for A); ours is labelled cm and metres are given separately",
+        "material_match": true,
+        "direct_match": true,
+        "shadow_r_code_peer": 0,
+        "shadow_r_code_ours": 0
+      }
+    }
+  }
+}

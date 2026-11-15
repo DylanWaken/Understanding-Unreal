@@ -1,0 +1,1864 @@
+{
+  "schema": "sponza-context-orientation-v1",
+  "run_id": "20261115-083654",
+  "scene_graph_index": 3,
+  "presented_graph": true,
+  "view": {
+    "view_resource": "00040000020bef07f840",
+    "view_version": "00000000000000000000",
+    "view_file": "Resources/00040000020bef07f840.v00000000000000000000.bin",
+    "view_file_sha256": "0b758b972a1a8e5a49c1496f219c07df88fca5a22f1a15464da2223b796165a4",
+    "view_layout": {
+      "Resource": "00040000020bef07f840",
+      "Name": "ViewData.PrimaryViews",
+      "File": "Resources/00040000020bef07f840.v00000000000000000000.bin",
+      "Dimension": "Buffer",
+      "MipLevel": 0,
+      "FirstArraySlice": 0,
+      "ExtentX": 264,
+      "ExtentY": 1,
+      "Depth": 1,
+      "RowPitchBytes": 1056,
+      "ZSliceStrideBytes": 1056,
+      "StoredFormat": "FPackedView[1] as float32",
+      "NativeFormat": "FPackedView[1]",
+      "StoredBytesAreNativeStorage": true,
+      "NativeValueInterpretation": "PackedViewFields",
+      "ByteSize": 1056
+    },
+    "view_readback": null,
+    "view_rect": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "view_size": [
+      1280.0,
+      720.0,
+      0.0007812500116415322,
+      0.0013888889225199819
+    ],
+    "clip_scale_offset": [
+      1.0,
+      1.0,
+      1.4901161193847656e-08,
+      -2.421438694000244e-08
+    ],
+    "pre_view_translation_cm": [
+      850.0,
+      -0.0,
+      -90.0
+    ],
+    "view_forward": [
+      0.9743700623512268,
+      0.0,
+      0.22495105862617493
+    ],
+    "near_plane_cm": 10.0,
+    "state_frame_index": 905,
+    "state_frame_index_mod8": 1,
+    "hfov_deg": 70.00000864665033,
+    "vfov_deg": 42.995665106812666,
+    "preexposure": 0.00048828125,
+    "inv_preexposure": 2048.0,
+    "matrix_convention": "stored blocks are GPU column-major; math matrix = block.T; clip = math @ [x,y,z,1] (column vector)",
+    "tw_to_clip_vs_product_max_abs": 0.0,
+    "jitter_xy_pixels": [
+      2,
+      8
+    ],
+    "screenprobe_ray_direction_frame_index": 1,
+    "matrices": {
+      "svpos_to_tw": [
+        [
+          0.0,
+          0.00024611319531686604,
+          0.0,
+          0.8857693076133728
+        ],
+        [
+          0.0010940744541585445,
+          0.0,
+          0.0,
+          -0.7002076506614685
+        ],
+        [
+          0.0,
+          -0.001066033379174769,
+          0.0,
+          0.6087230443954468
+        ],
+        [
+          0.0,
+          0.0,
+          0.10000000149011612,
+          0.0
+        ]
+      ],
+      "tw_to_view": [
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.22495105862617493,
+          0.0,
+          0.9743700623512268,
+          0.0
+        ],
+        [
+          0.9743700623512268,
+          0.0,
+          0.22495105862617493,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "tw_to_clip": [
+        [
+          0.0,
+          1.428147792816162,
+          0.0,
+          0.0
+        ],
+        [
+          -0.5711348652839661,
+          0.0,
+          2.4738569259643555,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          10.0
+        ],
+        [
+          0.9743700623512268,
+          0.0,
+          0.22495105862617493,
+          0.0
+        ]
+      ],
+      "view_to_clip": [
+        [
+          1.428147792816162,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.5389294624328613,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          10.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "clip_to_relworld": [
+        [
+          0.0,
+          -0.08860074728727341,
+          0.0,
+          0.9743700623512268
+        ],
+        [
+          0.7002076506614685,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.38377198576927185,
+          0.0,
+          0.22495105862617493
+        ],
+        [
+          0.0,
+          0.0,
+          0.10000000149011612,
+          0.0
+        ]
+      ]
+    },
+    "view_uniform": {
+      "resource": "00040000020bc4c24980",
+      "contents_note": "native uniform buffer content retained in the frame package; only the packed-view facts needed for projection are restated here"
+    }
+  },
+  "receivers": {
+    "A": {
+      "id": "A",
+      "label": "directly sunlit stone floor",
+      "material_class": "stone",
+      "pixel_xy": [
+        500,
+        680
+      ],
+      "sample_center_xy": [
+        500.5,
+        680.5
+      ],
+      "valid": true,
+      "scene_depth": {
+        "device_z_raw_bits": "0x3c4fd69a",
+        "device_z": 0.012685442343354225,
+        "view_depth_cm": 788.3051871059821,
+        "view_depth_m": 7.883051871059821,
+        "units_note": "SceneDepthZ is device Z; W = near_plane_cm / deviceZ.  This is view-forward depth in centimetres, not ray length.",
+        "near_plane_cm": 10.0,
+        "reversed_z": true,
+        "invalid_or_sky": false
+      },
+      "normal": {
+        "kind": "world-space shading normal from GBufferA (A2B10G10R10)",
+        "raw_word_hex": "0x7fd74e07",
+        "codes_rgb10": [
+          519,
+          467,
+          1021
+        ],
+        "decoded": [
+          0.014662910719975825,
+          -0.08699993693852333,
+          0.9961004015770252
+        ],
+        "formula": "code/1023*2-1 then normalize",
+        "gbuffer_d_bytes_bgra": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "basecolor": {
+        "bytes_bgra": [
+          74,
+          87,
+          95,
+          255
+        ],
+        "srgb_codes_rgb": [
+          95,
+          87,
+          74
+        ],
+        "linear_rgb": [
+          0.11443537382697373,
+          0.0953074666309647,
+          0.06847816984440017
+        ],
+        "alpha_code": 255,
+        "alpha_semantic": "GBufferAO",
+        "gbuffer_ao": 1.0
+      },
+      "material": {
+        "bytes_bgra": [
+          240,
+          255,
+          0,
+          177
+        ],
+        "roughness_code": 240,
+        "roughness": 0.9411764705882353,
+        "specular_code": 255,
+        "specular": 1.0,
+        "metallic_code": 0,
+        "metallic": 0.0,
+        "packed_id_code": 177,
+        "shading_model_id": 1,
+        "selective_output_mask": 11
+      },
+      "vsm_shadow_mask": {
+        "bytes_bgra": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "shader_rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "shader_r_code": 255,
+        "r_encoded_sqrt": 1.0,
+        "r_linear": 1.0,
+        "g_linear": 1.0,
+        "b": 1.0,
+        "a": 1.0,
+        "semantic": "ShadowMaskTexture consumed as PS.LightAttenuationTexture by the sun pass; shader R is the 8-bit sqrt-encoded receiver attenuation, linear=(R/255)^2"
+      },
+      "direct": {
+        "scene_color_pre_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_post_half_rgba": [
+          1.9306640625,
+          1.3037109375,
+          0.7900390625,
+          0.0
+        ],
+        "direct_rgb_pre_exposed": [
+          1.9306640625,
+          1.3037109375,
+          0.7900390625
+        ],
+        "direct_peak_luminance": 1.9306640625,
+        "sun_pass_id": 842,
+        "sun_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+        "direct_is_scene_color_delta": true
+      },
+      "sources": {
+        "gbuffer_a": {
+          "name": "GBufferA",
+          "resource": "00040000020b9d701250",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_A2B10G10R10",
+          "native_format": "PF_A2B10G10R10",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            500,
+            680
+          ],
+          "address_byte": 3483600,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d701250.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "0b9747038a5532addb71a6c5e9021dcd82522851f263473e5a1cb212009e5269",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "gbuffer_b": {
+          "name": "GBufferB",
+          "resource": "00040000020b9d701710",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            500,
+            680
+          ],
+          "address_byte": 3483600,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d701710.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "e7f46d2fd926f9439834bfa73acd83ba6ae52420053c93457790d18e47c384b8",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "gbuffer_c": {
+          "name": "GBufferC",
+          "resource": "00040000020b9d7019d0",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            500,
+            680
+          ],
+          "address_byte": 3483600,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d7019d0.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "69607a37040bb58894be3517f557fc645127719f5b74bc3573c605c6132beb66",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_depth": {
+          "name": "SceneDepthZ",
+          "resource": "00040000020b9d700010",
+          "version": "00040000020ba06cda50",
+          "producer_pass_id": 620,
+          "producer_pass_name": "DepthPassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_R32_FLOAT",
+          "native_format": "PF_DepthStencil",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            500,
+            680
+          ],
+          "address_byte": 3483600,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700010.mip0.v00040000020ba06cda50.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": false,
+          "native_value_interpretation": "DecodedFloatExpanded",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "vsm_mask": {
+          "name": "ShadowMaskTexture",
+          "resource": "00040000020c948b7fa0",
+          "version": "00040000020c16c4eef0",
+          "producer_pass_id": 842,
+          "producer_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            500,
+            680
+          ],
+          "address_byte": 3483600,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020c948b7fa0.mip0.v00040000020c16c4eef0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "ea1663e25aac609a2f4b12db818d371becb68c7df611c463356818d133b6888f",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_color_pre": {
+          "name": "SceneColor",
+          "resource": "00040000020b9d700490",
+          "version": "00040000020c16c43fb0",
+          "producer_pass_id": 840,
+          "producer_pass_name": "VirtualShadowMapProjection(Input:GBuffer)",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_FloatRGBA",
+          "native_format": "PF_FloatRGBA",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 10240,
+          "bytes_per_pixel": 8,
+          "z_slice_stride_bytes": 9093120,
+          "coordinate": [
+            500,
+            680
+          ],
+          "address_byte": 6967200,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700490.mip0.v00040000020c16c43fb0.bin",
+          "file_bytes": 9093120,
+          "file_sha256": "43f12a622e2260667aa527d635fcf9039838786d2d556f372d2f5d74b22df0d3",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_color_post": {
+          "name": "SceneColor",
+          "resource": "00040000020b9d700490",
+          "version": "00040000020c16c4eef0",
+          "producer_pass_id": 842,
+          "producer_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_FloatRGBA",
+          "native_format": "PF_FloatRGBA",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 10240,
+          "bytes_per_pixel": 8,
+          "z_slice_stride_bytes": 9093120,
+          "coordinate": [
+            500,
+            680
+          ],
+          "address_byte": 6967200,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700490.mip0.v00040000020c16c4eef0.bin",
+          "file_bytes": 9093120,
+          "file_sha256": "9bc1a98fda18826ee4fc81b18242e7d4c75f9dbfff5296bcc7257e19c63897a9",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        }
+      },
+      "covering_screen_probe": {
+        "atlas_xy": [
+          31,
+          42
+        ],
+        "allocated_atlas_linear_index": 3391,
+        "probe_kind": "uniform",
+        "uniform_probe_index": 3391,
+        "adaptive_probe_index": null,
+        "finite_storage": true,
+        "active": true,
+        "active_rule": "uniform slot with finite placement",
+        "screen_xy_from_projection": [
+          498.50001664389754,
+          680.5000454195194
+        ],
+        "screen_tile_xy": [
+          31,
+          42
+        ],
+        "screen_tile_allocator_xy": [
+          31,
+          42
+        ],
+        "translated_world_cm": [
+          830.2819213867188,
+          -122.0387191772461,
+          -92.00521087646484
+        ],
+        "world_cm": [
+          -19.71807861328125,
+          -122.0387191772461,
+          -2.0052108764648438
+        ],
+        "world_m": [
+          -0.1971807861328125,
+          -1.220387191772461,
+          -0.020052108764648437
+        ],
+        "probe_scene_depth_cm": 788.30517578125,
+        "probe_scene_depth_m": 7.8830517578125,
+        "normal_world": [
+          0.012532789155969727,
+          0.05430875300920239,
+          0.9984455360922585
+        ],
+        "world_speed_cm_per_s": 0.0,
+        "b_two_sided_foliage": false,
+        "b_hair": false,
+        "rayinfo_consistent": true,
+        "screen_uv": [
+          0.38945313800304493,
+          0.9451389519715548
+        ],
+        "world_delta_cm": 1.7249138327604039,
+        "normal_dot_receiver": 0.9900109085357427
+      },
+      "alternate_clean_probe": {
+        "atlas_xy": [
+          31,
+          43
+        ],
+        "allocated_atlas_linear_index": 3471,
+        "probe_kind": "uniform",
+        "uniform_probe_index": 3471,
+        "adaptive_probe_index": null,
+        "finite_storage": true,
+        "active": true,
+        "active_rule": "uniform slot with finite placement",
+        "screen_xy_from_projection": [
+          498.50002066050035,
+          696.5000574064478
+        ],
+        "screen_tile_xy": [
+          31,
+          43
+        ],
+        "screen_tile_allocator_xy": [
+          31,
+          43
+        ],
+        "translated_world_cm": [
+          727.1231079101562,
+          -106.47785949707031,
+          -92.00518035888672
+        ],
+        "world_cm": [
+          -122.87689208984375,
+          -106.47785949707031,
+          -2.0051803588867188
+        ],
+        "world_m": [
+          -1.2287689208984376,
+          -1.0647785949707032,
+          -0.020051803588867188
+        ],
+        "probe_scene_depth_cm": 687.7903442382812,
+        "probe_scene_depth_m": 6.877903442382813,
+        "normal_world": [
+          -0.012434225084227164,
+          -0.04559215864216638,
+          0.998882748432919
+        ],
+        "world_speed_cm_per_s": 6.186962127685547e-05,
+        "b_two_sided_foliage": false,
+        "b_hair": false,
+        "rayinfo_consistent": true,
+        "screen_uv": [
+          0.3894531411410159,
+          0.9673611908422886
+        ],
+        "world_delta_cm": 104.08251759190838,
+        "normal_dot_receiver": 0.9987716998368708
+      },
+      "probe_vs_receiver_world_delta_cm": 1.7249138327604039,
+      "probe_normal_dot_receiver_normal": 0.9900109085357427,
+      "probe_depth_minus_receiver_cm": -1.1324732099637913e-05,
+      "world_cm": [
+        -19.71809667823777,
+        -120.31380534460367,
+        -2.0052018958359525
+      ],
+      "world_m": [
+        -0.1971809667823777,
+        -1.2031380534460367,
+        -0.020052018958359525
+      ],
+      "translated_world_cm": [
+        830.2819033217622,
+        -120.31380534460367,
+        -92.00520189583595
+      ],
+      "world_route": "SVPositionToTranslatedWorld at (x+0.5,y+0.5,deviceZ) divided by w, then minus PreViewTranslation"
+    },
+    "B": {
+      "id": "B",
+      "label": "shaded stone floor",
+      "material_class": "stone",
+      "pixel_xy": [
+        720,
+        680
+      ],
+      "sample_center_xy": [
+        720.5,
+        680.5
+      ],
+      "valid": true,
+      "scene_depth": {
+        "device_z_raw_bits": "0x3c4fd6b7",
+        "device_z": 0.012685469351708889,
+        "view_depth_cm": 788.303508742692,
+        "view_depth_m": 7.8830350874269195,
+        "units_note": "SceneDepthZ is device Z; W = near_plane_cm / deviceZ.  This is view-forward depth in centimetres, not ray length.",
+        "near_plane_cm": 10.0,
+        "reversed_z": true,
+        "invalid_or_sky": false
+      },
+      "normal": {
+        "kind": "world-space shading normal from GBufferA (A2B10G10R10)",
+        "raw_word_hex": "0x7ff80e02",
+        "codes_rgb10": [
+          514,
+          515,
+          1023
+        ],
+        "decoded": [
+          0.004887412741476962,
+          0.0068423778380677465,
+          0.9999646469061872
+        ],
+        "formula": "code/1023*2-1 then normalize",
+        "gbuffer_d_bytes_bgra": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "basecolor": {
+        "bytes_bgra": [
+          106,
+          124,
+          135,
+          255
+        ],
+        "srgb_codes_rgb": [
+          135,
+          124,
+          106
+        ],
+        "linear_rgb": [
+          0.24228112246555486,
+          0.20155625379439707,
+          0.14412847085805777
+        ],
+        "alpha_code": 255,
+        "alpha_semantic": "GBufferAO",
+        "gbuffer_ao": 1.0
+      },
+      "material": {
+        "bytes_bgra": [
+          228,
+          255,
+          0,
+          177
+        ],
+        "roughness_code": 228,
+        "roughness": 0.8941176470588236,
+        "specular_code": 255,
+        "specular": 1.0,
+        "metallic_code": 0,
+        "metallic": 0.0,
+        "packed_id_code": 177,
+        "shading_model_id": 1,
+        "selective_output_mask": 11
+      },
+      "vsm_shadow_mask": {
+        "bytes_bgra": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "shader_rgba": [
+          0,
+          0,
+          255,
+          255
+        ],
+        "shader_r_code": 0,
+        "r_encoded_sqrt": 0.0,
+        "r_linear": 0.0,
+        "g_linear": 0.0,
+        "b": 1.0,
+        "a": 1.0,
+        "semantic": "ShadowMaskTexture consumed as PS.LightAttenuationTexture by the sun pass; shader R is the 8-bit sqrt-encoded receiver attenuation, linear=(R/255)^2"
+      },
+      "direct": {
+        "scene_color_pre_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_post_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "direct_rgb_pre_exposed": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "direct_peak_luminance": 0.0,
+        "sun_pass_id": 842,
+        "sun_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+        "direct_is_scene_color_delta": true
+      },
+      "sources": {
+        "gbuffer_a": {
+          "name": "GBufferA",
+          "resource": "00040000020b9d701250",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_A2B10G10R10",
+          "native_format": "PF_A2B10G10R10",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            720,
+            680
+          ],
+          "address_byte": 3484480,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d701250.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "0b9747038a5532addb71a6c5e9021dcd82522851f263473e5a1cb212009e5269",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "gbuffer_b": {
+          "name": "GBufferB",
+          "resource": "00040000020b9d701710",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            720,
+            680
+          ],
+          "address_byte": 3484480,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d701710.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "e7f46d2fd926f9439834bfa73acd83ba6ae52420053c93457790d18e47c384b8",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "gbuffer_c": {
+          "name": "GBufferC",
+          "resource": "00040000020b9d7019d0",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            720,
+            680
+          ],
+          "address_byte": 3484480,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d7019d0.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "69607a37040bb58894be3517f557fc645127719f5b74bc3573c605c6132beb66",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_depth": {
+          "name": "SceneDepthZ",
+          "resource": "00040000020b9d700010",
+          "version": "00040000020ba06cda50",
+          "producer_pass_id": 620,
+          "producer_pass_name": "DepthPassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_R32_FLOAT",
+          "native_format": "PF_DepthStencil",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            720,
+            680
+          ],
+          "address_byte": 3484480,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700010.mip0.v00040000020ba06cda50.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": false,
+          "native_value_interpretation": "DecodedFloatExpanded",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "vsm_mask": {
+          "name": "ShadowMaskTexture",
+          "resource": "00040000020c948b7fa0",
+          "version": "00040000020c16c4eef0",
+          "producer_pass_id": 842,
+          "producer_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            720,
+            680
+          ],
+          "address_byte": 3484480,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020c948b7fa0.mip0.v00040000020c16c4eef0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "ea1663e25aac609a2f4b12db818d371becb68c7df611c463356818d133b6888f",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_color_pre": {
+          "name": "SceneColor",
+          "resource": "00040000020b9d700490",
+          "version": "00040000020c16c43fb0",
+          "producer_pass_id": 840,
+          "producer_pass_name": "VirtualShadowMapProjection(Input:GBuffer)",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_FloatRGBA",
+          "native_format": "PF_FloatRGBA",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 10240,
+          "bytes_per_pixel": 8,
+          "z_slice_stride_bytes": 9093120,
+          "coordinate": [
+            720,
+            680
+          ],
+          "address_byte": 6968960,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700490.mip0.v00040000020c16c43fb0.bin",
+          "file_bytes": 9093120,
+          "file_sha256": "43f12a622e2260667aa527d635fcf9039838786d2d556f372d2f5d74b22df0d3",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_color_post": {
+          "name": "SceneColor",
+          "resource": "00040000020b9d700490",
+          "version": "00040000020c16c4eef0",
+          "producer_pass_id": 842,
+          "producer_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_FloatRGBA",
+          "native_format": "PF_FloatRGBA",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 10240,
+          "bytes_per_pixel": 8,
+          "z_slice_stride_bytes": 9093120,
+          "coordinate": [
+            720,
+            680
+          ],
+          "address_byte": 6968960,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700490.mip0.v00040000020c16c4eef0.bin",
+          "file_bytes": 9093120,
+          "file_sha256": "9bc1a98fda18826ee4fc81b18242e7d4c75f9dbfff5296bcc7257e19c63897a9",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        }
+      },
+      "covering_screen_probe": {
+        "atlas_xy": [
+          45,
+          42
+        ],
+        "allocated_atlas_linear_index": 3405,
+        "probe_kind": "uniform",
+        "uniform_probe_index": 3405,
+        "adaptive_probe_index": null,
+        "finite_storage": true,
+        "active": true,
+        "active_rule": "uniform slot with finite placement",
+        "screen_xy_from_projection": [
+          722.5000026159285,
+          680.5000706538441
+        ],
+        "screen_tile_xy": [
+          45,
+          42
+        ],
+        "screen_tile_allocator_xy": [
+          45,
+          42
+        ],
+        "translated_world_cm": [
+          830.2801513671875,
+          71.1531753540039,
+          -92.00503540039062
+        ],
+        "world_cm": [
+          -19.7198486328125,
+          71.1531753540039,
+          -2.005035400390625
+        ],
+        "world_m": [
+          -0.197198486328125,
+          0.7115317535400391,
+          -0.02005035400390625
+        ],
+        "probe_scene_depth_cm": 788.3035278320312,
+        "probe_scene_depth_m": 7.883035278320312,
+        "normal_world": [
+          0.01195124277641891,
+          0.003983747592139636,
+          0.9999206456270523
+        ],
+        "world_speed_cm_per_s": 0.0,
+        "b_two_sided_foliage": false,
+        "b_hair": false,
+        "rayinfo_consistent": true,
+        "screen_uv": [
+          0.5644531270436941,
+          0.9451389870192279
+        ],
+        "world_delta_cm": 1.724926540254448,
+        "normal_dot_receiver": 0.999970964301121
+      },
+      "alternate_clean_probe": {
+        "atlas_xy": [
+          45,
+          41
+        ],
+        "allocated_atlas_linear_index": 3325,
+        "probe_kind": "uniform",
+        "uniform_probe_index": 3325,
+        "adaptive_probe_index": null,
+        "finite_storage": true,
+        "active": true,
+        "active_rule": "uniform slot with finite placement",
+        "screen_xy_from_projection": [
+          722.5000030523352,
+          664.4999993321387
+        ],
+        "screen_tile_xy": [
+          45,
+          41
+        ],
+        "screen_tile_allocator_xy": [
+          45,
+          41
+        ],
+        "translated_world_cm": [
+          968.7493896484375,
+          83.33123779296875,
+          -92.0048828125
+        ],
+        "world_cm": [
+          118.7493896484375,
+          83.33123779296875,
+          -2.0048828125
+        ],
+        "world_m": [
+          1.187493896484375,
+          0.8333123779296875,
+          -0.020048828125
+        ],
+        "probe_scene_depth_cm": 923.2238159179688,
+        "probe_scene_depth_m": 9.232238159179687,
+        "normal_world": [
+          0.01195124277641891,
+          0.003983747592139636,
+          0.9999206456270523
+        ],
+        "world_speed_cm_per_s": 0.0001220703125,
+        "b_two_sided_foliage": false,
+        "b_hair": false,
+        "rayinfo_consistent": true,
+        "screen_uv": [
+          0.5644531273846368,
+          0.9229166657390815
+        ],
+        "world_delta_cm": 139.1654677819114,
+        "normal_dot_receiver": 0.999970964301121
+      },
+      "probe_vs_receiver_world_delta_cm": 1.724926540254448,
+      "probe_normal_dot_receiver_normal": 0.999970964301121,
+      "probe_depth_minus_receiver_cm": 1.9089339275524253e-05,
+      "world_cm": [
+        -19.71986441323395,
+        69.42824881407203,
+        -2.0050060095778406
+      ],
+      "world_m": [
+        -0.1971986441323395,
+        0.6942824881407204,
+        -0.020050060095778408
+      ],
+      "translated_world_cm": [
+        830.280135586766,
+        69.42824881407203,
+        -92.00500600957784
+      ],
+      "world_route": "SVPositionToTranslatedWorld at (x+0.5,y+0.5,deviceZ) divided by w, then minus PreViewTranslation"
+    },
+    "C": {
+      "id": "C",
+      "label": "polished gold sphere (metal=1, rough=.08)",
+      "material_class": "polished_gold",
+      "pixel_xy": [
+        626,
+        587
+      ],
+      "sample_center_xy": [
+        626.5,
+        587.5
+      ],
+      "valid": true,
+      "scene_depth": {
+        "device_z_raw_bits": "0x3bc9286f",
+        "device_z": 0.006138853263109922,
+        "view_depth_cm": 1628.9687294030603,
+        "view_depth_m": 16.289687294030603,
+        "units_note": "SceneDepthZ is device Z; W = near_plane_cm / deviceZ.  This is view-forward depth in centimetres, not ray length.",
+        "near_plane_cm": 10.0,
+        "reversed_z": true,
+        "invalid_or_sky": false
+      },
+      "normal": {
+        "kind": "world-space shading normal from GBufferA (A2B10G10R10)",
+        "raw_word_hex": "0x61f90805",
+        "codes_rgb10": [
+          5,
+          578,
+          543
+        ],
+        "decoded": [
+          -0.9896113163408169,
+          0.12992922514642524,
+          0.061545422437780266
+        ],
+        "formula": "code/1023*2-1 then normalize",
+        "gbuffer_d_bytes_bgra": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "basecolor": {
+        "bytes_bgra": [
+          157,
+          227,
+          255,
+          255
+        ],
+        "srgb_codes_rgb": [
+          255,
+          227,
+          157
+        ],
+        "linear_rgb": [
+          1.0,
+          0.768151147247507,
+          0.33716361504833037
+        ],
+        "alpha_code": 255,
+        "alpha_semantic": "GBufferAO",
+        "gbuffer_ao": 1.0
+      },
+      "material": {
+        "bytes_bgra": [
+          20,
+          128,
+          255,
+          161
+        ],
+        "roughness_code": 20,
+        "roughness": 0.0784313725490196,
+        "specular_code": 128,
+        "specular": 0.5019607843137255,
+        "metallic_code": 255,
+        "metallic": 1.0,
+        "packed_id_code": 161,
+        "shading_model_id": 1,
+        "selective_output_mask": 10
+      },
+      "vsm_shadow_mask": {
+        "bytes_bgra": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "shader_rgba": [
+          0,
+          0,
+          255,
+          255
+        ],
+        "shader_r_code": 0,
+        "r_encoded_sqrt": 0.0,
+        "r_linear": 0.0,
+        "g_linear": 0.0,
+        "b": 1.0,
+        "a": 1.0,
+        "semantic": "ShadowMaskTexture consumed as PS.LightAttenuationTexture by the sun pass; shader R is the 8-bit sqrt-encoded receiver attenuation, linear=(R/255)^2"
+      },
+      "direct": {
+        "scene_color_pre_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_post_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "direct_rgb_pre_exposed": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "direct_peak_luminance": 0.0,
+        "sun_pass_id": 842,
+        "sun_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+        "direct_is_scene_color_delta": true
+      },
+      "sources": {
+        "gbuffer_a": {
+          "name": "GBufferA",
+          "resource": "00040000020b9d701250",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_A2B10G10R10",
+          "native_format": "PF_A2B10G10R10",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            626,
+            587
+          ],
+          "address_byte": 3007944,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d701250.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "0b9747038a5532addb71a6c5e9021dcd82522851f263473e5a1cb212009e5269",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "gbuffer_b": {
+          "name": "GBufferB",
+          "resource": "00040000020b9d701710",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            626,
+            587
+          ],
+          "address_byte": 3007944,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d701710.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "e7f46d2fd926f9439834bfa73acd83ba6ae52420053c93457790d18e47c384b8",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "gbuffer_c": {
+          "name": "GBufferC",
+          "resource": "00040000020b9d7019d0",
+          "version": "00040000020bef06b8f0",
+          "producer_pass_id": 697,
+          "producer_pass_name": "BasePassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            626,
+            587
+          ],
+          "address_byte": 3007944,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d7019d0.mip0.v00040000020bef06b8f0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "69607a37040bb58894be3517f557fc645127719f5b74bc3573c605c6132beb66",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_depth": {
+          "name": "SceneDepthZ",
+          "resource": "00040000020b9d700010",
+          "version": "00040000020ba06cda50",
+          "producer_pass_id": 620,
+          "producer_pass_name": "DepthPassParallel",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_R32_FLOAT",
+          "native_format": "PF_DepthStencil",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            626,
+            587
+          ],
+          "address_byte": 3007944,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700010.mip0.v00040000020ba06cda50.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": false,
+          "native_value_interpretation": "DecodedFloatExpanded",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "vsm_mask": {
+          "name": "ShadowMaskTexture",
+          "resource": "00040000020c948b7fa0",
+          "version": "00040000020c16c4eef0",
+          "producer_pass_id": 842,
+          "producer_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_B8G8R8A8",
+          "native_format": "PF_B8G8R8A8",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 5120,
+          "bytes_per_pixel": 4,
+          "z_slice_stride_bytes": 4546560,
+          "coordinate": [
+            626,
+            587
+          ],
+          "address_byte": 3007944,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020c948b7fa0.mip0.v00040000020c16c4eef0.bin",
+          "file_bytes": 4546560,
+          "file_sha256": "ea1663e25aac609a2f4b12db818d371becb68c7df611c463356818d133b6888f",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_color_pre": {
+          "name": "SceneColor",
+          "resource": "00040000020b9d700490",
+          "version": "00040000020c16c43fb0",
+          "producer_pass_id": 840,
+          "producer_pass_name": "VirtualShadowMapProjection(Input:GBuffer)",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_FloatRGBA",
+          "native_format": "PF_FloatRGBA",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 10240,
+          "bytes_per_pixel": 8,
+          "z_slice_stride_bytes": 9093120,
+          "coordinate": [
+            626,
+            587
+          ],
+          "address_byte": 6015888,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700490.mip0.v00040000020c16c43fb0.bin",
+          "file_bytes": 9093120,
+          "file_sha256": "43f12a622e2260667aa527d635fcf9039838786d2d556f372d2f5d74b22df0d3",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        },
+        "scene_color_post": {
+          "name": "SceneColor",
+          "resource": "00040000020b9d700490",
+          "version": "00040000020c16c4eef0",
+          "producer_pass_id": 842,
+          "producer_pass_name": "RenderLight Light::StandardDeferred: Sun_Sponza",
+          "mip": 0,
+          "array_slice": 0,
+          "dimension": "Texture2D",
+          "stored_format": "PF_FloatRGBA",
+          "native_format": "PF_FloatRGBA",
+          "extent": [
+            1280,
+            888,
+            1
+          ],
+          "row_pitch_bytes": 10240,
+          "bytes_per_pixel": 8,
+          "z_slice_stride_bytes": 9093120,
+          "coordinate": [
+            626,
+            587
+          ],
+          "address_byte": 6015888,
+          "address_mapping": "address = z*ZSliceStrideBytes + y*RowPitchBytes + x*bytes_per_pixel; mip0/slice0",
+          "file": "Resources/00040000020b9d700490.mip0.v00040000020c16c4eef0.bin",
+          "file_bytes": 9093120,
+          "file_sha256": "9bc1a98fda18826ee4fc81b18242e7d4c75f9dbfff5296bcc7257e19c63897a9",
+          "readback_status": "Dumped",
+          "readback_timing": "GPUReadbackCompleted",
+          "file_verified_at_schedule": true,
+          "stored_bytes_are_native_storage": true,
+          "native_value_interpretation": "DecodedFloat",
+          "preexposure": 0.00048828125,
+          "inv_preexposure": 2048.0
+        }
+      },
+      "covering_screen_probe": {
+        "atlas_xy": [
+          39,
+          36
+        ],
+        "allocated_atlas_linear_index": 2919,
+        "probe_kind": "uniform",
+        "uniform_probe_index": 2919,
+        "adaptive_probe_index": null,
+        "finite_storage": true,
+        "active": true,
+        "active_rule": "uniform slot with finite placement",
+        "screen_xy_from_projection": [
+          626.5000153711146,
+          584.5000053029491
+        ],
+        "screen_tile_xy": [
+          39,
+          36
+        ],
+        "screen_tile_allocator_xy": [
+          39,
+          36
+        ],
+        "translated_world_cm": [
+          1679.396484375,
+          -24.09103012084961,
+          -23.444225311279297
+        ],
+        "world_cm": [
+          829.396484375,
+          -24.09103012084961,
+          66.5557746887207
+        ],
+        "world_m": [
+          8.29396484375,
+          -0.2409103012084961,
+          0.665557746887207
+        ],
+        "probe_scene_depth_cm": 1631.079833984375,
+        "probe_scene_depth_m": 16.31079833984375,
+        "normal_world": [
+          -0.9476901186968215,
+          0.12314617361597102,
+          0.29447998038601814
+        ],
+        "world_speed_cm_per_s": 0.0,
+        "b_two_sided_foliage": false,
+        "b_hair": false,
+        "rayinfo_consistent": true,
+        "screen_uv": [
+          0.4894531370086833,
+          0.8118055629207628
+        ],
+        "world_delta_cm": 5.269626167179334,
+        "normal_dot_receiver": 0.9719690475567435
+      },
+      "alternate_clean_probe": {
+        "atlas_xy": [
+          38,
+          37
+        ],
+        "allocated_atlas_linear_index": 2998,
+        "probe_kind": "uniform",
+        "uniform_probe_index": 2998,
+        "adaptive_probe_index": null,
+        "finite_storage": true,
+        "active": true,
+        "active_rule": "uniform slot with finite placement",
+        "screen_xy_from_projection": [
+          610.4999925407061,
+          600.5000468166896
+        ],
+        "screen_tile_xy": [
+          38,
+          37
+        ],
+        "screen_tile_allocator_xy": [
+          38,
+          37
+        ],
+        "translated_world_cm": [
+          1891.752197265625,
+          -59.07414245605469,
+          -57.52717208862305
+        ],
+        "world_cm": [
+          1041.752197265625,
+          -59.07414245605469,
+          32.47282791137695
+        ],
+        "world_m": [
+          10.41752197265625,
+          -0.5907414245605469,
+          0.32472827911376956
+        ],
+        "probe_scene_depth_cm": 1830.325927734375,
+        "probe_scene_depth_m": 18.30325927734375,
+        "normal_world": [
+          -0.9996614186461269,
+          -0.016254657213758104,
+          -0.020318321517197743
+        ],
+        "world_speed_cm_per_s": 0.0,
+        "b_two_sided_foliage": false,
+        "b_hair": false,
+        "rayinfo_consistent": true,
+        "screen_uv": [
+          0.47695311917242666,
+          0.8340278428009578
+        ],
+        "world_delta_cm": 218.10477528785225,
+        "normal_dot_receiver": 0.9859137977037151
+      },
+      "probe_vs_receiver_world_delta_cm": 5.269626167179334,
+      "probe_normal_dot_receiver_normal": 0.9719690475567435,
+      "probe_depth_minus_receiver_cm": 2.1111045813147484,
+      "world_cm": [
+        828.4255142571726,
+        -24.059876133230283,
+        61.37646909808765
+      ],
+      "world_m": [
+        8.284255142571727,
+        -0.24059876133230282,
+        0.6137646909808765
+      ],
+      "translated_world_cm": [
+        1678.4255142571726,
+        -24.059876133230283,
+        -28.623530901912353
+      ],
+      "world_route": "SVPositionToTranslatedWorld at (x+0.5,y+0.5,deviceZ) divided by w, then minus PreViewTranslation"
+    }
+  },
+  "screen_probe_grid": {
+    "uniform_view_size": [
+      80,
+      45
+    ],
+    "atlas_view_size": [
+      80,
+      67
+    ],
+    "atlas_buffer_size": [
+      80,
+      84
+    ],
+    "num_uniform_probes": 3600,
+    "max_num_adaptive_probes": 1800,
+    "num_adaptive_probes_captured": 117,
+    "active_probe_count": 3686,
+    "active_uniform_count": 3569,
+    "active_adaptive_count": 117,
+    "finite_storage_probe_count": 3809,
+    "downsample_factor": 16,
+    "tracing_octahedron_resolution": 8,
+    "gather_octahedron_resolution": 8,
+    "max_importance_sampling_octahedron_resolution": 16,
+    "screen_probe_ray_direction_frame_index": 1,
+    "screen_temporal_index": 1,
+    "tile_jitter_pixels": [
+      2,
+      8
+    ]
+  },
+  "probe_index_convention": "uniform probe index = atlas_y*80 + atlas_x for atlas_y < 45; adaptive probes are allocated after the 3600 uniform slots",
+  "world_units": "centimetres for all native world/translation/depth values; metres are reported alongside",
+  "preexposure": {
+    "view_preexposure": 0.00048828125,
+    "inv_preexposure": 2048.0,
+    "note": "all radiance/dispatch color values are native pre-exposed radiance unless a field says display or display_linear"
+  },
+  "receiver_selection": {
+    "rule": "task candidates A(500,680) B(720,680) C(626,587); validated with GBuffer material, device depth, world position, and covering 16x16 screen probe",
+    "corrections": "none of the candidates was moved; C's covering probe is 3 px above the receiver pixel and its normal differs by ~16 deg on the curved gold sphere, so an alternate nearby probe is recorded for context but the covering probe is not substituted"
+  },
+  "shader_parameters": {
+    "parameter_block_file": "Structures/00040000020b9718fd30.bin",
+    "parameter_block_bytes": 368,
+    "parameter_block_sha256": "cf3fe00cc9b1bf506cee5a388d14e4ec73984f8f241450cf86cb8c6518a68f64",
+    "metadata_file": "StructuresMetadata/000400007ffc1e2cdb40.json",
+    "metadata_struct": "FScreenProbeParameters",
+    "included_struct_offset_in_FParameters": 64,
+    "fields": {
+      "ScreenProbeTracingOctahedronResolution": 8,
+      "ScreenProbeGatherOctahedronResolution": 8,
+      "ScreenProbeGatherOctahedronResolutionWithBorder": 10,
+      "ScreenProbeDownsampleFactor": 16,
+      "ScreenProbeViewSize": [
+        80,
+        45
+      ],
+      "ScreenProbeAtlasViewSize": [
+        80,
+        67
+      ],
+      "ScreenProbeAtlasBufferSize": [
+        80,
+        84
+      ],
+      "NumUniformScreenProbes": 3600,
+      "MaxNumAdaptiveProbes": 1800,
+      "FixedJitterIndex": -1,
+      "ScreenProbeRayDirectionFrameIndex": 1,
+      "bSupportsHairScreenTraces": 1,
+      "MaxImportanceSamplingOctahedronResolution": 16,
+      "ScreenProbeBRDFOctahedronResolution": 8
+    },
+    "producer_pass": {
+      "id": 736,
+      "name": "GenerateRays 8x8"
+    },
+    "validity": {
+      "file_exists": true,
+      "bytes_match_declared_FParameters_size": true,
+      "readback_status": null,
+      "note": "shader parameter payload, not an RDG resource version; DumpGPU does not attach a DumpReadbackStatus record to this structure payload"
+    },
+    "address_mapping": "FScreenProbeParameters starts at byte 64 of the captured FParameters payload; field addresses are 64+metadata Offset",
+    "preexposure": 0.00048828125
+  },
+  "blue_noise_uniform": {
+    "layout": "FBlueNoiseParameters",
+    "content_file": "Structures/00040000020bc4a5e700.bin",
+    "content_bytes": 48,
+    "content_sha256": "770011387829ab66d1477def49553ad21b812cae3537733f9872328fac12b1df",
+    "dimensions": [
+      128,
+      128,
+      64
+    ],
+    "modulo_masks": [
+      127,
+      127,
+      63
+    ],
+    "texture_binding": "ScreenProbeParameters.BlueNoise.BlueNoise.Vec2Texture",
+    "validity": {
+      "file_exists": true,
+      "bytes_match_declared_48": true,
+      "readback_status": null
+    },
+    "address_mapping": "wrapped texture coordinate = ((screenTileX & maskX), (frame & maskZ)*dimY + (screenTileY & maskY))",
+    "preexposure": 0.00048828125
+  }
+}

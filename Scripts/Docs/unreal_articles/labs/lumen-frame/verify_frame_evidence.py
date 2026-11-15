@@ -266,6 +266,25 @@ def import_package_frame(path: Path) -> Any:
     return module
 
 
+def import_package_metadata(packer_path: Path) -> Any:
+    """Import the shared metadata helper that sits beside the production packer."""
+    path = Path(packer_path).resolve().with_name("package_metadata.py")
+    if not path.is_file():
+        raise EvidenceError(f"Shared package metadata helper not found: {path}")
+    spec = importlib.util.spec_from_file_location("_lumen_frame_package_metadata", path)
+    if spec is None or spec.loader is None:
+        raise EvidenceError(f"Cannot import package metadata helper from {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception as exc:  # noqa: BLE001 - report the concrete import failure
+        raise EvidenceError(f"Cannot import package metadata helper {path}: {exc}") from exc
+    if not hasattr(module, "read_package_bytes"):
+        raise EvidenceError(f"Package metadata helper {path} lacks read_package_bytes()")
+    return module
+
+
 # ------------------------------------------------------------------- package
 def verify_package_bytes(package: Path, packer: Any) -> dict[str, Any]:
     try:
@@ -361,20 +380,29 @@ def verify_package_bytes(package: Path, packer: Any) -> dict[str, Any]:
 
 
 # -------------------------------------------------------------------- schema
-def verify_schema(package: Path, lab: Path, package_result: dict[str, Any]) -> dict[str, Any]:
-    package_schema = package / "schema.json"
+def verify_schema(package: Path, lab: Path, package_result: dict[str, Any],
+                  metadata: Any | None = None) -> dict[str, Any]:
+    if metadata is None:
+        metadata = import_package_metadata(
+            Path(__file__).resolve().parent / "tools" / "package_frame.py"
+        )
     lab_schema = lab / "schemas/source-schema.json"
-    if not package_schema.is_file():
-        raise EvidenceError(f"Package has no schema.json: {package_schema}")
     if not lab_schema.is_file():
         raise EvidenceError(f"Lab has no schemas/source-schema.json: {lab_schema}")
-    package_bytes = package_schema.read_bytes()
+    try:
+        package_bytes = metadata.read_package_bytes(package, "schema.json")
+        package_schema = metadata.resolve_metadata_path(package, "schema.json")
+    except metadata.MetadataError as exc:
+        raise EvidenceError(f"Package schema metadata is unreadable: {exc}") from exc
+    if package_schema is None:
+        raise EvidenceError(f"Package has no schema.json or schema.json.gz: {package}")
     lab_bytes = lab_schema.read_bytes()
-    package_sha, package_size = sha256_file(package_schema)
+    package_sha, package_size = hashlib.sha256(package_bytes).hexdigest(), len(package_bytes)
     lab_sha, lab_size = sha256_file(lab_schema)
     if package_bytes != lab_bytes or package_sha != lab_sha or package_size != lab_size:
         raise EvidenceError(
-            "Package schema.json does not match the lab source-schema.json byte-for-byte: "
+            "Package schema.json does not match the lab source-schema.json byte-for-byte "
+            f"(stored as {package_schema.name}): "
             f"package {package_size} bytes {package_sha}, lab {lab_size} bytes {lab_sha}."
         )
     try:
@@ -403,6 +431,13 @@ def verify_schema(package: Path, lab: Path, package_result: dict[str, Any]) -> d
     index = package_result["index"]
     index_schema = index.get("schema") or {}
     if index_schema:
+        index_path = index_schema.get("path")
+        if index_path not in ("schema.json", "schema.json.gz"):
+            raise EvidenceError(f"Package index schema path is not a schema document: {index_path!r}")
+        if package_schema.name != index_path:
+            raise EvidenceError(
+                f"Package index schema path {index_path!r} does not match resolved {package_schema.name!r}."
+            )
         if index_schema.get("sha256") != package_sha:
             raise EvidenceError("Package index schema SHA-256 does not match schema.json.")
         if int(index_schema.get("bytes", -1)) != package_size:
@@ -1090,6 +1125,7 @@ def main(argv: list[str] | None = None) -> int:
 
         packer_path = find_package_frame(lab, package, repo_root)
         packer = import_package_frame(packer_path)
+        metadata = import_package_metadata(packer_path)
         package_result = verify_package_bytes(package, packer)
         print(
             "PASS package bytes: "
@@ -1102,7 +1138,7 @@ def main(argv: list[str] | None = None) -> int:
             flush=True,
         )
 
-        schema_result = verify_schema(package, lab, package_result)
+        schema_result = verify_schema(package, lab, package_result, metadata)
         print(
             "PASS source schema: "
             f"{schema_result['bytes']:,} bytes sha256={schema_result['sha256']}; "

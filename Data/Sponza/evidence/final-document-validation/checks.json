@@ -1,0 +1,190 @@
+{
+  "schema": "final-doc-check-v1",
+  "generated_at": "2026-11-15T20:45:00+08:00",
+  "workspace": "D:/UnrealUnderstanding-Review/final-doc-check",
+  "repository": "D:/UnrealUnderstanding",
+  "publication": "D:/UnrealUnderstanding/Docs/Unreal/lumen.html",
+  "commands": [
+    {
+      "id": "build-check",
+      "command": "python Scripts/Docs/unreal_articles/build.py --check",
+      "cwd": "D:/UnrealUnderstanding",
+      "env": "PYTHONDONTWRITEBYTECODE=1",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "Verified scene-representation: 29,463 words, 18 chapters; Verified nanite: 15,369 words, 20 chapters; Verified lumen: 33,693 words, 16 chapters; Verified material-compiler: 12,214 words, 16 chapters; Verified lumen-reference: 65,579 words, 44 chapters",
+      "stderr": "",
+      "logs": ["logs/build-check.out", "logs/build-check.err", "logs/build-check.exit"]
+    },
+    {
+      "id": "math-check",
+      "command": "python Scripts/Docs/unreal_articles/math_typesetting.py --check --node node",
+      "cwd": "D:/UnrealUnderstanding",
+      "env": "PYTHONDONTWRITEBYTECODE=1",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "Verified 1028 LaTeX expressions",
+      "stderr": "",
+      "logs": ["logs/math-check.out", "logs/math-check.err", "logs/math-check.exit"]
+    },
+    {
+      "id": "generate-check",
+      "command": "python Scripts/Docs/unreal_articles/labs/lumen-course/generate.py --check",
+      "cwd": "D:/UnrealUnderstanding",
+      "env": "PYTHONDONTWRITEBYTECODE=1",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "Verified 31 original SVG diagrams and 15 numerical checks",
+      "stderr": "",
+      "logs": ["logs/generate-check.out", "logs/generate-check.err", "logs/generate-check.exit"]
+    },
+    {
+      "id": "validate",
+      "command": "python Scripts/Docs/unreal_articles/validate.py",
+      "cwd": "D:/UnrealUnderstanding",
+      "env": "PYTHONDONTWRITEBYTECODE=1",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "Scene representation: 29,078 words; 18 chapters; 77 figures; 403 links | Nanite: 15,224 words; 20 chapters; 29 figures; 165 links | Lumen: 33,381 words; 16 chapters; 77 figures; 322 links | Material graph compilation: 12,170 words; 16 chapters; 12 figures; 115 links | Lumen reference: 64,773 words; 44 chapters; 58 figures; 983 links | 157 accessible SVGs; 313 recorded source ranges | PASS: article structure, links, figures",
+      "stderr": "",
+      "logs": ["logs/validate.out", "logs/validate.err", "logs/validate.exit"]
+    },
+    {
+      "id": "site-independence",
+      "command": "python Scripts/Docs/check_site_independence.py",
+      "cwd": "D:/UnrealUnderstanding",
+      "env": "PYTHONDONTWRITEBYTECODE=1",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "Site independence check passed: 11 HTML file(s) under D:\\UnrealUnderstanding\\Docs contain no links to Ardashir.",
+      "stderr": "",
+      "logs": ["logs/independence.out", "logs/independence.err", "logs/independence.exit"]
+    },
+    {
+      "id": "validate-source-hashes",
+      "command": "python Scripts/Docs/unreal_articles/validate.py --article lumen --unreal-root 'D:\\UnrealEngine'",
+      "cwd": "D:/UnrealUnderstanding",
+      "env": "PYTHONDONTWRITEBYTECODE=1",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "Lumen: 33,381 words; 16 chapters; 77 figures; 322 links | Lumen reference: 64,773 words; 44 chapters; 58 figures; 983 links | 157 accessible SVGs; 97 recorded source ranges | PASS: article structure, links, figures, and source hashes",
+      "stderr": "",
+      "logs": ["logs/validate-source-hashes.out", "logs/validate-source-hashes.err", "logs/validate-source-hashes.exit"]
+    },
+    {
+      "id": "vsm-verify",
+      "command": "python Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_vsm_storage.py --out D:\\UnrealUnderstanding-Review\\final-doc-check\\results\\vsm-copy --verify",
+      "cwd": "D:/UnrealUnderstanding",
+      "env": "PYTHONDONTWRITEBYTECODE=1",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "{\"PASS\": 33, \"FAIL\": 0, \"SKIP\": 0}",
+      "stderr": "",
+      "logs": ["logs/vsm-verify.out", "logs/vsm-verify.err", "logs/vsm-verify.exit"],
+      "note": "First invocation ran against an empty destination because the initial copy used -LiteralPath with a wildcard; after re-copying the 11 intended files (3,060,800 bytes) the verifier ran once and passed 33/33."
+    }
+  ],
+  "acceptance_checks": [
+    {
+      "id": "final-generated-content-equations-links-diagrams",
+      "status": "PASS",
+      "evidence": "build.py --check byte-compared all five generated pages to their sources (exit 0); 1028 LaTeX expressions verified; 31 deterministic SVGs and 15 numerical checks verified; validate.py passed structure/links/figures with 157 accessible SVGs and 313 ranges; published lumen.html embeds all 31 course SVGs and all 77 images resolve."
+    },
+    {
+      "id": "published-vsm-numerical-verification-no-raw-no-engine",
+      "status": "PASS",
+      "evidence": "decode_vsm_storage.py --verify, run only on results/vsm-copy with no --dump, --engine, or raw capture: PASS 33, FAIL 0, SKIP 0 (15 decode checks preserved + 18 verify checks). Verify checks include manifest byte+sha256 equality, NPZ array re-derivation, page-table re-encoding, all 4096 metadata records, 99 full-resolution depth pages, and the explicit check that only published artifacts were used."
+    },
+    {
+      "id": "no-placeholder-missing-image-or-cross-site-entry",
+      "status": "PASS",
+      "evidence": "0 ROOT_INSERT / TODO-new-shadow / PLACEHOLDER / lorem placeholders in the five course chapter sources and published lumen.html; 0 missing of 1100 local href/src targets across all 11 site HTML pages; 77/77 published lumen.html images exist; site independence passed 11 HTML pages with no Ardashir links; external hosts are only the project GitHub, Epic, and cited graphics/reference sources."
+    }
+  ],
+  "detailed_checks": [
+    {
+      "id": "stale-page",
+      "status": "PASS",
+      "command": "build.py --check",
+      "evidence": "All five generated pages, including lumen.html (854,158 bytes), are byte-identical to freshly rendered source."
+    },
+    {
+      "id": "equations",
+      "status": "PASS",
+      "command": "math_typesetting.py --check --node node",
+      "evidence": "Verified 1028 LaTeX expressions with the local Node renderer."
+    },
+    {
+      "id": "deterministic-diagrams",
+      "status": "PASS",
+      "command": "generate.py --check",
+      "evidence": "Verified 31 original SVG diagrams and 15 numerical checks without modifying files."
+    },
+    {
+      "id": "course-svg-native-text",
+      "status": "PASS",
+      "evidence": "31/31 course SVGs parse as XML; 411 native <text> elements; every file has non-empty <title>, non-empty <desc>, a viewBox, and no raster <image> embeds."
+    },
+    {
+      "id": "linked-vsm-pngs",
+      "status": "PASS",
+      "evidence": "All four linked PNGs exist in Docs/Unreal/assets/lumen-sponza/vsm-storage/publish/figures: vsm_pool_occupancy.png (105,964 B), vsm_page_table_sun.png (4,685 B), vsm_virtual_depth.png (209,940 B), vsm_depth_pages.png (10,626 B); each is referenced from lumen.html."
+    },
+    {
+      "id": "placeholders-in-course-source-and-page",
+      "status": "PASS",
+      "evidence": "0 occurrences of ROOT_INSERT or TODO-new-shadow in the five lumen-course*.html chapter sources and Docs/Unreal/lumen.html; separate site-wide scan found only benign HTML input placeholder attributes and an engine resource named *.Placeholder."
+    },
+    {
+      "id": "dedicated-anchors",
+      "status": "PASS",
+      "evidence": "In published lumen.html each id occurs exactly once: direct-lighting=1, reflections=1, shadow-views=1, offscreen-shadows=1, vsm-storage=1. Across the five source chapter files each id also occurs exactly once in total. Page-wide: 27 ids, 0 duplicates."
+    },
+    {
+      "id": "tables-in-collapsible-details",
+      "status": "PASS",
+      "evidence": "Published lumen.html: 10 <table> opens/closes, all 10 tables have an ancestor <details>; 78 <details> opens/closes balanced."
+    },
+    {
+      "id": "local-link-and-image-resolution",
+      "status": "PASS",
+      "evidence": "All 1100 local href/src targets across the 11 HTML pages resolve; 0 missing. Lumen page has 77 image references, all present."
+    },
+    {
+      "id": "source-link-registry-vs-pinned-source",
+      "status": "PASS",
+      "evidence": "validate.py --article lumen --unreal-root D:\\UnrealEngine verified 97 recorded lumen/lumen-reference source ranges against sha256. D:\\UnrealEngine HEAD is 71fe36aac5a8df5ccd66c763ffc902b29b6a9c43, matching the base_commit recorded in evidence/lumen-course.json."
+    },
+    {
+      "id": "scratch-cache-hygiene",
+      "status": "PASS",
+      "evidence": "No .tmp/.bak/.orig/scratch results under Docs, Scripts, or Data. Ignored entries are Python __pycache__ directories (runtime-only, gitignored, not published), named evidence/package logs, and the preserved temporal-reproduction-check output; untracked Data additions are provenance-only validation histories. New untracked site assets are the intended final publication."
+    }
+  ],
+  "vsm": {
+    "source": "Docs/Unreal/assets/lumen-sponza/vsm-storage",
+    "copy": "results/vsm-copy",
+    "source_files": 11,
+    "source_bytes": 3060800,
+    "copy_files": 11,
+    "copy_bytes_after_verify": 3048250,
+    "copy_note": "Initial copy was 11 files / 3,060,800 bytes; the verifier rewrote results/vsm-copy/checks.json with the verify result (37,661 bytes), which is why the final copy is 3,048,250 bytes.",
+    "raw_or_engine_used": false,
+    "decode_checks_passed": 15,
+    "verify_checks_passed": 18,
+    "fail": 0,
+    "skip": 0,
+    "checks_file": "results/vsm-copy/checks.json"
+  },
+  "artifacts": {
+    "logs": "results/logs/",
+    "helper_scripts": "results/checks-scripts/",
+    "vsm_copy": "results/vsm-copy/"
+  },
+  "not_rerun": [
+    "Raw capture decoding (--dump) and archive reconstruction/hash loops were not rerun in this step; those passed in separate preserved reviews.",
+    "GPU profiling and engine execution were not performed; no engine or hardware lease was needed for --verify.",
+    "Earlier temporal/radiosity/placement reproduction suites were not rerun; their preserved evidence remains under Data/Sponza/evidence and Scripts/Docs/unreal_articles/labs/lumen-sponza/temporal-reproduction-check."
+  ],
+  "overall_status": "PASS"
+}

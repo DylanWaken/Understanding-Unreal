@@ -1,0 +1,235 @@
+<p class="course-opening">Stand in Sponza's shaded arcade and look into the sunlit courtyard. The floor under your feet is not black. Light has arrived there after touching stone, cloth, and other surfaces. A polished object also shows pieces of the atrium that are outside the camera's view. We want to build a renderer that explains both observations, then make it respond while the camera moves.</p>
+<p>We will build the explanation in the same order as the system. First decide what a pixel measures. Then construct an estimator that can compute it without a time limit. Finally give that estimator a frame budget, identify the work that can be shared, and design the geometry, caches, probes, and reconstruction needed to share it. At each step, a diagram introduces the idea, an equation makes the contract precise, and an experiment checks a consequence.</p>
+<p>The design narrative is a reconstruction from the inspected Unreal Engine 5.8.1 implementation, not a claim to reproduce Epic's historical design meetings. The main implementation is opaque, deferred, Default Lit shading with Lumen. Transmission, volumetrics, hair, and Substrate require additional transport and storage contracts; they are identified where they cross this path. <a href="lumen-reference.html">The implementation and capture reference</a> retains the detailed room experiment, resource tables, source ranges, and replay arithmetic. It supplements this explanation rather than determining its reading order.</p>
+
+<section class="chapter" id="sponza-question">
+<h2>A scene that gives every approximation something to get wrong</h2>
+<p>Sponza is useful because its geometry separates several questions that a box tends to hide. The courtyard has an open view of the sky; the side aisles do not. Columns and balconies interrupt visibility. Cloth has a different albedo from stone. Deep recesses need indirect transport. A reflective test object can see a column that the camera cannot. The same scene can therefore reveal a missing light path, an incorrect material, a coarse visibility representation, or a history error.</p>
+<figure class="teaching-figure">
+<div class="annotated-capture"><img src="assets/lumen-sponza/images/lumen-hero-baseline.png" alt="Imported Sponza rendered in Unreal: sunlight reaches the left curtains and floor, the right arcade is shaded, a blue sky strip remains visible, and six material-test spheres sit at the far end." loading="eager"><span class="scene-marker" style="left:39.06%;top:94.44%" aria-hidden="true">A</span><span class="scene-marker" style="left:56.25%;top:94.44%" aria-hidden="true">B</span><span class="scene-marker" style="left:48.91%;top:81.53%" aria-hidden="true">C</span></div>
+<figcaption><strong>One scene, three lighting questions.</strong> A marks directly sunlit stone; B marks shaded stone to its right; C marks the polished metallic test object. The markers locate regions to follow, rather than classifying every light path reaching them. This is an Unreal render of imported Sponza geometry, with a six-sphere material chart added for the experiments.</figcaption></figure>
+<p>Keep three locations in mind throughout the article: <strong>A</strong>, directly illuminated courtyard stone; <strong>B</strong>, shaded stone beside it; and <strong>C</strong>, a glossy test surface. At A, direct lighting is a large contribution. At B, sky visibility and light that has already scattered become particularly important. At C, the material selects a narrow range of directions, so an error in just one direction can be conspicuous. These are three queries of one light field, not three different definitions of lighting.</p>
+<p>Every comparison must hold camera, geometry, materials, lights, resolution, and display transform fixed unless the caption explicitly names a changed variable. A brighter exposure is not better global illumination. A path-traced image is a useful reference, but a finite accumulation still has sampling error. A buffer shown with false colors is an explanation of stored values, not a photograph of light.</p>
+<div class="worked-example"><p><strong>Prediction before looking.</strong> Disable final gathering while keeping the sun and its shadows. A should retain its directly lit regions. B should become much darker. This control removes diffuse GI and the rough-reflection contribution supplied by probes. The direct highlight and dedicated glossy reflection at C need not disappear: these contributions have different owners in the renderer. We will return to this distinction when assembling SceneColor.</p></div>
+</section>
+
+<section class="chapter" id="light-quantities">
+<h2>Build the physical model: what travels along a ray?</h2>
+<p>A ray is a geometric query, not a packet with an arbitrary brightness. Write it as \(r(t)=x+t\omega\), where \(x\) is a position and \(\omega\) is a unit direction. Intersecting the ray tells us the first surface reached. To calculate an image, we also need a quantity that describes how much light is traveling in a small neighborhood of that position and direction.</p>
+<p>Our starting model is stationary, incoherent, unpolarized <em>geometric optics</em>. Objects are large compared with the wavelength of visible light. We ignore interference and diffraction, and treat propagation between surfaces as straight in a homogeneous medium. Reflection and refraction happen at interfaces. A material model represents the subpixel roughness that we do not resolve as explicit triangles. These are modeling assumptions: a path tracer solves this model; tracing more rays does not make diffraction emerge from it.</p>
+<p>Radiant energy \(Q\) is measured in joules. Its rate of transfer, \(\Phi=dQ/dt\), is power in watts. If a surface receives power, dividing by its area gives <em>irradiance</em>, \(E=d\Phi/dA\), in watts per square metre. That number alone loses direction. A ceiling light and a wall light could deliver equal irradiance to the floor while producing completely different reflections.</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/radiance.svg" alt="A narrow bundle of rays intersects a tilted surface. The projected footprint and solid angle are separated, then recombined in the definition of radiance." loading="lazy"><figcaption>The area that faces the bundle is the projected area. Tilt the same patch toward grazing incidence and less of the bundle crosses it. The cosine belongs to the measurement geometry; it is not a material property.</figcaption></figure>
+<p>Imagine a small surface patch of area \(dA\), a small cone of directions, and the power crossing the patch inside that cone. The cone is measured by its <em>solid angle</em> \(d\sigma\): the area it cuts from a unit sphere. A complete sphere has solid angle \(4\pi\); a hemisphere has \(2\pi\). If \(\theta\) is the angle between the surface normal and the cone direction, the patch presents projected area \(|\cos\theta|dA\). Define radiance \(L\) by</p>
+\[
+d\Phi=L(x,\omega)\,|n_g(x)\cdot\omega|\,dA(x)\,d\sigma(\omega).
+\]
+<p>Radiance therefore has units \(\mathrm{W\,m^{-2}\,sr^{-1}}\). It is a density over both position and direction. That is why a radiance cache needs directional information, and why a texture holding irradiance cannot be substituted for a texture holding radiance even if both contain RGB triples.</p>
+<p>We write \(n_g\) for the geometric normal and later use \(n_s\) for the material's shading normal. Directions \(\omega_i\) and \(\omega_o\) point <strong>away from the interaction</strong>: \(\omega_i\) points toward where incident light came from, and \(\omega_o\) points toward where outgoing light goes. A ray we trace toward a light travels opposite to the physical propagation of the incident light. Keep that distinction visible in diagrams and in code.</p>
+<h3>Why a distant wall is not intrinsically darker</h3>
+<p>In empty space, radiance stays constant along an unobstructed ray. A camera moving farther from a uniformly emitting wall sees the same radiance at each resolved point on the wall. What shrinks is the wall's angular size. It fills fewer pixels and illuminates another surface through a smaller cone. Inverse-square attenuation belongs to that change of angular size, not to a decay applied to every traced radiance value.</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/solid-angle.svg" alt="The same emitter at distances r and 2r subtends cones with one quarter the solid angle at the larger distance. Its radiance along a ray stays unchanged." loading="lazy"><figcaption>Separate two operations: transporting radiance along a ray, and integrating radiance over the directions occupied by a source. The second operation produces the distance dependence.</figcaption></figure>
+<p>For a source patch at \(y\), viewed from \(x\), let \(r=\|y-x\|\) and \(\omega_{xy}=(y-x)/r\). Its projected area is \(|n_g(y)\cdot(-\omega_{xy})|dA(y)\). Projecting it onto a sphere centred at x and dividing by that sphere's squared radius gives</p>
+\[
+d\sigma_x=\frac{|n_g(y)\cdot(-\omega_{xy})|}{r^2}\,dA(y).
+\]
+<p>This is the area-to-solid-angle Jacobian. It will appear once in an area-light estimator. It will also appear when we convert a sampling PDF. Applying it in both places without accounting for the measure is a common way to darken a renderer by an extra factor of distance squared.</p>
+<div class="worked-example"><p><strong>A numerical check.</strong> A small source patch of area 0.01 m² faces a receiver 2 m away. Its solid angle is approximately 0.0025 sr. Give it radiance 100 W m⁻² sr⁻¹ and let the receiver face it with cosine 0.8. Its contribution to irradiance is approximately \(100\times0.8\times0.0025=0.2\) W m⁻². Move the source to 4 m without changing its orientation: the contribution becomes approximately 0.05 W m⁻². Radiance on the connecting ray remains 100. The approximation is treating the finite source patch as small enough that distance and both cosines are nearly constant across it.</p></div>
+<h3>From spectral energy to a displayed pixel</h3>
+<p>Real surfaces scatter different wavelengths differently. The most explicit version of every equation below carries a wavelength \(\lambda\), and a sensor integrates arriving spectral radiance against its spectral response. A production RGB renderer instead operates in a chosen linear color space with fitted material and lighting parameters. Multiplication in these equations is componentwise when using RGB. It is not multiplication of sRGB-encoded texture bytes.</p>
+<p>Unreal also exposes photometric light controls, such as lux for directional-light illuminance. Photometry weights the spectrum by human visual sensitivity; it is not numerically identical to radiometric watts. A conversion needs a spectrum or a stated RGB calibration. The analytic examples here use radiometric units, while engine comparisons retain the engine's linear RGB and recorded light/exposure conventions. A raw RGB texel should not be labelled W m⁻² sr⁻¹ merely because its role in the equation is radiance. Its quantity, calibration, storage scale, and display transform are four separate descriptions.</p>
+<p>A pixel also has a spatial filter, a shutter interval, and a lens aperture. In the general case its measurement integrates over all of them. For our static, fixed-exposure, pinhole examples, we sample locations within a pixel and trace the corresponding rays. This leaves antialiasing and visibility in the integral while removing motion blur and depth of field as extra variables. Tone mapping happens after the linear lighting calculation. We will not compare tone-mapped PNG values as if they were physical radiance.</p>
+<h3>Generate the primary camera ray</h3>
+<p>Implement the pinhole explicitly. Let C be its position, F its unit forward direction, R its unit right direction, and U its unit up direction, with an orthonormal camera frame. Let the image be W by H pixels and a = W/H. For pixel column i and row j, choose offsets ξₓ, ξᵧ in [0,1). With horizontal field of view φₕ, generate</p>
+\[
+s_x=2\frac{i+\xi_x}{W}-1,\qquad s_y=1-2\frac{j+\xi_y}{H},\qquad
+d=\operatorname{normalize}\left[F+s_x\tan(\phi_h/2)R+
+\frac{s_y}{a}\tan(\phi_h/2)U\right],\qquad r(t)=C+td.
+\]
+<p>The minus sign in sᵧ converts image rows increasing downward into camera height increasing upward. The corresponding vertical field of view is φᵥ = 2 arctan[tan(φₕ/2)/a]. Sampling different offsets within the pixel changes primary visibility near edges. Averaging the resulting radiance estimates implements the pixel's spatial measurement; we will account for its sampling weight below.</p>
+
+</section>
+
+<section class="chapter" id="light-transport">
+<h2>Turn one surface interaction into the rendering equation</h2>
+<p>At point B on the arcade floor, choose one outgoing direction: toward the camera. Now sweep a small incoming cone over the hemisphere above the floor. Each cone brings irradiance. The material decides how much of that irradiance is scattered toward the camera. Summing those contributions is the local light-transport problem.</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/scattering.svg" alt="Several incoming angular patches illuminate one surface point. Their weighted outgoing contributions add in the camera direction. Emission is a separate additive contribution." loading="lazy"><figcaption>One material evaluation connects an incoming direction to an outgoing direction. Integrating over all incoming directions produces the reflected radiance. The renderer must supply the incoming field; the material alone cannot.</figcaption></figure>
+<p>The <em>bidirectional scattering distribution function</em> \(f_s(x;\omega_i\to\omega_o)\) is outgoing radiance per unit incident irradiance for the specified pair of directions. Its units are inverse steradians. For reflection on an opaque surface it is a BRDF; a BSDF also permits transmission. In the first derivation, geometric and shading normals agree. A differential cone contributes</p>
+\[
+dL_o(x,\omega_o)=f_s(x;\omega_i\to\omega_o)\,L_i(x,\omega_i)\,|n_g\cdot\omega_i|\,d\sigma(\omega_i).
+\]
+<p>Integrate over the supported incoming directions and add local emission:</p>
+\[
+L_o(x,\omega_o)=L_e(x,\omega_o)+\int_{S^2} f_s(x;\omega_i\to\omega_o)L_i(x,\omega_i)\,d\sigma_x^\perp(\omega_i),\qquad
+d\sigma_x^\perp=|n_g(x)\cdot\omega_i|\,d\sigma.
+\]
+<p>The sphere notation follows the general scattering formulation. For an opaque, one-sided surface, the BSDF is zero for unsupported pairs and the integral reduces to a hemisphere. An absolute cosine does not make a material two-sided. The emitted term exists even if no light arrives; the reflected term exists only because light arrives from somewhere else.</p>
+<p>That “somewhere else” introduces recursion. Let y be the first intersection of the ray from x along \(\omega_i\). In vacuum, \(L_i(x,\omega_i)=L_o(y,-\omega_i)\). To evaluate lighting at x, we need lighting at y. To evaluate lighting at y, we may need another surface, and so on. A ray that misses the scene instead queries an environment emission function.</p>
+<div class="worked-example"><p><strong>A material test with an exact answer.</strong> A Lambertian material has \(f_s=\rho/\pi\), where \(\rho\) is its diffuse reflectance. Place it in a prescribed constant incident field \(L_i=L_0\). Since \(\int_{H^2}\cos\theta\,d\sigma=\pi\), its reflected radiance must be \(L_o-L_e=\rho L_0\). With \(\rho=0.6\) and \(L_0=2\), the answer is 1.2. A sampling implementation should converge to this value independently of how it distributes the samples.</p></div>
+<h3>Give glossy reflection a physical model</h3>
+<p>A polished surface does not gather all incident directions equally. It sends a concentrated reflection of the environment toward the camera. A rougher surface spreads that response. We can model the unresolved surface as a collection of tiny mirror facets with varying normals. For a pair of reflection directions, the facet that could connect them has normal \(h=(\omega_i+\omega_o)/\|\omega_i+\omega_o\|\).</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/microfacets.svg" alt="A smooth surface has similar facet normals and a narrow reflection lobe; a rough surface has a broader distribution. The half-vector connects the incident and outgoing directions." loading="lazy"><figcaption>Roughness changes the angular footprint of the query. It does not merely blur an already computed color. This is why diffuse lighting and sharp reflections need different sampling and reconstruction strategies.</figcaption></figure>
+<p>Three factors are needed. \(D(h)\) describes the distribution of facet normals, normalized by projected area. Fresnel \(F\) gives the fraction reflected at a facet interface. Masking and shadowing \(G_2\) account for facets hidden from the viewer or incident direction. Converting from facet orientation to scattering directions produces</p>
+\[
+f_{\rm spec}(\omega_i,\omega_o)=\frac{D(h)F(\omega_i\cdot h)G_2(\omega_i,\omega_o)}{4|n_s\cdot\omega_i|\,|n_s\cdot\omega_o|}.
+\]
+<p>The denominator is part of the BRDF definition, not an instruction to divide an accumulated pixel by two grazing-angle cosines. Evaluate the supported hemisphere, handle limits stably, then multiply by the incoming cosine in the transport integral. In isotropic GGX, with \(\alpha\) the slope-width parameter,</p>
+\[
+D(h)=\frac{\alpha^2}{\pi\left((n_s\cdot h)^2(\alpha^2-1)+1\right)^2},\quad
+\Lambda(\omega)=\frac{\sqrt{1+\alpha^2\tan^2\theta_\omega}-1}{2},\quad
+G_2=\frac{1}{1+\Lambda(\omega_i)+\Lambda(\omega_o)}.
+\]
+<p>These equations describe an isotropic GGX distribution and height-correlated Smith visibility. Specific Unreal permutations can use approximations, anisotropic forms, or different layer handling. Perceptual roughness commonly maps to \(\alpha=r^2\); verify the parameter convention before copying a formula. Confusing r and α changes both the highlight and the PDF.</p>
+<p>For a dielectric at normal incidence, \(F_0=((\eta_t-\eta_i)/(\eta_t+\eta_i))^2\). Air to a material with index 1.5 gives 0.04. Fresnel reflectance increases toward grazing angles. The Schlick fit \(F(c)=F_0+(1-F_0)(1-c)^5\) is a useful RGB approximation. Metals require a conductor response; in a metalness workflow, the base color supplies the colored specular reflectance and the diffuse term is suppressed. A physically meaningful metalness blend is not a sum of a fully reflective metal and a fully diffuse surface.</p>
+<p>Energy conservation means that integrating the scattered power over all outgoing directions cannot exceed the incident power for a passive surface. Reciprocity constrains the response when source and receiver exchange roles, subject to the proper refractive-index factors for transmission. A single-scattering microfacet model can lose energy at high roughness because some light would bounce between facets. Multiple-scattering compensation is a material-model choice; additional path samples do not repair a missing term in the BSDF.</p>
+<details class="implementation-detail"><summary>Implement a glossy continuation sampler with a checkable PDF</summary>
+<p>Evaluating a BRDF and drawing a direction from it are different operations. Here is a complete, deliberately simple isotropic GGX proposal. Sample a facet normal h from its projected distribution, whose solid-angle density is pₕ(h) = D(h)(n·h). For two independent uniform variates u,v and positive α, invert that distribution:</p>
+\[
+\phi_h=2\pi v,\qquad
+\cos\theta_h=\sqrt{\frac{1-u}{1+(\alpha^2-1)u}},\qquad
+h=(\sin\theta_h\cos\phi_h,\sin\theta_h\sin\phi_h,\cos\theta_h).
+\]
+<p>Transform h from the local normal frame to world space. Reflect the away-pointing outgoing direction about h to obtain the proposed incoming direction. Reflection changes solid angle by a factor of 4|ωₒ·h|, so the direction PDF must change too:</p>
+\[
+\omega_i=2(\omega_o\cdot h)h-\omega_o,\qquad
+p_\sigma(\omega_i)=\frac{D(h)|n\cdot h|}{4|\omega_o\cdot h|}.
+\]
+<p>If ωₒ·h is nonpositive or the reflected direction lies below the supported geometric hemisphere, return a zero-contribution event. Do not repeatedly redraw until a direction succeeds while retaining the original PDF: conditioning on success changes the distribution. This simple sampler wastes work at grazing angles. Sampling the distribution of <em>visible</em> facet normals improves that behavior, but requires its own corresponding PDF; changing only the sample generator breaks the estimator. The <a href="https://pbr-book.org/4ed/Reflection_Models/Roughness_Using_Microfacet_Theory">PBR microfacet chapter</a> develops that visible-normal distribution.</p>
+<p>For a material with diffuse and glossy lobes, choose the glossy proposal with probability q and cosine sampling with probability 1−q. At the generated direction, evaluate the full non-delta BRDF and the full mixture density, including the proposal that was not selected:</p>
+\[
+p_{\rm mix}(\omega_i)=q\,p_{\rm glossy}(\omega_i)+(1-q)\,p_{\rm diffuse}(\omega_i),\qquad
+\beta' = \beta\,\frac{[f_{\rm glossy}+f_{\rm diffuse}]|n\cdot\omega_i|}{p_{\rm mix}(\omega_i)}.
+\]
+<p>Keep q positive for every contributing lobe, and use this same mixture PDF when evaluating the competing BSDF strategy for MIS. A metal can set the diffuse contribution and its selection probability to zero. Exact zero roughness should use a delta event with discrete probability; clamping α to a positive minimum instead defines a slightly rough material. Neither convention should be hidden behind a division by zero.</p>
+<p><strong>Check before rendering Sponza.</strong> With the viewer along the normal, α = 0.5, F₀ = 0.04, and a constant unit incident field, the downloadable numerical example compares the reflected radiance from this sampled estimator against an independent hemisphere integration of the GGX BRDF. It also checks that the projected facet distribution integrates to one. The two tests distinguish an incorrectly normalized D from an incorrect reflection Jacobian. This is a reference proposal for the ideal path tracer, not a claim that Lumen's structured probe refinement uses this sampler.</p>
+</details>
+<details class="implementation-detail"><summary>Derive reflection and refraction within geometric optics</summary>
+<p>Geometric optics chooses a path with stationary optical length, the integral of refractive index along geometric distance. For a flat boundary, put a source at height hᵢ on one side and a receiver at depth hₜ on the other, with horizontal separation d. If the ray crosses the interface at horizontal coordinate a, its optical length is</p>
+\[
+\mathcal S(a)=\eta_i\sqrt{a^2+h_i^2}+\eta_t\sqrt{(d-a)^2+h_t^2}.
+\]
+<p>Set its derivative to zero. Each horizontal displacement divided by segment length is the sine of the angle from the interface normal:</p>
+\[
+\frac{d\mathcal S}{da}=\eta_i\frac{a}{\sqrt{a^2+h_i^2}}-
+\eta_t\frac{d-a}{\sqrt{(d-a)^2+h_t^2}}=0
+\quad\Longrightarrow\quad \eta_i\sin\theta_i=\eta_t\sin\theta_t.
+\]
+<figure class="teaching-figure"><img src="assets/lumen-course/refraction.svg" alt="A physical light ray meets an air-glass interface. Its reflected angle equals its incident angle, and its transmitted direction bends toward the normal according to Snell's law." loading="lazy"><figcaption>The 45° incident beam refracts to about 28.1° for an air-to-glass index ratio of 1/1.5. These arrows follow physical light propagation; the BSDF's incident direction still points toward the source.</figcaption></figure>
+<p>Reflection has equal incident and outgoing angles. With our away-pointing ωᵢ convention, its ideal reflected direction is ωₒ = 2(n·ωᵢ)n − ωᵢ. Refraction is possible only if the computed sin θₜ is at most one; otherwise total internal reflection occurs. A renderer samples the reflected or transmitted event and weights by the event probability as well as the Fresnel response. An ideal direction is a delta constraint, not a finite-valued glossy lobe evaluated at a single direction.</p>
+<p>The optical invariant for a ray bundle is étendue, proportional to η²|cos θ|dA dσ. Conservation of power along a lossless bundle therefore conserves L/η² across refractive transport, with the interface's reflected/transmitted power partition handled separately. The earlier statement that radiance is constant along a ray assumes a fixed-index vacuum segment. Radiance transport and importance transport need different adjoint handling at refractive interfaces; the selected BSDF transport mode must own those factors. Our opaque Sponza experiment has no transmitted paths, so its sampler avoids that extra state without changing the opaque derivation.</p>
+</details>
+<h3>Normals, texture filtering, and the model the engine actually evaluates</h3>
+<p>The triangle normal determines geometric sidedness and the area/solid-angle Jacobian. A normal map supplies a different shading frame for the local scattering model. Treating them as interchangeable can create energy and reciprocity errors. A renderer must define how its shading-frame BSDF relates to the geometric measure, and must reject directions that cross an unsupported geometric side. An adjoint, importance-transport implementation needs the corresponding shading-normal correction; a camera-only tutorial must not silently advertise its simplified convention as a bidirectional renderer.</p>
+<p>Texture mip selection is also part of the material query. The primary rasterized point has screen-space derivatives; a distant ray hit does not automatically have equivalent derivatives. A card capture evaluates a material from another projection and at another resolution. Even if both paths use the same nominal base-color texture, their filtered material values may differ. Later, when a cache reflection disagrees with hit lighting, we will ask whether the difference came from visibility, directional lighting, or this material-footprint approximation.</p>
+</section>
+
+<section class="chapter" id="path-space">
+<h2>Unroll the recursion into paths, then sample them</h2>
+<p>Follow a possible contribution to B: sun or sky → courtyard stone → arcade floor → camera. The courtyard stone changes both spectrum and direction. The floor changes them again. Visibility decides whether each segment is open. To obtain the pixel, we must add this contribution to all other possible sequences, including shorter and longer ones.</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/paths.svg" alt="A light path reaches a vertical wall, scatters to a horizontal floor, and then reaches a camera. A separate dashed segment shows direct emitter visibility. Each interior surface contributes scattering and every segment contributes geometry and visibility." loading="lazy"><figcaption>Path length counts edges, not the vague word “bounce.” The gold path has three edges and two interior scattering vertices. The light-to-sensor ordering stays fixed even though a camera path tracer discovers the same vertices in reverse order.</figcaption></figure>
+<p>Write a path as \(\bar x=(x_0,\ldots,x_k)\), ordered from emitter \(x_0\) to sensor \(x_k\), following Veach's notation. A path has k edges and k−1 interior scattering vertices. Converting the direction integral at each vertex to an area integral puts the two cosines and inverse-square factor for an edge into</p>
+\[
+G(x\leftrightarrow y)=V(x\leftrightarrow y)\frac{|n_g(x)\cdot\omega_{xy}|\,|n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2}.
+\]
+<p>Here V is one when the open segment is unobstructed, zero otherwise. For the surface-only path-space expression, let \(\mathcal M\) include scattering, emitting, and sensor surface domains. The sensor response \(W_e^{(j)}(x_{k-1}\to x_k)\) selects measurement j. With arrows following light, the contribution of a path is</p>
+\[
+f_j(\bar x)=L_e(x_0\to x_1)\,W_e^{(j)}(x_{k-1}\to x_k)
+\left[\prod_{i=1}^{k-1}f_s(x_{i-1}\to x_i\to x_{i+1})\right]
+\left[\prod_{i=0}^{k-1}G(x_i\leftrightarrow x_{i+1})\right].
+\]
+<p>For each length, integrate over the possible vertices using the area-product measure \(d\mu_k=\prod_{i=0}^k dA(x_i)\), then sum over lengths:</p>
+\[
+I_j=\sum_{k=1}^{\infty}\int_{\Omega_k}f_j(\bar x)\,d\mu_k(\bar x).
+\]
+<p>This is the rendering equation with its recursion written out. It does not require a renderer to construct giant arrays containing every path. It gives us an accounting system: every algorithm must specify which paths it estimates, how it samples them, and which factors it approximates. Point lights, ideal directional lights, ideal mirrors, and pinhole cameras contain delta distributions; their constrained endpoints or directions need discrete/delta sampling rules rather than being treated as ordinary densities per unit area. An environment emitter is represented at infinity with a directional measure rather than an ordinary finite-area endpoint. The practical camera tracer below conditions on its generated camera ray and handles each light through its declared sampling measure.</p>
+<h3>Why random sampling gives the right average</h3>
+<p>Consider any integral \(I=\int g(z)d\nu(z)\). Choose z with density p relative to the same measure ν. The random value \(g(z)/p(z)\) has expectation \(\int[g(z)/p(z)]p(z)d\nu(z)=I\), provided p is positive wherever g contributes. The probability in the numerator of that expectation cancels the sampling density in the estimator. Averaging N such values reduces variance; it does not change the expected answer.</p>
+\[
+\widehat I_N=\frac1N\sum_{s=1}^{N}\frac{g(z_s)}{p(z_s)},\qquad
+\operatorname{Var}(\widehat I_N)=\frac{\operatorname{Var}(g/p)}{N}
+\]
+<p>The variance expression assumes independent identically distributed samples. Stratification and low-discrepancy sampling change the error behavior, but not the requirement to account for the sampling measure. The familiar square-root convergence means that four times as many independent samples give about half the standard deviation. This is already a warning about trying to buy real-time stability using more independent paths alone.</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/sampling.svg" alt="Uniform hemisphere samples and cosine-weighted samples estimate the same diffuse integral. Sample positions differ and the inverse-PDF weights compensate for that difference." loading="lazy"><figcaption>Importance sampling changes where work is spent. It must change the weight too. A dense set of directions around the normal is not itself a brighter hemisphere.</figcaption></figure>
+<p>For an opaque diffuse bounce, uniform hemisphere sampling has \(p_\sigma=1/(2\pi)\), so its local weight is \(f_s\cos\theta/p_\sigma=2\rho\cos\theta\). Cosine sampling has \(p_\sigma=\cos\theta/\pi\), giving the constant weight ρ. Generate the latter from two uniform variates \(u,v\in[0,1)\):</p>
+\[
+r=\sqrt u,\quad\phi=2\pi v,\quad
+\omega_{\rm local}=(r\cos\phi,r\sin\phi,\sqrt{1-u}).
+\]
+<p>Rotate that local direction into an orthonormal frame around the surface normal. For the constant-field test in the previous chapter, cosine sampling returns exactly ρL₀ for every sample, apart from floating-point arithmetic. Uniform sampling fluctuates but has the same mean. This gives an unusually strong unit test: a PDF mistake cannot hide behind a plausibly illuminated image.</p>
+<div class="teaching-demo" data-demo="hemisphere">
+<div class="demo-controls"><label for="hemisphere-count">Directions per estimate</label><input id="hemisphere-count" type="range" min="1" max="128" value="32"><button type="button">Try another seed</button></div>
+<div class="demo-plot" tabindex="0" role="region" aria-label="Interactive uniform and cosine-weighted sampling of a hemisphere; horizontally scrollable on narrow screens"><svg viewBox="0 0 900 440" role="img" aria-label="Interactive uniform and cosine-weighted sampling of a hemisphere"></svg></div>
+<output aria-live="polite"></output><p class="demo-caption">Change the count or seed. Uniform estimates fluctuate around 1.2. Cosine estimates stay at 1.2 because this particular integrand is proportional to the sampling density. With an occluding column or a small bright source, cosine sampling no longer has zero variance. This is an executable toy experiment, not an Unreal measurement.</p>
+<noscript><p>With JavaScript disabled, use the preceding sampling diagram and the downloadable numerical checks.</p></noscript></div>
+<h3>Implement the camera random walk</h3>
+<p>Maintain two RGB quantities. L is the accumulated estimate of radiance. β is a dimensionless weight for the partial path already sampled. Initialize β with the camera-sample weight defined below; it is one for our uniformly sampled, normalized pinhole pixel. At a non-emissive surface, sample a continuation direction and multiply β by \(f_s|n\cdot\omega_i|/p_\sigma\). The next ray supplies incident radiance; the product of these weights transports its contribution back to the camera.</p>
+<p>Make that camera contract explicit. Let Pⱼ be the pixel's region on the image plane and r(u,v) the pinhole ray through a sample in it. We choose a normalized box-filtered radiance measurement:</p>
+\[
+\overline I_j=\frac{1}{|P_j|}\int_{P_j}L(r(u,v))\,du\,dv,\qquad
+w_{\rm camera}(u,v)=\frac{1}{|P_j|\,p_{uv}(u,v)}.
+\]
+<p>Uniform sampling has pᵤᵥ = 1/|Pⱼ|, so wcamera = 1. A general normalized pixel filter replaces 1/|Pⱼ| with its filter weight. Lens transmission, vignetting, shutter sampling, and spectral response belong in a more general camera measurement and sampling weight; they are not extra factors to guess at a surface interaction. The finite-area Wₑ formulation above permits those sensor models, while this conditional pinhole measurement removes its singular endpoint from the sampled variables. See the <a href="https://pbr-book.org/4ed/Cameras_and_Film/Camera_Interface">PBR camera interface</a> for the corresponding ray-and-weight separation.</p>
+<pre><code>radiance = 0
+beta = camera_sample_weight
+ray = generate_camera_ray(pixel, lens_sample, time_sample)
+previous_pdf = 0
+previous_was_delta = true
+
+for depth = 0, 1, 2, ...:
+    hit = intersect_nearest(ray)
+    if hit is absent:
+        add_environment_with_emitter_hit_weight()
+        break
+
+    material = evaluate_material(hit, ray_footprint)
+    add_emission_with_emitter_hit_weight()
+    sample_and_add_one_direct_light_connection()
+
+    sample = material.sample_bsdf(outgoing = -ray.direction)
+    if sample.pdf == 0 or sample.f == 0: break
+    beta *= sample.f * abs(dot(hit.shading_normal, sample.wi)) / sample.pdf
+    previous_pdf = sample.pdf
+    previous_was_delta = sample.is_delta
+    previous_vertex = hit.position
+
+    if depth >= roulette_start:
+        survive = clamp(max_component(beta), 0.05, 0.95)
+        if random() >= survive: break
+        beta /= survive
+
+    ray = spawn_offset_ray(hit, sample.wi)
+
+return radiance</code></pre>
+<p>The offset in <code>spawn_offset_ray</code> prevents numerical self-intersection. It should be based on intersection error and geometric sidedness; a fixed large world-space offset can leak through thin walls. Intersection acceleration changes the cost of finding the nearest surface, not its intended identity. A BVH implementation must traverse child bounds and keep the nearest valid hit, respecting alpha masks and sidedness.</p>
+<p>The two named accumulation operations are important enough to derive next. Leaving them as “add lighting” would conceal the most common double-counting error in a path tracer.</p>
+<h3>Connect to a light instead of hoping to hit it</h3>
+<p>A small bright source occupies few directions. BSDF sampling often misses it. <em>Next-event estimation</em> chooses a light with probability \(P_\ell\), samples a point y on that light with area density \(p_A(y)\), and tests the segment from x to y. For an area emitter the direct contribution is</p>
+\[
+\widehat L_{\rm light}=\beta\,
+\frac{L_e(y\to x)\,f_s(x;\omega_{xy}\to\omega_o)\,G(x\leftrightarrow y)}{P_\ell p_A(y)}.
+\]
+<p>Equivalently, convert the light sample to a directional PDF \(p_{\ell,\sigma}=P_\ell p_A(y)r^2/|n_g(y)\cdot(-\omega_{xy})|\). The estimator then uses \(f_sL_i|n_g(x)\cdot\omega_{xy}|/p_{\ell,\sigma}\). Both forms are the same estimate. A point light has a discrete direction conditioned on its selected light identity; do not assign it the area PDF of a finite emitter.</p>
+<p>Complete the light interface before implementing the sun. An ideal directional source supplies beam irradiance E⊥ perpendicular to its direction ωℓ, rather than a finite emitter point. Selecting it with probability Pℓ gives</p>
+\[
+\widehat L_{\rm directional}=\beta\,
+\frac{f_s(x;\omega_\ell\to\omega_o)\,E_\perp\,|n_g\cdot\omega_\ell|\,V_\ell(x)}{P_\ell}.
+\]
+<p>Here Vℓ tests the ray toward the source through the scene. There is no inverse-square attenuation for this ideal parallel beam, and no area PDF. A point source instead supplies radiant intensity Iℓ toward x; replace E⊥ by Iℓ/r². A finite angular sun disk needs a directional distribution over its disk and the corresponding PDF. Unreal's finite source angle and soft-shadow options must therefore be recorded; the delta formula is the zero-angle idealization. <a href="https://pbr-book.org/4ed/Light_Sources/Distant_Lights">Distant lights</a> and <a href="https://pbr-book.org/4ed/Light_Sources/Point_Lights">point lights</a> require distinct measure contracts even if a renderer exposes them through one sampling interface.</p>
+<p>For an ordinary environment distribution, sample ω with directional density pσ and evaluate β fₛ Lenv(ω) |n·ω| V(x,ω)/pσ, also accounting for light-selection probability if the environment is one selected source. A lat-long environment image has unequal solid angle per texel: a PDF built from image brightness must include the spherical Jacobian, proportional to sin θ. This differs from sampling a point on a finite area emitter.</p>
+<p>There is a second way to discover the same light connection: sample the BSDF and hit the emitter on the next segment. Adding both full estimates counts the same direct contribution twice. Multiple importance sampling (MIS) weights them so that their weights sum to one for the same non-delta path. With one sample from each strategy, a common power heuristic is</p>
+\[
+w_\ell=\frac{p_{\ell,\sigma}^2}{p_{\ell,\sigma}^2+p_{b,\sigma}^2},\qquad
+w_b=1-w_\ell.
+\]
+<p>An ideal delta light has no competing ordinary solid-angle BSDF sample for that connection, so its direct-light sample uses weight one after the light-selection probability is accounted for. Finite angular or area sources can have competing non-delta strategies and use the PDFs below.</p>
+<p>The light-sampled connection receives wℓ. If a BSDF continuation hits an emitter or the environment, evaluate the competing light PDF from the <em>previous</em> vertex and give that emission wb. A primary camera hit on an emitter has no competing direct-light sample and receives weight one. An ideal specular continuation also needs the delta-aware rule: an ordinary solid-angle light sample cannot generate the same constrained event. The exact treatment depends on the sampled event measure, not merely on a material being named “shiny.”</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/mis.svg" alt="Two sampling routes generate the same surface-to-light segment. Their PDFs are expressed in solid angle and complementary MIS weights prevent double counting." loading="lazy"><figcaption>At a matte point below a small lamp, light sampling is valuable. On a nearly mirror-like surface, BSDF sampling is valuable. MIS lets each strategy dominate where it is effective while preserving the same integral.</figcaption></figure>
+<p>Russian roulette handles long paths. If a path survives with probability q, divide its surviving weight by q: \(q(\beta/q)+(1-q)0=\beta\). This removes work without changing the conditional expectation. A fixed maximum depth removes all longer paths and introduces truncation bias. For refractive paths, the survival heuristic should account for refractive-index scaling so that a temporary radiance-scale change does not terminate useful paths prematurely. Our opaque examples avoid that extra state.</p>
+<div class="worked-example"><p><strong>Trace the numbers.</strong> A cosine-sampled diffuse interaction with reflectance 0.6 changes β from 1 to 0.6. A second with reflectance 0.5 changes it to 0.3. If roulette then survives with q=0.4, the surviving path carries β=0.75, and otherwise contributes zero. The expected weight remains 0.3. If the next event is an emission value of 8 with no competing strategy, its expected camera contribution is 2.4. This arithmetic tests path weighting; it does not stand in for the visibility and sampling probabilities of an entire Sponza pixel.</p></div>
+<p><a href="assets/lumen-course/experiments.json">The executable numerical examples</a> check the Jacobian, diffuse integral, PDFs, MIS partition, roulette, and cache iteration introduced in this article. The <a href="lumen-reference.html#reference-scene">small CPU path tracer</a> remains available to step through a complete renderer. Sponza's image reference is rendered by Unreal's path tracer with the same scene setup; the two renderers serve different tests.</p>
+<div class="capture-pair">
+<figure><img src="assets/lumen-sponza/images/pt-hero-256spp.png" alt="Unreal path tracing of Sponza at 256 observed samples per pixel. Noise remains visible in the shaded arches and cloth." loading="lazy"><figcaption><strong>256 samples per pixel.</strong> Follow the blue cloth into the shaded arch above it: the small bright and dark fluctuations are sampling noise, not changes in material.</figcaption></figure>
+<figure><img src="assets/lumen-sponza/images/pt-hero-1024spp.png" alt="The identical Sponza camera and lighting at 1024 observed path-tracing samples per pixel, with less noise and no denoising." loading="lazy"><figcaption><strong>1,024 samples per pixel.</strong> Four times as many samples reduce the fluctuations. The sunlight boundary and architectural edges remain in the same places.</figcaption></figure>
+</div>
+<p>These are real Unreal path-tracer accumulations of the imported atrium, with eight maximum bounces and denoising disabled. The capture reads the accumulated sample index before and after each screenshot; the counts above are observed, not just requested console settings. Both images use the same materials, captured-scene SkyLight, sun, fixed exposure, and display transform. Reference-atmosphere tracing is disabled so that the path tracer retains the scene's SkyLight illumination. This matches the lighting inputs; it does not make the two renderers' material, visibility, or atmosphere implementations identical.</p>
+<p>The remaining grain is useful evidence. A single bright sample is not a stable feature to ask Lumen to reproduce. Conversely, a stable colored bounce on the arcade stone should survive increased sampling. Use the larger accumulation to locate those structures, then return to the smaller one to see which features were still uncertain. The <a href="assets/lumen-sponza/data/run-pt.json">sample-counter and runtime records</a> retain the accepted captures and the rejected attempt whose accumulation reset during capture.</p>
+</section>

@@ -46,8 +46,9 @@ The package accounts for every input file:
   records**, **557 ReferencedStructs records** and **1,231 parameter/structure
   blocks**.
 - **3,136 unique chunks**, 1,567,676,477 unique raw bytes, 252,014,634
-  compressed bytes. The built package has 6,410 files (700,692,456 bytes before
-  ZIP). The intermediate publication ZIP is 275,220,096 bytes, SHA-256
+  compressed bytes. The current gzip-metadata package has 6,410 files
+  (343,709,844 bytes). Its original raw-metadata container was 700,692,456
+  bytes before ZIP. The earlier intermediate publication ZIP is 275,220,096 bytes, SHA-256
   `75cf3c2f1876f2420f7c604cbfed1d6edaa9b62439b96bf9cca632248522412f`.
 
 ### Viewport applicability
@@ -105,11 +106,41 @@ again with `tools/package_frame.py verify`; the temporary extraction was removed
 after success. The raw capture and all package chunks/payloads are read-only
 inputs; this step does not delete or rewrite them.
 
-The static site at `site/` deliberately ships **without** the raw package. Point
-the explorer at an extracted archive with `?package=<url>` or place the package
-at `site/assets/lumen-frame/`.
+The published explorer is `Docs/Unreal/frame-explorer.html`, with its default
+package at `Docs/Unreal/assets/lumen-frame/`. Point it at another served
+package with `?package=<url>`. The older archive described above retains its
+original layout and hash; it is separate from the published container.
 
 ## Package file contract
+
+The names below are logical metadata names. The published room package keeps
+`index.json` as an uncompressed bootstrap and stores the other generated JSON
+documents, including per-resource and per-pass records, as `.json.gz` files.
+`index.files`, `index.schema.path`, and summary `record` fields name the actual
+paths. The browser detects gzip from the response bytes, so a server that already
+decodes an HTTP gzip response does not cause a second decompression. A missing
+file promised by the index, invalid JSON, or corrupt gzip is an error.
+
+This is a storage change. Every native file, every compressed payload chunk,
+every reconstructed payload byte, and the decompressed source schema retain
+their identities. The converted room package is 343,709,844 bytes, compared with
+700,692,456 bytes for the raw-metadata container. No resource or pass is removed.
+The original archive remains a valid raw-metadata package. The published
+container has its own complete file-and-hash manifest in
+`publication/site-package-manifest.json`; `publication/archive-manifest.json`
+continues to describe the original archive.
+
+For a new capture, add `--metadata-gzip` to `tools/package_frame.py build`.
+To convert a raw package into a separate directory, run:
+
+```text
+python tools/package_metadata.py convert --input <raw-package> --output <new-directory>
+python tools/package_frame.py verify --package <new-directory>
+```
+
+`tools/package_metadata.py read --package <directory> --path inventory.json`
+reads either container. The verifier reconstructs payloads and checks hashes;
+successful decompression alone is not an evidence check.
 
 ```
 index.json                 manifest, counts, schema status, chunk index

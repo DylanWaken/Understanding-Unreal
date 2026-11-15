@@ -1,0 +1,701 @@
+{
+  "schema": "vsm-independent-review-v1",
+  "verdict": "fail",
+  "summary": {
+    "PASS": 14,
+    "FAIL": 2,
+    "SKIP": 0
+  },
+  "checks": [
+    {
+      "id": "input_records",
+      "status": "PASS",
+      "detail": "receivers.json / orientation.json / frame-package index.json bytes and SHA-256 match the published run records",
+      "measurements": {
+        "receivers_sha256": "8ab5394b94f96df215b452f2427c1fce0596e81c86750bf74cb880f897b0ca63",
+        "orientation_sha256": "4c89765ecc9c06a2bf58974ec299469e8e9f6144095b242c6d93d33095c2f77f",
+        "index_sha256": "cab06a753e1380a4ffca0f1c2810572f005beaba6e66d2605eb13259f4365088"
+      }
+    },
+    {
+      "id": "selected_pass_840",
+      "status": "PASS",
+      "detail": "pass 840 is the presented VirtualShadowMapProjection(Input:GBuffer) and its only output is the shadow mask; the page table, all PageFlags mips and both pool slices are inputs",
+      "measurements": {
+        "pass": 840,
+        "event": "VirtualShadowMapProjection(Input:GBuffer)",
+        "outputs": [
+          "00040000020c16c43a30.mip0"
+        ],
+        "input_count": 97
+      }
+    },
+    {
+      "id": "recorded_writer_lineage",
+      "status": "PASS",
+      "detail": "Passes.json records page table 792, PageFlags mip0 790 / mips1..6 791, pool resource 811 and metadata 810 as the last outputs before pass 840",
+      "measurements": {
+        "page_table": 792,
+        "page_flags": [
+          790,
+          791,
+          791,
+          791,
+          791,
+          791,
+          791
+        ],
+        "pool_slice0": 811,
+        "pool_slice1": 811,
+        "metadata": 810
+      }
+    },
+    {
+      "id": "resource_descriptors",
+      "status": "PASS",
+      "detail": "PageTable is 8192x192 with NumMips=1; PageFlags is 8192x192 with NumMips=7; PhysicalPagePool is a 2-slice Texture2DArray with NumMips=1",
+      "measurements": {
+        "page_table_num_mips": 1,
+        "page_flags_num_mips": 7,
+        "pool_array_size": 2
+      }
+    },
+    {
+      "id": "logical_mip_packing",
+      "status": "PASS",
+      "detail": "independent CalcLevelOffsets reconstruction: all eight logical mips 0..7 of VSM 8196 occupy non-overlapping regions in the one 128x192 PageTable hardware mip0; mip0 has 99 render-valid / 16384 entries and mips 1..7 are all-zero",
+      "measurements": {
+        "block_base": [
+          640,
+          0,
+          128
+        ],
+        "logical_mips": [
+          {
+            "mip": 0,
+            "base_texel": [
+              640,
+              0
+            ],
+            "dim_pages": 128,
+            "entries": 16384,
+            "render": 99,
+            "any": 16384,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 99,
+              "1": 116,
+              "5": 3881,
+              "6": 12288
+            },
+            "nonzero_entries": 16384
+          },
+          {
+            "mip": 1,
+            "base_texel": [
+              640,
+              128
+            ],
+            "dim_pages": 64,
+            "entries": 4096,
+            "render": 0,
+            "any": 0,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 4096
+            },
+            "nonzero_entries": 0
+          },
+          {
+            "mip": 2,
+            "base_texel": [
+              704,
+              128
+            ],
+            "dim_pages": 32,
+            "entries": 1024,
+            "render": 0,
+            "any": 0,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 1024
+            },
+            "nonzero_entries": 0
+          },
+          {
+            "mip": 3,
+            "base_texel": [
+              736,
+              128
+            ],
+            "dim_pages": 16,
+            "entries": 256,
+            "render": 0,
+            "any": 0,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 256
+            },
+            "nonzero_entries": 0
+          },
+          {
+            "mip": 4,
+            "base_texel": [
+              752,
+              128
+            ],
+            "dim_pages": 8,
+            "entries": 64,
+            "render": 0,
+            "any": 0,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 64
+            },
+            "nonzero_entries": 0
+          },
+          {
+            "mip": 5,
+            "base_texel": [
+              760,
+              128
+            ],
+            "dim_pages": 4,
+            "entries": 16,
+            "render": 0,
+            "any": 0,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 16
+            },
+            "nonzero_entries": 0
+          },
+          {
+            "mip": 6,
+            "base_texel": [
+              764,
+              128
+            ],
+            "dim_pages": 2,
+            "entries": 4,
+            "render": 0,
+            "any": 0,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 4
+            },
+            "nonzero_entries": 0
+          },
+          {
+            "mip": 7,
+            "base_texel": [
+              766,
+              128
+            ],
+            "dim_pages": 1,
+            "entries": 1,
+            "render": 0,
+            "any": 0,
+            "secondary": 0,
+            "lod_hist": {
+              "0": 1
+            },
+            "nonzero_entries": 0
+          }
+        ],
+        "overlap_texels": 0
+      }
+    },
+    {
+      "id": "page_table_block",
+      "status": "PASS",
+      "detail": "all 16384 mip0 entries decode and re-encode to the raw uint32; counts 99 render-valid, 16285 LOD fallback, 0 unmapped, LOD histogram and PageFlags low-6 categories match",
+      "measurements": {
+        "counts": {
+          "total": 16384,
+          "render": 99,
+          "any": 16384,
+          "secondary": 0,
+          "unmapped": 0
+        },
+        "lod_histogram": {
+          "0": 99,
+          "1": 116,
+          "5": 3881,
+          "6": 12288
+        },
+        "page_flags_low6": {
+          "0x0": 16216,
+          "0x1": 69,
+          "0x1b": 99
+        },
+        "reencode_mismatches": 0
+      }
+    },
+    {
+      "id": "page_flags_hierarchy",
+      "status": "PASS",
+      "detail": "PageFlags NumMips=7 is the separate H0..H6 hierarchy: H1..H6 are the OR of the 2x2 child texels, H7 is absent, and no artifact claims eight 6-bit fields in one uint32",
+      "measurements": {
+        "nonzero": {
+          "H0": 168,
+          "H1": 212,
+          "H2": 320,
+          "H3": 512,
+          "H4": 1024,
+          "H5": 4096,
+          "H6": 16384
+        },
+        "parent_or_mismatches": 0,
+        "forbidden_claim_found": false
+      }
+    },
+    {
+      "id": "selected_99_page_records",
+      "status": "PASS",
+      "detail": "every published selected page record reproduces the raw page-table entry, PageFlags H0 word, pass-810 metadata owner, physical word and depth statistics; the 99-page set equals the raw render-valid set and all 99 NPZ pages are bit-exact",
+      "measurements": {
+        "records": 99,
+        "raw_pages": 99,
+        "missing": [],
+        "extra": [],
+        "record_failures": [],
+        "npz_page_mismatches": 0
+      }
+    },
+    {
+      "id": "native_depth_figure",
+      "status": "PASS",
+      "detail": "all six F3 native pages are bit-exact against pool slice 0; every non-marker pixel reproduces the declared [0.4998,0.5003] ramp at 2x nearest scale; four independent sample points match; white crosses are the only non-ramp pixels",
+      "measurements": {
+        "tiles": 6,
+        "image": [
+          520,
+          784,
+          3
+        ],
+        "nonmarker_mismatches": 0,
+        "white_marker_pixels": 162,
+        "npz_mismatches": 0,
+        "samples": [
+          {
+            "tile": 0,
+            "page": [
+              63,
+              65
+            ],
+            "local": [
+              30,
+              40
+            ],
+            "raw_depth": 0.49993106722831726,
+            "image_rgb": [
+              25,
+              64,
+              140
+            ],
+            "ramp_rgb": [
+              25,
+              64,
+              140
+            ],
+            "match": true
+          },
+          {
+            "tile": 1,
+            "page": [
+              64,
+              63
+            ],
+            "local": [
+              37,
+              51
+            ],
+            "raw_depth": 0.5002049803733826,
+            "image_rgb": [
+              228,
+              198,
+              102
+            ],
+            "ramp_rgb": [
+              228,
+              198,
+              102
+            ],
+            "match": true
+          },
+          {
+            "tile": 2,
+            "page": [
+              66,
+              66
+            ],
+            "local": [
+              44,
+              62
+            ],
+            "raw_depth": 0.4999440908432007,
+            "image_rgb": [
+              24,
+              74,
+              142
+            ],
+            "ramp_rgb": [
+              24,
+              74,
+              142
+            ],
+            "match": true
+          },
+          {
+            "tile": 3,
+            "page": [
+              68,
+              63
+            ],
+            "local": [
+              51,
+              73
+            ],
+            "raw_depth": 0.5002325177192688,
+            "image_rgb": [
+              236,
+              215,
+              141
+            ],
+            "ramp_rgb": [
+              236,
+              215,
+              141
+            ],
+            "match": true
+          },
+          {
+            "tile": 4,
+            "page": [
+              57,
+              61
+            ],
+            "local": [
+              58,
+              84
+            ],
+            "raw_depth": 0.49990686774253845,
+            "image_rgb": [
+              23,
+              53,
+              125
+            ],
+            "ramp_rgb": [
+              23,
+              53,
+              125
+            ],
+            "match": true
+          },
+          {
+            "tile": 5,
+            "page": [
+              64,
+              65
+            ],
+            "local": [
+              65,
+              95
+            ],
+            "raw_depth": 0.49993640184402466,
+            "image_rgb": [
+              25,
+              68,
+              141
+            ],
+            "ramp_rgb": [
+              25,
+              68,
+              141
+            ],
+            "match": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "virtual_depth_mosaic",
+      "status": "PASS",
+      "detail": "F4 is a 1792x1536 contiguous bbox [55,58,68,69] of 14x12 pages at scale 1.0; all 99 selected pages are placed at their virtual page coordinates in ascending virtual-address order, 69 fallback cells and 0 unmapped cells; every one of 2,752,512 pixels and the NPZ mask/category arrays match an independent raw-pool reconstruction; four samples match",
+      "measurements": {
+        "image": [
+          1536,
+          1792,
+          3
+        ],
+        "bbox": [
+          55,
+          58,
+          68,
+          69
+        ],
+        "pixels": 2752512,
+        "pixel_mismatches": 0,
+        "mask_mismatches": 0,
+        "fallback_cells": 69,
+        "t_range": [
+          0.197172150015831,
+          0.8773207068443298
+        ],
+        "samples": [
+          {
+            "virtual_address": 7482,
+            "virtual_page": [
+              58,
+              58
+            ],
+            "physical_page": [
+              96,
+              24
+            ],
+            "local": [
+              26,
+              91
+            ],
+            "raw_depth": 0.5001794695854187,
+            "image_rgb": [
+              221,
+              183,
+              66
+            ],
+            "ramp_rgb": [
+              221,
+              183,
+              66
+            ],
+            "match": true
+          },
+          {
+            "virtual_address": 7739,
+            "virtual_page": [
+              59,
+              60
+            ],
+            "physical_page": [
+              50,
+              27
+            ],
+            "local": [
+              26,
+              91
+            ],
+            "raw_depth": 0.5001800060272217,
+            "image_rgb": [
+              221,
+              183,
+              67
+            ],
+            "ramp_rgb": [
+              221,
+              183,
+              67
+            ],
+            "match": true
+          },
+          {
+            "virtual_address": 8132,
+            "virtual_page": [
+              68,
+              63
+            ],
+            "physical_page": [
+              48,
+              6
+            ],
+            "local": [
+              26,
+              91
+            ],
+            "raw_depth": 0.5002306699752808,
+            "image_rgb": [
+              236,
+              213,
+              138
+            ],
+            "ramp_rgb": [
+              236,
+              213,
+              138
+            ],
+            "match": true
+          },
+          {
+            "virtual_address": 8897,
+            "virtual_page": [
+              65,
+              69
+            ],
+            "physical_page": [
+              72,
+              13
+            ],
+            "local": [
+              26,
+              91
+            ],
+            "raw_depth": 0.5000423192977905,
+            "image_rgb": [
+              20,
+              144,
+              149
+            ],
+            "ramp_rgb": [
+              20,
+              144,
+              149
+            ],
+            "match": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "receiver_A_B_mapping",
+      "status": "PASS",
+      "detail": "A and B reproduce from raw projection/PageTable/pool bytes with the source clipmap selection (initial-level bias), including UV, receiver Z, page table entry, physical texel, raw depth word, delta and occluder distance",
+      "measurements": {
+        "all_sun_biases": [
+          0.6639266014099121
+        ],
+        "selected_bias": 0.6639266014099121,
+        "A": {
+          "clipmap_index": 4,
+          "selected_vsm_id": 8196,
+          "shadow_uv": [
+            0.49383093135158174,
+            0.513411271626715
+          ],
+          "receiver_device_z": 0.4999309665823608,
+          "virtual_page_xy": [
+            63,
+            65
+          ],
+          "texel_in_page_xy": [
+            26,
+            91
+          ],
+          "page_table_entry_hex": "0xc000504f",
+          "physical_page_xy": [
+            79,
+            20
+          ],
+          "physical_page_index": 2639,
+          "physical_texel_xy": [
+            10138,
+            2651
+          ],
+          "raw_depth_bits": "0x3efff6f3",
+          "stored_depth_device_z": 0.4999309480190277,
+          "stored_depth_minus_receiver_z": -1.856333309291358e-08,
+          "occluder_distance_ortho_raw_cm": -0.0760354087370859,
+          "occluder_distance_ortho_cm": 1e-06,
+          "captured_shadow_mask_linear_r": 1.0
+        },
+        "B": {
+          "clipmap_index": 4,
+          "selected_vsm_id": 8196,
+          "shadow_uv": [
+            0.5066635216300034,
+            0.49443830042740594
+          ],
+          "receiver_device_z": 0.49993784359485954,
+          "virtual_page_xy": [
+            64,
+            63
+          ],
+          "texel_in_page_xy": [
+            109,
+            36
+          ],
+          "page_table_entry_hex": "0xc0001017",
+          "physical_page_xy": [
+            23,
+            4
+          ],
+          "physical_page_index": 535,
+          "physical_texel_xy": [
+            3053,
+            548
+          ],
+          "raw_depth_bits": "0x3f000db7",
+          "stored_depth_device_z": 0.5002092719078064,
+          "stored_depth_minus_receiver_z": 0.0002714283129468531,
+          "occluder_distance_ortho_raw_cm": 1111.7703170240538,
+          "occluder_distance_ortho_cm": 1111.7703170240538,
+          "captured_shadow_mask_linear_r": 0.0
+        }
+      }
+    },
+    {
+      "id": "original_A_B_preserved",
+      "status": "PASS",
+      "detail": "A/B stored depth, receiver Z, delta, UV, addresses and every shared prior count are identical to the earlier independent publication",
+      "measurements": {
+        "original_present": true,
+        "old_common_counts": 13,
+        "all_common_counts_equal": true
+      }
+    },
+    {
+      "id": "receiver_bias_formula",
+      "status": "FAIL",
+      "detail": "the receiver replay must use the source formula: choose the unbiased initial clipmap, add that level's ResolutionLodBias, then floor. The current tool still adds sun[0]'s base bias before selecting the level. This is latent for this capture because all 17 sun biases are identical, but the code/formula claim is not source-correct",
+      "measurements": {
+        "uses_base_bias_at_806_825": true,
+        "sun_ids": [
+          8192,
+          8208
+        ],
+        "unique_biases": [
+          0.6639266014099121
+        ],
+        "numerically_latent_here": true
+      }
+    },
+    {
+      "id": "pool_slice1_writer_claim",
+      "status": "FAIL",
+      "detail": "MergeStaticPhysicalPagesIndirect's shader writes only PhysicalPagePool slice 0 (MergePhysicalPixel uses uint3(PixelCoord, 0)); pass 811 is recorded at resource level and its recorded output is .[0].mip0. The report's slice1 row nevertheless says 'last writer 811', which cannot be inferred as a slice-1 write",
+      "measurements": {
+        "shader_writes_slice0_only": true,
+        "pass_811_recorded_outputs": [
+          "00040000020c132ec290.[0].mip0",
+          "00040000020c132ec290.[1].mip0"
+        ],
+        "snapshot_writer_output": "00040000020c132ec290.[0].mip0",
+        "report_slice1_claim_811": true
+      }
+    },
+    {
+      "id": "stale_and_missing_mip_claims",
+      "status": "PASS",
+      "detail": "the 96 earlier-frame metadata records are published as unreferenced (flags 0x285b include ALLOCATED|UNREFERENCED, frame 3), not proven stale from age; all eight logical PageTable mips are present and mips 1..7 are empty",
+      "measurements": {
+        "unreferenced_records": 96,
+        "unreferenced_flags": [
+          "0x285b"
+        ],
+        "unreferenced_frames": [
+          3
+        ],
+        "published_not_proven_invalid": true,
+        "logical_mips_present": 8
+      }
+    },
+    {
+      "id": "source_range_hashes",
+      "status": "PASS",
+      "detail": "all cited UTF8-LF source ranges in source-ranges.json recompute against the pinned UE source",
+      "measurements": {
+        "ranges": 31,
+        "mismatches": []
+      }
+    }
+  ]
+}

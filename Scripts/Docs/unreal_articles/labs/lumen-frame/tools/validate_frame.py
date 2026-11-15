@@ -40,6 +40,22 @@ ROOT = Path(__file__).resolve().parent.parent
 TOOL = ROOT / "tools" / "package_frame.py"
 CODEC = ROOT / "site" / "assets" / "frame-codec.js"
 
+try:  # validate_frame is both a script and an imported module.
+    from package_metadata import (
+        MetadataError,
+        read_package_bytes,
+        read_package_json,
+        resolve_metadata_path,
+    )
+except ImportError:  # pragma: no cover - direct import without tools/ on sys.path
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from package_metadata import (
+        MetadataError,
+        read_package_bytes,
+        read_package_json,
+        resolve_metadata_path,
+    )
+
 
 def now_utc() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -61,6 +77,39 @@ def sha256_file(path: Path) -> tuple[str, int]:
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_bytes().decode("utf-8-sig"))
+
+
+def load_package_json(package: Path, rel: str) -> Any:
+    """Load one generated metadata document from a raw or gzip package.
+
+    ``index.json`` is always raw; every other generated document may be stored
+    as ``<logical>.json.gz``.  The shared helper rejects missing/ambiguous files
+    and corrupt gzip so a compressed package is validated exactly like a raw one.
+    """
+    try:
+        return read_package_json(package, rel)
+    except MetadataError as exc:
+        raise AssertionError(f"Unreadable package metadata {rel}: {exc}") from exc
+
+
+def package_metadata_exists(package: Path, rel: str) -> bool:
+    try:
+        return resolve_metadata_path(package, rel, require=False) is not None
+    except MetadataError:
+        return False
+
+
+def iter_record_paths(package: Path, kind: str) -> list[str]:
+    """Logical record paths in either the raw or the gzip layout."""
+    folder = package / "records" / kind
+    if not folder.is_dir():
+        return []
+    names: set[str] = set()
+    for suffix in ("*.json", "*.json.gz"):
+        for path in folder.glob(suffix):
+            name = path.name[:-3] if path.name.endswith(".gz") else path.name
+            names.add(name)
+    return sorted(f"records/{kind}/{name}" for name in names)
 
 
 def parse_json_sequence(path: Path) -> list[Any]:
@@ -430,8 +479,8 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     index = load_json(package / "index.json")
-    inventory = load_json(package / "inventory.json")
-    coverage = load_json(package / "coverage.json")
+    inventory = load_package_json(package, "inventory.json")
+    coverage = load_package_json(package, "coverage.json")
     counts = index["counts"]
     payloads = {p["id"]: p for p in inventory["payloads"]}
     chunks = {c["sha"]: c for c in inventory["chunks"]}
@@ -546,30 +595,33 @@ def main(argv: list[str] | None = None) -> int:
         chunk_errors[:20],
     )
 
-    # 6. Schema retained byte-for-byte and indexed with the same hash.
+    # 6. Schema retained byte-for-byte and indexed with the same hash.  The
+    # container may store it raw or as schema.json.gz; either way the exact
+    # uncompressed bytes are compared with the supplied source schema.
     schema_bytes = schema_path.read_bytes()
-    package_schema = (package / "schema.json").read_bytes()
+    package_schema = read_package_bytes(package, "schema.json")
+    schema_link = index["schema"].get("path")
     schema_ok = (
         package_schema == schema_bytes
         and index["schema"]["sha256"] == sha256_bytes(schema_bytes)
         and index["schema"]["bytes"] == len(schema_bytes)
         and index["schema"]["status"] == "joined"
-        and index["schema"].get("path") == "schema.json"
+        and schema_link in ("schema.json", "schema.json.gz")
         and index["schema"].get("sourcePath") == "source-schema.json"
-        and (package / "schema.json").is_file()
-        and load_json(package / "schema.json") == load_json(schema_path)
+        and package_metadata_exists(package, "schema.json")
+        and load_package_json(package, "schema.json") == load_json(schema_path)
     )
     report.check(
         "schema-byte-for-byte",
         schema_ok,
         f"source={len(schema_bytes)} B sha256={sha256_bytes(schema_bytes)}; "
-        f"package={len(package_schema)} B at schema.json; index.schema={index['schema']['bytes']} B",
+        f"package={len(package_schema)} B at {schema_link}; index.schema={index['schema']['bytes']} B",
         {"resourceSchemas": index["schema"]["resourceSchemas"],
          "parameterSchemas": index["schema"]["parameterSchemas"]},
     )
 
     # 6b. Reviewed schema inventory and format-variant gates survive packaging.
-    schema_doc = load_json(package / "schema.json")
+    schema_doc = load_package_json(package, "schema.json")
     schema_counts = {
         "resourceSchemas": len(schema_doc.get("resourceSchemas", [])) if isinstance(schema_doc.get("resourceSchemas"), list) else 0,
         "parameterSchemas": len(schema_doc.get("parameterSchemas", [])) if isinstance(schema_doc.get("parameterSchemas"), list) else 0,
@@ -608,7 +660,7 @@ def main(argv: list[str] | None = None) -> int:
     gated_matches = 0
     variant_matches = 0
     for resource in resources:
-        record = load_json(package / "records" / "resource" / f"{resource['id']}.json")
+        record = load_package_json(package, f"records/resource/{resource['id']}.json")
         for match in record.get("schemaMatches", []):
             payload_format = match.get("payloadFormat")
             declared = match.get("declaredFormat")
@@ -747,7 +799,7 @@ def main(argv: list[str] | None = None) -> int:
     for rs in resources:
         if rs["kind"] != "texture":
             continue
-        record = load_json(package / "records" / "resource" / f"{rs['id']}.json")
+        record = load_package_json(package, f"records/resource/{rs['id']}.json")
         extent = record.get("extent") or [1, 1, 1]
         if int(extent[2] or 1) > 1:
             continue  # volume layout is not asserted
@@ -787,7 +839,7 @@ def main(argv: list[str] | None = None) -> int:
         ("resource-0186", "payload-00551", "PF_B8G8R8A8"),
     ]
     for resource_id, payload_id, expected_format in gbuffer_specs:
-        record = load_json(package / "records" / "resource" / f"{resource_id}.json")
+        record = load_package_json(package, f"records/resource/{resource_id}.json")
         payload = payloads[payload_id]
         width = int(record["extent"][0])
         x, y = 640, 300
@@ -838,7 +890,7 @@ def main(argv: list[str] | None = None) -> int:
     # 10b. Partial chunk reads: index rawLength is the authority, slice afterwards.
     partial_errors: list[str] = []
     partial_evidence: list[dict[str, Any]] = []
-    gbuffer_record = load_json(package / "records" / "resource" / "resource-0185.json")
+    gbuffer_record = load_package_json(package, "records/resource/resource-0185.json")
     gbuffer_payload = payloads["payload-00549"]
     partial_cases = [
         {"name": "actual final GBufferA (640,500)", "x": 640, "y": 500,
@@ -900,8 +952,8 @@ def main(argv: list[str] | None = None) -> int:
     for payload in inventory["payloads"]:
         if payload.get("resourceId"):
             payloads_by_resource.setdefault(payload["resourceId"], []).append(payload)
-    for pass_path in sorted((package / "records" / "pass").glob("*.json")):
-        pass_record = load_json(pass_path)
+    for pass_rel in iter_record_paths(package, "pass"):
+        pass_record = load_package_json(package, pass_rel)
         pass_id = pass_record["id"]
         for direction in ("inputs", "outputs"):
             for item in pass_record.get(direction, []):
@@ -932,7 +984,7 @@ def main(argv: list[str] | None = None) -> int:
                             simulated_old_false_refs += 1
     stencil_versions = Counter()
     for resource in resources:
-        record = load_json(package / "records" / "resource" / f"{resource['id']}.json")
+        record = load_package_json(package, f"records/resource/{resource['id']}.json")
         for version in record.get("versions", []):
             for payload_id in version.get("payloadIds", []):
                 if payload_id in stencil_payload_ids:
@@ -969,8 +1021,8 @@ def main(argv: list[str] | None = None) -> int:
     if draw_count_records != 0:
         draw_count_errors.append(f"expected 0 native draw-count records, got {draw_count_records}")
     zero_draw_counts = 0
-    for pass_path in sorted((package / "records" / "pass").glob("*.json")):
-        pass_record = load_json(pass_path)
+    for pass_rel in iter_record_paths(package, "pass"):
+        pass_record = load_package_json(package, pass_rel)
         pass_id = pass_record["id"]
         if pass_record.get("drawCount") is not None:
             draw_count_errors.append(f"{pass_id} drawCount is {pass_record.get('drawCount')}, expected null")
@@ -978,7 +1030,7 @@ def main(argv: list[str] | None = None) -> int:
             zero_draw_counts += 1
         if pass_record.get("drawCountStatus") != "not-captured":
             draw_count_errors.append(f"{pass_id} drawCountStatus is not not-captured")
-    passes_doc = load_json(package / "passes.json")
+    passes_doc = load_package_json(package, "passes.json")
     if any(item.get("drawCount") is not None for item in passes_doc["items"]):
         draw_count_errors.append("passes.json contains a non-null drawCount")
     draw_gap = next((g for g in coverage["gaps"] if g["kind"] == "pass-draw-counts-empty"), None)
@@ -1004,7 +1056,7 @@ def main(argv: list[str] | None = None) -> int:
     unsafe_by_schema: dict[str, int] = {}
     dead_key_hits = 0
     for resource in resources:
-        record = load_json(package / "records" / "resource" / f"{resource['id']}.json")
+        record = load_package_json(package, f"records/resource/{resource['id']}.json")
         for match in record.get("schemaMatches", []):
             support = match.get("fieldSupport") or {}
             if "unsupportedDecodeFields" in support:
@@ -1013,7 +1065,7 @@ def main(argv: list[str] | None = None) -> int:
             resource_equation_by_schema[str(match.get("schemaId"))] = len(support.get("sourceEquationFields") or [])
             unsafe_by_schema[key] = len(support.get("unsafeExpressionFields") or [])
     for pass_id in passes:
-        record = load_json(package / "records" / "pass" / f"{pass_id}.json")
+        record = load_package_json(package, f"records/pass/{pass_id}.json")
         for match in record.get("schemaMatches", []):
             support = match.get("fieldSupport") or {}
             if "unsupportedDecodeFields" in support:
@@ -1051,7 +1103,7 @@ def main(argv: list[str] | None = None) -> int:
                     equations += 1
         return fields, equations, unsafe
 
-    package_schema_doc = load_json(package / "schema.json")
+    package_schema_doc = load_package_json(package, "schema.json")
     resource_fields, resource_source_equation_fields, resource_unsafe = classify_schema_fields(
         package_schema_doc.get("resourceSchemas", []))
     parameter_fields, parameter_source_equation_fields, parameter_unsafe = classify_schema_fields(
@@ -1101,7 +1153,7 @@ def main(argv: list[str] | None = None) -> int:
         ("resource-0652", "0003", 0),
         ("resource-1113", "0004", 1),
     ):
-        record = load_json(package / "records" / "resource" / f"{resource_id}.json")
+        record = load_package_json(package, f"records/resource/{resource_id}.json")
         label = record.get("displayLabel") or ""
         gbuffer_labels.append(label)
         if record.get("sceneInvocation") != expected_invocation:
@@ -1122,7 +1174,7 @@ def main(argv: list[str] | None = None) -> int:
             label_errors.append(f"{resource_id} padding {padding}")
         # Cross-check the label against the recorded View.View bytes.
         producer_id = (record.get("versions") or [{}])[-1].get("producerPassId")
-        producer = load_json(package / "records" / "pass" / f"{producer_id}.json")
+        producer = load_package_json(package, f"records/pass/{producer_id}.json")
         view_ref = next((ref for ref in producer.get("referencedStructs", [])
                          if ref.get("member") == "View.View"), None)
         if view_ref is None or not view_ref.get("payload"):
@@ -1142,7 +1194,7 @@ def main(argv: list[str] | None = None) -> int:
     if len(set(gbuffer_labels)) != 3:
         label_errors.append(f"GBufferA labels are not distinct: {gbuffer_labels}")
     for pass_id, expected_mod8 in (("pass-0126", 7), ("pass-0127", 7), ("pass-0438", 0), ("pass-0746", 1)):
-        pass_record = load_json(package / "records" / "pass" / f"{pass_id}.json")
+        pass_record = load_package_json(package, f"records/pass/{pass_id}.json")
         label = pass_record.get("displayLabel") or ""
         if pass_record.get("frameNumber") != 292 or "frame 292" not in label:
             label_errors.append(f"{pass_id} missing frame 292 label")
@@ -1177,7 +1229,7 @@ def main(argv: list[str] | None = None) -> int:
     )
 
 
-    pagetable_record = load_json(package / "records" / "resource" / "resource-0097.json")
+    pagetable_record = load_package_json(package, "records/resource/resource-0097.json")
     pagetable_payload = payloads["payload-00065"]
     pagetable_parts: list[bytes] = []
     for ref in pagetable_payload["chunks"]:
@@ -1228,7 +1280,7 @@ def main(argv: list[str] | None = None) -> int:
     uniform_results: list[dict[str, Any]] = []
     uniform_ok = True
     for pass_id, payload_id, specs in uniform_specs:
-        pass_record = load_json(package / "records" / "pass" / f"{pass_id}.json")
+        pass_record = load_package_json(package, f"records/pass/{pass_id}.json")
         payload = payloads[payload_id]
         parts = []
         for ref in payload["chunks"]:
@@ -1260,7 +1312,7 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     # 13. BC7/export-layout evidence (descriptor bytes != payload stride).
-    bc7_record = load_json(package / "records" / "resource" / "resource-0099.json")
+    bc7_record = load_package_json(package, "records/resource/resource-0099.json")
     bc7_payload = payloads["payload-00068"]
     bc7_source = candidate / bc7_payload["originalPath"]
     bc7_source_sha, bc7_source_bytes = sha256_file(bc7_source)
@@ -1305,7 +1357,7 @@ def main(argv: list[str] | None = None) -> int:
     mip_counts: Counter[Any] = Counter()
     slice_counts: Counter[Any] = Counter()
     for rs in resources:
-        record = load_json(package / "records" / "resource" / f"{rs['id']}.json")
+        record = load_package_json(package, f"records/resource/{rs['id']}.json")
         seen: set[str] = set()
         for version in record.get("versions", []):
             version_count += 1
@@ -1361,7 +1413,7 @@ def main(argv: list[str] | None = None) -> int:
     missing_payload_record = 0
     for rs in resources:
         if rs["kind"] == "texture" and not rs["payloadIds"]:
-            record = load_json(package / "records" / "resource" / f"{rs['id']}.json")
+            record = load_package_json(package, f"records/resource/{rs['id']}.json")
             kinds = {g["kind"] for g in record.get("gaps", [])}
             if "resource-payload-missing" not in kinds:
                 capture_gap_errors.append(f"{record['id']} lacks resource-payload-missing")
@@ -1372,7 +1424,7 @@ def main(argv: list[str] | None = None) -> int:
     for rs in resources:
         if rs["kind"] != "buffer":
             continue
-        record = load_json(package / "records" / "resource" / f"{rs['id']}.json")
+        record = load_package_json(package, f"records/resource/{rs['id']}.json")
         if (record.get("decode") or {}).get("supported"):
             raw_buffer_errors.append(f"{record['id']} buffer decode marked supported")
         if record["payloads"]:
@@ -1492,6 +1544,11 @@ def main(argv: list[str] | None = None) -> int:
     # 19. Portability: package-internal paths are safe relative POSIX paths.
     path_values: list[str] = []
     existing_values: list[str] = []
+
+    def actual_metadata_rel(rel: str) -> str:
+        resolved = resolve_metadata_path(package, rel, require=False)
+        return resolved.relative_to(package).as_posix() if resolved is not None else rel
+
     for payload in inventory["payloads"]:
         # Reconstruction target, not a file stored in the package.
         path_values.append(payload["originalPath"])
@@ -1499,15 +1556,16 @@ def main(argv: list[str] | None = None) -> int:
         path_values.extend([nf["path"], nf["packagePath"]])
         existing_values.append(nf["packagePath"])
     for rs in resources:
-        rel = f"records/resource/{rs['id']}.json"
+        rel = actual_metadata_rel(f"records/resource/{rs['id']}.json")
         path_values.append(rel)
         existing_values.append(rel)
     for pass_id in passes:
-        rel = f"records/pass/{pass_id}.json"
+        rel = actual_metadata_rel(f"records/pass/{pass_id}.json")
         path_values.append(rel)
         existing_values.append(rel)
     schema_link = index["schema"].get("path")
     if schema_link:
+        schema_link = actual_metadata_rel(schema_link)
         path_values.append(schema_link)
         existing_values.append(schema_link)
     unsafe_paths = [p for p in path_values if not safe_relative(p)]

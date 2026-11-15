@@ -1,0 +1,146 @@
+[
+  {
+    "id": "01-build.py",
+    "command": "python.exe build.py --check",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 0,
+    "seconds": 0.54,
+    "stdout_tail": [
+      "Verified scene-representation: 29,463 words, 18 chapters",
+      "Verified nanite: 15,369 words, 20 chapters",
+      "Verified lumen: 29,302 words, 16 chapters",
+      "Verified material-compiler: 12,214 words, 16 chapters",
+      "Verified lumen-reference: 65,579 words, 44 chapters"
+    ],
+    "stderr_tail": [],
+    "summary": "Verified lumen-reference: 65,579 words, 44 chapters"
+  },
+  {
+    "id": "02-math_typesetting.py",
+    "command": "python.exe math_typesetting.py --check --node node",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 0,
+    "seconds": 0.28,
+    "stdout_tail": [
+      "Verified 1023 LaTeX expressions"
+    ],
+    "stderr_tail": [],
+    "summary": "Verified 1023 LaTeX expressions"
+  },
+  {
+    "id": "03-validate.py",
+    "command": "python.exe validate.py",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 0,
+    "seconds": 1.01,
+    "stdout_tail": [
+      "Nanite: 15,224 words; 20 chapters; 29 figures; 165 links",
+      "Lumen: 29,030 words; 16 chapters; 71 figures; 280 links",
+      "Material graph compilation: 12,170 words; 16 chapters; 12 figures; 115 links",
+      "Lumen reference: 64,773 words; 44 chapters; 58 figures; 983 links",
+      "155 accessible SVGs; 289 recorded source ranges",
+      "PASS: article structure, links, figures"
+    ],
+    "stderr_tail": [],
+    "summary": "PASS: article structure, links, figures"
+  },
+  {
+    "id": "04-validate_labs.py",
+    "command": "python.exe validate_labs.py",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 0,
+    "seconds": 0.22,
+    "stdout_tail": [
+      "Saved metrics, contraction bound, and accessible SVG metadata verified",
+      "Validated 12 Unreal screenshots, attachment transforms, 30 instances, 68-bone skeleton, and reproduction source hashes.",
+      "PASS: 129 laboratory sources/outputs, 84 PNGs, frozen hashes and numerical evidence"
+    ],
+    "stderr_tail": [],
+    "summary": "PASS: 129 laboratory sources/outputs, 84 PNGs, frozen hashes and numerical evidence"
+  },
+  {
+    "id": "05-validate_lumen_v2.py",
+    "command": "python.exe validate_lumen_v2.py",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 0,
+    "seconds": 29.75,
+    "stdout_tail": [
+      "PASS: 245 resource layouts, 15 parameter layouts, 1547 source references.",
+      "PASS package bytes: 7,024 payloads / 888 native files / 7,912 input files / 3,136 chunks / 18,502,060,278 payload bytes (byte identity only; owner-time identity is not claimed).",
+      "PASS source schema: 1,286,023 bytes sha256=d2bd0620e9250f29d9788944be6a73ff80d007a9d5bf86a45fe52b2eefc81d2a; 245 resources / 15 parameters / 1,547 source refs.",
+      "PASS artifact hashes: 236 files / 47,440,343 bytes.",
+      "PASS all requested evidence checks.",
+      "PASS: CPU evidence, 8 diagrams, convergence arithmetic, reference image provenance; 6001 portable capture checks."
+    ],
+    "stderr_tail": [],
+    "summary": "PASS: CPU evidence, 8 diagrams, convergence arithmetic, reference image provenance; 6001 portable capture checks."
+  },
+  {
+    "id": "06-check_site_independence.py",
+    "command": "python.exe Scripts/Docs/check_site_independence.py",
+    "cwd": "D:\\UnrealUnderstanding",
+    "exit": 0,
+    "seconds": 0.57,
+    "stdout_tail": [
+      "Site independence check passed: 11 HTML file(s) under D:\\UnrealUnderstanding\\Docs contain no links to Ardashir."
+    ],
+    "stderr_tail": [],
+    "summary": "Site independence check passed: 11 HTML file(s) under D:\\UnrealUnderstanding\\Docs contain no links to Ardashir."
+  },
+  {
+    "id": "07-labs/lumen-reading/generate.py",
+    "command": "python.exe labs/lumen-reading/generate.py --check",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 0,
+    "seconds": 0.17,
+    "stdout_tail": [
+      "Verified 7 diagrams, CPU reference, clean PNG, and manifest."
+    ],
+    "stderr_tail": [],
+    "summary": "Verified 7 diagrams, CPU reference, clean PNG, and manifest."
+  },
+  {
+    "id": "08-labs/lumen-course/generate.py",
+    "command": "python.exe labs/lumen-course/generate.py --check",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 0,
+    "seconds": 0.12,
+    "stdout_tail": [
+      "Verified 29 original SVG diagrams and 15 numerical checks"
+    ],
+    "stderr_tail": [],
+    "summary": "Verified 29 original SVG diagrams and 15 numerical checks"
+  },
+  {
+    "id": "09-node",
+    "command": "node --check Docs/Unreal/assets/lumen-course/course.js",
+    "cwd": "D:\\UnrealUnderstanding",
+    "exit": 0,
+    "seconds": 0.03,
+    "stdout_tail": [],
+    "stderr_tail": [],
+    "summary": ""
+  },
+  {
+    "id": "10-node",
+    "command": "node --check Docs/Unreal/assets/lumen-course/temporal.js",
+    "cwd": "D:\\UnrealUnderstanding",
+    "exit": 0,
+    "seconds": 0.03,
+    "stdout_tail": [],
+    "stderr_tail": [],
+    "summary": ""
+  },
+  {
+    "id": "11-build_temporal_manifest.py",
+    "command": "python.exe Scripts/Docs/unreal_articles/labs/lumen-sponza/build_temporal_manifest.py --check",
+    "cwd": "D:\\UnrealUnderstanding",
+    "exit": 0,
+    "seconds": 0.58,
+    "stdout_tail": [
+      "Verified Docs\\Unreal\\assets\\lumen-sponza\\temporal\\manifest.json"
+    ],
+    "stderr_tail": [],
+    "summary": "Verified Docs\\Unreal\\assets\\lumen-sponza\\temporal\\manifest.json"
+  }
+]

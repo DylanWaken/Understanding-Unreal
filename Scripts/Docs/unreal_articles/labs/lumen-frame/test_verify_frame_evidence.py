@@ -7,13 +7,19 @@ from nested replay evidence and explicit failure for a missing operand.
 """
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 import verify_frame_evidence as verifier
+
+TOOLS = Path(__file__).resolve().parent / "tools"
+sys.path.insert(0, str(TOOLS))
+import package_metadata  # noqa: E402
 
 
 def digest(data: bytes) -> str:
@@ -79,6 +85,91 @@ class ArtifactManifestTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(verifier.EvidenceError, "size mismatch"):
             verifier.verify_artifacts(bad_size, self.root)
+
+
+class SchemaContainerTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self._temporary = tempfile.TemporaryDirectory(prefix="lumen-schema-test-")
+        self.root = Path(self._temporary.name).resolve()
+        self.lab = self.root / "lab"
+        (self.lab / "schemas").mkdir(parents=True)
+        self.schema_bytes = (
+            json.dumps({
+                "schemaVersion": 1,
+                "resourceSchemas": [{} for _ in range(245)],
+                "parameterSchemas": [{} for _ in range(15)],
+                "sourceRefs": [{} for _ in range(1547)],
+            }, indent=2) + "\n"
+        ).encode("utf-8")
+        (self.lab / "schemas/source-schema.json").write_bytes(self.schema_bytes)
+        self.package = self.root / "package"
+        self.package.mkdir()
+
+    def tearDown(self) -> None:
+        self._temporary.cleanup()
+
+    def write_compressed(self, data: bytes | None = None) -> dict:
+        data = self.schema_bytes if data is None else data
+        (self.package / "schema.json.gz").write_bytes(gzip.compress(data, mtime=0))
+        index = {
+            "format": verifier.PACKAGE_FORMAT,
+            "schema": {
+                "path": "schema.json.gz",
+                "sha256": digest(data),
+                "bytes": len(data),
+                "resourceSchemas": 245,
+                "parameterSchemas": 15,
+                "sourceRefs": 1547,
+            },
+        }
+        (self.package / "index.json").write_text(json.dumps(index), encoding="utf-8")
+        return index
+
+    def test_compressed_schema_is_compared_byte_for_byte(self) -> None:
+        index = self.write_compressed()
+        result = verifier.verify_schema(
+            self.package, self.lab, {"index": index}, package_metadata
+        )
+        self.assertEqual(result["bytes"], len(self.schema_bytes))
+        self.assertEqual(result["sha256"], digest(self.schema_bytes))
+        self.assertEqual(result["resources"], 245)
+        self.assertEqual(result["parameters"], 15)
+        self.assertEqual(result["sourceRefs"], 1547)
+
+    def test_raw_schema_remains_accepted(self) -> None:
+        (self.package / "schema.json").write_bytes(self.schema_bytes)
+        index = {
+            "format": verifier.PACKAGE_FORMAT,
+            "schema": {
+                "path": "schema.json",
+                "sha256": digest(self.schema_bytes),
+                "bytes": len(self.schema_bytes),
+                "resourceSchemas": 245,
+                "parameterSchemas": 15,
+                "sourceRefs": 1547,
+            },
+        }
+        (self.package / "index.json").write_text(json.dumps(index), encoding="utf-8")
+        result = verifier.verify_schema(
+            self.package, self.lab, {"index": index}, package_metadata
+        )
+        self.assertEqual(result["sha256"], digest(self.schema_bytes))
+
+    def test_compressed_schema_corruption_and_byte_mismatch_fail(self) -> None:
+        self.write_compressed(self.schema_bytes + b" ")
+        with self.assertRaisesRegex(verifier.EvidenceError, "byte-for-byte"):
+            verifier.verify_schema(
+                self.package, self.lab,
+                {"index": json.loads((self.package / "index.json").read_text(encoding="utf-8"))},
+                package_metadata,
+            )
+        (self.package / "schema.json.gz").write_bytes(b"\x1f\x8bcorrupt")
+        with self.assertRaisesRegex(verifier.EvidenceError, "unreadable"):
+            verifier.verify_schema(
+                self.package, self.lab,
+                {"index": json.loads((self.package / "index.json").read_text(encoding="utf-8"))},
+                package_metadata,
+            )
 
 
 class ReplayEvidenceTests(unittest.TestCase):

@@ -1,0 +1,53 @@
+{
+  "operationId": "c2c41ab0-0af2-42d0-93c6-71d5b8bab26e",
+  "status": "failed",
+  "error": null,
+  "steps": [
+    {
+      "id": "decode",
+      "role": "developer",
+      "status": "pass",
+      "attempts": 1,
+      "summary": "Decoded the pass-840 presented-graph sun VSM operands from captured versions—uniform block, page table mip0, page flags, physical-page metadata, projection records, and pool slices—and published three figures plus JSON/NPZ provenance. A declared receiver A/B lookup replay lands on real page entries and pool depth matching the receiver projection, with all 24 local checks passing.",
+      "checks": [
+        "actual matching VSM resource versions decoded with exact source layouts: yes — pass 840 version `00040000020c16c43fb0` used for page table/flags/pool; uniform block 368 B confirms MaxPhysicalPages 4096, pool 16384x4096, page table 8192x192, row shifts 7/6; `uniform_contract_matches_captured_sizes`, `page_table_identity_roundtrip`, `readback_statuses_dumped`, `producer_consumer_lineage` PASS.",
+        "readable physical-pool virtual-map and page-detail figures with complete numeric provenance: yes — `vsm_pool_occupancy.png` 1024x988 (global occupancy + 99-page compact depth atlas + metadata state), `vsm_page_table_sun.png` 1552x512 (full LOD map + physical-identity/PageFlags zoom), `vsm_depth_pages.png` 784x520 (six native 128x128 pages); tile/address legends, raw paths, versions and SHA-256 in `vsm_storage.json`/NPZ; `figures_nonblank_and_bounded` and `verify_figure_dimensions` PASS.",
+        "portable read-only decoder and local verification pass: yes — `python tools/decode_vsm_storage.py --out output --verify` without raw capture or engine returned `{\"PASS\": 24, \"FAIL\": 0, \"SKIP\": 0}`; `raw_files_unchanged` confirms all used raw files were unchanged; final `checks.json` is decode+verify 24 PASS."
+      ],
+      "changed": [
+        "output/checks.json",
+        "output/publish/data/schema.json",
+        "output/publish/data/vsm_storage.json",
+        "output/publish/data/vsm_storage.npz",
+        "output/publish/figures/vsm_depth_pages.png",
+        "output/publish/figures/vsm_page_table_sun.png",
+        "output/publish/figures/vsm_pool_occupancy.png",
+        "output/publish/manifest.json",
+        "output/report.md",
+        "output/source-ranges.json",
+        "tools/decode_vsm_storage.py"
+      ]
+    },
+    {
+      "id": "verify",
+      "role": "reviewer",
+      "status": "fail",
+      "attempts": 1,
+      "summary": "Reconstructed four selected addresses (A, B, C, and a selected-8196 page) and all 99 native 128×128 depth pages independently from the raw capture and pinned source; every A/B field, all 1,622,016 depth values, and the 16,384 selected page-table entries reproduce with max error 0.0. Figure pixels, scales, and free/stale categories also match, but the published PageFlags H1..H7 hierarchy is factually wrong and the report mislabels pass 840 as the producer, so correction is required.",
+      "checks": [
+        "selected page mappings and depth bytes independently reproduce: yes — A/B: max UV/Z/depth error 0.0, `0xc000504f`/`0x3efff6f3` and `0xc0001017`/`0x3f000db7` read from native table/pool; C and S additionally match native/published words; 99 pages, 1,622,016 values, 0 raw-bit and 0 compact-RGB mismatches; 16,384 entries, 0 roundtrip and 0 published-entry mismatches; 99/99 metadata owner matches.",
+        "figures and provenance distinguish valid physical depth from unallocated or stale storage: no — figures are exact (F1 0/405,504 atlas pixels; F2 0/262,144 LOD pixels and 0/840 zoom cells; F3 0/374,482 non-marker pixels; free/stale colors distinct), but provenance is incorrect: `page_table_flags_hierarchy_h6` has H1..H7 all zero while the correct H1..H6 live in PageFlags mip1..mip6 (212/320/512/1,024/4,096/16,384 mismatches), and report.md labels PageTable/Flags/Pool “producer 840” although pass 840 only consumes them."
+      ],
+      "changed": [
+        "review/checks.json",
+        "review/report.md",
+        "review/verify_vsm_storage.py"
+      ]
+    }
+  ],
+  "open": [],
+  "failure": {
+    "stepId": "verify",
+    "output": "[[DEEPCLUSTER]]\nstatus: fail\nsummary: Reconstructed four selected addresses (A, B, C, and a selected-8196 page) and all 99 native 128×128 depth pages independently from the raw capture and pinned source; every A/B field, all 1,622,016 depth values, and the 16,384 selected page-table entries reproduce with max error 0.0. Figure pixels, scales, and free/stale categories also match, but the published PageFlags H1..H7 hierarchy is factually wrong and the report mislabels pass 840 as the producer, so correction is required.\nchecks:\n- selected page mappings and depth bytes independently reproduce: yes — A/B: max UV/Z/depth error 0.0, `0xc000504f`/`0x3efff6f3` and `0xc0001017`/`0x3f000db7` read from native table/pool; C and S additionally match native/published words; 99 pages, 1,622,016 values, 0 raw-bit and 0 compact-RGB mismatches; 16,384 entries, 0 roundtrip and 0 published-entry mismatches; 99/99 metadata owner matches.\n- figures and provenance distinguish valid physical depth from unallocated or stale storage: no — figures are exact (F1 0/405,504 atlas pixels; F2 0/262,144 LOD pixels and 0/840 zoom cells; F3 0/374,482 non-marker pixels; free/stale colors distinct), but provenance is incorrect: `page_table_flags_hierarchy_h6` has H1..H7 all zero while the correct H1..H6 live in PageFlags mip1..mip6 (212/320/512/1,024/4,096/16,384 mismatches), and report.md labels PageTable/Flags/Pool “producer 840” although pass 840 only consumes them.\nimprovisation: no\n[[/DEEPCLUSTER]]"
+  }
+}

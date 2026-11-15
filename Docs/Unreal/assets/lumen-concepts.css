@@ -12,8 +12,10 @@
 .concept-comparison > :first-child { margin-top: 0; }
 .concept-comparison > :last-child { margin-bottom: 0; }
 
-/* Keep a long inline expression together and scroll it locally if necessary. */
-.inline-math { display: inline-block; max-width: 100%; overflow-x: auto; vertical-align: middle; }
+/* Inline math participates in the text line box: it must not become a local
+   scroller, and it sits on the baseline like the surrounding prose. Wide
+   display equations keep their own .equation-scroll container. */
+.inline-math { display: inline; overflow: visible; vertical-align: baseline; }
 .katex { position: relative; }
 
 .concept-comparison figure,
@@ -153,8 +155,10 @@
     min-width: 54rem;
   }
 
-  .buffer-grid .figure-scroll img {
-    min-width: 34rem;
+  /* The base min-width:0 reset above lets the grid item shrink; the SVG inside
+     keeps its native reading size in the local scroller instead of the page. */
+  .buffer-grid .figure-scroll img[src$=".svg"] {
+    min-width: 1100px;
   }
 }
 

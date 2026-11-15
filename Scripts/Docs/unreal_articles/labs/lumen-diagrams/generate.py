@@ -68,7 +68,7 @@ def partition():
     s.box(390,90,420,92,'Outgoing radiance toward camera','Lₒ = emission + direct + remaining',GREEN)
     labels=[('Emission','Lₑ','Visible emitting material','Base-pass contribution'),('Analytical direct','∫ (f_d + f_g) Lᵢ,ᴬ dσ⊥','Selected local light set','Deferred lights + visibility'),('Remaining diffuse','∫ f_d Lᵢ,ᴿ dσ⊥','Sky, emitters, reflected light','Probe gathering + material'),('Remaining glossy','∫ f_g Lᵢ,ᴿ dσ⊥','Same remaining source field','Rough/dedicated reflections')]
     for i,(title,equation,source,route) in enumerate(labels):
-        x=28+i*296;s.box(x,270,272,195,title,equation+'\n'+source+'\n'+route,[GREEN,BLUE,GOLD,RED][i]);s.line(x+136,260,600,196,[GREEN,BLUE,GOLD,RED][i],2,arrow=True)
+        x=28+i*296;s.box(x,270,272,195,title,equation+'\n'+source+'\n'+route,[GREEN,BLUE,GOLD,RED][i]);s.line(x+136,260,450+i*100,196,[GREEN,BLUE,GOLD,RED][i],2,arrow=True)
     s.rect(55,515,1090,105,fill='#edf3ee')
     s.text(80,552,'A light → wall → receiver path is different from a light → receiver path.',23,GREEN,True)
     s.text(80,589,'Keep secondary cached direct light. Blend overlapping glossy representations instead of adding them.',19)
@@ -149,7 +149,7 @@ def history():
     s.line(775,440,990,530,BLUE,arrow=True)
     s.line(205,270,205,505,GREEN);s.line(205,505,800,505,GREEN);s.line(800,505,835,530,GREEN,arrow=True)
     s.line(815,615,385,615,RED,arrow=True)
-    s.text(425,520,'N′ includes age cap and fast-update limits.',18)
+    s.text(425,531,'N′ includes age cap and fast-update limits.',18)
     s.text(425,718,'No valid history: N′ = 0. Invalid current sample: the source may use α = 1 / (1 + 4N′).',18)
     return s.write('history-reconstruction.svg')
 

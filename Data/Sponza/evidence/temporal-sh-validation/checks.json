@@ -1,0 +1,161 @@
+{
+ "schema": "temporal-sh-review/1",
+ "scope": "Independent review of published temporal screen-probe SH evidence in Docs/Unreal/assets/lumen-sponza/temporal/{screen-sh,motion-screen-sh} against raw DumpGPU captures, plus the reusable decoder and root UI manifest.",
+ "acceptance": [
+  {
+   "label": "active placements and nine RGB SH coefficients decoded with source identities",
+   "result": "yes",
+   "evidence": "Independent reader (temporal-sh-review/verify_raw.py, no decoder import) parsed raw DumpGPU records and read the R11G11B10 ambient plus RGBA16F directional binaries directly from Resources for baseline (light), lightstep-032 (light) and camera-064 (motion). It rebuilt all 11,074 active placements (3,706 + 3,686 + 3,682) and compared all 27 coefficients per placement: 298,998 values, 0 over 1e-6, maximum absolute difference 5.000e-7 (published coefficients are rounded to 6 decimals). Six named probes per state (floor/arcade uniform and adaptive) are enumerated in raw-spotcheck.json. Source identities were resolved by resource name, not by a reused id: SH pass/resource ids are 530/00040000020002f16b10+00040000020002f16dd0 (baseline), 97/0003000001fffe37bdb0+0003000001fffe37c070 (lightstep-032) and 553/000400000249ea452eb0+000400000249ea453170 (camera-064).",
+   "details": "temporal-sh-review/raw-spotcheck.json"
+  },
+  {
+   "label": "projected real-scene lobes use fixed declared units and scales over time",
+   "result": "yes",
+   "evidence": "Each experiment declares radius 60.0 cm, rosette radius 55 px and one fixed response-luminance scale: 1.4454 for screen-sh and 1.5239 for motion-screen-sh. lobes.npz contains one lobe_max value per experiment and all 5x10 (light) / 3x10 (motion) probes use it; signed coefficient and signed-luminance minima are negative (screen-sh -0.03150945, motion -0.03988460), clamped arrays are exactly max(signed,0) and nonnegative, and the manifest declares the negative display clamp. Recovered negative fractions 0.02580247 / 0.03580247 and display-saturated fractions 0.00975309 / 0.00967078 match the summaries. The two experiments' scales differ but neither changes within its own time series; the UI captions declare the matching per-experiment scale.",
+   "details": "temporal-sh-review/artifact-checks.json"
+  },
+  {
+   "label": "output and decoder reusable by the main temporal collector",
+   "result": "yes",
+   "evidence": "The published decoder ran from the parent source path with --state NAME=PATH on one light state and one motion state. --stage all exited PASS for both (recompute-light-all, recompute-motion-all), and the recomputed active records match the published records exactly: 3,706 light-baseline and 3,682 motion-camera-064 active probes, maximum 27-coefficient difference 0.0, identical counts, view exposure, frame indices and screen positions. The JSON/NPZ schema and CLI --state path are therefore usable by a collector. Caveat: --stage data writes byte-identical coefficient data but exits 2 because its finite_nonempty_outputs self-check requires publish/figures/lobes_<state>.png; a collector must use --stage all or ignore that exit status.",
+   "details": "temporal-sh-review/recompute-compare.json"
+  }
+ ],
+ "independent_raw": {
+  "states": {
+   "baseline": {
+    "group": "light",
+    "active": 3706,
+    "active_uniform": 3569,
+    "active_adaptive": 137,
+    "stale_finite_adaptive": 103,
+    "inactive_unlit": 31,
+    "finite_nonzero_storage_identity": "3706+103+31=3840",
+    "sh_values_compared": 100062,
+    "sh_max_abs_diff": 5.0e-7,
+    "sh_values_over_1e-6": 0,
+    "uniform_center_max_error_px": 0.000100851,
+    "adaptive_center_max_error_px": 0.000082721
+   },
+   "lightstep-032": {
+    "group": "light",
+    "active": 3686,
+    "active_uniform": 3569,
+    "active_adaptive": 117,
+    "stale_finite_adaptive": 138,
+    "inactive_unlit": 31,
+    "finite_nonzero_storage_identity": "3686+138+31=3855",
+    "sh_values_compared": 99522,
+    "sh_max_abs_diff": 5.0e-7,
+    "sh_values_over_1e-6": 0,
+    "uniform_center_max_error_px": 0.000113239,
+    "adaptive_center_max_error_px": 0.000081581
+   },
+   "camera-064": {
+    "group": "motion",
+    "active": 3682,
+    "active_uniform": 3572,
+    "active_adaptive": 110,
+    "stale_finite_adaptive": 130,
+    "inactive_unlit": 28,
+    "finite_nonzero_storage_identity": "3682+130+28=3840",
+    "sh_values_compared": 99414,
+    "sh_max_abs_diff": 5.0e-7,
+    "sh_values_over_1e-6": 0,
+    "uniform_center_max_error_px": 0.000113472,
+    "adaptive_center_max_error_px": 0.000078757
+   }
+  },
+  "selected_probes": "18 probes total, 6 per state: floor uniform atlas [27,42], arcade uniform [7,16] and [60,16], plus adaptive first/middle/last; each compared on all 27 coefficients. All selected max |diff| <= 5e-7 and all projection errors 0.0 px against the published screen_xy.",
+  "allocator_rule": "active_bound = min(captured NumAdaptiveScreenProbes, MaxNumAdaptiveProbes, atlas_view_capacity - NumUniformScreenProbes); active adaptive count equals that bound in all three states, and finite entries beyond the bound are counted as stale and excluded from the active coefficient set.",
+  "projection_rule": "stored TranslatedWorldPosition projected with the captured TranslatedWorldToClip and ViewRectMin/ViewSizeAndInvSize, row-vector v @ reshape(4,4); checked against the uniform tile formula (ViewRectMin + atlas*16 + integer Hammersley jitter + 0.5) and the adaptive AdaptiveScreenProbeData packed xy.",
+  "ok": true
+ },
+ "hashes": {
+  "screen-sh": "21 publish/report files plus the renamed decoder.py entry: all 22 SHA-256 and byte counts match. decoder.py is the renamed decode_temporal_sh.py (87,099 bytes, cb76422d4afe98be54d628c271d21873888ddd63c1f396a7bab2dfe3cbfc3d07).",
+  "motion-screen-sh": "all 15 listed publish/report files match SHA-256 and byte counts; this manifest has no decoder hash entry.",
+  "screenshots": "8/8 published screenshot paths exist and match the SHA-256 recorded in summary.json.",
+  "metadata_mutation": "No published metadata was written or rewritten; the check read the manifests and files only.",
+  "ok": true
+ },
+ "matching_flags": {
+  "screen-sh": {
+   "matches": 50,
+   "atlas_changed": 18,
+   "same_atlas_but_moved": 22,
+   "identical": 10,
+   "geometric_incompatible": 24,
+   "failures": 0
+  },
+  "motion-screen-sh": {
+   "matches": 30,
+   "atlas_changed": 20,
+   "same_atlas_but_moved": 0,
+   "identical": 10,
+   "geometric_incompatible": 14,
+   "failures": 0
+  },
+  "checked_guards": "matched_kind, matched atlas/world/screen/SH, distance, normal dot, tile footprint, incompatibility threshold, same_atlas_coord, physical_sampling_position_identical, geometric_incompatible, sh_delta_rgb and sh_delta_l2 were recomputed; no atlas change is labelled physically identical and every incompatible case is flagged.",
+  "ok": true
+ },
+ "figures": {
+  "inspected": [
+   "screen-sh/publish/figures/lobes_baseline.png",
+   "screen-sh/publish/figures/lobes_lightstep-001.png",
+   "screen-sh/publish/figures/lobes_rosettes.png",
+   "motion-screen-sh/publish/figures/lobes_camera-064.png",
+   "motion-screen-sh/publish/figures/lobes_rosettes.png",
+   "screen-sh/publish/figures/active_baseline.png"
+  ],
+  "observations": "Lobes are anchored to the floor and side-arcade regions on the captured Sponza screenshots, remain readable across states, and show magenta x-ray outlines for occluded parts. The lobe images carry only the ten focus lobes plus green/magenta focus markers; the all-active dot grid appears only in the separate active_* image. Rosettes use one fixed ring radius and one scale per experiment.",
+  "ok": true
+ },
+ "reuse": {
+  "stage_all": {
+   "light-baseline": "PASS; 3,706 active, recomputed SH max diff 0.0",
+   "motion-camera-064": "PASS; 3,682 active, recomputed SH max diff 0.0"
+  },
+  "stage_data": {
+   "output_written": true,
+   "state_json_byte_identical_to_stage_all": true,
+   "exit_code": 2,
+   "failed_check": "finite_nonempty_outputs",
+   "cause": "collect_manifest requires publish/figures/lobes_<state>.png even when --stage data does not render figures."
+  },
+  "ok": true
+ },
+ "ui_manifest": {
+  "manifest": "Docs/Unreal/assets/lumen-sponza/temporal/manifest.json",
+  "experiments": ["renderer-light-step", "light-buffers", "camera-buffers"],
+  "referenced_local_images_and_records": 61,
+  "missing_or_url_references": 0,
+  "timing_claims_60fps_or_frame_rate": 0,
+  "builder_timing_claims": 0,
+  "discrete_timing_statement": "All light-buffer/camera-buffer states state that updates are discrete and playback spacing does not represent elapsed rendering time.",
+  "caption_scale_mismatches": 0,
+  "ok": true
+ },
+ "findings": [
+  {
+   "severity": "medium",
+   "finding": "The documented --stage data reuse path writes correct, byte-identical coefficient data but returns exit code 2 because the finite_nonempty_outputs check requires figure PNGs that this stage never renders. A collector that checks the exit status will treat data-only extraction as a failure. --stage all on one state passes and reproduces the coefficients exactly.",
+   "evidence": "temporal-sh-review/recompute-compare.json; recompute-light/publish/data/states/baseline.json is byte-identical to recompute-light-all/publish/data/states/baseline.json."
+  },
+  {
+   "severity": "low",
+   "finding": "The motion-screen-sh report's reuse example still names the light states (--states baseline,lightstep-...); the motion dump contains camera-001 and camera-064. The explicit --state NAME=PATH form works for both experiments.",
+   "evidence": "Docs/Unreal/assets/lumen-sponza/temporal/motion-screen-sh/report.md line 78."
+  },
+  {
+   "severity": "low",
+   "finding": "The light manifest lists and hashes the renamed decoder.py entry; the motion manifest has no decoder entry, although both set generated_by to temporal-sh/decoder.py. All listed motion data/figure hashes are correct, and the current decoder exactly reproduces the motion camera-064 coefficients, so this is a provenance metadata gap rather than data drift.",
+   "evidence": "temporal-sh-review/artifact-checks.json hash sections."
+  },
+  {
+   "severity": "info",
+   "finding": "The light and motion experiments use different fixed response scales (1.4454 and 1.5239). This is declared per experiment and is fixed within each time series, but colors/radii are not directly comparable between the two experiments.",
+   "evidence": "decode-manifest.json scales and UI captions."
+  }
+ ],
+ "status": "pass"
+}

@@ -1,0 +1,519 @@
+{
+  "schema": "static-final-checks-v1",
+  "step": "Validate the integrated Lumen teaching revision",
+  "workspace": "D:\\UnrealUnderstanding-Review\\static-final-checks",
+  "repo": "D:\\UnrealUnderstanding",
+  "raw_dump": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654",
+  "environment": {
+    "python": "3.14.6",
+    "node": "v24.22.1",
+    "PYTHONDONTWRITEBYTECODE": "1 for stable rerun and all spot checks"
+  },
+  "stable_rerun": {
+    "all_commands_passed": true,
+    "commands_total": 19,
+    "commands_passed": 19,
+    "tree_diff_during_rerun": 0,
+    "window_local": "2026-11-15T18:10:16+08:00 to 2026-11-15T18:11:19+08:00",
+    "target_revision_note": "Root concurrently regenerated Docs pages and the artifact manifest at 2026-11-15T10:06:56Z and T10:09:08Z; the stable rerun is on that revision."
+  },
+  "commands": [
+    {
+      "id": "01-build-check",
+      "description": "Build all five authored essays in --check mode",
+      "command": "python.exe build.py --check",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 1.05,
+      "result": "Verified scene-representation 29,463 words/18 chapters; nanite 15,369/20; lumen 24,605/15; material-compiler 12,214/16; lumen-reference 65,579/44"
+    },
+    {
+      "id": "02-math-typesetting-check",
+      "description": "Verify the offline equation cache",
+      "command": "python.exe math_typesetting.py --check --node node",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "Verified 1010 LaTeX expressions"
+    },
+    {
+      "id": "03-validate-labs",
+      "description": "Validate laboratory sources, outputs, PNGs, frozen hashes",
+      "command": "python.exe validate_labs.py",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "PASS: 129 laboratory sources/outputs, 84 PNGs, frozen hashes and numerical evidence"
+    },
+    {
+      "id": "04-validate-lumen-v2",
+      "description": "Validate Lumen derivation, package and capture evidence",
+      "command": "python.exe validate_lumen_v2.py",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 33.44,
+      "result": "PASS all requested evidence checks.; 236 artifact files / 47,440,343 bytes; 6001 portable capture checks"
+    },
+    {
+      "id": "05-lumen-reading-generate-check",
+      "description": "Verify reading diagrams and CPU reference",
+      "command": "python.exe labs/lumen-reading/generate.py --check",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 1.05,
+      "result": "Verified 7 diagrams, CPU reference, clean PNG, and manifest."
+    },
+    {
+      "id": "06-lumen-course-generate-check",
+      "description": "Verify forward-design course diagrams and numerical checks",
+      "command": "python.exe labs/lumen-course/generate.py --check",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "Verified 28 original SVG diagrams and 15 numerical checks"
+    },
+    {
+      "id": "07a-node-course",
+      "description": "Syntax-check course.js",
+      "command": "node.exe --check Docs/Unreal/assets/lumen-course/course.js",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.03,
+      "result": "node --check accepted course.js"
+    },
+    {
+      "id": "07b-node-temporal",
+      "description": "Syntax-check temporal.js",
+      "command": "node.exe --check Docs/Unreal/assets/lumen-course/temporal.js",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.02,
+      "result": "node --check accepted temporal.js"
+    },
+    {
+      "id": "08-validate",
+      "description": "Validate article structure, links, figures",
+      "command": "python.exe validate.py",
+      "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+      "exit": 0,
+      "seconds": 2.05,
+      "result": "PASS: article structure, links, figures; 154 accessible SVGs; 278 recorded source ranges"
+    },
+    {
+      "id": "09-site-independence",
+      "description": "Check standalone site independence",
+      "command": "python.exe Scripts/Docs/check_site_independence.py",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.05,
+      "result": "Site independence check passed: 11 HTML file(s)"
+    },
+    {
+      "id": "10-frame-tests-dir",
+      "description": "Run lumen-frame Python test directory",
+      "command": "python.exe -m unittest discover -s Scripts/Docs/unreal_articles/labs/lumen-frame/tests -q",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 11.16,
+      "result": "Ran 39 tests ... OK"
+    },
+    {
+      "id": "11-frame-verifier-tests",
+      "description": "Run frame-evidence verifier tests",
+      "command": "python.exe -m unittest discover -s Scripts/Docs/unreal_articles/labs/lumen-frame -p test_verify_frame_evidence.py -q",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "Ran 15 tests ... OK"
+    },
+    {
+      "id": "12-node-metadata-browser",
+      "description": "Run metadata browser Node tests",
+      "command": "node.exe Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_metadata_browser.cjs",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.02,
+      "result": "6 ok checks; metadata browser tests passed"
+    },
+    {
+      "id": "13-node-read-path",
+      "description": "Run frame read-path Node tests",
+      "command": "node.exe Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_read_path.cjs",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.02,
+      "result": "15 ok checks; read-path tests passed"
+    },
+    {
+      "id": "14-node-codec",
+      "description": "Run codec Node tests",
+      "command": "node.exe Scripts/Docs/unreal_articles/labs/lumen-frame/tests/test_codec.cjs",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.03,
+      "result": "19 codec tests passed"
+    },
+    {
+      "id": "15-verify-package-copy",
+      "description": "Verify published Sponza package copy against reconstruction audit",
+      "command": "python.exe Scripts/Docs/unreal_articles/labs/lumen-sponza/verify_package_copy.py",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "Sponza published package: 6852 files, 657904432 bytes; all SHA-256 hashes match"
+    },
+    {
+      "id": "16-decode-receivers-verify",
+      "description": "Verify receiver decode in owned copy",
+      "command": "python.exe Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_receivers.py --out D:\\UnrealUnderstanding-Review\\static-final-checks\\copies\\receivers --stage verify",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "ok=true, 27 checks"
+    },
+    {
+      "id": "17-cache-replay-verify-queries",
+      "description": "Verify cache replay query invariants",
+      "command": "python.exe Scripts/Docs/unreal_articles/labs/lumen-sponza/cache-replay/verify_queries.py",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "surface and world invariants hold"
+    },
+    {
+      "id": "18-decode-context-verify",
+      "description": "Verify context decode in owned copy",
+      "command": "python.exe Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_context.py --dump D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654 --out D:\\UnrealUnderstanding-Review\\static-final-checks\\copies\\context --stage verify",
+      "cwd": "D:\\UnrealUnderstanding",
+      "exit": 0,
+      "seconds": 1.04,
+      "result": "252/252 checks, 0 failed"
+    }
+  ],
+  "transient_first_pass": {
+    "command": "python validate_lumen_v2.py",
+    "cwd": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles",
+    "exit": 1,
+    "error": "ERROR: Artifact size mismatch for Scripts/Docs/unreal_articles/labs/lumen-frame/README.md: 24734 != 24649.",
+    "resolution": "Root updated artifact-manifest.json at 2026-11-15T10:09:08Z; the stable rerun passed. Current manifest audit: 236 entries, 0 mismatches."
+  },
+  "checks_total": {
+    "context": 252,
+    "receivers": 27,
+    "frame_python": 54,
+    "node": 40,
+    "latex": 1010,
+    "course_svg": 28,
+    "course_numerical": 15,
+    "labs_sources_outputs": 129,
+    "labs_pngs": 84,
+    "lumen_v2_capture": 6001,
+    "lumen_v2_artifacts": 236,
+    "sponza_package_files": 6852
+  },
+  "independent_spot_checks": {
+    "schema": "static-final-spot-checks-v1",
+    "checks": [
+      {
+        "name": "raw_payload_sha_matches_inventory_and_expected",
+        "ok": true,
+        "detail": "raw=b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972 inventory=b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972 bytes=27648"
+      },
+      {
+        "name": "pass762_offset460_max_frames_float_is_10",
+        "ok": true,
+        "detail": "pass=762 event=TemporalReprojection(1280x720) MaxFramesAccumulated@460=10.0"
+      },
+      {
+        "name": "adaptive_allocator_count_117_and_stale_123_excluded",
+        "ok": true,
+        "detail": "count=117 header_sum=117 tiles=117 adaptive=240 active=117 stale=123 stale_idx=117..239"
+      },
+      {
+        "name": "sh_probe_a_projects_to_pixel_498_680",
+        "ok": true,
+        "detail": "independent projection=(498.500016644,680.500045420) pixel=(498, 680)"
+      },
+      {
+        "name": "sh_probe_a_lambert_and_captured_difference_arithmetic",
+        "ok": true,
+        "detail": "D=[1.26287, 1.67992, 2.5798] captured=[1.203125, 1.5625, 2.375] rel%=[5.0, 7.5, 8.6] (physics 4*pi*raw = pi*4*raw)"
+      },
+      {
+        "name": "chapter_sh_claim_matches_checked_values",
+        "ok": true,
+        "detail": "line=24 needles=True"
+      },
+      {
+        "name": "reflection_C_raw96_effective_96_over_255_times_32",
+        "ok": true,
+        "detail": "raw=96 history_raw=96 effective=12.047058823529412 (not 96 frames)"
+      }
+    ],
+    "observations": {
+      "raw_payload": {
+        "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Resources\\00010000020c12495520.mip4.v0001000002090ec60010.bin",
+        "bytes": 27648,
+        "sha256": "b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972",
+        "mtime_utc": 1794731844562226100,
+        "inventory_id": "payload-01891",
+        "inventory_bytes": 27648,
+        "inventory_sha256": "b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972",
+        "inventory_chunk_sha256": [
+          "b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972"
+        ]
+      },
+      "pass762": {
+        "id": 762,
+        "event_name": "TemporalReprojection(1280x720)",
+        "parameters": "000400000208f36dfaa0",
+        "metadata": "000400007ffc1e2ef870",
+        "metadata_struct": "FParameters",
+        "metadata_file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeGather.cpp",
+        "metadata_line": 1212,
+        "struct_file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Structures\\000400000208f36dfaa0.bin",
+        "struct_bytes": 576,
+        "offset_460_field": "MaxFramesAccumulated",
+        "offset_460_float": 10.0,
+        "raw_word_hex": "00002041"
+      },
+      "adaptive_allocator": {
+        "pass706_event": "AdaptivePlacementSpawn",
+        "version": "00040000020bd35c1b10",
+        "count_file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Resources\\0004000002090c6ba5c0.v00040000020bd35c1b10.bin",
+        "count_word": 117,
+        "header_file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Resources\\0004000002090c6ba8d0.mip0.v00040000020bd35c1b10.bin",
+        "header_extent": 80,
+        "header_sum": 117,
+        "header_nonzero_tiles": 117,
+        "json_counts": {
+          "allocated_adaptive_probe_count": 117,
+          "finite_storage_adaptive_count": 240,
+          "active_adaptive_count": 117,
+          "stale_finite_adaptive_count": 123,
+          "active_probe_count": 3686,
+          "finite_storage_probe_count": 3809,
+          "active_uniform_count": 3569
+        },
+        "listed_entries": 3809,
+        "listed_adaptive": 240,
+        "listed_active_adaptive": 117,
+        "listed_stale_adaptive": 123,
+        "stale_index_min": 117,
+        "stale_index_max": 239,
+        "active_index_min": 0,
+        "active_index_max": 116,
+        "active_tile_bijection": true
+      },
+      "sh_probe_a": {
+        "probe_index_uniform": 3391,
+        "normal_world": [
+          0.012532789155969727,
+          0.05430875300920239,
+          0.9984455360922585
+        ],
+        "projected_screen_xy": [
+          498.50001664389754,
+          680.5000454195194
+        ],
+        "pixel_xy": [
+          498,
+          680
+        ],
+        "sh_coeff_order": "L00,L1-1,L10,L11,L2-2,L2-1,L20,L21,L22 (Unreal convention)",
+        "evaluate_sh_raw": [
+          0.31571820699219916,
+          0.4199810580801066,
+          0.6449487948714739
+        ],
+        "unit_albedo_lambert_response_4x": [
+          1.2628728279687966,
+          1.6799242323204264,
+          2.5797951794858958
+        ],
+        "physical_irradiance_4pi_x": [
+          3.9674319987649382,
+          5.2776376268453244,
+          8.104665583639251
+        ],
+        "captured_diffuse_r11g11b10_word_hex": "0x819f23cd",
+        "captured_diffuse_pixel": [
+          1.203125,
+          1.5625,
+          2.375
+        ],
+        "abs_diff": [
+          0.05974782796879663,
+          0.11742423232042642,
+          0.20479517948589576
+        ],
+        "relative_diff": [
+          0.0496605323377011,
+          0.0751515086850729,
+          0.08622954925721926
+        ],
+        "same_as_stored_lambert": true,
+        "same_as_stored_captured": true
+      },
+      "chapter_sh_claim": {
+        "file": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles\\chapters\\lumen-course-reconstruction.html",
+        "line": 24,
+        "line_sha256": "1625e5e64d3b95f15be2ffe7e87d8a2ac8c3a6d98e680673799308ff0b23eadd",
+        "text": "<p>Evaluate probe A's captured nine-coefficient RGB SH representation at its own normal, using the declared no-occlusion test AO=1. Applying the sphere-average normalization and the unit-albedo Lambert factor predicts D \u2248 (1.26287,1.67993,2.57980). The probe projects to the center of pixel (498,680), whose captured integrated field is (1.203125,1.5625,2.375). Relative to that stored field, the differences are approximately 5.0%,7.5%,8.6%. This is a useful scale check: omitting 4\u03c0 would produce a much larger systematic error. It is not an exact replay of per-pixel integration, which also selects/interpolates nearby probes and applies the active geometric and occlusion rules.</p>",
+        "needles_present": {
+          "pixel (498,680)": true,
+          "1.26287,1.67993,2.57980": true,
+          "1.203125,1.5625,2.375": true,
+          "5.0%,7.5%,8.6%": true,
+          "omitting 4\u03c0": true
+        }
+      },
+      "reflection_frames_C": {
+        "pixel_xy": [
+          626,
+          587
+        ],
+        "raw_byte": 96,
+        "history_raw_byte": 96,
+        "effective_frames": 12.047058823529412,
+        "json_raw_byte": 96,
+        "json_effective_frames": 12.047058823529412
+      }
+    },
+    "ok": true,
+    "passed": 7,
+    "total": 7
+  },
+  "artifact_manifest_audit": {
+    "count": 236,
+    "mismatches": []
+  },
+  "integrity": {
+    "repo_files_baseline": 29227,
+    "repo_files_final": 29227,
+    "baseline_to_final_added": [
+      "Docs\\Unreal\\assets\\lumen-course\\course.css|5514|2026-11-15T10:06:56.1945177Z",
+      "Docs\\Unreal\\lumen-reference.html|2805826|2026-11-15T10:06:56.9542083Z",
+      "Docs\\Unreal\\lumen.html|683226|2026-11-15T10:06:56.6444268Z",
+      "Docs\\Unreal\\material-compiler.html|109424|2026-11-15T10:06:56.6576158Z",
+      "Docs\\Unreal\\nanite-and-lumen.html|1783|2026-11-15T10:06:56.9552372Z",
+      "Docs\\Unreal\\nanite.html|400171|2026-11-15T10:06:56.5806125Z",
+      "Docs\\Unreal\\scene-representation.html|336886|2026-11-15T10:06:56.5382975Z",
+      "Scripts\\Docs\\unreal_articles\\__pycache__\\build.cpython-314.pyc|52052|2026-11-15T10:05:54.6355497Z",
+      "Scripts\\Docs\\unreal_articles\\chapters\\lumen-course-caches.html|54516|2026-11-15T10:06:56.1945177Z",
+      "Scripts\\Docs\\unreal_articles\\labs\\lumen-frame\\artifact-manifest.json|49767|2026-11-15T10:09:08.0655753Z"
+    ],
+    "baseline_to_final_removed": [
+      "Docs\\Unreal\\assets\\lumen-course\\course.css|5226|2026-11-15T09:46:19.6052098Z",
+      "Docs\\Unreal\\lumen-reference.html|2805826|2026-11-15T10:01:09.6546277Z",
+      "Docs\\Unreal\\lumen.html|683187|2026-11-15T10:01:09.3575433Z",
+      "Docs\\Unreal\\material-compiler.html|109424|2026-11-15T10:01:09.3698614Z",
+      "Docs\\Unreal\\nanite-and-lumen.html|1783|2026-11-15T10:01:09.6551413Z",
+      "Docs\\Unreal\\nanite.html|400171|2026-11-15T10:01:09.2998489Z",
+      "Docs\\Unreal\\scene-representation.html|336886|2026-11-15T10:01:09.2629788Z",
+      "Scripts\\Docs\\unreal_articles\\__pycache__\\build.cpython-314.pyc|51944|2026-11-15T08:09:51.7294504Z",
+      "Scripts\\Docs\\unreal_articles\\chapters\\lumen-course-caches.html|54274|2026-11-15T09:53:04.7113516Z",
+      "Scripts\\Docs\\unreal_articles\\labs\\lumen-frame\\artifact-manifest.json|49767|2026-11-15T08:10:05.4655822Z"
+    ],
+    "root_concurrent_edits": [
+      "Docs\\Unreal\\assets\\lumen-course\\course.css|5514|2026-11-15T10:06:56.1945177Z",
+      "Docs\\Unreal\\lumen-reference.html|2805826|2026-11-15T10:06:56.9542083Z",
+      "Docs\\Unreal\\lumen.html|683226|2026-11-15T10:06:56.6444268Z",
+      "Docs\\Unreal\\material-compiler.html|109424|2026-11-15T10:06:56.6576158Z",
+      "Docs\\Unreal\\nanite-and-lumen.html|1783|2026-11-15T10:06:56.9552372Z",
+      "Docs\\Unreal\\nanite.html|400171|2026-11-15T10:06:56.5806125Z",
+      "Docs\\Unreal\\scene-representation.html|336886|2026-11-15T10:06:56.5382975Z",
+      "Scripts\\Docs\\unreal_articles\\chapters\\lumen-course-caches.html|54516|2026-11-15T10:06:56.1945177Z",
+      "Scripts\\Docs\\unreal_articles\\labs\\lumen-frame\\artifact-manifest.json|49767|2026-11-15T10:09:08.0655753Z"
+    ],
+    "self_side_effect": [
+      "Scripts\\Docs\\unreal_articles\\__pycache__\\build.cpython-314.pyc|52052|2026-11-15T10:05:54.6355497Z"
+    ],
+    "tree_diff_during_stable_rerun": 0,
+    "raw_files_baseline": 12458,
+    "raw_files_final": 12458,
+    "raw_diff": 0,
+    "raw_diff_entries": [],
+    "baseline_to_final_diff_entries": 20,
+    "post_stable_rerun_root_change": [
+      "temp\\temporal-mobile-preview.html|315|2026-11-15T10:12:03.4164779Z"
+    ],
+    "post_change_note": "Root added a gitignored temp preview after the stable rerun; it is outside the published site and the validated commands. Raw tree remained 0 diffs."
+  },
+  "unresolved_issues": [
+    {
+      "kind": "write-scope",
+      "detail": "The first harness invocation regenerated the gitignored file Scripts/Docs/unreal_articles/__pycache__/build.cpython-314.pyc (51,944 -> 52,052 bytes, mtime 2026-11-15T10:05:54.635Z) inside the read-only repo before the stable rerun. No tracked source/artifact or raw file changed, and the stable rerun made 0 tree changes; the ignored cache cannot be restored byte-for-byte because the pre-existing pyc was overwritten.",
+      "source": "tree-before.txt vs tree-post-rerun.txt"
+    }
+  ],
+  "ok": false,
+  "aux_audit": {
+    "artifact_manifest": {
+      "path": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles\\labs\\lumen-frame\\artifact-manifest.json",
+      "entries": 236,
+      "mismatches": [],
+      "ok": true
+    },
+    "context_copy": {
+      "repo_files": 57,
+      "copy_files": 57,
+      "missing_in_copy": [],
+      "extra_in_copy": [],
+      "differing_files": [
+        "data/decode-verify.json"
+      ],
+      "identical_except": [
+        "data/decode-verify.json"
+      ]
+    },
+    "receivers_copy": {
+      "repo_files": 15,
+      "copy_files": 15,
+      "missing_in_copy": [],
+      "extra_in_copy": [],
+      "differing_files": [],
+      "identical_except": []
+    },
+    "repo_tree": {
+      "baseline_entries": 29227,
+      "final_entries": 29227,
+      "baseline_to_final_added": [
+        "Docs\\Unreal\\assets\\lumen-course\\course.css|5514|2026-11-15T10:06:56.1945177Z",
+        "Docs\\Unreal\\lumen-reference.html|2805826|2026-11-15T10:06:56.9542083Z",
+        "Docs\\Unreal\\lumen.html|683226|2026-11-15T10:06:56.6444268Z",
+        "Docs\\Unreal\\material-compiler.html|109424|2026-11-15T10:06:56.6576158Z",
+        "Docs\\Unreal\\nanite-and-lumen.html|1783|2026-11-15T10:06:56.9552372Z",
+        "Docs\\Unreal\\nanite.html|400171|2026-11-15T10:06:56.5806125Z",
+        "Docs\\Unreal\\scene-representation.html|336886|2026-11-15T10:06:56.5382975Z",
+        "Scripts\\Docs\\unreal_articles\\__pycache__\\build.cpython-314.pyc|52052|2026-11-15T10:05:54.6355497Z",
+        "Scripts\\Docs\\unreal_articles\\chapters\\lumen-course-caches.html|54516|2026-11-15T10:06:56.1945177Z",
+        "Scripts\\Docs\\unreal_articles\\labs\\lumen-frame\\artifact-manifest.json|49767|2026-11-15T10:09:08.0655753Z"
+      ],
+      "baseline_to_final_removed": [
+        "Docs\\Unreal\\assets\\lumen-course\\course.css|5226|2026-11-15T09:46:19.6052098Z",
+        "Docs\\Unreal\\lumen-reference.html|2805826|2026-11-15T10:01:09.6546277Z",
+        "Docs\\Unreal\\lumen.html|683187|2026-11-15T10:01:09.3575433Z",
+        "Docs\\Unreal\\material-compiler.html|109424|2026-11-15T10:01:09.3698614Z",
+        "Docs\\Unreal\\nanite-and-lumen.html|1783|2026-11-15T10:01:09.6551413Z",
+        "Docs\\Unreal\\nanite.html|400171|2026-11-15T10:01:09.2998489Z",
+        "Docs\\Unreal\\scene-representation.html|336886|2026-11-15T10:01:09.2629788Z",
+        "Scripts\\Docs\\unreal_articles\\__pycache__\\build.cpython-314.pyc|51944|2026-11-15T08:09:51.7294504Z",
+        "Scripts\\Docs\\unreal_articles\\chapters\\lumen-course-caches.html|54274|2026-11-15T09:53:04.7113516Z",
+        "Scripts\\Docs\\unreal_articles\\labs\\lumen-frame\\artifact-manifest.json|49767|2026-11-15T08:10:05.4655822Z"
+      ],
+      "stable_rerun_added": [],
+      "stable_rerun_removed": [],
+      "stable_rerun_diff": 0
+    },
+    "raw_tree": {
+      "baseline_entries": 12458,
+      "final_entries": 12458,
+      "added": [],
+      "removed": [],
+      "diff": 0
+    }
+  },
+  "validation_ok": true,
+  "write_scope_ok": false
+}

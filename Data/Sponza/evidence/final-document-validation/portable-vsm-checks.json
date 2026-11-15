@@ -1,0 +1,1348 @@
+{
+  "schema": "vsm-storage-checks-v1",
+  "mode": "verify",
+  "verify": {
+    "checks": [
+      {
+        "id": "published_file_hashes",
+        "status": "PASS",
+        "detail": "all published figures/data/report files match manifest bytes+sha256",
+        "measurements": {
+          "files": 9,
+          "mismatches": []
+        }
+      },
+      {
+        "id": "npz_required_arrays",
+        "status": "PASS",
+        "detail": "published NPZ exposes all arrays required to re-derive the plotted/queried operands",
+        "measurements": {
+          "arrays": 45,
+          "missing": []
+        }
+      },
+      {
+        "id": "verify_page_table_roundtrip",
+        "status": "PASS",
+        "detail": "re-encoding every published page-table record reproduces its captured uint32",
+        "measurements": {
+          "entries": 16384,
+          "mismatches": 0
+        }
+      },
+      {
+        "id": "verify_logical_mips",
+        "status": "PASS",
+        "detail": "all eight logical page-table mips 0..7 reproduce their published region counts; mip0 has 99 render-valid pages, mips 1..7 are present and empty",
+        "measurements": {
+          "descriptor_num_mips": 1,
+          "logical_mips": [
+            {
+              "mip": 0,
+              "dim_pages": 128,
+              "entries": 16384,
+              "render": 99,
+              "any_valid": 16384,
+              "empty": false,
+              "json_empty": false,
+              "counts_match": true
+            },
+            {
+              "mip": 1,
+              "dim_pages": 64,
+              "entries": 4096,
+              "render": 0,
+              "any_valid": 0,
+              "empty": true,
+              "json_empty": true,
+              "counts_match": true
+            },
+            {
+              "mip": 2,
+              "dim_pages": 32,
+              "entries": 1024,
+              "render": 0,
+              "any_valid": 0,
+              "empty": true,
+              "json_empty": true,
+              "counts_match": true
+            },
+            {
+              "mip": 3,
+              "dim_pages": 16,
+              "entries": 256,
+              "render": 0,
+              "any_valid": 0,
+              "empty": true,
+              "json_empty": true,
+              "counts_match": true
+            },
+            {
+              "mip": 4,
+              "dim_pages": 8,
+              "entries": 64,
+              "render": 0,
+              "any_valid": 0,
+              "empty": true,
+              "json_empty": true,
+              "counts_match": true
+            },
+            {
+              "mip": 5,
+              "dim_pages": 4,
+              "entries": 16,
+              "render": 0,
+              "any_valid": 0,
+              "empty": true,
+              "json_empty": true,
+              "counts_match": true
+            },
+            {
+              "mip": 6,
+              "dim_pages": 2,
+              "entries": 4,
+              "render": 0,
+              "any_valid": 0,
+              "empty": true,
+              "json_empty": true,
+              "counts_match": true
+            },
+            {
+              "mip": 7,
+              "dim_pages": 1,
+              "entries": 1,
+              "render": 0,
+              "any_valid": 0,
+              "empty": true,
+              "json_empty": true,
+              "counts_match": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "verify_page_flags_hierarchy",
+        "status": "PASS",
+        "detail": "PageFlags 0..6 are verified as the separate H0..H6 hardware-mip hierarchy; H0 equals exact-page flags and H7 is absent",
+        "measurements": {
+          "shape": [
+            7,
+            128,
+            128
+          ],
+          "descriptor_num_mips": 7,
+          "h_nonzero": {
+            "H0": 168,
+            "H1": 212,
+            "H2": 320,
+            "H3": 512,
+            "H4": 1024,
+            "H5": 4096,
+            "H6": 16384
+          },
+          "h0_matches_mip0_low6": true
+        }
+      },
+      {
+        "id": "verify_metadata_bounds",
+        "status": "PASS",
+        "detail": "all 4096 physical-page metadata records have in-range VSM id/mip/page address",
+        "measurements": {
+          "shape": [
+            4096,
+            6
+          ],
+          "max_vsm": 8208,
+          "max_mip": 0,
+          "max_page": [
+            78,
+            79
+          ]
+        }
+      },
+      {
+        "id": "verify_unreferenced_metadata_wording",
+        "status": "PASS",
+        "detail": "the 96 earlier-frame metadata records are published as unreferenced in this snapshot, not as proven stale/invalid from age",
+        "measurements": {
+          "unreferenced_records": 96,
+          "published": 96,
+          "not_proven_invalid": true,
+          "snapshot_pass": 810
+        }
+      },
+      {
+        "id": "verify_depth_bitcast",
+        "status": "PASS",
+        "detail": "published native depth pages bitcast back exactly and lie inside device-Z (0,1)",
+        "measurements": {
+          "shape": [
+            6,
+            128,
+            128
+          ],
+          "finite": 98304,
+          "total": 98304,
+          "min": 0.49990496039390564,
+          "max": 0.5002386569976807
+        }
+      },
+      {
+        "id": "verify_all_native_depth_pages",
+        "status": "PASS",
+        "detail": "all 99 full-resolution selected-VSM depth pages are published as raw bits + float64-identical float32 and stay inside device-Z (0,1)",
+        "measurements": {
+          "shape": [
+            99,
+            128,
+            128
+          ],
+          "finite": 1622016,
+          "total": 1622016,
+          "min": 0.4998985826969147,
+          "max": 0.5002386569976807
+        }
+      },
+      {
+        "id": "verify_virtual_depth_mosaic",
+        "status": "PASS",
+        "detail": "F4 reassembles all 99 selected pages at their virtual coordinates; at least three known page coordinates reproduce the exact depth-ramp RGB and mapped mask under the fixed range [0.4998, 0.5003]",
+        "measurements": {
+          "figure": "publish/figures/vsm_virtual_depth.png",
+          "shape": [
+            1536,
+            1792,
+            3
+          ],
+          "bbox_virtual_page": [
+            55,
+            58,
+            68,
+            69
+          ],
+          "scale": 1.0,
+          "depth_display_range_device_z": [
+            0.4998,
+            0.5003
+          ],
+          "page_count": 99,
+          "page_categories": {
+            "0": 99,
+            "1": 69
+          },
+          "known_page_coordinates": [
+            [
+              63,
+              65
+            ],
+            [
+              64,
+              63
+            ],
+            [
+              58,
+              58
+            ],
+            [
+              65,
+              69
+            ]
+          ],
+          "samples_checked": 12,
+          "samples": [
+            {
+              "page": [
+                63,
+                65
+              ],
+              "label": "A",
+              "output_xy": [
+                1056,
+                928
+              ],
+              "texel_in_page": [
+                32,
+                32
+              ],
+              "expected_rgb": [
+                25,
+                64,
+                140
+              ],
+              "actual_rgb": [
+                25,
+                64,
+                140
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                63,
+                65
+              ],
+              "label": "A",
+              "output_xy": [
+                1088,
+                960
+              ],
+              "texel_in_page": [
+                64,
+                64
+              ],
+              "expected_rgb": [
+                25,
+                65,
+                141
+              ],
+              "actual_rgb": [
+                25,
+                65,
+                141
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                63,
+                65
+              ],
+              "label": "A",
+              "output_xy": [
+                1120,
+                992
+              ],
+              "texel_in_page": [
+                96,
+                96
+              ],
+              "expected_rgb": [
+                25,
+                66,
+                141
+              ],
+              "actual_rgb": [
+                25,
+                66,
+                141
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                64,
+                63
+              ],
+              "label": "B",
+              "output_xy": [
+                1184,
+                672
+              ],
+              "texel_in_page": [
+                32,
+                32
+              ],
+              "expected_rgb": [
+                228,
+                198,
+                101
+              ],
+              "actual_rgb": [
+                228,
+                198,
+                101
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                64,
+                63
+              ],
+              "label": "B",
+              "output_xy": [
+                1216,
+                704
+              ],
+              "texel_in_page": [
+                64,
+                64
+              ],
+              "expected_rgb": [
+                228,
+                198,
+                102
+              ],
+              "actual_rgb": [
+                228,
+                198,
+                102
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                64,
+                63
+              ],
+              "label": "B",
+              "output_xy": [
+                1248,
+                736
+              ],
+              "texel_in_page": [
+                96,
+                96
+              ],
+              "expected_rgb": [
+                229,
+                198,
+                103
+              ],
+              "actual_rgb": [
+                229,
+                198,
+                103
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                58,
+                58
+              ],
+              "label": "first_page_order",
+              "output_xy": [
+                416,
+                32
+              ],
+              "texel_in_page": [
+                32,
+                32
+              ],
+              "expected_rgb": [
+                222,
+                184,
+                70
+              ],
+              "actual_rgb": [
+                222,
+                184,
+                70
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                58,
+                58
+              ],
+              "label": "first_page_order",
+              "output_xy": [
+                448,
+                64
+              ],
+              "texel_in_page": [
+                64,
+                64
+              ],
+              "expected_rgb": [
+                222,
+                185,
+                72
+              ],
+              "actual_rgb": [
+                222,
+                185,
+                72
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                58,
+                58
+              ],
+              "label": "first_page_order",
+              "output_xy": [
+                480,
+                96
+              ],
+              "texel_in_page": [
+                96,
+                96
+              ],
+              "expected_rgb": [
+                223,
+                185,
+                73
+              ],
+              "actual_rgb": [
+                223,
+                185,
+                73
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                65,
+                69
+              ],
+              "label": "last_page_order",
+              "output_xy": [
+                1312,
+                1440
+              ],
+              "texel_in_page": [
+                32,
+                32
+              ],
+              "expected_rgb": [
+                24,
+                78,
+                142
+              ],
+              "actual_rgb": [
+                24,
+                78,
+                142
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                65,
+                69
+              ],
+              "label": "last_page_order",
+              "output_xy": [
+                1344,
+                1472
+              ],
+              "texel_in_page": [
+                64,
+                64
+              ],
+              "expected_rgb": [
+                24,
+                71,
+                141
+              ],
+              "actual_rgb": [
+                24,
+                71,
+                141
+              ],
+              "match": true
+            },
+            {
+              "page": [
+                65,
+                69
+              ],
+              "label": "last_page_order",
+              "output_xy": [
+                1376,
+                1504
+              ],
+              "texel_in_page": [
+                96,
+                96
+              ],
+              "expected_rgb": [
+                23,
+                88,
+                143
+              ],
+              "actual_rgb": [
+                23,
+                88,
+                143
+              ],
+              "match": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "verify_receiver_chain",
+        "status": "PASS",
+        "detail": "A/B declared-replay records recompute the same physical texel, page-table texel, depth and metadata owner from published data",
+        "measurements": {
+          "A": {
+            "entry": "0xc000504f",
+            "physical_texel": [
+              10138,
+              2651
+            ],
+            "page_table_texel": [
+              703,
+              65
+            ],
+            "depth": 0.4999309480190277,
+            "metadata_owner": 8196,
+            "metadata_page": [
+              63,
+              65
+            ]
+          },
+          "B": {
+            "entry": "0xc0001017",
+            "physical_texel": [
+              3053,
+              548
+            ],
+            "page_table_texel": [
+              704,
+              63
+            ],
+            "depth": 0.5002092719078064,
+            "metadata_owner": 8196,
+            "metadata_page": [
+              64,
+              63
+            ]
+          }
+        }
+      },
+      {
+        "id": "verify_occupancy_partition",
+        "status": "PASS",
+        "detail": "published occupancy raster covers 4096 pages with declared category ids",
+        "measurements": {
+          "shape": [
+            32,
+            128
+          ],
+          "counts": {
+            "0": 3757,
+            "1": 99,
+            "2": 144,
+            "4": 96
+          }
+        }
+      },
+      {
+        "id": "verify_figure_dimensions",
+        "status": "PASS",
+        "detail": "PNG IHDR dimensions match the published manifest and stay <=2048 px",
+        "measurements": {
+          "figures": {
+            "vsm_pool_occupancy": {
+              "size": [
+                1024,
+                988
+              ],
+              "expected": [
+                1024,
+                988
+              ]
+            },
+            "vsm_page_table_sun": {
+              "size": [
+                1552,
+                512
+              ],
+              "expected": [
+                1552,
+                512
+              ]
+            },
+            "vsm_depth_pages": {
+              "size": [
+                784,
+                520
+              ],
+              "expected": [
+                784,
+                520
+              ]
+            },
+            "vsm_virtual_depth": {
+              "size": [
+                1792,
+                1536
+              ],
+              "expected": [
+                1792,
+                1536
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "verify_source_ranges",
+        "status": "PASS",
+        "detail": "source-ranges.json has a rangeSHA for every range (engine not supplied; range SHAs not recomputed)",
+        "measurements": {
+          "ranges": 31,
+          "recomputed": []
+        }
+      },
+      {
+        "id": "verify_manifest_self",
+        "status": "PASS",
+        "detail": "verification used only published artifacts; no raw capture or engine execution was required",
+        "measurements": {
+          "manifest_schema": "vsm-publish-manifest-v1",
+          "npz_arrays": 45
+        }
+      }
+    ],
+    "summary": {
+      "PASS": 15,
+      "FAIL": 0,
+      "SKIP": 0
+    }
+  },
+  "summary": {
+    "PASS": 33,
+    "FAIL": 0,
+    "SKIP": 0
+  },
+  "decode": {
+    "checks": [
+      {
+        "id": "raw_files_unchanged",
+        "status": "PASS",
+        "detail": "all used raw capture files byte-identical before/after decode",
+        "measurements": {
+          "file_count": 20,
+          "mismatches": []
+        }
+      },
+      {
+        "id": "uniform_contract_matches_captured_sizes",
+        "status": "PASS",
+        "detail": "captured FVirtualShadowMapUniformParameters constants match resource extents and source stride",
+        "measurements": {
+          "uniform_values": {
+            "NumFullShadowMaps": 17,
+            "NumSinglePageShadowMaps": 0,
+            "MaxPhysicalPages": 4096,
+            "NumShadowMapSlots": 8209,
+            "StaticCachedArrayIndex": 1,
+            "PhysicalPageRowMask": 127,
+            "PhysicalPageRowShift": 7,
+            "PageTableRowShift": 6,
+            "PageTableRowMask": 63
+          },
+          "pool_pages": [
+            4096,
+            16384
+          ],
+          "page_table": [
+            192,
+            8192
+          ],
+          "metadata_records": 4096,
+          "projection_records": 8209,
+          "sun_vsm_count": 17
+        }
+      },
+      {
+        "id": "page_table_identity_roundtrip",
+        "status": "PASS",
+        "detail": "every selected-VSM mip0 page-table entry re-encodes to the same uint32 (packing/decoding identity)",
+        "measurements": {
+          "entries": 16384,
+          "mismatches": 0
+        }
+      },
+      {
+        "id": "mapped_pages_and_metadata_owner",
+        "status": "PASS",
+        "detail": "render-valid mip0 pages have in-bounds physical addresses and matching metadata owner/mip/page",
+        "measurements": {
+          "mapped_pages": 99,
+          "owner_matches": 99,
+          "mapped_out_of_bounds": 0,
+          "depth_finite": 99,
+          "depth_zero": 0
+        }
+      },
+      {
+        "id": "receiver_declared_replay_chain",
+        "status": "PASS",
+        "detail": "A/B declared replay: captured matrix -> clipmap -> vpage -> page entry -> physical texel -> pool depth; metadata identity and depth within 1e-3 of receiver projection",
+        "measurements": {
+          "A": {
+            "selected_vsm": 8196,
+            "uv": [
+              0.49383093135158174,
+              0.513411271626715
+            ],
+            "vpage": [
+              63,
+              65
+            ],
+            "entry": "0xc000504f",
+            "phys_page": [
+              79,
+              20
+            ],
+            "phys_texel": [
+              10138,
+              2651
+            ],
+            "depth": 0.4999309480190277,
+            "receiver_z": 0.4999309665823608,
+            "delta": -1.856333309291358e-08,
+            "mask": 1.0,
+            "replay_vs_mask": "sample_depth_nearly_equal_receiver_and_mask_lit"
+          },
+          "B": {
+            "selected_vsm": 8196,
+            "uv": [
+              0.5066635216300034,
+              0.49443830042740594
+            ],
+            "vpage": [
+              64,
+              63
+            ],
+            "entry": "0xc0001017",
+            "phys_page": [
+              23,
+              4
+            ],
+            "phys_texel": [
+              3053,
+              548
+            ],
+            "depth": 0.5002092719078064,
+            "receiver_z": 0.49993784359485954,
+            "delta": 0.0002714283129468531,
+            "mask": 0.0,
+            "replay_vs_mask": "sample_depth_greater_receiver_and_mask_shadowed"
+          }
+        }
+      },
+      {
+        "id": "receiver_relation_wording",
+        "status": "PASS",
+        "detail": "A's stored depth is reported as nearly equal (not exactly equal) to its receiver projection; B's is greater",
+        "measurements": {
+          "A_delta": -1.856333309291358e-08,
+          "A_exact_zero": false,
+          "A_relation": "nearly_equal_within_float32_roundoff",
+          "B_delta": 0.0002714283129468531,
+          "B_relation": "stored_depth_greater_closer_to_light"
+        }
+      },
+      {
+        "id": "occupancy_categories_complete",
+        "status": "PASS",
+        "detail": "global 128x32 physical-page categories partition all 4096 pages",
+        "measurements": {
+          "counts": {
+            "0": 3757,
+            "2": 144,
+            "4": 96,
+            "1": 99
+          }
+        }
+      },
+      {
+        "id": "page_table_lod_histogram",
+        "status": "PASS",
+        "detail": "selected-VSM mip0 LOD offsets: 99 render-valid pages, 16285 coarser-clipmap fallback entries",
+        "measurements": {
+          "lod_histogram": {
+            "0": 99,
+            "1": 116,
+            "5": 3881,
+            "6": 12288
+          },
+          "valid_for_rendering": 99,
+          "secondary": 0,
+          "flags_nonzero": 168
+        }
+      },
+      {
+        "id": "page_table_logical_mips_complete",
+        "status": "PASS",
+        "detail": "all eight logical shadow-map mips 0..7 are decoded from PageTable hardware mip0; mip0 has 99 render-valid pages and mips 1..7 are present but empty",
+        "measurements": {
+          "descriptor_num_mips": 1,
+          "logical_mips": [
+            {
+              "mip": 0,
+              "base_texel": [
+                640,
+                0
+              ],
+              "dim_pages": 128,
+              "entries": 16384,
+              "valid_for_rendering": 99,
+              "any_lod_valid": 16384,
+              "empty": false
+            },
+            {
+              "mip": 1,
+              "base_texel": [
+                640,
+                128
+              ],
+              "dim_pages": 64,
+              "entries": 4096,
+              "valid_for_rendering": 0,
+              "any_lod_valid": 0,
+              "empty": true
+            },
+            {
+              "mip": 2,
+              "base_texel": [
+                704,
+                128
+              ],
+              "dim_pages": 32,
+              "entries": 1024,
+              "valid_for_rendering": 0,
+              "any_lod_valid": 0,
+              "empty": true
+            },
+            {
+              "mip": 3,
+              "base_texel": [
+                736,
+                128
+              ],
+              "dim_pages": 16,
+              "entries": 256,
+              "valid_for_rendering": 0,
+              "any_lod_valid": 0,
+              "empty": true
+            },
+            {
+              "mip": 4,
+              "base_texel": [
+                752,
+                128
+              ],
+              "dim_pages": 8,
+              "entries": 64,
+              "valid_for_rendering": 0,
+              "any_lod_valid": 0,
+              "empty": true
+            },
+            {
+              "mip": 5,
+              "base_texel": [
+                760,
+                128
+              ],
+              "dim_pages": 4,
+              "entries": 16,
+              "valid_for_rendering": 0,
+              "any_lod_valid": 0,
+              "empty": true
+            },
+            {
+              "mip": 6,
+              "base_texel": [
+                764,
+                128
+              ],
+              "dim_pages": 2,
+              "entries": 4,
+              "valid_for_rendering": 0,
+              "any_lod_valid": 0,
+              "empty": true
+            },
+            {
+              "mip": 7,
+              "base_texel": [
+                766,
+                128
+              ],
+              "dim_pages": 1,
+              "entries": 1,
+              "valid_for_rendering": 0,
+              "any_lod_valid": 0,
+              "empty": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "page_flags_hierarchy_semantics",
+        "status": "PASS",
+        "detail": "PageFlags hardware mips 0..6 are decoded as the separate H0..H6 hierarchy at parent texel >> m; H0 is the exact-page flags and H7 is not generated",
+        "measurements": {
+          "descriptor_num_mips": 7,
+          "h_nonzero": {
+            "H0": 168,
+            "H1": 212,
+            "H2": 320,
+            "H3": 512,
+            "H4": 1024,
+            "H5": 4096,
+            "H6": 16384
+          },
+          "h0_matches_mip0_low6": true,
+          "h7_generated": false
+        }
+      },
+      {
+        "id": "snapshot_writer_lineage",
+        "status": "PASS",
+        "detail": "page table/PageFlags/pool are pass-840 consumer snapshots; their last resource-level output bindings are earlier passes, and metadata is the pass-810 snapshot",
+        "measurements": {
+          "page_table": {
+            "version": "00040000020c16c43fb0",
+            "versioned_by_pass": 840,
+            "version_role": "consumer snapshot; the version key is the pass 840 capture boundary, pass 840 writes only the shadow mask",
+            "last_recorded_writer": {
+              "pass_id": 792,
+              "name": "PropagateMappedMips",
+              "output": "00040000020bb879e688.mip0"
+            }
+          },
+          "page_flags": {
+            "version": "00040000020c16c43fb0",
+            "versioned_by_pass": 840,
+            "version_role": "consumer snapshot; the version key is the pass 840 capture boundary",
+            "last_recorded_writers": [
+              {
+                "pass_id": 790,
+                "name": "AllocateNewPageMappings",
+                "output": "00040000020bb879e950.mip0"
+              },
+              {
+                "pass_id": 791,
+                "name": "GenerateHierarchicalPageFlags",
+                "output": "00040000020bb879e950.mip1"
+              },
+              {
+                "pass_id": 791,
+                "name": "GenerateHierarchicalPageFlags",
+                "output": "00040000020bb879e950.mip2"
+              },
+              {
+                "pass_id": 791,
+                "name": "GenerateHierarchicalPageFlags",
+                "output": "00040000020bb879e950.mip3"
+              },
+              {
+                "pass_id": 791,
+                "name": "GenerateHierarchicalPageFlags",
+                "output": "00040000020bb879e950.mip4"
+              },
+              {
+                "pass_id": 791,
+                "name": "GenerateHierarchicalPageFlags",
+                "output": "00040000020bb879e950.mip5"
+              },
+              {
+                "pass_id": 791,
+                "name": "GenerateHierarchicalPageFlags",
+                "output": "00040000020bb879e950.mip6"
+              }
+            ]
+          },
+          "physical_page_pool": {
+            "version": "00040000020c16c43fb0",
+            "versioned_by_pass": 840,
+            "version_role": "consumer snapshot; the version key is the pass 840 capture boundary",
+            "last_recorded_writer": {
+              "pass_id": 811,
+              "name": "MergeStaticPhysicalPagesIndirect",
+              "output": "00040000020c132ec290.[0].mip0"
+            }
+          },
+          "physical_page_metadata": {
+            "version": "00040000020ba0684e78",
+            "versioned_by_pass": 810,
+            "version_role": "captured metadata snapshot at its writer/selection pass, before the pass 840 consumer",
+            "last_recorded_writer": {
+              "pass_id": 810,
+              "name": "SelectPagesToPostProcess",
+              "output": "00040000020ba06c1680"
+            }
+          }
+        }
+      },
+      {
+        "id": "virtual_depth_mosaic_complete",
+        "status": "PASS",
+        "detail": "all 99 selected VSM-8196 mip0 pages are reassembled in virtual-address order, cropped to the active-page bbox, with one uniform scale and the fixed device-Z range [0.4998, 0.5003]",
+        "measurements": {
+          "bbox_virtual_page": [
+            55,
+            58,
+            68,
+            69
+          ],
+          "bbox_page_wh": [
+            14,
+            12
+          ],
+          "native_px": [
+            1792,
+            1536
+          ],
+          "output_px": [
+            1792,
+            1536
+          ],
+          "scale": 1.0,
+          "selected_pages": 99,
+          "mapped_cells": 99,
+          "fallback_cells": 69,
+          "unmapped_cells": 0,
+          "depth_display_range_device_z": [
+            0.4998,
+            0.5003
+          ],
+          "page_order_first_last": [
+            {
+              "order": 0,
+              "virtual_address": 7482,
+              "virtual_page_xy": [
+                58,
+                58
+              ],
+              "array_index": 71,
+              "physical_page_xy": [
+                96,
+                24
+              ],
+              "physical_page_index": 3168,
+              "page_table_texel_xy": [
+                698,
+                58
+              ]
+            },
+            {
+              "order": 98,
+              "virtual_address": 8897,
+              "virtual_page_xy": [
+                65,
+                69
+              ],
+              "array_index": 32,
+              "physical_page_xy": [
+                72,
+                13
+              ],
+              "physical_page_index": 1736,
+              "page_table_texel_xy": [
+                705,
+                69
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "depth_values_finite_nonzero_bounded",
+        "status": "PASS",
+        "detail": "all render-valid selected-VSM page depth samples are finite, non-zero and inside device-Z [0,1]",
+        "measurements": {
+          "stats": {
+            "count": 1622016,
+            "finite": 1622016,
+            "zeros": 0,
+            "min": 0.4998985826969147,
+            "max": 0.5002386569976807,
+            "mean": 0.5000768603328992,
+            "std": 0.00012547811487161463,
+            "p01": 0.4999055564403534,
+            "p50": 0.5001034140586853,
+            "p99": 0.5002312064170837
+          },
+          "display_range": [
+            0.4998,
+            0.5003
+          ],
+          "depth_ramp_stops": [
+            [
+              10,
+              12,
+              40
+            ],
+            [
+              25,
+              60,
+              140
+            ],
+            [
+              20,
+              150,
+              150
+            ],
+            [
+              220,
+              180,
+              60
+            ],
+            [
+              255,
+              255,
+              235
+            ]
+          ]
+        }
+      },
+      {
+        "id": "figures_nonblank_and_bounded",
+        "status": "PASS",
+        "detail": "all published figures are <=2048 px and have non-zero channel variance (not blank/all-black)",
+        "measurements": {
+          "vsm_pool_occupancy": {
+            "size": [
+              1024,
+              988
+            ],
+            "std_rgb": [
+              71.75510292834113,
+              58.93492299089343,
+              36.75986867700157
+            ]
+          },
+          "vsm_page_table_sun": {
+            "size": [
+              1552,
+              512
+            ],
+            "std_rgb": [
+              86.05399238141872,
+              71.61612395948411,
+              50.45975642834603
+            ]
+          },
+          "vsm_depth_pages": {
+            "size": [
+              784,
+              520
+            ],
+            "std_rgb": [
+              102.51781906567976,
+              72.29824721200968,
+              26.24795802604763
+            ]
+          },
+          "vsm_virtual_depth": {
+            "size": [
+              1792,
+              1536
+            ],
+            "std_rgb": [
+              75.73106945549705,
+              51.979929712739235,
+              23.400089182971048
+            ]
+          }
+        }
+      },
+      {
+        "id": "producer_consumer_lineage",
+        "status": "PASS",
+        "detail": "pass 840 inputs include page table/flags/pool/projection; pass 841 composites 840 output; pass 842 consumes composite mask",
+        "measurements": {
+          "vsm_pass": 840,
+          "composite_pass": 841,
+          "sun_pass": 842,
+          "vp_output": "00040000020c16c43a30.mip0",
+          "composite_output": "00040000020c948b7fa0.mip0"
+        }
+      },
+      {
+        "id": "readback_statuses_dumped",
+        "status": "PASS",
+        "detail": "selected resource versions have Dumped readback status with matching file size",
+        "measurements": {
+          "readbacks": [
+            {
+              "file": "Resources/00040000020bb879e688.mip0.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020c132ec290.[0].mip0.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020c132ec290.[1].mip0.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020bb879e950.mip0.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020bb879e950.mip1.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020bb879e950.mip2.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020bb879e950.mip3.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020bb879e950.mip4.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020bb879e950.mip5.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            },
+            {
+              "file": "Resources/00040000020bb879e950.mip6.v00040000020c16c43fb0.bin",
+              "status": "Dumped",
+              "file_exists": true,
+              "size_matches": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "metadata_snapshot_precedes_consumer",
+        "status": "PASS",
+        "detail": "physical-page metadata snapshot was captured before the pass-840 consumer",
+        "measurements": {
+          "metadata_pass": 810,
+          "metadata_pass_name": "SelectPagesToPostProcess",
+          "consumer_pass": 840
+        }
+      },
+      {
+        "id": "source_ranges_hashed",
+        "status": "PASS",
+        "detail": "every cited source range has an exact UTF8-LF rangeSHA",
+        "measurements": {
+          "ranges": 31,
+          "missing": []
+        }
+      }
+    ],
+    "summary": {
+      "PASS": 18,
+      "FAIL": 0,
+      "SKIP": 0
+    }
+  }
+}

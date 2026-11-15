@@ -1,0 +1,173 @@
+{
+  "schema": "static-final-spot-checks-v1",
+  "checks": [
+    {
+      "name": "raw_payload_sha_matches_inventory_and_expected",
+      "ok": true,
+      "detail": "raw=b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972 inventory=b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972 bytes=27648"
+    },
+    {
+      "name": "pass762_offset460_max_frames_float_is_10",
+      "ok": true,
+      "detail": "pass=762 event=TemporalReprojection(1280x720) MaxFramesAccumulated@460=10.0"
+    },
+    {
+      "name": "adaptive_allocator_count_117_and_stale_123_excluded",
+      "ok": true,
+      "detail": "count=117 header_sum=117 tiles=117 adaptive=240 active=117 stale=123 stale_idx=117..239"
+    },
+    {
+      "name": "sh_probe_a_projects_to_pixel_498_680",
+      "ok": true,
+      "detail": "independent projection=(498.500016644,680.500045420) pixel=(498, 680)"
+    },
+    {
+      "name": "sh_probe_a_lambert_and_captured_difference_arithmetic",
+      "ok": true,
+      "detail": "D=[1.26287, 1.67992, 2.5798] captured=[1.203125, 1.5625, 2.375] rel%=[5.0, 7.5, 8.6] (physics 4*pi*raw = pi*4*raw)"
+    },
+    {
+      "name": "chapter_sh_claim_matches_checked_values",
+      "ok": true,
+      "detail": "line=24 needles=True"
+    },
+    {
+      "name": "reflection_C_raw96_effective_96_over_255_times_32",
+      "ok": true,
+      "detail": "raw=96 history_raw=96 effective=12.047058823529412 (not 96 frames)"
+    }
+  ],
+  "observations": {
+    "raw_payload": {
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Resources\\00010000020c12495520.mip4.v0001000002090ec60010.bin",
+      "bytes": 27648,
+      "sha256": "b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972",
+      "mtime_utc": 1794731844562226100,
+      "inventory_id": "payload-01891",
+      "inventory_bytes": 27648,
+      "inventory_sha256": "b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972",
+      "inventory_chunk_sha256": [
+        "b9fb3984f9f01cb1bbb47cc199345120bf635bfefd5d6a30a9ebbe8b71b27972"
+      ]
+    },
+    "pass762": {
+      "id": 762,
+      "event_name": "TemporalReprojection(1280x720)",
+      "parameters": "000400000208f36dfaa0",
+      "metadata": "000400007ffc1e2ef870",
+      "metadata_struct": "FParameters",
+      "metadata_file": "D:\\UnrealEngine\\Engine\\Source\\Runtime\\Renderer\\Private\\Lumen\\LumenScreenProbeGather.cpp",
+      "metadata_line": 1212,
+      "struct_file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Structures\\000400000208f36dfaa0.bin",
+      "struct_bytes": 576,
+      "offset_460_field": "MaxFramesAccumulated",
+      "offset_460_float": 10.0,
+      "raw_word_hex": "00002041"
+    },
+    "adaptive_allocator": {
+      "pass706_event": "AdaptivePlacementSpawn",
+      "version": "00040000020bd35c1b10",
+      "count_file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Resources\\0004000002090c6ba5c0.v00040000020bd35c1b10.bin",
+      "count_word": 117,
+      "header_file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Resources\\0004000002090c6ba8d0.mip0.v00040000020bd35c1b10.bin",
+      "header_extent": 80,
+      "header_sum": 117,
+      "header_nonzero_tiles": 117,
+      "json_counts": {
+        "allocated_adaptive_probe_count": 117,
+        "finite_storage_adaptive_count": 240,
+        "active_adaptive_count": 117,
+        "stale_finite_adaptive_count": 123,
+        "active_probe_count": 3686,
+        "finite_storage_probe_count": 3809,
+        "active_uniform_count": 3569
+      },
+      "listed_entries": 3809,
+      "listed_adaptive": 240,
+      "listed_active_adaptive": 117,
+      "listed_stale_adaptive": 123,
+      "stale_index_min": 117,
+      "stale_index_max": 239,
+      "active_index_min": 0,
+      "active_index_max": 116,
+      "active_tile_bijection": true
+    },
+    "sh_probe_a": {
+      "probe_index_uniform": 3391,
+      "normal_world": [
+        0.012532789155969727,
+        0.05430875300920239,
+        0.9984455360922585
+      ],
+      "projected_screen_xy": [
+        498.50001664389754,
+        680.5000454195194
+      ],
+      "pixel_xy": [
+        498,
+        680
+      ],
+      "sh_coeff_order": "L00,L1-1,L10,L11,L2-2,L2-1,L20,L21,L22 (Unreal convention)",
+      "evaluate_sh_raw": [
+        0.31571820699219916,
+        0.4199810580801066,
+        0.6449487948714739
+      ],
+      "unit_albedo_lambert_response_4x": [
+        1.2628728279687966,
+        1.6799242323204264,
+        2.5797951794858958
+      ],
+      "physical_irradiance_4pi_x": [
+        3.9674319987649382,
+        5.2776376268453244,
+        8.104665583639251
+      ],
+      "captured_diffuse_r11g11b10_word_hex": "0x819f23cd",
+      "captured_diffuse_pixel": [
+        1.203125,
+        1.5625,
+        2.375
+      ],
+      "abs_diff": [
+        0.05974782796879663,
+        0.11742423232042642,
+        0.20479517948589576
+      ],
+      "relative_diff": [
+        0.0496605323377011,
+        0.0751515086850729,
+        0.08622954925721926
+      ],
+      "same_as_stored_lambert": true,
+      "same_as_stored_captured": true
+    },
+    "chapter_sh_claim": {
+      "file": "D:\\UnrealUnderstanding\\Scripts\\Docs\\unreal_articles\\chapters\\lumen-course-reconstruction.html",
+      "line": 24,
+      "line_sha256": "1625e5e64d3b95f15be2ffe7e87d8a2ac8c3a6d98e680673799308ff0b23eadd",
+      "text": "<p>Evaluate probe A's captured nine-coefficient RGB SH representation at its own normal, using the declared no-occlusion test AO=1. Applying the sphere-average normalization and the unit-albedo Lambert factor predicts D \u2248 (1.26287,1.67993,2.57980). The probe projects to the center of pixel (498,680), whose captured integrated field is (1.203125,1.5625,2.375). Relative to that stored field, the differences are approximately 5.0%,7.5%,8.6%. This is a useful scale check: omitting 4\u03c0 would produce a much larger systematic error. It is not an exact replay of per-pixel integration, which also selects/interpolates nearby probes and applies the active geometric and occlusion rules.</p>",
+      "needles_present": {
+        "pixel (498,680)": true,
+        "1.26287,1.67993,2.57980": true,
+        "1.203125,1.5625,2.375": true,
+        "5.0%,7.5%,8.6%": true,
+        "omitting 4\u03c0": true
+      }
+    },
+    "reflection_frames_C": {
+      "pixel_xy": [
+        626,
+        587
+      ],
+      "raw_byte": 96,
+      "history_raw_byte": 96,
+      "effective_frames": 12.047058823529412,
+      "json_raw_byte": 96,
+      "json_effective_frames": 12.047058823529412
+    }
+  },
+  "ok": true,
+  "passed": 7,
+  "total": 7
+}

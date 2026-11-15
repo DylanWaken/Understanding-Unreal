@@ -1,0 +1,610 @@
+{
+  "schema": "sponza-receiver-figures-v1",
+  "dump": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654",
+  "view_rect": [
+    0,
+    0,
+    1280,
+    720
+  ],
+  "allocation": [
+    1280,
+    888
+  ],
+  "figures": [
+    {
+      "name": "basecolor",
+      "file": "figures/basecolor.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 2124876,
+      "sha256": "75b8a233be1deb7a4826678402b79576f85f5ee1ae69609180a1e667b8a57874",
+      "source": "GBufferC pass 697 / consumed pass 842",
+      "mapping": "GBufferC linear BaseColor -> sRGB OETF (c<=0.0031308 ? 12.92c : 1.055*c^(1/2.4)-0.055) -> RGB8=1+round(254*x) (1..255); invalid/sky -> (0,0,0)",
+      "invalid_color": [
+        0,
+        0,
+        0
+      ],
+      "source_stats": {
+        "count": 913871,
+        "finite": 913871,
+        "nonfinite": 0,
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          1.0,
+          0.799102738014409,
+          0.799102738014409
+        ],
+        "mean": [
+          0.1395270088194704,
+          0.12312102406967443,
+          0.09272161158258549
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          255,
+          231,
+          231
+        ],
+        "mean": [
+          89.58331380208334,
+          89.6182541232639,
+          73.41457899305556
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 913871,
+        "nonblack_pixels": 913871,
+        "pixels_equal_invalid_color": 7729,
+        "invalid_color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    },
+    {
+      "name": "worldnormal",
+      "file": "figures/worldnormal.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 1927295,
+      "sha256": "7e423db9a8bcf2a918709003eefbb613354a538e8f6d86d85f4565abb11e1ea9",
+      "source": "GBufferA pass 697 / consumed pass 842",
+      "mapping": "N_raw = 2*code/1023-1; N=N_raw/len(N_raw); RGB8=32+round(223*(0.5*N+0.5)) (32..255); no gamma; invalid/sky -> (0,0,0)",
+      "invalid_color": [
+        0,
+        0,
+        0
+      ],
+      "source_stats": {
+        "count": 913871,
+        "finite": 913871,
+        "nonfinite": 0,
+        "min": [
+          -1.0,
+          -1.0,
+          -1.0,
+          0.9983943598142481
+        ],
+        "max": [
+          1.0,
+          1.0,
+          1.0,
+          1.001685107765108
+        ],
+        "mean": [
+          -0.41581728468407425,
+          -0.020678751850610362,
+          -0.09346023373414325,
+          1.0000786687938608
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          255,
+          255,
+          255
+        ],
+        "mean": [
+          96.31595052083334,
+          140.01869791666667,
+          131.959677734375
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 913871,
+        "nonblack_pixels": 913871,
+        "pixels_equal_invalid_color": 7729,
+        "invalid_color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    },
+    {
+      "name": "roughness",
+      "file": "figures/roughness.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 867463,
+      "sha256": "bb158c265dceba1a28dd6c66925e8448a930a253bbac3617a3147007f12bf5e8",
+      "source": "GBufferB pass 697 / consumed pass 842",
+      "mapping": "Roughness=GBufferB.mem[0]/255; RGB8=32+round(223*roughness) (32..255); no gamma; invalid/sky -> (0,0,0)",
+      "invalid_color": [
+        0,
+        0,
+        0
+      ],
+      "source_stats": {
+        "count": 913871,
+        "finite": 913871,
+        "nonfinite": 0,
+        "min": [
+          0.0
+        ],
+        "max": [
+          1.0
+        ],
+        "mean": [
+          0.7389997142333706
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          255,
+          255,
+          255
+        ],
+        "mean": [
+          195.24550672743055,
+          195.24550672743055,
+          195.24550672743055
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 913871,
+        "nonblack_pixels": 913871,
+        "pixels_equal_invalid_color": 7729,
+        "invalid_color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    },
+    {
+      "name": "metallic",
+      "file": "figures/metallic.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 279641,
+      "sha256": "0123458bfac84bfd44da4a756da214862f820c21ce2b9de8a1745b4e808e0391",
+      "source": "GBufferB pass 697 / consumed pass 842",
+      "mapping": "Metallic=GBufferB.mem[2]/255; RGB8=32+round(223*metallic) (32..255); no gamma; invalid/sky -> (0,0,0)",
+      "invalid_color": [
+        0,
+        0,
+        0
+      ],
+      "source_stats": {
+        "count": 913871,
+        "finite": 913871,
+        "nonfinite": 0,
+        "min": [
+          0.0
+        ],
+        "max": [
+          1.0
+        ],
+        "mean": [
+          0.06413366231957587
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          255,
+          255,
+          255
+        ],
+        "mean": [
+          45.9189453125,
+          45.9189453125,
+          45.9189453125
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 913871,
+        "nonblack_pixels": 913871,
+        "pixels_equal_invalid_color": 7729,
+        "invalid_color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    },
+    {
+      "name": "depth_log",
+      "file": "figures/depth_log.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 101708,
+      "sha256": "e317c211bc6c802e99e344360d393e5006df91cd6a5c13f3a1347cd437aacedb",
+      "source": "SceneDepthZ pass 620 / consumed pass 842",
+      "mapping": "W = D*Inv[0]+Inv[1]+1/(D*Inv[2]-Inv[3]); t=log10(max(W,200)/200)/log10(2000/200) clamped; v=32+round(223*t) (32..255); black=invalid/sky; declared range 200..2000 cm (2..20 m)",
+      "invalid_color": [
+        0,
+        0,
+        0
+      ],
+      "source_stats": {
+        "count": 913871,
+        "finite": 913871,
+        "nonfinite": 0,
+        "min": [
+          224.919754717318,
+          0.005057184491306543
+        ],
+        "max": [
+          1977.3848207834449,
+          0.04446030035614967
+        ],
+        "mean": [
+          705.8777837008206,
+          0.020503508563320175
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          254,
+          254,
+          254
+        ],
+        "mean": [
+          133.430244140625,
+          133.430244140625,
+          133.430244140625
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 913871,
+        "nonblack_pixels": 913871,
+        "pixels_equal_invalid_color": 7729,
+        "invalid_color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    },
+    {
+      "name": "depth_validity",
+      "file": "figures/depth_validity.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 4777,
+      "sha256": "4388dbf34eb2c0ee189fed5040e5d1cd0648072e4de25b9e963b9eadae7f5389",
+      "source": "SceneDepthZ pass 620 / consumed pass 842",
+      "mapping": "white (255) iff finite deviceZ>0 and finite W>0; black (0) otherwise",
+      "invalid_color": [
+        0,
+        0,
+        0
+      ],
+      "source_stats": {
+        "count": 913871,
+        "finite": 913871,
+        "nonfinite": 0,
+        "min": [
+          224.919754717318,
+          0.005057184491306543
+        ],
+        "max": [
+          1977.3848207834449,
+          0.04446030035614967
+        ],
+        "mean": [
+          705.8777837008206,
+          0.020503508563320175
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          255,
+          255,
+          255
+        ],
+        "mean": [
+          252.86144205729167,
+          252.86144205729167,
+          252.86144205729167
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 913871,
+        "nonblack_pixels": 913871,
+        "pixels_equal_invalid_color": 7729,
+        "invalid_color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    },
+    {
+      "name": "direct_rgb",
+      "file": "figures/direct_rgb.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 471714,
+      "sha256": "75f371ca61059c88f987f6b1bb5b07aea89fd421e3f4448f689a29548b5429fa",
+      "source": "SceneColor pre pass 840 / post pass 842",
+      "mapping": "L = SceneColor(pass 842)-SceneColor(pass 840) per RGB half channel; tone=L/(1+L) for L>0; sRGB OETF; round(255*x); no exposure multiply; black=zero direct",
+      "invalid_color": null,
+      "source_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          55.90625,
+          43.59375,
+          32.375
+        ],
+        "mean": [
+          0.14759346924676922,
+          0.10186633637905794,
+          0.06573041919851676
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          253,
+          252,
+          252
+        ],
+        "mean": [
+          27.08128472222222,
+          24.98238715277778,
+          22.459708116319444
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 921600,
+        "nonblack_pixels": 176897,
+        "pixels_equal_invalid_color": 0,
+        "invalid_color": null
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    },
+    {
+      "name": "vsm_shadow",
+      "file": "figures/vsm_shadow.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 112005,
+      "sha256": "a28324065aab556805e282f290a1ba6ba00fb272a9ac8e6e45bc81838c35c2a3",
+      "source": "ShadowMaskTexture pass 841 / consumed pass 842",
+      "mapping": "R=ShadowMaskTexture.mem[2]; G=mem[1]; s=(R/255)^2; RGB8=round(255*s); no gamma; invalid/sky -> (128,128,128)",
+      "invalid_color": [
+        128,
+        128,
+        128
+      ],
+      "source_stats": {
+        "count": 913871,
+        "finite": 913871,
+        "nonfinite": 0,
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "mean": [
+          0.5437237177569072,
+          0.5471744167092023,
+          0.5437237177569072
+        ]
+      },
+      "image_stats": {
+        "count": 921600,
+        "finite": 921600,
+        "nonfinite": 0,
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          255,
+          255,
+          255
+        ],
+        "mean": [
+          138.56021158854168,
+          138.56021158854168,
+          138.56021158854168
+        ],
+        "width": 1280,
+        "height": 720,
+        "channels": 3,
+        "nonempty_pixels": 913871,
+        "nonblack_pixels": 513592,
+        "pixels_equal_invalid_color": 7729,
+        "invalid_color": [
+          128,
+          128,
+          128
+        ]
+      },
+      "checks": {
+        "dimensions_1280x720": true,
+        "source_finite": true,
+        "image_nonempty": true,
+        "all_pixels_covered": true
+      }
+    }
+  ],
+  "full_frame_stats": {
+    "total_pixels": 921600,
+    "valid_geometry_pixels": 913871,
+    "invalid_or_sky_pixels": 7729,
+    "bad_normal_pixels": 0,
+    "shadow_r_equals_g_pixels": 913871,
+    "shadow_rg_mismatch_pixels": 0,
+    "shadow_ba_clear_pixels": 913871,
+    "shadow_ba_not_clear_pixels": 0,
+    "shadow_unique_r_codes": [
+      0,
+      90,
+      127,
+      156,
+      180,
+      202,
+      221,
+      239,
+      255
+    ],
+    "scene_color_pre_nonzero_geometry_pixels": 0,
+    "basecolor_srgb_roundtrip_max_code_error": 2.842170943040401e-14
+  },
+  "checks": {
+    "eight_full_frame_figures": true,
+    "all_dimensions_1280x720": true,
+    "all_source_finite": true,
+    "all_images_nonempty": true,
+    "no_raster_text_or_overlays": true,
+    "primary_view_only_no_atlas": true,
+    "valid_geometry_plus_sky_equals_total": true,
+    "shadow_r_equals_g_all_valid": true,
+    "shadow_ba_clear_all_valid": true,
+    "scene_color_pre_zero_on_geometry": true,
+    "basecolor_roundtrip_within_one_code": true,
+    "normal_lengths_near_one": true,
+    "depth_values_positive": true,
+    "shadow_factors_unit_range": true,
+    "basecolor_linear_unit_range": true,
+    "roughness_metallic_unit_range": true
+  }
+}
