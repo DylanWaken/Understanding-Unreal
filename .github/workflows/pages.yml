@@ -1,4 +1,4 @@
-name: Deploy Understanding Unreal to GitHub Pages
+name: Validate Understanding Unreal for GitHub Pages
 
 on:
   push:
@@ -95,22 +95,3 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: Docs
-          include-hidden-files: true
-
-  deploy:
-    name: Deploy to GitHub Pages
-    if: github.ref == 'refs/heads/main'
-    needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

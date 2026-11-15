@@ -29,7 +29,7 @@ The separate implementation reference retains the [controlled-room frame explore
 | `Docs/assets/` | Site shell (`site.css`, `site.js`) and glossary data used by the homepage and glossary. |
 | `Scripts/Docs/unreal_articles/` | Authored chapter fragments, figure placements, evidence records, generators, validators, math cache and reproducible labs. |
 | `Data/Sponza/` | Lossless Sponza frame package and experiment provenance, loaded on demand outside the Pages deployment. |
-| `.github/workflows/pages.yml` | Validates the standalone site and deploys `Docs/` to GitHub Pages. |
+| `.github/workflows/pages.yml` | Validates the standalone site and packages `Docs/`; GitHub Pages publishes the `gh-pages` branch. |
 
 The chapter HTML under `Scripts/Docs/unreal_articles/chapters/` is the prose source. `build.py` composes each article, inserts placed chapters and walkthrough figures, renders the frozen equation cache, and writes the four articles, the Lumen implementation reference, and the legacy redirect into `Docs/Unreal/`. The `lumen-course*.html` fragments are the forward-design narrative; `lumen-reference.html` preserves the detailed room experiment. Do not hand-edit generated essay pages.
 
@@ -123,14 +123,17 @@ The exact engine-capture scripts, modes, camera settings and limitations are doc
 
 ## Deployment
 
-`.github/workflows/pages.yml` runs on pushes to `main` and on `workflow_dispatch`. It checks the generated essays, the offline equation cache, the frozen laboratory evidence and the published links, then uploads `Docs/` with `actions/upload-pages-artifact` and deploys it with `actions/deploy-pages`. `.nojekyll` is included so Pages serves the asset paths directly.
+`.github/workflows/pages.yml` runs on pushes to `main` and on `workflow_dispatch`. It checks the generated essays, the offline equation cache, the frozen laboratory evidence and the published links, then uploads the validated `Docs/` artifact. Publication uses the configured `gh-pages` branch and GitHub's built-in Pages build and deployment. Pushing `main` validates and packages the site; publishing requires the branch update below. The `github-pages` environment permits `gh-pages` and rejects direct deployment from `main`, so the validation workflow does not attempt that rejected deployment. `.nojekyll` is included so Pages serves the asset paths directly.
 
 The site is live at [dylanwaken.github.io/Understanding-Unreal](https://dylanwaken.github.io/Understanding-Unreal/). The first publication on 12 November 2026 used the `gh-pages` branch, containing exactly the `Docs/` subtree. GitHub's Pages build and deployment completed successfully.
 
 The same publication can be reproduced from a validated commit without changing the local `main` checkout:
 
 ```powershell
-$siteCommit = git subtree split --prefix=Docs HEAD
+git fetch origin gh-pages
+$siteTree = git rev-parse HEAD:Docs
+$siteParent = git rev-parse origin/gh-pages
+$siteCommit = git commit-tree $siteTree -p $siteParent -m "Publish validated Understanding Unreal site"
 git push origin "${siteCommit}:refs/heads/gh-pages"
 ```
 
