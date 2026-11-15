@@ -1,0 +1,260 @@
+{
+  "host": "linux",
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "zlib": "1.2.11",
+  "execution": "Root ran the independent review probe functions on Linux; Git byte check is covered by the Windows independent review.",
+  "results": [
+    {
+      "name": "course_snapshot_baseline",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "checked-in experiments.json compared with a fresh experiments() run"
+    },
+    {
+      "name": "course_snapshot_observed_platform_delta",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "8 ULP maximum saved-vs-computed delta on this host"
+    },
+    {
+      "name": "course_one_ulp_value_allowed",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "1.2011484668447452 -> 1.2011484668447454 (1 ULP)"
+    },
+    {
+      "name": "course_sixteen_ulp_value_allowed",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "1.2011484668447452 -> 1.2011484668447487 (16 ULP)"
+    },
+    {
+      "name": "course_seventeen_ulp_value_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "1.2011484668447452 -> 1.201148466844749 (17 ULP)",
+      "message": "AssertionError: Stale experiment diffuse_uniform_estimator_mean.value: 1.2011484668447452 vs 1.201148466844749"
+    },
+    {
+      "name": "course_one_e_minus_eight_value_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "1.2011484668447452 -> 1.2011484768447451 (+1e-8)",
+      "message": "AssertionError: Stale experiment diffuse_uniform_estimator_mean.value: 1.2011484668447452 vs 1.2011484768447451"
+    },
+    {
+      "name": "course_one_e_minus_eight_expected_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "0.25 -> 0.25000001 (+1e-8)",
+      "message": "AssertionError: Stale experiment distance_doubling_ratio.expected: 0.25 vs 0.25000001"
+    },
+    {
+      "name": "course_changed_tolerance_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "tolerance changed by 1 ULP; tolerance must compare exactly",
+      "message": "AssertionError: Stale experiment small_area_irradiance.tolerance"
+    },
+    {
+      "name": "course_changed_input_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "ggx_example.alpha changed by 1 ULP; inputs must compare exactly",
+      "message": "AssertionError: Stale experiment metadata: ggx_example"
+    },
+    {
+      "name": "course_changed_metadata_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "top-level seed changed; metadata must compare exactly",
+      "message": "AssertionError: Stale experiment metadata: seed"
+    },
+    {
+      "name": "course_changed_type_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "value float -> string",
+      "message": "AssertionError: Experiment field type changed: diffuse_uniform_estimator_mean.value"
+    },
+    {
+      "name": "course_changed_pass_type_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "passed bool -> int",
+      "message": "AssertionError: Experiment field type changed: small_area_irradiance.passed"
+    },
+    {
+      "name": "png_recompressed_identity_allowed",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "different deflate streams, same non-IDAT chunks and scanlines"
+    },
+    {
+      "name": "png_split_idat_allowed",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "same zlib stream split across two IDAT chunks"
+    },
+    {
+      "name": "changed_embedded_pixel_rejected",
+      "expected": "difference detected",
+      "observed": "difference detected",
+      "ok": true,
+      "detail": "one decompressed scanline byte changed and CRCs rebuilt"
+    },
+    {
+      "name": "changed_png_metadata_rejected",
+      "expected": "difference detected",
+      "observed": "difference detected",
+      "ok": true,
+      "detail": "tEXt payload changed and CRC rebuilt"
+    },
+    {
+      "name": "changed_svg_caption_rejected",
+      "expected": "difference detected",
+      "observed": "difference detected",
+      "ok": true,
+      "detail": "native SVG caption changed"
+    },
+    {
+      "name": "png_crc_corrupt_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "IHDR data byte flipped without updating its CRC",
+      "message": "ValueError: Invalid PNG CRC for b'IHDR'"
+    },
+    {
+      "name": "png_truncated_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "last byte removed (truncated IEND CRC)",
+      "message": "ValueError: Truncated PNG chunk"
+    },
+    {
+      "name": "png_trailing_after_iend_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "uncompressed bytes after IEND",
+      "message": "ValueError: Invalid IEND or trailing PNG data"
+    },
+    {
+      "name": "png_trailing_zlib_junk_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "compressed bytes after the zlib stream inside IDAT",
+      "message": "ValueError: Incomplete or trailing PNG zlib stream"
+    },
+    {
+      "name": "png_trailing_second_zlib_stream_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "a complete second zlib stream after the first inside IDAT",
+      "message": "ValueError: Incomplete or trailing PNG zlib stream"
+    },
+    {
+      "name": "png_truncated_zlib_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "zlib Adler-32 trailer removed",
+      "message": "ValueError: Incomplete or trailing PNG zlib stream"
+    },
+    {
+      "name": "manifest_generator_hash_matches_source",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "69f8e7975d6f3c77ace7176df906e017e419def13a16edfb892dfeff655c171b"
+    },
+    {
+      "name": "wrong_generator_hash_rejected_by_normalizer",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "portable_manifest keeps generator.sha256 exact",
+      "message": ""
+    },
+    {
+      "name": "cpu_svg_hash_dropped_from_normalizer",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "verified separately against the checked-in CPU SVG; full --check probe below"
+    },
+    {
+      "name": "wrong_pfm_source_hash_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "pfm_sha256 remains in the exact manifest comparison",
+      "message": ""
+    },
+    {
+      "name": "full_reading_check_copied_baseline",
+      "expected": "accepted",
+      "observed": "accepted",
+      "ok": true,
+      "detail": "temporary copy of Docs/Unreal/assets/lumen-reading"
+    },
+    {
+      "name": "full_check_wrong_generator_hash_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "stale; manifest.json",
+      "message": "stale /tmp/lumen-final-review-v63awldg/lumen-reading/manifest.json"
+    },
+    {
+      "name": "full_check_wrong_cpu_svg_hash_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "cpu-reference sha256 does not match checked-in SVG",
+      "message": "/tmp/lumen-final-review-7426jp_5/lumen-reading/manifest.json: cpu-reference sha256 does not match checked-in SVG"
+    },
+    {
+      "name": "full_check_wrong_clean_png_hash_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "clean_png_sha256 does not match checked-in PNG",
+      "message": "/tmp/lumen-final-review-0xz8q0as/lumen-reading/manifest.json: clean_png_sha256 does not match checked-in PNG"
+    },
+    {
+      "name": "full_check_corrupt_png_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "Invalid PNG CRC",
+      "message": "invalid /tmp/lumen-final-review-xs2jmkaj/lumen-reading/cpu-reference-render.png: Invalid PNG CRC for b'IHDR'\n/tmp/lumen-final-review-xs2jmkaj/lumen-reading/manifest.json: clean_png_sha256 does not match checked-in PNG"
+    },
+    {
+      "name": "full_check_changed_svg_rejected",
+      "expected": "rejected",
+      "observed": "rejected",
+      "ok": true,
+      "detail": "stale; cpu-reference.svg",
+      "message": "stale /tmp/lumen-final-review-aauaj5q0/lumen-reading/cpu-reference.svg\n/tmp/lumen-final-review-aauaj5q0/lumen-reading/manifest.json: cpu-reference sha256 does not match checked-in SVG"
+    }
+  ]
+}

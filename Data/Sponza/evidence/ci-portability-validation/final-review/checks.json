@@ -1,0 +1,229 @@
+{
+  "head": "9f8b8c974614d592752606b29227363bce2c1d20",
+  "reviewed_artifacts": [
+    "Scripts/Docs/unreal_articles/labs/lumen-reading/generate.py",
+    "Scripts/Docs/unreal_articles/labs/lumen-course/generate.py",
+    "Docs/Unreal/assets/lumen-reading/manifest.json"
+  ],
+  "platform_acceptance": {
+    "windows": {
+      "python": "3.14.6",
+      "zlib": "1.3.1.zlib-ng",
+      "reading_check": {
+        "command": "python Scripts/Docs/unreal_articles/labs/lumen-reading/generate.py --check",
+        "exit": 0,
+        "output": "Verified 7 diagrams, CPU reference, clean PNG, and manifest."
+      },
+      "course_check": {
+        "command": "python Scripts/Docs/unreal_articles/labs/lumen-course/generate.py --check",
+        "exit": 0,
+        "output": "Verified 31 original SVG diagrams and 15 numerical checks"
+      },
+      "portability_test": {
+        "command": "python Data/Sponza/evidence/ci-portability-validation/test_portability_check.py",
+        "exit": 0,
+        "output": "PASS: portable comparison ignores only deflate encoding; pixels, captions, metadata, source hashes and PNG integrity remain checked."
+      }
+    },
+    "wsl_linux": {
+      "python": "3.10.12",
+      "zlib": "1.2.11",
+      "reading_check": {
+        "command": "wsl.exe --exec python3 /mnt/d/UnrealUnderstanding/Scripts/Docs/unreal_articles/labs/lumen-reading/generate.py --check",
+        "exit": 0,
+        "output": "Verified 7 diagrams, CPU reference, clean PNG, and manifest."
+      },
+      "course_check": {
+        "command": "wsl.exe --exec python3 /mnt/d/UnrealUnderstanding/Scripts/Docs/unreal_articles/labs/lumen-course/generate.py --check",
+        "exit": 0,
+        "output": "Verified 31 original SVG diagrams and 15 numerical checks"
+      },
+      "portability_test": {
+        "command": "wsl.exe --exec python3 /mnt/d/UnrealUnderstanding/Data/Sponza/evidence/ci-portability-validation/test_portability_check.py",
+        "exit": 0,
+        "output": "PASS: portable comparison ignores only deflate encoding; pixels, captions, metadata, source hashes and PNG integrity remain checked."
+      }
+    }
+  },
+  "independent_negative_probes": {
+    "script": "independent_checks.py",
+    "runs": [
+      {
+        "platform": "windows",
+        "raw_evidence": "probes-windows.json",
+        "probes": 34,
+        "failed": 0
+      },
+      {
+        "platform": "wsl_linux",
+        "raw_evidence": "probes-wsl.json",
+        "probes": 34,
+        "failed": 0
+      }
+    ],
+    "course_snapshot": {
+      "observed_saved_vs_computed_delta": {
+        "windows": "0 ULP",
+        "wsl_linux": "8 ULP",
+        "cap": "16 ULP"
+      },
+      "accepted": [
+        {
+          "probe": "1 ULP value change",
+          "evidence": "1.2011484668447452 -> 1.2011484668447454 accepted"
+        },
+        {
+          "probe": "16 ULP value change",
+          "evidence": "1.2011484668447452 -> 1.2011484668447487 accepted"
+        }
+      ],
+      "rejected": [
+        {
+          "probe": "17 ULP value change",
+          "evidence": "AssertionError: Stale experiment diffuse_uniform_estimator_mean.value"
+        },
+        {
+          "probe": "+1e-8 value change",
+          "evidence": "AssertionError: Stale experiment diffuse_uniform_estimator_mean.value"
+        },
+        {
+          "probe": "+1e-8 expected change",
+          "evidence": "AssertionError: Stale experiment distance_doubling_ratio.expected"
+        },
+        {
+          "probe": "tolerance changed by 1 ULP",
+          "evidence": "AssertionError: Stale experiment small_area_irradiance.tolerance"
+        },
+        {
+          "probe": "input ggx_example.alpha changed by 1 ULP",
+          "evidence": "AssertionError: Stale experiment metadata: ggx_example"
+        },
+        {
+          "probe": "top-level seed changed",
+          "evidence": "AssertionError: Stale experiment metadata: seed"
+        },
+        {
+          "probe": "value type float -> string",
+          "evidence": "AssertionError: Experiment field type changed"
+        },
+        {
+          "probe": "passed type bool -> int",
+          "evidence": "AssertionError: Experiment field type changed"
+        }
+      ]
+    },
+    "png": {
+      "accepted": [
+        {
+          "probe": "different deflate streams (zlib level 1 vs 9)",
+          "evidence": "png_payload_identity and png_payload_sha256 equal"
+        },
+        {
+          "probe": "same zlib stream split across two IDAT chunks",
+          "evidence": "png_payload_identity equal"
+        }
+      ],
+      "rejected": [
+        {
+          "probe": "IHDR byte changed without CRC update",
+          "evidence": "ValueError: Invalid PNG CRC for b'IHDR'"
+        },
+        {
+          "probe": "last byte removed",
+          "evidence": "ValueError: Truncated PNG chunk"
+        },
+        {
+          "probe": "bytes appended after IEND",
+          "evidence": "ValueError: Invalid IEND or trailing PNG data"
+        },
+        {
+          "probe": "junk appended after zlib stream inside IDAT",
+          "evidence": "ValueError: Incomplete or trailing PNG zlib stream"
+        },
+        {
+          "probe": "second complete zlib stream appended inside IDAT",
+          "evidence": "ValueError: Incomplete or trailing PNG zlib stream"
+        },
+        {
+          "probe": "zlib Adler-32 trailer removed",
+          "evidence": "ValueError: Incomplete or trailing PNG zlib stream"
+        },
+        {
+          "probe": "changed pixel with rebuilt CRCs",
+          "evidence": "PNG identity and digest differ; canonical CPU SVG differs"
+        },
+        {
+          "probe": "changed tEXt metadata with rebuilt CRC",
+          "evidence": "PNG identity differs; canonical CPU SVG differs"
+        }
+      ]
+    },
+    "svg_and_source_hashes": {
+      "accepted": [
+        {
+          "probe": "manifest generator.sha256 equals current generate.py",
+          "evidence": "69f8e7975d6f3c77ace7176df906e017e419def13a16edfb892dfeff655c171b on both hosts"
+        }
+      ],
+      "rejected": [
+        {
+          "probe": "changed native SVG caption",
+          "evidence": "canonical_cpu_svg differs"
+        },
+        {
+          "probe": "changed embedded PNG pixels",
+          "evidence": "canonical_cpu_svg differs"
+        },
+        {
+          "probe": "full --check with changed CPU SVG in temp copy",
+          "evidence": "exit 1: stale .../cpu-reference.svg"
+        },
+        {
+          "probe": "full --check with wrong generator hash in temp copy",
+          "evidence": "exit 1: stale .../manifest.json"
+        },
+        {
+          "probe": "full --check with wrong cpu_reference.sha256 in temp copy",
+          "evidence": "exit 1: cpu-reference sha256 does not match checked-in SVG"
+        },
+        {
+          "probe": "full --check with wrong clean_png_sha256 in temp copy",
+          "evidence": "exit 1: clean_png_sha256 does not match checked-in PNG"
+        },
+        {
+          "probe": "wrong pfm_sha256 through portable_manifest",
+          "evidence": "normalized manifests differ"
+        }
+      ]
+    },
+    "bytes_unchanged": {
+      "files_compared": 40,
+      "mismatches": 0,
+      "scope": "Docs/Unreal/assets/lumen-reading and Docs/Unreal/assets/lumen-course (PNG/SVG)",
+      "evidence": "40 raw SHA-256 comparisons against HEAD 9f8b8c974614d592752606b29227363bce2c1d20; scoped git diff and untracked PNG/SVG status empty on both hosts"
+    }
+  },
+  "acceptance": {
+    "windows_and_wsl_linux_pass_both_affected_generators": {
+      "result": "yes",
+      "evidence": "All four generator --check commands exited 0 on Windows Python 3.14.6/zlib-ng 1.3.1 and WSL Linux Python 3.10.12/zlib 1.2.11."
+    },
+    "only_png_encoding_and_at_most_16_ulps_ignored": {
+      "result": "yes",
+      "evidence": "Recompressed and split-IDAT PNGs accepted; changed pixels/metadata rejected. Course comparator accepted 1 and 16 ULPs, rejected 17 ULPs and 1e-8; tolerance, inputs, metadata, type and pass flag rejected. Observed platform delta was 8 ULP on Linux."
+    },
+    "corrupt_png_changed_svg_wrong_source_hash_meaningful_arithmetic_rejected": {
+      "result": "yes",
+      "evidence": "Full --check temp-copy probes exited 1 for corrupt PNG CRC, changed CPU SVG, wrong generator hash, wrong CPU SVG hash and wrong clean-PNG hash. Course 1e-8 value and expected changes were rejected."
+    },
+    "all_reviewed_svg_and_png_bytes_unchanged_from_head": {
+      "result": "yes",
+      "evidence": "All 40 tracked PNG/SVG files in the two reviewed output directories match HEAD raw bytes; scoped diff and untracked status are empty on Windows and WSL."
+    }
+  },
+  "observations": [
+    "portable_manifest deliberately drops cpu_reference.sha256, clean_png_sha256 and clean_png_bytes from the normalized manifest comparison because the embedded PNG compression can change. Full --check separately verifies all three against the checked-in SVG/PNG; the temp negative probes directly confirm wrong cpu_reference.sha256, clean_png_sha256, generator hash and pfm_sha256 values are rejected.",
+    "A repo-wide WSL git diff over all *.svg reports 47 pre-existing CRLF-only differences under material/, nanite-lumen/, scene/ and walkthrough/. Replacing CRLF with LF makes each file identical to HEAD, and Windows git (core.autocrlf=true) reports none. These files are outside the reviewed generator output directories and were not modified.",
+    "All probes were CPU-only and read-only with respect to tracked files; temporary directories were used for full --check negative runs. No GPU, engine, capture, or broad test suite was run."
+  ]
+}

@@ -524,6 +524,31 @@ def experiments():
                                  midpoint_samples=ggx_n,null_event_fraction=null_count/ggx_n))
 
 
+def check_experiment_snapshot(saved, computed):
+    """Keep schema and inputs exact; allow 16 ULPs in computed result fields.
+
+    libm and Python's float summation can differ in their last few bits across
+    supported hosts. experiments() still applies each mathematical tolerance
+    before this snapshot comparison; those tolerances are never relaxed here.
+    """
+    assert saved.keys() == computed.keys(), 'Experiment schema changed'
+    assert len(saved['checks']) == len(computed['checks']), 'Experiment count changed'
+    for old, new in zip(saved['checks'], computed['checks']):
+        assert old.keys() == new.keys(), 'Experiment row schema changed'
+        for field in old:
+            a, b = old[field], new[field]
+            assert type(a) is type(b), f'Experiment field type changed: {new["name"]}.{field}'
+            if field in ('value', 'expected') and isinstance(a, float) and isinstance(b, float):
+                assert math.isfinite(a) and math.isfinite(b), 'Nonfinite experiment value'
+                limit = 16 * max(math.ulp(a), math.ulp(b))
+                assert abs(a-b) <= limit, f'Stale experiment {new["name"]}.{field}: {a} vs {b}'
+            else:
+                assert a == b, f'Stale experiment {new["name"]}.{field}'
+    for key in saved:
+        if key != 'checks':
+            assert saved[key] == computed[key], f'Stale experiment metadata: {key}'
+
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--check',action='store_true');args=ap.parse_args()
     outputs=figures()
@@ -534,7 +559,10 @@ def main():
     for name,value in outputs.items():
         path=OUT/name
         if args.check:
-            assert path.read_text(encoding='utf-8')==value,f'Stale {path}'
+            if name == 'experiments.json':
+                check_experiment_snapshot(json.loads(path.read_text(encoding='utf-8')), json.loads(value))
+            else:
+                assert path.read_text(encoding='utf-8')==value,f'Stale {path}'
         else:path.write_text(value,encoding='utf-8',newline='\n')
     print(f'{"Verified" if args.check else "Wrote"} {len(outputs)-1} original SVG diagrams and {len(experiments()["checks"])} numerical checks')
 

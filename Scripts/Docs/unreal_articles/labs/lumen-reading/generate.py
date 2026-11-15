@@ -57,6 +57,87 @@ def sha256_file(path: Path) -> str:
     return sha256_bytes(path.read_bytes())
 
 
+def png_payload_identity(data: bytes):
+    """Return (non-IDAT chunks, decompressed scanlines) for a PNG.
+
+    The IDAT bytes are a compression choice, not image content: zlib and
+    zlib-ng emit different deflate streams for the same scanlines. The chunks
+    and decompressed rows are the reviewed artifact.
+    """
+    if data[:8] != b'\x89PNG\r\n\x1a\n':
+        raise ValueError('Not a PNG')
+    pos = 8
+    idat = bytearray()
+    chunks = []
+    saw_end = False
+    while pos < len(data):
+        if pos + 8 > len(data):
+            raise ValueError('Truncated PNG chunk header')
+        length = struct.unpack('>I', data[pos:pos + 4])[0]
+        tag = data[pos + 4:pos + 8]
+        end = pos + 8 + length
+        if end + 4 > len(data):
+            raise ValueError('Truncated PNG chunk')
+        chunk = data[pos + 8:end]
+        stored_crc = struct.unpack('>I', data[end:end + 4])[0]
+        if zlib.crc32(tag + chunk) & 0xffffffff != stored_crc:
+            raise ValueError(f'Invalid PNG CRC for {tag!r}')
+        pos = end + 4
+        if tag == b'IDAT':
+            idat.extend(chunk)
+        else:
+            chunks.append((tag, chunk))
+        if tag == b'IEND':
+            if chunk or pos != len(data):
+                raise ValueError('Invalid IEND or trailing PNG data')
+            saw_end = True
+            break
+    if not saw_end:
+        raise ValueError('PNG has no IEND')
+    if not chunks or chunks[0][0] != b'IHDR' or len(chunks[0][1]) != 13:
+        raise ValueError('PNG must begin with a complete IHDR')
+    inflater = zlib.decompressobj()
+    scanlines = inflater.decompress(bytes(idat)) + inflater.flush()
+    if not inflater.eof or inflater.unused_data or inflater.unconsumed_tail:
+        raise ValueError('Incomplete or trailing PNG zlib stream')
+    return chunks, scanlines
+
+
+def png_payload_sha256(data: bytes) -> str:
+    chunks, scanlines = png_payload_identity(data)
+    digest = hashlib.sha256()
+    for tag, chunk in chunks:
+        digest.update(tag)
+        digest.update(len(chunk).to_bytes(8, 'big'))
+        digest.update(chunk)
+    digest.update(len(scanlines).to_bytes(8, 'big'))
+    digest.update(scanlines)
+    return digest.hexdigest()
+
+
+def canonical_cpu_svg(text: str) -> str:
+    """Replace the embedded PNG with a compression-independent identity."""
+    marker = 'data:image/png;base64,'
+    start = text.index(marker) + len(marker)
+    stop = text.index('"', start)
+    payload = base64.b64decode(text[start:stop], validate=True)
+    return text[:start] + 'pixel-identity-sha256:' + png_payload_sha256(payload) + text[stop:]
+
+
+def portable_manifest(manifest: dict) -> dict:
+    """Drop only compression-dependent byte fields.
+
+    The CPU byte fields are verified against the checked-in files separately.
+    Source hashes and all content-derived fields remain exact comparisons.
+    """
+    normalized = json.loads(json.dumps(manifest))
+    cpu = normalized.get('cpu_reference')
+    if isinstance(cpu, dict):
+        for key in ('sha256', 'clean_png_sha256', 'clean_png_bytes'):
+            cpu.pop(key, None)
+    return normalized
+
+
 def write_lf(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open('w', encoding='utf-8', newline='\n') as stream:
@@ -1086,17 +1167,61 @@ def main(argv=None):
 
     if args.check:
         failures = []
+        checked_png = CLEAN_PNG.read_bytes() if CLEAN_PNG.is_file() else None
+        checked_identity = None
+        if checked_png is not None:
+            try:
+                checked_identity = png_payload_identity(checked_png)
+            except (ValueError, zlib.error) as exc:
+                failures.append(f'invalid {CLEAN_PNG}: {exc}')
         for relative, expected in texts.items():
             path = OUT / relative
             if not path.is_file():
                 failures.append(f'missing {path}')
+                continue
+            if relative == 'cpu-reference.svg':
+                # The embedded PNG baseline differs in compressed bytes across
+                # zlib implementations; compare the decoded pixels and all text.
+                try:
+                    actual = canonical_cpu_svg(path.read_text(encoding='utf-8'))
+                    wanted = canonical_cpu_svg(expected)
+                except (ValueError, zlib.error) as exc:
+                    failures.append(f'invalid {path}: {exc}')
+                else:
+                    if actual != wanted:
+                        failures.append(f'stale {path}')
+            elif relative == 'manifest.json':
+                try:
+                    actual_manifest = json.loads(path.read_text(encoding='utf-8'))
+                    expected_manifest = json.loads(expected)
+                except json.JSONDecodeError as exc:
+                    failures.append(f'invalid JSON {path}: {exc}')
+                    continue
+                if portable_manifest(actual_manifest) != portable_manifest(expected_manifest):
+                    failures.append(f'stale {path}')
+                if not isinstance(actual_manifest.get('generator', {}).get('sha256'), str):
+                    failures.append(f'{path}: missing generator.sha256')
+                cpu = actual_manifest.get('cpu_reference', {})
+                if CPU_SVG.is_file() and cpu.get('sha256') != sha256_file(CPU_SVG):
+                    failures.append(f'{path}: cpu-reference sha256 does not match checked-in SVG')
+                if checked_png is not None:
+                    if cpu.get('clean_png_sha256') != sha256_bytes(checked_png):
+                        failures.append(f'{path}: clean_png_sha256 does not match checked-in PNG')
+                    if cpu.get('clean_png_bytes') != len(checked_png):
+                        failures.append(f'{path}: clean_png_bytes does not match checked-in PNG')
             elif path.read_text(encoding='utf-8') != expected:
                 failures.append(f'stale {path}')
-        # The clean PNG is deterministic; compare bytes, not only presence.
-        if not CLEAN_PNG.is_file():
+        # PNG metadata and pixels are exact; only the deflate stream may differ.
+        if checked_png is None:
             failures.append(f'missing {CLEAN_PNG}')
-        elif CLEAN_PNG.read_bytes() != clean_png:
-            failures.append(f'stale {CLEAN_PNG}')
+        elif checked_identity is not None:
+            try:
+                generated_identity = png_payload_identity(clean_png)
+            except (ValueError, zlib.error) as exc:
+                failures.append(f'invalid generated PNG: {exc}')
+            else:
+                if checked_identity != generated_identity:
+                    failures.append(f'stale {CLEAN_PNG} (decoded content differs)')
         for record in records:
             source = texts[f'diagrams/{record["slug"]}.svg']
             root = ET.fromstring(source)
