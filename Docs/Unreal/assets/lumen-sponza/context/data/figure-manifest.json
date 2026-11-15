@@ -96,7 +96,7 @@
     "finite": 20160,
     "total": 20160,
     "nonempty": 3686,
-    "native_npz": "data\\figure-native\\screenprobe_placement_overlay.npz",
+    "native_npz": "data/figure-native/screenprobe_placement_overlay.npz",
     "recoverable_native": true,
     "notes": "plots only allocator-active probes: 3686 = 3569 finite uniform cells + 117 captured adaptive probes; 3809 finite-storage cells exist but 123 adaptive values beyond NumAdaptiveScreenProbes=117 are stale and are not plotted"
   },
@@ -154,7 +154,7 @@
     "finite": 64,
     "total": 64,
     "nonempty": 192,
-    "native_npz": "data\\figure-native\\screenprobe_rays_A.npz",
+    "native_npz": "data/figure-native/screenprobe_rays_A.npz",
     "recoverable_native": true,
     "notes": "structured trace slot [i,j] and regular reconstructed angular slot [i,j] are different layouts; the npz keeps the trace radiance and the filtered regular-field value at the same integer slot separately; misses store hit distance -1.0 with ray_hit_valid=false. Direction is a declared-query replay from observed RayInfo, observed blue-noise texel and the declared formula; it is not an observed shader-local dispatch"
   },
@@ -199,7 +199,7 @@
     "finite": 192,
     "total": 192,
     "nonempty": 192,
-    "native_npz": "data\\figure-native\\screenprobe_raybins_A.npz",
+    "native_npz": "data/figure-native/screenprobe_raybins_A.npz",
     "recoverable_native": true,
     "notes": "8x8 trace-texel grid; each 64x64 cell is one RayInfo cell; direction replay includes the observed blue-noise texel and the probe's tile coordinate"
   },
@@ -271,7 +271,7 @@
     "finite": 192,
     "total": 192,
     "nonempty": 1241088,
-    "native_npz": "data\\figure-native\\screenprobe_radiance_A.npz",
+    "native_npz": "data/figure-native/screenprobe_radiance_A.npz",
     "recoverable_native": true,
     "notes": "left is the structured trace layout; right is the regular reconstructed filtered field. The filtered radiance is the value consumed by ScreenProbeConvertToIrradiance, but it is not the same ray as the trace slot with the same integer indices; both are retained in the npz under distinct keys."
   },
@@ -298,7 +298,7 @@
     "finite": 27,
     "total": 64,
     "nonempty": 27,
-    "native_npz": "data\\figure-native\\screenprobe_hitdistance_A.npz",
+    "native_npz": "data/figure-native/screenprobe_hitdistance_A.npz",
     "recoverable_native": true,
     "notes": "hit distance is Euclidean length from probe to hit; not view depth; misses are stored as -1.0 in the npz with hit_valid=false"
   },
@@ -407,7 +407,7 @@
     "finite": 786432,
     "total": 786432,
     "nonempty": 786432,
-    "native_npz": "data\\figure-native\\screenprobe_sh_A.npz",
+    "native_npz": "data/figure-native/screenprobe_sh_A.npz",
     "recoverable_native": true,
     "notes": "SH coefficients are the observed 9 per channel; raw EvaluateSHIrradiance is not physical irradiance. The displayed value is the unit-albedo Lambert response 4*R; physical irradiance is 4*pi*R. Evaluating them is a declared replay, not a captured per-pixel shader result"
   },
@@ -456,7 +456,7 @@
     "finite": 129024,
     "total": 129024,
     "nonempty": 128975,
-    "native_npz": "data\\figure-native\\diffuseindirect_current_A.npz",
+    "native_npz": "data/figure-native/diffuseindirect_current_A.npz",
     "recoverable_native": true,
     "notes": "same mapping and same units for current and history; no independent normalization"
   },
@@ -505,7 +505,7 @@
     "finite": 129024,
     "total": 129024,
     "nonempty": 129024,
-    "native_npz": "data\\figure-native\\diffuseindirect_history_A.npz",
+    "native_npz": "data/figure-native/diffuseindirect_history_A.npz",
     "recoverable_native": true,
     "notes": "same mapping and same units for current and history; no independent normalization"
   },
@@ -539,7 +539,7 @@
     "finite": 43008,
     "total": 43008,
     "nonempty": 43008,
-    "native_npz": "data\\figure-native\\diffuse_frames_A.npz",
+    "native_npz": "data/figure-native/diffuse_frames_A.npz",
     "recoverable_native": true,
     "notes": "MaxFramesAccumulated=10.0 was read from the captured pass-762 parameter payload at offset 460; raw byte 15 has low nibble 15 and is the sentinel for MaxFramesAccumulated. High history values only prove accepted reprojection"
   },
@@ -589,7 +589,7 @@
     "finite": 129024,
     "total": 129024,
     "nonempty": 118139,
-    "native_npz": "data\\figure-native\\diffuse_history_delta_A.npz",
+    "native_npz": "data/figure-native/diffuse_history_delta_A.npz",
     "recoverable_native": true,
     "notes": "a small delta at the decoded 10 accumulated frames is temporal-stability evidence, not proof of correctness"
   },
@@ -687,7 +687,7 @@
     "finite": 2810,
     "total": 65536,
     "nonempty": 8203,
-    "native_npz": "data\\figure-native\\reflection_C.npz",
+    "native_npz": "data/figure-native/reflection_C.npz",
     "recoverable_native": true,
     "notes": "C is the valid polished-gold reflection sample: raw UNORM byte 96 -> 96/255*32 = 12.0470588 effective accumulated frames, not 96; A/B have raw NumFramesAccumulated=0 and are not shown as reflection evidence"
   },
@@ -720,7 +720,7 @@
     "finite": 2810,
     "total": 65536,
     "nonempty": 2810,
-    "native_npz": "data\\figure-native\\reflection_depth_C.npz",
+    "native_npz": "data/figure-native/reflection_depth_C.npz",
     "recoverable_native": true,
     "notes": "273.75 cm at C; near-zero values at A/B are invalid sentinels, not depth"
   },
@@ -766,7 +766,7 @@
     "finite": 65536,
     "total": 65536,
     "nonempty": 2810,
-    "native_npz": "data\\figure-native\\reflection_frames_C.npz",
+    "native_npz": "data/figure-native/reflection_frames_C.npz",
     "recoverable_native": true,
     "notes": "C raw byte is 96, so effective accumulated frames = 96/255*32 = 12.0470588; A/B raw bytes are 0. Raw 96 is not 96 frames"
   },
@@ -815,7 +815,7 @@
     "finite": 196608,
     "total": 196608,
     "nonempty": 196606,
-    "native_npz": "data\\figure-native\\basecolor_C.npz",
+    "native_npz": "data/figure-native/basecolor_C.npz",
     "recoverable_native": true,
     "notes": "material albedo at C; linear values are in data/orientation.json"
   },
@@ -848,7 +848,7 @@
     "finite": 43008,
     "total": 43008,
     "nonempty": 30893,
-    "native_npz": "data\\figure-native\\vsm_shadow_A.npz",
+    "native_npz": "data/figure-native/vsm_shadow_A.npz",
     "recoverable_native": true,
     "notes": "8-bit sqrt-encoded mask; the unquantized VSM factor is not recoverable"
   },
@@ -892,7 +892,7 @@
     "finite": 96,
     "total": 96,
     "nonempty": 96,
-    "native_npz": "data\\figure-native\\worldcache_neighborhood.npz",
+    "native_npz": "data/figure-native/worldcache_neighborhood.npz",
     "recoverable_native": true,
     "notes": "the strip is a selected neighbourhood, not the 4352x4352 atlas; exact tap coordinates and packed words are in the record"
   },
@@ -954,7 +954,7 @@
     "finite": 4,
     "total": 4,
     "nonempty": 4,
-    "native_npz": "data\\figure-native\\surfacecache_query_channels.npz",
+    "native_npz": "data/figure-native/surfacecache_query_channels.npz",
     "recoverable_native": true,
     "notes": "one declared card-tile query at the peer record's selected atlas coordinate; exact tile and world point are in data/surfacecache-query.json"
   },
@@ -998,7 +998,7 @@
     "finite": 192,
     "total": 192,
     "nonempty": 168,
-    "native_npz": "data\\figure-native\\surfacecache_query_tile.npz",
+    "native_npz": "data/figure-native/surfacecache_query_tile.npz",
     "recoverable_native": true,
     "notes": "the selected 8x8 tile around the query, not the whole 4096x4096 cache atlas"
   },
@@ -1031,7 +1031,7 @@
     "finite": 43008,
     "total": 43008,
     "nonempty": 43008,
-    "native_npz": "data\\figure-native\\scene_depth_A.npz",
+    "native_npz": "data/figure-native/scene_depth_A.npz",
     "recoverable_native": true,
     "notes": "A's exact pixel is at the crop origin+128,128; the probe depth in screenprobe-A.json corresponds to this surface within 0.0001 cm"
   },
@@ -1080,7 +1080,7 @@
     "finite": 196608,
     "total": 196608,
     "nonempty": 183324,
-    "native_npz": "data\\figure-native\\worldnormal_C.npz",
+    "native_npz": "data/figure-native/worldnormal_C.npz",
     "recoverable_native": true,
     "notes": "the gold spheres and the lion relief are the selected C crop; the normal is the shading normal, not the depth-derived geometric normal"
   },
@@ -1129,7 +1129,7 @@
     "finite": 196608,
     "total": 196608,
     "nonempty": 133866,
-    "native_npz": "data\\figure-native\\material_C.npz",
+    "native_npz": "data/figure-native/material_C.npz",
     "recoverable_native": true,
     "notes": "C's gold spheres have metallic=1 and roughness=20/255=0.0784; albedo is shown separately in basecolor_C.png"
   }

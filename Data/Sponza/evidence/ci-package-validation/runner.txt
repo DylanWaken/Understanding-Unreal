@@ -1,0 +1,53 @@
+### STEP 2: decode_receivers --stage verify (workspace copy)
+$ python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_receivers.py --out /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/receivers --stage verify
+{
+  "ok": true,
+  "checks": 27
+}
+EXIT:0
+### STEP 3: verify_queries (read-only)
+$ python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/cache-replay/verify_queries.py
+surface: pass=694 card=107 page=323 atlas=[2284, 140] tileMatches=64/64 screen=[519.54, 367.3] OK
+world: pass=747 lane=11 probe=695 clipmap=0 neighbors=8 taps=32 depth=1039.7930908203125 captured=1039.79296875 absDiff=0.0001220703125 forwardConsistent=True OK
+all query invariants hold
+EXIT:0
+### STEP 4: decode_context --stage verify (workspace copy)
+$ python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_context.py --out /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context --stage verify
+{
+  "total": 210,
+  "passed": 189,
+  "failed": 21,
+  "ok": false
+}
+FAIL figure_npz_exists_figures/screenprobe_placement_overlay.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\screenprobe_placement_overlay.npz
+FAIL figure_npz_exists_figures/screenprobe_rays_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\screenprobe_rays_A.npz
+FAIL figure_npz_exists_figures/screenprobe_raybins_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\screenprobe_raybins_A.npz
+FAIL figure_npz_exists_figures/screenprobe_radiance_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\screenprobe_radiance_A.npz
+FAIL figure_npz_exists_figures/screenprobe_hitdistance_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\screenprobe_hitdistance_A.npz
+FAIL figure_npz_exists_figures/screenprobe_sh_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\screenprobe_sh_A.npz
+FAIL figure_npz_exists_figures/diffuseindirect_current_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\diffuseindirect_current_A.npz
+FAIL figure_npz_exists_figures/diffuseindirect_history_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\diffuseindirect_history_A.npz
+FAIL figure_npz_exists_figures/diffuse_frames_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\diffuse_frames_A.npz
+FAIL figure_npz_exists_figures/diffuse_history_delta_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\diffuse_history_delta_A.npz
+FAIL figure_npz_exists_figures/reflection_C.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\reflection_C.npz
+FAIL figure_npz_exists_figures/reflection_depth_C.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\reflection_depth_C.npz
+FAIL figure_npz_exists_figures/reflection_frames_C.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\reflection_frames_C.npz
+FAIL figure_npz_exists_figures/basecolor_C.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\basecolor_C.npz
+FAIL figure_npz_exists_figures/vsm_shadow_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\vsm_shadow_A.npz
+FAIL figure_npz_exists_figures/worldcache_neighborhood.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\worldcache_neighborhood.npz
+FAIL figure_npz_exists_figures/surfacecache_query_channels.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\surfacecache_query_channels.npz
+FAIL figure_npz_exists_figures/surfacecache_query_tile.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\surfacecache_query_tile.npz
+FAIL figure_npz_exists_figures/scene_depth_A.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\scene_depth_A.npz
+FAIL figure_npz_exists_figures/worldnormal_C.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\worldnormal_C.npz
+FAIL figure_npz_exists_figures/material_C.png /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/context/data\figure-native\material_C.npz
+EXIT:0
+### STEP 5: decode_vsm_storage --verify (workspace copy)
+$ python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_vsm_storage.py --out /mnt/d/UnrealUnderstanding-Review/ci-sponza/work/vsm-storage --verify
+{"PASS": 33, "FAIL": 0, "SKIP": 0}
+EXIT:0
+### STEP 6: build_temporal_manifest --check
+$ python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/build_temporal_manifest.py --check
+Verified Docs/Unreal/assets/lumen-sponza/temporal/manifest.json
+EXIT:0
+### STEP 7: archive_temporal verify
+$ python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/archive_temporal.py verify --package Data/Sponza/temporal-native/package --out /mnt/d/UnrealUnderstanding-Review/ci-sponza/results/temporal-verify.json

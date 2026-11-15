@@ -1945,7 +1945,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(np.isfinite(world).sum()),
             "total": int(world.size),
             "nonempty": int((depth > 0).sum()),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": (
                 "plots only allocator-active probes: 3686 = 3569 finite uniform cells + 117 captured adaptive probes; "
@@ -2019,7 +2019,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(sum(1 for r in ray_rows if all(math.isfinite(v) for v in r["trace"]))),
             "total": 64,
             "nonempty": int(sum(np.count_nonzero(r["trace"]) for r in ray_rows)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": (
                 "structured trace slot [i,j] and regular reconstructed angular slot [i,j] are different layouts; the npz keeps the trace radiance and the filtered regular-field value at the same integer slot separately; misses store hit distance -1.0 with ray_hit_valid=false. "
@@ -2054,7 +2054,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": 192,
             "total": 192,
             "nonempty": 192,
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "8x8 trace-texel grid; each 64x64 cell is one RayInfo cell; direction replay includes the observed blue-noise texel and the probe's tile coordinate",
         }
@@ -2091,7 +2091,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": 192,
             "total": 192,
             "nonempty": int(np.count_nonzero(rad_raw) + np.count_nonzero(rad_filt)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "left is the structured trace layout; right is the regular reconstructed filtered field. The filtered radiance is the value consumed by ScreenProbeConvertToIrradiance, but it is not the same ray as the trace slot with the same integer indices; both are retained in the npz under distinct keys.",
         }
@@ -2130,7 +2130,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(pA["hit_count"]),
             "total": 64,
             "nonempty": int(pA["hit_count"]),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "hit distance is Euclidean length from probe to hit; not view depth; misses are stored as -1.0 in the npz with hit_valid=false",
         }
@@ -2199,7 +2199,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(np.isfinite(response_map).sum()),
             "total": int(response_map.size),
             "nonempty": int(np.count_nonzero(response_map)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "SH coefficients are the observed 9 per channel; raw EvaluateSHIrradiance is not physical irradiance. The displayed value is the unit-albedo Lambert response 4*R; physical irradiance is 4*pi*R. Evaluating them is a declared replay, not a captured per-pixel shader result",
         }
@@ -2231,7 +2231,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
                 "finite": int(np.isfinite(crop).sum()),
                 "total": int(crop.size),
                 "nonempty": int(np.count_nonzero(crop)),
-                "native_npz": str(npz.relative_to(out_dir)),
+                "native_npz": npz.relative_to(out_dir).as_posix(),
                 "recoverable_native": True,
                 "notes": "same mapping and same units for current and history; no independent normalization",
             }
@@ -2276,7 +2276,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(np.isfinite(decoded_frames).sum()),
             "total": int(decoded_frames.size),
             "nonempty": int(np.count_nonzero(decoded_frames)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "MaxFramesAccumulated=10.0 was read from the captured pass-762 parameter payload at offset 460; raw byte 15 has low nibble 15 and is the sentinel for MaxFramesAccumulated. High history values only prove accepted reprojection",
         }
@@ -2302,7 +2302,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(np.isfinite(dcrop).sum()),
             "total": int(dcrop.size),
             "nonempty": int(np.count_nonzero(dcrop)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "a small delta at the decoded 10 accumulated frames is temporal-stability evidence, not proof of correctness",
         }
@@ -2353,7 +2353,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(valid.sum()),
             "total": int(valid.size),
             "nonempty": int(np.count_nonzero(rcrop[valid])),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "C is the valid polished-gold reflection sample: raw UNORM byte 96 -> 96/255*32 = 12.0470588 effective accumulated frames, not 96; A/B have raw NumFramesAccumulated=0 and are not shown as reflection evidence",
         }
@@ -2375,7 +2375,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(valid.sum()),
             "total": int(valid.size),
             "nonempty": int(np.count_nonzero(dcrop[valid])),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "273.75 cm at C; near-zero values at A/B are invalid sentinels, not depth",
         }
@@ -2405,7 +2405,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(np.isfinite(fc).sum()),
             "total": int(fc.size),
             "nonempty": int(np.count_nonzero(fc)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "C raw byte is 96, so effective accumulated frames = 96/255*32 = 12.0470588; A/B raw bytes are 0. Raw 96 is not 96 frames",
         }
@@ -2430,7 +2430,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(bcrop.size),
             "total": int(bcrop.size),
             "nonempty": int(np.count_nonzero(bcrop)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "material albedo at C; linear values are in data/orientation.json",
         }
@@ -2456,7 +2456,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(vr.size),
             "total": int(vr.size),
             "nonempty": int(np.count_nonzero(vr)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "8-bit sqrt-encoded mask; the unquantized VSM factor is not recoverable",
         }
@@ -2495,7 +2495,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
                 "finite": int(32 * 3),
                 "total": int(32 * 3),
                 "nonempty": int(sum(np.count_nonzero(t.get("decodedRadiance", [0, 0, 0])) for t in taps[:32])),
-                "native_npz": str(npz.relative_to(out_dir)),
+                "native_npz": npz.relative_to(out_dir).as_posix(),
                 "recoverable_native": True,
                 "notes": "the strip is a selected neighbourhood, not the 4352x4352 atlas; exact tap coordinates and packed words are in the record",
             }
@@ -2548,7 +2548,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
                 "finite": 4,
                 "total": 4,
                 "nonempty": 4,
-                "native_npz": str(npz.relative_to(out_dir)),
+                "native_npz": npz.relative_to(out_dir).as_posix(),
                 "recoverable_native": True,
                 "notes": "one declared card-tile query at the peer record's selected atlas coordinate; exact tile and world point are in data/surfacecache-query.json",
             }
@@ -2582,7 +2582,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
                     "finite": int(np.isfinite(np.array(finals)).sum()),
                     "total": int(np.array(finals).size),
                     "nonempty": int(np.count_nonzero(finals)),
-                    "native_npz": str(npz.relative_to(out_dir)),
+                    "native_npz": npz.relative_to(out_dir).as_posix(),
                     "recoverable_native": True,
                     "notes": "the selected 8x8 tile around the query, not the whole 4096x4096 cache atlas",
                 }
@@ -2610,7 +2610,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(depth_valid.sum()),
             "total": int(depth_valid.size),
             "nonempty": int(depth_valid.sum()),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "A's exact pixel is at the crop origin+128,128; the probe depth in screenprobe-A.json corresponds to this surface within 0.0001 cm",
         }
@@ -2639,7 +2639,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(256 * 256 * 3),
             "total": int(256 * 256 * 3),
             "nonempty": int(np.count_nonzero(nrm_disp)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "the gold spheres and the lion relief are the selected C crop; the normal is the shading normal, not the depth-derived geometric normal",
         }
@@ -2678,7 +2678,7 @@ def build_figures(dump: Dump, view: dict, placement: dict, receivers: dict, prob
             "finite": int(mat_rgb.size),
             "total": int(mat_rgb.size),
             "nonempty": int(np.count_nonzero(mat_u8)),
-            "native_npz": str(npz.relative_to(out_dir)),
+            "native_npz": npz.relative_to(out_dir).as_posix(),
             "recoverable_native": True,
             "notes": "C's gold spheres have metallic=1 and roughness=20/255=0.0784; albedo is shown separately in basecolor_C.png",
         }
@@ -3025,6 +3025,7 @@ def main():
         write_decode_report(out)
         result = verify_outputs(out)
         append_verify_summary(out, result)
+        return 0 if result["ok"] else 1
 
 
 
@@ -3233,4 +3234,4 @@ def blue_noise_uniform_record(dump: Dump):
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

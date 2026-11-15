@@ -77,10 +77,10 @@ jobs:
       - name: Verify published Sponza evidence
         run: |
           python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/verify_package_copy.py
-          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_receivers.py --out Docs/Unreal/assets/lumen-sponza/receivers --stage verify
+          python3 -c "import shutil; [shutil.copytree('Docs/Unreal/assets/lumen-sponza/' + name, '/tmp/' + name) for name in ('receivers', 'context', 'vsm-storage')]"
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_receivers.py --out /tmp/receivers --stage verify
           python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/cache-replay/verify_queries.py
-          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_context.py --out Docs/Unreal/assets/lumen-sponza/context --stage verify
-          python3 -c "import shutil; shutil.copytree('Docs/Unreal/assets/lumen-sponza/vsm-storage', '/tmp/vsm-storage')"
+          python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_context.py --out /tmp/context --stage verify
           python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_vsm_storage.py --out /tmp/vsm-storage --verify
           python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/build_temporal_manifest.py --check
           python3 Scripts/Docs/unreal_articles/labs/lumen-sponza/archive_temporal.py verify --package Data/Sponza/temporal-native/package --out /tmp/temporal-native-verification.json

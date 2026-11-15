@@ -1,0 +1,9 @@
+# Fresh-checkout package and Linux path verification
+
+CI run 43718888579 failed the published Sponza evidence step. A Git-index comparison isolated the first fresh-checkout defect: the native package audit lists 6,852 files, but only 6,851 were tracked. The global `*.log` ignore rule excluded `native/Base/UnrealLab.log`. The restored 357,788-byte log is byte-for-byte equal to the original audit hash; `git-index-and-negative-checks.json` verifies the complete staged inventory. The ignore exception is restricted to native package Base logs.
+
+DeepCluster's working-tree Linux reproduction passed the package copy check (the ignored file was present locally), all 27 receiver checks, cache query invariants, all 33 VSM checks, and the temporal presentation manifest. It also exposed 21 unresolved Windows-style native NPZ references in the context manifest. The old context CLI printed failed checks but returned zero. The root normalized those references, made the generator emit POSIX paths, and made failed verification return exit 1. No captured arrays or image bytes were changed.
+
+The corrected context verification passes all 252 checks on Windows and WSL Linux. A deliberately missing NPZ in a workspace copy returns exit 1. The CI workflow verifies copied receiver/context/VSM outputs under `/tmp`, preserving the published evidence files.
+
+The diagnostic operation was cancelled after the root identified the missing Git-index file; its incomplete archive verification is not claimed as passed. Existing complete temporal archive verification is retained elsewhere under `Data/Sponza/evidence/`; the next CI run executes archive verification again. `diagnostic-run.json` preserves the operation's cancellation, and `runner.txt`/`step*.out` preserve its actual results. Linux dependency modules were loaded from the diagnostic workspace's temporary `.deps` directory; they are not repository dependencies.
