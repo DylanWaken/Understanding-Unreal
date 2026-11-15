@@ -1,0 +1,3332 @@
+{
+  "schema": "arda-sponza-gpu-dump-analysis-v1",
+  "run_id": "20261115-083654",
+  "session": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\run-20261115-083654.json",
+  "launcher": {
+    "schema": "arda-sponza-gpu-dump-launcher-v1",
+    "tag": "gpu-dump",
+    "status": "exited",
+    "started_utc": "2026-11-15T08:36:41.8110139Z",
+    "executable": "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+    "arguments": "\"D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\UnrealLab.uproject\" -ExecutePythonScript=\"D:\\UnrealUnderstanding-Sponza\\scripts\\capture_gpu_dump.py\" -RenderOffscreen -unattended -nosplash -NoSound -NoSourceControl -dx12 -ResX=1280 -ResY=720 -ForceRes -stdout -FullStdOutLogOutput -ini:Engine:[ConsoleVariables]:r.RHI.UniformBufferContentMap.Enable=1",
+    "project": "D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\UnrealLab.uproject",
+    "script": "D:\\UnrealUnderstanding-Sponza\\scripts\\capture_gpu_dump.py",
+    "script_sha256": "1EDB19F34C86A16027DB6112BFFB53E0EAD9011E60D44B50C7EB8B730A0B061D",
+    "engine_root": "D:\\UnrealEngine",
+    "engine_build_version": {
+      "MajorVersion": 5,
+      "MinorVersion": 8,
+      "PatchVersion": 1,
+      "Changelist": 0,
+      "CompatibleChangelist": 55116800,
+      "IsLicenseeVersion": 0,
+      "IsPromotedBuild": 0,
+      "BranchName": "UE5",
+      "BuildId": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9"
+    },
+    "engine_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+    "project_module_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+    "engine_build_id_matches_project": true,
+    "declared_source_base": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+    "declared_bridge_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+    "bridge_build_id_matches_declared": true,
+    "startup_ini_cvar": "r.RHI.UniformBufferContentMap.Enable=1 (before any uniform buffer creation)",
+    "resolution": [
+      1280,
+      720
+    ],
+    "engine_file_hashes": {
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.exe": {
+        "sha256": "DD2A31E9A3BABE48B56C49C54D85661F50D07A1254D09FAC64F50B85244D4833",
+        "bytes": 502272,
+        "mtime_utc": "2026-08-08T01:42:58.4613111Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Build\\Build.version": {
+        "sha256": "FA0355D0DAFD1D4BD34983841799CD9E1093A273EC8EE93E71B73984E40055D9",
+        "bytes": 198,
+        "mtime_utc": "2026-08-07T23:50:19.1720877Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.version": {
+        "sha256": "D4290CA1FB8EAC4D61A10169E5A08B72E8A01A5D63FF5F27730EEAF3B8C3AFEE",
+        "bytes": 247,
+        "mtime_utc": "2026-11-12T15:33:53.8568188Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.modules": {
+        "sha256": "725ECFB21CCDCE3762A4C337052CB6D0185BCEB92BBAE1F4197DB00EE6FE60AE",
+        "bytes": 32048,
+        "mtime_utc": "2026-11-12T15:33:53.8118224Z"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\Binaries\\Win64\\UnrealEditor.modules": {
+        "sha256": "C68A010CEFB01B06D637C548DAA43BE027EF3818C0B3DBEDA1457E060EF77912",
+        "bytes": 178,
+        "mtime_utc": "2026-11-12T15:36:40.6284954Z"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\Binaries\\Win64\\UnrealEditor-ArdaLabCapture.dll": {
+        "sha256": "9D313D997FA704165B5C0B411250AB0A7BEBD8EA4F126F9BE85840BB2E7D4923",
+        "bytes": 115712,
+        "mtime_utc": "2026-11-12T13:30:51.7498705Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-RenderCore.dll": {
+        "sha256": "6F1BF96FAB9841F0D4793CB65ABC4DFBF459AA41EE4A8EE90D06D737CF32BF1D",
+        "bytes": 4779008,
+        "mtime_utc": "2026-11-12T15:33:53.4341000Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-Renderer.dll": {
+        "sha256": "5508EB82F1EA84D9FBB8DEA620A44FBC4F7119231281DD2EEA7AE1D5A8A5FC09",
+        "bytes": 36366336,
+        "mtime_utc": "2026-08-08T01:27:56.6688580Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-RHI.dll": {
+        "sha256": "7D697F9BB4B6D0D9B5B750BC10E2E259B1F346121B42857F0B3DF65255953A46",
+        "bytes": 1737728,
+        "mtime_utc": "2026-08-08T01:23:31.3082476Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-D3D12RHI.dll": {
+        "sha256": "3434E257FCD64D93C8AD7058508DC55F83E51D67FC4CBB64537F3B0CDF64C96E",
+        "bytes": 2536448,
+        "mtime_utc": "2026-08-08T01:23:31.9915058Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-Engine.dll": {
+        "sha256": "283FADB1D0E7651D771FD37FF123A5D64B944FD1A5EE58114FC976B3FF81F5BC",
+        "bytes": 77202432,
+        "mtime_utc": "2026-08-08T02:03:44.9077880Z"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-UnrealEd.dll": {
+        "sha256": "96822C3B4D70CB06C222F00A3315A5B6122DA3F09895C6FDC93990D4A15B2AB4",
+        "bytes": 35479040,
+        "mtime_utc": "2026-08-08T02:04:08.8095575Z"
+      }
+    },
+    "free_space_before": {
+      "free_gb": 754.27
+    },
+    "stdout_log": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\logs\\gpu-dump-20261115-083640.stdout.log",
+    "stderr_log": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\logs\\gpu-dump-20261115-083640.stderr.log",
+    "pid": 38576,
+    "finished_utc": "2026-11-15T08:38:44.5105162Z",
+    "wall_seconds": 122.7,
+    "exit_code": null,
+    "python_error_detected": false,
+    "dump_run_id": "20261115-083654",
+    "dump_status": "ok",
+    "dump_directory": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654",
+    "dump_file_count": 12458,
+    "dump_total_bytes": 95239807151,
+    "free_space_after": {
+      "free_gb": 665.58
+    },
+    "stdout_bytes": 363163,
+    "stderr_bytes": 0,
+    "record_path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\logs\\gpu-dump-20261115-083640-launcher.json"
+  },
+  "raw_directory": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654",
+  "dump_service": {
+    "Type": "DumpGPU",
+    "Time": "2026.11.15-16.36.59",
+    "CompressionName": "None",
+    "CompressionFiles": ""
+  },
+  "infos": {
+    "Project": "UnrealLab",
+    "EngineMajorVersion": 5,
+    "EngineMinorVersion": 8,
+    "EnginePatchVersion": 1,
+    "BuildBranch": "UE5",
+    "BuildDate": "Aug  8 2026",
+    "BuildVersion": "UE5-CL-0",
+    "BuildTarget": "Editor",
+    "BuildConfiguration": "Development",
+    "Build64Bits": 1,
+    "Platform": "Windows",
+    "OS": "Windows 11 (23H2) [10.0.22631.5624]",
+    "DeviceName": "WIN-R9FOID8ODG8",
+    "CPUVendor": "AuthenticAMD",
+    "CPUBrand": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+    "CPUNumberOfCores": 16,
+    "CPUNumberOfCoresIncludingHyperthreads": 32,
+    "GPUVendor": "NVIDIA",
+    "GPUDeviceDescription": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "GPUDriverUserVersion": "610.62",
+    "GPUDriverInternalVersion": "610.62",
+    "GPUDriverDate": "6-11-2026",
+    "MemoryTotalPhysical": 66190659584,
+    "MemoryPageSize": 4096,
+    "RHI": "D3D12",
+    "RHIMaxFeatureLevel": "SM6",
+    "DumpTime": "2026.11.15-16.36.59",
+    "DumpContext": "DumpGPUCommand",
+    "LogFilename": "UnrealLab.log"
+  },
+  "metadata_files": {
+    "Status.txt": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\Status.txt",
+      "bytes": 2,
+      "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "relative": "Base/Status.txt"
+    },
+    "Infos.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\Infos.json",
+      "bytes": 987,
+      "sha256": "d88bd16ff475cbfacdad45f4ceabda370e9b0b1baf84d669c3b2bb4bcb7ad734",
+      "relative": "Base/Infos.json"
+    },
+    "DumpService.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\DumpService.json",
+      "bytes": 112,
+      "sha256": "a59b7e4204b31f423997189c9f83472aaa3b3739bf38594d629114bd627580ae",
+      "relative": "Base/DumpService.json"
+    },
+    "ConsoleVariables.csv": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\ConsoleVariables.csv",
+      "bytes": 536811,
+      "sha256": "ed9952d037494cc78bdf9f6a9f6a7bb0935d33752f4969ad3622fa431ddcb010",
+      "relative": "Base/ConsoleVariables.csv"
+    },
+    "Passes.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\Passes.json",
+      "bytes": 1571882,
+      "sha256": "c851dbdbf3cbaaa11e1c736b53c94fc43868be195e5014b5bc8c4108f4f4849c",
+      "relative": "Base/Passes.json"
+    },
+    "ParameterBindings.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\ParameterBindings.json",
+      "bytes": 14721756,
+      "sha256": "5b1cb7ce9284929fa7b404017ce642d35af911179d211c0c9d3b5130af34acd2",
+      "relative": "Base/ParameterBindings.json"
+    },
+    "NativeUniformBufferBindings.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\NativeUniformBufferBindings.json",
+      "bytes": 43256400,
+      "sha256": "54b6368d1a90a46e05586710829a11bfefd56d21f55baf4cf92160bdb8f39182",
+      "relative": "Base/NativeUniformBufferBindings.json"
+    },
+    "ReferencedStructs.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\ReferencedStructs.json",
+      "bytes": 663108,
+      "sha256": "cb522c3fa5a514827448c0b43abff23392ce8485596ae803d9baa6c2771d113f",
+      "relative": "Base/ReferencedStructs.json"
+    },
+    "ResourceDescs.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\ResourceDescs.json",
+      "bytes": 525319,
+      "sha256": "eda6a546475d7a453b8ac106d4d4df0c4726aff7a4f7ad7dd2082c5ea6fbe315",
+      "relative": "Base/ResourceDescs.json"
+    },
+    "SubresourceLayouts.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\SubresourceLayouts.json",
+      "bytes": 8944869,
+      "sha256": "95a3c5c91bdd56859e1d29b9b1cb348e2194894582f3045b5713dad390096cf5",
+      "relative": "Base/SubresourceLayouts.json"
+    },
+    "DumpReadbackStatus.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\DumpReadbackStatus.json",
+      "bytes": 2704251,
+      "sha256": "85619544b8c05c2ce55a87d7de9b1d81c46d9e02f4c1d2723ba58399e927c339",
+      "relative": "Base/DumpReadbackStatus.json"
+    },
+    "PassDrawCounts.json": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\PassDrawCounts.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "relative": "Base/PassDrawCounts.json"
+    },
+    "Screenshot.png": {
+      "exists": true,
+      "path": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\Screenshot.png",
+      "bytes": 1892042,
+      "sha256": "faa77025dcfd82b4982a28a2a155205ae6347fc03989923b6dc2d9423faaa6eb",
+      "relative": "Base/Screenshot.png"
+    }
+  },
+  "counts": {
+    "passes": 886,
+    "resources": 1541,
+    "unique_resource_names": 377,
+    "parameter_binding_blocks": 803,
+    "passes_with_parameter_block": 803,
+    "passes_missing_parameter_block": 83,
+    "parameterless_passes": 80,
+    "missing_expected_parameter_block": 3,
+    "missing_expected_parameter_pass_names": [
+      "3:ShaderPrint::UploadParameters(FParameters)",
+      "301:ShaderPrint::UploadParameters(FParameters)",
+      "596:ShaderPrint::UploadParameters(FParameters)"
+    ],
+    "native_uniform_buffer_records": 521,
+    "native_uniform_bindings": 35648,
+    "native_uniform_layouts": {
+      "FViewUniformShaderParameters": 336,
+      "FSkyAtmosphereInternalCommonParameters": 15,
+      "FBlueNoise": 168,
+      "FSceneTextureUniformParameters": 2
+    },
+    "native_exported_file_references": 69,
+    "native_exported_files_existing": 69,
+    "native_missing_content_bindings": 0,
+    "raytracing_scene_buffer_copy_warnings": 9,
+    "read_only_cvar_runtime_warnings": 1,
+    "referenced_structs": 487,
+    "subresource_layouts": 6675,
+    "readback_records": 10404,
+    "readback_status": {
+      "Dumped": 10404
+    },
+    "readback_kinds": {
+      "SkipTrackingBuffer": 33,
+      "Texture": 6462,
+      "Texture3D": 213,
+      "Buffer": 3696
+    },
+    "readback_actual_bytes": 102212665250,
+    "payload_files": 10318,
+    "payload_bytes": 95160502078,
+    "payload_version_files": 10318,
+    "resources_with_multiple_versions": 705,
+    "max_versions_per_resource": 110,
+    "multi_version_examples": [
+      {
+        "key": "000100000208e7644800",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002093aff2700",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002094a251800",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002095a572a00",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002095a572d00",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002095a6f0000",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002095a6f3900",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002095a6f6900",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "0001000002095a6f7b00",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      },
+      {
+        "key": "00010000020bc4a9f300",
+        "version_count": 110,
+        "versions": [
+          "000100000208eeb340a0",
+          "000100000208eeb36940",
+          "000100000208eeb3f8f0",
+          "000100000208f3251510",
+          "000100000208f3257600",
+          "000100000208f325d340",
+          "000100000208f3260880",
+          "000100000208f3264c90"
+        ]
+      }
+    ],
+    "unique_payload_resource_keys": 1529,
+    "duplicate_resource_keys": {
+      "00010000020bef07ccb0": 2,
+      "00010000020bef07cf70": 2,
+      "00010000020bef07a760": 2,
+      "00010000020c948a3770": 2,
+      "00030000020ba1b6ccb0": 2,
+      "00030000020ba1b6cf70": 2,
+      "00030000020ba1b6a760": 2,
+      "00030000020bc1883770": 2,
+      "00040000020bef07ccb0": 2,
+      "00040000020bef07cf70": 2,
+      "00040000020bef07a760": 2,
+      "0004000002094bdb3770": 2
+    },
+    "resources_with_payload": 1541,
+    "resources_missing_payload": 0,
+    "console_variables": 9262,
+    "graphs": 4,
+    "scene_graphs": 3,
+    "slate_graphs": 1,
+    "primary_view_records": 3,
+    "hero_camera_view_records": 3
+  },
+  "graphs": [
+    {
+      "graph_index": 0,
+      "kind": "scene",
+      "first_pass_id": 0,
+      "last_pass_id": 293,
+      "pass_count": 294,
+      "engine_frames": [
+        "Frame 302 (Delta=0.013059s)"
+      ],
+      "views": [
+        {
+          "view_rect": [
+            0,
+            0,
+            1280,
+            720
+          ],
+          "view_size_and_inv_size": [
+            1280.0,
+            720.0,
+            0.0007812500116415322,
+            0.0013888889225199819
+          ],
+          "view_origin_high": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "view_origin_low": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "world_origin_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "preview_translation_high": [
+            850.0,
+            -0.0,
+            -90.0
+          ],
+          "preview_translation_low": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "preview_translation_sum": [
+            850.0,
+            0.0,
+            -90.0
+          ],
+          "minus_preview_translation_cm": [
+            -850.0,
+            -0.0,
+            90.0
+          ],
+          "culling_origin_translated_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "view_forward": [
+            0.9743700637234466,
+            0.0,
+            0.22495105894297684
+          ],
+          "near_plane": 10.0,
+          "pitch_deg_from_forward": 13.0,
+          "yaw_deg_from_forward": 0.0,
+          "projection_m00": 1.428147792816162,
+          "projection_m11": 2.5389294624328613,
+          "hfov_deg_from_projection": 70.0,
+          "vfov_deg_from_projection": 42.9957,
+          "translated_world_to_view_rows": [
+            [
+              0.0,
+              -0.5711348652839661,
+              0.0,
+              0.9743700623512268
+            ],
+            [
+              1.428147792816162,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              2.4738569259643555,
+              0.0,
+              0.22495105862617493
+            ],
+            [
+              0.0,
+              0.0,
+              10.0,
+              0.0
+            ]
+          ],
+          "view_to_translated_world_origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scene_renderer_primary_view_id": 0,
+          "frame_index": 903,
+          "resource_key": "00010000020bef07f840",
+          "resource_name": "ViewData.PrimaryViews",
+          "resource_byte_size": 1056,
+          "payload_file": "Resources/00010000020bef07f840.v00000000000000000000.bin",
+          "payload_bytes": 1056,
+          "checks": {
+            "location_matches": true,
+            "view_rect_matches": true,
+            "hfov_matches": true,
+            "pitch_matches": true,
+            "yaw_matches": true,
+            "forward_matches": true,
+            "preview_translation_consistent": true
+          },
+          "consumer_pass_ids": [
+            14,
+            15,
+            19,
+            20,
+            24,
+            25,
+            27,
+            28,
+            53,
+            54,
+            61,
+            65,
+            91,
+            98,
+            105,
+            106,
+            108,
+            137,
+            146,
+            151
+          ],
+          "consumer_pass_count": 32,
+          "graph_index": 0
+        }
+      ],
+      "has_tonemap": true,
+      "has_fxaa": true,
+      "tonemap_events": [
+        "Tonemap 1280x720 (PS GammaOnly=0)"
+      ],
+      "fxaa_events": [
+        "FXAA(Quality=4) 1280x720 PS"
+      ],
+      "final_output_resources": [
+        "00010000020ba068bfd0.mip0"
+      ],
+      "has_present_chain": true
+    },
+    {
+      "graph_index": 1,
+      "kind": "slate",
+      "first_pass_id": 294,
+      "last_pass_id": 297,
+      "pass_count": 4,
+      "engine_frames": [
+        "Frame 302 (Delta=0.013059s)"
+      ],
+      "views": [],
+      "has_tonemap": false,
+      "has_fxaa": false,
+      "tonemap_events": [],
+      "fxaa_events": [],
+      "final_output_resources": [],
+      "has_present_chain": false
+    },
+    {
+      "graph_index": 2,
+      "kind": "scene",
+      "first_pass_id": 298,
+      "last_pass_id": 592,
+      "pass_count": 295,
+      "engine_frames": [
+        "Frame 302 (Delta=0.013059s)"
+      ],
+      "views": [
+        {
+          "view_rect": [
+            0,
+            0,
+            1280,
+            720
+          ],
+          "view_size_and_inv_size": [
+            1280.0,
+            720.0,
+            0.0007812500116415322,
+            0.0013888889225199819
+          ],
+          "view_origin_high": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "view_origin_low": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "world_origin_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "preview_translation_high": [
+            850.0,
+            -0.0,
+            -90.0
+          ],
+          "preview_translation_low": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "preview_translation_sum": [
+            850.0,
+            0.0,
+            -90.0
+          ],
+          "minus_preview_translation_cm": [
+            -850.0,
+            -0.0,
+            90.0
+          ],
+          "culling_origin_translated_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "view_forward": [
+            0.9743700637234466,
+            0.0,
+            0.22495105894297684
+          ],
+          "near_plane": 10.0,
+          "pitch_deg_from_forward": 13.0,
+          "yaw_deg_from_forward": 0.0,
+          "projection_m00": 1.428147792816162,
+          "projection_m11": 2.5389294624328613,
+          "hfov_deg_from_projection": 70.0,
+          "vfov_deg_from_projection": 42.9957,
+          "translated_world_to_view_rows": [
+            [
+              0.0,
+              -0.5711348652839661,
+              0.0,
+              0.9743700623512268
+            ],
+            [
+              1.428147792816162,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              2.4738569259643555,
+              0.0,
+              0.22495105862617493
+            ],
+            [
+              0.0,
+              0.0,
+              10.0,
+              0.0
+            ]
+          ],
+          "view_to_translated_world_origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scene_renderer_primary_view_id": 0,
+          "frame_index": 904,
+          "resource_key": "00030000020ba1b6f840",
+          "resource_name": "ViewData.PrimaryViews",
+          "resource_byte_size": 1056,
+          "payload_file": "Resources/00030000020ba1b6f840.v00000000000000000000.bin",
+          "payload_bytes": 1056,
+          "checks": {
+            "location_matches": true,
+            "view_rect_matches": true,
+            "hfov_matches": true,
+            "pitch_matches": true,
+            "yaw_matches": true,
+            "forward_matches": true,
+            "preview_translation_consistent": true
+          },
+          "consumer_pass_ids": [
+            312,
+            313,
+            317,
+            318,
+            322,
+            323,
+            325,
+            326,
+            350,
+            351,
+            352,
+            353,
+            360,
+            364,
+            390,
+            397,
+            404,
+            405,
+            407,
+            436
+          ],
+          "consumer_pass_count": 34,
+          "graph_index": 2
+        }
+      ],
+      "has_tonemap": true,
+      "has_fxaa": true,
+      "tonemap_events": [
+        "Tonemap 1280x720 (PS GammaOnly=0)"
+      ],
+      "fxaa_events": [
+        "FXAA(Quality=4) 1280x720 PS"
+      ],
+      "final_output_resources": [
+        "0003000002097acbbfd0.mip0"
+      ],
+      "has_present_chain": true
+    },
+    {
+      "graph_index": 3,
+      "kind": "scene",
+      "first_pass_id": 593,
+      "last_pass_id": 885,
+      "pass_count": 293,
+      "engine_frames": [
+        "Frame 302 (Delta=0.013059s)"
+      ],
+      "views": [
+        {
+          "view_rect": [
+            0,
+            0,
+            1280,
+            720
+          ],
+          "view_size_and_inv_size": [
+            1280.0,
+            720.0,
+            0.0007812500116415322,
+            0.0013888889225199819
+          ],
+          "view_origin_high": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "view_origin_low": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "world_origin_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "preview_translation_high": [
+            850.0,
+            -0.0,
+            -90.0
+          ],
+          "preview_translation_low": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "preview_translation_sum": [
+            850.0,
+            0.0,
+            -90.0
+          ],
+          "minus_preview_translation_cm": [
+            -850.0,
+            -0.0,
+            90.0
+          ],
+          "culling_origin_translated_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "view_forward": [
+            0.9743700637234466,
+            0.0,
+            0.22495105894297684
+          ],
+          "near_plane": 10.0,
+          "pitch_deg_from_forward": 13.0,
+          "yaw_deg_from_forward": 0.0,
+          "projection_m00": 1.428147792816162,
+          "projection_m11": 2.5389294624328613,
+          "hfov_deg_from_projection": 70.0,
+          "vfov_deg_from_projection": 42.9957,
+          "translated_world_to_view_rows": [
+            [
+              0.0,
+              -0.5711348652839661,
+              0.0,
+              0.9743700623512268
+            ],
+            [
+              1.428147792816162,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              2.4738569259643555,
+              0.0,
+              0.22495105862617493
+            ],
+            [
+              0.0,
+              0.0,
+              10.0,
+              0.0
+            ]
+          ],
+          "view_to_translated_world_origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scene_renderer_primary_view_id": 0,
+          "frame_index": 905,
+          "resource_key": "00040000020bef07f840",
+          "resource_name": "ViewData.PrimaryViews",
+          "resource_byte_size": 1056,
+          "payload_file": "Resources/00040000020bef07f840.v00000000000000000000.bin",
+          "payload_bytes": 1056,
+          "checks": {
+            "location_matches": true,
+            "view_rect_matches": true,
+            "hfov_matches": true,
+            "pitch_matches": true,
+            "yaw_matches": true,
+            "forward_matches": true,
+            "preview_translation_consistent": true
+          },
+          "consumer_pass_ids": [
+            607,
+            608,
+            612,
+            613,
+            617,
+            618,
+            620,
+            621,
+            645,
+            646,
+            653,
+            657,
+            683,
+            690,
+            697,
+            698,
+            700,
+            729,
+            738,
+            743
+          ],
+          "consumer_pass_count": 32,
+          "graph_index": 3
+        }
+      ],
+      "has_tonemap": true,
+      "has_fxaa": true,
+      "tonemap_events": [
+        "Tonemap 1280x720 (PS GammaOnly=0)"
+      ],
+      "fxaa_events": [
+        "FXAA(Quality=4) 1280x720 PS"
+      ],
+      "final_output_resources": [
+        "00040000020c132ebfd0.mip0"
+      ],
+      "has_present_chain": true
+    }
+  ],
+  "presented_graph_index": 3,
+  "primary_views": [
+    {
+      "view_rect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "view_size_and_inv_size": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "view_origin_high": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "view_origin_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "world_origin_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "preview_translation_high": [
+        850.0,
+        -0.0,
+        -90.0
+      ],
+      "preview_translation_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "preview_translation_sum": [
+        850.0,
+        0.0,
+        -90.0
+      ],
+      "minus_preview_translation_cm": [
+        -850.0,
+        -0.0,
+        90.0
+      ],
+      "culling_origin_translated_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "view_forward": [
+        0.9743700637234466,
+        0.0,
+        0.22495105894297684
+      ],
+      "near_plane": 10.0,
+      "pitch_deg_from_forward": 13.0,
+      "yaw_deg_from_forward": 0.0,
+      "projection_m00": 1.428147792816162,
+      "projection_m11": 2.5389294624328613,
+      "hfov_deg_from_projection": 70.0,
+      "vfov_deg_from_projection": 42.9957,
+      "translated_world_to_view_rows": [
+        [
+          0.0,
+          -0.5711348652839661,
+          0.0,
+          0.9743700623512268
+        ],
+        [
+          1.428147792816162,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.4738569259643555,
+          0.0,
+          0.22495105862617493
+        ],
+        [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ]
+      ],
+      "view_to_translated_world_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scene_renderer_primary_view_id": 0,
+      "frame_index": 903,
+      "resource_key": "00010000020bef07f840",
+      "resource_name": "ViewData.PrimaryViews",
+      "resource_byte_size": 1056,
+      "payload_file": "Resources/00010000020bef07f840.v00000000000000000000.bin",
+      "payload_bytes": 1056,
+      "checks": {
+        "location_matches": true,
+        "view_rect_matches": true,
+        "hfov_matches": true,
+        "pitch_matches": true,
+        "yaw_matches": true,
+        "forward_matches": true,
+        "preview_translation_consistent": true
+      },
+      "consumer_pass_ids": [
+        14,
+        15,
+        19,
+        20,
+        24,
+        25,
+        27,
+        28,
+        53,
+        54,
+        61,
+        65,
+        91,
+        98,
+        105,
+        106,
+        108,
+        137,
+        146,
+        151
+      ],
+      "consumer_pass_count": 32,
+      "graph_index": 0
+    },
+    {
+      "view_rect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "view_size_and_inv_size": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "view_origin_high": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "view_origin_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "world_origin_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "preview_translation_high": [
+        850.0,
+        -0.0,
+        -90.0
+      ],
+      "preview_translation_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "preview_translation_sum": [
+        850.0,
+        0.0,
+        -90.0
+      ],
+      "minus_preview_translation_cm": [
+        -850.0,
+        -0.0,
+        90.0
+      ],
+      "culling_origin_translated_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "view_forward": [
+        0.9743700637234466,
+        0.0,
+        0.22495105894297684
+      ],
+      "near_plane": 10.0,
+      "pitch_deg_from_forward": 13.0,
+      "yaw_deg_from_forward": 0.0,
+      "projection_m00": 1.428147792816162,
+      "projection_m11": 2.5389294624328613,
+      "hfov_deg_from_projection": 70.0,
+      "vfov_deg_from_projection": 42.9957,
+      "translated_world_to_view_rows": [
+        [
+          0.0,
+          -0.5711348652839661,
+          0.0,
+          0.9743700623512268
+        ],
+        [
+          1.428147792816162,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.4738569259643555,
+          0.0,
+          0.22495105862617493
+        ],
+        [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ]
+      ],
+      "view_to_translated_world_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scene_renderer_primary_view_id": 0,
+      "frame_index": 904,
+      "resource_key": "00030000020ba1b6f840",
+      "resource_name": "ViewData.PrimaryViews",
+      "resource_byte_size": 1056,
+      "payload_file": "Resources/00030000020ba1b6f840.v00000000000000000000.bin",
+      "payload_bytes": 1056,
+      "checks": {
+        "location_matches": true,
+        "view_rect_matches": true,
+        "hfov_matches": true,
+        "pitch_matches": true,
+        "yaw_matches": true,
+        "forward_matches": true,
+        "preview_translation_consistent": true
+      },
+      "consumer_pass_ids": [
+        312,
+        313,
+        317,
+        318,
+        322,
+        323,
+        325,
+        326,
+        350,
+        351,
+        352,
+        353,
+        360,
+        364,
+        390,
+        397,
+        404,
+        405,
+        407,
+        436
+      ],
+      "consumer_pass_count": 34,
+      "graph_index": 2
+    },
+    {
+      "view_rect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "view_size_and_inv_size": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "view_origin_high": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "view_origin_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "world_origin_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "preview_translation_high": [
+        850.0,
+        -0.0,
+        -90.0
+      ],
+      "preview_translation_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "preview_translation_sum": [
+        850.0,
+        0.0,
+        -90.0
+      ],
+      "minus_preview_translation_cm": [
+        -850.0,
+        -0.0,
+        90.0
+      ],
+      "culling_origin_translated_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "view_forward": [
+        0.9743700637234466,
+        0.0,
+        0.22495105894297684
+      ],
+      "near_plane": 10.0,
+      "pitch_deg_from_forward": 13.0,
+      "yaw_deg_from_forward": 0.0,
+      "projection_m00": 1.428147792816162,
+      "projection_m11": 2.5389294624328613,
+      "hfov_deg_from_projection": 70.0,
+      "vfov_deg_from_projection": 42.9957,
+      "translated_world_to_view_rows": [
+        [
+          0.0,
+          -0.5711348652839661,
+          0.0,
+          0.9743700623512268
+        ],
+        [
+          1.428147792816162,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.4738569259643555,
+          0.0,
+          0.22495105862617493
+        ],
+        [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ]
+      ],
+      "view_to_translated_world_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scene_renderer_primary_view_id": 0,
+      "frame_index": 905,
+      "resource_key": "00040000020bef07f840",
+      "resource_name": "ViewData.PrimaryViews",
+      "resource_byte_size": 1056,
+      "payload_file": "Resources/00040000020bef07f840.v00000000000000000000.bin",
+      "payload_bytes": 1056,
+      "checks": {
+        "location_matches": true,
+        "view_rect_matches": true,
+        "hfov_matches": true,
+        "pitch_matches": true,
+        "yaw_matches": true,
+        "forward_matches": true,
+        "preview_translation_consistent": true
+      },
+      "consumer_pass_ids": [
+        607,
+        608,
+        612,
+        613,
+        617,
+        618,
+        620,
+        621,
+        645,
+        646,
+        653,
+        657,
+        683,
+        690,
+        697,
+        698,
+        700,
+        729,
+        738,
+        743
+      ],
+      "consumer_pass_count": 32,
+      "graph_index": 3
+    }
+  ],
+  "hero_camera_views": [
+    {
+      "view_rect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "view_size_and_inv_size": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "view_origin_high": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "view_origin_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "world_origin_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "preview_translation_high": [
+        850.0,
+        -0.0,
+        -90.0
+      ],
+      "preview_translation_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "preview_translation_sum": [
+        850.0,
+        0.0,
+        -90.0
+      ],
+      "minus_preview_translation_cm": [
+        -850.0,
+        -0.0,
+        90.0
+      ],
+      "culling_origin_translated_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "view_forward": [
+        0.9743700637234466,
+        0.0,
+        0.22495105894297684
+      ],
+      "near_plane": 10.0,
+      "pitch_deg_from_forward": 13.0,
+      "yaw_deg_from_forward": 0.0,
+      "projection_m00": 1.428147792816162,
+      "projection_m11": 2.5389294624328613,
+      "hfov_deg_from_projection": 70.0,
+      "vfov_deg_from_projection": 42.9957,
+      "translated_world_to_view_rows": [
+        [
+          0.0,
+          -0.5711348652839661,
+          0.0,
+          0.9743700623512268
+        ],
+        [
+          1.428147792816162,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.4738569259643555,
+          0.0,
+          0.22495105862617493
+        ],
+        [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ]
+      ],
+      "view_to_translated_world_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scene_renderer_primary_view_id": 0,
+      "frame_index": 903,
+      "resource_key": "00010000020bef07f840",
+      "resource_name": "ViewData.PrimaryViews",
+      "resource_byte_size": 1056,
+      "payload_file": "Resources/00010000020bef07f840.v00000000000000000000.bin",
+      "payload_bytes": 1056,
+      "checks": {
+        "location_matches": true,
+        "view_rect_matches": true,
+        "hfov_matches": true,
+        "pitch_matches": true,
+        "yaw_matches": true,
+        "forward_matches": true,
+        "preview_translation_consistent": true
+      },
+      "consumer_pass_ids": [
+        14,
+        15,
+        19,
+        20,
+        24,
+        25,
+        27,
+        28,
+        53,
+        54,
+        61,
+        65,
+        91,
+        98,
+        105,
+        106,
+        108,
+        137,
+        146,
+        151
+      ],
+      "consumer_pass_count": 32,
+      "graph_index": 0
+    },
+    {
+      "view_rect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "view_size_and_inv_size": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "view_origin_high": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "view_origin_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "world_origin_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "preview_translation_high": [
+        850.0,
+        -0.0,
+        -90.0
+      ],
+      "preview_translation_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "preview_translation_sum": [
+        850.0,
+        0.0,
+        -90.0
+      ],
+      "minus_preview_translation_cm": [
+        -850.0,
+        -0.0,
+        90.0
+      ],
+      "culling_origin_translated_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "view_forward": [
+        0.9743700637234466,
+        0.0,
+        0.22495105894297684
+      ],
+      "near_plane": 10.0,
+      "pitch_deg_from_forward": 13.0,
+      "yaw_deg_from_forward": 0.0,
+      "projection_m00": 1.428147792816162,
+      "projection_m11": 2.5389294624328613,
+      "hfov_deg_from_projection": 70.0,
+      "vfov_deg_from_projection": 42.9957,
+      "translated_world_to_view_rows": [
+        [
+          0.0,
+          -0.5711348652839661,
+          0.0,
+          0.9743700623512268
+        ],
+        [
+          1.428147792816162,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.4738569259643555,
+          0.0,
+          0.22495105862617493
+        ],
+        [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ]
+      ],
+      "view_to_translated_world_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scene_renderer_primary_view_id": 0,
+      "frame_index": 904,
+      "resource_key": "00030000020ba1b6f840",
+      "resource_name": "ViewData.PrimaryViews",
+      "resource_byte_size": 1056,
+      "payload_file": "Resources/00030000020ba1b6f840.v00000000000000000000.bin",
+      "payload_bytes": 1056,
+      "checks": {
+        "location_matches": true,
+        "view_rect_matches": true,
+        "hfov_matches": true,
+        "pitch_matches": true,
+        "yaw_matches": true,
+        "forward_matches": true,
+        "preview_translation_consistent": true
+      },
+      "consumer_pass_ids": [
+        312,
+        313,
+        317,
+        318,
+        322,
+        323,
+        325,
+        326,
+        350,
+        351,
+        352,
+        353,
+        360,
+        364,
+        390,
+        397,
+        404,
+        405,
+        407,
+        436
+      ],
+      "consumer_pass_count": 34,
+      "graph_index": 2
+    },
+    {
+      "view_rect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "view_size_and_inv_size": [
+        1280.0,
+        720.0,
+        0.0007812500116415322,
+        0.0013888889225199819
+      ],
+      "view_origin_high": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "view_origin_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "world_origin_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "preview_translation_high": [
+        850.0,
+        -0.0,
+        -90.0
+      ],
+      "preview_translation_low": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "preview_translation_sum": [
+        850.0,
+        0.0,
+        -90.0
+      ],
+      "minus_preview_translation_cm": [
+        -850.0,
+        -0.0,
+        90.0
+      ],
+      "culling_origin_translated_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "view_forward": [
+        0.9743700637234466,
+        0.0,
+        0.22495105894297684
+      ],
+      "near_plane": 10.0,
+      "pitch_deg_from_forward": 13.0,
+      "yaw_deg_from_forward": 0.0,
+      "projection_m00": 1.428147792816162,
+      "projection_m11": 2.5389294624328613,
+      "hfov_deg_from_projection": 70.0,
+      "vfov_deg_from_projection": 42.9957,
+      "translated_world_to_view_rows": [
+        [
+          0.0,
+          -0.5711348652839661,
+          0.0,
+          0.9743700623512268
+        ],
+        [
+          1.428147792816162,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.4738569259643555,
+          0.0,
+          0.22495105862617493
+        ],
+        [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ]
+      ],
+      "view_to_translated_world_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scene_renderer_primary_view_id": 0,
+      "frame_index": 905,
+      "resource_key": "00040000020bef07f840",
+      "resource_name": "ViewData.PrimaryViews",
+      "resource_byte_size": 1056,
+      "payload_file": "Resources/00040000020bef07f840.v00000000000000000000.bin",
+      "payload_bytes": 1056,
+      "checks": {
+        "location_matches": true,
+        "view_rect_matches": true,
+        "hfov_matches": true,
+        "pitch_matches": true,
+        "yaw_matches": true,
+        "forward_matches": true,
+        "preview_translation_consistent": true
+      },
+      "consumer_pass_ids": [
+        607,
+        608,
+        612,
+        613,
+        617,
+        618,
+        620,
+        621,
+        645,
+        646,
+        653,
+        657,
+        683,
+        690,
+        697,
+        698,
+        700,
+        729,
+        738,
+        743
+      ],
+      "consumer_pass_count": 32,
+      "graph_index": 3
+    }
+  ],
+  "coverage": {
+    "vsm": {
+      "status": "available",
+      "pass_count": 51,
+      "pass_names_sample": [
+        "ClearBuffer(Shadow.Virtual.CacheInstanceAsDynamic Size=40bytes)",
+        "ClearBuffer(Shadow.Virtual.DirtyPageFlags Size=98308bytes)",
+        "ClearBuffer(Shadow.Virtual.OutputOffsetBuffer Size=4bytes)",
+        "ClearBuffer(Shadow.Virtual.StatsBuffer Size=360bytes)",
+        "ClearBuffer(Shadow.Virtual.VisibleInstanceWriteOffset Size=4bytes)",
+        "ClearPageTable(Shadow.Virtual.PageFlags Size=8192x192 texels)",
+        "ClearPageTable(Shadow.Virtual.PageRequestFlags Size=8192x192 texels)",
+        "ClearPageTable(Shadow.Virtual.PageTable Size=8192x192 texels)",
+        "ClearPageTableDir(Shadow.Virtual.PageReceiverMasks Size=4608x384 texels)",
+        "CompositeVirtualShadowMapMask",
+        "FVirtualShadowMapArray::UpdatePhysicalPageAddresses",
+        "InjectTranslucencyLightingVolume(VolumeCascade=0,VirtualShadowMap)",
+        "InjectTranslucencyLightingVolume(VolumeCascade=1,VirtualShadowMap)",
+        "ScatterUpload (Resource: Shadow.Virtual.ProjectionData)",
+        "VSM Log Stats And Status",
+        "VSMUpdateViewInstanceState",
+        "VirtualShadowMapProjection(Input:GBuffer)"
+      ],
+      "resource_count": 49,
+      "resource_names_sample": [
+        "Shadow.Virtual.AllocatedPageRectBounds",
+        "Shadow.Virtual.BatchInds",
+        "Shadow.Virtual.BatchInfos",
+        "Shadow.Virtual.CacheInstanceAsDynamic",
+        "Shadow.Virtual.CacheManager.ViewState",
+        "Shadow.Virtual.DirectionalLightIds",
+        "Shadow.Virtual.DirtyPageFlags",
+        "Shadow.Virtual.DrawCommandDescs",
+        "Shadow.Virtual.DrawIndirectArgsBuffer",
+        "Shadow.Virtual.GPUInvalidateInstancesArgs",
+        "Shadow.Virtual.GPUInvalidationQueue",
+        "Shadow.Virtual.HZBPhysicalPagePool",
+        "Shadow.Virtual.IndirectArgs",
+        "Shadow.Virtual.InitializePagesIndirectArgs",
+        "Shadow.Virtual.InstanceIdOffsetBuffer",
+        "Shadow.Virtual.InstanceIdsBuffer",
+        "Shadow.Virtual.LightGridData",
+        "Shadow.Virtual.NextVirtualShadowMapData",
+        "Shadow.Virtual.NumCulledLightsGrid",
+        "Shadow.Virtual.OutputOffsetBuffer"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null,
+      "virtual_shadow_resource_count": 49
+    },
+    "deferred": {
+      "status": "available",
+      "pass_count": 27,
+      "pass_names_sample": [
+        "BasePassParallel",
+        "ClearRenderTarget(GBufferF, slice 0, mip 0) 1280x888 ClearAction",
+        "DepthPassParallel",
+        "GBufferClear",
+        "GeneratePageFlagsFromPixels(GBuffer,NumShadowMaps=17,{80,45})",
+        "RenderLight Light::StandardDeferred: Sun_Sponza",
+        "SetSceneTexturesUniformBuffer",
+        "UnsetSceneTexturesUniformBuffer",
+        "VirtualShadowMapProjection(Input:GBuffer)"
+      ],
+      "resource_count": 11,
+      "resource_names_sample": [
+        "GBufferA",
+        "GBufferB",
+        "GBufferC",
+        "GBufferD",
+        "GBufferF",
+        "Lumen.SceneDepth",
+        "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+        "PostDOFTranslucency.SceneColor",
+        "PostProcessing.SceneColor.HalfRes",
+        "SceneColor",
+        "SceneDepthZ"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null
+    },
+    "direct_lighting": {
+      "status": "available",
+      "pass_count": 48,
+      "pass_names_sample": [
+        "Batched lights",
+        "BuildLightTiles MaxLightsPerTile=8 GroupPerTile=1",
+        "ClearBuffer(Lumen.DirectLighting.CompactedLightTileAllocatorPerLight Size=16bytes)",
+        "ClearBuffer(Lumen.DirectLighting.LightTileAllocator Size=4bytes)",
+        "ClearBuffer(Lumen.DirectLighting.LightTileAllocatorForPerCardTileDispatch Size=4bytes)",
+        "ClearBuffer(Lumen.DirectLighting.LightTileAllocatorPerLight Size=16bytes)",
+        "ClearBuffer(Lumen.DirectLighting.ShadowTraceAllocator Size=4bytes)",
+        "ClearBuffer(MegaLights.LightPowerHistoryRatio Size=4bytes)",
+        "ClearBuffer(NumCulledLightsGrid Size=143360bytes)",
+        "FLumenDirectLightingHardwareRayTracingIndirectArgsCS",
+        "LightGridFeedbackStatus",
+        "LightGridInject LinkedList  UseHZBCull  SingleThread",
+        "LumenDirectLightingHardwareRayTracingCS",
+        "PruneLightGrid(Min=0,Max=0)",
+        "ScatterMeshSDFsToLightGrid 256x256"
+      ],
+      "resource_count": 32,
+      "resource_names_sample": [
+        "Lumen.DirectLighting.CompactedLightTileAllocatorPerLight",
+        "Lumen.DirectLighting.CompactedLightTiles",
+        "Lumen.DirectLighting.CompactedShadowTraceIndirectArgs",
+        "Lumen.DirectLighting.DispatchCardPageIndicesIndirectArgs",
+        "Lumen.DirectLighting.DispatchLightTilesIndirectArgs",
+        "Lumen.DirectLighting.DispatchTilesPerLightIndirectArgs",
+        "Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs",
+        "Lumen.DirectLighting.DrawTilesPerLightIndirectArgs",
+        "Lumen.DirectLighting.LightInfluenceSpheres",
+        "Lumen.DirectLighting.LightTileAllocator",
+        "Lumen.DirectLighting.LightTileAllocatorForPerCardTileDispatch",
+        "Lumen.DirectLighting.LightTileAllocatorPerLight",
+        "Lumen.DirectLighting.LightTileOffsetNumPerCardTile",
+        "Lumen.DirectLighting.LightTileOffsetsPerLight",
+        "Lumen.DirectLighting.LightTiles",
+        "Lumen.DirectLighting.LightTilesPerCardTile",
+        "Lumen.DirectLighting.Lights",
+        "Lumen.DirectLighting.ShadowMaskTiles",
+        "Lumen.DirectLighting.ShadowTraceAllocator",
+        "Lumen.DirectLighting.ShadowTraces"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null
+    },
+    "lumen_cards": {
+      "status": "available",
+      "pass_count": 35,
+      "pass_names_sample": [
+        "CardPage Commands:1",
+        "ClearCardCapture",
+        "CompressToSurfaceCache Albedo",
+        "CompressToSurfaceCache Emissive",
+        "CompressToSurfaceCache Normal",
+        "CopyCardCaptureLightingToAtlas",
+        "CopyToSurfaceCache Depth",
+        "ResampleLightingHistoryToCardCaptureAtlas",
+        "SetCardPageIndexIndirectArgs",
+        "SpliceCardPagesIntoTiles"
+      ],
+      "resource_count": 26,
+      "resource_names_sample": [
+        "Lumen.CardCaptureAlbedoAtlas",
+        "Lumen.CardCaptureDepthStencilAtlas",
+        "Lumen.CardCaptureEmissiveAtlas",
+        "Lumen.CardCaptureNormalAtlas",
+        "Lumen.CardCaptureRects",
+        "Lumen.CardPageHighResLastUsedBuffer",
+        "Lumen.CardPageResampleDataBuffer",
+        "Lumen.CardPageTileAllocator",
+        "Lumen.CardTileAllocator",
+        "Lumen.CardTileDepthRanges",
+        "Lumen.CardTileResampleDataBuffer",
+        "Lumen.CardTiles",
+        "Lumen.Cards",
+        "Lumen.DirectLighting.DispatchCardPageIndicesIndirectArgs",
+        "Lumen.DirectLighting.DrawCardPageIndicesIndirectArgs",
+        "Lumen.DirectLightingCardPageIndexAllocator",
+        "Lumen.DirectLightingCardPageIndexData",
+        "Lumen.IndirectLighting.DispatchCardPageIndicesIndirectArgs",
+        "Lumen.IndirectLighting.DrawCardPageIndicesIndirectArgs",
+        "Lumen.IndirectLightingCardPageIndexAllocator"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null
+    },
+    "screen_probes": {
+      "status": "available",
+      "pass_count": 42,
+      "pass_names_sample": [
+        "ClearBuffer(Lumen.ScreenProbeGather.CompactedTraceTexelAllocator Size=4bytes)",
+        "ClearBuffer(Lumen.ScreenProbeGather.NumAdaptiveScreenProbes Size=4bytes)",
+        "ClearTextureUint(Lumen.ScreenProbeGather.ScreenTileAdaptiveProbeHeader R32_UINT 80x56 Mip=0)",
+        "DiffuseIndirectComposite(DiffuseIndirect=ScreenProbeGather) 1280x720",
+        "InitScreenProbeTileIndirectArgs",
+        "LumenScreenProbeGatherHardwareRayTracingIndirectArgsCS",
+        "MarkRadianceProbes(ScreenProbes) 80x67",
+        "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+        "ScreenProbeGatherScreenData",
+        "ScreenProbeIntegrate SimpleDiffuse DownsampleFactor:1",
+        "ScreenProbeIntegrate SupportAll DownsampleFactor:1",
+        "ScreenProbeIntegrate SupportImportanceSampleBRDF DownsampleFactor:1",
+        "ScreenProbeIntegrateClearUnusedTileData"
+      ],
+      "resource_count": 38,
+      "resource_names_sample": [
+        "Lumen.ScreenProbeGather.AdaptiveProbePlacementMask",
+        "Lumen.ScreenProbeGather.AdaptiveScreenProbeData",
+        "Lumen.ScreenProbeGather.BRDFProbabilityDensityFunctionSH",
+        "Lumen.ScreenProbeGather.BackfaceDiffuseIndirect",
+        "Lumen.ScreenProbeGather.ClearUnusedIntegrateTileData",
+        "Lumen.ScreenProbeGather.ClearUnusedIntegrateTileIndirectArgs",
+        "Lumen.ScreenProbeGather.CompactTracingIndirectArgs",
+        "Lumen.ScreenProbeGather.CompactedTraceTexelAllocator",
+        "Lumen.ScreenProbeGather.CompactedTraceTexelData",
+        "Lumen.ScreenProbeGather.DiffuseIndirect",
+        "Lumen.ScreenProbeGather.HardwareRayTracing.IndirectArgsCS",
+        "Lumen.ScreenProbeGather.HistoryFastUpdateMode_NumFramesAccumulated",
+        "Lumen.ScreenProbeGather.IntegrateIndirectArgs",
+        "Lumen.ScreenProbeGather.IntegrateTileData",
+        "Lumen.ScreenProbeGather.LightIsMoving",
+        "Lumen.ScreenProbeGather.LightingProbabilityDensityFunction",
+        "Lumen.ScreenProbeGather.NumAdaptiveScreenProbes",
+        "Lumen.ScreenProbeGather.RayInfosForTracing",
+        "Lumen.ScreenProbeGather.RoughSpecularIndirect",
+        "Lumen.ScreenProbeGather.ScreenProbeDisocclusion"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null
+    },
+    "radiance_cache": {
+      "status": "available",
+      "pass_count": 9,
+      "pass_names_sample": [
+        "ClearRadianceCacheUpdateResources",
+        "TraceGlobalSDFAndApplyRadianceCache"
+      ],
+      "resource_count": 33,
+      "resource_names_sample": [
+        "Lumen.RadianceCache.ClearProbePDFsIndirectArgs",
+        "Lumen.RadianceCache.DepthProbeAtlasTexture",
+        "Lumen.RadianceCache.FilterProbesIndirectArgs",
+        "Lumen.RadianceCache.FinalRadianceAtlas",
+        "Lumen.RadianceCache.FixupProbeBordersIndirectArgs",
+        "Lumen.RadianceCache.GenerateProbeTraceTilesIndirectArgs",
+        "Lumen.RadianceCache.HardwareRayTracing.IndirectArgsBuffer",
+        "Lumen.RadianceCache.HardwareRayTracing.RayAllocatorBuffer",
+        "Lumen.RadianceCache.HardwareRayTracing.ResolveIndirectArgs",
+        "Lumen.RadianceCache.MaxTracesFromMaxUpdateBucket",
+        "Lumen.RadianceCache.MaxUpdateBucket",
+        "Lumen.RadianceCache.MinNewProbeTraceCost",
+        "Lumen.RadianceCache.PrepareProbeOcclusionIndirectArgs",
+        "Lumen.RadianceCache.PriorityHistogram",
+        "Lumen.RadianceCache.ProbeAllocator",
+        "Lumen.RadianceCache.ProbeFreeList",
+        "Lumen.RadianceCache.ProbeFreeListAllocator",
+        "Lumen.RadianceCache.ProbeLastTracedFrame",
+        "Lumen.RadianceCache.ProbeLastUsedFrame",
+        "Lumen.RadianceCache.ProbeTraceAllocator"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null
+    },
+    "histories": {
+      "status": "available",
+      "pass_count": 12,
+      "pass_names_sample": [
+        "ClearBuffer(MegaLights.LightPowerHistoryRatio Size=4bytes)",
+        "ResampleLightingHistoryToCardCaptureAtlas",
+        "TemporalAccumulation",
+        "TemporalReprojection(1280x720)"
+      ],
+      "resource_count": 10,
+      "resource_names_sample": [
+        "Lumen.Radiosity.NumFramesAccumulatedAtlas",
+        "Lumen.Reflections.NumFramesAccumulated",
+        "Lumen.ResampledCardCaptureNumFramesAccumulated",
+        "Lumen.ScreenProbeGather.HistoryFastUpdateMode_NumFramesAccumulated",
+        "Lumen.TranslucencyVolume.SHLightingNewHistory0",
+        "Lumen.TranslucencyVolume.SHLightingNewHistory1",
+        "MegaLights.LightPowerHistoryRatio",
+        "StochasticLighting.DepthHistory",
+        "StochasticLighting.EncodedHistoryScreenCoord",
+        "StochasticLighting.NormalAndShadingInfoHistory"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null,
+      "history_resource_count": 10
+    },
+    "reflections": {
+      "status": "available",
+      "pass_count": 12,
+      "pass_names_sample": [
+        "InitReflectionIndirectArgs",
+        "ReflectionCompactRaysIndirectArgs",
+        "ReflectionHardwareRayTracingCS default",
+        "ReflectionsResolve DownsampleFactor:1x1 SpatialReconstruction:1 Aniso:1"
+      ],
+      "resource_count": 22,
+      "resource_names_sample": [
+        "Lumen.Reflection.CompactTracingIndirectArgs",
+        "Lumen.Reflections.ClearTileIndirectArgs",
+        "Lumen.Reflections.ClearUnusedTracingTileIndirectArgs",
+        "Lumen.Reflections.CompactRayTraceDispatchIndirectArgs",
+        "Lumen.Reflections.CompactTracingIndirectArgs",
+        "Lumen.Reflections.CompactedTraceTexelAllocator",
+        "Lumen.Reflections.CompactedTraceTexelData",
+        "Lumen.Reflections.CompactionIndirectArgs",
+        "Lumen.Reflections.NumFramesAccumulated",
+        "Lumen.Reflections.RayTraceDistance",
+        "Lumen.Reflections.ReflectionClearTileData",
+        "Lumen.Reflections.ReflectionDownsampledDepth",
+        "Lumen.Reflections.ReflectionRayBuffer",
+        "Lumen.Reflections.ReflectionResolveTileData",
+        "Lumen.Reflections.ResolveTileIndirectArgs",
+        "Lumen.Reflections.ResolvedSpecularIndirect",
+        "Lumen.Reflections.ResolvedSpecularIndirectDepth",
+        "Lumen.Reflections.SpecularAndSecondMoment",
+        "Lumen.Reflections.SpecularIndirect",
+        "Lumen.Reflections.TraceHit"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null
+    },
+    "composition": {
+      "status": "available",
+      "pass_count": 24,
+      "pass_names_sample": [
+        "ComposeTranslucencyToNewSceneColor(AfterDOF) 1280x720 -> 1280x720",
+        "CompositeTraces",
+        "CompositeTracesIntoAtlas",
+        "CompositeVirtualShadowMapMask",
+        "DiffuseIndirectComposite(DiffuseIndirect=ScreenProbeGather) 1280x720",
+        "Downsample(PostProcessing.SceneColor.HalfRes Quality=Bilinear PS) 1280x720 -> 640x360",
+        "FXAA(Quality=4) 1280x720 PS",
+        "Tonemap 1280x720 (PS GammaOnly=0)"
+      ],
+      "resource_count": 5,
+      "resource_names_sample": [
+        "PostDOFTranslucency.SceneColor",
+        "PostProcessing.SceneColor.HalfRes",
+        "SceneColor",
+        "Tonemap",
+        "ViewFamilyTexture"
+      ],
+      "reason_if_absent": null,
+      "unsupported_branch": null
+    }
+  },
+  "preservation": {
+    "source": "output/final-setup.json hashes + output/final/manifest.json",
+    "frame_hash_records": 70,
+    "frame_hash_mismatches": [],
+    "run_hash_records": 3,
+    "run_hash_mismatches": [],
+    "script_hash_records": 7,
+    "script_hash_mismatches": [
+      "scripts/capture_lumen.py",
+      "scripts/analyze_final.py"
+    ],
+    "script_mismatch_details": [
+      {
+        "path": "scripts/capture_lumen.py",
+        "mtime_utc": "2026-11-15T08:24:29.752747+00:00",
+        "pre_existing_before_this_run": true
+      },
+      {
+        "path": "scripts/analyze_final.py",
+        "mtime_utc": "2026-11-15T08:26:34.750670+00:00",
+        "pre_existing_before_this_run": true
+      }
+    ],
+    "script_hash_mismatches_are_preexisting": true,
+    "run_started_utc": "2026-11-15T08:36:54Z",
+    "approved_image_sha256": "4ea2a8b665c37ed9d0c11e5023776d2540e289de8691d3286d994c84832ecf8d",
+    "approved_image_matches": true,
+    "final_setup_sha256": "b31b8f8d4186b38cc45101b1eb6d72c5cdbb00b351adf21fb744868dc2fafd55",
+    "manifest_authoritative_setup_sha256": "b31b8f8d4186b38cc45101b1eb6d72c5cdbb00b351adf21fb744868dc2fafd55",
+    "final_setup_matches_manifest": true,
+    "preserved": true
+  },
+  "approved_state": {
+    "warmup_draws": 300,
+    "warmup_seconds": 3.906,
+    "view_mode_lit": true,
+    "ev100": 11.0,
+    "cvars": {
+      "r.Lumen.HardwareRayTracing": {
+        "name": "r.Lumen.HardwareRayTracing",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.DynamicGlobalIlluminationMethod": {
+        "name": "r.DynamicGlobalIlluminationMethod",
+        "found": true,
+        "value": "1",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.ReflectionMethod": {
+        "name": "r.ReflectionMethod",
+        "found": true,
+        "value": "1",
+        "default": "2",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.LumenScene.FarField": {
+        "name": "r.LumenScene.FarField",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.ScreenProbeGather": {
+        "name": "r.Lumen.ScreenProbeGather",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.ScreenProbeGather.ScreenTraces": {
+        "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.Reflections.ScreenTraces": {
+        "name": "r.Lumen.Reflections.ScreenTraces",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.Visualize": {
+        "name": "r.Lumen.Visualize",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.ScreenProbeGather.Debug": {
+        "name": "r.Lumen.ScreenProbeGather.Debug",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.ScreenProbeGather.Debug.ProbePlacement": {
+        "name": "r.Lumen.ScreenProbeGather.Debug.ProbePlacement",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.ScreenProbeGather.VisualizeTraces": {
+        "name": "r.Lumen.ScreenProbeGather.VisualizeTraces",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.ShaderPrint": {
+        "name": "r.ShaderPrint",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435489
+      },
+      "r.ScreenPercentage": {
+        "name": "r.ScreenPercentage",
+        "found": true,
+        "value": "100",
+        "default": "0.000000",
+        "set_by": "Console",
+        "flags": 268435776
+      },
+      "r.AntiAliasingMethod": {
+        "name": "r.AntiAliasingMethod",
+        "found": true,
+        "value": "2",
+        "default": "4",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.MotionBlurQuality": {
+        "name": "r.MotionBlurQuality",
+        "found": true,
+        "value": "0",
+        "default": "4",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.BloomQuality": {
+        "name": "r.BloomQuality",
+        "found": true,
+        "value": "0",
+        "default": "5",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.DepthOfFieldQuality": {
+        "name": "r.DepthOfFieldQuality",
+        "found": true,
+        "value": "0",
+        "default": "2",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.VolumetricFog": {
+        "name": "r.VolumetricFog",
+        "found": true,
+        "value": "0",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.RHI.UniformBufferContentMap.Enable": {
+        "name": "r.RHI.UniformBufferContentMap.Enable",
+        "found": true,
+        "value": "true",
+        "default": "false",
+        "set_by": "SystemSettingsIni",
+        "flags": 83886084
+      }
+    }
+  },
+  "missing_payload": [],
+  "gaps": [
+    {
+      "kind": "unsupported_draw_counts",
+      "detail": "Base/PassDrawCounts.json is empty; per-pass draw-count capture is not provided by this DumpGPU build. Passes.json and resource bindings are still complete and retained."
+    },
+    {
+      "kind": "pass_parameter_block_missing",
+      "detail": {
+        "count": 3,
+        "passes": [
+          "3:ShaderPrint::UploadParameters(FParameters)",
+          "301:ShaderPrint::UploadParameters(FParameters)",
+          "596:ShaderPrint::UploadParameters(FParameters)"
+        ],
+        "reason": "These passes use a parameter type outside the serialized shader-parameter block set; the pass record itself is retained, but no parameter block exists in the dump."
+      }
+    },
+    {
+      "kind": "parameterless_passes",
+      "detail": {
+        "count": 80,
+        "reason": "Clear/copy/barrier/graph/ray-tracing-build passes use engine built-in parameter structs and intentionally have no serialized shader parameter block. Their pass records and resource edges are retained."
+      }
+    },
+    {
+      "kind": "raytracing_scene_buffer_copy_warning",
+      "detail": {
+        "warning_count": 9,
+        "warning": "[2026.11.15-08.37.02:317][302]LogD3D12RHI: Warning: RHICopyToStagingBuffer cannot be used on the RayTracing Accelleration structure FRayTracingScene::SceneBuffer",
+        "descriptor_count": 9,
+        "descriptors_with_payload": 9,
+        "reason": "D3D12 emitted a staging-copy warning for the ray-tracing acceleration structure. The dump still contains a nonzero SceneBuffer payload for every descriptor; the warning is retained as a readback-path caveat, not silently dropped."
+      }
+    },
+    {
+      "kind": "read_only_cvar_assignment",
+      "detail": {
+        "count": 1,
+        "warning": "[2026.11.15-08.36.59:375][301]Error: r.RHI.UniformBufferContentMap.Enable is read only!",
+        "reason": "r.RHI.UniformBufferContentMap.Enable is read-only at runtime; it was set before uniform creation through the launcher startup ini and observed as true. The later runtime assignment was rejected by design and did not change the value."
+      }
+    },
+    {
+      "kind": "shader_local_values",
+      "detail": "Per-pixel/per-thread shader choices and intermediate registers are not DumpGPU resources and are not fabricated from pass parameters."
+    },
+    {
+      "kind": "memoryless_or_non_rdg",
+      "detail": "Resources that are never referenced by an RDG pass, memoryless resources, and writable SkipTracking resources are outside the raw frame; absence is explicit, not silently filled."
+    },
+    {
+      "kind": "uniform_buffer_content_scope",
+      "detail": "Native uniform-buffer textures expose the CPU content map and offsets. Shader-local values not written to a uniform buffer are not recoverable."
+    }
+  ],
+  "screenshot": {
+    "file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\\Base\\Screenshot.png",
+    "bytes": 1892042,
+    "sha256": "faa77025dcfd82b4982a28a2a155205ae6347fc03989923b6dc2d9423faaa6eb",
+    "width": 1280,
+    "height": 720,
+    "mean_display_luma_sampled": 71.8852,
+    "size_ok": true,
+    "pre_dump_comparison": {
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\pre\\hero-predump.png",
+      "mean_abs_rgb_difference_0_255": 0.9154,
+      "same_dimensions": true,
+      "stable": true
+    }
+  },
+  "inventory": {
+    "file_count": 12458,
+    "total_bytes": 95239807151,
+    "total_gib": 88.699,
+    "bytes_by_top_level": {
+      "Base": 75175327,
+      "GPUDumpViewer.html": 195428,
+      "OpenGPUDumpViewer.bat": 879,
+      "OpenGPUDumpViewer.sh": 2060,
+      "Resources": 95160502078,
+      "Structures": 534080,
+      "StructuresMetadata": 3397299
+    }
+  },
+  "checks": {
+    "dump_status_ok": true,
+    "map_unchanged": true,
+    "saved_hero_matches_approved": true,
+    "pilot_matches_saved_camera": true,
+    "actual_view_fov_70": true,
+    "bridge_viewport_1280x720": true,
+    "redump_inputs_1": true,
+    "native_uniform_buffer_textures_1": true,
+    "skip_tracking_1": true,
+    "uniform_buffer_content_map_1": true,
+    "all_textures_and_buffers": true,
+    "pass_parameters_1": true,
+    "console_variables_1": true,
+    "one_engine_frame_requested": true,
+    "actual_view_from_dump_matrices": true,
+    "actual_view_rect_1280x720": true,
+    "actual_hfov_70": true,
+    "actual_pitch_13_yaw_0": true,
+    "pass_records_present": true,
+    "resource_descs_present": true,
+    "parameter_bindings_present": true,
+    "parameterless_passes_classified": true,
+    "native_uniform_bindings_present": true,
+    "subresource_layouts_present": true,
+    "console_variables_present": true,
+    "screenshot_1280x720": true,
+    "screenshot_stable_vs_predump": true,
+    "all_requested_subsystems_have_entries": true,
+    "all_resource_descriptors_have_payload": true,
+    "in_place_versions_present": true,
+    "all_readback_records_dumped": true,
+    "all_scene_graph_views_match_hero": true,
+    "native_exported_files_exist": true,
+    "pre_existing_final_evidence_preserved": true,
+    "raw_inventory_matches_session": true,
+    "under_100gib": true
+  },
+  "session_commands": [
+    {
+      "command": "r.ScreenPercentage 100",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.AntiAliasingMethod 2",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.MotionBlurQuality 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.BloomQuality 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DepthOfFieldQuality 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.VolumetricFog 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DynamicGlobalIlluminationMethod 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.ReflectionMethod 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.HardwareRayTracing 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.LumenScene.FarField 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.LumenScene.SurfaceCache.AtlasSize 4096",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.DiffuseIndirect.Allow 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.ScreenProbeGather 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.ScreenProbeGather.ScreenTraces 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.Reflections.ScreenTraces 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.Reflections.MaxRoughnessToTrace 0.4",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.Reflections.MaxRoughnessToTraceClamp 1.0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.HardwareRayTracing.LightingMode 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.HardwareRayTracing.HitLighting.Allowed 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.Visualize 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.Visualize.CardPlacement 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.ScreenProbeGather.Debug 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.ScreenProbeGather.Debug.ProbePlacement 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.Lumen.ScreenProbeGather.VisualizeTraces 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.ShaderPrint 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DistanceFields.Visualize.Monochrome 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.VisualizeMeshDistanceFields 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.VisualizeGlobalDistanceField 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.BillboardSprites 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.Grid 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.Selection 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.SelectionOutline 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.ModeWidgets 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "showflag.Bounds 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "ShowFlag.Cameras 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "ShowFlag.CameraFrustums 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "ShowFlag.CompositeEditorPrimitives 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "ShowFlag.Game 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "ShowFlag.LumenGlobalTraces 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "ShowFlag.LumenDetailTraces 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:54Z",
+      "draw": 0,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Root *",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Texture 2",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Buffer 2",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.PassParameters 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.ConsoleVariables 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Explore 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Upload 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Directory D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.MaxStagingSize 1024",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Stream 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.RedumpInputs 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.FrameCount 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.FrameDelay 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Delay 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Draws 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Mask 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.EnableLogWrite 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Test.EnableDiskWrite 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Test.PrettifyResourceFileNames 0",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.NativeUniformBufferTextures 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.DumpGPU.Buffer.SkipTracking 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "r.RHI.UniformBufferContentMap.Enable 1",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    },
+    {
+      "command": "DumpGPU -path=\"D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654\" -noexplorer -oneframe",
+      "returned": false,
+      "utc": "2026-11-15T08:36:59Z",
+      "draw": 301,
+      "seconds": 0.0
+    }
+  ],
+  "session_warmup": {
+    "draws": 300,
+    "elapsed_seconds": 3.906,
+    "render_status": {
+      "rhi": "D3D12",
+      "feature_level": 4,
+      "shader_platform": "PCD3D_SM6",
+      "view_mode_index": 3,
+      "viewport_size": [
+        1280,
+        720
+      ],
+      "scene_hdr_enabled": false,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true
+    },
+    "pilot_readback": {
+      "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+      "pilot_actor": "CAM_Hero_Reference",
+      "pilot_matches": true,
+      "actual_view_fov": 70.0,
+      "exact_camera_view": true,
+      "allows_cinematic_control": true,
+      "viewport_camera": {
+        "location_cm": [
+          -850.0,
+          0.0,
+          90.0
+        ],
+        "rotation": {
+          "pitch": 13.0,
+          "yaw": 0.0,
+          "roll": -0.0
+        }
+      },
+      "render_status": {
+        "rhi": "D3D12",
+        "feature_level": 4,
+        "shader_platform": "PCD3D_SM6",
+        "view_mode_index": 3,
+        "viewport_size": [
+          1280,
+          720
+        ],
+        "scene_hdr_enabled": false,
+        "ray_tracing_supported": true,
+        "ray_tracing_shaders_supported": true,
+        "path_tracing_shader_support": true
+      }
+    },
+    "hero_actor_readback": {
+      "actor": "CAM_Hero_Reference",
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0
+    },
+    "exposure": {
+      "auto_exposure_min_brightness": 11.0,
+      "auto_exposure_max_brightness": 11.0,
+      "auto_exposure_bias": 0.0,
+      "override_auto_exposure_min_brightness": true,
+      "override_auto_exposure_max_brightness": true,
+      "override_auto_exposure_bias": true,
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+    },
+    "cvars_after_warmup": {
+      "r.Lumen.HardwareRayTracing": {
+        "name": "r.Lumen.HardwareRayTracing",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.DynamicGlobalIlluminationMethod": {
+        "name": "r.DynamicGlobalIlluminationMethod",
+        "found": true,
+        "value": "1",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.ReflectionMethod": {
+        "name": "r.ReflectionMethod",
+        "found": true,
+        "value": "1",
+        "default": "2",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.LumenScene.FarField": {
+        "name": "r.LumenScene.FarField",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.ScreenProbeGather": {
+        "name": "r.Lumen.ScreenProbeGather",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.ScreenProbeGather.ScreenTraces": {
+        "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.Reflections.ScreenTraces": {
+        "name": "r.Lumen.Reflections.ScreenTraces",
+        "found": true,
+        "value": "1",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.Lumen.Visualize": {
+        "name": "r.Lumen.Visualize",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.ScreenProbeGather.Debug": {
+        "name": "r.Lumen.ScreenProbeGather.Debug",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.ScreenProbeGather.Debug.ProbePlacement": {
+        "name": "r.Lumen.ScreenProbeGather.Debug.ProbePlacement",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.Lumen.ScreenProbeGather.VisualizeTraces": {
+        "name": "r.Lumen.ScreenProbeGather.VisualizeTraces",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.ShaderPrint": {
+        "name": "r.ShaderPrint",
+        "found": true,
+        "value": "0",
+        "default": "0",
+        "set_by": "Console",
+        "flags": 268435489
+      },
+      "r.ScreenPercentage": {
+        "name": "r.ScreenPercentage",
+        "found": true,
+        "value": "100",
+        "default": "0.000000",
+        "set_by": "Console",
+        "flags": 268435776
+      },
+      "r.AntiAliasingMethod": {
+        "name": "r.AntiAliasingMethod",
+        "found": true,
+        "value": "2",
+        "default": "4",
+        "set_by": "Console",
+        "flags": 268435488
+      },
+      "r.MotionBlurQuality": {
+        "name": "r.MotionBlurQuality",
+        "found": true,
+        "value": "0",
+        "default": "4",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.BloomQuality": {
+        "name": "r.BloomQuality",
+        "found": true,
+        "value": "0",
+        "default": "5",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.DepthOfFieldQuality": {
+        "name": "r.DepthOfFieldQuality",
+        "found": true,
+        "value": "0",
+        "default": "2",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.VolumetricFog": {
+        "name": "r.VolumetricFog",
+        "found": true,
+        "value": "0",
+        "default": "1",
+        "set_by": "Console",
+        "flags": 268435808
+      },
+      "r.RHI.UniformBufferContentMap.Enable": {
+        "name": "r.RHI.UniformBufferContentMap.Enable",
+        "found": true,
+        "value": "true",
+        "default": "false",
+        "set_by": "SystemSettingsIni",
+        "flags": 83886084
+      }
+    }
+  },
+  "session_cvars_actual": {
+    "r.DumpGPU.Root": {
+      "name": "r.DumpGPU.Root",
+      "found": true,
+      "value": "*",
+      "default": "*",
+      "set_by": "Console",
+      "flags": 268435456
+    },
+    "r.DumpGPU.Texture": {
+      "name": "r.DumpGPU.Texture",
+      "found": true,
+      "value": "2",
+      "default": "2",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DumpGPU.Buffer": {
+      "name": "r.DumpGPU.Buffer",
+      "found": true,
+      "value": "2",
+      "default": "2",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DumpGPU.PassParameters": {
+      "name": "r.DumpGPU.PassParameters",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DumpGPU.ConsoleVariables": {
+      "name": "r.DumpGPU.ConsoleVariables",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435456
+    },
+    "r.DumpGPU.RedumpInputs": {
+      "name": "r.DumpGPU.RedumpInputs",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DumpGPU.NativeUniformBufferTextures": {
+      "name": "r.DumpGPU.NativeUniformBufferTextures",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DumpGPU.Buffer.SkipTracking": {
+      "name": "r.DumpGPU.Buffer.SkipTracking",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DumpGPU.MaxStagingSize": {
+      "name": "r.DumpGPU.MaxStagingSize",
+      "found": true,
+      "value": "1024",
+      "default": "64",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DumpGPU.FrameCount": {
+      "name": "r.DumpGPU.FrameCount",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435456
+    },
+    "r.DumpGPU.Stream": {
+      "name": "r.DumpGPU.Stream",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435456
+    },
+    "r.DumpGPU.Upload": {
+      "name": "r.DumpGPU.Upload",
+      "found": true,
+      "value": "0",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435456
+    },
+    "r.DumpGPU.Test.EnableDiskWrite": {
+      "name": "r.DumpGPU.Test.EnableDiskWrite",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435456
+    },
+    "r.DumpGPU.Test.PrettifyResourceFileNames": {
+      "name": "r.DumpGPU.Test.PrettifyResourceFileNames",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.RHI.UniformBufferContentMap.Enable": {
+      "name": "r.RHI.UniformBufferContentMap.Enable",
+      "found": true,
+      "value": "true",
+      "default": "false",
+      "set_by": "SystemSettingsIni",
+      "flags": 83886084
+    }
+  },
+  "environment": {
+    "files": {
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.exe": {
+        "exists": true,
+        "bytes": 502272,
+        "sha256": "dd2a31e9a3babe48b56c49c54d85661f50d07a1254d09fac64f50b85244d4833"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.version": {
+        "exists": true,
+        "bytes": 247,
+        "sha256": "d4290ca1fb8eac4d61a10169e5a08b72e8a01a5d63ff5f27730eeaf3b8c3afee"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor.modules": {
+        "exists": true,
+        "bytes": 32048,
+        "sha256": "725ecfb21ccdce3762a4c337052cb6d0185bceb92bbae1f4197db00ee6fe60ae"
+      },
+      "D:\\UnrealEngine\\Engine\\Build\\Build.version": {
+        "exists": true,
+        "bytes": 198,
+        "sha256": "fa0355d0dafd1d4bd34983841799cd9e1093a273ec8ee93e71b73984e40055d9"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-RenderCore.dll": {
+        "exists": true,
+        "bytes": 4779008,
+        "sha256": "6f1bf96fab9841f0d4793cb65abc4dfbf459aa41ee4a8ee90d06d737cf32bf1d"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-Renderer.dll": {
+        "exists": true,
+        "bytes": 36366336,
+        "sha256": "5508eb82f1ea84d9fbb8dea620a44fbc4f7119231281dd2eea7ae1d5a8a5fc09"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-RHI.dll": {
+        "exists": true,
+        "bytes": 1737728,
+        "sha256": "7d697f9bb4b6d0d9b5b750bc10e2e259b1f346121b42857f0b3df65255953a46"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-D3D12RHI.dll": {
+        "exists": true,
+        "bytes": 2536448,
+        "sha256": "3434e257fcd64d93c8ad7058508dc55f83e51d67fc4cbb64537f3b0cdf64c96e"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-Engine.dll": {
+        "exists": true,
+        "bytes": 77202432,
+        "sha256": "283fadb1d0e7651d771fd37ff123a5d64b944fd1a5ee58114fc976b3ff81f5bc"
+      },
+      "D:\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealEditor-UnrealEd.dll": {
+        "exists": true,
+        "bytes": 35479040,
+        "sha256": "96822c3b4d70cb06c222f00a3315a5b6122da3f09895c6fdc93990d4a15b2ab4"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\Binaries\\Win64\\UnrealEditor-ArdaLabCapture.dll": {
+        "exists": true,
+        "bytes": 115712,
+        "sha256": "9d313d997fa704165b5c0b411250ab0a7bebd8ea4f126f9be85840bb2e7d4923"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\Binaries\\Win64\\UnrealEditor.modules": {
+        "exists": true,
+        "bytes": 178,
+        "sha256": "c68a010cefb01b06d637c548daa43be027ef3818c0b3dbeda1457e060ef77912"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\UnrealLab.uproject": {
+        "exists": true,
+        "bytes": 378,
+        "sha256": "9f5a6c6e5a6bd2da2c78f23dee5a97a07e14d71447178cd74ce1448314e483ee"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\project\\UnrealLab\\Content\\Labs\\SponzaTeaching.umap": {
+        "exists": true,
+        "bytes": 212085,
+        "sha256": "3ef49eddd474fc16e6129dac3bcbb16bb4937529d9213296a865d368ede72c64"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\output\\final-setup.json": {
+        "exists": true,
+        "bytes": 40756,
+        "sha256": "b31b8f8d4186b38cc45101b1eb6d72c5cdbb00b351adf21fb744868dc2fafd55"
+      },
+      "D:\\UnrealUnderstanding-Sponza\\scripts\\capture_gpu_dump.py": {
+        "exists": true,
+        "bytes": 31214,
+        "sha256": "1edb19f34c86a16027db6112bffb53e0ead9011e60d44b50c7eb8b730a0b061d"
+      }
+    },
+    "engine_version": {
+      "MajorVersion": 5,
+      "MinorVersion": 8,
+      "PatchVersion": 1,
+      "Changelist": 0,
+      "CompatibleChangelist": 55116800,
+      "IsLicenseeVersion": 0,
+      "IsPromotedBuild": 0,
+      "BranchName": "UE5",
+      "BuildId": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9"
+    },
+    "engine_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+    "project_module_build_id": "b4effda9-1b7d-4e62-b9a6-cb99e41a70c9",
+    "bridge_build_id_matches_declared": true,
+    "engine_build_id_matches_project": true
+  }
+}

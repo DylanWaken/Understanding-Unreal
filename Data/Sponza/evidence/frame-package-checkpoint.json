@@ -1,0 +1,94 @@
+{
+  "format": "sponza-frame-package-checkpoint",
+  "version": 1,
+  "source": "output/gpu-dump/raw/sponza-20261115-083654",
+  "package": "output/final/frame-package",
+  "reconstruction": "output/final/frame-package-reconstruct",
+  "updated_utc": "2026-11-15T09:03:30Z",
+  "all_phases_ok": true,
+  "phases": {
+    "estimate": {
+      "status": "ok",
+      "elapsed_s": 174.4,
+      "exit_code": 0,
+      "log": "output/final/package-estimate.log",
+      "result": {
+        "payload_files": 11446,
+        "payload_bytes": 95161036158,
+        "unique_chunk_bytes": 1745497466,
+        "compressed_chunk_bytes": 551246399,
+        "unique_chunks": 3416,
+        "estimated_package_files": 6851,
+        "largest_estimated_file": "chunks/b135dd62c73cdee1920885d28baf2b71643a0577934a77cda6d584c35162de0b.gz",
+        "largest_estimated_bytes": 1045243,
+        "gaps": 2913,
+        "coverage_complete": false
+      }
+    },
+    "build": {
+      "status": "ok",
+      "elapsed_s": 184.3,
+      "exit_code": 0,
+      "log": "output/final/package-build.log",
+      "result": {
+        "package_files": 6852,
+        "package_bytes": 657904432,
+        "largest_file": "native/Base/NativeUniformBufferBindings.json",
+        "largest_bytes": 43256400,
+        "metadata_files": 2423,
+        "metadata_raw_bytes": 475373835,
+        "metadata_stored_bytes": 26896113,
+        "metadata_compression": "gzip level 6"
+      }
+    },
+    "verify": {
+      "status": "ok",
+      "elapsed_s": 128.9,
+      "exit_code": 0,
+      "log": "output/final/package-verify.log",
+      "result": {
+        "unique_chunks": 3416,
+        "payloads": 11446,
+        "native_files": 1012,
+        "errors": 0
+      }
+    },
+    "reconstruct": {
+      "status": "ok",
+      "elapsed_s": 256.3,
+      "exit_code": 0,
+      "log": "output/final/package-reconstruct.log",
+      "dest": "output/final/frame-package-reconstruct",
+      "result": {
+        "reconstructed_payloads": 11446,
+        "reconstructed_payload_bytes": 95161036158,
+        "errors": 0
+      }
+    },
+    "independent_audit": {
+      "status": "ok",
+      "elapsed_s": 68.4,
+      "exit_code": 0,
+      "log": "output/final/package-audit.log",
+      "result": "output/final/frame-package-audit.json",
+      "summary": {
+        "package_files": 6852,
+        "package_bytes": 657904432,
+        "source_files": 12458,
+        "accounted_files": 12458,
+        "missing_source_files": 0,
+        "extra_package_paths": 0,
+        "payload_mismatches": 0,
+        "native_copy_mismatches": 0,
+        "chunk_mismatches": 0,
+        "coverage_gaps": 2913,
+        "coverage_complete": false
+      }
+    }
+  },
+  "evidence": {
+    "index_sha256": "cab06a753e1380a4ffca0f1c2810572f005beaba6e66d2605eb13259f4365088",
+    "audit_sha256": "eb3a926dcd2f587ad7671f2a04a923942fce75c0c98f745165ab9ff7e95cfbb4",
+    "gaps_tsv_sha256": "d088afa6a54d6bf0953411e384464c46f318ee33e986b2940fde418b42d8167b"
+  }
+}

@@ -1,0 +1,2879 @@
+{
+  "schema": "arda-sponza-temporal-lumen-v1",
+  "status": "ok",
+  "started_utc": "2026-11-15T07:53:25Z",
+  "started_monotonic": 111253.515,
+  "resolution": [
+    1280,
+    720
+  ],
+  "sun_high_lux": 80000.0,
+  "sun_low_lux": 20000.0,
+  "targets_bridge_draws": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "signal_targets_bridge_draws": [
+    1,
+    8,
+    64
+  ],
+  "identity_caveat": "frame numbers are bridge viewport draws after the sun change; the engine frame counter is recorded too, and several scene renders may occur per engine frame in this capture path",
+  "script_sha256": "c4347d10dc8f8e501f1bb0f54c616e856ff3e4c96cb5ca0acd26766d5ccc722a",
+  "map_sha256_start": "3ef49eddd474fc16e6129dac3bcbb16bb4937529d9213296a865d368ede72c64",
+  "frames": [
+    {
+      "name": "temporal-baseline",
+      "signal": "baseline",
+      "note": "warm Lumen baseline before the sun change",
+      "target_bridge_draw_after_sun_change": 0,
+      "actual_bridge_draw_after_sun_change": null,
+      "capture_draw_total": 121,
+      "sun_changed_frame": null,
+      "sun_changed_draw": null,
+      "frame_before": 121,
+      "frame_after": 121,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-baseline.png",
+      "bytes": 1891722,
+      "sha256": "3f7e908bbfe3465cd00c6a91428f0caa33adafe85a550adb607456cfde04137b",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 71.822,
+      "std_display_luma": 69.446,
+      "near_black_fraction": 0.03874,
+      "near_white_fraction": 2e-05
+    },
+    {
+      "name": "temporal-lit-f001",
+      "signal": "lit",
+      "note": "sun 80000->20000 lux; final lit display; capture is bridge draw 1",
+      "target_bridge_draw_after_sun_change": 1,
+      "actual_bridge_draw_after_sun_change": 1,
+      "capture_draw_total": 186,
+      "sun_changed_frame": 185,
+      "sun_changed_draw": 185,
+      "frame_before": 186,
+      "frame_after": 186,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-lit-f001.png",
+      "bytes": 1864328,
+      "sha256": "f098c0b7243181b6d8cd175bc832aad5b21bc4038f3cc3b22bd77ecd9db4e85f",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 61.967,
+      "std_display_luma": 58.948,
+      "near_black_fraction": 0.04042,
+      "near_white_fraction": 0.0
+    },
+    {
+      "name": "temporal-lit-f002",
+      "signal": "lit",
+      "note": "sun 80000->20000 lux; final lit display; capture is bridge draw 2",
+      "target_bridge_draw_after_sun_change": 2,
+      "actual_bridge_draw_after_sun_change": 2,
+      "capture_draw_total": 187,
+      "sun_changed_frame": 185,
+      "sun_changed_draw": 185,
+      "frame_before": 187,
+      "frame_after": 187,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-lit-f002.png",
+      "bytes": 1857640,
+      "sha256": "6e0d9131aefa723e79391956a6b206cb6589d6b32ac5db68ddbc1b77643bdb69",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 60.791,
+      "std_display_luma": 58.831,
+      "near_black_fraction": 0.04213,
+      "near_white_fraction": 0.0
+    },
+    {
+      "name": "temporal-lit-f004",
+      "signal": "lit",
+      "note": "sun 80000->20000 lux; final lit display; capture is bridge draw 4",
+      "target_bridge_draw_after_sun_change": 4,
+      "actual_bridge_draw_after_sun_change": 4,
+      "capture_draw_total": 189,
+      "sun_changed_frame": 185,
+      "sun_changed_draw": 185,
+      "frame_before": 190,
+      "frame_after": 190,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-lit-f004.png",
+      "bytes": 1833205,
+      "sha256": "447ef8d5eaf6d1a8d397adf2de12735fbe5c85c5ff735281583c2aee247769b8",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 57.428,
+      "std_display_luma": 58.746,
+      "near_black_fraction": 0.04839,
+      "near_white_fraction": 0.0
+    },
+    {
+      "name": "temporal-lit-f008",
+      "signal": "lit",
+      "note": "sun 80000->20000 lux; final lit display; capture is bridge draw 8",
+      "target_bridge_draw_after_sun_change": 8,
+      "actual_bridge_draw_after_sun_change": 8,
+      "capture_draw_total": 193,
+      "sun_changed_frame": 185,
+      "sun_changed_draw": 185,
+      "frame_before": 195,
+      "frame_after": 195,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-lit-f008.png",
+      "bytes": 1803610,
+      "sha256": "c8e97f60d345abb287c627be9fe9313f1084cbd65e764b42617066fd0f2b6483",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 53.915,
+      "std_display_luma": 58.777,
+      "near_black_fraction": 0.05748,
+      "near_white_fraction": 0.0
+    },
+    {
+      "name": "temporal-lit-f016",
+      "signal": "lit",
+      "note": "sun 80000->20000 lux; final lit display; capture is bridge draw 16",
+      "target_bridge_draw_after_sun_change": 16,
+      "actual_bridge_draw_after_sun_change": 16,
+      "capture_draw_total": 201,
+      "sun_changed_frame": 185,
+      "sun_changed_draw": 185,
+      "frame_before": 204,
+      "frame_after": 204,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-lit-f016.png",
+      "bytes": 1784363,
+      "sha256": "e8fbac81bcc87e39c8ec9bacaf0fde763d87f6caab5eec282c5c9d5123c4e0af",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 52.071,
+      "std_display_luma": 58.873,
+      "near_black_fraction": 0.06628,
+      "near_white_fraction": 0.0
+    },
+    {
+      "name": "temporal-lit-f032",
+      "signal": "lit",
+      "note": "sun 80000->20000 lux; final lit display; capture is bridge draw 32",
+      "target_bridge_draw_after_sun_change": 32,
+      "actual_bridge_draw_after_sun_change": 32,
+      "capture_draw_total": 217,
+      "sun_changed_frame": 185,
+      "sun_changed_draw": 185,
+      "frame_before": 221,
+      "frame_after": 221,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-lit-f032.png",
+      "bytes": 1657491,
+      "sha256": "ecc79f8370909caf63663e89da69e979bb24ad31c8c7f62bc51a06713b1e85b5",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 40.236,
+      "std_display_luma": 51.849,
+      "near_black_fraction": 0.09753,
+      "near_white_fraction": 0.0
+    },
+    {
+      "name": "temporal-lit-f064",
+      "signal": "lit",
+      "note": "sun 80000->20000 lux; final lit display; capture is bridge draw 64",
+      "target_bridge_draw_after_sun_change": 64,
+      "actual_bridge_draw_after_sun_change": 64,
+      "capture_draw_total": 249,
+      "sun_changed_frame": 185,
+      "sun_changed_draw": 185,
+      "frame_before": 254,
+      "frame_after": 254,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-lit-f064.png",
+      "bytes": 1493447,
+      "sha256": "87f4fa9cd9dd876c1bcafea4cba83060858a82612f74325492afc89361957f0c",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 31.476,
+      "std_display_luma": 47.663,
+      "near_black_fraction": 0.21783,
+      "near_white_fraction": 0.0
+    },
+    {
+      "name": "temporal-direct-f001",
+      "signal": "direct",
+      "note": "sun 80000->20000 lux; Lumen direct-lighting visualization mode 12 (display-space overlay); capture is bridge draw 1",
+      "target_bridge_draw_after_sun_change": 1,
+      "actual_bridge_draw_after_sun_change": 1,
+      "capture_draw_total": 354,
+      "sun_changed_frame": 358,
+      "sun_changed_draw": 353,
+      "frame_before": 359,
+      "frame_after": 359,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "12",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-direct-f001.png",
+      "bytes": 251458,
+      "sha256": "7ab1513d15d1f692ba66f8aa2db89119b452105fe0d34f1d6aef2e00da8c7ba9",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 50.451,
+      "std_display_luma": 97.169,
+      "near_black_fraction": 0.77895,
+      "near_white_fraction": 0.05655
+    },
+    {
+      "name": "temporal-direct-f008",
+      "signal": "direct",
+      "note": "sun 80000->20000 lux; Lumen direct-lighting visualization mode 12 (display-space overlay); capture is bridge draw 8",
+      "target_bridge_draw_after_sun_change": 8,
+      "actual_bridge_draw_after_sun_change": 8,
+      "capture_draw_total": 361,
+      "sun_changed_frame": 358,
+      "sun_changed_draw": 353,
+      "frame_before": 367,
+      "frame_after": 367,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "12",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-direct-f008.png",
+      "bytes": 280744,
+      "sha256": "fd7b785bd8c4f58fad550c0766b45292cc350de2ee0387c1cf9d078dd322cf04",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 46.785,
+      "std_display_luma": 91.344,
+      "near_black_fraction": 0.78003,
+      "near_white_fraction": 0.02887
+    },
+    {
+      "name": "temporal-direct-f064",
+      "signal": "direct",
+      "note": "sun 80000->20000 lux; Lumen direct-lighting visualization mode 12 (display-space overlay); capture is bridge draw 64",
+      "target_bridge_draw_after_sun_change": 64,
+      "actual_bridge_draw_after_sun_change": 64,
+      "capture_draw_total": 417,
+      "sun_changed_frame": 358,
+      "sun_changed_draw": 353,
+      "frame_before": 424,
+      "frame_after": 424,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "12",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-direct-f064.png",
+      "bytes": 281180,
+      "sha256": "eb278e08688cc5f868c3e980dd6b20f92844728b50e4b415eb1108c443517de4",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 46.711,
+      "std_display_luma": 91.178,
+      "near_black_fraction": 0.78003,
+      "near_white_fraction": 0.02041
+    },
+    {
+      "name": "temporal-indirect-f001",
+      "signal": "indirect",
+      "note": "sun 80000->20000 lux; Lumen indirect-lighting visualization mode 13 (display-space overlay); capture is bridge draw 1",
+      "target_bridge_draw_after_sun_change": 1,
+      "actual_bridge_draw_after_sun_change": 1,
+      "capture_draw_total": 522,
+      "sun_changed_frame": 528,
+      "sun_changed_draw": 521,
+      "frame_before": 529,
+      "frame_after": 529,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "13",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-indirect-f001.png",
+      "bytes": 822161,
+      "sha256": "b2a12d3e4323e1d0904265c92ac9c780f4a00ccf09907c63e26239811d2d1c27",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 192.653,
+      "std_display_luma": 67.734,
+      "near_black_fraction": 0.04508,
+      "near_white_fraction": 0.0431
+    },
+    {
+      "name": "temporal-indirect-f008",
+      "signal": "indirect",
+      "note": "sun 80000->20000 lux; Lumen indirect-lighting visualization mode 13 (display-space overlay); capture is bridge draw 8",
+      "target_bridge_draw_after_sun_change": 8,
+      "actual_bridge_draw_after_sun_change": 8,
+      "capture_draw_total": 529,
+      "sun_changed_frame": 528,
+      "sun_changed_draw": 521,
+      "frame_before": 537,
+      "frame_after": 537,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "13",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-indirect-f008.png",
+      "bytes": 834119,
+      "sha256": "7367ef5eb86b01c00ba1f685af65f35e766ce244c4f32c2dc0c8222282d0cad7",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 188.01,
+      "std_display_luma": 69.168,
+      "near_black_fraction": 0.04536,
+      "near_white_fraction": 0.04279
+    },
+    {
+      "name": "temporal-indirect-f064",
+      "signal": "indirect",
+      "note": "sun 80000->20000 lux; Lumen indirect-lighting visualization mode 13 (display-space overlay); capture is bridge draw 64",
+      "target_bridge_draw_after_sun_change": 64,
+      "actual_bridge_draw_after_sun_change": 64,
+      "capture_draw_total": 585,
+      "sun_changed_frame": 528,
+      "sun_changed_draw": 521,
+      "frame_before": 594,
+      "frame_after": 594,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 20000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "13",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-indirect-f064.png",
+      "bytes": 923004,
+      "sha256": "05c168c0e6d8323934e5e8585728769f229ca6426a5db1446eb9c198c4b0653b",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 142.214,
+      "std_display_luma": 71.613,
+      "near_black_fraction": 0.04701,
+      "near_white_fraction": 0.00037
+    },
+    {
+      "name": "temporal-restored",
+      "signal": "restored-baseline",
+      "note": "baseline restored after the temporal experiment",
+      "target_bridge_draw_after_sun_change": 0,
+      "actual_bridge_draw_after_sun_change": null,
+      "capture_draw_total": 626,
+      "sun_changed_frame": 528,
+      "sun_changed_draw": 521,
+      "frame_before": 634,
+      "frame_after": 634,
+      "frame_delta": 0,
+      "sun": {
+        "rotation_degrees": {
+          "pitch": -74.99999999999999,
+          "yaw": -35.000000000000014,
+          "roll": -0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true
+      },
+      "camera_before": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "camera_after": {
+        "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+        "pilot_actor": "CAM_Hero_Reference",
+        "pilot_matches": true,
+        "actual_view_fov": 70.0,
+        "exact_camera_view": true,
+        "allows_cinematic_control": true,
+        "viewport_camera": {
+          "location_cm": [
+            -850.0,
+            0.0,
+            90.0
+          ],
+          "rotation": {
+            "pitch": 13.0,
+            "yaw": 0.0,
+            "roll": -0.0
+          }
+        },
+        "render_status": {
+          "rhi": "D3D12",
+          "feature_level": 4,
+          "shader_platform": "PCD3D_SM6",
+          "view_mode_index": 3,
+          "viewport_size": [
+            1280,
+            720
+          ],
+          "scene_hdr_enabled": false,
+          "ray_tracing_supported": true,
+          "ray_tracing_shaders_supported": true,
+          "path_tracing_shader_support": true
+        }
+      },
+      "cvars": {
+        "r.Lumen.Visualize": {
+          "name": "r.Lumen.Visualize",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.DynamicGlobalIlluminationMethod": {
+          "name": "r.DynamicGlobalIlluminationMethod",
+          "found": true,
+          "value": "1",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.ReflectionMethod": {
+          "name": "r.ReflectionMethod",
+          "found": true,
+          "value": "1",
+          "default": "2",
+          "set_by": "Console",
+          "flags": 268435488
+        },
+        "r.Lumen.HardwareRayTracing": {
+          "name": "r.Lumen.HardwareRayTracing",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.LumenScene.FarField": {
+          "name": "r.LumenScene.FarField",
+          "found": true,
+          "value": "0",
+          "default": "0",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.ScreenProbeGather.ScreenTraces": {
+          "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.Reflections.ScreenTraces": {
+          "name": "r.Lumen.Reflections.ScreenTraces",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Console",
+          "flags": 268435808
+        },
+        "r.Lumen.DiffuseIndirect.Allow": {
+          "name": "r.Lumen.DiffuseIndirect.Allow",
+          "found": true,
+          "value": "1",
+          "default": "1",
+          "set_by": "Scalability",
+          "flags": 33554784
+        },
+        "r.Lumen.Visualize.ToneMap": {
+          "name": "r.Lumen.Visualize.ToneMap",
+          "found": true,
+          "value": "true",
+          "default": "true",
+          "set_by": "Constructor",
+          "flags": 32
+        }
+      },
+      "file": "D:\\UnrealUnderstanding-Sponza\\output\\final\\images\\temporal-restored.png",
+      "bytes": 1876038,
+      "sha256": "58cc5840c868b8588ca4ac8e2351b463a89cfd7791918cd808509a854cdb2c9a",
+      "width": 1280,
+      "height": 720,
+      "mean_display_luma": 69.554,
+      "std_display_luma": 69.807,
+      "near_black_fraction": 0.04654,
+      "near_white_fraction": 2e-05
+    }
+  ],
+  "jobs": [],
+  "notes": [],
+  "limits": [],
+  "pre_apply_saved_state": {
+    "hero_camera": {
+      "actor": "CAM_Hero_Reference",
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0
+    },
+    "material_camera": {
+      "actor": "CAM_Materials",
+      "location_cm": [
+        250.0,
+        0.0,
+        168.0
+      ],
+      "rotation_degrees": {
+        "pitch": -10.20397,
+        "yaw": 0.0,
+        "roll": -0.0
+      },
+      "horizontal_fov_deg": 70.0059814453125
+    },
+    "sun": {
+      "rotation_degrees": {
+        "pitch": -75.0,
+        "yaw": -35.0,
+        "roll": -0.0
+      },
+      "intensity_lux": 80000.0,
+      "temperature_k": 5500.0,
+      "atmosphere_sun_light": true
+    },
+    "sky_light": {
+      "intensity": 16.0,
+      "real_time_capture": true
+    },
+    "exposure": {
+      "auto_exposure_min_brightness": 11.0,
+      "auto_exposure_max_brightness": 11.0,
+      "auto_exposure_bias": 0.0,
+      "override_auto_exposure_min_brightness": true,
+      "override_auto_exposure_max_brightness": true,
+      "override_auto_exposure_bias": true,
+      "auto_exposure_method": "<AutoExposureMethod.AEM_HISTOGRAM: 0>"
+    }
+  },
+  "hero_readback": {
+    "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+    "pilot_actor": "CAM_Hero_Reference",
+    "pilot_matches": true,
+    "actual_view_fov": 70.0,
+    "exact_camera_view": true,
+    "allows_cinematic_control": true,
+    "viewport_camera": {
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      }
+    },
+    "render_status": {
+      "rhi": "D3D12",
+      "feature_level": 4,
+      "shader_platform": "PCD3D_SM6",
+      "view_mode_index": 3,
+      "viewport_size": [
+        1612,
+        1166
+      ],
+      "scene_hdr_enabled": false,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true
+    }
+  },
+  "render_status_start": {
+    "rhi": "D3D12",
+    "feature_level": 4,
+    "shader_platform": "PCD3D_SM6",
+    "view_mode_index": 3,
+    "viewport_size": [
+      1612,
+      1166
+    ],
+    "scene_hdr_enabled": false,
+    "ray_tracing_supported": true,
+    "ray_tracing_shaders_supported": true,
+    "path_tracing_shader_support": true
+  },
+  "sun_start": {
+    "rotation_degrees": {
+      "pitch": -74.99999999999999,
+      "yaw": -35.000000000000014,
+      "roll": -0.0
+    },
+    "intensity_lux": 80000.0,
+    "temperature_k": 5500.0,
+    "atmosphere_sun_light": true
+  },
+  "restored_sun": {
+    "rotation_degrees": {
+      "pitch": -74.99999999999999,
+      "yaw": -35.000000000000014,
+      "roll": -0.0
+    },
+    "intensity_lux": 80000.0,
+    "temperature_k": 5500.0,
+    "atmosphere_sun_light": true
+  },
+  "restored_camera": {
+    "requested_config_key": "FourPanes2x2.Viewport 1.Viewport1",
+    "pilot_actor": "CAM_Hero_Reference",
+    "pilot_matches": true,
+    "actual_view_fov": 70.0,
+    "exact_camera_view": true,
+    "allows_cinematic_control": true,
+    "viewport_camera": {
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": -0.0
+      }
+    },
+    "render_status": {
+      "rhi": "D3D12",
+      "feature_level": 4,
+      "shader_platform": "PCD3D_SM6",
+      "view_mode_index": 3,
+      "viewport_size": [
+        1280,
+        720
+      ],
+      "scene_hdr_enabled": false,
+      "ray_tracing_supported": true,
+      "ray_tracing_shaders_supported": true,
+      "path_tracing_shader_support": true
+    }
+  },
+  "finished_utc": "2026-11-15T07:53:43Z",
+  "elapsed_seconds": 18.02,
+  "draws": 626,
+  "map_sha256_after": "3ef49eddd474fc16e6129dac3bcbb16bb4937529d9213296a865d368ede72c64",
+  "map_unchanged": true,
+  "script_sha256_final": "c4347d10dc8f8e501f1bb0f54c616e856ff3e4c96cb5ca0acd26766d5ccc722a",
+  "cvars_at_end": {
+    "r.Lumen.Visualize": {
+      "name": "r.Lumen.Visualize",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.DynamicGlobalIlluminationMethod": {
+      "name": "r.DynamicGlobalIlluminationMethod",
+      "found": true,
+      "value": "1",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.ReflectionMethod": {
+      "name": "r.ReflectionMethod",
+      "found": true,
+      "value": "1",
+      "default": "2",
+      "set_by": "Console",
+      "flags": 268435488
+    },
+    "r.Lumen.HardwareRayTracing": {
+      "name": "r.Lumen.HardwareRayTracing",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.LumenScene.FarField": {
+      "name": "r.LumenScene.FarField",
+      "found": true,
+      "value": "0",
+      "default": "0",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.Lumen.ScreenProbeGather.ScreenTraces": {
+      "name": "r.Lumen.ScreenProbeGather.ScreenTraces",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.Lumen.Reflections.ScreenTraces": {
+      "name": "r.Lumen.Reflections.ScreenTraces",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Console",
+      "flags": 268435808
+    },
+    "r.Lumen.DiffuseIndirect.Allow": {
+      "name": "r.Lumen.DiffuseIndirect.Allow",
+      "found": true,
+      "value": "1",
+      "default": "1",
+      "set_by": "Scalability",
+      "flags": 33554784
+    },
+    "r.Lumen.Visualize.ToneMap": {
+      "name": "r.Lumen.Visualize.ToneMap",
+      "found": true,
+      "value": "true",
+      "default": "true",
+      "set_by": "Constructor",
+      "flags": 32
+    }
+  }
+}
