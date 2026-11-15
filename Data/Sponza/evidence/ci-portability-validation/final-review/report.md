@@ -5,7 +5,12 @@
 `Docs/Unreal/assets/lumen-reading/manifest.json`.
 
 **Verdict: pass.** The integration preserves meaningful validation on both tested
-platforms. No repository file outside `final-review/` was modified by this review.
+platforms. No tracked repository file outside `final-review/` was modified by this review.
+
+> **HEAD note:** the root committed the integration as `48bd12951d3ce5c89f09768a399287eb4fdb7dd7`
+> while this review was running. `9f8b8c9..48bd1295` adds no PNG/SVG changes; the
+> three reviewed source/manifest changes are the same committed content, and all 40
+> reviewed figures also match `48bd1295` raw bytes.
 
 ## Platform runs
 

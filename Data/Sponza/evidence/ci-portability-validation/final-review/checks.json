@@ -1,5 +1,7 @@
 {
   "head": "9f8b8c974614d592752606b29227363bce2c1d20",
+  "head_at_finish": "48bd12951d3ce5c89f09768a399287eb4fdb7dd7",
+  "head_note": "The root committed the integrated changes during this review. 9f8b8c9..48bd1295 adds no PNG/SVG changes, and all 40 reviewed figures also match 48bd1295 raw bytes.",
   "reviewed_artifacts": [
     "Scripts/Docs/unreal_articles/labs/lumen-reading/generate.py",
     "Scripts/Docs/unreal_articles/labs/lumen-course/generate.py",
@@ -200,13 +202,13 @@
       "files_compared": 40,
       "mismatches": 0,
       "scope": "Docs/Unreal/assets/lumen-reading and Docs/Unreal/assets/lumen-course (PNG/SVG)",
-      "evidence": "40 raw SHA-256 comparisons against HEAD 9f8b8c974614d592752606b29227363bce2c1d20; scoped git diff and untracked PNG/SVG status empty on both hosts"
+      "evidence": "40 raw SHA-256 comparisons against HEAD 9f8b8c974614d592752606b29227363bce2c1d20; re-checked against 48bd12951d3ce5c89f09768a399287eb4fdb7dd7 with 0 mismatches. Scoped git diff and untracked PNG/SVG status empty."
     }
   },
   "acceptance": {
     "windows_and_wsl_linux_pass_both_affected_generators": {
       "result": "yes",
-      "evidence": "All four generator --check commands exited 0 on Windows Python 3.14.6/zlib-ng 1.3.1 and WSL Linux Python 3.10.12/zlib 1.2.11."
+      "evidence": "All four generator --check commands exited 0 on Windows Python 3.14.6/zlib-ng 1.3.1 and WSL Linux Python 3.10.12/zlib 1.2.11. Both generators were re-run on both hosts at 48bd1295 with the same exit 0."
     },
     "only_png_encoding_and_at_most_16_ulps_ignored": {
       "result": "yes",
@@ -218,7 +220,7 @@
     },
     "all_reviewed_svg_and_png_bytes_unchanged_from_head": {
       "result": "yes",
-      "evidence": "All 40 tracked PNG/SVG files in the two reviewed output directories match HEAD raw bytes; scoped diff and untracked status are empty on Windows and WSL."
+      "evidence": "All 40 tracked PNG/SVG files in the two reviewed output directories match HEAD raw bytes. The probes ran at 9f8b8c9; the root's subsequent 48bd1295 commit adds no PNG/SVG changes and all 40 also match its raw bytes. Scoped diff and untracked status are empty."
     }
   },
   "observations": [
