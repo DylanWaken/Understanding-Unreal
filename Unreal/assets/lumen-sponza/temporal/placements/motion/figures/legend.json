@@ -1,0 +1,173 @@
+{
+  "schema": "arda-placement-legend-v1",
+  "display_transform": {
+    "base": "native Base/Screenshot.png of the selected dump, copied byte-for-byte to figures/<state>/base.png",
+    "composite": "base RGB + one RGBA geometry overlay; no gamma, tone, exposure or resize applied; 1280x720 top-left pixel coordinates",
+    "text": "no text is burned into any image; all labels are native JSON metadata in this file and in the per-state data files"
+  },
+  "families": {
+    "cards": {
+      "color": "#FF8A4C",
+      "subset_color": "#FFE14C",
+      "subset_alpha": 255,
+      "subset_width_px": 2,
+      "xray_alpha": 58,
+      "xray_width_px": 1,
+      "geometry": "projected convex hull of the 8 OBB corners (world OBB shifted by PreViewTranslation)",
+      "subset_rule": "up to 24 visible cards whose projected hull area is closest to the candidate median, one per 8x6 screen cell; the primary image draws only this subset, all cards remain numeric",
+      "depth_classifier": "card-centre view depth vs SceneDepthZ at the projected pixel; tolerance max(10 cm, 0.02*scene_depth_cm)",
+      "xray": "separate image; only centre-depth-occluded cards, low alpha"
+    },
+    "worldcache": {
+      "colors_by_clipmap": [
+        "#4C8DFF",
+        "#45E06F",
+        "#FFD24C",
+        "#FF6B6B",
+        "#B388FF",
+        "#00E5FF"
+      ],
+      "radius_px_by_clipmap": [
+        3.2,
+        2.8,
+        2.4,
+        2.0,
+        1.8,
+        1.6
+      ],
+      "primary_alpha": 255,
+      "xray_alpha": 62,
+      "geometry": "projected probe world position = clipmap corner + (logical coord + 0.5)*cell + ProbeWorldOffset - PreViewTranslation",
+      "activity": "last-traced age is numeric only (per-probe traced_age_frames and per-state activity histograms); marker colour/size is fixed per clipmap and is not varied by age",
+      "xray": "separate image; only probe-centre-occluded probes, low alpha"
+    }
+  },
+  "states": {
+    "baseline": {
+      "base": {
+        "file": "motion/figures/baseline/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "4d851a18bf059997fe563acc4e6f74b41e0888cca29a12d11026a1b40d541111",
+        "raw_sha256": "4d851a18bf059997fe563acc4e6f74b41e0888cca29a12d11026a1b40d541111",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "motion/figures/baseline/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 19882,
+        "sha256": "a70a47f238a7fec558257e7b55a0dd7cc886f3c9d0700e890533b439a5b407a5"
+      },
+      "cards_xray": {
+        "file": "motion/figures/baseline/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 131,
+        "changed_pixels_vs_base": 49386,
+        "sha256": "eefd20a07800a4d97866d868b62cfaf27eb97230383daaf51f4a8ea067cf07be"
+      },
+      "worldcache_only": {
+        "file": "motion/figures/baseline/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 361,
+        "changed_pixels_vs_base": 12436,
+        "sha256": "c99041b0e385e698af43af572a9c62144c05d97d1a34885de7bca6e8c9eb00f0"
+      },
+      "worldcache_xray": {
+        "file": "motion/figures/baseline/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 408,
+        "changed_pixels_vs_base": 17181,
+        "sha256": "00e900efb62e96f6efd3cf76b284497f4b271f78b8eabfe76693db0818823571"
+      }
+    },
+    "camera-001": {
+      "base": {
+        "file": "motion/figures/camera-001/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "0ea030c04aecbb85c052cfca617a474ade12f806f267cb096c6513e6bd407979",
+        "raw_sha256": "0ea030c04aecbb85c052cfca617a474ade12f806f267cb096c6513e6bd407979",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "motion/figures/camera-001/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 22078,
+        "sha256": "dfa4f9459a3917044ccdafdb406ede51dced5cdb51f8f0970ef06e2130b637e1"
+      },
+      "cards_xray": {
+        "file": "motion/figures/camera-001/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 135,
+        "changed_pixels_vs_base": 47025,
+        "sha256": "3e354aeaefdb344ccb7fff81171838970aa6f90fb787e7dbc99f42f4c2885662"
+      },
+      "worldcache_only": {
+        "file": "motion/figures/camera-001/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 316,
+        "changed_pixels_vs_base": 10223,
+        "sha256": "68031abfb503c19776dc6fa3c886d9fb9496b4bad9eaf5006f2fed0c032c4f7e"
+      },
+      "worldcache_xray": {
+        "file": "motion/figures/camera-001/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 511,
+        "changed_pixels_vs_base": 19219,
+        "sha256": "664b32634945e012e157598c2201e9d4bb5df5f6c96d7abd79da97229c0b2580"
+      }
+    },
+    "camera-064": {
+      "base": {
+        "file": "motion/figures/camera-064/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "4cde47317d96329c8b845c5338bc07093c8d71e91c1e3c71b5afe882ed093882",
+        "raw_sha256": "4cde47317d96329c8b845c5338bc07093c8d71e91c1e3c71b5afe882ed093882",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "motion/figures/camera-064/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 22078,
+        "sha256": "38a6aa457823102f35694096106879f2cc60a29ed82f5a02d45c347df4f19baa"
+      },
+      "cards_xray": {
+        "file": "motion/figures/camera-064/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 135,
+        "changed_pixels_vs_base": 47025,
+        "sha256": "20efaf0ca95a724044cf797d0c257dcf7e75ac4c4a9d322cd8e8ce8b9943db9e"
+      },
+      "worldcache_only": {
+        "file": "motion/figures/camera-064/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 315,
+        "changed_pixels_vs_base": 10741,
+        "sha256": "77a3e2a4266544abb7c60ed711074ddfdcddee51c98a6d4d1f1178c2c7c2e417"
+      },
+      "worldcache_xray": {
+        "file": "motion/figures/camera-064/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 418,
+        "changed_pixels_vs_base": 17182,
+        "sha256": "456b22f568e8be96b34a3af55de2e885c8a46153e9cef2ad166910400b9a4101"
+      }
+    }
+  }
+}

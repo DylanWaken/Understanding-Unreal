@@ -1,0 +1,167 @@
+{
+  "neighborhood": {
+    "image": "figures/world-cache-neighborhood.png",
+    "layout": "Left panel z=base.z; right panel z=base.z+1. Each panel is 2x2: x increases right, y increases upward. Top-left is offset (0,1,z); bottom-left (0,0,z).",
+    "drawnTiles": [
+      {
+        "neighbor": 0,
+        "offsetBits": [
+          0,
+          0,
+          0
+        ],
+        "pixelOrigin": [
+          0,
+          140
+        ]
+      },
+      {
+        "neighbor": 1,
+        "offsetBits": [
+          0,
+          0,
+          1
+        ],
+        "pixelOrigin": [
+          288,
+          140
+        ]
+      },
+      {
+        "neighbor": 2,
+        "offsetBits": [
+          0,
+          1,
+          0
+        ],
+        "pixelOrigin": [
+          0,
+          0
+        ]
+      },
+      {
+        "neighbor": 3,
+        "offsetBits": [
+          0,
+          1,
+          1
+        ],
+        "pixelOrigin": [
+          288,
+          0
+        ]
+      },
+      {
+        "neighbor": 4,
+        "offsetBits": [
+          1,
+          0,
+          0
+        ],
+        "pixelOrigin": [
+          140,
+          140
+        ]
+      },
+      {
+        "neighbor": 5,
+        "offsetBits": [
+          1,
+          0,
+          1
+        ],
+        "pixelOrigin": [
+          428,
+          140
+        ]
+      },
+      {
+        "neighbor": 6,
+        "offsetBits": [
+          1,
+          1,
+          0
+        ],
+        "pixelOrigin": [
+          140,
+          0
+        ]
+      },
+      {
+        "neighbor": 7,
+        "offsetBits": [
+          1,
+          1,
+          1
+        ],
+        "pixelOrigin": [
+          428,
+          0
+        ]
+      }
+    ],
+    "imageDimensions": [
+      564,
+      276
+    ],
+    "tilePixels": 34,
+    "upscale": 4,
+    "displayGain": 4.0,
+    "radianceScale": "stored cache-pre-exposed R11G11B10 atlas * View.PreExposure (0.00048828125) * gain (4.0) clip[0,1]; the *16 cache-exposure inverse is not applied, so this previews the stored atlas, not the un-pre-exposed lookup radiance",
+    "neighborWeightMin": 0.039214566349983215,
+    "neighborWeightMax": 0.28164175152778625
+  },
+  "taps": {
+    "image": "figures/world-cache-taps.png",
+    "rows": 8,
+    "columns": 4,
+    "tapCount": 32,
+    "displayGain": 16.0,
+    "effectiveWeightSum": 1.00000004265766,
+    "radianceScale": "stored cache-pre-exposed R11G11B10 atlas * View.PreExposure (0.00048828125) * gain (16.0) clip[0,1]; the *16 cache-exposure inverse is not applied"
+  },
+  "probeGrid": {
+    "image": "figures/world-cache-probe-grid.png",
+    "clipmapResolution": 48,
+    "pixelsPerCell": 56,
+    "panels": "left z=base.z, right z=base.z+1",
+    "cellFill": "brightness proportional to captured trilinear weight",
+    "red": "query fractional x/y position",
+    "baseCell": [
+      29,
+      25,
+      27
+    ],
+    "fractionalWeights": [
+      0.6337471008300781,
+      0.3833961486816406,
+      0.279266357421875
+    ],
+    "cellSizeCM": 104.16666412353516,
+    "positionMinusCornerCM": [
+      3138.931884765625,
+      2696.18701171875,
+      2893.673583984375
+    ],
+    "cellCoordinateFloat": [
+      30.133747100830078,
+      25.88339614868164,
+      27.779266357421875
+    ],
+    "units": "baseCell/fractionalWeights are clipmap cells; positionMinusCornerCM is cm; cellCoordinateFloat = positionMinusCornerCM/cellSizeCM",
+    "weightsByZPlane": {
+      "0": {
+        "0,0": 0.16276541352272034,
+        "0,1": 0.10120537877082825,
+        "1,0": 0.28164175152778625,
+        "1,1": 0.17512112855911255
+      },
+      "1": {
+        "0,0": 0.06306754797697067,
+        "0,1": 0.039214566349983215,
+        "1,0": 0.1091291680932045,
+        "1,1": 0.06785508245229721
+      }
+    }
+  }
+}

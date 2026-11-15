@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc"><title id="title">An unresolved screen ray is still a world-space question</title><desc id="desc">Screen depth contains only visible front surfaces; offscreen or hidden intersections need fallback tracing.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="620" rx="12" fill="#101b2d"/>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<path d="M90 420L1090 420" stroke="#a7b9d3" stroke-width="4" fill="none"/>
+<path d="M1040 180L1040 420" stroke="#a7b9d3" stroke-width="5" fill="none"/>
+<path d="M160 330L1040 270" stroke="#ff8c91" stroke-width="2" fill="none" stroke-dasharray="8 7"/>
+<rect x="650" y="180" width="30" height="140" rx="5" stroke="#a7b9d3" stroke-width="2" fill="#455165"/>
+<path d="M160 330L480 420" stroke="#65baff" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M480 420L1040 270" stroke="#ffd36f" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+<circle cx="160" cy="330" r="8" stroke="#c4a0ff" stroke-width="2" fill="#c4a0ff"/>
+<circle cx="480" cy="420" r="8" stroke="#6ce1b5" stroke-width="2" fill="#6ce1b5"/>
+<circle cx="1040" cy="270" r="8" stroke="#ffd36f" stroke-width="2" fill="#ffd36f"/>
+<rect x="50" y="455" width="300" height="80" rx="5" stroke="#65baff" stroke-width="2" fill="#18283e"/>
+<path d="M360 495L410 495" stroke="#eef4ff" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="430" y="455" width="300" height="80" rx="5" stroke="#c4a0ff" stroke-width="2" fill="#18283e"/>
+<path d="M740 495L790 495" stroke="#eef4ff" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="810" y="455" width="335" height="80" rx="5" stroke="#6ce1b5" stroke-width="2" fill="#18283e"/>
+<text x="40" y="49" font-size="28" fill="#eef4ff" text-anchor="start">An unresolved screen ray is still a world-space question</text>
+<text x="40" y="588" font-size="16" fill="#a7b9d3" text-anchor="start">SCHEMATIC · geometry and colors explain a model; this is not an Unreal buffer</text>
+<text x="75" y="115" font-size="23" fill="#65baff" text-anchor="start">Blue: primary visible surface</text>
+<text x="100" y="295" font-size="22" fill="#c4a0ff" text-anchor="start">camera</text>
+<text x="605" y="150" font-size="22" fill="#eef4ff" text-anchor="start">occluder</text>
+<text x="880" y="150" font-size="22" fill="#ffd36f" text-anchor="start">hidden wall</text>
+<text x="740" y="240" font-size="19" fill="#ff8c91" text-anchor="start">blocked camera segment</text>
+<text x="760" y="390" font-size="22" fill="#ffd36f" text-anchor="start">secondary query</text>
+<text x="345" y="445" font-size="20" fill="#6ce1b5" text-anchor="start">receiver</text>
+<text x="66" y="489" font-size="23" fill="#65baff" text-anchor="start">1. HZB candidate</text>
+<text x="446" y="489" font-size="23" fill="#c4a0ff" text-anchor="start">2. compact unresolved</text>
+<text x="826" y="489" font-size="23" fill="#6ce1b5" text-anchor="start">3. world geometry</text>
+</g></svg>

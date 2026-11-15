@@ -1,0 +1,129 @@
+{
+  "schema": "understanding-unreal-sponza-scene-config-v1",
+  "engine_source_base": "71fe36aac5a8df5ccd66c763ffc902b29b6a9c43",
+  "upstream_asset_revision": "8f492390ddc7a2ae221a1369ef560589cf8c70fb",
+  "config": {
+    "map": "/Game/Labs/SponzaTeaching",
+    "resolution": [
+      1280,
+      720
+    ],
+    "aspect_ratio": "16:9",
+    "hero_camera": {
+      "actor": "CAM_Hero_Reference",
+      "location_cm": [
+        -850.0,
+        0.0,
+        90.0
+      ],
+      "rotation_degrees": {
+        "pitch": 13.0,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "horizontal_fov_deg": 70.0,
+      "vertical_fov_deg_at_16_9": 42.995661,
+      "equivalent_35mm_focal_length_mm": 25.706664,
+      "filmback": "CameraActor FOV, no physical filmback; constraint off",
+      "dof": "off",
+      "pilot_method": "LevelEditorSubsystem.pilot_level_actor + exact camera view + allows cinematic control on the active level viewport; ViewFOV read back from the same viewport"
+    },
+    "material_camera": {
+      "actor": "CAM_Materials",
+      "location_cm": [
+        250.0,
+        0.0,
+        168.0
+      ],
+      "rotation_degrees": {
+        "pitch": -10.203974,
+        "yaw": 0.0,
+        "roll": 0.0
+      },
+      "horizontal_fov_deg": 70.0059814453125,
+      "vertical_fov_deg_at_16_9": 43.000002,
+      "equivalent_35mm_focal_length_mm": 25.703808,
+      "filmback": "CameraActor FOV, no physical filmback; constraint off",
+      "dof": "off",
+      "role": "separate material-detail camera aimed at the six-sphere chart; never used for hero explanatory views"
+    },
+    "light": {
+      "sun": {
+        "actor": "Sun_Sponza",
+        "rotation_degrees": {
+          "pitch": -75.0,
+          "yaw": -35.0,
+          "roll": 0.0
+        },
+        "intensity_lux": 80000.0,
+        "temperature_k": 5500.0,
+        "atmosphere_sun_light": true,
+        "light_source_angle_deg": 0.5357
+      },
+      "sky_atmosphere": {
+        "actor": "SkyAtmosphere_Sponza"
+      },
+      "sky_light": {
+        "actor": "SkyLight_Sponza",
+        "intensity": 16.0,
+        "source_type": "SLS_CAPTURED_SCENE",
+        "real_time_capture": true
+      },
+      "exposure_ev100": 11.0,
+      "exposure_bias": 0.0,
+      "exposure_method": "AEM_Histogram pinned, auto_exposure_min_brightness == auto_exposure_max_brightness == 11.0, no adaptation",
+      "note": "Exposure is frozen at EV100 11 for every Lumen and path-traced still and every controlled pair; no per-image normalization."
+    },
+    "lumen": {
+      "dynamic_global_illumination_method": 1,
+      "reflection_method": 1,
+      "hardware_ray_tracing": 1,
+      "far_field": 0,
+      "screen_probe_gather_screen_traces": 1,
+      "reflections_screen_traces": 1,
+      "surface_cache_atlas_size": 4096,
+      "visualize": 0
+    },
+    "path_tracer": {
+      "samples_per_pixel_targets": [
+        256,
+        1024
+      ],
+      "max_bounces": 8,
+      "denoiser": 0,
+      "visible_lights": 2,
+      "enable_reference_atmosphere": 0,
+      "skylight_caching": 0,
+      "mis_mode": 2,
+      "mis_compensation": 1,
+      "filter_width": 3.0,
+      "sample_counter_authority": "GetPathTracingSampleIndex is the accumulation index; GetPathTracingSampleCount is target-only (LastConfig MaxSamples) and is recorded but not used as observed spp",
+      "sky_model": "SkyAtmosphere_Sponza + SkyLight_Sponza real-time captured scene cubemap (intensity 16). PT integrates that same SkyLight cubemap; it does not use the separate volumetric reference-atmosphere path.",
+      "sky_model_mismatch_declared": false
+    },
+    "display": {
+      "view_mode": "lit",
+      "screen_percentage": 100,
+      "anti_aliasing_method": 2,
+      "motion_blur_quality": 0,
+      "bloom_quality": 0,
+      "depth_of_field_quality": 0,
+      "volumetric_fog": 0,
+      "show_flags": {
+        "BillboardSprites": 0,
+        "Grid": 0,
+        "Selection": 0,
+        "SelectionOutline": 0,
+        "ModeWidgets": 0,
+        "Bounds": 0,
+        "Cameras": 0,
+        "CameraFrustums": 0,
+        "CompositeEditorPrimitives": 0,
+        "Game": 1,
+        "LumenGlobalTraces": 1,
+        "LumenDetailTraces": 1
+      },
+      "note": "No burned legends, editor icons or text. Buffer/view-mode diagnostics are display-encoded 8-bit editor visualizations, not raw linear radiance."
+    }
+  }
+}

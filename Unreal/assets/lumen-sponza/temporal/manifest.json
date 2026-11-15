@@ -1,0 +1,1411 @@
+{
+  "schema": "unreal-understanding-scene-observations/v1",
+  "layers": [
+    {
+      "id": "renderer",
+      "legend": "Actual Unreal final images. Identical camera, exposure, and display path; no per-image brightness normalization."
+    },
+    {
+      "id": "screen-probes",
+      "legend": "Cyan: active uniform screen probes. Orange with white rings: active adaptive probes. Points are projected from captured 3D positions; they are not extra scene lights."
+    },
+    {
+      "id": "screen-sh",
+      "legend": "Blue → cyan → green → yellow → white: increasing response. Filled lobe faces pass the scene-depth test; magenta wire outlines show hidden function geometry. Radius and colors keep one scale within each experiment. Signed coefficients remain in the data."
+    },
+    {
+      "id": "cards",
+      "legend": "Yellow: a representative subset of captured card bounds. The card-center depth test uses a tolerance of max(10 cm, 2% of scene depth); outlines can extend behind foreground geometry. Complete geometry and page arrays are retained separately."
+    },
+    {
+      "id": "world-cache",
+      "legend": "Blue: clipmap 0, cell spacing about 104.17 cm. The other three clipmaps have no active cells in these captures. Marker color and size stay fixed; the age chart shows update activity even when positions do not move."
+    },
+    {
+      "id": "radiosity",
+      "legend": "Green: up-facing normals. Orange: down-facing normals. Blue: X-dominant wall normals. Pink: Y-dominant wall normals. All positions come from captured card depth; color is orientation, not illumination."
+    }
+  ],
+  "experiments": [
+    {
+      "id": "renderer-light-step",
+      "label": "Fixed camera · Sun 80,000 → 20,000 lux",
+      "states": [
+        {
+          "id": "lit-1",
+          "label": "Bridge draw 1 after the light step",
+          "facts": {
+            "Sun illuminance": "20,000 lux",
+            "Engine frame before / after capture": "186 / 186",
+            "Bridge draw since light change": 1,
+            "Exposure": "Fixed EV100 11",
+            "Mean display luma": "61.967 / 255 (display channels, not radiance)"
+          },
+          "record": "../data/run-temporal.json",
+          "layers": {
+            "renderer": {
+              "image": "../images/temporal-lit-f001.png",
+              "alt": "Sponza at recorded bridge draw 1 after reducing the Sun from 80,000 to 20,000 lux, using the unchanged hero camera and exposure.",
+              "caption": "Several lighting caches and histories contribute to this combined response. These are separate recorded renders; playback speed does not represent elapsed scene time."
+            }
+          }
+        },
+        {
+          "id": "lit-2",
+          "label": "Bridge draw 2 after the light step",
+          "facts": {
+            "Sun illuminance": "20,000 lux",
+            "Engine frame before / after capture": "187 / 187",
+            "Bridge draw since light change": 2,
+            "Exposure": "Fixed EV100 11",
+            "Mean display luma": "60.791 / 255 (display channels, not radiance)"
+          },
+          "record": "../data/run-temporal.json",
+          "layers": {
+            "renderer": {
+              "image": "../images/temporal-lit-f002.png",
+              "alt": "Sponza at recorded bridge draw 2 after reducing the Sun from 80,000 to 20,000 lux, using the unchanged hero camera and exposure.",
+              "caption": "Several lighting caches and histories contribute to this combined response. These are separate recorded renders; playback speed does not represent elapsed scene time."
+            }
+          }
+        },
+        {
+          "id": "lit-4",
+          "label": "Bridge draw 4 after the light step",
+          "facts": {
+            "Sun illuminance": "20,000 lux",
+            "Engine frame before / after capture": "190 / 190",
+            "Bridge draw since light change": 4,
+            "Exposure": "Fixed EV100 11",
+            "Mean display luma": "57.428 / 255 (display channels, not radiance)"
+          },
+          "record": "../data/run-temporal.json",
+          "layers": {
+            "renderer": {
+              "image": "../images/temporal-lit-f004.png",
+              "alt": "Sponza at recorded bridge draw 4 after reducing the Sun from 80,000 to 20,000 lux, using the unchanged hero camera and exposure.",
+              "caption": "Several lighting caches and histories contribute to this combined response. These are separate recorded renders; playback speed does not represent elapsed scene time."
+            }
+          }
+        },
+        {
+          "id": "lit-8",
+          "label": "Bridge draw 8 after the light step",
+          "facts": {
+            "Sun illuminance": "20,000 lux",
+            "Engine frame before / after capture": "195 / 195",
+            "Bridge draw since light change": 8,
+            "Exposure": "Fixed EV100 11",
+            "Mean display luma": "53.915 / 255 (display channels, not radiance)"
+          },
+          "record": "../data/run-temporal.json",
+          "layers": {
+            "renderer": {
+              "image": "../images/temporal-lit-f008.png",
+              "alt": "Sponza at recorded bridge draw 8 after reducing the Sun from 80,000 to 20,000 lux, using the unchanged hero camera and exposure.",
+              "caption": "Several lighting caches and histories contribute to this combined response. These are separate recorded renders; playback speed does not represent elapsed scene time."
+            }
+          }
+        },
+        {
+          "id": "lit-16",
+          "label": "Bridge draw 16 after the light step",
+          "facts": {
+            "Sun illuminance": "20,000 lux",
+            "Engine frame before / after capture": "204 / 204",
+            "Bridge draw since light change": 16,
+            "Exposure": "Fixed EV100 11",
+            "Mean display luma": "52.071 / 255 (display channels, not radiance)"
+          },
+          "record": "../data/run-temporal.json",
+          "layers": {
+            "renderer": {
+              "image": "../images/temporal-lit-f016.png",
+              "alt": "Sponza at recorded bridge draw 16 after reducing the Sun from 80,000 to 20,000 lux, using the unchanged hero camera and exposure.",
+              "caption": "Several lighting caches and histories contribute to this combined response. These are separate recorded renders; playback speed does not represent elapsed scene time."
+            }
+          }
+        },
+        {
+          "id": "lit-32",
+          "label": "Bridge draw 32 after the light step",
+          "facts": {
+            "Sun illuminance": "20,000 lux",
+            "Engine frame before / after capture": "221 / 221",
+            "Bridge draw since light change": 32,
+            "Exposure": "Fixed EV100 11",
+            "Mean display luma": "40.236 / 255 (display channels, not radiance)"
+          },
+          "record": "../data/run-temporal.json",
+          "layers": {
+            "renderer": {
+              "image": "../images/temporal-lit-f032.png",
+              "alt": "Sponza at recorded bridge draw 32 after reducing the Sun from 80,000 to 20,000 lux, using the unchanged hero camera and exposure.",
+              "caption": "Several lighting caches and histories contribute to this combined response. These are separate recorded renders; playback speed does not represent elapsed scene time."
+            }
+          }
+        },
+        {
+          "id": "lit-64",
+          "label": "Bridge draw 64 after the light step",
+          "facts": {
+            "Sun illuminance": "20,000 lux",
+            "Engine frame before / after capture": "254 / 254",
+            "Bridge draw since light change": 64,
+            "Exposure": "Fixed EV100 11",
+            "Mean display luma": "31.476 / 255 (display channels, not radiance)"
+          },
+          "record": "../data/run-temporal.json",
+          "layers": {
+            "renderer": {
+              "image": "../images/temporal-lit-f064.png",
+              "alt": "Sponza at recorded bridge draw 64 after reducing the Sun from 80,000 to 20,000 lux, using the unchanged hero camera and exposure.",
+              "caption": "Several lighting caches and histories contribute to this combined response. These are separate recorded renders; playback speed does not represent elapsed scene time."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "light-buffers",
+      "label": "Fixed-camera light step · captured buffers",
+      "states": [
+        {
+          "id": "baseline",
+          "label": "Warm baseline",
+          "facts": {
+            "Recorded engine frame": "127",
+            "View frame / state index": "369 / 370",
+            "Change": "Sun illuminance 80,000 lux",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "screen-sh/publish/data/states/baseline.json",
+          "layers": {
+            "screen-probes": {
+              "image": "screen-sh/publish/figures/active_baseline.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at warm baseline; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,706 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "screen-sh/publish/data/states/baseline.json",
+              "facts": {
+                "Active probes": "3706 = 3569 uniform + 137 adaptive",
+                "Excluded stale adaptive entries": 103,
+                "Uniform tile jitter (pixels)": "4, 4"
+              }
+            },
+            "screen-sh": {
+              "image": "screen-sh/publish/figures/lobes_baseline.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at warm baseline, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.4454, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3706 = 3569 uniform + 137 adaptive",
+                "Excluded stale adaptive entries": 103,
+                "Uniform tile jitter (pixels)": "4, 4",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.4454 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/light/figures/baseline/cards-only.png",
+              "alt": "Captured Sponza cards placement, warm baseline",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 371,
+                "Referenced low-resolution pages": 385,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/light/data/baseline/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/light/data/baseline/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/light/figures/baseline/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/light/figures/baseline/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, warm baseline",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 878,
+                "Allocator high-water / free slots": "925 / 47",
+                "On screen / passing depth test": "769 / 361",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/light/data/baseline/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/light/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/light/figures/baseline/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 385
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 43
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 0
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "lightstep-001",
+          "label": "Actual update 1",
+          "facts": {
+            "Recorded engine frame": "169",
+            "View frame / state index": "458 / 459",
+            "Change": "Sun illuminance 20,000 lux",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "screen-sh/publish/data/states/lightstep-001.json",
+          "layers": {
+            "screen-probes": {
+              "image": "screen-sh/publish/figures/active_lightstep-001.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at actual update 1; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,708 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "screen-sh/publish/data/states/lightstep-001.json",
+              "facts": {
+                "Active probes": "3708 = 3572 uniform + 136 adaptive",
+                "Excluded stale adaptive entries": 119,
+                "Uniform tile jitter (pixels)": "6, 12"
+              }
+            },
+            "screen-sh": {
+              "image": "screen-sh/publish/figures/lobes_lightstep-001.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at actual update 1, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.4454, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3708 = 3572 uniform + 136 adaptive",
+                "Excluded stale adaptive entries": 119,
+                "Uniform tile jitter (pixels)": "6, 12",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.4454 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/light/figures/lightstep-001/cards-only.png",
+              "alt": "Captured Sponza cards placement, actual update 1",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 371,
+                "Referenced low-resolution pages": 385,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/light/data/lightstep-001/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/light/data/lightstep-001/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/light/figures/lightstep-001/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/light/figures/lightstep-001/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, actual update 1",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 878,
+                "Allocator high-water / free slots": "925 / 47",
+                "On screen / passing depth test": "769 / 361",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/light/data/lightstep-001/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/light/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/light/figures/lightstep-001/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 389
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 39
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 0
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "lightstep-008",
+          "label": "Actual update 7",
+          "facts": {
+            "Recorded engine frame": "178",
+            "View frame / state index": "474 / 475",
+            "Change": "Sun illuminance 20,000 lux",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "screen-sh/publish/data/states/lightstep-008.json",
+          "layers": {
+            "screen-probes": {
+              "image": "screen-sh/publish/figures/active_lightstep-008.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at actual update 7; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,708 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "screen-sh/publish/data/states/lightstep-008.json",
+              "facts": {
+                "Active probes": "3708 = 3572 uniform + 136 adaptive",
+                "Excluded stale adaptive entries": 119,
+                "Uniform tile jitter (pixels)": "6, 12"
+              }
+            },
+            "screen-sh": {
+              "image": "screen-sh/publish/figures/lobes_lightstep-008.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at actual update 7, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.4454, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3708 = 3572 uniform + 136 adaptive",
+                "Excluded stale adaptive entries": 119,
+                "Uniform tile jitter (pixels)": "6, 12",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.4454 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/light/figures/lightstep-008/cards-only.png",
+              "alt": "Captured Sponza cards placement, actual update 7",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 522,
+                "Referenced low-resolution pages": 626,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/light/data/lightstep-008/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/light/data/lightstep-008/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/light/figures/lightstep-008/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/light/figures/lightstep-008/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, actual update 7",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 878,
+                "Allocator high-water / free slots": "925 / 47",
+                "On screen / passing depth test": "769 / 361",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/light/data/lightstep-008/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/light/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/light/figures/lightstep-008/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 384
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 44
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 0
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "lightstep-032",
+          "label": "Actual update 31",
+          "facts": {
+            "Recorded engine frame": "205",
+            "View frame / state index": "544 / 545",
+            "Change": "Sun illuminance 20,000 lux",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "screen-sh/publish/data/states/lightstep-032.json",
+          "layers": {
+            "screen-probes": {
+              "image": "screen-sh/publish/figures/active_lightstep-032.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at actual update 31; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,686 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "screen-sh/publish/data/states/lightstep-032.json",
+              "facts": {
+                "Active probes": "3686 = 3569 uniform + 117 adaptive",
+                "Excluded stale adaptive entries": 138,
+                "Uniform tile jitter (pixels)": "2, 8"
+              }
+            },
+            "screen-sh": {
+              "image": "screen-sh/publish/figures/lobes_lightstep-032.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at actual update 31, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.4454, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3686 = 3569 uniform + 117 adaptive",
+                "Excluded stale adaptive entries": 138,
+                "Uniform tile jitter (pixels)": "2, 8",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.4454 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/light/figures/lightstep-032/cards-only.png",
+              "alt": "Captured Sponza cards placement, actual update 31",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 522,
+                "Referenced low-resolution pages": 626,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/light/data/lightstep-032/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/light/data/lightstep-032/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/light/figures/lightstep-032/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/light/figures/lightstep-032/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, actual update 31",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 878,
+                "Allocator high-water / free slots": "925 / 47",
+                "On screen / passing depth test": "769 / 361",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/light/data/lightstep-032/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/light/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/light/figures/lightstep-032/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 386
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 42
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 0
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "lightstep-064",
+          "label": "Actual update 63",
+          "facts": {
+            "Recorded engine frame": "240",
+            "View frame / state index": "637 / 638",
+            "Change": "Sun illuminance 20,000 lux",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "screen-sh/publish/data/states/lightstep-064.json",
+          "layers": {
+            "screen-probes": {
+              "image": "screen-sh/publish/figures/active_lightstep-064.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at actual update 63; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,700 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "screen-sh/publish/data/states/lightstep-064.json",
+              "facts": {
+                "Active probes": "3700 = 3568 uniform + 132 adaptive",
+                "Excluded stale adaptive entries": 170,
+                "Uniform tile jitter (pixels)": "12, 6"
+              }
+            },
+            "screen-sh": {
+              "image": "screen-sh/publish/figures/lobes_lightstep-064.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at actual update 63, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.4454, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3700 = 3568 uniform + 132 adaptive",
+                "Excluded stale adaptive entries": 170,
+                "Uniform tile jitter (pixels)": "12, 6",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.4454 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/light/figures/lightstep-064/cards-only.png",
+              "alt": "Captured Sponza cards placement, actual update 63",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 522,
+                "Referenced low-resolution pages": 626,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/light/data/lightstep-064/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/light/data/lightstep-064/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/light/figures/lightstep-064/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/light/figures/lightstep-064/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, actual update 63",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 878,
+                "Allocator high-water / free slots": "925 / 47",
+                "On screen / passing depth test": "769 / 361",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/light/data/lightstep-064/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/light/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/light/figures/lightstep-064/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 378
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 48
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 2
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "camera-buffers",
+      "label": "Camera motion · captured buffers",
+      "states": [
+        {
+          "id": "baseline",
+          "label": "Warm baseline",
+          "facts": {
+            "Recorded engine frame": "127",
+            "View frame / state index": "369 / 370",
+            "Change": "Sun illuminance 80,000 lux",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "motion-screen-sh/publish/data/states/baseline.json",
+          "layers": {
+            "screen-probes": {
+              "image": "motion-screen-sh/publish/figures/active_baseline.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at warm baseline; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,706 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "motion-screen-sh/publish/data/states/baseline.json",
+              "facts": {
+                "Active probes": "3706 = 3569 uniform + 137 adaptive",
+                "Excluded stale adaptive entries": 103,
+                "Uniform tile jitter (pixels)": "4, 4"
+              }
+            },
+            "screen-sh": {
+              "image": "motion-screen-sh/publish/figures/lobes_baseline.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at warm baseline, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.5239, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3706 = 3569 uniform + 137 adaptive",
+                "Excluded stale adaptive entries": 103,
+                "Uniform tile jitter (pixels)": "4, 4",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.5239 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "motion-screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/motion/figures/baseline/cards-only.png",
+              "alt": "Captured Sponza cards placement, warm baseline",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 386,
+                "Referenced low-resolution pages": 400,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/motion/data/baseline/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/motion/data/baseline/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/motion/figures/baseline/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/motion/figures/baseline/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, warm baseline",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 878,
+                "Allocator high-water / free slots": "925 / 47",
+                "On screen / passing depth test": "769 / 361",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/motion/data/baseline/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/motion/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/motion/figures/baseline/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 420
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 8
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 0
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "camera-001",
+          "label": "Actual update 1",
+          "facts": {
+            "Recorded engine frame": "133",
+            "View frame / state index": "377 / 378",
+            "Change": "Camera translated 150 cm",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, -150.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "motion-screen-sh/publish/data/states/camera-001.json",
+          "layers": {
+            "screen-probes": {
+              "image": "motion-screen-sh/publish/figures/active_camera-001.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at actual update 1; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,682 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "motion-screen-sh/publish/data/states/camera-001.json",
+              "facts": {
+                "Active probes": "3682 = 3567 uniform + 115 adaptive",
+                "Excluded stale adaptive entries": 125,
+                "Uniform tile jitter (pixels)": "4, 4"
+              }
+            },
+            "screen-sh": {
+              "image": "motion-screen-sh/publish/figures/lobes_camera-001.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at actual update 1, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.5239, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3682 = 3567 uniform + 115 adaptive",
+                "Excluded stale adaptive entries": 125,
+                "Uniform tile jitter (pixels)": "4, 4",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.5239 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "motion-screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/motion/figures/camera-001/cards-only.png",
+              "alt": "Captured Sponza cards placement, actual update 1",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 395,
+                "Referenced low-resolution pages": 408,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/motion/data/camera-001/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/motion/data/camera-001/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/motion/figures/camera-001/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/motion/figures/camera-001/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, actual update 1",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 968,
+                "Allocator high-water / free slots": "972 / 4",
+                "On screen / passing depth test": "827 / 316",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/motion/data/camera-001/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/motion/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/motion/figures/camera-001/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 468
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 50
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 0
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "camera-064",
+          "label": "Actual update 63",
+          "facts": {
+            "Recorded engine frame": "198",
+            "View frame / state index": "562 / 563",
+            "Change": "Camera translated 150 cm",
+            "Exposure": "EV100 11; captured pre-exposure 0.00048828125",
+            "Camera world position (cm)": "-850.0, -150.0, 90.0",
+            "Timing": "Discrete captured updates. Playback spacing does not represent elapsed rendering time."
+          },
+          "record": "motion-screen-sh/publish/data/states/camera-064.json",
+          "layers": {
+            "screen-probes": {
+              "image": "motion-screen-sh/publish/figures/active_camera-064.png",
+              "alt": "Active screen probes projected onto the actual Sponza scene at actual update 63; cyan uniform samples and orange adaptive samples.",
+              "caption": "3,682 active probes, reconstructed from their captured translated-world positions. The native screenshot and the captured camera provide the scene context. Finite entries outside the active allocation are excluded.",
+              "record": "motion-screen-sh/publish/data/states/camera-064.json",
+              "facts": {
+                "Active probes": "3682 = 3572 uniform + 110 adaptive",
+                "Excluded stale adaptive entries": 130,
+                "Uniform tile jitter (pixels)": "6, 12"
+              }
+            },
+            "screen-sh": {
+              "image": "motion-screen-sh/publish/figures/lobes_camera-064.png",
+              "alt": "Ten three-dimensional diffuse-response lobes reconstructed from captured screen-probe SH at actual update 63, anchored to floor and arcade samples in Sponza.",
+              "caption": "Ten captured samples. Radius = 60 cm × clamp(response luminance / 1.5239, 0, 1); the same scale applies to every observation in this experiment. Magenta outlines expose depth-occluded parts of these function graphs. Green and pink center marks identify floor and arcade samples.",
+              "facts": {
+                "Active probes": "3682 = 3572 uniform + 110 adaptive",
+                "Excluded stale adaptive entries": 130,
+                "Uniform tile jitter (pixels)": "6, 12",
+                "SH data": "27 signed coefficients per active probe: R0…R8, G0…G8, B0…B8",
+                "Evaluated quantity": "View-pre-exposed unit-albedo diffuse response D(n); AO=1",
+                "Display range": "0 to 1.5239 response luminance; negative values clipped only for display",
+                "Correspondence": "Nearest world-position samples with recorded distance and normal compatibility; atlas index is not physical identity"
+              },
+              "record": "motion-screen-sh/publish/data/focused_probes.json"
+            },
+            "cards": {
+              "image": "placements/motion/figures/camera-064/cards-only.png",
+              "alt": "Captured Sponza cards placement, actual update 63",
+              "caption": "Projected bounds of captured cards. Yellow emphasizes a spatially distributed subset; the complete card and page records remain available. Bounds describe a capture domain, not an extra polygonal surface.",
+              "facts": {
+                "Valid cards": 522,
+                "Included / resident cards": 395,
+                "Referenced low-resolution pages": 408,
+                "Highlighted cards": 24,
+                "Visibility rule": "Card-center depth test; this does not clip every outline edge against scene geometry"
+              },
+              "record": "placements/motion/data/camera-064/cards.json",
+              "downloads": [
+                {
+                  "label": "Page mappings",
+                  "path": "placements/motion/data/camera-064/pages.json"
+                },
+                {
+                  "label": "Hidden card bounds",
+                  "path": "placements/motion/figures/camera-064/cards-xray.png"
+                }
+              ]
+            },
+            "world-cache": {
+              "image": "placements/motion/figures/camera-064/worldcache-only.png",
+              "alt": "Captured Sponza world-cache placement, actual update 63",
+              "caption": "Main world-cache probe centers projected into the native scene image. All active cells in this capture belong to the finest clipmap, shown in blue. A point marks a stored sampling location, not a light source.",
+              "facts": {
+                "Active world probes": 847,
+                "Allocator high-water / free slots": "972 / 125",
+                "On screen / passing depth test": "733 / 315",
+                "Probe offset": "Captured sub-cell offsets are zero in these states",
+                "Identity": "Clipmap level + world cell; physical slot is tracked separately"
+              },
+              "record": "placements/motion/data/camera-064/worldcache.json",
+              "downloads": [
+                {
+                  "label": "Temporal correspondence",
+                  "path": "placements/motion/data/sequence.json"
+                },
+                {
+                  "label": "Hidden probes",
+                  "path": "placements/motion/figures/camera-064/worldcache-xray.png"
+                }
+              ],
+              "chart": {
+                "title": "Age since last trace, in captured view-state updates",
+                "maximum": 1000,
+                "unit": "active probes",
+                "values": [
+                  {
+                    "label": "0",
+                    "value": 0
+                  },
+                  {
+                    "label": "1",
+                    "value": 150
+                  },
+                  {
+                    "label": "2",
+                    "value": 150
+                  },
+                  {
+                    "label": "3",
+                    "value": 150
+                  },
+                  {
+                    "label": "4–7",
+                    "value": 389
+                  },
+                  {
+                    "label": "8–15",
+                    "value": 8
+                  },
+                  {
+                    "label": "16–31",
+                    "value": 0
+                  },
+                  {
+                    "label": "32+",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "radiosity-buffers",
+      "label": "Surface radiosity · light and camera changes",
+      "states": [
+        {
+          "id": "baseline",
+          "label": "Warm baseline",
+          "record": "radiosity/publish/data/probes-baseline.json",
+          "facts": {
+            "Recorded engine frame": 124,
+            "View state index": 365,
+            "Change": "80,000 lux; original view",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Surface samples retained": 94787,
+            "Nonzero SH samples": 83428,
+            "Scene-depth visible / occluded samples": "43815 / 25026",
+            "Cache pre-exposure": 0.0625,
+            "Storage": "12 signed half-float coefficients per sample; all decoded arrays in the NPZ record",
+            "Timing": "Separate capture sequence; these observations are not simultaneous with the screen-probe sequence"
+          },
+          "layers": {
+            "radiosity": {
+              "image": "radiosity/publish/figures/placement-baseline.png",
+              "alt": "Actual Sponza radiosity probes reconstructed from card surface depth and normals, warm baseline; plan and elevation show the complete retained point set.",
+              "caption": "Left: samples projected onto the native scene and tested against primary depth. Right, top: XY plan; bottom: XZ elevation. The two orthographic panels use fixed world bounds; the white marker locates the camera. Colors classify the reconstructed surface normal.",
+              "record": "radiosity/publish/data/probes-baseline.json",
+              "downloads": [
+                {
+                  "label": "Complete numerical arrays (NPZ)",
+                  "path": "radiosity/publish/data/probes-baseline.npz"
+                },
+                {
+                  "label": "X-ray placement",
+                  "path": "radiosity/publish/figures/placement-xray-baseline.png"
+                },
+                {
+                  "label": "SH response functions",
+                  "path": "radiosity/publish/figures/sh-lobes-baseline.png"
+                },
+                {
+                  "label": "Figure scales and interpretation",
+                  "path": "radiosity/publish/data/figure-legend.json"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "light-001",
+          "label": "Light change · actual update 1",
+          "record": "radiosity/publish/data/probes-light-001.json",
+          "facts": {
+            "Recorded engine frame": 128,
+            "View state index": 371,
+            "Change": "20,000 lux; original view",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Surface samples retained": 104697,
+            "Nonzero SH samples": 82207,
+            "Scene-depth visible / occluded samples": "11354 / 36390",
+            "Cache pre-exposure": 0.0625,
+            "Storage": "12 signed half-float coefficients per sample; all decoded arrays in the NPZ record",
+            "Timing": "Separate capture sequence; these observations are not simultaneous with the screen-probe sequence"
+          },
+          "layers": {
+            "radiosity": {
+              "image": "radiosity/publish/figures/placement-light-001.png",
+              "alt": "Actual Sponza radiosity probes reconstructed from card surface depth and normals, light change · actual update 1; plan and elevation show the complete retained point set.",
+              "caption": "Left: samples projected onto the native scene and tested against primary depth. Right, top: XY plan; bottom: XZ elevation. The two orthographic panels use fixed world bounds; the white marker locates the camera. Colors classify the reconstructed surface normal.",
+              "record": "radiosity/publish/data/probes-light-001.json",
+              "downloads": [
+                {
+                  "label": "Complete numerical arrays (NPZ)",
+                  "path": "radiosity/publish/data/probes-light-001.npz"
+                },
+                {
+                  "label": "X-ray placement",
+                  "path": "radiosity/publish/figures/placement-xray-light-001.png"
+                },
+                {
+                  "label": "SH response functions",
+                  "path": "radiosity/publish/figures/sh-lobes-light-001.png"
+                },
+                {
+                  "label": "Figure scales and interpretation",
+                  "path": "radiosity/publish/data/figure-legend.json"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "light-064",
+          "label": "Light change · actual update 63",
+          "record": "radiosity/publish/data/probes-light-064.json",
+          "facts": {
+            "Recorded engine frame": 192,
+            "View state index": 557,
+            "Change": "20,000 lux; original view",
+            "Camera world position (cm)": "-850.0, 0.0, 90.0",
+            "Surface samples retained": 94840,
+            "Nonzero SH samples": 83527,
+            "Scene-depth visible / occluded samples": "43983 / 24880",
+            "Cache pre-exposure": 0.0625,
+            "Storage": "12 signed half-float coefficients per sample; all decoded arrays in the NPZ record",
+            "Timing": "Separate capture sequence; these observations are not simultaneous with the screen-probe sequence"
+          },
+          "layers": {
+            "radiosity": {
+              "image": "radiosity/publish/figures/placement-light-064.png",
+              "alt": "Actual Sponza radiosity probes reconstructed from card surface depth and normals, light change · actual update 63; plan and elevation show the complete retained point set.",
+              "caption": "Left: samples projected onto the native scene and tested against primary depth. Right, top: XY plan; bottom: XZ elevation. The two orthographic panels use fixed world bounds; the white marker locates the camera. Colors classify the reconstructed surface normal.",
+              "record": "radiosity/publish/data/probes-light-064.json",
+              "downloads": [
+                {
+                  "label": "Complete numerical arrays (NPZ)",
+                  "path": "radiosity/publish/data/probes-light-064.npz"
+                },
+                {
+                  "label": "X-ray placement",
+                  "path": "radiosity/publish/figures/placement-xray-light-064.png"
+                },
+                {
+                  "label": "SH response functions",
+                  "path": "radiosity/publish/figures/sh-lobes-light-064.png"
+                },
+                {
+                  "label": "Figure scales and interpretation",
+                  "path": "radiosity/publish/data/figure-legend.json"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "camera-001",
+          "label": "Camera change · actual update 1",
+          "record": "radiosity/publish/data/probes-camera-001.json",
+          "facts": {
+            "Recorded engine frame": 262,
+            "View state index": 757,
+            "Change": "80,000 lux restored and warmed; camera translated 150 cm",
+            "Camera world position (cm)": "-850.0, -150.0, 90.0",
+            "Surface samples retained": 123316,
+            "Nonzero SH samples": 107327,
+            "Scene-depth visible / occluded samples": "48261 / 43710",
+            "Cache pre-exposure": 0.0625,
+            "Storage": "12 signed half-float coefficients per sample; all decoded arrays in the NPZ record",
+            "Timing": "Separate capture sequence; these observations are not simultaneous with the screen-probe sequence"
+          },
+          "layers": {
+            "radiosity": {
+              "image": "radiosity/publish/figures/placement-camera-001.png",
+              "alt": "Actual Sponza radiosity probes reconstructed from card surface depth and normals, camera change · actual update 1; plan and elevation show the complete retained point set.",
+              "caption": "Left: samples projected onto the native scene and tested against primary depth. Right, top: XY plan; bottom: XZ elevation. The two orthographic panels use fixed world bounds; the white marker locates the camera. Colors classify the reconstructed surface normal.",
+              "record": "radiosity/publish/data/probes-camera-001.json",
+              "downloads": [
+                {
+                  "label": "Complete numerical arrays (NPZ)",
+                  "path": "radiosity/publish/data/probes-camera-001.npz"
+                },
+                {
+                  "label": "X-ray placement",
+                  "path": "radiosity/publish/figures/placement-xray-camera-001.png"
+                },
+                {
+                  "label": "SH response functions",
+                  "path": "radiosity/publish/figures/sh-lobes-camera-001.png"
+                },
+                {
+                  "label": "Figure scales and interpretation",
+                  "path": "radiosity/publish/data/figure-legend.json"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "camera-064",
+          "label": "Camera change · actual update 63",
+          "record": "radiosity/publish/data/probes-camera-064.json",
+          "facts": {
+            "Recorded engine frame": 326,
+            "View state index": 943,
+            "Change": "80,000 lux; translated view",
+            "Camera world position (cm)": "-850.0, -150.0, 90.0",
+            "Surface samples retained": 104728,
+            "Nonzero SH samples": 93880,
+            "Scene-depth visible / occluded samples": "44032 / 38217",
+            "Cache pre-exposure": 0.0625,
+            "Storage": "12 signed half-float coefficients per sample; all decoded arrays in the NPZ record",
+            "Timing": "Separate capture sequence; these observations are not simultaneous with the screen-probe sequence"
+          },
+          "layers": {
+            "radiosity": {
+              "image": "radiosity/publish/figures/placement-camera-064.png",
+              "alt": "Actual Sponza radiosity probes reconstructed from card surface depth and normals, camera change · actual update 63; plan and elevation show the complete retained point set.",
+              "caption": "Left: samples projected onto the native scene and tested against primary depth. Right, top: XY plan; bottom: XZ elevation. The two orthographic panels use fixed world bounds; the white marker locates the camera. Colors classify the reconstructed surface normal.",
+              "record": "radiosity/publish/data/probes-camera-064.json",
+              "downloads": [
+                {
+                  "label": "Complete numerical arrays (NPZ)",
+                  "path": "radiosity/publish/data/probes-camera-064.npz"
+                },
+                {
+                  "label": "X-ray placement",
+                  "path": "radiosity/publish/figures/placement-xray-camera-064.png"
+                },
+                {
+                  "label": "SH response functions",
+                  "path": "radiosity/publish/figures/sh-lobes-camera-064.png"
+                },
+                {
+                  "label": "Figure scales and interpretation",
+                  "path": "radiosity/publish/data/figure-legend.json"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

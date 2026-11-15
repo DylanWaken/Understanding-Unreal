@@ -1,0 +1,852 @@
+{
+  "schema": "sponza-orientation-v1",
+  "dump": "D:\\UnrealUnderstanding-Sponza\\output\\gpu-dump\\raw\\sponza-20261115-083654",
+  "scene_graph_index": 3,
+  "view_resource_key": "00040000020bef07f840",
+  "view_uniform_content_key": "00040000020bc4c24980",
+  "origin_cm": [
+    -850.0,
+    0.0,
+    90.0
+  ],
+  "view_rect": [
+    0,
+    0,
+    1280,
+    720
+  ],
+  "allocation": [
+    1280,
+    888
+  ],
+  "hfov_deg": 70.00000806489558,
+  "pitch_deg": 13.000000251812217,
+  "yaw_deg": 0.0,
+  "pre_exposure": 0.00048828125,
+  "pre_view_translation_cm": [
+    850.0,
+    0.0,
+    -90.0
+  ],
+  "jitter": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "receivers": {
+    "A": {
+      "label": "directly sunlit stone",
+      "pixel": [
+        500,
+        680
+      ],
+      "sample_center": [
+        500.5,
+        680.5
+      ],
+      "valid": true,
+      "world_cm": [
+        -19.718095315186474,
+        -120.31380534460368,
+        -2.0051770147325243
+      ],
+      "translated_world_cm": [
+        830.2819046848135,
+        -120.31380534460368,
+        -92.00517701473252
+      ],
+      "world_route_check": {
+        "clip_to_translated_world_cm": [
+          -19.718095315186474,
+          -120.31380534460368,
+          -2.0051770147325243
+        ],
+        "sv_position_to_translated_world_cm": [
+          -19.71809667823777,
+          -120.31380534460367,
+          -2.0052018958359525
+        ],
+        "delta_cm": 2.491841119823648e-05
+      },
+      "depth": {
+        "device_z_raw_bits": "0x3c4fd69a",
+        "device_z": 0.012685442343354225,
+        "linear_w_cm": 788.305175297177,
+        "near_plane": 10.0,
+        "reversed_z": true,
+        "invalid_or_sky": false,
+        "inv_device_z_to_world_z_transform": [
+          0.0,
+          0.0,
+          0.10000000149011612,
+          -9.9999998245167e-14
+        ]
+      },
+      "normal": {
+        "kind": "world_space_shading_normal_from_GBufferA",
+        "geometric_normal_used_for_shading": false,
+        "raw_codes_rgb10": [
+          519,
+          467,
+          1021
+        ],
+        "raw_word_hex": "0x7fd74e07",
+        "raw_components": [
+          0.014662756598240456,
+          -0.08699902248289348,
+          0.9960899315738025
+        ],
+        "raw_length": 0.99998948900813,
+        "normalized": [
+          0.014662910719975825,
+          -0.08699993693852333,
+          0.9961004015770252
+        ],
+        "normalized_length": 0.9999999999999999,
+        "per_object_gbuffer_data_2bit": 1,
+        "per_object_interpretation": "opaque; not decoded",
+        "geometric_normal_from_depth": [
+          5.524701767608515e-07,
+          -0.0,
+          0.9999999999998475
+        ],
+        "geometric_vs_shading_angle_deg": 5.061606207768915
+      },
+      "basecolor": {
+        "stored_srgb_bytes_bgra": [
+          74,
+          87,
+          95,
+          255
+        ],
+        "shader_rgb_memory_indices": [
+          2,
+          1,
+          0
+        ],
+        "shader_rgb_srgb_codes": [
+          95,
+          87,
+          74
+        ],
+        "linear_rgb": [
+          0.11443537382697373,
+          0.0953074666309647,
+          0.06847816984440017
+        ],
+        "alpha_code": 255,
+        "alpha_semantic": "GBufferAO (r.AllowStaticLighting=0, r.GBufferDiffuseSampleOcclusion=0)",
+        "gbuffer_ao": 1.0,
+        "formula": "sRGB_EOTF(mem[2]/255), sRGB_EOTF(mem[1]/255), sRGB_EOTF(mem[0]/255)"
+      },
+      "material": {
+        "gbuffer_b_bytes_bgra": [
+          240,
+          255,
+          0,
+          177
+        ],
+        "roughness_code": 240,
+        "roughness": 0.9411764705882353,
+        "specular_code": 255,
+        "specular": 1.0,
+        "metallic_code": 0,
+        "metallic": 0.0,
+        "packed_id_code": 177,
+        "shading_model_id": 1,
+        "shading_model_name": "DefaultLit",
+        "selective_output_mask": 176,
+        "gbuffer_d_bytes_bgra": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gbuffer_d_custom_data": "all zero at this receiver",
+        "gbuffer_f_bytes_bgra": [
+          129,
+          127,
+          0,
+          127
+        ],
+        "gbuffer_f_used": false
+      },
+      "direct": {
+        "scene_color_pre_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_post_half_rgba": [
+          1.9306640625,
+          1.3037109375,
+          0.7900390625,
+          0.0
+        ],
+        "scene_color_pre_half_bits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scene_color_post_half_bits": [
+          16313,
+          15671,
+          14930,
+          0
+        ],
+        "direct_rgb_pre_exposure": [
+          1.9306640625,
+          1.3037109375,
+          0.7900390625
+        ],
+        "pre_is_zero": true,
+        "definition": "post SceneColor(pass 842) - pre SceneColor(pass 840), RGB; actual captured additive sun pass, not an analytic BRDF or AS/SMRT intermediate"
+      },
+      "shadow": {
+        "memory_bgra": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "shader_r_code": 255,
+        "shader_g_code": 255,
+        "shader_b_code": 255,
+        "shader_a_code": 255,
+        "shader_r_encoded_sqrt": 1.0,
+        "shader_g_encoded_sqrt": 1.0,
+        "shadow_factor_r_linear": 1.0,
+        "shadow_factor_g_linear": 1.0,
+        "r_equals_g": true,
+        "ba_are_clear_white": true,
+        "source": "ShadowMaskTexture, VSM composite pass 841, consumed by sun pass 842 as PS.LightAttenuationTexture",
+        "formula": "shadow_factor_r_linear = (shader_r_code/255)^2; consumed attenuation is sqrt-encoded in the 8-bit target",
+        "interpretation": "R (and matching G) is the VSM receiver attenuation for the single sun light; B/A remain the white clear value"
+      },
+      "addresses": {
+        "gbuffer_a": {
+          "file_offset": 3483600,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_b": {
+          "file_offset": 3483600,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_c": {
+          "file_offset": 3483600,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_d": {
+          "file_offset": 3483600,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_f": {
+          "file_offset": 3483600,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "scene_depth": {
+          "file_offset": 3483600,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "scene_color_pre": {
+          "file_offset": 6967200,
+          "row_offset": 6963200,
+          "texel_bytes": 8
+        },
+        "scene_color_post": {
+          "file_offset": 6967200,
+          "row_offset": 6963200,
+          "texel_bytes": 8
+        },
+        "vsm_shadow_mask": {
+          "file_offset": 3483600,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        }
+      },
+      "quantization": {
+        "normal_rgb10_step": 0.0019550342130987292,
+        "unorm8_step": 0.00392156862745098,
+        "basecolor_srgb_code_step": 0.00392156862745098,
+        "depth": "float32 device Z; linearization uses captured InvDeviceZToWorldZTransform",
+        "scene_color": "FP16 stored; exact half values and half bit patterns reported",
+        "shadow": "8-bit sqrt-encoded code; decoded factor has 1/255 code quantization"
+      },
+      "substituted": false,
+      "substituted_from": null,
+      "authored_roughness": null,
+      "neighbor_check": {
+        "valid_3x3": true,
+        "max_normal_angle_deg": 8.971577489892852,
+        "depth_span": 0.0002317344769835472,
+        "roughness_span": 0.08627450980392148,
+        "metallic_span": 0.0,
+        "clean": true
+      },
+      "center_clean": true,
+      "notes": []
+    },
+    "B": {
+      "label": "shaded stone",
+      "pixel": [
+        720,
+        680
+      ],
+      "sample_center": [
+        720.5,
+        680.5
+      ],
+      "valid": true,
+      "world_cm": [
+        -19.719863050185495,
+        69.428248814072,
+        -2.0049811285273904
+      ],
+      "translated_world_cm": [
+        830.2801369498145,
+        69.428248814072,
+        -92.00498112852739
+      ],
+      "world_route_check": {
+        "clip_to_translated_world_cm": [
+          -19.719863050185495,
+          69.428248814072,
+          -2.0049811285273904
+        ],
+        "sv_position_to_translated_world_cm": [
+          -19.71986441323395,
+          69.42824881407203,
+          -2.0050060095778406
+        ],
+        "delta_cm": 2.491835814402033e-05
+      },
+      "depth": {
+        "device_z_raw_bits": "0x3c4fd6b7",
+        "device_z": 0.012685469351708889,
+        "linear_w_cm": 788.3034969339122,
+        "near_plane": 10.0,
+        "reversed_z": true,
+        "invalid_or_sky": false,
+        "inv_device_z_to_world_z_transform": [
+          0.0,
+          0.0,
+          0.10000000149011612,
+          -9.9999998245167e-14
+        ]
+      },
+      "normal": {
+        "kind": "world_space_shading_normal_from_GBufferA",
+        "geometric_normal_used_for_shading": false,
+        "raw_codes_rgb10": [
+          514,
+          515,
+          1023
+        ],
+        "raw_word_hex": "0x7ff80e02",
+        "raw_components": [
+          0.004887585532746819,
+          0.006842619745845546,
+          1.0
+        ],
+        "raw_length": 1.0000353543436982,
+        "normalized": [
+          0.004887412741476962,
+          0.0068423778380677465,
+          0.9999646469061872
+        ],
+        "normalized_length": 1.0,
+        "per_object_gbuffer_data_2bit": 1,
+        "per_object_interpretation": "opaque; not decoded",
+        "geometric_normal_from_depth": [
+          -5.953803586918502e-07,
+          0.0,
+          0.9999999999998227
+        ],
+        "geometric_vs_shading_angle_deg": 0.48180410527840584
+      },
+      "basecolor": {
+        "stored_srgb_bytes_bgra": [
+          106,
+          124,
+          135,
+          255
+        ],
+        "shader_rgb_memory_indices": [
+          2,
+          1,
+          0
+        ],
+        "shader_rgb_srgb_codes": [
+          135,
+          124,
+          106
+        ],
+        "linear_rgb": [
+          0.24228112246555486,
+          0.20155625379439707,
+          0.14412847085805777
+        ],
+        "alpha_code": 255,
+        "alpha_semantic": "GBufferAO (r.AllowStaticLighting=0, r.GBufferDiffuseSampleOcclusion=0)",
+        "gbuffer_ao": 1.0,
+        "formula": "sRGB_EOTF(mem[2]/255), sRGB_EOTF(mem[1]/255), sRGB_EOTF(mem[0]/255)"
+      },
+      "material": {
+        "gbuffer_b_bytes_bgra": [
+          228,
+          255,
+          0,
+          177
+        ],
+        "roughness_code": 228,
+        "roughness": 0.8941176470588236,
+        "specular_code": 255,
+        "specular": 1.0,
+        "metallic_code": 0,
+        "metallic": 0.0,
+        "packed_id_code": 177,
+        "shading_model_id": 1,
+        "shading_model_name": "DefaultLit",
+        "selective_output_mask": 176,
+        "gbuffer_d_bytes_bgra": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gbuffer_d_custom_data": "all zero at this receiver",
+        "gbuffer_f_bytes_bgra": [
+          128,
+          127,
+          0,
+          127
+        ],
+        "gbuffer_f_used": false
+      },
+      "direct": {
+        "scene_color_pre_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_post_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_pre_half_bits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scene_color_post_half_bits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "direct_rgb_pre_exposure": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pre_is_zero": true,
+        "definition": "post SceneColor(pass 842) - pre SceneColor(pass 840), RGB; actual captured additive sun pass, not an analytic BRDF or AS/SMRT intermediate"
+      },
+      "shadow": {
+        "memory_bgra": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "shader_r_code": 0,
+        "shader_g_code": 0,
+        "shader_b_code": 255,
+        "shader_a_code": 255,
+        "shader_r_encoded_sqrt": 0.0,
+        "shader_g_encoded_sqrt": 0.0,
+        "shadow_factor_r_linear": 0.0,
+        "shadow_factor_g_linear": 0.0,
+        "r_equals_g": true,
+        "ba_are_clear_white": true,
+        "source": "ShadowMaskTexture, VSM composite pass 841, consumed by sun pass 842 as PS.LightAttenuationTexture",
+        "formula": "shadow_factor_r_linear = (shader_r_code/255)^2; consumed attenuation is sqrt-encoded in the 8-bit target",
+        "interpretation": "R (and matching G) is the VSM receiver attenuation for the single sun light; B/A remain the white clear value"
+      },
+      "addresses": {
+        "gbuffer_a": {
+          "file_offset": 3484480,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_b": {
+          "file_offset": 3484480,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_c": {
+          "file_offset": 3484480,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_d": {
+          "file_offset": 3484480,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "gbuffer_f": {
+          "file_offset": 3484480,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "scene_depth": {
+          "file_offset": 3484480,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        },
+        "scene_color_pre": {
+          "file_offset": 6968960,
+          "row_offset": 6963200,
+          "texel_bytes": 8
+        },
+        "scene_color_post": {
+          "file_offset": 6968960,
+          "row_offset": 6963200,
+          "texel_bytes": 8
+        },
+        "vsm_shadow_mask": {
+          "file_offset": 3484480,
+          "row_offset": 3481600,
+          "texel_bytes": 4
+        }
+      },
+      "quantization": {
+        "normal_rgb10_step": 0.0019550342130987292,
+        "unorm8_step": 0.00392156862745098,
+        "basecolor_srgb_code_step": 0.00392156862745098,
+        "depth": "float32 device Z; linearization uses captured InvDeviceZToWorldZTransform",
+        "scene_color": "FP16 stored; exact half values and half bit patterns reported",
+        "shadow": "8-bit sqrt-encoded code; decoded factor has 1/255 code quantization"
+      },
+      "substituted": false,
+      "substituted_from": null,
+      "authored_roughness": null,
+      "neighbor_check": {
+        "valid_3x3": true,
+        "max_normal_angle_deg": 0.7513841794505539,
+        "depth_span": 0.0002317335456609726,
+        "roughness_span": 0.01176470588235301,
+        "metallic_span": 0.0,
+        "clean": true
+      },
+      "center_clean": true,
+      "notes": []
+    },
+    "C": {
+      "label": "polished gold sphere",
+      "pixel": [
+        626,
+        587
+      ],
+      "sample_center": [
+        626.5,
+        587.5
+      ],
+      "valid": true,
+      "world_cm": [
+        828.4255183475354,
+        -24.05987613323031,
+        61.37652012095346
+      ],
+      "translated_world_cm": [
+        1678.4255183475354,
+        -24.05987613323031,
+        -28.623479879046545
+      ],
+      "world_route_check": {
+        "clip_to_translated_world_cm": [
+          828.4255183475354,
+          -24.05987613323031,
+          61.37652012095346
+        ],
+        "sv_position_to_translated_world_cm": [
+          828.4255142571726,
+          -24.059876133230283,
+          61.37646909808765
+        ],
+        "delta_cm": 5.1186559795979476e-05
+      },
+      "depth": {
+        "device_z_raw_bits": "0x3bc9286f",
+        "device_z": 0.006138853263109922,
+        "linear_w_cm": 1628.968704864181,
+        "near_plane": 10.0,
+        "reversed_z": true,
+        "invalid_or_sky": false,
+        "inv_device_z_to_world_z_transform": [
+          0.0,
+          0.0,
+          0.10000000149011612,
+          -9.9999998245167e-14
+        ]
+      },
+      "normal": {
+        "kind": "world_space_shading_normal_from_GBufferA",
+        "geometric_normal_used_for_shading": false,
+        "raw_codes_rgb10": [
+          5,
+          578,
+          543
+        ],
+        "raw_word_hex": "0x61f90805",
+        "raw_components": [
+          -0.9902248289345064,
+          0.1300097751710656,
+          0.061583577712609916
+        ],
+        "raw_length": 1.0006199530902273,
+        "normalized": [
+          -0.9896113163408169,
+          0.12992922514642524,
+          0.061545422437780266
+        ],
+        "normalized_length": 0.9999999999999998,
+        "per_object_gbuffer_data_2bit": 1,
+        "per_object_interpretation": "opaque; not decoded",
+        "geometric_normal_from_depth": [
+          -0.9893168290097796,
+          0.12318396412002736,
+          0.07796103399590223
+        ],
+        "geometric_vs_shading_angle_deg": 1.0170054835253892
+      },
+      "basecolor": {
+        "stored_srgb_bytes_bgra": [
+          157,
+          227,
+          255,
+          255
+        ],
+        "shader_rgb_memory_indices": [
+          2,
+          1,
+          0
+        ],
+        "shader_rgb_srgb_codes": [
+          255,
+          227,
+          157
+        ],
+        "linear_rgb": [
+          1.0,
+          0.768151147247507,
+          0.33716361504833037
+        ],
+        "alpha_code": 255,
+        "alpha_semantic": "GBufferAO (r.AllowStaticLighting=0, r.GBufferDiffuseSampleOcclusion=0)",
+        "gbuffer_ao": 1.0,
+        "formula": "sRGB_EOTF(mem[2]/255), sRGB_EOTF(mem[1]/255), sRGB_EOTF(mem[0]/255)"
+      },
+      "material": {
+        "gbuffer_b_bytes_bgra": [
+          20,
+          128,
+          255,
+          161
+        ],
+        "roughness_code": 20,
+        "roughness": 0.0784313725490196,
+        "specular_code": 128,
+        "specular": 0.5019607843137255,
+        "metallic_code": 255,
+        "metallic": 1.0,
+        "packed_id_code": 161,
+        "shading_model_id": 1,
+        "shading_model_name": "DefaultLit",
+        "selective_output_mask": 160,
+        "gbuffer_d_bytes_bgra": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gbuffer_d_custom_data": "all zero at this receiver",
+        "gbuffer_f_bytes_bgra": [
+          127,
+          127,
+          127,
+          127
+        ],
+        "gbuffer_f_used": false
+      },
+      "direct": {
+        "scene_color_pre_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_post_half_rgba": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scene_color_pre_half_bits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scene_color_post_half_bits": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "direct_rgb_pre_exposure": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pre_is_zero": true,
+        "definition": "post SceneColor(pass 842) - pre SceneColor(pass 840), RGB; actual captured additive sun pass, not an analytic BRDF or AS/SMRT intermediate"
+      },
+      "shadow": {
+        "memory_bgra": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "shader_r_code": 0,
+        "shader_g_code": 0,
+        "shader_b_code": 255,
+        "shader_a_code": 255,
+        "shader_r_encoded_sqrt": 0.0,
+        "shader_g_encoded_sqrt": 0.0,
+        "shadow_factor_r_linear": 0.0,
+        "shadow_factor_g_linear": 0.0,
+        "r_equals_g": true,
+        "ba_are_clear_white": true,
+        "source": "ShadowMaskTexture, VSM composite pass 841, consumed by sun pass 842 as PS.LightAttenuationTexture",
+        "formula": "shadow_factor_r_linear = (shader_r_code/255)^2; consumed attenuation is sqrt-encoded in the 8-bit target",
+        "interpretation": "R (and matching G) is the VSM receiver attenuation for the single sun light; B/A remain the white clear value"
+      },
+      "addresses": {
+        "gbuffer_a": {
+          "file_offset": 3007944,
+          "row_offset": 3005440,
+          "texel_bytes": 4
+        },
+        "gbuffer_b": {
+          "file_offset": 3007944,
+          "row_offset": 3005440,
+          "texel_bytes": 4
+        },
+        "gbuffer_c": {
+          "file_offset": 3007944,
+          "row_offset": 3005440,
+          "texel_bytes": 4
+        },
+        "gbuffer_d": {
+          "file_offset": 3007944,
+          "row_offset": 3005440,
+          "texel_bytes": 4
+        },
+        "gbuffer_f": {
+          "file_offset": 3007944,
+          "row_offset": 3005440,
+          "texel_bytes": 4
+        },
+        "scene_depth": {
+          "file_offset": 3007944,
+          "row_offset": 3005440,
+          "texel_bytes": 4
+        },
+        "scene_color_pre": {
+          "file_offset": 6015888,
+          "row_offset": 6010880,
+          "texel_bytes": 8
+        },
+        "scene_color_post": {
+          "file_offset": 6015888,
+          "row_offset": 6010880,
+          "texel_bytes": 8
+        },
+        "vsm_shadow_mask": {
+          "file_offset": 3007944,
+          "row_offset": 3005440,
+          "texel_bytes": 4
+        }
+      },
+      "quantization": {
+        "normal_rgb10_step": 0.0019550342130987292,
+        "unorm8_step": 0.00392156862745098,
+        "basecolor_srgb_code_step": 0.00392156862745098,
+        "depth": "float32 device Z; linearization uses captured InvDeviceZToWorldZTransform",
+        "scene_color": "FP16 stored; exact half values and half bit patterns reported",
+        "shadow": "8-bit sqrt-encoded code; decoded factor has 1/255 code quantization"
+      },
+      "substituted": false,
+      "substituted_from": null,
+      "authored_roughness": {
+        "nominal": 0.08,
+        "decoded_code": 20,
+        "decoded_value": 0.0784313725490196,
+        "note": "authored 0.08 quantizes to code 20/255; the reported actual is 20/255, not the nominal value"
+      },
+      "neighbor_check": {
+        "valid_3x3": true,
+        "max_normal_angle_deg": 6.371668872768326,
+        "depth_span": 5.5623240768909454e-06,
+        "roughness_span": 0.0,
+        "metallic_span": 0.0,
+        "clean": true
+      },
+      "center_clean": true,
+      "notes": []
+    }
+  },
+  "selection": {
+    "requested": {
+      "A": {
+        "pixel": [
+          500,
+          680
+        ],
+        "label": "directly sunlit stone"
+      },
+      "B": {
+        "pixel": [
+          720,
+          680
+        ],
+        "label": "shaded stone"
+      },
+      "C": {
+        "pixel": [
+          626,
+          587
+        ],
+        "label": "polished gold sphere"
+      }
+    },
+    "substitution_performed": false,
+    "reason": "all three named receivers are valid, finite, DefaultLit, and clean in the 3x3 normal/depth/material check; C is material-valid but sun-occluded, so no receiver was moved",
+    "label_basis": "labels come from the capture plan; the decoded GBuffer values are reported independently"
+  }
+}

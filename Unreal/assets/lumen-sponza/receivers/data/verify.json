@@ -1,0 +1,142 @@
+{
+  "schema": "sponza-receiver-verify-v1",
+  "ok": true,
+  "checks": [
+    {
+      "name": "view_identity",
+      "ok": true,
+      "detail": "origin=[-850.0, 0.0, 90.0] rect=[0, 0, 1280, 720] hfov=70.00000806489558 pitch=13.000000251812217"
+    },
+    {
+      "name": "offset_192_not_used",
+      "ok": true,
+      "detail": "packed offset 192 is TranslatedWorldToClip; packed/uuniform ViewToClip at 256/448 match"
+    },
+    {
+      "name": "gbuffer_depth_versions_identical",
+      "ok": true,
+      "detail": "producer and consumer payload SHA-256 equal for all receiver textures"
+    },
+    {
+      "name": "receivers_present",
+      "ok": true,
+      "detail": "A/B/C present"
+    },
+    {
+      "name": "receivers_finite_and_valid",
+      "ok": true,
+      "detail": "world/normal/basecolor/depth finite and valid for A/B/C"
+    },
+    {
+      "name": "c_roughness_actual_20_of_255",
+      "ok": true,
+      "detail": "C actual roughness is code 20/255, not the nominal 0.08"
+    },
+    {
+      "name": "shadow_rg_and_ba",
+      "ok": true,
+      "detail": "R==G and B/A clear white on A/B/C"
+    },
+    {
+      "name": "direct_pre_zero",
+      "ok": true,
+      "detail": "pre SceneColor RGB is zero on A/B/C"
+    },
+    {
+      "name": "figure:basecolor",
+      "ok": true,
+      "detail": "1280x720 bytes=2124876 sha256=75b8a233be1deb7a nonempty=913871"
+    },
+    {
+      "name": "figure_chunks:basecolor",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "figure:worldnormal",
+      "ok": true,
+      "detail": "1280x720 bytes=1927295 sha256=7e423db9a8bcf2a9 nonempty=913871"
+    },
+    {
+      "name": "figure_chunks:worldnormal",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "figure:roughness",
+      "ok": true,
+      "detail": "1280x720 bytes=867463 sha256=bb158c265dceba1a nonempty=913871"
+    },
+    {
+      "name": "figure_chunks:roughness",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "figure:metallic",
+      "ok": true,
+      "detail": "1280x720 bytes=279641 sha256=0123458bfac84bfd nonempty=913871"
+    },
+    {
+      "name": "figure_chunks:metallic",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "figure:depth_log",
+      "ok": true,
+      "detail": "1280x720 bytes=101708 sha256=e317c211bc6c802e nonempty=913871"
+    },
+    {
+      "name": "figure_chunks:depth_log",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "figure:depth_validity",
+      "ok": true,
+      "detail": "1280x720 bytes=4777 sha256=4388dbf34eb2c0ee nonempty=913871"
+    },
+    {
+      "name": "figure_chunks:depth_validity",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "figure:direct_rgb",
+      "ok": true,
+      "detail": "1280x720 bytes=471714 sha256=75f371ca61059c88 nonempty=921600"
+    },
+    {
+      "name": "figure_chunks:direct_rgb",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "figure:vsm_shadow",
+      "ok": true,
+      "detail": "1280x720 bytes=112005 sha256=a28324065aab5568 nonempty=913871"
+    },
+    {
+      "name": "figure_chunks:vsm_shadow",
+      "ok": true,
+      "detail": "PNG chunks ['IHDR', 'IDAT', 'IEND']"
+    },
+    {
+      "name": "orientation_matches_receivers",
+      "ok": true,
+      "detail": "orientation.json carries the exact A/B/C pixel coordinates"
+    },
+    {
+      "name": "figure_manifest_checks",
+      "ok": true,
+      "detail": "manifest checks: {'eight_full_frame_figures': True, 'all_dimensions_1280x720': True, 'all_source_finite': True, 'all_images_nonempty': True, 'no_raster_text_or_overlays': True, 'primary_view_only_no_atlas': True, 'valid_geometry_plus_sky_equals_total': True, 'shadow_r_equals_g_all_valid': True, 'shadow_ba_clear_all_valid': True, 'scene_color_pre_zero_on_geometry': True, 'basecolor_roundtrip_within_one_code': True, 'normal_lengths_near_one': True, 'depth_values_positive': True, 'shadow_factors_unit_range': True, 'basecolor_linear_unit_range': True, 'roughness_metallic_unit_range': True}"
+    },
+    {
+      "name": "report_exists",
+      "ok": true,
+      "detail": "report.md present and nonempty"
+    }
+  ],
+  "figure_count": 8
+}

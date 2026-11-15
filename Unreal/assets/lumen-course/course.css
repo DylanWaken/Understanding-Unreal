@@ -1,0 +1,67 @@
+/* Reading treatment for the self-authored forward-design Lumen course. */
+.course-opening { font-size: 1.2em; line-height: 1.7; }
+.prose .teaching-figure { margin: 2.1rem 0; }
+.prose .teaching-figure img { width: 100%; height: auto; background: #101b2d; border-radius: 10px; }
+.prose .teaching-figure .figure-scroll { background: transparent; border-radius: 10px; }
+.prose .teaching-figure figcaption { max-width: none; padding: 0; }
+.worked-example { border-left: 3px solid #309879; padding: .2rem 1.3rem; margin: 1.5rem 0; background: color-mix(in srgb, #6ce1b5 8%, var(--paper, white)); }
+.worked-example p { margin: .8rem 0; }
+.implementation-detail { margin: 1.5rem 0; border: 1px solid var(--rule, #ccd4dd); border-radius: 6px; padding: .9rem 1.1rem; }
+.implementation-detail summary { cursor: pointer; font-weight: 600; }
+.implementation-detail p:last-child { margin-bottom: .2rem; }
+.teaching-demo { background: #101b2d; color: #eef4ff; border-radius: 10px; padding: 1rem; margin: 2rem 0; }
+.teaching-demo svg { width: 100%; height: auto; display: block; }
+.teaching-demo .demo-plot { overflow-x: auto; }
+.teaching-demo .demo-controls { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center; padding: .5rem; }
+.teaching-demo input { accent-color: #6ce1b5; width: min(19rem, 65vw); }
+.teaching-demo output { color: #ffd36f; font-variant-numeric: tabular-nums; }
+.teaching-demo button { background: #24384e; color: #eef4ff; border: 1px solid #65baff; border-radius: 4px; padding: .45rem .7rem; cursor: pointer; }
+.capture-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 1.7rem 0; }
+.capture-trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.teaching-demo select { background: #24384e; color: #eef4ff; border: 1px solid #65baff; padding: .4rem; max-width: 100%; }
+.teaching-demo output { display: block; padding: .5rem; font: .85rem/1.6 system-ui, sans-serif; }
+.teaching-demo .demo-caption { margin: .5rem; color: #cbd7e9; font: .85rem/1.6 system-ui, sans-serif; }
+.teaching-demo :focus-visible { outline: 3px solid #ffd36f; outline-offset: 3px; }
+.capture-pair figure { margin: 0; min-width: 0; }
+.capture-pair img { width: 100%; height: auto; }
+.capture-pair figcaption { padding: 0; font-size: .8rem; }
+.capture-crop { position: relative; overflow: hidden; aspect-ratio: var(--crop-w) / var(--crop-h); background: #101b2d; }
+.annotated-capture { position: relative; }
+.annotated-capture img { display: block; width: 100%; }
+.scene-marker { position: absolute; transform: translate(-50%, -50%); display: grid; place-items: center; width: 1.65rem; height: 1.65rem; border: 2px solid #fff; border-radius: 50%; background: #101b2de8; color: #fff; font: 700 .9rem/1 system-ui, sans-serif; box-shadow: 0 0 0 1px #101b2d; }
+.prose .capture-crop img { position: absolute; max-width: none; width: calc(100% * 1280 / var(--crop-w)); height: auto; left: calc(-100% * var(--crop-x) / var(--crop-w)); top: calc(-100% * var(--crop-y) / var(--crop-h)); }
+.capture-facts { font-size: .84em; color: var(--muted, #647078); }
+.vsm-depth-key { max-width: 36rem; margin: .8rem auto 1.7rem; font: .82rem/1.5 system-ui, sans-serif; }
+.vsm-depth-gradient { height: 1.1rem; border: 1px solid #778897; background: linear-gradient(to right, rgb(10,12,40), rgb(25,60,140) 25%, rgb(20,150,150) 50%, rgb(220,180,60) 75%, rgb(255,255,235)); }
+.vsm-depth-ticks { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+.prose .vsm-depth-key p { margin: .3rem 0; font: inherit; text-align: center; }
+.capture-panel-labels { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; padding: .45rem .2rem; text-align: center; font: .78rem/1.4 system-ui, sans-serif; }
+.capture-panel-labels.single-panel { grid-template-columns: 1fr; }
+.capture-one-two { grid-template-columns: 1fr 2fr; }
+.scene-observations { margin: 1.8rem 0; border: 1px solid var(--rule, #ccd4dd); border-radius: 8px; overflow: hidden; }
+.scene-observations figure { margin: 0; }
+.scene-observations img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; background: #101b2d; }
+.scene-observations[data-layer="radiosity"] img { aspect-ratio: 8/3; }
+.observation-chart { margin: .9rem; font: .8rem/1.5 system-ui, sans-serif; }
+.observation-chart p { margin: 0 0 .5rem; font: inherit; }
+.observation-chart label { margin: .35rem 0; }
+.scene-observations .observation-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; padding: .8rem; font: .85rem/1.5 system-ui, sans-serif; }
+.observation-controls label { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.observation-controls button, .observation-controls select { font: inherit; padding: .4rem .6rem; border: 1px solid #778897; border-radius: 4px; background: var(--paper, white); color: inherit; }
+.observation-controls button { cursor: pointer; }
+.observation-controls button:disabled { opacity: .5; cursor: default; }
+.observation-controls input { accent-color: #248466; max-width: 45vw; }
+.scene-observations :focus-visible { outline: 3px solid #309879; outline-offset: 3px; }
+.scene-observations output, .scene-observations .observation-legend, .scene-observations .observation-caption, .scene-observations .observation-record { display: block; margin: .65rem .9rem; padding: 0; font: .85rem/1.65 system-ui, sans-serif; }
+.scene-observations .implementation-detail { margin: .8rem; }
+.observation-facts { display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 2fr); gap: .4rem 1rem; font: .8rem/1.6 system-ui, sans-serif; }
+.observation-facts dt { font-weight: 600; }
+.observation-facts dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 720px) {
+  .prose .teaching-figure .figure-scroll img { min-width: 760px; }
+  .teaching-demo .demo-plot svg { min-width: 700px; }
+  .teaching-demo .demo-controls::after { content: "Scroll the diagram sideways to compare both sides."; flex-basis: 100%; color: #cbd7e9; font: .8rem/1.5 system-ui, sans-serif; }
+  .capture-pair { grid-template-columns: 1fr; }
+  .worked-example { padding-right: .6rem; }
+}
+@media print { .implementation-detail > * { display: block; } .teaching-demo .demo-controls { display: none; } }

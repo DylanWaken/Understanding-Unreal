@@ -1,0 +1,1136 @@
+[
+  {
+    "file": "figures/scene_clean.png",
+    "width": 1280,
+    "height": 720,
+    "kind": "captured_reference",
+    "source": {
+      "file": "Base/Screenshot.png",
+      "sha256": "faa77025dcfd82b4982a28a2a155205ae6347fc03989923b6dc2d9423faaa6eb",
+      "format": "PNG RGBA captured after tonemap/FXAA"
+    },
+    "mapping": "captured display-sRGB bytes, unchanged",
+    "native_units": "sRGB 8-bit display",
+    "native_stats": {
+      "name": "screenshot_srgb",
+      "unit": "code 0..255",
+      "count": 2764800,
+      "finite": 2764800,
+      "channels": [
+        {
+          "min": 0.0,
+          "max": 255.0,
+          "mean": 73.5772677951389,
+          "nonzero": 908764
+        },
+        {
+          "min": 0.0,
+          "max": 255.0,
+          "mean": 71.66517252604167,
+          "nonzero": 905281
+        },
+        {
+          "min": 0.0,
+          "max": 255.0,
+          "mean": 68.84678602430556,
+          "nonzero": 895552
+        }
+      ]
+    },
+    "finite": 2764800,
+    "total": 2764800,
+    "nonempty": 2709597,
+    "native_npz": null,
+    "recoverable_native": true,
+    "notes": "clean 1280x720 game-view frame; no UI or embedded text"
+  },
+  {
+    "file": "figures/screenprobe_placement_overlay.png",
+    "width": 1280,
+    "height": 720,
+    "kind": "display_overlay",
+    "source": {
+      "placement_probes": "data/screenprobes-placement.json",
+      "screenshot": "Base/Screenshot.png"
+    },
+    "mapping": "underlay = captured sRGB; dots at projected probe pixel, colour = fixed depth ramp navy->blue->green->amber->white over 0.05..10 m probe view depth; white rings = covering probe, red dot = receiver pixel",
+    "native_units": "probe depth cm; world cm",
+    "native_stats": {
+      "probe_depth_cm": {
+        "name": "probe_depth_cm",
+        "unit": "cm",
+        "count": 3686,
+        "finite": 3686,
+        "min": 230.05279541015625,
+        "max": 1972.8798828125,
+        "mean": 711.8230896368664,
+        "nonzero": 3686
+      },
+      "probe_world_cm": {
+        "name": "probe_world_cm",
+        "unit": "cm",
+        "count": 20160,
+        "finite": 20160,
+        "channels": [
+          {
+            "min": -644.3224334716797,
+            "max": 1051.930908203125,
+            "mean": -85.84129383677528,
+            "nonzero": 3686
+          },
+          {
+            "min": -345.8845520019531,
+            "max": 226.08676147460938,
+            "mean": -13.262074211488168,
+            "nonzero": 3686
+          },
+          {
+            "min": -2.0052566528320312,
+            "max": 1035.9039916992188,
+            "mean": 137.38113973143376,
+            "nonzero": 3686
+          }
+        ]
+      }
+    },
+    "finite": 20160,
+    "total": 20160,
+    "nonempty": 3686,
+    "native_npz": "data/figure-native/screenprobe_placement_overlay.npz",
+    "recoverable_native": true,
+    "notes": "plots only allocator-active probes: 3686 = 3569 finite uniform cells + 117 captured adaptive probes; 3809 finite-storage cells exist but 123 adaptive values beyond NumAdaptiveScreenProbes=117 are stale and are not plotted"
+  },
+  {
+    "file": "figures/screenprobe_rays_A.png",
+    "width": 1280,
+    "height": 720,
+    "kind": "display_overlay",
+    "source": {
+      "probe": "data/screenprobe-A.json",
+      "rayinfo": "Lumen.ScreenProbeGather.RayInfosForTracing v00040000020ba1b70010",
+      "trace_radiance": "Lumen.ScreenProbeGather.TraceRadiance v00040000020c1328ca80",
+      "trace_hit": "Lumen.ScreenProbeGather.TraceHit v00040000020c1328ca80"
+    },
+    "mapping": "underlay captured sRGB; 64 segments from the probe pixel to the projected captured hit point (misses: 8 m along the reconstructed direction); colour derives from the structured trace-slot radiance_trace_native (display = 60 + 195*sRGB_OETF(L/(1+L)) for line legibility, L native pre-exposed); filtered ScreenProbeRadiance at the same integer slot is NOT used because the regular reconstructed field is a different angular layout",
+    "native_units": "structured trace radiance pre-exposed; distance cm",
+    "native_stats": {
+      "ray_trace_radiance": {
+        "name": "ray_trace_radiance",
+        "unit": "pre-exposed linear",
+        "count": 192,
+        "finite": 192,
+        "channels": [
+          {
+            "min": 0.00146484375,
+            "max": 9.875,
+            "mean": 1.9359207153320312,
+            "nonzero": 64
+          },
+          {
+            "min": 0.001190185546875,
+            "max": 12.625,
+            "mean": 2.4225687980651855,
+            "nonzero": 64
+          },
+          {
+            "min": 0.001495361328125,
+            "max": 19.5,
+            "mean": 3.466423511505127,
+            "nonzero": 64
+          }
+        ]
+      },
+      "ray_hit_distance_cm": {
+        "name": "ray_hit_distance",
+        "unit": "cm",
+        "count": 64,
+        "finite": 27,
+        "min": 1.1358437538146973,
+        "max": 332.9918212890625,
+        "mean": 189.35392215516833,
+        "nonzero": 27
+      }
+    },
+    "finite": 64,
+    "total": 64,
+    "nonempty": 192,
+    "native_npz": "data/figure-native/screenprobe_rays_A.npz",
+    "recoverable_native": true,
+    "notes": "structured trace slot [i,j] and regular reconstructed angular slot [i,j] are different layouts; the npz keeps the trace radiance and the filtered regular-field value at the same integer slot separately; misses store hit distance -1.0 with ray_hit_valid=false. Direction is a declared-query replay from observed RayInfo, observed blue-noise texel and the declared formula; it is not an observed shader-local dispatch"
+  },
+  {
+    "file": "figures/screenprobe_raybins_A.png",
+    "width": 512,
+    "height": 512,
+    "kind": "data_raster",
+    "source": {
+      "probe": "data/screenprobe-A.json"
+    },
+    "mapping": "display RGB = round(255*(0.5+0.5*direction_world)); no gamma; invertible for unit vectors",
+    "native_units": "unit direction",
+    "native_stats": {
+      "direction_world": {
+        "name": "direction_world",
+        "unit": "unit",
+        "count": 192,
+        "finite": 192,
+        "channels": [
+          {
+            "min": -0.9283835103089948,
+            "max": 0.9999398621961793,
+            "mean": 0.09557859914419958,
+            "nonzero": 64
+          },
+          {
+            "min": -0.9815957357050453,
+            "max": 0.9999398621961793,
+            "mean": -0.01456191126675847,
+            "nonzero": 64
+          },
+          {
+            "min": -0.4152249134948097,
+            "max": 0.9999459342560554,
+            "mean": 0.5753520505935217,
+            "nonzero": 64
+          }
+        ]
+      }
+    },
+    "finite": 192,
+    "total": 192,
+    "nonempty": 192,
+    "native_npz": "data/figure-native/screenprobe_raybins_A.npz",
+    "recoverable_native": true,
+    "notes": "8x8 trace-texel grid; each 64x64 cell is one RayInfo cell; direction replay includes the observed blue-noise texel and the probe's tile coordinate"
+  },
+  {
+    "file": "figures/screenprobe_radiance_A.png",
+    "width": 1024,
+    "height": 512,
+    "kind": "data_raster",
+    "source": {
+      "left_panel": "Lumen.ScreenProbeGather.TraceRadiance v00040000020c1328ca80",
+      "right_panel": "Lumen.ScreenProbeGather.ScreenProbeRadiance v0004000002094be0c130"
+    },
+    "mapping": "two separately-labelled 8x8 panels: left = structured trace slot [i,j] of raw TraceRadiance; right = regular reconstructed filtered ScreenProbeRadiance field [i,j]; the same integer [i,j] in the two panels is not the same angular ray; display = sRGB_OETF(L/(1+L)) with L the native pre-exposed linear value; no exposure multiply, no per-image normalization; inverse: first sRGB_EOTF(code/255) -> t, then L=t/(1-t); 1-px grid",
+    "native_units": "pre-exposed linear radiance",
+    "native_stats": {
+      "filtered_regular_field": {
+        "name": "filtered_regular_field_radiance",
+        "unit": "pre-exposed",
+        "count": 192,
+        "finite": 192,
+        "channels": [
+          {
+            "min": 0.0,
+            "max": 7.75,
+            "mean": 0.8295421600341797,
+            "nonzero": 37
+          },
+          {
+            "min": 0.0,
+            "max": 10.25,
+            "mean": 0.8982806205749512,
+            "nonzero": 37
+          },
+          {
+            "min": 0.0,
+            "max": 17.0,
+            "mean": 1.1015934944152832,
+            "nonzero": 37
+          }
+        ]
+      },
+      "trace_structured_slot": {
+        "name": "trace_structured_slot_radiance",
+        "unit": "pre-exposed",
+        "count": 192,
+        "finite": 192,
+        "channels": [
+          {
+            "min": 0.00146484375,
+            "max": 9.875,
+            "mean": 1.9359207153320312,
+            "nonzero": 64
+          },
+          {
+            "min": 0.001190185546875,
+            "max": 12.625,
+            "mean": 2.4225687980651855,
+            "nonzero": 64
+          },
+          {
+            "min": 0.001495361328125,
+            "max": 19.5,
+            "mean": 3.466423511505127,
+            "nonzero": 64
+          }
+        ]
+      }
+    },
+    "finite": 192,
+    "total": 192,
+    "nonempty": 1241088,
+    "native_npz": "data/figure-native/screenprobe_radiance_A.npz",
+    "recoverable_native": true,
+    "notes": "left is the structured trace layout; right is the regular reconstructed filtered field. The filtered radiance is the value consumed by ScreenProbeConvertToIrradiance, but it is not the same ray as the trace slot with the same integer indices; both are retained in the npz under distinct keys."
+  },
+  {
+    "file": "figures/screenprobe_hitdistance_A.png",
+    "width": 512,
+    "height": 512,
+    "kind": "data_raster",
+    "source": {
+      "trace_hit": "Lumen.ScreenProbeGather.TraceHit v00040000020c1328ca80"
+    },
+    "mapping": "display = fixed navy->blue->green->amber->white depth ramp over 0.05..10 m view depth (or ray length for hit distance), t=log10(max(W_m,0.05))/log10(200), W_m=native_cm/100; inverted from the declared native cm values; dark grey = bHit=false (no captured hit)",
+    "native_units": "ray length cm",
+    "native_stats": {
+      "name": "hit_distance",
+      "unit": "cm",
+      "count": 64,
+      "finite": 27,
+      "min": 1.1358437538146973,
+      "max": 332.9918212890625,
+      "mean": 189.35392215516833,
+      "nonzero": 27
+    },
+    "finite": 27,
+    "total": 64,
+    "nonempty": 27,
+    "native_npz": "data/figure-native/screenprobe_hitdistance_A.npz",
+    "recoverable_native": true,
+    "notes": "hit distance is Euclidean length from probe to hit; not view depth; misses are stored as -1.0 in the npz with hit_valid=false"
+  },
+  {
+    "file": "figures/screenprobe_sh_A.png",
+    "width": 512,
+    "height": 512,
+    "kind": "data_raster",
+    "source": {
+      "ambient": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHAmbient v000400000208f37343a0",
+      "directional": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional v000400000208f37343a0",
+      "probe": "data/screenprobe-A.json"
+    },
+    "mapping": "per texel: octahedral UV -> EquiAreaSphericalMapping -> raw EvaluateSHIrradiance(AO=1) R; displayed quantity is the unit-albedo Lambert response 4*R (pre-exposed radiance), NOT physical irradiance; display = sRGB_OETF(clip(4*R/2.8,0,1)) with fixed declared white point 2.8 in Lambert-response units; white dots = the 64 traced RayInfo UV centres; below-tangent hemisphere dimmed 4x",
+    "native_units": "unit-albedo Lambert response 4*R (pre-exposed radiance); physical irradiance is 4*pi*R and is not displayed",
+    "native_stats": {
+      "raw_evaluate_sh_irradiance": {
+        "name": "raw_evaluate_sh_irradiance",
+        "unit": "SH replay R (not physical irradiance)",
+        "count": 786432,
+        "finite": 786432,
+        "channels": [
+          {
+            "min": 0.056756168603897095,
+            "max": 0.3185384273529053,
+            "mean": 0.2059786453927046,
+            "nonzero": 262144
+          },
+          {
+            "min": 0.05239338427782059,
+            "max": 0.4233962893486023,
+            "mean": 0.21809491973421302,
+            "nonzero": 262144
+          },
+          {
+            "min": 0.04879150539636612,
+            "max": 0.6505547761917114,
+            "mean": 0.26309842560525,
+            "nonzero": 262144
+          }
+        ]
+      },
+      "unit_albedo_lambert_response": {
+        "name": "unit_albedo_lambert_response",
+        "unit": "pre-exposed radiance 4*R",
+        "count": 786432,
+        "finite": 786432,
+        "channels": [
+          {
+            "min": 0.22702467441558838,
+            "max": 1.274153709411621,
+            "mean": 0.8239145815708184,
+            "nonzero": 262144
+          },
+          {
+            "min": 0.20957353711128235,
+            "max": 1.6935851573944092,
+            "mean": 0.8723796789368521,
+            "nonzero": 262144
+          },
+          {
+            "min": 0.19516602158546448,
+            "max": 2.6022191047668457,
+            "mean": 1.052393702421,
+            "nonzero": 262144
+          }
+        ]
+      },
+      "physical_irradiance_4pi": {
+        "name": "physical_irradiance_4pi",
+        "unit": "physical irradiance derived from SH replay (4*pi*R)",
+        "count": 786432,
+        "finite": 786432,
+        "channels": [
+          {
+            "min": 0.7132190465927124,
+            "max": 4.002871990203857,
+            "mean": 2.58840399652604,
+            "nonzero": 262144
+          },
+          {
+            "min": 0.6583946943283081,
+            "max": 5.320554733276367,
+            "mean": 2.740661590507898,
+            "nonzero": 262144
+          },
+          {
+            "min": 0.613132119178772,
+            "max": 8.1751127243042,
+            "mean": 3.30619232402978,
+            "nonzero": 262144
+          }
+        ]
+      },
+      "sh_coefficients": {
+        "name": "sh_rgb_9coeff",
+        "unit": "sphere-average SH3 radiance",
+        "count": 27,
+        "finite": 27,
+        "min": -0.06915283203125,
+        "max": 0.296875,
+        "mean": 0.07403239497432003,
+        "nonzero": 27
+      }
+    },
+    "finite": 786432,
+    "total": 786432,
+    "nonempty": 786432,
+    "native_npz": "data/figure-native/screenprobe_sh_A.npz",
+    "recoverable_native": true,
+    "notes": "SH coefficients are the observed 9 per channel; raw EvaluateSHIrradiance is not physical irradiance. The displayed value is the unit-albedo Lambert response 4*R; physical irradiance is 4*pi*R. Evaluating them is a declared replay, not a captured per-pixel shader result"
+  },
+  {
+    "file": "figures/diffuseindirect_current_A.png",
+    "width": 256,
+    "height": 168,
+    "kind": "data_raster",
+    "crop_xywh": [
+      372,
+      552,
+      256,
+      168
+    ],
+    "source": {
+      "diffuse_indirect": "Lumen.ScreenProbeGather.DiffuseIndirect v000400000208f36d6770"
+    },
+    "mapping": "display = sRGB_OETF(L/(1+L)) with L the native pre-exposed linear value; no exposure multiply, no per-image normalization; inverse: first sRGB_EOTF(code/255) -> t, then L=t/(1-t)",
+    "native_units": "pre-exposed linear radiance (before material albedo)",
+    "native_stats": {
+      "name": "diffuse_indirect_current",
+      "unit": "pre-exposed",
+      "count": 129024,
+      "finite": 129024,
+      "channels": [
+        {
+          "min": 0.0,
+          "max": 3.125,
+          "mean": 1.051095867440814,
+          "nonzero": 42993
+        },
+        {
+          "min": 0.0,
+          "max": 2.25,
+          "mean": 1.1006617602847872,
+          "nonzero": 42991
+        },
+        {
+          "min": 0.0,
+          "max": 2.875,
+          "mean": 1.3882486252557664,
+          "nonzero": 42991
+        }
+      ]
+    },
+    "finite": 129024,
+    "total": 129024,
+    "nonempty": 128975,
+    "native_npz": "data/figure-native/diffuseindirect_current_A.npz",
+    "recoverable_native": true,
+    "notes": "same mapping and same units for current and history; no independent normalization"
+  },
+  {
+    "file": "figures/diffuseindirect_history_A.png",
+    "width": 256,
+    "height": 168,
+    "kind": "data_raster",
+    "crop_xywh": [
+      372,
+      552,
+      256,
+      168
+    ],
+    "source": {
+      "diffuse_indirect": "Lumen.ScreenProbeGather.DiffuseIndirect v00000000000000000000"
+    },
+    "mapping": "display = sRGB_OETF(L/(1+L)) with L the native pre-exposed linear value; no exposure multiply, no per-image normalization; inverse: first sRGB_EOTF(code/255) -> t, then L=t/(1-t)",
+    "native_units": "pre-exposed linear radiance (before material albedo)",
+    "native_stats": {
+      "name": "diffuse_indirect_history",
+      "unit": "pre-exposed",
+      "count": 129024,
+      "finite": 129024,
+      "channels": [
+        {
+          "min": 0.025146484375,
+          "max": 2.84375,
+          "mean": 1.0873807952517556,
+          "nonzero": 43008
+        },
+        {
+          "min": 0.01953125,
+          "max": 2.1875,
+          "mean": 1.1239292508079892,
+          "nonzero": 43008
+        },
+        {
+          "min": 0.015380859375,
+          "max": 2.75,
+          "mean": 1.4007951361792428,
+          "nonzero": 43008
+        }
+      ]
+    },
+    "finite": 129024,
+    "total": 129024,
+    "nonempty": 129024,
+    "native_npz": "data/figure-native/diffuseindirect_history_A.npz",
+    "recoverable_native": true,
+    "notes": "same mapping and same units for current and history; no independent normalization"
+  },
+  {
+    "file": "figures/diffuse_frames_A.png",
+    "width": 256,
+    "height": 168,
+    "kind": "data_raster",
+    "crop_xywh": [
+      372,
+      552,
+      256,
+      168
+    ],
+    "source": {
+      "num_frames_accumulated": "Lumen.ScreenProbeGather.HistoryFastUpdateMode_NumFramesAccumulated v00000000000000000000",
+      "max_frames_accumulated": "pass 762 FParameters.MaxFramesAccumulated"
+    },
+    "mapping": "grey = round(255*decoded_frames/10); decoded follows the captured shader: high nibble = fast-update code, low nibble 15 -> MaxFramesAccumulated=10, otherwise low/15*min(10,15); raw byte and both nibbles are retained in the npz",
+    "native_units": "decoded accumulated frame count 0..10 (raw byte 0..255; raw 15 decodes to 10, not 15)",
+    "native_stats": {
+      "name": "decoded_frames_accumulated",
+      "unit": "count",
+      "count": 43008,
+      "finite": 43008,
+      "min": 10.0,
+      "max": 10.0,
+      "mean": 10.0,
+      "nonzero": 43008
+    },
+    "finite": 43008,
+    "total": 43008,
+    "nonempty": 43008,
+    "native_npz": "data/figure-native/diffuse_frames_A.npz",
+    "recoverable_native": true,
+    "notes": "MaxFramesAccumulated=10.0 was read from the captured pass-762 parameter payload at offset 460; raw byte 15 has low nibble 15 and is the sentinel for MaxFramesAccumulated. High history values only prove accepted reprojection"
+  },
+  {
+    "file": "figures/diffuse_history_delta_A.png",
+    "width": 256,
+    "height": 168,
+    "kind": "data_raster",
+    "crop_xywh": [
+      372,
+      552,
+      256,
+      168
+    ],
+    "source": {
+      "current": "DiffuseIndirect v000400000208f36d6770",
+      "history": "DiffuseIndirect v00000000000000000000"
+    },
+    "mapping": "abs(current-history) in native pre-exposed units; fixed declared white point 0.25; display = sRGB_OETF(clip(delta/0.25,0,1)); no per-pixel normalization",
+    "native_units": "pre-exposed linear radiance absolute difference",
+    "native_stats": {
+      "name": "diffuse_history_abs_delta",
+      "unit": "pre-exposed",
+      "count": 129024,
+      "finite": 129024,
+      "channels": [
+        {
+          "min": 0.0,
+          "max": 2.34765625,
+          "mean": 0.1286962301958175,
+          "nonzero": 40201
+        },
+        {
+          "min": 0.0,
+          "max": 1.9296875,
+          "mean": 0.11821664514995757,
+          "nonzero": 40303
+        },
+        {
+          "min": 0.0,
+          "max": 1.865234375,
+          "mean": 0.1422476371129354,
+          "nonzero": 37635
+        }
+      ]
+    },
+    "finite": 129024,
+    "total": 129024,
+    "nonempty": 118139,
+    "native_npz": "data/figure-native/diffuse_history_delta_A.npz",
+    "recoverable_native": true,
+    "notes": "a small delta at the decoded 10 accumulated frames is temporal-stability evidence, not proof of correctness"
+  },
+  {
+    "file": "figures/reflection_C.png",
+    "width": 256,
+    "height": 256,
+    "kind": "data_raster",
+    "crop_xywh": [
+      498,
+      459,
+      256,
+      256
+    ],
+    "source": {
+      "specular_indirect": "Lumen.Reflections.SpecularIndirect v00040000020c948b0010",
+      "validity": "NumFramesAccumulated v00040000020b9dcd86a0 raw > 0"
+    },
+    "mapping": "display = sRGB_OETF(L/(1+L)) with L the native pre-exposed linear value; no exposure multiply, no per-image normalization; inverse: first sRGB_EOTF(code/255) -> t, then L=t/(1-t); invalid/sentinel pixels (raw frames=0 or no resolved depth) are dark grey and are excluded from native statistics",
+    "native_units": "pre-exposed resolved specular signal; frame counts stored as UNORM frames/32",
+    "native_stats": {
+      "valid_pixels": {
+        "name": "reflection_specular_indirect_valid",
+        "unit": "pre-exposed",
+        "count": 8430,
+        "finite": 8430,
+        "channels": [
+          {
+            "min": 0.0,
+            "max": 4.9375,
+            "mean": 0.2596997390013997,
+            "nonzero": 2735
+          },
+          {
+            "min": 0.0,
+            "max": 7.75,
+            "mean": 0.2220091646676386,
+            "nonzero": 2735
+          },
+          {
+            "min": 0.0,
+            "max": 13.0,
+            "mean": 0.20561154525050912,
+            "nonzero": 2733
+          }
+        ]
+      },
+      "all_pixels": {
+        "name": "reflection_specular_indirect_all",
+        "unit": "pre-exposed",
+        "count": 196608,
+        "finite": 196608,
+        "channels": [
+          {
+            "min": 0.0,
+            "max": 130048.0,
+            "mean": 425.0398165204533,
+            "nonzero": 7923
+          },
+          {
+            "min": 0.0,
+            "max": 84992.0,
+            "mean": 655.4427065224736,
+            "nonzero": 7925
+          },
+          {
+            "min": 0.0,
+            "max": 816.0,
+            "mean": 499.0976832342858,
+            "nonzero": 65459
+          }
+        ]
+      },
+      "valid_frames_raw_byte": {
+        "name": "valid_frames_raw_byte",
+        "unit": "UNORM byte",
+        "count": 2810,
+        "finite": 2810,
+        "min": 10.0,
+        "max": 96.0,
+        "mean": 90.78505338078291,
+        "nonzero": 2810
+      },
+      "valid_frames_effective": {
+        "name": "valid_frames_effective",
+        "unit": "frames",
+        "count": 2810,
+        "finite": 2810,
+        "min": 1.2549019607843137,
+        "max": 12.047058823529412,
+        "mean": 11.392634149745307,
+        "nonzero": 2810
+      }
+    },
+    "finite": 2810,
+    "total": 65536,
+    "nonempty": 8203,
+    "native_npz": "data/figure-native/reflection_C.npz",
+    "recoverable_native": true,
+    "notes": "C is the valid polished-gold reflection sample: raw UNORM byte 96 -> 96/255*32 = 12.0470588 effective accumulated frames, not 96; A/B have raw NumFramesAccumulated=0 and are not shown as reflection evidence"
+  },
+  {
+    "file": "figures/reflection_depth_C.png",
+    "width": 256,
+    "height": 256,
+    "kind": "data_raster",
+    "crop_xywh": [
+      498,
+      459,
+      256,
+      256
+    ],
+    "source": {
+      "resolved_depth": "Lumen.Reflections.ResolvedSpecularIndirectDepth v00040000020b9dcd0950"
+    },
+    "mapping": "display = fixed navy->blue->green->amber->white depth ramp over 0.05..10 m view depth (or ray length for hit distance), t=log10(max(W_m,0.05))/log10(200), W_m=native_cm/100; inverted from the declared native cm values; dark grey = invalid (no accepted reflection)",
+    "native_units": "reflection hit distance cm (R16F)",
+    "native_stats": {
+      "name": "reflection_hit_depth_valid",
+      "unit": "cm",
+      "count": 2810,
+      "finite": 2810,
+      "min": 0.11846923828125,
+      "max": 20000.0,
+      "mean": 118.86213865449844,
+      "nonzero": 2810
+    },
+    "finite": 2810,
+    "total": 65536,
+    "nonempty": 2810,
+    "native_npz": "data/figure-native/reflection_depth_C.npz",
+    "recoverable_native": true,
+    "notes": "273.75 cm at C; near-zero values at A/B are invalid sentinels, not depth"
+  },
+  {
+    "file": "figures/reflection_frames_C.png",
+    "width": 256,
+    "height": 256,
+    "kind": "data_raster",
+    "crop_xywh": [
+      498,
+      459,
+      256,
+      256
+    ],
+    "source": {
+      "reflection_frames": "Lumen.Reflections.NumFramesAccumulated v00040000020b9dcd86a0",
+      "packing": "LumenReflectionDenoiserCommon.ush PackNumFramesAccumulated = X/32 into UNORM"
+    },
+    "mapping": "grey = raw UNORM byte (0..255); effective frames = raw/255*32, so grey also equals 255*effective/32; linear and invertible",
+    "native_units": "effective accumulated frame count 0..32 stored as UNORM frames/32; raw byte 0..255",
+    "native_stats": {
+      "frames_raw_byte": {
+        "name": "reflection_frames_raw_byte",
+        "unit": "UNORM byte",
+        "count": 65536,
+        "finite": 65536,
+        "min": 0.0,
+        "max": 96.0,
+        "mean": 3.892608642578125,
+        "nonzero": 2810
+      },
+      "frames_effective": {
+        "name": "reflection_frames_effective",
+        "unit": "frames",
+        "count": 65536,
+        "finite": 65536,
+        "min": 0.0,
+        "max": 12.047058823529412,
+        "mean": 0.48848422181372547,
+        "nonzero": 2810
+      }
+    },
+    "finite": 65536,
+    "total": 65536,
+    "nonempty": 2810,
+    "native_npz": "data/figure-native/reflection_frames_C.npz",
+    "recoverable_native": true,
+    "notes": "C raw byte is 96, so effective accumulated frames = 96/255*32 = 12.0470588; A/B raw bytes are 0. Raw 96 is not 96 frames"
+  },
+  {
+    "file": "figures/basecolor_C.png",
+    "width": 256,
+    "height": 256,
+    "kind": "data_raster",
+    "crop_xywh": [
+      498,
+      459,
+      256,
+      256
+    ],
+    "source": {
+      "gbuffer_c": "GBufferC v00040000020bef06b8f0"
+    },
+    "mapping": "captured sRGB code bytes R,G,B (memory BGRA) written directly; no extra gamma",
+    "native_units": "sRGB code 0..255",
+    "native_stats": {
+      "name": "basecolor_srgb",
+      "unit": "code",
+      "count": 196608,
+      "finite": 196608,
+      "channels": [
+        {
+          "min": 4.0,
+          "max": 255.0,
+          "mean": 123.80946350097656,
+          "nonzero": 65536
+        },
+        {
+          "min": 5.0,
+          "max": 231.0,
+          "mean": 114.59580993652344,
+          "nonzero": 65536
+        },
+        {
+          "min": 0.0,
+          "max": 231.0,
+          "mean": 97.3848876953125,
+          "nonzero": 65534
+        }
+      ]
+    },
+    "finite": 196608,
+    "total": 196608,
+    "nonempty": 196606,
+    "native_npz": "data/figure-native/basecolor_C.npz",
+    "recoverable_native": true,
+    "notes": "material albedo at C; linear values are in data/orientation.json"
+  },
+  {
+    "file": "figures/vsm_shadow_A.png",
+    "width": 256,
+    "height": 168,
+    "kind": "data_raster",
+    "crop_xywh": [
+      372,
+      552,
+      256,
+      168
+    ],
+    "source": {
+      "vsm_mask": "ShadowMaskTexture v00040000020c16c4eef0 (consumer cache, producer pass 841)"
+    },
+    "mapping": "grey = round(255*(R_code/255)^2) where R_code is shader R (memory byte 2 of BGRA); 255=lit, 0=shadowed; no gamma",
+    "native_units": "linear receiver attenuation 0..1",
+    "native_stats": {
+      "name": "vsm_r_linear_u8",
+      "unit": "code",
+      "count": 43008,
+      "finite": 43008,
+      "min": 0.0,
+      "max": 255.0,
+      "mean": 177.85725911458334,
+      "nonzero": 30893
+    },
+    "finite": 43008,
+    "total": 43008,
+    "nonempty": 30893,
+    "native_npz": "data/figure-native/vsm_shadow_A.npz",
+    "recoverable_native": true,
+    "notes": "8-bit sqrt-encoded mask; the unquantized VSM factor is not recoverable"
+  },
+  {
+    "file": "figures/worldcache_neighborhood.png",
+    "width": 256,
+    "height": 512,
+    "kind": "data_raster",
+    "source": {
+      "record": "data/worldcache-neighborhood.json",
+      "cache_atlas": "Lumen.RadianceCache.FinalRadianceAtlas v00040000020b97184f50"
+    },
+    "mapping": "rows = 8 allocated probe neighbours, columns = four bilinear taps per neighbour; display-linear L = stored_tap * CachedLightingPreExposureInverse(16) * View.PreExposure(0.00048828125), then display = sRGB_OETF(L/(1+L)) with L the native pre-exposed linear value; no exposure multiply, no per-image normalization; inverse: first sRGB_EOTF(code/255) -> t, then L=t/(1-t)",
+    "native_units": "cached pre-exposed radiance (stored atlas values; multiply by 16 for cache pre-exposure inverse)",
+    "native_stats": {
+      "name": "neighbor_tap_radiance",
+      "unit": "cached pre-exposed",
+      "count": 96,
+      "finite": 96,
+      "channels": [
+        {
+          "min": 0.859375,
+          "max": 136.0,
+          "mean": 24.201171875,
+          "nonzero": 32
+        },
+        {
+          "min": 0.6484375,
+          "max": 93.0,
+          "mean": 20.590087890625,
+          "nonzero": 32
+        },
+        {
+          "min": 0.46875,
+          "max": 61.0,
+          "mean": 16.95654296875,
+          "nonzero": 32
+        }
+      ]
+    },
+    "finite": 96,
+    "total": 96,
+    "nonempty": 96,
+    "native_npz": "data/figure-native/worldcache_neighborhood.npz",
+    "recoverable_native": true,
+    "notes": "the strip is a selected neighbourhood, not the 4352x4352 atlas; exact tap coordinates and packed words are in the record"
+  },
+  {
+    "file": "figures/surfacecache_query_channels.png",
+    "width": 256,
+    "height": 64,
+    "kind": "data_raster",
+    "source": {
+      "record": "data/surfacecache-query.json",
+      "albedo": "Lumen.SceneAlbedo v00040000020bf435b3a0",
+      "normal": "Lumen.SceneNormal v00040000020bf435dcf0",
+      "final": "surface cache output word at the selected tile"
+    },
+    "mapping": "four 64x64 cells: encodedAlbedoRGB (linear) -> sRGB OETF; normal -> 0.5+0.5*n; depth_normalized -> linear grey; cachedPreExposedFinalBeforeQuantization -> sRGB_OETF(clip(L/400,0,1)); 1-px dividers",
+    "native_units": "linear albedo, unit normal, normalized depth, pre-exposed final radiance",
+    "native_stats": {
+      "albedo_linear": {
+        "name": "albedo_linear",
+        "unit": "linear",
+        "count": 3,
+        "finite": 3,
+        "min": 0.33725491166114807,
+        "max": 0.4000000059604645,
+        "mean": 0.37124183773994446,
+        "nonzero": 3
+      },
+      "normal_decoded": {
+        "name": "normal_decoded",
+        "unit": "unit",
+        "count": 3,
+        "finite": 3,
+        "min": 0.011764764785766602,
+        "max": 0.7411764860153198,
+        "mean": 0.4747161304008165,
+        "nonzero": 3
+      },
+      "depth_normalized": {
+        "name": "depth_normalized",
+        "unit": "0..1",
+        "count": 1,
+        "finite": 1,
+        "min": 0.5402304112306401,
+        "max": 0.5402304112306401,
+        "mean": 0.5402304112306401,
+        "nonzero": 1
+      },
+      "final_before_quantization": {
+        "name": "final_before_quantization",
+        "unit": "pre-exposed",
+        "count": 3,
+        "finite": 3,
+        "min": 122.22755432128906,
+        "max": 239.36904907226562,
+        "mean": 178.63915506998697,
+        "nonzero": 3
+      }
+    },
+    "finite": 4,
+    "total": 4,
+    "nonempty": 4,
+    "native_npz": "data/figure-native/surfacecache_query_channels.npz",
+    "recoverable_native": true,
+    "notes": "one declared card-tile query at the peer record's selected atlas coordinate; exact tile and world point are in data/surfacecache-query.json"
+  },
+  {
+    "file": "figures/surfacecache_query_tile.png",
+    "width": 512,
+    "height": 512,
+    "kind": "data_raster",
+    "source": {
+      "record": "data/surfacecache-query.json",
+      "tileValidation": "8x8 dispatched card-tile groups of the declared query"
+    },
+    "mapping": "8x8 cells of final -> sRGB_OETF(clip(L/400,0,1)) with fixed declared white point 400 pre-exposed; 1-px grid",
+    "native_units": "pre-exposed linear final lighting",
+    "native_stats": {
+      "name": "surfacecache_tile_final",
+      "unit": "pre-exposed",
+      "count": 192,
+      "finite": 192,
+      "channels": [
+        {
+          "min": 0.0,
+          "max": 305.63623046875,
+          "mean": 188.72155833244324,
+          "nonzero": 56
+        },
+        {
+          "min": 0.0,
+          "max": 215.53399658203125,
+          "mean": 134.25344002246857,
+          "nonzero": 56
+        },
+        {
+          "min": 0.0,
+          "max": 152.4730987548828,
+          "mean": 95.73573809862137,
+          "nonzero": 56
+        }
+      ]
+    },
+    "finite": 192,
+    "total": 192,
+    "nonempty": 168,
+    "native_npz": "data/figure-native/surfacecache_query_tile.npz",
+    "recoverable_native": true,
+    "notes": "the selected 8x8 tile around the query, not the whole 4096x4096 cache atlas"
+  },
+  {
+    "file": "figures/scene_depth_A.png",
+    "width": 256,
+    "height": 168,
+    "kind": "data_raster",
+    "crop_xywh": [
+      372,
+      552,
+      256,
+      168
+    ],
+    "source": {
+      "scene_depth": "SceneDepthZ v00040000020ba06cda50"
+    },
+    "mapping": "native device Z -> W_cm = near_plane_cm(10) / deviceZ; display = fixed navy->blue->green->amber->white depth ramp over 0.05..10 m view depth (or ray length for hit distance), t=log10(max(W_m,0.05))/log10(200), W_m=native_cm/100; inverted from the declared native cm values; dark grey = sky/invalid",
+    "native_units": "view-forward depth cm (also metres in the npz)",
+    "native_stats": {
+      "name": "scene_view_depth",
+      "unit": "cm",
+      "count": 43008,
+      "finite": 43008,
+      "min": 581.2513427734375,
+      "max": 1851.4884033203125,
+      "mean": 1054.0510098465852,
+      "nonzero": 43008
+    },
+    "finite": 43008,
+    "total": 43008,
+    "nonempty": 43008,
+    "native_npz": "data/figure-native/scene_depth_A.npz",
+    "recoverable_native": true,
+    "notes": "A's exact pixel is at the crop origin+128,128; the probe depth in screenprobe-A.json corresponds to this surface within 0.0001 cm"
+  },
+  {
+    "file": "figures/worldnormal_C.png",
+    "width": 256,
+    "height": 256,
+    "kind": "data_raster",
+    "crop_xywh": [
+      498,
+      459,
+      256,
+      256
+    ],
+    "source": {
+      "gbuffer_a": "GBufferA v00040000020bef06b8f0"
+    },
+    "mapping": "A2B10G10R10 codes -> n=code/1023*2-1 then normalize; display RGB = round(255*(0.5+0.5*n)); no gamma",
+    "native_units": "world-space unit shading normal",
+    "native_stats": {
+      "name": "world_normal",
+      "unit": "unit",
+      "count": 196608,
+      "finite": 196608,
+      "channels": [
+        {
+          "min": -0.999999044461676,
+          "max": 0.808619158659539,
+          "mean": -0.4942707483109043,
+          "nonzero": 65536
+        },
+        {
+          "min": -0.999999044461676,
+          "max": 0.999999044461676,
+          "mean": -0.009998749377513253,
+          "nonzero": 65536
+        },
+        {
+          "min": -0.999987578215438,
+          "max": 0.999999044461676,
+          "mean": 0.29226894172210316,
+          "nonzero": 65536
+        }
+      ]
+    },
+    "finite": 196608,
+    "total": 196608,
+    "nonempty": 183324,
+    "native_npz": "data/figure-native/worldnormal_C.npz",
+    "recoverable_native": true,
+    "notes": "the gold spheres and the lion relief are the selected C crop; the normal is the shading normal, not the depth-derived geometric normal"
+  },
+  {
+    "file": "figures/material_C.png",
+    "width": 768,
+    "height": 256,
+    "kind": "data_raster",
+    "crop_xywh": [
+      498,
+      459,
+      256,
+      256
+    ],
+    "source": {
+      "gbuffer_b": "GBufferB v00040000020bef06b8f0"
+    },
+    "mapping": "three 256-px panels, left->right: roughness_code/255, metallic_code/255, specular_code/255; each shown as linear grey with no gamma; 1-px dividers",
+    "native_units": "linear material factors 0..1",
+    "native_stats": {
+      "name": "roughness_metallic_specular",
+      "unit": "0..1",
+      "count": 196608,
+      "finite": 196608,
+      "channels": [
+        {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.7814401065602024,
+          "nonzero": 65535
+        },
+        {
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.03911049038756127,
+          "nonzero": 2795
+        },
+        {
+          "min": 0.4980392156862745,
+          "max": 1.0,
+          "mean": 0.9505153282015932,
+          "nonzero": 65536
+        }
+      ]
+    },
+    "finite": 196608,
+    "total": 196608,
+    "nonempty": 133866,
+    "native_npz": "data/figure-native/material_C.npz",
+    "recoverable_native": true,
+    "notes": "C's gold spheres have metallic=1 and roughness=20/255=0.0784; albedo is shown separately in basecolor_C.png"
+  }
+]

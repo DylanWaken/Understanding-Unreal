@@ -186,22 +186,84 @@
     return h('a', { href: '#resource/' + encodeURIComponent(id), text: label || (r ? (r.displayLabel || r.name) : id) });
   }
 
+  // Logical metadata names map to stable keys in index.json.files. The value
+  // is the actual package-relative path, which may end in .json.gz. Native
+  // files and chunks are not routed through this map: they stay relative to
+  // the selected package, exactly as before.
+  var PACKAGE_FILE_KEYS = {
+    'index.json': 'index',
+    'resources.json': 'resources',
+    'passes.json': 'passes',
+    'coverage.json': 'coverage',
+    'schema.json': 'schema',
+    'structures.json': 'structures',
+    'capture.json': 'capture',
+    'inventory.json': 'inventory',
+    'native-inputs.json': 'nativeInputs'
+  };
+
+  function packageFileEntryPath(entry) {
+    if (typeof entry === 'string') return entry;
+    if (!entry || typeof entry !== 'object') return null;
+    var value = entry.actualPath || entry.packagePath || entry.actual || entry.file || entry.path;
+    return typeof value === 'string' && value ? value : null;
+  }
+
+  function packageFileEntryName(entry) {
+    if (!entry || typeof entry !== 'object') return null;
+    var value = entry.logical || entry.name || entry.key;
+    return typeof value === 'string' && value ? value : null;
+  }
+
+  function resolvePackageFile(logical, index) {
+    var rel = String(logical || '').replace(/^\/+/, '');
+    if (!rel) return rel;
+    var idx = index || state.index;
+    if (!idx) return rel;
+    // index.schema.path is authoritative for the joined schema when present.
+    if (rel === 'schema.json' && idx.schema && typeof idx.schema.path === 'string' && idx.schema.path) {
+      return idx.schema.path.replace(/^\/+/, '');
+    }
+    var files = idx.files;
+    var resolved = null;
+    if (files && !Array.isArray(files) && typeof files === 'object') {
+      var entry = files[rel];
+      if (entry === undefined) {
+        var alias = PACKAGE_FILE_KEYS[rel];
+        if (alias) entry = files[alias];
+      }
+      resolved = packageFileEntryPath(entry);
+    } else if (Array.isArray(files)) {
+      for (var i = 0; i < files.length; i += 1) {
+        var name = packageFileEntryName(files[i]);
+        if (name && (name === rel || PACKAGE_FILE_KEYS[rel] === name)) {
+          resolved = packageFileEntryPath(files[i]);
+          break;
+        }
+      }
+    }
+    if (!resolved) return rel;
+    resolved = resolved.replace(/^\/+/, '');
+    return resolved || rel;
+  }
+
+  function packageDeclaresFile(logical, index) {
+    if (!index) return false;
+    if (logical === 'schema.json' && index.schema && index.schema.path) return true;
+    var files = index.files;
+    var alias = PACKAGE_FILE_KEYS[logical];
+    if (Array.isArray(files)) {
+      return files.some(function (entry) {
+        var name = packageFileEntryName(entry);
+        return name === logical || (alias && name === alias);
+      });
+    }
+    return !!files && (Object.prototype.hasOwnProperty.call(files, logical)
+      || (alias && Object.prototype.hasOwnProperty.call(files, alias)));
+  }
+
   function packageUrl(rel) {
-    return new URL(rel.replace(/^\/+/, ''), state.packageBase).toString();
-  }
-
-  function fetchJson(rel) {
-    var url = packageUrl(rel);
-    return fetch(url, { cache: 'no-store' }).then(function (response) {
-      if (!response.ok) throw new Error('HTTP ' + response.status + ' while fetching ' + url);
-      return response.json();
-    }).catch(function (error) {
-      throw new Error(error.message + ' (' + url + ')');
-    });
-  }
-
-  function tryFetchJson(rel, fallback) {
-    return fetchJson(rel).catch(function () { return fallback; });
+    return new URL(resolvePackageFile(rel).replace(/^\/+/, ''), state.packageBase).toString();
   }
 
   // -------------------------------------------------------------- package
@@ -220,8 +282,15 @@
         return receiver.fetch(url, init);
       }
       : null);
-    this.gzipCtor = options.DecompressionStream
-      || (typeof DecompressionStream !== 'undefined' ? DecompressionStream : null);
+    // An explicitly supplied null disables decompression (the missing-feature
+    // path); only an omitted option falls back to the browser global.
+    if (Object.prototype.hasOwnProperty.call(options, 'DecompressionStream')) {
+      this.gzipCtor = options.DecompressionStream;
+    } else if (Object.prototype.hasOwnProperty.call(options, 'gzipCtor')) {
+      this.gzipCtor = options.gzipCtor;
+    } else {
+      this.gzipCtor = typeof DecompressionStream !== 'undefined' ? DecompressionStream : null;
+    }
     var cryptoObj = options.crypto
       || (typeof window !== 'undefined' && window.crypto)
       || (typeof globalThis !== 'undefined' && globalThis.crypto)
@@ -239,6 +308,67 @@
     return new URL(rel.replace(/^\/+/, ''), base).toString();
   };
 
+  // Per-store JSON fetch. The injected fetchFn keeps the read path testable;
+  // gzip metadata is detected from the body magic, never from the file name.
+  // A body already decoded by HTTP has no magic and is parsed as JSON directly,
+  // so a .json.gz URL is not inflated twice.
+  PackageStore.prototype.fetchJson = async function (rel) {
+    if (!this.fetchFn) throw new Error('No fetch implementation is available.');
+    var path = resolvePackageFile(rel, state.index);
+    var url = this.urlFor(path);
+    var response;
+    try {
+      response = await this.fetchFn(url, { cache: 'no-store' });
+    } catch (error) {
+      throw new Error('Network error while fetching ' + url + ': ' + error.message);
+    }
+    if (!response || !response.ok) {
+      var status = response ? response.status : null;
+      var httpError = new Error('HTTP ' + (status || '?') + ' while fetching ' + url);
+      httpError.httpStatus = status;
+      throw httpError;
+    }
+    var bytes;
+    try {
+      bytes = new Uint8Array(await response.arrayBuffer());
+    } catch (error) {
+      throw new Error('Could not read ' + url + ': ' + error.message);
+    }
+    if (bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b) {
+      if (!this.gzipCtor) {
+        throw new Error('Metadata ' + url + ' is gzip-compressed but this browser has no DecompressionStream. Serve the already-decoded JSON or use a current browser; the compressed body was not treated as empty data.');
+      }
+      try {
+        var stream = new Response(bytes).body.pipeThrough(new this.gzipCtor('gzip'));
+        bytes = new Uint8Array(await new Response(stream).arrayBuffer());
+      } catch (error) {
+        throw new Error('Could not decompress metadata ' + url + ': ' + error.message);
+      }
+    }
+    var text;
+    try {
+      text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    } catch (error) {
+      throw new Error('Metadata ' + url + ' is not valid UTF-8: ' + error.message);
+    }
+    try {
+      return JSON.parse(text);
+    } catch (error) {
+      throw new Error('Invalid JSON in ' + url + ': ' + error.message);
+    }
+  };
+
+  PackageStore.prototype.tryFetchJson = function (rel, fallback) {
+    return this.fetchJson(rel).catch(function (error) {
+      // Only an absent optional logical file falls back. Corrupt gzip, invalid
+      // JSON and decompression failures must surface as errors, never as an
+      // empty but apparently useful dataset.
+      if (error && (error.httpStatus === 404 || error.httpStatus === 410)
+          && !packageDeclaresFile(rel, state.index)) return fallback;
+      throw error;
+    });
+  };
+
   PackageStore.prototype.load = async function () {
     var params = new URLSearchParams(window.location.search);
     var override = params.get('package');
@@ -246,19 +376,23 @@
     if (!/\/$/.test(base.pathname)) base = new URL(base.pathname + '/', base);
     state.packageBase = base;
     this.baseUrl = base.toString();
-    var index = await fetchJson('index.json');
+    // index.json stays a raw manifest; every later metadata path is resolved
+    // through index.json.files (or index.schema.path for schema.json).
+    state.index = null;
+    var index = await this.fetchJson('index.json');
     if (!index || index.format !== 'unreal-frame-explorer-package') {
       throw new Error('index.json is not an unreal-frame-explorer-package manifest.');
     }
     state.index = index;
+    var self = this;
     var results = await Promise.all([
-      tryFetchJson('resources.json', { items: [], total: 0 }),
-      tryFetchJson('passes.json', { items: [], total: 0 }),
-      tryFetchJson('coverage.json', { gaps: [], counts: {}, complete: false }),
-      tryFetchJson('schema.json', { status: 'missing', resourceSchemas: [], parameterSchemas: [], sourceRefs: {} }),
-      tryFetchJson('capture.json', { infos: {}, consoleVariables: [], nativeFiles: [] }),
-      tryFetchJson('structures.json', { byPointer: {} }),
-      tryFetchJson('native-inputs.json', { items: [], count: 0 })
+      self.tryFetchJson('resources.json', { items: [], total: 0 }),
+      self.tryFetchJson('passes.json', { items: [], total: 0 }),
+      self.tryFetchJson('coverage.json', { gaps: [], counts: {}, complete: false }),
+      self.tryFetchJson('schema.json', { status: 'missing', resourceSchemas: [], parameterSchemas: [], sourceRefs: {} }),
+      self.tryFetchJson('capture.json', { infos: {}, consoleVariables: [], nativeFiles: [] }),
+      self.tryFetchJson('structures.json', { byPointer: {} }),
+      self.tryFetchJson('native-inputs.json', { items: [], count: 0 })
     ]);
     state.resources = results[0] || { items: [] };
     state.passes = results[1] || { items: [] };
@@ -279,9 +413,12 @@
   };
 
   PackageStore.prototype.record = async function (rel) {
-    if (state.recordCache.has(rel)) return state.recordCache.get(rel);
-    var data = await fetchJson(rel);
-    state.recordCache.set(rel, data);
+    // Summary records carry the actual path, which may be .json.gz. Resolving
+    // here also keeps raw summary paths working unchanged.
+    var path = resolvePackageFile(rel, state.index);
+    if (state.recordCache.has(path)) return state.recordCache.get(path);
+    var data = await this.fetchJson(path);
+    state.recordCache.set(path, data);
     return data;
   };
 
@@ -3076,6 +3213,9 @@
       return;
     }
     renderPackageBanner();
+    document.querySelectorAll('[data-package-file]').forEach(function (link) {
+      link.href = packageUrl(link.getAttribute('data-package-file'));
+    });
     renderLists();
     wireTabs();
     wireFilters();
@@ -3088,6 +3228,8 @@
     module.exports = {
       PackageStore: PackageStore,
       state: state,
+      resolvePackageFile: resolvePackageFile,
+      packageUrl: packageUrl,
       storedChannelNames: storedChannelNames,
       channelList: channelList,
       textureLayout: textureLayout,

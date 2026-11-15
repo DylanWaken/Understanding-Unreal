@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 2500" role="img" aria-labelledby="title desc">
+<title id="title">Complete deferred lighting and Lumen frame dependency flow</title>
+<desc id="desc">Scene representations and card lighting feed Lumen diffuse and reflection paths. The primary GBuffer feeds VSM shadows, deferred PBR direct lighting, screen-probe GI and reflections. Their owned contributions combine into linear scene color, followed by translucency, post processing and retained state for later frames. The card cache is combined both before and after radiosity in the captured schedule.</desc>
+<defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="2500" rx="12" fill="#101b2d"/>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect data-node="input" x="40" y="120" width="1120" height="125" rx="9" fill="#18283e" stroke="#c4a0ff" stroke-width="2"/>
+<rect x="40" y="290" width="1120" height="665" rx="12" fill="none" stroke="#435874" stroke-width="2"/>
+<rect data-node="scene" x="65" y="355" width="320" height="165" rx="9" fill="#18283e" stroke="#65baff" stroke-width="2"/>
+<rect data-node="card-direct" x="440" y="355" width="320" height="165" rx="9" fill="#18283e" stroke="#ffd36f" stroke-width="2"/>
+<rect data-node="first-combine" x="815" y="355" width="320" height="165" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<path d="M385 435H440" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M760 435H815" fill="none" stroke="#ffd36f" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M40 215H35V435H65" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M600 245V355" fill="none" stroke="#ffd36f" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M990 245V355" fill="none" stroke="#c4a0ff" stroke-width="3" marker-end="url(#flow-arrow)" stroke-dasharray="9 7"/>
+<path d="M975 520V570H225V625" fill="none" stroke="#6ce1b5" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<rect data-node="radiosity-rays" x="65" y="625" width="320" height="195" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<rect data-node="radiosity-sh" x="440" y="625" width="320" height="195" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<rect data-node="second-combine" x="815" y="625" width="320" height="195" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<path d="M385 720H440" fill="none" stroke="#6ce1b5" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M760 720H815" fill="none" stroke="#6ce1b5" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<rect data-node="gbuffer" x="40" y="1010" width="1120" height="125" rx="9" fill="#18283e" stroke="#65baff" stroke-width="2"/>
+<path d="M40 183H20V1070H40" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M600 1135V1175H210V1235" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M600 1135V1235" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M600 1175H990V1235" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<rect data-node="vsm-pages" x="40" y="1235" width="340" height="180" rx="9" fill="#18283e" stroke="#ffd36f" stroke-width="2"/>
+<rect data-node="vsm-project" x="40" y="1450" width="340" height="151" rx="9" fill="#18283e" stroke="#ffd36f" stroke-width="2"/>
+<rect data-node="deferred" x="40" y="1635" width="340" height="180" rx="9" fill="#18283e" stroke="#ffd36f" stroke-width="2"/>
+<path d="M210 1415V1450" fill="none" stroke="#ffd36f" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M210 1601V1635" fill="none" stroke="#ffd36f" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<rect data-node="place" x="430" y="1235" width="340" height="151" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<rect data-node="world-cache" x="430" y="1420" width="340" height="180" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<rect data-node="screen-trace" x="430" y="1635" width="340" height="180" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<rect data-node="diffuse-reconstruct" x="430" y="1850" width="340" height="180" rx="9" fill="#18283e" stroke="#6ce1b5" stroke-width="2"/>
+<path d="M600 1386V1420" fill="none" stroke="#6ce1b5" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M600 1600V1635" fill="none" stroke="#6ce1b5" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M600 1815V1850" fill="none" stroke="#6ce1b5" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<rect data-node="reflection-sample" x="820" y="1235" width="340" height="151" rx="9" fill="#18283e" stroke="#65baff" stroke-width="2"/>
+<rect data-node="reflection-trace" x="820" y="1420" width="340" height="180" rx="9" fill="#18283e" stroke="#65baff" stroke-width="2"/>
+<rect data-node="reflection-reconstruct" x="820" y="1635" width="340" height="180" rx="9" fill="#18283e" stroke="#65baff" stroke-width="2"/>
+<path d="M990 1386V1420" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M990 1600V1635" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<rect data-node="translucency" x="40" y="1850" width="340" height="180" rx="9" fill="#18283e" stroke="#c4a0ff" stroke-width="2"/>
+<rect data-node="composition" x="430" y="2080" width="730" height="135" rx="9" fill="#18283e" stroke="#eef4ff" stroke-width="2"/>
+<path d="M380 1730H405V2145H430" fill="none" stroke="#ffd36f" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M600 2030V2080" fill="none" stroke="#6ce1b5" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M990 1815V2080" fill="none" stroke="#65baff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<rect data-node="output" x="40" y="2280" width="1120" height="135" rx="9" fill="#18283e" stroke="#c4a0ff" stroke-width="2"/>
+<path d="M210 2030V2280" fill="none" stroke="#c4a0ff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M795 2215V2280" fill="none" stroke="#eef4ff" stroke-width="3" marker-end="url(#flow-arrow)"/>
+<path d="M1160 2345H1185V183H1160" fill="none" stroke="#c4a0ff" stroke-width="3" marker-end="url(#flow-arrow)" stroke-dasharray="9 7"/>
+<text x="40" y="45" fill="#eef4ff" font-size="30" text-anchor="start">One deferred frame: direct light, shadows, and Lumen</text>
+<text x="40" y="88" fill="#a7b9d3" font-size="21" text-anchor="start">A / B / C / H identify shared inputs; arrows show dependencies, not GPU timing.</text>
+<text x="58" y="155" fill="#c4a0ff" font-size="24" text-anchor="start">Frame inputs + retained state H</text>
+<text x="58" y="190" fill="#eef4ff" font-size="21" text-anchor="start">Camera, scene transforms, material programs, lights, and renderer settings</text>
+<text x="58" y="219" fill="#eef4ff" font-size="21" text-anchor="start">H: cached lighting and allocation state; probe, diffuse, reflection, and upscaling histories</text>
+<text x="65" y="328" fill="#eef4ff" font-size="27" text-anchor="start">Secondary scene lighting</text>
+<text x="83" y="390" fill="#65baff" font-size="24" text-anchor="start">B · Secondary scene</text>
+<text x="83" y="425" fill="#eef4ff" font-size="21" text-anchor="start">Mesh / global distance fields</text>
+<text x="83" y="454" fill="#eef4ff" font-size="21" text-anchor="start">or hardware RT geometry</text>
+<text x="83" y="483" fill="#eef4ff" font-size="21" text-anchor="start">Cards: depth + materials</text>
+<text x="458" y="390" fill="#ffd36f" font-size="24" text-anchor="start">Direct card lighting</text>
+<text x="458" y="425" fill="#eef4ff" font-size="21" text-anchor="start">Cull lights into card tiles</text>
+<text x="458" y="454" fill="#eef4ff" font-size="21" text-anchor="start">DF / HW shadow queries</text>
+<text x="458" y="483" fill="#eef4ff" font-size="21" text-anchor="start">Integrate direct irradiance</text>
+<text x="833" y="390" fill="#6ce1b5" font-size="24" text-anchor="start">First lighting combine</text>
+<text x="833" y="425" fill="#eef4ff" font-size="21" text-anchor="start">Emission + direct + retained</text>
+<text x="833" y="454" fill="#eef4ff" font-size="21" text-anchor="start">indirect lighting from H</text>
+<text x="833" y="483" fill="#eef4ff" font-size="21" text-anchor="start">Apply card material once</text>
+<text x="83" y="660" fill="#6ce1b5" font-size="24" text-anchor="start">Card radiosity probes</text>
+<text x="83" y="695" fill="#eef4ff" font-size="21" text-anchor="start">Lift samples through card</text>
+<text x="83" y="724" fill="#eef4ff" font-size="21" text-anchor="start">depth; trace directions in B</text>
+<text x="83" y="753" fill="#eef4ff" font-size="21" text-anchor="start">Read available cached light</text>
+<text x="83" y="782" fill="#eef4ff" font-size="21" text-anchor="start">Gather indirect illumination</text>
+<text x="458" y="660" fill="#6ce1b5" font-size="24" text-anchor="start">Filter and integrate</text>
+<text x="458" y="695" fill="#eef4ff" font-size="21" text-anchor="start">Spatial / temporal filtering</text>
+<text x="458" y="724" fill="#eef4ff" font-size="21" text-anchor="start">Four-coefficient SH on cards</text>
+<text x="458" y="753" fill="#eef4ff" font-size="21" text-anchor="start">Reconstruct new indirect</text>
+<text x="458" y="782" fill="#eef4ff" font-size="21" text-anchor="start">irradiance over card texels</text>
+<text x="833" y="660" fill="#6ce1b5" font-size="24" text-anchor="start">C · Final cached light</text>
+<text x="833" y="695" fill="#eef4ff" font-size="21" text-anchor="start">Combine emission, direct,</text>
+<text x="833" y="724" fill="#eef4ff" font-size="21" text-anchor="start">and updated indirect again</text>
+<text x="833" y="753" fill="#eef4ff" font-size="21" text-anchor="start">Effective card albedo / pi</text>
+<text x="833" y="782" fill="#eef4ff" font-size="21" text-anchor="start">gives outgoing radiance</text>
+<text x="65" y="868" fill="#a7b9d3" font-size="21" text-anchor="start">Captured schedule: card direct → first combine → radiosity → second combine.</text>
+<text x="65" y="908" fill="#a7b9d3" font-size="20" text-anchor="start">C shades secondary hits. Card shadow queries are separate from primary-view VSM projection.</text>
+<text x="58" y="1045" fill="#65baff" font-size="24" text-anchor="start">A · Primary visibility and material evaluation</text>
+<text x="58" y="1080" fill="#eef4ff" font-size="21" text-anchor="start">Visibility / Nanite / depth → base-pass material shader → GBuffer, velocity, depth and HZB</text>
+<text x="58" y="1109" fill="#eef4ff" font-size="21" text-anchor="start">The material program supplies normals, roughness, metallic / specular, base color and emission.</text>
+<text x="50" y="1208" fill="#ffd36f" font-size="20" text-anchor="start">Direct lights</text>
+<text x="440" y="1208" fill="#6ce1b5" font-size="20" text-anchor="start">Diffuse GI</text>
+<text x="830" y="1208" fill="#65baff" font-size="20" text-anchor="start">Reflections</text>
+<text x="58" y="1270" fill="#ffd36f" font-size="24" text-anchor="start">Virtual Shadow Maps</text>
+<text x="58" y="1305" fill="#eef4ff" font-size="21" text-anchor="start">Mark demand; allocate pages</text>
+<text x="58" y="1334" fill="#eef4ff" font-size="21" text-anchor="start">Invalidate / reuse cached pages</text>
+<text x="58" y="1363" fill="#eef4ff" font-size="21" text-anchor="start">Rasterize dirty shadow depth</text>
+<text x="58" y="1392" fill="#eef4ff" font-size="21" text-anchor="start">Inputs: lights, geometry, A</text>
+<text x="58" y="1485" fill="#ffd36f" font-size="24" text-anchor="start">Project shadow visibility</text>
+<text x="58" y="1520" fill="#eef4ff" font-size="21" text-anchor="start">Sample / filter VSM depth</text>
+<text x="58" y="1549" fill="#eef4ff" font-size="21" text-anchor="start">Combine enabled shadow paths</text>
+<text x="58" y="1578" fill="#eef4ff" font-size="21" text-anchor="start">Produce primary light masks</text>
+<text x="58" y="1670" fill="#ffd36f" font-size="24" text-anchor="start">Deferred PBR lighting</text>
+<text x="58" y="1705" fill="#eef4ff" font-size="21" text-anchor="start">Read the material in A</text>
+<text x="58" y="1734" fill="#eef4ff" font-size="21" text-anchor="start">Evaluate diffuse + specular</text>
+<text x="58" y="1763" fill="#eef4ff" font-size="21" text-anchor="start">BRDF × light × visibility</text>
+<text x="58" y="1792" fill="#eef4ff" font-size="21" text-anchor="start">Accumulate direct SceneColor</text>
+<text x="448" y="1270" fill="#6ce1b5" font-size="24" text-anchor="start">Place screen probes</text>
+<text x="448" y="1305" fill="#eef4ff" font-size="21" text-anchor="start">Uniform + adaptive samples</text>
+<text x="448" y="1334" fill="#eef4ff" font-size="21" text-anchor="start">Depth / normals from A</text>
+<text x="448" y="1363" fill="#eef4ff" font-size="21" text-anchor="start">Reuse guidance history H</text>
+<text x="448" y="1455" fill="#6ce1b5" font-size="24" text-anchor="start">World radiance cache</text>
+<text x="448" y="1490" fill="#eef4ff" font-size="21" text-anchor="start">Mark demand from probes</text>
+<text x="448" y="1519" fill="#eef4ff" font-size="21" text-anchor="start">Allocate / reuse clipmap cells</text>
+<text x="448" y="1548" fill="#eef4ff" font-size="21" text-anchor="start">Budget tracing in B, using C</text>
+<text x="448" y="1577" fill="#eef4ff" font-size="21" text-anchor="start">Filter stored directional light</text>
+<text x="448" y="1670" fill="#6ce1b5" font-size="24" text-anchor="start">Trace guided probe rays</text>
+<text x="448" y="1705" fill="#eef4ff" font-size="21" text-anchor="start">Sample BRDF / lighting PDFs</text>
+<text x="448" y="1734" fill="#eef4ff" font-size="21" text-anchor="start">HZB → compact unresolved</text>
+<text x="448" y="1763" fill="#eef4ff" font-size="21" text-anchor="start">SDF or HW RT in scene B</text>
+<text x="448" y="1792" fill="#eef4ff" font-size="21" text-anchor="start">Hit C / cache / sky fallback</text>
+<text x="448" y="1885" fill="#6ce1b5" font-size="24" text-anchor="start">Reconstruct diffuse</text>
+<text x="448" y="1920" fill="#eef4ff" font-size="21" text-anchor="start">Filter radiance; SH or OCT</text>
+<text x="448" y="1949" fill="#eef4ff" font-size="21" text-anchor="start">Integrate unit-albedo D = E / pi</text>
+<text x="448" y="1978" fill="#eef4ff" font-size="21" text-anchor="start">Reproject / validate history H</text>
+<text x="448" y="2007" fill="#eef4ff" font-size="21" text-anchor="start">Apply owned short-range AO</text>
+<text x="838" y="1270" fill="#65baff" font-size="24" text-anchor="start">Classify and sample</text>
+<text x="838" y="1305" fill="#eef4ff" font-size="21" text-anchor="start">Read roughness / normals in A</text>
+<text x="838" y="1334" fill="#eef4ff" font-size="21" text-anchor="start">Schedule reflection tiles</text>
+<text x="838" y="1363" fill="#eef4ff" font-size="21" text-anchor="start">Sample the glossy BSDF</text>
+<text x="838" y="1455" fill="#65baff" font-size="24" text-anchor="start">Trace reflection rays</text>
+<text x="838" y="1490" fill="#eef4ff" font-size="21" text-anchor="start">HZB → compact unresolved</text>
+<text x="838" y="1519" fill="#eef4ff" font-size="21" text-anchor="start">SDF or HW RT in scene B</text>
+<text x="838" y="1548" fill="#eef4ff" font-size="21" text-anchor="start">Use cached C or hit lighting</text>
+<text x="838" y="1577" fill="#eef4ff" font-size="21" text-anchor="start">Resolve miss / sky policy</text>
+<text x="838" y="1670" fill="#65baff" font-size="24" text-anchor="start">Reconstruct reflections</text>
+<text x="838" y="1705" fill="#eef4ff" font-size="21" text-anchor="start">Temporal / spatial filtering</text>
+<text x="838" y="1734" fill="#eef4ff" font-size="21" text-anchor="start">Reject invalid history H</text>
+<text x="838" y="1763" fill="#eef4ff" font-size="21" text-anchor="start">Reconstruct glossy response</text>
+<text x="838" y="1792" fill="#eef4ff" font-size="21" text-anchor="start">Apply selected BRDF weights</text>
+<text x="58" y="1885" fill="#c4a0ff" font-size="24" text-anchor="start">Translucency lighting</text>
+<text x="58" y="1920" fill="#eef4ff" font-size="21" text-anchor="start">Separate volume / cache path</text>
+<text x="58" y="1949" fill="#eef4ff" font-size="21" text-anchor="start">Scene B, lighting and C</text>
+<text x="58" y="1978" fill="#eef4ff" font-size="21" text-anchor="start">Direct-light volume injection</text>
+<text x="58" y="2007" fill="#eef4ff" font-size="21" text-anchor="start">Shades transparent materials</text>
+<text x="448" y="2115" fill="#eef4ff" font-size="24" text-anchor="start">Opaque linear SceneColor</text>
+<text x="448" y="2150" fill="#eef4ff" font-size="21" text-anchor="start">Base-pass emission + explicit direct lighting</text>
+<text x="448" y="2179" fill="#eef4ff" font-size="21" text-anchor="start">+ diffuse color × D + material-weighted reflections</text>
+<text x="58" y="2315" fill="#c4a0ff" font-size="24" text-anchor="start">Complete the displayed frame</text>
+<text x="58" y="2350" fill="#eef4ff" font-size="21" text-anchor="start">Compose fog / translucency in the selected pipeline; apply AA / temporal upscaling when enabled</text>
+<text x="58" y="2379" fill="#eef4ff" font-size="21" text-anchor="start">Exposure and tone mapping → display image. Retain the applicable histories and cache state H.</text>
+<text x="40" y="2460" fill="#a7b9d3" font-size="20" text-anchor="start">SCHEMATIC · the captured pass list supplies exact events; enabled features select the branches.</text>
+</g></svg>

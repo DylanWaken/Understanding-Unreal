@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc"><title id="title">An off-screen caster can shadow a visible receiver</title><desc id="desc">A point light and an intervening caster both lie outside the primary camera frustum, yet the caster blocks the light connection to a visible surface point. Visible receiver demand does not restrict casters to camera-visible geometry.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="620" rx="12" fill="#101b2d"/>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<polygon points="600,510 450,110 1050,110" stroke="#65baff" stroke-width="2" fill="#142840"/>
+<path d="M132 163.4L387 236" stroke="#ffd36f" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+<path d="M414 243.6L700 325" stroke="#ff8c91" stroke-width="3" fill="none" marker-end="url(#arrow)" stroke-dasharray="8 7"/>
+<rect x="388" y="205" width="25" height="75" rx="0" stroke="#ff8c91" stroke-width="2" fill="#394255"/>
+<circle cx="120" cy="160" r="12" stroke="#ffd36f" stroke-width="2" fill="#ffd36f"/>
+<circle cx="700" cy="325" r="8" stroke="#6ce1b5" stroke-width="2" fill="#6ce1b5"/>
+<path d="M600 500L696 333" stroke="#6ce1b5" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-dasharray="8 7"/>
+<circle cx="600" cy="510" r="8" stroke="#65baff" stroke-width="2" fill="#65baff"/>
+<path d="M700 278L700 310" stroke="#a7b9d3" stroke-width="1.5" fill="none"/>
+<text x="40" y="49" font-size="28" fill="#eef4ff" text-anchor="start">An off-screen caster can shadow a visible receiver</text>
+<text x="40" y="588" font-size="16" fill="#a7b9d3" text-anchor="start">SCHEMATIC · geometry and colors explain a model; this is not an Unreal buffer</text>
+<text x="695" y="155" font-size="22" fill="#65baff" text-anchor="start">camera-visible region</text>
+<text x="60" y="115" font-size="23" fill="#ffd36f" text-anchor="start">off-screen light</text>
+<text x="240" y="190" font-size="23" fill="#ff8c91" text-anchor="start">off-screen caster</text>
+<text x="630" y="230" font-size="23" fill="#6ce1b5" text-anchor="start">visible receiver</text>
+<text x="630" y="262" font-size="18" fill="#ff8c91" text-anchor="start">blocked light connection</text>
+<text x="630" y="503" font-size="22" fill="#65baff" text-anchor="start">primary camera</text>
+<text x="60" y="420" font-size="20" fill="#a7b9d3" text-anchor="start">Receiver demand selects light-space pages.</text>
+<text x="60" y="449" font-size="20" fill="#a7b9d3" text-anchor="start">Light-space culling selects their casters.</text>
+<text x="60" y="478" font-size="20" fill="#a7b9d3" text-anchor="start">These are different visibility questions.</text>
+</g></svg>

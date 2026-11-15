@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc"><title id="title">Four different reconstruction operations</title><desc id="desc">Directional reconstruction and integration precede receiver interpolation and valid temporal reuse.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="620" rx="12" fill="#101b2d"/>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect x="35" y="175" width="260" height="200" rx="5" stroke="#65baff" stroke-width="2" fill="#18283e"/>
+<path d="M300 275L324 275" stroke="#eef4ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="330" y="175" width="260" height="200" rx="5" stroke="#ffd36f" stroke-width="2" fill="#18283e"/>
+<path d="M595 275L619 275" stroke="#eef4ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="625" y="175" width="260" height="200" rx="5" stroke="#6ce1b5" stroke-width="2" fill="#18283e"/>
+<path d="M890 275L914 275" stroke="#eef4ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="920" y="175" width="260" height="200" rx="5" stroke="#c4a0ff" stroke-width="2" fill="#18283e"/>
+<text x="40" y="49" font-size="28" fill="#eef4ff" text-anchor="start">Four different reconstruction operations</text>
+<text x="40" y="588" font-size="16" fill="#a7b9d3" text-anchor="start">SCHEMATIC · geometry and colors explain a model; this is not an Unreal buffer</text>
+<text x="51" y="209" font-size="23" fill="#65baff" text-anchor="start">Trace → field</text>
+<text x="51" y="243" font-size="19" fill="#a7b9d3" text-anchor="start">direction + hit data</text>
+<text x="51" y="272" font-size="19" fill="#a7b9d3" text-anchor="start">refine / reconstruct</text>
+<text x="346" y="209" font-size="23" fill="#ffd36f" text-anchor="start">Field → irradiance</text>
+<text x="346" y="243" font-size="19" fill="#a7b9d3" text-anchor="start">cosine convolution</text>
+<text x="346" y="272" font-size="19" fill="#a7b9d3" text-anchor="start">SH / irradiance map</text>
+<text x="641" y="209" font-size="23" fill="#6ce1b5" text-anchor="start">Probe → pixel</text>
+<text x="641" y="243" font-size="19" fill="#a7b9d3" text-anchor="start">depth / normal weights</text>
+<text x="641" y="272" font-size="19" fill="#a7b9d3" text-anchor="start">receiver material</text>
+<text x="936" y="209" font-size="23" fill="#c4a0ff" text-anchor="start">Time → stable pixel</text>
+<text x="936" y="243" font-size="19" fill="#a7b9d3" text-anchor="start">reproject + validate</text>
+<text x="936" y="272" font-size="19" fill="#a7b9d3" text-anchor="start">exposure + history</text>
+<text x="95" y="465" font-size="25" fill="#eef4ff" text-anchor="start">Different domains, different kernels, different failure modes.</text>
+<text x="95" y="494" font-size="25" fill="#eef4ff" text-anchor="start">A single image blur cannot express all of these contracts.</text>
+</g></svg>

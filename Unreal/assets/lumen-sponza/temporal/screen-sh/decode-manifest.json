@@ -1,0 +1,3304 @@
+{
+ "schema": "temporal-sh-decode/1",
+ "generated_by": "temporal-sh/decoder.py",
+ "dump_root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057",
+ "states": [
+  {
+   "name": "baseline",
+   "root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline"
+  },
+  {
+   "name": "lightstep-001",
+   "root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001"
+  },
+  {
+   "name": "lightstep-008",
+   "root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008"
+  },
+  {
+   "name": "lightstep-032",
+   "root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032"
+  },
+  {
+   "name": "lightstep-064",
+   "root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064"
+  }
+ ],
+ "basis": {
+  "order": [
+   "L0",
+   "L1_y",
+   "L1_z",
+   "L1_x",
+   "L2_xy",
+   "L2_yz",
+   "L2_z",
+   "L2_xz",
+   "L2_xy2"
+  ],
+  "shader_function": "SHBasisFunction3 / CalcDiffuseTransferSH3 (SHCommon.ush)",
+  "projects_with": "sphere average over the captured 8x8 equi-area directions",
+  "storage": "ScreenProbeRadianceSHAmbient = L0 RGB (R11G11B10); ScreenProbeRadianceSHDirectional = 4 channels x 2 texels per RGB channel (RGBA16F)",
+  "flat_order": "each sh array is 27 signed numbers: R0..R8, G0..G8, B0..B8",
+  "channel_texel_order": "R: x+0*W,x+1*W; G: x+2*W,x+3*W; B: x+4*W,x+5*W",
+  "sign": "stored coefficients are signed; no clamp is applied to the stored data"
+ },
+ "formula": {
+  "D": "4 * sum_i sh_i * CalcDiffuseTransferSH3(normal)_i (AO=1, exponent=1)",
+  "evaluate_sh_irradiance_source": "SHCommon.ush EvaluateSHIrradiance clamps to zero; the decoder keeps the signed dot and separately reports the explicit display clamp",
+  "irradiance_preexposed": "pi * D  (equals the shader's 4*pi*DotSH3 form)",
+  "irradiance_unpreexposed": "pi * D / PreExposure",
+  "preexposure": "captured View.PreExposure, not a constant"
+ },
+ "scales": {
+  "lobe_radius_world_cm": 60.0,
+  "lobe_response_scale_luminance": 1.4454,
+  "rosette_radius_px": 55.0,
+  "fixed_across_states_and_probes": true,
+  "negative_display_clamp": "max(0, signed response) before radius/color",
+  "color_stops": [
+   [
+    0.0,
+    [
+     10,
+     25,
+     80
+    ]
+   ],
+   [
+    0.3,
+    [
+     0,
+     150,
+     210
+    ]
+   ],
+   [
+    0.6,
+    [
+     80,
+     235,
+     190
+    ]
+   ],
+   [
+    0.82,
+    [
+     255,
+     220,
+     70
+    ]
+   ],
+   [
+    1.0,
+    [
+     255,
+     255,
+     255
+    ]
+   ]
+  ],
+  "marker_colors": {
+   "uniform": [
+    0,
+    220,
+    255,
+    150
+   ],
+   "adaptive": [
+    255,
+    145,
+    0,
+    210
+   ],
+   "floor_focus": [
+    40,
+    255,
+    120,
+    255
+   ],
+   "arcade_focus": [
+    255,
+    70,
+    210,
+    255
+   ]
+  }
+ },
+ "figure_legend": {
+  "active_*": "captured screenshot + every active placement dot; cyan uniform, orange adaptive",
+  "lobes_*": "captured screenshot + the 10 focused projected response lobes; no all-active dot grid",
+  "visible_lobe": "colored filled surface, depth-tested against the captured SceneDepthZ",
+  "xray_lobe": "magenta outline: depth-occluded part of the same function lobe, drawn as an explicit x-ray function glyph; it is not a physical object",
+  "focus_markers": "green cross = floor reference, magenta cross = arcade reference",
+  "rosettes": "fixed-scale azimuth reduction of the same 162-direction clamped luminance"
+ },
+ "focus": {
+  "count": 10,
+  "reference_state": "baseline",
+  "probes": [
+   {
+    "id": "floor-1",
+    "region": "floor",
+    "reference_atlas": [
+     27,
+     42
+    ]
+   },
+   {
+    "id": "floor-2",
+    "region": "floor",
+    "reference_atlas": [
+     34,
+     42
+    ]
+   },
+   {
+    "id": "floor-3",
+    "region": "floor",
+    "reference_atlas": [
+     38,
+     42
+    ]
+   },
+   {
+    "id": "floor-4",
+    "region": "floor",
+    "reference_atlas": [
+     42,
+     42
+    ]
+   },
+   {
+    "id": "floor-5",
+    "region": "floor",
+    "reference_atlas": [
+     49,
+     42
+    ]
+   },
+   {
+    "id": "arcade-left-6",
+    "region": "arcade-left",
+    "reference_atlas": [
+     7,
+     16
+    ]
+   },
+   {
+    "id": "arcade-left-7",
+    "region": "arcade-left",
+    "reference_atlas": [
+     9,
+     28
+    ]
+   },
+   {
+    "id": "arcade-left-8",
+    "region": "arcade-left",
+    "reference_atlas": [
+     15,
+     38
+    ]
+   },
+   {
+    "id": "arcade-right-9",
+    "region": "arcade-right",
+    "reference_atlas": [
+     60,
+     16
+    ]
+   },
+   {
+    "id": "arcade-right-10",
+    "region": "arcade-right",
+    "reference_atlas": [
+     74,
+     38
+    ]
+   }
+  ]
+ },
+ "raw_operands": {
+  "baseline": {
+   "source_root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline",
+   "frame_scope": "Frame 127 (Delta=0.360166s)",
+   "frame_number": 369,
+   "frame_counter": 127,
+   "state_frame_index": 370,
+   "spawn_pass": {
+    "id": 508,
+    "name": "AdaptivePlacementSpawn",
+    "pointer": "0004000001ffc1202270"
+   },
+   "sh_pass": {
+    "id": 530,
+    "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+    "pointer": "00040000020002f172c0"
+   },
+   "parameters": {
+    "nested_struct": "FScreenProbeParameters",
+    "nested_offset_in_FParameters": 240
+   },
+   "operands": {
+    "position": {
+     "role": "position",
+     "kind": "texture",
+     "resource": "0004000001ff8025adf0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeTranslatedWorldPosition",
+     "version": "0004000001ffc1202270",
+     "address": "0004000001ff8025adf0.v0004000001ffc1202270",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0004000001ff8025adf0.mip0.v0004000001ffc1202270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ff8025adf0.mip0.v0004000001ffc1202270.bin",
+     "sha256": "184589f7c3b15dc6503e99a59307f839552b8a933a77a2b24665742bea36342c",
+     "format": "PF_A32B32G32R32F",
+     "native_format": "PF_A32B32G32R32F",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 1280,
+     "byte_size": 107520,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "depth": {
+     "role": "depth",
+     "kind": "texture",
+     "resource": "0004000001ff8025a5a8",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+     "version": "0004000001ffc1202270",
+     "address": "0004000001ff8025a5a8.v0004000001ffc1202270",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0004000001ff8025a5a8.mip0.v0004000001ffc1202270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ff8025a5a8.mip0.v0004000001ffc1202270.bin",
+     "sha256": "2dcf4a42f2174ab4993eb80bb714388063ebfa6a131144f2ae5e952406feb05f",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "normal": {
+     "role": "normal",
+     "kind": "texture",
+     "resource": "0004000001ff8025a870",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldNormal",
+     "version": "0004000001ffc1202270",
+     "address": "0004000001ff8025a870.v0004000001ffc1202270",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0004000001ff8025a870.mip0.v0004000001ffc1202270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ff8025a870.mip0.v0004000001ffc1202270.bin",
+     "sha256": "423da704c00886cddf21c400d57ab96336124f1717fa1873db503d8ba83a5a81",
+     "format": "PF_R8G8",
+     "native_format": "PF_R8G8",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_ambient": {
+     "role": "sh_ambient",
+     "kind": "texture",
+     "resource": "00040000020002f16b10",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHAmbient",
+     "version": "00040000020002f172c0",
+     "address": "00040000020002f16b10.v00040000020002f172c0",
+     "producer_pass": {
+      "id": 530,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/00040000020002f16b10.mip0.v00040000020002f172c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\00040000020002f16b10.mip0.v00040000020002f172c0.bin",
+     "sha256": "106018968035a6d2d17f3a291a74cd7ca3d38db28c01d9dd4f8e6f21156c97f6",
+     "format": "PF_FloatR11G11B10",
+     "native_format": "PF_FloatR11G11B10",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_directional": {
+     "role": "sh_directional",
+     "kind": "texture",
+     "resource": "00040000020002f16dd0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional",
+     "version": "00040000020002f172c0",
+     "address": "00040000020002f16dd0.v00040000020002f172c0",
+     "producer_pass": {
+      "id": 530,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/00040000020002f16dd0.mip0.v00040000020002f172c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\00040000020002f16dd0.mip0.v00040000020002f172c0.bin",
+     "sha256": "1946ada82609948079e438908395dfb5ccee1d9a8185085324d24654a9fc4f77",
+     "format": "PF_FloatRGBA",
+     "native_format": "PF_FloatRGBA",
+     "extent": [
+      480,
+      84
+     ],
+     "row_pitch_bytes": 3840,
+     "byte_size": 322560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "adaptive_header": {
+     "role": "adaptive_header",
+     "kind": "texture",
+     "resource": "0004000001ff8025e760",
+     "name": "Lumen.ScreenProbeGather.ScreenTileAdaptiveProbeHeader",
+     "version": "0004000001ffc1202270",
+     "address": "0004000001ff8025e760.v0004000001ffc1202270",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0004000001ff8025e760.mip0.v0004000001ffc1202270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ff8025e760.mip0.v0004000001ffc1202270.bin",
+     "sha256": "27125177afa5b383010fbbf89648f8745bc3952aeb3bd39f3f5ef1537f3c8267",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      56
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 17920,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "num_adaptive": {
+     "kind": "buffer",
+     "resource": "0004000001ff8025e450",
+     "name": "Lumen.ScreenProbeGather.NumAdaptiveScreenProbes",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1,
+     "file": "Resources/0004000001ff8025e450.v0004000001ffc1202270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ff8025e450.v0004000001ffc1202270.bin",
+     "sha256": "c7a63b0847b8493deba5cdaec17040b2d20c5b8b3056f00db390a2fd2c221012",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1",
+     "role": "num_adaptive",
+     "address": "0004000001ff8025e450.v0004000001ffc1202270",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "adaptive_data": {
+     "kind": "buffer",
+     "resource": "0004000001ff8025e588",
+     "name": "Lumen.ScreenProbeGather.AdaptiveScreenProbeData",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1800,
+     "file": "Resources/0004000001ff8025e588.v0004000001ffc1202270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ff8025e588.v0004000001ffc1202270.bin",
+     "sha256": "3c918939a551caff275e2f1cb566b88664ee23c6f673f6e710ca08575bd254a4",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1800",
+     "role": "adaptive_data",
+     "address": "0004000001ff8025e588.v0004000001ffc1202270",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "view": {
+     "role": "view",
+     "kind": "struct",
+     "content": "0004000002001bf19180",
+     "address": "0004000002001bf19180",
+     "metadata": "000400007ffc2def79f0",
+     "struct_type": "FViewUniformShaderParameters",
+     "declared_size": 6752,
+     "file": "Structures/0004000002001bf19180.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Structures\\0004000002001bf19180.bin",
+     "sha256": "a18e59e64ecb03cfd13f4498a6113d8d06c792ecd5c0d9717cd968e92b32a25a",
+     "format": "FViewUniformShaderParameters",
+     "producer_pass": {
+      "id": 530,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "fields_used": [
+      "TranslatedWorldToClip",
+      "TranslatedWorldToView",
+      "ViewToClip",
+      "ViewRectMin",
+      "ViewSizeAndInvSize",
+      "BufferSizeAndInvSize",
+      "PreViewTranslationHigh",
+      "PreViewTranslationLow",
+      "ViewForward",
+      "TranslatedWorldCameraOrigin",
+      "NearPlane",
+      "PreExposure",
+      "OneOverPreExposure",
+      "FrameNumber",
+      "FrameCounter",
+      "StateFrameIndex",
+      "StateFrameIndexMod8",
+      "TemporalAAJitter"
+     ]
+    },
+    "spawn_parameters": {
+     "role": "spawn_parameters",
+     "kind": "struct",
+     "content": "0004000001ffc1201de0",
+     "address": "0004000001ffc1201de0",
+     "metadata": "000400007ffc1bcae170",
+     "struct_type": "FParameters",
+     "declared_size": 544,
+     "file": "Structures/0004000001ffc1201de0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Structures\\0004000001ffc1201de0.bin",
+     "sha256": "8b21846a5cfe94c1aa968e1bfa6ef2c5c5482e43d9cd3bee947445ca1ae8ca3a",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 240
+    },
+    "sh_parameters": {
+     "role": "sh_parameters",
+     "kind": "struct",
+     "content": "00040000020002f170a0",
+     "address": "00040000020002f170a0",
+     "metadata": "000400007ffc1bcacf10",
+     "struct_type": "FParameters",
+     "declared_size": 384,
+     "file": "Structures/00040000020002f170a0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Structures\\00040000020002f170a0.bin",
+     "sha256": "db8a5ce7f261c26352505d61b63e33074dfe9577d5a0843ee5cd1ebb78cc0e22",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 530,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 80
+    },
+    "speed": {
+     "role": "speed",
+     "kind": "texture",
+     "resource": "0004000001ff8025ab30",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldSpeed",
+     "version": "0004000001ffc1202270",
+     "address": "0004000001ff8025ab30.v0004000001ffc1202270",
+     "producer_pass": {
+      "id": 508,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0004000001ff8025ab30.mip0.v0004000001ffc1202270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ff8025ab30.mip0.v0004000001ffc1202270.bin",
+     "sha256": "8010b6df6cb29dff5db1a5c94c78d579016aa2f16892961bb78f86eedbe05c0c",
+     "format": "PF_R16_UINT",
+     "native_format": "PF_R16_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "scene_depth": {
+     "role": "scene_depth",
+     "kind": "texture",
+     "resource": "0004000001ffbd84ebd0",
+     "name": "SceneDepthZ",
+     "version": "0004000002001a0a90c0",
+     "address": "0004000001ffbd84ebd0.v0004000002001a0a90c0",
+     "producer_pass": {
+      "id": 343,
+      "name": "DepthPassParallel"
+     },
+     "file": "Resources/0004000001ffbd84ebd0.mip0.v0004000002001a0a90c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Resources\\0004000001ffbd84ebd0.mip0.v0004000002001a0a90c0.bin",
+     "sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+     "format": "PF_R32_FLOAT",
+     "native_format": "PF_DepthStencil",
+     "extent": [
+      1280,
+      888
+     ],
+     "row_pitch_bytes": 5120,
+     "byte_size": 4546560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    }
+   },
+   "view_struct": {
+    "role": "view",
+    "kind": "struct",
+    "content": "0004000002001bf19180",
+    "address": "0004000002001bf19180",
+    "metadata": "000400007ffc2def79f0",
+    "struct_type": "FViewUniformShaderParameters",
+    "declared_size": 6752,
+    "file": "Structures/0004000002001bf19180.bin",
+    "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\baseline\\Structures\\0004000002001bf19180.bin",
+    "sha256": "a18e59e64ecb03cfd13f4498a6113d8d06c792ecd5c0d9717cd968e92b32a25a",
+    "format": "FViewUniformShaderParameters",
+    "producer_pass": {
+     "id": 530,
+     "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+    },
+    "fields_used": [
+     "TranslatedWorldToClip",
+     "TranslatedWorldToView",
+     "ViewToClip",
+     "ViewRectMin",
+     "ViewSizeAndInvSize",
+     "BufferSizeAndInvSize",
+     "PreViewTranslationHigh",
+     "PreViewTranslationLow",
+     "ViewForward",
+     "TranslatedWorldCameraOrigin",
+     "NearPlane",
+     "PreExposure",
+     "OneOverPreExposure",
+     "FrameNumber",
+     "FrameCounter",
+     "StateFrameIndex",
+     "StateFrameIndexMod8",
+     "TemporalAAJitter"
+    ]
+   }
+  },
+  "lightstep-001": {
+   "source_root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001",
+   "frame_scope": "Frame 169 (Delta=0.013641s)",
+   "frame_number": 458,
+   "frame_counter": 169,
+   "state_frame_index": 459,
+   "spawn_pass": {
+    "id": 403,
+    "name": "AdaptivePlacementSpawn",
+    "pointer": "0003000001ffef882270"
+   },
+   "sh_pass": {
+    "id": 425,
+    "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+    "pointer": "000300000200166f72c0"
+   },
+   "parameters": {
+    "nested_struct": "FScreenProbeParameters",
+    "nested_offset_in_FParameters": 240
+   },
+   "operands": {
+    "position": {
+     "role": "position",
+     "kind": "texture",
+     "resource": "0003000002001a08adf0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeTranslatedWorldPosition",
+     "version": "0003000001ffef882270",
+     "address": "0003000002001a08adf0.v0003000001ffef882270",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000002001a08adf0.mip0.v0003000001ffef882270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000002001a08adf0.mip0.v0003000001ffef882270.bin",
+     "sha256": "fc67587913b25aa2fad586011d8dc270c286df5d8081dd1cc1c04fbfb6763296",
+     "format": "PF_A32B32G32R32F",
+     "native_format": "PF_A32B32G32R32F",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 1280,
+     "byte_size": 107520,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "depth": {
+     "role": "depth",
+     "kind": "texture",
+     "resource": "0003000002001a08a5a8",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+     "version": "0003000001ffef882270",
+     "address": "0003000002001a08a5a8.v0003000001ffef882270",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000002001a08a5a8.mip0.v0003000001ffef882270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000002001a08a5a8.mip0.v0003000001ffef882270.bin",
+     "sha256": "2b5a4438fa07c28f366ffbf05f578394abc6d26c8b51ee890b76e73dbfbbed40",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "normal": {
+     "role": "normal",
+     "kind": "texture",
+     "resource": "0003000002001a08a870",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldNormal",
+     "version": "0003000001ffef882270",
+     "address": "0003000002001a08a870.v0003000001ffef882270",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000002001a08a870.mip0.v0003000001ffef882270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000002001a08a870.mip0.v0003000001ffef882270.bin",
+     "sha256": "103a0ed6fa4c98fdd1f20070611dc3e31da5b587f6052b5857ac0a26744284f7",
+     "format": "PF_R8G8",
+     "native_format": "PF_R8G8",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_ambient": {
+     "role": "sh_ambient",
+     "kind": "texture",
+     "resource": "000300000200166f6b10",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHAmbient",
+     "version": "000300000200166f72c0",
+     "address": "000300000200166f6b10.v000300000200166f72c0",
+     "producer_pass": {
+      "id": 425,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/000300000200166f6b10.mip0.v000300000200166f72c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\000300000200166f6b10.mip0.v000300000200166f72c0.bin",
+     "sha256": "d9afcfeb99b6704a2ad484078c30fadd2d33e8fdb119055a1e4f41a7ca4135e4",
+     "format": "PF_FloatR11G11B10",
+     "native_format": "PF_FloatR11G11B10",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_directional": {
+     "role": "sh_directional",
+     "kind": "texture",
+     "resource": "000300000200166f6dd0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional",
+     "version": "000300000200166f72c0",
+     "address": "000300000200166f6dd0.v000300000200166f72c0",
+     "producer_pass": {
+      "id": 425,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/000300000200166f6dd0.mip0.v000300000200166f72c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\000300000200166f6dd0.mip0.v000300000200166f72c0.bin",
+     "sha256": "218d7011a5212f267b03ef3d7141512a75a8ef83d34bed9b7b9573a1f78c277f",
+     "format": "PF_FloatRGBA",
+     "native_format": "PF_FloatRGBA",
+     "extent": [
+      480,
+      84
+     ],
+     "row_pitch_bytes": 3840,
+     "byte_size": 322560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "adaptive_header": {
+     "role": "adaptive_header",
+     "kind": "texture",
+     "resource": "0003000002001a08e760",
+     "name": "Lumen.ScreenProbeGather.ScreenTileAdaptiveProbeHeader",
+     "version": "0003000001ffef882270",
+     "address": "0003000002001a08e760.v0003000001ffef882270",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000002001a08e760.mip0.v0003000001ffef882270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000002001a08e760.mip0.v0003000001ffef882270.bin",
+     "sha256": "4e6244326a4b906f7a9c2aecee166bd7047be6b4139438def8de0c3489673676",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      56
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 17920,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "num_adaptive": {
+     "kind": "buffer",
+     "resource": "0003000002001a08e450",
+     "name": "Lumen.ScreenProbeGather.NumAdaptiveScreenProbes",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1,
+     "file": "Resources/0003000002001a08e450.v0003000001ffef882270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000002001a08e450.v0003000001ffef882270.bin",
+     "sha256": "895d79e3e0fc9b5679aed8ae35e529676b9a4ef6802c1423dfea6ab30c6faa7f",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1",
+     "role": "num_adaptive",
+     "address": "0003000002001a08e450.v0003000001ffef882270",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "adaptive_data": {
+     "kind": "buffer",
+     "resource": "0003000002001a08e588",
+     "name": "Lumen.ScreenProbeGather.AdaptiveScreenProbeData",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1800,
+     "file": "Resources/0003000002001a08e588.v0003000001ffef882270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000002001a08e588.v0003000001ffef882270.bin",
+     "sha256": "150de5ae783c2683c2e33715c2088af1aee1fc4fad54f175694ae078580445c7",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1800",
+     "role": "adaptive_data",
+     "address": "0003000002001a08e588.v0003000001ffef882270",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "view": {
+     "role": "view",
+     "kind": "struct",
+     "content": "0003000001ffece82880",
+     "address": "0003000001ffece82880",
+     "metadata": "000300007ffc2def79f0",
+     "struct_type": "FViewUniformShaderParameters",
+     "declared_size": 6752,
+     "file": "Structures/0003000001ffece82880.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Structures\\0003000001ffece82880.bin",
+     "sha256": "a268dd44a1c5d3bab64f018fd342610296e3837d4a7824727fd0d1835b089bd1",
+     "format": "FViewUniformShaderParameters",
+     "producer_pass": {
+      "id": 425,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "fields_used": [
+      "TranslatedWorldToClip",
+      "TranslatedWorldToView",
+      "ViewToClip",
+      "ViewRectMin",
+      "ViewSizeAndInvSize",
+      "BufferSizeAndInvSize",
+      "PreViewTranslationHigh",
+      "PreViewTranslationLow",
+      "ViewForward",
+      "TranslatedWorldCameraOrigin",
+      "NearPlane",
+      "PreExposure",
+      "OneOverPreExposure",
+      "FrameNumber",
+      "FrameCounter",
+      "StateFrameIndex",
+      "StateFrameIndexMod8",
+      "TemporalAAJitter"
+     ]
+    },
+    "spawn_parameters": {
+     "role": "spawn_parameters",
+     "kind": "struct",
+     "content": "0003000001ffef881de0",
+     "address": "0003000001ffef881de0",
+     "metadata": "000300007ffc1bcae170",
+     "struct_type": "FParameters",
+     "declared_size": 544,
+     "file": "Structures/0003000001ffef881de0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Structures\\0003000001ffef881de0.bin",
+     "sha256": "cd8d182c63a85f63b0678d801b97f5a6057aa6c502941ea784211ef5174ddd78",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 240
+    },
+    "sh_parameters": {
+     "role": "sh_parameters",
+     "kind": "struct",
+     "content": "000300000200166f70a0",
+     "address": "000300000200166f70a0",
+     "metadata": "000300007ffc1bcacf10",
+     "struct_type": "FParameters",
+     "declared_size": 384,
+     "file": "Structures/000300000200166f70a0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Structures\\000300000200166f70a0.bin",
+     "sha256": "1c4893a07696931556d359ccc0525120121d0870674c5904809f9feb56b47575",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 425,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 80
+    },
+    "speed": {
+     "role": "speed",
+     "kind": "texture",
+     "resource": "0003000002001a08ab30",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldSpeed",
+     "version": "0003000001ffef882270",
+     "address": "0003000002001a08ab30.v0003000001ffef882270",
+     "producer_pass": {
+      "id": 403,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000002001a08ab30.mip0.v0003000001ffef882270.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000002001a08ab30.mip0.v0003000001ffef882270.bin",
+     "sha256": "de927cc8d6ced8a215dc2a8ded8ad1c13e420db10247faa685b412f3827c5aa7",
+     "format": "PF_R16_UINT",
+     "native_format": "PF_R16_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "scene_depth": {
+     "role": "scene_depth",
+     "kind": "texture",
+     "resource": "0003000001ffddecebd0",
+     "name": "SceneDepthZ",
+     "version": "0003000001fcd56490c0",
+     "address": "0003000001ffddecebd0.v0003000001fcd56490c0",
+     "producer_pass": {
+      "id": 238,
+      "name": "DepthPassParallel"
+     },
+     "file": "Resources/0003000001ffddecebd0.mip0.v0003000001fcd56490c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Resources\\0003000001ffddecebd0.mip0.v0003000001fcd56490c0.bin",
+     "sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+     "format": "PF_R32_FLOAT",
+     "native_format": "PF_DepthStencil",
+     "extent": [
+      1280,
+      888
+     ],
+     "row_pitch_bytes": 5120,
+     "byte_size": 4546560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    }
+   },
+   "view_struct": {
+    "role": "view",
+    "kind": "struct",
+    "content": "0003000001ffece82880",
+    "address": "0003000001ffece82880",
+    "metadata": "000300007ffc2def79f0",
+    "struct_type": "FViewUniformShaderParameters",
+    "declared_size": 6752,
+    "file": "Structures/0003000001ffece82880.bin",
+    "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-001\\Structures\\0003000001ffece82880.bin",
+    "sha256": "a268dd44a1c5d3bab64f018fd342610296e3837d4a7824727fd0d1835b089bd1",
+    "format": "FViewUniformShaderParameters",
+    "producer_pass": {
+     "id": 425,
+     "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+    },
+    "fields_used": [
+     "TranslatedWorldToClip",
+     "TranslatedWorldToView",
+     "ViewToClip",
+     "ViewRectMin",
+     "ViewSizeAndInvSize",
+     "BufferSizeAndInvSize",
+     "PreViewTranslationHigh",
+     "PreViewTranslationLow",
+     "ViewForward",
+     "TranslatedWorldCameraOrigin",
+     "NearPlane",
+     "PreExposure",
+     "OneOverPreExposure",
+     "FrameNumber",
+     "FrameCounter",
+     "StateFrameIndex",
+     "StateFrameIndexMod8",
+     "TemporalAAJitter"
+    ]
+   }
+  },
+  "lightstep-008": {
+   "source_root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008",
+   "frame_scope": "Frame 178 (Delta=0.013041s)",
+   "frame_number": 474,
+   "frame_counter": 178,
+   "state_frame_index": 475,
+   "spawn_pass": {
+    "id": 84,
+    "name": "AdaptivePlacementSpawn",
+    "pointer": "0003000001fd136a0910"
+   },
+   "sh_pass": {
+    "id": 106,
+    "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+    "pointer": "0003000001ff728c29d0"
+   },
+   "parameters": {
+    "nested_struct": "FScreenProbeParameters",
+    "nested_offset_in_FParameters": 240
+   },
+   "operands": {
+    "position": {
+     "role": "position",
+     "kind": "texture",
+     "resource": "0003000001fffe3d9420",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeTranslatedWorldPosition",
+     "version": "0003000001fd136a0910",
+     "address": "0003000001fffe3d9420.v0003000001fd136a0910",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001fffe3d9420.mip0.v0003000001fd136a0910.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fffe3d9420.mip0.v0003000001fd136a0910.bin",
+     "sha256": "e9ff4f79199242dafa8c80d530a7569976ca953e79113320b3604b0677c767aa",
+     "format": "PF_A32B32G32R32F",
+     "native_format": "PF_A32B32G32R32F",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 1280,
+     "byte_size": 107520,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "depth": {
+     "role": "depth",
+     "kind": "texture",
+     "resource": "0003000001fffe3d8bd8",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+     "version": "0003000001fd136a0910",
+     "address": "0003000001fffe3d8bd8.v0003000001fd136a0910",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001fffe3d8bd8.mip0.v0003000001fd136a0910.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fffe3d8bd8.mip0.v0003000001fd136a0910.bin",
+     "sha256": "f91f2dc7853887361a982dc9f223e3bfce7ee000465c9b25b53f8ca5f17fced8",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "normal": {
+     "role": "normal",
+     "kind": "texture",
+     "resource": "0003000001fffe3d8ea0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldNormal",
+     "version": "0003000001fd136a0910",
+     "address": "0003000001fffe3d8ea0.v0003000001fd136a0910",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001fffe3d8ea0.mip0.v0003000001fd136a0910.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fffe3d8ea0.mip0.v0003000001fd136a0910.bin",
+     "sha256": "d9e7b70362b321dcc90b0046983187d1efe5c08f2ee360cddf495af8129f8b52",
+     "format": "PF_R8G8",
+     "native_format": "PF_R8G8",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_ambient": {
+     "role": "sh_ambient",
+     "kind": "texture",
+     "resource": "0003000001ff728c2220",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHAmbient",
+     "version": "0003000001ff728c29d0",
+     "address": "0003000001ff728c2220.v0003000001ff728c29d0",
+     "producer_pass": {
+      "id": 106,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/0003000001ff728c2220.mip0.v0003000001ff728c29d0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001ff728c2220.mip0.v0003000001ff728c29d0.bin",
+     "sha256": "925a9f19caa8833e849cb0f926ccc6461c4909391dc43330e4d4fd98e932d04d",
+     "format": "PF_FloatR11G11B10",
+     "native_format": "PF_FloatR11G11B10",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_directional": {
+     "role": "sh_directional",
+     "kind": "texture",
+     "resource": "0003000001ff728c24e0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional",
+     "version": "0003000001ff728c29d0",
+     "address": "0003000001ff728c24e0.v0003000001ff728c29d0",
+     "producer_pass": {
+      "id": 106,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/0003000001ff728c24e0.mip0.v0003000001ff728c29d0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001ff728c24e0.mip0.v0003000001ff728c29d0.bin",
+     "sha256": "25bb2c367e5b3137446dafc9e8774d748a1e95ef4984e9f7425eac96fbe4152f",
+     "format": "PF_FloatRGBA",
+     "native_format": "PF_FloatRGBA",
+     "extent": [
+      480,
+      84
+     ],
+     "row_pitch_bytes": 3840,
+     "byte_size": 322560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "adaptive_header": {
+     "role": "adaptive_header",
+     "kind": "texture",
+     "resource": "0003000001fffe3dcd90",
+     "name": "Lumen.ScreenProbeGather.ScreenTileAdaptiveProbeHeader",
+     "version": "0003000001fd136a0910",
+     "address": "0003000001fffe3dcd90.v0003000001fd136a0910",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001fffe3dcd90.mip0.v0003000001fd136a0910.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fffe3dcd90.mip0.v0003000001fd136a0910.bin",
+     "sha256": "4e6244326a4b906f7a9c2aecee166bd7047be6b4139438def8de0c3489673676",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      56
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 17920,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "num_adaptive": {
+     "kind": "buffer",
+     "resource": "0003000001fffe3dca80",
+     "name": "Lumen.ScreenProbeGather.NumAdaptiveScreenProbes",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1,
+     "file": "Resources/0003000001fffe3dca80.v0003000001fd136a0910.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fffe3dca80.v0003000001fd136a0910.bin",
+     "sha256": "895d79e3e0fc9b5679aed8ae35e529676b9a4ef6802c1423dfea6ab30c6faa7f",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1",
+     "role": "num_adaptive",
+     "address": "0003000001fffe3dca80.v0003000001fd136a0910",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "adaptive_data": {
+     "kind": "buffer",
+     "resource": "0003000001fffe3dcbb8",
+     "name": "Lumen.ScreenProbeGather.AdaptiveScreenProbeData",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1800,
+     "file": "Resources/0003000001fffe3dcbb8.v0003000001fd136a0910.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fffe3dcbb8.v0003000001fd136a0910.bin",
+     "sha256": "94d760566229f3583530da1b1e6829c6bffa79a3564c650626b892d827d662a5",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1800",
+     "role": "adaptive_data",
+     "address": "0003000001fffe3dcbb8.v0003000001fd136a0910",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "view": {
+     "role": "view",
+     "kind": "struct",
+     "content": "0003000002001ba04500",
+     "address": "0003000002001ba04500",
+     "metadata": "000300007ffc2def79f0",
+     "struct_type": "FViewUniformShaderParameters",
+     "declared_size": 6752,
+     "file": "Structures/0003000002001ba04500.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Structures\\0003000002001ba04500.bin",
+     "sha256": "bff11695db639fa823220fd8c34d27809cfbeb9a29395703834ece356a5b4325",
+     "format": "FViewUniformShaderParameters",
+     "producer_pass": {
+      "id": 106,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "fields_used": [
+      "TranslatedWorldToClip",
+      "TranslatedWorldToView",
+      "ViewToClip",
+      "ViewRectMin",
+      "ViewSizeAndInvSize",
+      "BufferSizeAndInvSize",
+      "PreViewTranslationHigh",
+      "PreViewTranslationLow",
+      "ViewForward",
+      "TranslatedWorldCameraOrigin",
+      "NearPlane",
+      "PreExposure",
+      "OneOverPreExposure",
+      "FrameNumber",
+      "FrameCounter",
+      "StateFrameIndex",
+      "StateFrameIndexMod8",
+      "TemporalAAJitter"
+     ]
+    },
+    "spawn_parameters": {
+     "role": "spawn_parameters",
+     "kind": "struct",
+     "content": "0003000001fd136a0480",
+     "address": "0003000001fd136a0480",
+     "metadata": "000300007ffc1bcae170",
+     "struct_type": "FParameters",
+     "declared_size": 544,
+     "file": "Structures/0003000001fd136a0480.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Structures\\0003000001fd136a0480.bin",
+     "sha256": "9fe378b0fd238194c177ee4b553919a58c6b0c8b939fcc88fac6cf0205f06c2e",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 240
+    },
+    "sh_parameters": {
+     "role": "sh_parameters",
+     "kind": "struct",
+     "content": "0003000001ff728c27b0",
+     "address": "0003000001ff728c27b0",
+     "metadata": "000300007ffc1bcacf10",
+     "struct_type": "FParameters",
+     "declared_size": 384,
+     "file": "Structures/0003000001ff728c27b0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Structures\\0003000001ff728c27b0.bin",
+     "sha256": "70ade488623e77d131b2530904027fc3feb54c557988df37758c3a99548e4fb9",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 106,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 80
+    },
+    "speed": {
+     "role": "speed",
+     "kind": "texture",
+     "resource": "0003000001fffe3d9160",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldSpeed",
+     "version": "0003000001fd136a0910",
+     "address": "0003000001fffe3d9160.v0003000001fd136a0910",
+     "producer_pass": {
+      "id": 84,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001fffe3d9160.mip0.v0003000001fd136a0910.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fffe3d9160.mip0.v0003000001fd136a0910.bin",
+     "sha256": "fd469995972d7bee8e3ff26388590b03b06b8caec7835be12ae07375e6ea92dc",
+     "format": "PF_R16_UINT",
+     "native_format": "PF_R16_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "scene_depth": {
+     "role": "scene_depth",
+     "kind": "texture",
+     "resource": "0003000001fcb2c8ebd0",
+     "name": "SceneDepthZ",
+     "version": "0003000001ffb9dd90c0",
+     "address": "0003000001fcb2c8ebd0.v0003000001ffb9dd90c0",
+     "producer_pass": {
+      "id": 61,
+      "name": "DepthPassParallel"
+     },
+     "file": "Resources/0003000001fcb2c8ebd0.mip0.v0003000001ffb9dd90c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Resources\\0003000001fcb2c8ebd0.mip0.v0003000001ffb9dd90c0.bin",
+     "sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+     "format": "PF_R32_FLOAT",
+     "native_format": "PF_DepthStencil",
+     "extent": [
+      1280,
+      888
+     ],
+     "row_pitch_bytes": 5120,
+     "byte_size": 4546560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    }
+   },
+   "view_struct": {
+    "role": "view",
+    "kind": "struct",
+    "content": "0003000002001ba04500",
+    "address": "0003000002001ba04500",
+    "metadata": "000300007ffc2def79f0",
+    "struct_type": "FViewUniformShaderParameters",
+    "declared_size": 6752,
+    "file": "Structures/0003000002001ba04500.bin",
+    "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-008\\Structures\\0003000002001ba04500.bin",
+    "sha256": "bff11695db639fa823220fd8c34d27809cfbeb9a29395703834ece356a5b4325",
+    "format": "FViewUniformShaderParameters",
+    "producer_pass": {
+     "id": 106,
+     "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+    },
+    "fields_used": [
+     "TranslatedWorldToClip",
+     "TranslatedWorldToView",
+     "ViewToClip",
+     "ViewRectMin",
+     "ViewSizeAndInvSize",
+     "BufferSizeAndInvSize",
+     "PreViewTranslationHigh",
+     "PreViewTranslationLow",
+     "ViewForward",
+     "TranslatedWorldCameraOrigin",
+     "NearPlane",
+     "PreExposure",
+     "OneOverPreExposure",
+     "FrameNumber",
+     "FrameCounter",
+     "StateFrameIndex",
+     "StateFrameIndexMod8",
+     "TemporalAAJitter"
+    ]
+   }
+  },
+  "lightstep-032": {
+   "source_root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032",
+   "frame_scope": "Frame 205 (Delta=0.011340s)",
+   "frame_number": 544,
+   "frame_counter": 205,
+   "state_frame_index": 545,
+   "spawn_pass": {
+    "id": 75,
+    "name": "AdaptivePlacementSpawn",
+    "pointer": "0003000001ff80259d60"
+   },
+   "sh_pass": {
+    "id": 97,
+    "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+    "pointer": "0003000001fffe37c560"
+   },
+   "parameters": {
+    "nested_struct": "FScreenProbeParameters",
+    "nested_offset_in_FParameters": 240
+   },
+   "operands": {
+    "position": {
+     "role": "position",
+     "kind": "texture",
+     "resource": "0003000001ff80252900",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeTranslatedWorldPosition",
+     "version": "0003000001ff80259d60",
+     "address": "0003000001ff80252900.v0003000001ff80259d60",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ff80252900.mip0.v0003000001ff80259d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001ff80252900.mip0.v0003000001ff80259d60.bin",
+     "sha256": "76d035c18ee97545e4a41640aafe5ae7fad710811fdacfb7b5efb76a35a6936a",
+     "format": "PF_A32B32G32R32F",
+     "native_format": "PF_A32B32G32R32F",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 1280,
+     "byte_size": 107520,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "depth": {
+     "role": "depth",
+     "kind": "texture",
+     "resource": "0003000001ff802520b8",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+     "version": "0003000001ff80259d60",
+     "address": "0003000001ff802520b8.v0003000001ff80259d60",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ff802520b8.mip0.v0003000001ff80259d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001ff802520b8.mip0.v0003000001ff80259d60.bin",
+     "sha256": "2d766a3d539ba843c76b2a20d75ee00a89374a04d6b70ccf332e437872eefbc7",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "normal": {
+     "role": "normal",
+     "kind": "texture",
+     "resource": "0003000001ff80252380",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldNormal",
+     "version": "0003000001ff80259d60",
+     "address": "0003000001ff80252380.v0003000001ff80259d60",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ff80252380.mip0.v0003000001ff80259d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001ff80252380.mip0.v0003000001ff80259d60.bin",
+     "sha256": "17fc69c6183d843d1c05fb6d2948adf3661bd533c8ec8246c8c27879e962827b",
+     "format": "PF_R8G8",
+     "native_format": "PF_R8G8",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_ambient": {
+     "role": "sh_ambient",
+     "kind": "texture",
+     "resource": "0003000001fffe37bdb0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHAmbient",
+     "version": "0003000001fffe37c560",
+     "address": "0003000001fffe37bdb0.v0003000001fffe37c560",
+     "producer_pass": {
+      "id": 97,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/0003000001fffe37bdb0.mip0.v0003000001fffe37c560.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001fffe37bdb0.mip0.v0003000001fffe37c560.bin",
+     "sha256": "5042b8bae0765b00f0a1cae83dc7702f285695fced1530d6086463be39f32252",
+     "format": "PF_FloatR11G11B10",
+     "native_format": "PF_FloatR11G11B10",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_directional": {
+     "role": "sh_directional",
+     "kind": "texture",
+     "resource": "0003000001fffe37c070",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional",
+     "version": "0003000001fffe37c560",
+     "address": "0003000001fffe37c070.v0003000001fffe37c560",
+     "producer_pass": {
+      "id": 97,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/0003000001fffe37c070.mip0.v0003000001fffe37c560.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001fffe37c070.mip0.v0003000001fffe37c560.bin",
+     "sha256": "5e664a398f75ca3c12d874bdd27c804c3e177512600c9ec437f0c0e46a8bf82d",
+     "format": "PF_FloatRGBA",
+     "native_format": "PF_FloatRGBA",
+     "extent": [
+      480,
+      84
+     ],
+     "row_pitch_bytes": 3840,
+     "byte_size": 322560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "adaptive_header": {
+     "role": "adaptive_header",
+     "kind": "texture",
+     "resource": "0003000001ff80256270",
+     "name": "Lumen.ScreenProbeGather.ScreenTileAdaptiveProbeHeader",
+     "version": "0003000001ff80259d60",
+     "address": "0003000001ff80256270.v0003000001ff80259d60",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ff80256270.mip0.v0003000001ff80259d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001ff80256270.mip0.v0003000001ff80259d60.bin",
+     "sha256": "5cb958b9d8c7ee0d206e2506793059e48e1d24ce7f1dffc3dfd9ad7522f66f77",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      56
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 17920,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "num_adaptive": {
+     "kind": "buffer",
+     "resource": "0003000001ff80255f60",
+     "name": "Lumen.ScreenProbeGather.NumAdaptiveScreenProbes",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1,
+     "file": "Resources/0003000001ff80255f60.v0003000001ff80259d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001ff80255f60.v0003000001ff80259d60.bin",
+     "sha256": "229ba167c2752f2f401b2f6b862630b27302bf137b95b5ec114e6f38bfa66b47",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1",
+     "role": "num_adaptive",
+     "address": "0003000001ff80255f60.v0003000001ff80259d60",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "adaptive_data": {
+     "kind": "buffer",
+     "resource": "0003000001ff80256098",
+     "name": "Lumen.ScreenProbeGather.AdaptiveScreenProbeData",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1800,
+     "file": "Resources/0003000001ff80256098.v0003000001ff80259d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001ff80256098.v0003000001ff80259d60.bin",
+     "sha256": "043a28a7772d84df949466a090bf2c431d281c7c4d1d7e2d4a17cd6f11fe97f8",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1800",
+     "role": "adaptive_data",
+     "address": "0003000001ff80256098.v0003000001ff80259d60",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "view": {
+     "role": "view",
+     "kind": "struct",
+     "content": "0003000002001bc73c00",
+     "address": "0003000002001bc73c00",
+     "metadata": "000300007ffc2def79f0",
+     "struct_type": "FViewUniformShaderParameters",
+     "declared_size": 6752,
+     "file": "Structures/0003000002001bc73c00.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Structures\\0003000002001bc73c00.bin",
+     "sha256": "7abbe9bb5d5a6d78c5f34e3cd077fa22df84c56fc803a0dee4a7002bb10bf69d",
+     "format": "FViewUniformShaderParameters",
+     "producer_pass": {
+      "id": 97,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "fields_used": [
+      "TranslatedWorldToClip",
+      "TranslatedWorldToView",
+      "ViewToClip",
+      "ViewRectMin",
+      "ViewSizeAndInvSize",
+      "BufferSizeAndInvSize",
+      "PreViewTranslationHigh",
+      "PreViewTranslationLow",
+      "ViewForward",
+      "TranslatedWorldCameraOrigin",
+      "NearPlane",
+      "PreExposure",
+      "OneOverPreExposure",
+      "FrameNumber",
+      "FrameCounter",
+      "StateFrameIndex",
+      "StateFrameIndexMod8",
+      "TemporalAAJitter"
+     ]
+    },
+    "spawn_parameters": {
+     "role": "spawn_parameters",
+     "kind": "struct",
+     "content": "0003000001ff802598d0",
+     "address": "0003000001ff802598d0",
+     "metadata": "000300007ffc1bcae170",
+     "struct_type": "FParameters",
+     "declared_size": 544,
+     "file": "Structures/0003000001ff802598d0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Structures\\0003000001ff802598d0.bin",
+     "sha256": "64d209535af50b40b874a1b60a9a65c7476f4db653030d5391f5a82c0b88577a",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 240
+    },
+    "sh_parameters": {
+     "role": "sh_parameters",
+     "kind": "struct",
+     "content": "0003000001fffe37c340",
+     "address": "0003000001fffe37c340",
+     "metadata": "000300007ffc1bcacf10",
+     "struct_type": "FParameters",
+     "declared_size": 384,
+     "file": "Structures/0003000001fffe37c340.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Structures\\0003000001fffe37c340.bin",
+     "sha256": "bf84f769d3aa3a0dd376bac0e31f0ec5b7008f395eeed8cea60074baddd1cf92",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 97,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 80
+    },
+    "speed": {
+     "role": "speed",
+     "kind": "texture",
+     "resource": "0003000001ff80252640",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldSpeed",
+     "version": "0003000001ff80259d60",
+     "address": "0003000001ff80252640.v0003000001ff80259d60",
+     "producer_pass": {
+      "id": 75,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ff80252640.mip0.v0003000001ff80259d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001ff80252640.mip0.v0003000001ff80259d60.bin",
+     "sha256": "cd2acb686945ef88337a9c39f988b4e81b908e99d2fa64819a101ba5d92779d1",
+     "format": "PF_R16_UINT",
+     "native_format": "PF_R16_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "scene_depth": {
+     "role": "scene_depth",
+     "kind": "texture",
+     "resource": "0003000001fcaa79ebd0",
+     "name": "SceneDepthZ",
+     "version": "0003000001fffe3b90c0",
+     "address": "0003000001fcaa79ebd0.v0003000001fffe3b90c0",
+     "producer_pass": {
+      "id": 54,
+      "name": "DepthPassParallel"
+     },
+     "file": "Resources/0003000001fcaa79ebd0.mip0.v0003000001fffe3b90c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Resources\\0003000001fcaa79ebd0.mip0.v0003000001fffe3b90c0.bin",
+     "sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+     "format": "PF_R32_FLOAT",
+     "native_format": "PF_DepthStencil",
+     "extent": [
+      1280,
+      888
+     ],
+     "row_pitch_bytes": 5120,
+     "byte_size": 4546560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    }
+   },
+   "view_struct": {
+    "role": "view",
+    "kind": "struct",
+    "content": "0003000002001bc73c00",
+    "address": "0003000002001bc73c00",
+    "metadata": "000300007ffc2def79f0",
+    "struct_type": "FViewUniformShaderParameters",
+    "declared_size": 6752,
+    "file": "Structures/0003000002001bc73c00.bin",
+    "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-032\\Structures\\0003000002001bc73c00.bin",
+    "sha256": "7abbe9bb5d5a6d78c5f34e3cd077fa22df84c56fc803a0dee4a7002bb10bf69d",
+    "format": "FViewUniformShaderParameters",
+    "producer_pass": {
+     "id": 97,
+     "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+    },
+    "fields_used": [
+     "TranslatedWorldToClip",
+     "TranslatedWorldToView",
+     "ViewToClip",
+     "ViewRectMin",
+     "ViewSizeAndInvSize",
+     "BufferSizeAndInvSize",
+     "PreViewTranslationHigh",
+     "PreViewTranslationLow",
+     "ViewForward",
+     "TranslatedWorldCameraOrigin",
+     "NearPlane",
+     "PreExposure",
+     "OneOverPreExposure",
+     "FrameNumber",
+     "FrameCounter",
+     "StateFrameIndex",
+     "StateFrameIndexMod8",
+     "TemporalAAJitter"
+    ]
+   }
+  },
+  "lightstep-064": {
+   "source_root": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064",
+   "frame_scope": "Frame 240 (Delta=0.012045s)",
+   "frame_number": 637,
+   "frame_counter": 240,
+   "state_frame_index": 638,
+   "spawn_pass": {
+    "id": 76,
+    "name": "AdaptivePlacementSpawn",
+    "pointer": "0003000001ffb9729d60"
+   },
+   "sh_pass": {
+    "id": 98,
+    "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0",
+    "pointer": "0003000001ff8071c560"
+   },
+   "parameters": {
+    "nested_struct": "FScreenProbeParameters",
+    "nested_offset_in_FParameters": 240
+   },
+   "operands": {
+    "position": {
+     "role": "position",
+     "kind": "texture",
+     "resource": "0003000001ffb9722900",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeTranslatedWorldPosition",
+     "version": "0003000001ffb9729d60",
+     "address": "0003000001ffb9722900.v0003000001ffb9729d60",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ffb9722900.mip0.v0003000001ffb9729d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ffb9722900.mip0.v0003000001ffb9729d60.bin",
+     "sha256": "8e4fb7e2c537c62d623f6db8e3e0fe8f42fa249fa50008cf107b589c37bcbd77",
+     "format": "PF_A32B32G32R32F",
+     "native_format": "PF_A32B32G32R32F",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 1280,
+     "byte_size": 107520,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "depth": {
+     "role": "depth",
+     "kind": "texture",
+     "resource": "0003000001ffb97220b8",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeSceneDepth",
+     "version": "0003000001ffb9729d60",
+     "address": "0003000001ffb97220b8.v0003000001ffb9729d60",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ffb97220b8.mip0.v0003000001ffb9729d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ffb97220b8.mip0.v0003000001ffb9729d60.bin",
+     "sha256": "cd1f94cebc0691a02082b6b4a9921fe6d9ccb36aa4f98acc2afeda453225eed7",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "normal": {
+     "role": "normal",
+     "kind": "texture",
+     "resource": "0003000001ffb9722380",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldNormal",
+     "version": "0003000001ffb9729d60",
+     "address": "0003000001ffb9722380.v0003000001ffb9729d60",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ffb9722380.mip0.v0003000001ffb9729d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ffb9722380.mip0.v0003000001ffb9729d60.bin",
+     "sha256": "861ffa0e21c8d9c93bb3a192444ad9a37e1db5123f4e4bdcd8c93e1bf79f9460",
+     "format": "PF_R8G8",
+     "native_format": "PF_R8G8",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_ambient": {
+     "role": "sh_ambient",
+     "kind": "texture",
+     "resource": "0003000001ff8071bdb0",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHAmbient",
+     "version": "0003000001ff8071c560",
+     "address": "0003000001ff8071bdb0.v0003000001ff8071c560",
+     "producer_pass": {
+      "id": 98,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/0003000001ff8071bdb0.mip0.v0003000001ff8071c560.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ff8071bdb0.mip0.v0003000001ff8071c560.bin",
+     "sha256": "dc2725bae2b7baa4c3b0edb823b2a29ae733d11dd2fd7bdde98b5fa76260def5",
+     "format": "PF_FloatR11G11B10",
+     "native_format": "PF_FloatR11G11B10",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 26880,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "sh_directional": {
+     "role": "sh_directional",
+     "kind": "texture",
+     "resource": "0003000001ff8071c070",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeRadianceSHDirectional",
+     "version": "0003000001ff8071c560",
+     "address": "0003000001ff8071c070.v0003000001ff8071c560",
+     "producer_pass": {
+      "id": 98,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "file": "Resources/0003000001ff8071c070.mip0.v0003000001ff8071c560.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ff8071c070.mip0.v0003000001ff8071c560.bin",
+     "sha256": "0dc31ff76762375922149d843be2f51e4fc7a64c022689022bf67e35bee27535",
+     "format": "PF_FloatRGBA",
+     "native_format": "PF_FloatRGBA",
+     "extent": [
+      480,
+      84
+     ],
+     "row_pitch_bytes": 3840,
+     "byte_size": 322560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "adaptive_header": {
+     "role": "adaptive_header",
+     "kind": "texture",
+     "resource": "0003000001ffb9726270",
+     "name": "Lumen.ScreenProbeGather.ScreenTileAdaptiveProbeHeader",
+     "version": "0003000001ffb9729d60",
+     "address": "0003000001ffb9726270.v0003000001ffb9729d60",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ffb9726270.mip0.v0003000001ffb9729d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ffb9726270.mip0.v0003000001ffb9729d60.bin",
+     "sha256": "ff2fc6498a8c46197c29975ca0c8f2eedbd631a2221cb4c709202b9dc20f2779",
+     "format": "PF_R32_UINT",
+     "native_format": "PF_R32_UINT",
+     "extent": [
+      80,
+      56
+     ],
+     "row_pitch_bytes": 320,
+     "byte_size": 17920,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "num_adaptive": {
+     "kind": "buffer",
+     "resource": "0003000001ffb9725f60",
+     "name": "Lumen.ScreenProbeGather.NumAdaptiveScreenProbes",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1,
+     "file": "Resources/0003000001ffb9725f60.v0003000001ffb9729d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ffb9725f60.v0003000001ffb9729d60.bin",
+     "sha256": "1fa12ddcd1115032e8903f915254b2193a8734b17e9210d552108b7716ee529b",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1",
+     "role": "num_adaptive",
+     "address": "0003000001ffb9725f60.v0003000001ffb9729d60",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "adaptive_data": {
+     "kind": "buffer",
+     "resource": "0003000001ffb9726098",
+     "name": "Lumen.ScreenProbeGather.AdaptiveScreenProbeData",
+     "desc": "FRDGBufferDesc",
+     "bytes_per_element": 4,
+     "num_elements": 1800,
+     "file": "Resources/0003000001ffb9726098.v0003000001ffb9729d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ffb9726098.v0003000001ffb9729d60.bin",
+     "sha256": "bebd892403fbc1987bc5af3f352d6eac9dea98bf48b9ee5e1aae61ecf82e5717",
+     "format": "FRDGBufferDesc BytesPerElement=4 NumElements=1800",
+     "role": "adaptive_data",
+     "address": "0003000001ffb9726098.v0003000001ffb9729d60",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     }
+    },
+    "view": {
+     "role": "view",
+     "kind": "struct",
+     "content": "00030000020018cbfd80",
+     "address": "00030000020018cbfd80",
+     "metadata": "000300007ffc2def79f0",
+     "struct_type": "FViewUniformShaderParameters",
+     "declared_size": 6752,
+     "file": "Structures/00030000020018cbfd80.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Structures\\00030000020018cbfd80.bin",
+     "sha256": "4ff4b41946a589d0d3168a94aff359f42faf8469a4d5901ab630d17dd3c72b1b",
+     "format": "FViewUniformShaderParameters",
+     "producer_pass": {
+      "id": 98,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "fields_used": [
+      "TranslatedWorldToClip",
+      "TranslatedWorldToView",
+      "ViewToClip",
+      "ViewRectMin",
+      "ViewSizeAndInvSize",
+      "BufferSizeAndInvSize",
+      "PreViewTranslationHigh",
+      "PreViewTranslationLow",
+      "ViewForward",
+      "TranslatedWorldCameraOrigin",
+      "NearPlane",
+      "PreExposure",
+      "OneOverPreExposure",
+      "FrameNumber",
+      "FrameCounter",
+      "StateFrameIndex",
+      "StateFrameIndexMod8",
+      "TemporalAAJitter"
+     ]
+    },
+    "spawn_parameters": {
+     "role": "spawn_parameters",
+     "kind": "struct",
+     "content": "0003000001ffb97298d0",
+     "address": "0003000001ffb97298d0",
+     "metadata": "000300007ffc1bcae170",
+     "struct_type": "FParameters",
+     "declared_size": 544,
+     "file": "Structures/0003000001ffb97298d0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Structures\\0003000001ffb97298d0.bin",
+     "sha256": "cfed6f6a66e5d9750f65bffe108144c961560d5b1970810ad8aa5d140de8b3f2",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 240
+    },
+    "sh_parameters": {
+     "role": "sh_parameters",
+     "kind": "struct",
+     "content": "0003000001ff8071c340",
+     "address": "0003000001ff8071c340",
+     "metadata": "000300007ffc1bcacf10",
+     "struct_type": "FParameters",
+     "declared_size": 384,
+     "file": "Structures/0003000001ff8071c340.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Structures\\0003000001ff8071c340.bin",
+     "sha256": "fbd32887fc79592109487dc8da138235d3a426b8c5eb5c1e2d2e43a7187bf564",
+     "format": "FParameters",
+     "producer_pass": {
+      "id": 98,
+      "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+     },
+     "nested_struct": "FScreenProbeParameters",
+     "nested_offset_in_FParameters": 80
+    },
+    "speed": {
+     "role": "speed",
+     "kind": "texture",
+     "resource": "0003000001ffb9722640",
+     "name": "Lumen.ScreenProbeGather.ScreenProbeWorldSpeed",
+     "version": "0003000001ffb9729d60",
+     "address": "0003000001ffb9722640.v0003000001ffb9729d60",
+     "producer_pass": {
+      "id": 76,
+      "name": "AdaptivePlacementSpawn"
+     },
+     "file": "Resources/0003000001ffb9722640.mip0.v0003000001ffb9729d60.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001ffb9722640.mip0.v0003000001ffb9729d60.bin",
+     "sha256": "e4ab56b79957d6f4bf1b6a09885f7b91f918052cffce2c7721488e3bae53ba93",
+     "format": "PF_R16_UINT",
+     "native_format": "PF_R16_UINT",
+     "extent": [
+      80,
+      84
+     ],
+     "row_pitch_bytes": 160,
+     "byte_size": 13440,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    },
+    "scene_depth": {
+     "role": "scene_depth",
+     "kind": "texture",
+     "resource": "0003000001fca7d5ebd0",
+     "name": "SceneDepthZ",
+     "version": "000300000200166d90c0",
+     "address": "0003000001fca7d5ebd0.v000300000200166d90c0",
+     "producer_pass": {
+      "id": 55,
+      "name": "DepthPassParallel"
+     },
+     "file": "Resources/0003000001fca7d5ebd0.mip0.v000300000200166d90c0.bin",
+     "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Resources\\0003000001fca7d5ebd0.mip0.v000300000200166d90c0.bin",
+     "sha256": "0650e6ac09f5e62f1763e1c18f3cae9bc067baa75014cac6990d1e1e2779097a",
+     "format": "PF_R32_FLOAT",
+     "native_format": "PF_DepthStencil",
+     "extent": [
+      1280,
+      888
+     ],
+     "row_pitch_bytes": 5120,
+     "byte_size": 4546560,
+     "readback_status": "Dumped",
+     "readback_timing": "GPUReadbackCompleted"
+    }
+   },
+   "view_struct": {
+    "role": "view",
+    "kind": "struct",
+    "content": "00030000020018cbfd80",
+    "address": "00030000020018cbfd80",
+    "metadata": "000300007ffc2def79f0",
+    "struct_type": "FViewUniformShaderParameters",
+    "declared_size": 6752,
+    "file": "Structures/00030000020018cbfd80.bin",
+    "path": "D:\\UnrealUnderstanding-Temporal\\output\\gpu-dump\\raw\\20261115-101057\\lightstep-064\\Structures\\00030000020018cbfd80.bin",
+    "sha256": "4ff4b41946a589d0d3168a94aff359f42faf8469a4d5901ab630d17dd3c72b1b",
+    "format": "FViewUniformShaderParameters",
+    "producer_pass": {
+     "id": 98,
+     "name": "ScreenProbeConvertToIrradiance Format:0 WaveOpWaveSize:32 AO:0"
+    },
+    "fields_used": [
+     "TranslatedWorldToClip",
+     "TranslatedWorldToView",
+     "ViewToClip",
+     "ViewRectMin",
+     "ViewSizeAndInvSize",
+     "BufferSizeAndInvSize",
+     "PreViewTranslationHigh",
+     "PreViewTranslationLow",
+     "ViewForward",
+     "TranslatedWorldCameraOrigin",
+     "NearPlane",
+     "PreExposure",
+     "OneOverPreExposure",
+     "FrameNumber",
+     "FrameCounter",
+     "StateFrameIndex",
+     "StateFrameIndexMod8",
+     "TemporalAAJitter"
+    ]
+   }
+  }
+ },
+ "checks": [
+  {
+   "name": "all_states_nonempty",
+   "ok": true,
+   "evidence": {
+    "baseline": 3706,
+    "lightstep-001": 3708,
+    "lightstep-008": 3708,
+    "lightstep-032": 3686,
+    "lightstep-064": 3700
+   }
+  },
+  {
+   "name": "constant_radiance_sh_normalization",
+   "ok": true,
+   "evidence": {
+    "radiance": 1.0,
+    "projected_l0": 0.28209499999999976,
+    "expected_l0": 0.282095,
+    "l0_abs_error": 2.220446049250313e-16,
+    "max_other_coefficient": 0.010471999999999985,
+    "exact_sh_max_abs_D_minus_radiance": 1.4762853108862828e-06,
+    "discrete_8x8_max_abs_D_minus_radiance": 0.02050782140496188,
+    "discrete_8x8_mean_D": 1.0000016346105844,
+    "directions_used_for_projection": 64,
+    "directions_used_for_evaluation": 256,
+    "normalization_ok": true,
+    "note": "sphere-average radiance SH; D=4*EvaluateSHIrradiance; the exact convention maps constant radiance to itself.  The captured 8x8 equi-area quadrature leaves a few-percent residual in the higher bands; that is reported separately and is not treated as a decoder error."
+   }
+  },
+  {
+   "name": "projection_stored_positions_to_screen_centers",
+   "ok": true,
+   "evidence": {
+    "baseline": {
+     "n": 7138,
+     "median_px": 1.5000000075815478e-05,
+     "p95_px": 5.199999998239946e-05,
+     "max_px": 0.00010100000008606003
+    },
+    "lightstep-001": {
+     "n": 7144,
+     "median_px": 1.5999999959603883e-05,
+     "p95_px": 5.400000009103678e-05,
+     "max_px": 0.00010700000007091148
+    },
+    "lightstep-008": {
+     "n": 7144,
+     "median_px": 1.5999999959603883e-05,
+     "p95_px": 5.400000009103678e-05,
+     "max_px": 0.00010700000007091148
+    },
+    "lightstep-032": {
+     "n": 7138,
+     "median_px": 1.5000000075815478e-05,
+     "p95_px": 5.29999999798747e-05,
+     "max_px": 0.00011300000005576294
+    },
+    "lightstep-064": {
+     "n": 7136,
+     "median_px": 1.5999999988025593e-05,
+     "p95_px": 5.29999999798747e-05,
+     "max_px": 0.00010300000008101051
+    }
+   }
+  },
+  {
+   "name": "adaptive_encoded_centers",
+   "ok": true,
+   "evidence": {
+    "baseline": {
+     "n": 274,
+     "median_px": 9.999999974752427e-06,
+     "p95_px": 5.2049999982273116e-05,
+     "max_px": 8.299999990413198e-05
+    },
+    "lightstep-001": {
+     "n": 272,
+     "median_px": 8.999999977277184e-06,
+     "p95_px": 5.2000000033558534e-05,
+     "max_px": 7.600000003549212e-05
+    },
+    "lightstep-008": {
+     "n": 272,
+     "median_px": 8.999999977277184e-06,
+     "p95_px": 5.2000000033558534e-05,
+     "max_px": 7.600000003549212e-05
+    },
+    "lightstep-032": {
+     "n": 234,
+     "median_px": 9.000000005698894e-06,
+     "p95_px": 4.899999998997373e-05,
+     "max_px": 8.200000002034358e-05
+    },
+    "lightstep-064": {
+     "n": 264,
+     "median_px": 1.2000000012335477e-05,
+     "p95_px": 5.3999999977349944e-05,
+     "max_px": 8.200000002034358e-05
+    }
+   }
+  },
+  {
+   "name": "active_bound_allocator_header",
+   "ok": true,
+   "evidence": {
+    "baseline": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 137,
+     "active_adaptive_bound": 137,
+     "active_uniform_count": 3569,
+     "active_adaptive_count": 137,
+     "active_total_count": 3706,
+     "inactive_unlit_uniform_count": 31,
+     "stale_finite_adaptive_count": 103,
+     "finite_nonzero_storage_count": 3840,
+     "adaptive_header_nonzero_tiles": 134,
+     "adaptive_header_value_sum": 137,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 134,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 2,
+     "screen_tile_jitter_px": [
+      4,
+      4
+     ]
+    },
+    "lightstep-001": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 136,
+     "active_adaptive_bound": 136,
+     "active_uniform_count": 3572,
+     "active_adaptive_count": 136,
+     "active_total_count": 3708,
+     "inactive_unlit_uniform_count": 28,
+     "stale_finite_adaptive_count": 119,
+     "finite_nonzero_storage_count": 3855,
+     "adaptive_header_nonzero_tiles": 134,
+     "adaptive_header_value_sum": 136,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 134,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 3,
+     "screen_tile_jitter_px": [
+      6,
+      12
+     ]
+    },
+    "lightstep-008": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 136,
+     "active_adaptive_bound": 136,
+     "active_uniform_count": 3572,
+     "active_adaptive_count": 136,
+     "active_total_count": 3708,
+     "inactive_unlit_uniform_count": 28,
+     "stale_finite_adaptive_count": 119,
+     "finite_nonzero_storage_count": 3855,
+     "adaptive_header_nonzero_tiles": 134,
+     "adaptive_header_value_sum": 136,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 134,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 3,
+     "screen_tile_jitter_px": [
+      6,
+      12
+     ]
+    },
+    "lightstep-032": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 117,
+     "active_adaptive_bound": 117,
+     "active_uniform_count": 3569,
+     "active_adaptive_count": 117,
+     "active_total_count": 3686,
+     "inactive_unlit_uniform_count": 31,
+     "stale_finite_adaptive_count": 138,
+     "finite_nonzero_storage_count": 3855,
+     "adaptive_header_nonzero_tiles": 117,
+     "adaptive_header_value_sum": 117,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 117,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 1,
+     "screen_tile_jitter_px": [
+      2,
+      8
+     ]
+    },
+    "lightstep-064": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 132,
+     "active_adaptive_bound": 132,
+     "active_uniform_count": 3568,
+     "active_adaptive_count": 132,
+     "active_total_count": 3700,
+     "inactive_unlit_uniform_count": 32,
+     "stale_finite_adaptive_count": 170,
+     "finite_nonzero_storage_count": 3902,
+     "adaptive_header_nonzero_tiles": 128,
+     "adaptive_header_value_sum": 132,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 128,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 6,
+     "screen_tile_jitter_px": [
+      12,
+      6
+     ]
+    }
+   }
+  },
+  {
+   "name": "known_field_formats",
+   "ok": true,
+   "evidence": {
+    "baseline": {
+     "position": {
+      "format": "PF_A32B32G32R32F",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "depth": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "normal": {
+      "format": "PF_R8G8",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_ambient": {
+      "format": "PF_FloatR11G11B10",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_directional": {
+      "format": "PF_FloatRGBA",
+      "extent": [
+       480,
+       84
+      ],
+      "ok": true
+     },
+     "adaptive_header": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       56
+      ],
+      "ok": true
+     },
+     "num_adaptive": {
+      "bytes_per_element": 4,
+      "num_elements": 1,
+      "ok": true
+     },
+     "adaptive_data": {
+      "bytes_per_element": 4,
+      "num_elements": 1800,
+      "ok": true
+     }
+    },
+    "lightstep-001": {
+     "position": {
+      "format": "PF_A32B32G32R32F",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "depth": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "normal": {
+      "format": "PF_R8G8",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_ambient": {
+      "format": "PF_FloatR11G11B10",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_directional": {
+      "format": "PF_FloatRGBA",
+      "extent": [
+       480,
+       84
+      ],
+      "ok": true
+     },
+     "adaptive_header": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       56
+      ],
+      "ok": true
+     },
+     "num_adaptive": {
+      "bytes_per_element": 4,
+      "num_elements": 1,
+      "ok": true
+     },
+     "adaptive_data": {
+      "bytes_per_element": 4,
+      "num_elements": 1800,
+      "ok": true
+     }
+    },
+    "lightstep-008": {
+     "position": {
+      "format": "PF_A32B32G32R32F",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "depth": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "normal": {
+      "format": "PF_R8G8",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_ambient": {
+      "format": "PF_FloatR11G11B10",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_directional": {
+      "format": "PF_FloatRGBA",
+      "extent": [
+       480,
+       84
+      ],
+      "ok": true
+     },
+     "adaptive_header": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       56
+      ],
+      "ok": true
+     },
+     "num_adaptive": {
+      "bytes_per_element": 4,
+      "num_elements": 1,
+      "ok": true
+     },
+     "adaptive_data": {
+      "bytes_per_element": 4,
+      "num_elements": 1800,
+      "ok": true
+     }
+    },
+    "lightstep-032": {
+     "position": {
+      "format": "PF_A32B32G32R32F",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "depth": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "normal": {
+      "format": "PF_R8G8",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_ambient": {
+      "format": "PF_FloatR11G11B10",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_directional": {
+      "format": "PF_FloatRGBA",
+      "extent": [
+       480,
+       84
+      ],
+      "ok": true
+     },
+     "adaptive_header": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       56
+      ],
+      "ok": true
+     },
+     "num_adaptive": {
+      "bytes_per_element": 4,
+      "num_elements": 1,
+      "ok": true
+     },
+     "adaptive_data": {
+      "bytes_per_element": 4,
+      "num_elements": 1800,
+      "ok": true
+     }
+    },
+    "lightstep-064": {
+     "position": {
+      "format": "PF_A32B32G32R32F",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "depth": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "normal": {
+      "format": "PF_R8G8",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_ambient": {
+      "format": "PF_FloatR11G11B10",
+      "extent": [
+       80,
+       84
+      ],
+      "ok": true
+     },
+     "sh_directional": {
+      "format": "PF_FloatRGBA",
+      "extent": [
+       480,
+       84
+      ],
+      "ok": true
+     },
+     "adaptive_header": {
+      "format": "PF_R32_UINT",
+      "extent": [
+       80,
+       56
+      ],
+      "ok": true
+     },
+     "num_adaptive": {
+      "bytes_per_element": 4,
+      "num_elements": 1,
+      "ok": true
+     },
+     "adaptive_data": {
+      "bytes_per_element": 4,
+      "num_elements": 1800,
+      "ok": true
+     }
+    }
+   }
+  },
+  {
+   "name": "parameter_bindings_match_metadata",
+   "ok": true,
+   "evidence": {
+    "baseline": {
+     "bindings": {
+      "parameters_id": "0004000001ffc1201de0",
+      "bindings": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 384,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 456,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 432
+      },
+      "metadata_field_offsets": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 144,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 216,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 192
+      },
+      "nested_offset_in_FParameters": 240,
+      "ok": true
+     },
+     "sh_parameter_counts_match_spawn": true
+    },
+    "lightstep-001": {
+     "bindings": {
+      "parameters_id": "0003000001ffef881de0",
+      "bindings": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 384,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 456,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 432
+      },
+      "metadata_field_offsets": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 144,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 216,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 192
+      },
+      "nested_offset_in_FParameters": 240,
+      "ok": true
+     },
+     "sh_parameter_counts_match_spawn": true
+    },
+    "lightstep-008": {
+     "bindings": {
+      "parameters_id": "0003000001fd136a0480",
+      "bindings": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 384,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 456,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 432
+      },
+      "metadata_field_offsets": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 144,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 216,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 192
+      },
+      "nested_offset_in_FParameters": 240,
+      "ok": true
+     },
+     "sh_parameter_counts_match_spawn": true
+    },
+    "lightstep-032": {
+     "bindings": {
+      "parameters_id": "0003000001ff802598d0",
+      "bindings": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 384,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 456,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 432
+      },
+      "metadata_field_offsets": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 144,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 216,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 192
+      },
+      "nested_offset_in_FParameters": 240,
+      "ok": true
+     },
+     "sh_parameter_counts_match_spawn": true
+    },
+    "lightstep-064": {
+     "bindings": {
+      "parameters_id": "0003000001ffb97298d0",
+      "bindings": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 384,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 456,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 432
+      },
+      "metadata_field_offsets": {
+       "ScreenProbeParameters.NumAdaptiveScreenProbes": 144,
+       "ScreenProbeParameters.ScreenProbeTranslatedWorldPosition": 216,
+       "ScreenProbeParameters.ScreenProbeSceneDepth": 192
+      },
+      "nested_offset_in_FParameters": 240,
+      "ok": true
+     },
+     "sh_parameter_counts_match_spawn": true
+    }
+   }
+  },
+  {
+   "name": "captured_view_exposure_and_pretranslation",
+   "ok": true,
+   "evidence": {
+    "baseline": {
+     "preexposure": 0.00048828125,
+     "one_over_preexposure": 2048.0,
+     "pre_view_translation_cm": [
+      850.0,
+      0.0,
+      -90.0
+     ]
+    },
+    "lightstep-001": {
+     "preexposure": 0.00048828125,
+     "one_over_preexposure": 2048.0,
+     "pre_view_translation_cm": [
+      850.0,
+      0.0,
+      -90.0
+     ]
+    },
+    "lightstep-008": {
+     "preexposure": 0.00048828125,
+     "one_over_preexposure": 2048.0,
+     "pre_view_translation_cm": [
+      850.0,
+      0.0,
+      -90.0
+     ]
+    },
+    "lightstep-032": {
+     "preexposure": 0.00048828125,
+     "one_over_preexposure": 2048.0,
+     "pre_view_translation_cm": [
+      850.0,
+      0.0,
+      -90.0
+     ]
+    },
+    "lightstep-064": {
+     "preexposure": 0.00048828125,
+     "one_over_preexposure": 2048.0,
+     "pre_view_translation_cm": [
+      850.0,
+      0.0,
+      -90.0
+     ]
+    }
+   }
+  },
+  {
+   "name": "finite_nonempty_outputs",
+   "ok": true,
+   "evidence": {
+    "baseline": 0,
+    "lightstep-001": 0,
+    "lightstep-008": 0,
+    "lightstep-032": 0,
+    "lightstep-064": 0
+   }
+  },
+  {
+   "name": "active_vs_stale_preserved",
+   "ok": true,
+   "evidence": {
+    "baseline": {
+     "active": 3706,
+     "stale": 103,
+     "inactive_unlit": 31
+    },
+    "lightstep-001": {
+     "active": 3708,
+     "stale": 119,
+     "inactive_unlit": 28
+    },
+    "lightstep-008": {
+     "active": 3708,
+     "stale": 119,
+     "inactive_unlit": 28
+    },
+    "lightstep-032": {
+     "active": 3686,
+     "stale": 138,
+     "inactive_unlit": 31
+    },
+    "lightstep-064": {
+     "active": 3700,
+     "stale": 170,
+     "inactive_unlit": 32
+    }
+   }
+  },
+  {
+   "name": "focused_subset_8_to_12",
+   "ok": true,
+   "evidence": 10
+  }
+ ],
+ "validation": {
+  "constant_radiance_sh": {
+   "radiance": 1.0,
+   "projected_l0": 0.28209499999999976,
+   "expected_l0": 0.282095,
+   "l0_abs_error": 2.220446049250313e-16,
+   "max_other_coefficient": 0.010471999999999985,
+   "exact_sh_max_abs_D_minus_radiance": 1.4762853108862828e-06,
+   "discrete_8x8_max_abs_D_minus_radiance": 0.02050782140496188,
+   "discrete_8x8_mean_D": 1.0000016346105844,
+   "directions_used_for_projection": 64,
+   "directions_used_for_evaluation": 256,
+   "normalization_ok": true,
+   "note": "sphere-average radiance SH; D=4*EvaluateSHIrradiance; the exact convention maps constant radiance to itself.  The captured 8x8 equi-area quadrature leaves a few-percent residual in the higher bands; that is reported separately and is not treated as a decoder error."
+  },
+  "states": {
+   "baseline": {
+    "counts": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 137,
+     "active_adaptive_bound": 137,
+     "active_uniform_count": 3569,
+     "active_adaptive_count": 137,
+     "active_total_count": 3706,
+     "inactive_unlit_uniform_count": 31,
+     "stale_finite_adaptive_count": 103,
+     "finite_nonzero_storage_count": 3840,
+     "adaptive_header_nonzero_tiles": 134,
+     "adaptive_header_value_sum": 137,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 134,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 2,
+     "screen_tile_jitter_px": [
+      4,
+      4
+     ]
+    },
+    "uniform_screen_center_error": {
+     "n": 7138,
+     "median_px": 1.5000000075815478e-05,
+     "p95_px": 5.199999998239946e-05,
+     "max_px": 0.00010100000008606003
+    },
+    "adaptive_screen_center_error": {
+     "n": 274,
+     "median_px": 9.999999974752427e-06,
+     "p95_px": 5.2049999982273116e-05,
+     "max_px": 8.299999990413198e-05
+    },
+    "sh_finite_active_count": 3706,
+    "sh_nonfinite_active_count": 0,
+    "active_nonempty": true
+   },
+   "lightstep-001": {
+    "counts": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 136,
+     "active_adaptive_bound": 136,
+     "active_uniform_count": 3572,
+     "active_adaptive_count": 136,
+     "active_total_count": 3708,
+     "inactive_unlit_uniform_count": 28,
+     "stale_finite_adaptive_count": 119,
+     "finite_nonzero_storage_count": 3855,
+     "adaptive_header_nonzero_tiles": 134,
+     "adaptive_header_value_sum": 136,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 134,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 3,
+     "screen_tile_jitter_px": [
+      6,
+      12
+     ]
+    },
+    "uniform_screen_center_error": {
+     "n": 7144,
+     "median_px": 1.5999999959603883e-05,
+     "p95_px": 5.400000009103678e-05,
+     "max_px": 0.00010700000007091148
+    },
+    "adaptive_screen_center_error": {
+     "n": 272,
+     "median_px": 8.999999977277184e-06,
+     "p95_px": 5.2000000033558534e-05,
+     "max_px": 7.600000003549212e-05
+    },
+    "sh_finite_active_count": 3708,
+    "sh_nonfinite_active_count": 0,
+    "active_nonempty": true
+   },
+   "lightstep-008": {
+    "counts": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 136,
+     "active_adaptive_bound": 136,
+     "active_uniform_count": 3572,
+     "active_adaptive_count": 136,
+     "active_total_count": 3708,
+     "inactive_unlit_uniform_count": 28,
+     "stale_finite_adaptive_count": 119,
+     "finite_nonzero_storage_count": 3855,
+     "adaptive_header_nonzero_tiles": 134,
+     "adaptive_header_value_sum": 136,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 134,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 3,
+     "screen_tile_jitter_px": [
+      6,
+      12
+     ]
+    },
+    "uniform_screen_center_error": {
+     "n": 7144,
+     "median_px": 1.5999999959603883e-05,
+     "p95_px": 5.400000009103678e-05,
+     "max_px": 0.00010700000007091148
+    },
+    "adaptive_screen_center_error": {
+     "n": 272,
+     "median_px": 8.999999977277184e-06,
+     "p95_px": 5.2000000033558534e-05,
+     "max_px": 7.600000003549212e-05
+    },
+    "sh_finite_active_count": 3708,
+    "sh_nonfinite_active_count": 0,
+    "active_nonempty": true
+   },
+   "lightstep-032": {
+    "counts": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 117,
+     "active_adaptive_bound": 117,
+     "active_uniform_count": 3569,
+     "active_adaptive_count": 117,
+     "active_total_count": 3686,
+     "inactive_unlit_uniform_count": 31,
+     "stale_finite_adaptive_count": 138,
+     "finite_nonzero_storage_count": 3855,
+     "adaptive_header_nonzero_tiles": 117,
+     "adaptive_header_value_sum": 117,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 117,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 1,
+     "screen_tile_jitter_px": [
+      2,
+      8
+     ]
+    },
+    "uniform_screen_center_error": {
+     "n": 7138,
+     "median_px": 1.5000000075815478e-05,
+     "p95_px": 5.29999999798747e-05,
+     "max_px": 0.00011300000005576294
+    },
+    "adaptive_screen_center_error": {
+     "n": 234,
+     "median_px": 9.000000005698894e-06,
+     "p95_px": 4.899999998997373e-05,
+     "max_px": 8.200000002034358e-05
+    },
+    "sh_finite_active_count": 3686,
+    "sh_nonfinite_active_count": 0,
+    "active_nonempty": true
+   },
+   "lightstep-064": {
+    "counts": {
+     "num_uniform_screen_probes": 3600,
+     "max_adaptive_probes": 1800,
+     "atlas_view_size": [
+      80,
+      67
+     ],
+     "atlas_buffer_size": [
+      80,
+      84
+     ],
+     "atlas_view_capacity": 5360,
+     "atlas_storage_capacity": 6720,
+     "captured_num_adaptive_screen_probes": 132,
+     "active_adaptive_bound": 132,
+     "active_uniform_count": 3568,
+     "active_adaptive_count": 132,
+     "active_total_count": 3700,
+     "inactive_unlit_uniform_count": 32,
+     "stale_finite_adaptive_count": 170,
+     "finite_nonzero_storage_count": 3902,
+     "adaptive_header_nonzero_tiles": 128,
+     "adaptive_header_value_sum": 132,
+     "count_matches_header_sum": true,
+     "occupied_header_tiles_not_greater_than_allocated": true,
+     "occupied_header_tile_count": 128,
+     "active_bound_within_max": true,
+     "active_bound_within_atlas": true,
+     "uniform_plus_adaptive_fits_atlas_view": true,
+     "adaptive_bound_fits_storage": true,
+     "uniform_equals_atlas_view_product": false,
+     "uniform_equals_atlas_view_product_expected": false,
+     "uniform_equals_atlas_view_product_reason": "the view atlas is 80x67 because it reserves rows for adaptive probes; the uniform grid is only the 80x45 screen-tile grid, so equality is expected to be false",
+     "screen_temporal_index": 6,
+     "screen_tile_jitter_px": [
+      12,
+      6
+     ]
+    },
+    "uniform_screen_center_error": {
+     "n": 7136,
+     "median_px": 1.5999999988025593e-05,
+     "p95_px": 5.29999999798747e-05,
+     "max_px": 0.00010300000008101051
+    },
+    "adaptive_screen_center_error": {
+     "n": 264,
+     "median_px": 1.2000000012335477e-05,
+     "p95_px": 5.3999999977349944e-05,
+     "max_px": 8.200000002034358e-05
+    },
+    "sh_finite_active_count": 3700,
+    "sh_nonfinite_active_count": 0,
+    "active_nonempty": true
+   }
+  },
+  "all_states_nonempty": true,
+  "all_active_sh_finite": true,
+  "uniform_centers_ok": true,
+  "adaptive_centers_ok": true,
+  "ok": true
+ },
+ "files": [
+  {
+   "path": "decoder.py",
+   "bytes": 87099,
+   "sha256": "cb76422d4afe98be54d628c271d21873888ddd63c1f396a7bab2dfe3cbfc3d07"
+  },
+  {
+   "path": "publish/data/focused_probes.json",
+   "bytes": 122996,
+   "sha256": "337942638a59d307ec15f04ec30c6d87b492e602401cc40f9b0bd669b8c86c8d"
+  },
+  {
+   "path": "publish/data/lobes.npz",
+   "bytes": 489387,
+   "sha256": "ccc5fc4e789fd9b6cf734a3e1a124515ad89e190d8c26238301eda0a661f4940"
+  },
+  {
+   "path": "publish/data/states/baseline.json",
+   "bytes": 3670699,
+   "sha256": "77f6337c00486fc1e9e5d0e49106039c062bd4478f7829e6dd8a101f4bc4ca0a"
+  },
+  {
+   "path": "publish/data/states/lightstep-001.json",
+   "bytes": 3677131,
+   "sha256": "9b84a4b9e3204b16d2964bbed930e71f4ead8f620cc14f2aaa7af6ede00918e7"
+  },
+  {
+   "path": "publish/data/states/lightstep-008.json",
+   "bytes": 3682099,
+   "sha256": "eee678e4eee926025c60f760459daf2c262a552069c12e60896978b910dc05de"
+  },
+  {
+   "path": "publish/data/states/lightstep-032.json",
+   "bytes": 3663675,
+   "sha256": "365b4ba71a951295498e85bbdb538bb0bfff6adafe14e0d1df0a31b45297fccb"
+  },
+  {
+   "path": "publish/data/states/lightstep-064.json",
+   "bytes": 3684451,
+   "sha256": "336f7a0ea2ce34a89c086e0bae6e21b63c6f0f254f8b68e951646633e0494541"
+  },
+  {
+   "path": "publish/data/summary.json",
+   "bytes": 8775,
+   "sha256": "c0cb7fba3ecc41754ba8a3d6844db4db66357f199468b04446de5151efaa98e4"
+  },
+  {
+   "path": "publish/data/validation.json",
+   "bytes": 10304,
+   "sha256": "c94e365b8d316705d0e4be90e5802cadf3cc7f5caa0eabeee2107b57fd5322bc"
+  },
+  {
+   "path": "publish/figures/active_baseline.png",
+   "bytes": 1566954,
+   "sha256": "e79ae928ecb4e6bc8dbbc3c341d1b184a0a9c4f8637c4da6b3e4e86585dba329"
+  },
+  {
+   "path": "publish/figures/active_lightstep-001.png",
+   "bytes": 1258095,
+   "sha256": "8035cc76fb62c8e723667a9e43c641b0d7ee4d20a69ebb82fbbfaa25ce4f047b"
+  },
+  {
+   "path": "publish/figures/active_lightstep-008.png",
+   "bytes": 1430247,
+   "sha256": "eb45e01c867f323cb2df9ce7e98a7c76cc5957e27c554aceaee6b6b81e02373b"
+  },
+  {
+   "path": "publish/figures/active_lightstep-032.png",
+   "bytes": 1363129,
+   "sha256": "79b2ccb0011895144f61517f3475e34e4f19d0f56e0f1d392bfd90618727ecd1"
+  },
+  {
+   "path": "publish/figures/active_lightstep-064.png",
+   "bytes": 1262219,
+   "sha256": "c707916c9c3b3108c252a1e270c32b8ad10267f343d288d96e6671cae10982f7"
+  },
+  {
+   "path": "publish/figures/lobes_baseline.png",
+   "bytes": 1497187,
+   "sha256": "33ebe9e7c8cc9909d5730e6120c30dbaf6e930ea4bb9e3dc216d1c54422a7dab"
+  },
+  {
+   "path": "publish/figures/lobes_lightstep-001.png",
+   "bytes": 1193648,
+   "sha256": "48be0e19b33d732dc6a13139dbe3b85a17ccc4cfe58e123a95ebaaf92a04f560"
+  },
+  {
+   "path": "publish/figures/lobes_lightstep-008.png",
+   "bytes": 1367319,
+   "sha256": "a558896230c30c19cc42813b11bac59fdc578734abb493b6af66b5cdd3d92c65"
+  },
+  {
+   "path": "publish/figures/lobes_lightstep-032.png",
+   "bytes": 1315675,
+   "sha256": "fceb88ac88f8ccbb4897e234f1e6770fd02ecad5a08413307d84e009d0e815c3"
+  },
+  {
+   "path": "publish/figures/lobes_lightstep-064.png",
+   "bytes": 1218515,
+   "sha256": "cf46516a2ff6d51151c4f3db047c42d43d76e7c5f0b2c68320e2a8cc26bca74c"
+  },
+  {
+   "path": "publish/figures/lobes_rosettes.png",
+   "bytes": 67558,
+   "sha256": "734e45b5339bd87638346935736adde4276245f0abbe6b145f7facade6f558ed"
+  },
+  {
+   "path": "report.md",
+   "bytes": 10305,
+   "sha256": "7cf9846468cfd0c15e518c506b2141db1785471a9a85ed84ee3b18f09975b0bf"
+  }
+ ],
+ "limitations": [
+  "The five roots are separate captures; probe sampling positions move with the captured TAA/probe jitter even for the fixed camera.",
+  "Nearest-reference matching is by world distance; it is not a claim that the two samples are the same physical location.",
+  "No shader-local blend weights, ray weights, or per-index dispatch tables are claimed; only captured resource bytes are decoded.",
+  "Stored values beyond the captured allocator count are stale and are not interpreted as active coefficients."
+ ]
+}

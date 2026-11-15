@@ -1,0 +1,257 @@
+{
+  "schema": "arda-placement-legend-v1",
+  "display_transform": {
+    "base": "native Base/Screenshot.png of the selected dump, copied byte-for-byte to figures/<state>/base.png",
+    "composite": "base RGB + one RGBA geometry overlay; no gamma, tone, exposure or resize applied; 1280x720 top-left pixel coordinates",
+    "text": "no text is burned into any image; all labels are native JSON metadata in this file and in the per-state data files"
+  },
+  "families": {
+    "cards": {
+      "color": "#FF8A4C",
+      "subset_color": "#FFE14C",
+      "subset_alpha": 255,
+      "subset_width_px": 2,
+      "xray_alpha": 58,
+      "xray_width_px": 1,
+      "geometry": "projected convex hull of the 8 OBB corners (world OBB shifted by PreViewTranslation)",
+      "subset_rule": "up to 24 visible cards whose projected hull area is closest to the candidate median, one per 8x6 screen cell; the primary image draws only this subset, all cards remain numeric",
+      "depth_classifier": "card-centre view depth vs SceneDepthZ at the projected pixel; tolerance max(10 cm, 0.02*scene_depth_cm)",
+      "xray": "separate image; only centre-depth-occluded cards, low alpha"
+    },
+    "worldcache": {
+      "colors_by_clipmap": [
+        "#4C8DFF",
+        "#45E06F",
+        "#FFD24C",
+        "#FF6B6B",
+        "#B388FF",
+        "#00E5FF"
+      ],
+      "radius_px_by_clipmap": [
+        3.2,
+        2.8,
+        2.4,
+        2.0,
+        1.8,
+        1.6
+      ],
+      "primary_alpha": 255,
+      "xray_alpha": 62,
+      "geometry": "projected probe world position = clipmap corner + (logical coord + 0.5)*cell + ProbeWorldOffset - PreViewTranslation",
+      "activity": "last-traced age is numeric only (per-probe traced_age_frames and per-state activity histograms); marker colour/size is fixed per clipmap and is not varied by age",
+      "xray": "separate image; only probe-centre-occluded probes, low alpha"
+    }
+  },
+  "states": {
+    "baseline": {
+      "base": {
+        "file": "light/figures/baseline/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "bd720dc7b8473878cee0ec8b104eef5d84ff1f45bb84fe606b9a039eb96bde2f",
+        "raw_sha256": "bd720dc7b8473878cee0ec8b104eef5d84ff1f45bb84fe606b9a039eb96bde2f",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "light/figures/baseline/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 21102,
+        "sha256": "79f135c69bc1eeb9a875b231753f815d3de1c408c057df610213ae57cca9515b"
+      },
+      "cards_xray": {
+        "file": "light/figures/baseline/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 128,
+        "changed_pixels_vs_base": 48675,
+        "sha256": "c302f1440feeb60549d94dea550e7a72eada67802b02716b7816ba0c4d4fd4a3"
+      },
+      "worldcache_only": {
+        "file": "light/figures/baseline/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 361,
+        "changed_pixels_vs_base": 12435,
+        "sha256": "ae7f9a820de7d1c3752761dffd040d3c3a74e435a6b99b65e109ef4f55ac7573"
+      },
+      "worldcache_xray": {
+        "file": "light/figures/baseline/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 408,
+        "changed_pixels_vs_base": 17173,
+        "sha256": "64f5f979b5d491229ce6c1a496256c6684d15f91c5b5fee0e216c7b3f2a7a0ca"
+      }
+    },
+    "lightstep-001": {
+      "base": {
+        "file": "light/figures/lightstep-001/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "2d8146f71ff0984f3a5eaa50f8e7d8441aed5972f6b2a6847f5866949ff0a0d4",
+        "raw_sha256": "2d8146f71ff0984f3a5eaa50f8e7d8441aed5972f6b2a6847f5866949ff0a0d4",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "light/figures/lightstep-001/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 21102,
+        "sha256": "6890a64b5874f4d89bff7efccfbc5dd17af6f3bea096d568eca9597c4ae51dc5"
+      },
+      "cards_xray": {
+        "file": "light/figures/lightstep-001/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 128,
+        "changed_pixels_vs_base": 48675,
+        "sha256": "ca90d842153193211cddc6d8cb838183b09baa8e9299cffa937b3167c0ce13ef"
+      },
+      "worldcache_only": {
+        "file": "light/figures/lightstep-001/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 361,
+        "changed_pixels_vs_base": 12050,
+        "sha256": "360bdea919679b87118596f91b69dfc0e9aadf3ff57841d3edf69e3d7cdb1332"
+      },
+      "worldcache_xray": {
+        "file": "light/figures/lightstep-001/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 408,
+        "changed_pixels_vs_base": 16433,
+        "sha256": "b26d97b341dd86c98b962b6910544709954967abed7e1ce896b41a2e4b764e4f"
+      }
+    },
+    "lightstep-008": {
+      "base": {
+        "file": "light/figures/lightstep-008/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "a13c2b482f9cb777eae926916645b0805df498aa5a00ae99ba7ea621a1a2c742",
+        "raw_sha256": "a13c2b482f9cb777eae926916645b0805df498aa5a00ae99ba7ea621a1a2c742",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "light/figures/lightstep-008/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 23333,
+        "sha256": "d8c6d69bf72934e2eaebd62ff1ca60da5134003d9791207e225330de9faf2c84"
+      },
+      "cards_xray": {
+        "file": "light/figures/lightstep-008/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 169,
+        "changed_pixels_vs_base": 66154,
+        "sha256": "8fc871542f75221aa259ea312e1f77d5856a39b4c73dadc29550a592f983c2ab"
+      },
+      "worldcache_only": {
+        "file": "light/figures/lightstep-008/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 361,
+        "changed_pixels_vs_base": 12338,
+        "sha256": "8f999603901a7900b628edfece974ea1b11bb3e8cae0c1542eb46244c0c4be65"
+      },
+      "worldcache_xray": {
+        "file": "light/figures/lightstep-008/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 408,
+        "changed_pixels_vs_base": 16812,
+        "sha256": "4a4b0ac7c91bff8e15326b52ea388b8686931531dfaf602a2e77884bb451962f"
+      }
+    },
+    "lightstep-032": {
+      "base": {
+        "file": "light/figures/lightstep-032/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "ac9f60b61699e1bb42b866939c9d6c25cdfc7427447bd21b9e2184d31428ba22",
+        "raw_sha256": "ac9f60b61699e1bb42b866939c9d6c25cdfc7427447bd21b9e2184d31428ba22",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "light/figures/lightstep-032/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 23333,
+        "sha256": "6d2d6e258d731d47be45e1f9e19948b7e88d8d8192a91da0d5e2505ba74dfbe3"
+      },
+      "cards_xray": {
+        "file": "light/figures/lightstep-032/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 169,
+        "changed_pixels_vs_base": 66154,
+        "sha256": "8c598702a2341ee25e89990c8da9f6487cc3573851d778a9bb9db4ec3c936b99"
+      },
+      "worldcache_only": {
+        "file": "light/figures/lightstep-032/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 361,
+        "changed_pixels_vs_base": 12359,
+        "sha256": "9ddc9486030e577268ba770084959ff1b15a41fc29660988bd6111e1c082f7b4"
+      },
+      "worldcache_xray": {
+        "file": "light/figures/lightstep-032/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 408,
+        "changed_pixels_vs_base": 16857,
+        "sha256": "9f7c48163c814108b479890e60260c06f05b4a1cf2c1f4b6b7dc15e38ac462e8"
+      }
+    },
+    "lightstep-064": {
+      "base": {
+        "file": "light/figures/lightstep-064/base.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "0a155759152bc9f038f8c5cebb4cd3bd96887fa0bf8786ff64e8f61f81aea6d9",
+        "raw_sha256": "0a155759152bc9f038f8c5cebb4cd3bd96887fa0bf8786ff64e8f61f81aea6d9",
+        "byte_identical_to_raw": true
+      },
+      "cards_only": {
+        "file": "light/figures/lightstep-064/cards-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 24,
+        "changed_pixels_vs_base": 23333,
+        "sha256": "f2f70cbe29ecc8b2c3eea7d4a8b610d923e5e96e1af3218a4edd4d31dacd8acd"
+      },
+      "cards_xray": {
+        "file": "light/figures/lightstep-064/cards-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_cards": 169,
+        "changed_pixels_vs_base": 66154,
+        "sha256": "e6c3910e161537e349e5ce8848a2bb62db266086c32ec8fbdecf2d74d837412f"
+      },
+      "worldcache_only": {
+        "file": "light/figures/lightstep-064/worldcache-only.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 361,
+        "changed_pixels_vs_base": 12290,
+        "sha256": "e4c81783edc3e6e3e3ff5a62b904176c17557d2e41d787cf4f13a9b3f39a2aa6"
+      },
+      "worldcache_xray": {
+        "file": "light/figures/lightstep-064/worldcache-xray.png",
+        "width": 1280,
+        "height": 720,
+        "drawn_probes": 408,
+        "changed_pixels_vs_base": 16601,
+        "sha256": "a8e8b21d671f6807feddc618fa04cb30d158b929687d5c8905f9294f334393af"
+      }
+    }
+  }
+}
