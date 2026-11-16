@@ -12,6 +12,7 @@ import math
 import random
 from frame_flow import frame_flow
 from shadow_geometry import shadow_geometry
+from path_derivation import path_derivation
 
 ROOT = Path(__file__).resolve().parents[5]
 OUT = ROOT / 'Docs/Unreal/assets/lumen-course'
@@ -516,6 +517,92 @@ def experiments():
         dict(name='ggx_projected_distribution_normalization',value=projected_norm,expected=1,tolerance=1e-7),
         dict(name='ggx_sampler_vs_hemisphere_quadrature',value=sampled_reflection,expected=reflected_integral,tolerance=1e-7),
     ]
+    # New derivation checks compare distinct formulations, not rendered pixels.
+    # A finite Neumann expansion must retain exactly the stated remainder.
+    matrix_state = [1., 0.]
+    matrix_sum = [0., 0.]
+    for _ in range(4):
+        matrix_sum = [matrix_sum[i] + matrix_state[i] for i in range(2)]
+        matrix_state = [.2*matrix_state[1], .3*matrix_state[0]]
+    exact_b = .3/(1-.06)
+    tail_b = .3*.06**2/(1-.06)
+    rows.extend([
+        dict(name='path_neumann_three_transfer_value',value=matrix_sum[1],expected=.318,tolerance=1e-14),
+        dict(name='path_neumann_tail_matches_solution',value=matrix_sum[1]+tail_b,expected=exact_b,tolerance=1e-14),
+    ])
+    for distance in (2., 4.):
+        cx, cy, rho = .8, .6, .6
+        geometry = cx*cy/distance**2
+        p_sigma = cx/math.pi
+        p_area = p_sigma*cy/distance**2
+        rows.append(dict(name=f'path_area_direction_weight_{int(distance)}m',
+                         value=(rho/math.pi)*geometry/p_area,
+                         expected=rho, tolerance=1e-14))
+    # Sum over length and sample location; omission of q_k would fail this.
+    length_pmf = [.25, .75]
+    conditional_pmf = [[.2, .8], [.6, .4]]
+    contributions = [[.1, .2], [.3, .4]]
+    complete_path_expectation = sum(
+        length_pmf[k]*conditional_pmf[k][i]
+        * contributions[k][i]/(length_pmf[k]*conditional_pmf[k][i])
+        for k in range(2) for i in range(2))
+    rows.append(dict(name='path_length_and_vertex_expectation',value=complete_path_expectation,
+                     expected=1.,tolerance=1e-14))
+    # Discrete adjoint identity with a nonsymmetric operator and two endpoints.
+    transport = [[.1, .2], [.3, .05]]
+    light, sensor = [2., 3.], [.4, .7]
+    forward = sum(sensor[i]*transport[i][j]*light[j] for i in range(2) for j in range(2))
+    adjoint = [sum(transport[i][j]*sensor[i] for i in range(2)) for j in range(2)]
+    rows.append(dict(name='path_adjoint_measurement_identity',value=forward,
+                     expected=sum(adjoint[j]*light[j] for j in range(2)),tolerance=1e-14))
+    # Exact finite enumeration of the sampling strategies in the chapter.
+    target, proposals = [.8, .2], [[.9, .1], [.2, .8]]
+    def moments(values, probabilities):
+        mean = sum(p*v for p,v in zip(probabilities,values))
+        variance = sum(p*(v-mean)**2 for p,v in zip(probabilities,values))
+        return mean, variance
+    for exponent, name, variance in [(1, 'balance', .06376900316294254),
+                                     (2, 'power', .0605063123195676)]:
+        means, variances = [], []
+        for proposal in proposals:
+            values = [proposal[i]**exponent/sum(p[i]**exponent for p in proposals)
+                      *target[i]/proposal[i] for i in range(2)]
+            mean, var = moments(values, proposal)
+            means.append(mean); variances.append(var)
+        rows.extend([
+            dict(name=f'mis_{name}_two_cell_expectation',value=sum(means),expected=1.,tolerance=1e-14),
+            dict(name=f'mis_{name}_two_cell_variance',value=sum(variances),expected=variance,tolerance=1e-14),
+        ])
+    mixture = [sum(p[i] for p in proposals)/2 for i in range(2)]
+    mixture_mean, mixture_var = moments([target[i]/mixture[i] for i in range(2)], mixture)
+    rows.extend([
+        dict(name='mis_one_sample_mixture_expectation',value=mixture_mean,expected=1.,tolerance=1e-14),
+        dict(name='mis_two_mixture_samples_variance',value=mixture_var/2,expected=.12626262626262627,tolerance=1e-14),
+    ])
+    for name, proposal, expected_var in [('light', proposals[0], 1/18),
+                                        ('bsdf', proposals[1], 1.125)]:
+        mean, var = moments([target[i]/proposal[i] for i in range(2)], proposal)
+        rows.append(dict(name=f'mis_two_{name}_only_variance',value=var/2,expected=expected_var,tolerance=1e-14))
+    # Unequal allocation must appear in BOTH the MIS weights and sample averages.
+    counts = [4, 1]
+    unequal_mean = sum(sum(proposals[t][i]
+                           *(counts[t]*proposals[t][i])**2
+                           /sum((counts[r]*proposals[r][i])**2 for r in range(2))
+                           *target[i]/proposals[t][i] for i in range(2)) for t in range(2))
+    rows.append(dict(name='mis_unequal_counts_expectation',value=unequal_mean,expected=1.,tolerance=1e-14))
+    # NEE owns emission only: weighting the continuing indirect term would fail.
+    emitted, scattered = [.8, .2], [.3, .7]
+    light_pdf, bsdf_pdf = proposals
+    nee = sum(light_pdf[i]*(light_pdf[i]**2/(light_pdf[i]**2+bsdf_pdf[i]**2))
+              *emitted[i]/light_pdf[i] for i in range(2))
+    continuation = sum(bsdf_pdf[i]
+                       *((bsdf_pdf[i]**2/(light_pdf[i]**2+bsdf_pdf[i]**2))*emitted[i]+scattered[i])
+                       /bsdf_pdf[i] for i in range(2))
+    rows.append(dict(name='mis_emission_partition_preserves_indirect',value=nee+continuation,expected=2.,tolerance=1e-14))
+    q1, q2 = .7, .4
+    roulette_branches = sum(prob*(8*.6*.5/(q1*q2) if b1 and b2 else 0)
+                            for b1,b2,prob in [(0,0,1-q1),(1,0,q1*(1-q2)),(1,1,q1*q2)])
+    rows.append(dict(name='path_two_stage_roulette_expectation',value=roulette_branches,expected=2.4,tolerance=1e-14))
     for row in rows:
         row['passed']=abs(row['value']-row['expected'])<=row['tolerance']
         assert row['passed'],row
@@ -554,6 +641,7 @@ def main():
     outputs=figures()
     outputs['frame-flow.svg']=frame_flow()
     outputs.update(shadow_geometry(Drawing))
+    outputs.update(path_derivation(Drawing))
     outputs['experiments.json']=json.dumps(experiments(),indent=2)+'\n'
     if not args.check:OUT.mkdir(parents=True,exist_ok=True)
     for name,value in outputs.items():

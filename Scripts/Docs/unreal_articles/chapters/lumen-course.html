@@ -126,28 +126,311 @@ p_{\rm mix}(\omega_i)=q\,p_{\rm glossy}(\omega_i)+(1-q)\,p_{\rm diffuse}(\omega_
 <h2>Unroll the recursion into paths, then sample them</h2>
 <p>Follow a possible contribution to B: sun or sky → courtyard stone → arcade floor → camera. The courtyard stone changes both spectrum and direction. The floor changes them again. Visibility decides whether each segment is open. To obtain the pixel, we must add this contribution to all other possible sequences, including shorter and longer ones.</p>
 <figure class="teaching-figure"><img src="assets/lumen-course/paths.svg" alt="A light path reaches a vertical wall, scatters to a horizontal floor, and then reaches a camera. A separate dashed segment shows direct emitter visibility. Each interior surface contributes scattering and every segment contributes geometry and visibility." loading="lazy"><figcaption>Path length counts edges, not the vague word “bounce.” The gold path has three edges and two interior scattering vertices. The light-to-sensor ordering stays fixed even though a camera path tracer discovers the same vertices in reverse order.</figcaption></figure>
-<p>Write a path as \(\bar x=(x_0,\ldots,x_k)\), ordered from emitter \(x_0\) to sensor \(x_k\), following Veach's notation. A path has k edges and k−1 interior scattering vertices. Converting the direction integral at each vertex to an area integral puts the two cosines and inverse-square factor for an edge into</p>
+<p>The recursion currently tells us how to compute light leaving <em>one</em> surface if we already know the incident light. A pixel is a measurement of the whole solution. To connect the two, we will first write that measurement, substitute the transport equation into it one scattering event at a time, and only then introduce a probability distribution over the resulting paths. No sampling approximation is needed to obtain the path integral.</p>
+<p>We use Veach's light-to-sensor ordering, \(\bar x=(x_0,\ldots,x_k)\): k counts edges, so there are k−1 interior scattering vertices. The derivation below uses finite surfaces in vacuum, ordinary BSDF densities, and a finite-area sensor first. The later foldout handles singular endpoints and specular constraints. Work at one fixed wavelength; RGB is a chosen spectral approximation, not an extra path-space coordinate here. The source landmarks are <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=246">Veach §8.1–8.2, equations (8.1)–(8.11)</a>; the additional substitution steps and numerical examples here make the transition explicit.</p>
+
+<h3 id="path-derivation-measure">1. Replace a direction by the surface point it reaches</h3>
+<p>Let \(\mathcal M\) denote the union of the surface domains, including emitting and measuring surfaces. The measurement surface can be transparent so that observing the field does not change its visibility. Define \(\omega_{xy}=(y-x)/\|y-x\|\). The three-point notation \(f_s(y\to x\to z)\) means scattering <em>at x</em>, with incident direction \(\omega_{xy}\) and outgoing direction \(\omega_{xz}\). Both vectors point away from x; the arrows in the three-point notation follow physical light flow. Also write \(L(x\to z)=L_o(x,\omega_{xz})\). This value is radiance leaving x; visibility to z is still a separate question.</p>
+<p>Seen from x, a small patch at y subtends a solid angle equal to its area projected perpendicular to the segment, divided by squared distance. The incoming cosine at x is a second projection. Multiplying the two gives</p>
 \[
-G(x\leftrightarrow y)=V(x\leftrightarrow y)\frac{|n_g(x)\cdot\omega_{xy}|\,|n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2}.
+\begin{aligned}
+d\sigma(\omega_{xy})&=\frac{|n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2}\,dA(y),\\
+G(x\leftrightarrow y)&=V(x\leftrightarrow y)
+\frac{|n_g(x)\cdot\omega_{xy}|\,|n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2}.
+\end{aligned}
 \]
-<p>Here V is one when the open segment is unobstructed, zero otherwise. For the surface-only path-space expression, let \(\mathcal M\) include scattering, emitting, and sensor surface domains. The sensor response \(W_e^{(j)}(x_{k-1}\to x_k)\) selects measurement j. With arrows following light, the contribution of a path is</p>
+<p>The first equality describes the locally visible patch. To integrate over <em>all</em> surfaces, include V: one if the open segment is unobstructed, zero otherwise. This selects the first visible surface along each direction. Without V, several walls behind one another would all supply the same ray. The geometric normal belongs in this Jacobian; a normal map cannot change a triangle's apparent area.</p>
+<details class="implementation-detail"><summary>Show the complete change of variables, including visibility and unsupported sides</summary>
+<p>At a fixed x, intersect directions with their nearest surfaces. Away from grazing directions, silhouettes, and other measure-zero boundaries, this is a local change of coordinates between direction and visible surface area. Radiance stays constant along each open vacuum segment. Substituting that relation into the scattering equation gives</p>
 \[
-f_j(\bar x)=L_e(x_0\to x_1)\,W_e^{(j)}(x_{k-1}\to x_k)
-\left[\prod_{i=1}^{k-1}f_s(x_{i-1}\to x_i\to x_{i+1})\right]
-\left[\prod_{i=0}^{k-1}G(x_i\leftrightarrow x_{i+1})\right].
+\begin{aligned}
+&L(x\to z)-L_e(x\to z)\\
+&\quad=\int_{S^2} f_s(x;\omega_i\to\omega_{xz})L_i(x,\omega_i)
+ |n_g(x)\cdot\omega_i|\,d\sigma(\omega_i)\\
+&\quad=\int_{\mathcal M} f_s(y\to x\to z)L(y\to x)V(x\leftrightarrow y)\\
+&\qquad\qquad\times |n_g(x)\cdot\omega_{xy}|
+ \frac{|n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2}\,dA(y)\\
+&\quad=\int_{\mathcal M} L(y\to x)f_s(y\to x\to z)
+ G(y\leftrightarrow x)\,dA(y).
+\end{aligned}
 \]
-<p>For each length, integrate over the possible vertices using the area-product measure \(d\mu_k=\prod_{i=0}^k dA(x_i)\), then sum over lengths:</p>
+<p>Absolute cosines describe projected area. The BSDF and emission still enforce their supported sides; an opaque surface does not transmit just because the cosine is positive after taking its absolute value. Distinct, visible endpoints are assumed when evaluating the formula. Coincident endpoints and grazing limits require the appropriate limiting or null-event treatment. In this derivation rays that would escape can terminate on a finite enclosing emitting boundary; an actual infinite environment will instead use a directional endpoint below.</p>
+<p>Ordinary solid angle and <em>projected</em> solid angle are different measures. With \(d\sigma_x^\perp=|n_g(x)\cdot\omega|d\sigma\), the visible-patch identity is \(d\sigma_x^\perp=G(x\leftrightarrow y)dA(y)\). Thus G contains two cosines when converting projected solid angle, but the conversion from ordinary solid angle contains only the cosine at y. This distinction will determine the PDF conversion too.</p>
+</details>
+<p>We have obtained the three-point transport equation:</p>
 \[
-I_j=\sum_{k=1}^{\infty}\int_{\Omega_k}f_j(\bar x)\,d\mu_k(\bar x).
+\boxed{L(x\to z)=L_e(x\to z)+
+\int_{\mathcal M}L(y\to x)f_s(y\to x\to z)G(y\leftrightarrow x)\,dA(y).}
 \]
-<p>This is the rendering equation with its recursion written out. It does not require a renderer to construct giant arrays containing every path. It gives us an accounting system: every algorithm must specify which paths it estimates, how it samples them, and which factors it approximates. Point lights, ideal directional lights, ideal mirrors, and pinhole cameras contain delta distributions; their constrained endpoints or directions need discrete/delta sampling rules rather than being treated as ordinary densities per unit area. An environment emitter is represented at infinity with a directional measure rather than an ordinary finite-area endpoint. The practical camera tracer below conditions on its generated camera ray and handles each light through its declared sampling measure.</p>
-<h3>Why random sampling gives the right average</h3>
+<p>It still has an unknown L on its right-hand side. Changing variables has exposed the geometry, but has not yet removed the recursion.</p>
+
+<h3 id="path-derivation-sensor">2. Write what the sensor measures</h3>
+<p>Let \(W_e^{(j)}(z,\omega)\) be the response of measurement j to light arriving at sensor location z from direction ω. It can include the pixel filter, aperture response, and normalization. Its value is zero where that measurement does not accept the ray. The subscript e reflects Veach's interpretation of the sensor as <em>emitting importance</em> backward into the scene; it is not another light source.</p>
+\[
+\begin{aligned}
+I_j&=\int_{\mathcal M}\int_{S^2}
+ W_e^{(j)}(z,\omega)L_i(z,\omega)
+ |n_g(z)\cdot\omega|\,d\sigma(\omega)dA(z)\\
+&=\int_{\mathcal M^2} W_e^{(j)}(x\to z)L(x\to z)
+ G(x\leftrightarrow z)\,dA(x)dA(z),\\
+W_e^{(j)}(x\to z)&\equiv W_e^{(j)}(z,\omega_{zx}).
+\end{aligned}
+\]
+<p>Notice the reversed endpoint in the last definition: the arrow x → z follows light, while the sensor response is evaluated <em>at z looking toward x</em>. The last G connects the last scene surface to the sensor. Omitting it would silently change the measurement. We integrate over z because this is a finite-area sensor model; the practical pinhole camera below will condition on its camera ray instead of assigning a finite area to a point.</p>
+
+<h3 id="path-derivation-substitution">3. Substitute once, then once more</h3>
+<p>Start at the last scene surface seen by the sensor. Its outgoing radiance is either emitted there or scattered there. The emitted part terminates the expansion. The scattered part asks the same question at one earlier surface. Every time we substitute, we add <strong>one integration variable, one BSDF, and one geometry factor</strong>. The sensor factor remains at the final endpoint.</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/path-expansion.svg" alt="Three rows expand the same measurement: emitter to sensor; emitter to one scatterer to sensor; emitter to two scatterers to sensor. Each added interior vertex adds an area integral, one scattering factor, and one geometry factor. The unresolved remainder continues to longer paths." loading="lazy"><figcaption>Each row is an integral over all positions of its vertices, not one chosen polygonal line. The emission endpoint moves to the newly exposed beginning of the path. The measuring endpoint stays on the right.</figcaption></figure>
+<details class="implementation-detail"><summary>Expand the first substitution without renaming any variables</summary>
+<p>Use x for the last scene surface, z for the sensor, and y for the newly introduced predecessor. Put the transport equation inside the measurement:</p>
+\[
+\begin{aligned}
+I_j=\int_{\mathcal M^2}&W_e^{(j)}(x\to z)G(x\leftrightarrow z)\\[-2pt]
+&\left[L_e(x\to z)+\int_{\mathcal M}
+ L(y\to x)f_s(y\to x\to z)G(y\leftrightarrow x)dA(y)\right]\\
+&\quad dA(x)dA(z).
+\end{aligned}
+\]
+<p>Distribute the outer integral across the bracket, and move factors independent of y inside the inner integral:</p>
+\[
+\begin{aligned}
+I_j={}&\int_{\mathcal M^2}L_e(x\to z)G(x\leftrightarrow z)W_e^{(j)}(x\to z)dA(x)dA(z)\\
+&+\int_{\mathcal M^3}L(y\to x)G(y\leftrightarrow x)f_s(y\to x\to z)\\
+&\qquad\quad\times G(x\leftrightarrow z)W_e^{(j)}(x\to z)dA(y)dA(x)dA(z).
+\end{aligned}
+\]
+<p>The first term has no unknown radiance and is complete. The second still contains L. Substitute the same equation into that occurrence, now using a new predecessor w:</p>
+\[
+L(y\to x)=L_e(y\to x)+\int_{\mathcal M}
+L(w\to y)f_s(w\to y\to x)G(w\leftrightarrow y)\,dA(w).
+\]
+<p>This produces one complete term with a single scattering event, plus a remainder with two scattering events and an unresolved radiance at its beginning. Nothing was sampled and no bounce was discarded.</p>
+</details>
+<p>Rename the integration variables independently within each complete term so that the emitter is always x₀ and the sensor is always xₖ. The first three terms are</p>
+\[
+\begin{aligned}
+I_j^{[1]}&=\int_{\mathcal M^2} L_e(x_0\to x_1)G_{01}W_e^{(j)}(x_0\to x_1)\,dA_0dA_1,\\
+I_j^{[2]}&=\int_{\mathcal M^3} L_e(x_0\to x_1)G_{01}f_{012}G_{12}
+ W_e^{(j)}(x_1\to x_2)\,dA_0dA_1dA_2,\\
+I_j^{[3]}&=\int_{\mathcal M^4} L_e(x_0\to x_1)G_{01}f_{012}G_{12}f_{123}G_{23}
+ W_e^{(j)}(x_2\to x_3)\,dA_0dA_1dA_2dA_3.
+\end{aligned}
+\]
+<p>Here \(G_{ab}=G(x_a\leftrightarrow x_b)\), \(f_{abc}=f_s(x_a\to x_b\to x_c)\), and \(dA_i=dA(x_i)\) only abbreviate the repeated factors. The bracketed superscript [k] labels an edge count; it is not a power. Thus [1] is directly visible emission, [2] is one surface illuminated by an emitter and seen by the camera, and [3] includes the stone → shaded-floor transfer in the opening example. “Direct lighting of a surface” belongs to [2], not [1].</p>
+
+<h3 id="path-derivation-remainder">4. Account for the remainder before taking an infinite sum</h3>
+<p>Repeated substitution is exact for any finite number of steps <em>if we keep its remainder</em>. Define the linear transport operator \(\mathcal T\) by the integral in the boxed equation, and the linear measurement operator \(\mathcal C_j\) by the sensor integral. Then \(L=L_e+\mathcal T L\) and \(I_j=\mathcal C_jL\). After N substitutions,</p>
+\[
+\begin{aligned}
+L&=\sum_{m=0}^{N-1}\mathcal T^mL_e+\mathcal T^NL,\\
+I_j&=\sum_{k=1}^{N}I_j^{[k]}+R_{j,N},\qquad
+ I_j^{[k]}=\mathcal C_j\mathcal T^{k-1}L_e,\quad
+ R_{j,N}=\mathcal C_j\mathcal T^NL.
+\end{aligned}
+\]
+<p>The remainder contains paths with more than N edges. Dropping it is a truncation approximation; letting it tend to zero is a convergence argument. These are different operations. In a suitably lossy or escaping scene, successively scattered contributions decay and we obtain the Neumann series \(L=\sum_{m=0}^{\infty}\mathcal T^mL_e\). A finite bounce limit in a reference renderer does not prove its omitted tail is zero.</p>
+<details class="implementation-detail"><summary>Prove the finite identity and state a sufficient convergence condition</summary>
+<p>The identity for N=1 is the transport equation itself. If it holds for N, replace the final L by \(L_e+\mathcal TL\):</p>
+\[
+\mathcal T^NL=\mathcal T^NL_e+\mathcal T^{N+1}L.
+\]
+<p>This adds one term and gives the identity for N+1. To pass to an infinite sum, one sufficient condition is that the chosen function space has a bounded operator norm \(\|\mathcal T\|\le a&lt;1\), with bounded emission and measurement. Then</p>
+\[
+\|\mathcal T^NL\|\le a^N\|L\|\to0,\qquad
+|R_{j,N}|\le\|\mathcal C_j\|\,\frac{a^N}{1-a}\|L_e\|.
+\]
+<p>The second bound uses \(\|L\|\le\|L_e\|/(1-a)\). A contraction in one step is sufficient, not necessary; some scenes lose energy only after several transfers. Passivity alone does not guarantee strict contraction: a perfectly reflecting closed cavity with sustained emission can fail to have a finite stationary solution. Shading-normal models that create energy need particular care. These are reasons to state the assumptions, rather than declaring an inverse of \(1-\mathcal T\) by algebra alone. See <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=139">Veach §4.4 and Appendix 4.B</a> for the operator framework.</p>
+<p>For nonnegative physical contributions and a nonnegative sensor response, rearranging the integrals and summing finite-length contributions is justified by monotone convergence/Tonelli, although the result may still be infinite. For signed reconstruction filters, use absolute integrability to justify the interchange. A finite measurement and correct sampling support remain separate requirements.</p>
+</details>
+<details class="implementation-detail"><summary>Check the expansion against a system with an exact answer</summary>
+<p>Replace the continuous scene by two uniform radiosity cells. This is a declared discrete teaching model, not a Sponza measurement. Let cell A emit one unit, cell B emit none, and let the already-integrated material/geometry transfers be 0.2 from B to A and 0.3 from A to B:</p>
+\[
+\begin{pmatrix}a\\b\end{pmatrix}
+=\begin{pmatrix}1\\0\end{pmatrix}
++\underbrace{\begin{pmatrix}0&amp;0.2\\0.3&amp;0\end{pmatrix}}_{K}
+\begin{pmatrix}a\\b\end{pmatrix},\qquad
+K^2=0.06\,\mathrm{Id}.
+\]
+<p>Measure b. Only odd numbers of transfers reach B from A, so direct expansion and solving the simultaneous equations give the same result:</p>
+\[
+b=0.3+0.018+0.00108+\cdots
+=\frac{0.3}{1-0.06}\approx0.3191489362.
+\]
+<p>Keeping paths with at most three transfers gives 0.318: the one-transfer and three-transfer terms. The missing tail is \(0.3(0.06)^2/(1-0.06)\approx0.0011489362\). The executable checks compare the matrix powers, the closed-form solution, and this tail. This is the same principle later used to reason about a lighting cache that performs only a few updates.</p>
+</details>
+
+<h3 id="path-derivation-integral">5. Turn the family of integrals into one path space</h3>
+<p>For a fixed edge count k, a path is a point in \(\Omega_k=\mathcal M^{k+1}\): choosing the path means choosing all k+1 vertices. Some tuples contain blocked segments, a nonemitting first vertex, or a final vertex outside the sensor; their contribution is zero. We can therefore keep a simple product domain instead of explicitly constructing only valid paths.</p>
+\[
+\begin{aligned}
+d\mu_k(\bar x)&=dA(x_0)\cdots dA(x_k),\\
+f_j(\bar x)&=L_e(x_0\to x_1)W_e^{(j)}(x_{k-1}\to x_k)\\
+&\quad\times\left[\prod_{i=1}^{k-1}f_s(x_{i-1}\to x_i\to x_{i+1})\right]
+ \left[\prod_{i=0}^{k-1}G(x_i\leftrightarrow x_{i+1})\right],\\
+I_j^{[k]}&=\int_{\Omega_k}f_j(\bar x)\,d\mu_k(\bar x).
+\end{aligned}
+\]
+<p>The empty BSDF product for k=1 equals one. There are k geometry factors, k−1 BSDF factors, two endpoint responses, and k+1 area differentials. This count is a useful implementation audit. The value \(f_j(\bar x)\) is a <em>contribution density</em>, not the brightness of a single mathematical path: an individual regular path has measure zero. A small neighborhood of paths contributes approximately its density times its path-space volume.</p>
+<p>Different path lengths have different numbers of variables. Put them in a disjoint union and define its measure by adding the area-product measures:</p>
+\[
+\begin{aligned}
+\Omega&=\bigsqcup_{k=1}^{\infty}\Omega_k,\qquad
+\mu(D)=\sum_{k=1}^{\infty}\mu_k(D\cap\Omega_k),\\
+I_j&=\sum_{k=1}^{\infty}\int_{\Omega_k}f_j\,d\mu_k
+=\int_{\Omega}f_j(\bar x)\,d\mu(\bar x).
+\end{aligned}
+\]
+<p>The disjoint union keeps the length as part of a path's identity. No infinite vertex sequence is included: Ω contains arbitrarily long <em>finite</em> paths. Nor is μ a probability distribution. It specifies what an integral means before we decide where a renderer should spend its samples. This separation of the measurement, its integration measure, and its sampling distribution is the reason path space is more useful than merely drawing a chain of rays.</p>
+<details class="implementation-detail"><summary>Separate geometry, material throughput, and the choice of measure</summary>
+<p>Veach's <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=269">Appendix 8.A</a> separates several meanings of “throughput.” Write μᵃ for our area-product measure. For a fixed length, the following measures move successively more of the physics into the integration element:</p>
+\[
+\begin{aligned}
+d\mu_k^s&=\left[\prod_{i=1}^{k-1}f_{i-1,i,i+1}\right]
+ \left[\prod_{i=0}^{k-1}G_{i,i+1}\right]d\mu_k^a,\\
+d\mu_k^p&=L_e\,d\mu_k^s,\qquad
+d\mu_{j,k}^m=W_e^{(j)}d\mu_k^p=f_j\,d\mu_k^a.
+\end{aligned}
+\]
+<p>The scattering throughput measure μˢ describes the transport capacity of a set of paths for unit emitted radiance. The power measure μᵖ adds the actual emission. The measurement measure μᵐ adds the sensor response. Integrating over a set of paths therefore answers three different questions: what can this set carry, what does it carry, and how much does it register in measurement j? Here the response is nonnegative; a signed filter gives a signed measurement measure.</p>
+<p>To isolate geometry, Veach defines μᵍ by replacing each interior BSDF with the constant 1/(2π), a normalized uniform scatterer over both hemispheres. Thus</p>
+\[
+\begin{aligned}
+d\mu_k^g&=(2\pi)^{-(k-1)}\left[\prod_{i=0}^{k-1}G_{i,i+1}\right]d\mu_k^a,\\
+I_j^{[k]}&=\int_{\Omega_k}L_eW_e^{(j)}
+\left[\prod_{i=1}^{k-1}(2\pi f_{i-1,i,i+1})\right]d\mu_k^g.
+\end{aligned}
+\]
+<p>The 2π is essential to <em>this</em> definition; an opaque one-hemisphere uniform reflector instead normalizes with π. Nothing in our scene has been replaced by a uniform material: the compensating factors in the integrand preserve its original response. If \(h_k=d\mu_k^g/d\mu_k^a\), a density pᵃ becomes \(p^g=p^a/h_k\) where hₖ is positive. Both the integrand and density change, so their ratio stays the same.</p>
+<p>More fundamentally, the estimator is the measurement-per-probability ratio \(d\mu_j^m/dP\). When both measures have densities with respect to μᵃ, this becomes the familiar fⱼ/p. This observation explains why the physical measurement is independent of our chosen coordinates, while an individual PDF value is not. It also identifies the support requirement: the measurement measure must assign no contribution to a set that the sampling probability P can never reach.</p>
+</details>
+
+<h3 id="path-derivation-density">6. Put a probability distribution on complete paths</h3>
+<p>One conceptually simple estimator first chooses a length k with probability qₖ, where \(\sum_{k=1}^{\infty}q_k=1\), then chooses all vertices with a conditional density pₖ relative to μₖ. This makes the full density \(p(\bar x)=q_kp_k(\bar x)\) on Ω. For a sampled path \(\bar X\),</p>
+\[
+\widehat I_j=\frac{f_j(\bar X)}{q_kp_k(\bar X)},\qquad
+\mathbb E[\widehat I_j]=\sum_{k=1}^{\infty}q_k
+\int_{\Omega_k}\frac{f_j(\bar x)}{q_kp_k(\bar x)}p_k(\bar x)d\mu_k=I_j.
+\]
+<p>Each potentially contributing part of path space must have sampling support. The discrete length probability belongs in the denominator just as much as the continuous vertex density. A practical camera walk usually estimates several lengths using shared prefixes and Russian roulette, rather than drawing a single length first. Those estimates are correlated, but their expectations still add. The qₖ formula is a clean derivation, not an instruction to add an extra length PDF to that different algorithm.</p>
+<details class="implementation-detail"><summary>Factor a construction density and include all discrete choices</summary>
+<p>For a fixed k, a camera-grown path can be generated in the reverse order xₖ, xₖ₋₁, …, x₀. By the chain rule, its area density is</p>
+\[
+p_k(\bar x)=p_A(x_k)\prod_{i=0}^{k-1}p_A(x_i\mid x_{i+1},\ldots,x_k).
+\]
+<p>Conditioning on a suffix allows the sampler to depend on the outgoing direction, material, and earlier choices. The factors are not assumed independent. Sampling a light identity and then a point on that light introduces its discrete selection probability. Choosing among BSDF lobes requires the mixture density for the resulting event, not just the selected lobe's density. Roulette survival also changes the probability of reaching a longer path and requires inverse-survival weighting. The later implementations make each of these choices explicit.</p>
+<p>A failed connection or an escaping ray with no boundary emission is a zero-contribution outcome. Its probability must not be erased by repeatedly resampling until success while retaining the original density. A construction distribution can include this null outcome even though its regular surface-path density then integrates to less than one.</p>
+<p>The path integral also permits independent light and sensor subpaths joined by a visibility edge. For that strategy, multiply the probabilities that actually generated its vertices; do not invent a ray-sampling probability for a connecting edge that was deterministically joined. The edge still contributes G to the numerator. Different splits generate the same geometric path with different densities. Their comparison, in a common measure, leads to bidirectional path tracing and MIS rather than to a different physical integral.</p>
+</details>
+
+<h3 id="path-derivation-cancellation">7. Derive the familiar camera-throughput update</h3>
+<p>The path integral contains inverse-square falloff at every edge. Yet a camera path tracer updates its weight with a BSDF, a cosine, and a directional PDF; it does not multiply by inverse squared distance at every hit. The missing factors have canceled against the probability of reaching that hit.</p>
+<p>Suppose the walk is at x, chooses direction \(\omega_{xy}\) with ordinary-solid-angle density \(p_\sigma\), and hits y first. Probability is preserved under the same geometric change of variables:</p>
+\[
+\begin{aligned}
+p_A(y\mid x,\ldots)\,dA(y)&=p_\sigma(\omega_{xy}\mid x,\ldots)\,d\sigma(\omega_{xy}),\\
+p_A(y\mid x,\ldots)&=p_\sigma(\omega_{xy}\mid x,\ldots)
+ \frac{|n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2},\\
+\frac{f_s(y\to x\to z)G(x\leftrightarrow y)}{p_A(y\mid x,\ldots)}
+&=\frac{f_s(y\to x\to z)|n_g(x)\cdot\omega_{xy}|}{p_\sigma(\omega_{xy}\mid x,\ldots)}.
+\end{aligned}
+\]
+<p>These equalities apply on a sampled visible hit, where V=1. A distant patch contributes less solid angle and is proportionally less likely to be hit. Dividing by its sampling density cancels that geometric falloff in the <em>weight of a successful sample</em>. Distance and occlusion still change which samples succeed. Applying inverse-square attenuation again would count the geometry twice.</p>
+<figure class="teaching-figure"><img src="assets/lumen-course/path-density.svg" alt="The geometry factor contains a cosine at each endpoint and inverse squared distance. The area density generated by a direction sample contains the target cosine and inverse squared distance. Dividing leaves the starting cosine over the directional PDF; the BSDF multiplies that ratio." loading="lazy"><figcaption>Track the measure through the cancellation. Starting from projected-solid-angle density instead would give pₐ = p⊥ G on the visible patch, and the local ratio would be fₛ/p⊥. Both conventions yield the same estimate.</figcaption></figure>
+<details class="implementation-detail"><summary>Cancel every edge in a complete camera-generated path</summary>
+<p>For regular finite endpoints and a fixed k, let the sensor sample have area density \(p_A(x_k)\) and directional density \(p_{\mathrm{cam},\sigma}\) toward xₖ₋₁. At each interior vertex xᵢ, let \(p_{i,\sigma}\) sample toward xᵢ₋₁, with the already constructed suffix understood. On a visible path, repeated use of the preceding identity gives</p>
+\[
+\begin{aligned}
+\frac{f_j(\bar x)}{p_k(\bar x)}
+={}&\underbrace{\frac{W_e^{(j)}(x_{k-1}\to x_k)
+ |n_g(x_k)\cdot\omega_{x_kx_{k-1}}|}
+ {p_A(x_k)p_{\mathrm{cam},\sigma}(\omega_{x_kx_{k-1}})}}_{w_{\mathrm{camera}}}\\
+&\quad\times\left[\prod_{i=1}^{k-1}
+ \frac{f_s(x_{i-1}\to x_i\to x_{i+1})
+ |n_g(x_i)\cdot\omega_{x_ix_{i-1}}|}
+ {p_{i,\sigma}(\omega_{x_ix_{i-1}})}\right]L_e(x_0\to x_1).
+\end{aligned}
+\]
+<p>That product is the origin of the running weight β. Initialize it with the camera weight, multiply one factor at each scattering event, then multiply by the encountered emission. The directions are sampled sensor-to-light, but the BSDF in the numerator still describes light-to-sensor transport. This derivation fixes k and omits roulette; include their actual probabilities if the construction uses them. A next-event light connection has its own endpoint density, so its final edge does not undergo the same BSDF-ray cancellation.</p>
+<p>For a pinhole camera, replace the singular sensor endpoint with the conditional image-plane integral derived below. The numerical value of its weight depends on the declared pixel measurement. “Initialize β to one” is valid for the normalized uniform pixel sampler used here, not a universal property of cameras.</p>
+</details>
+<div class="worked-example"><p><strong>Check one edge numerically.</strong> Let the starting cosine be 0.8, target cosine 0.6, and distance 2 m. Then G = 0.12 m⁻². For a diffuse material with ρ = 0.6, cosine sampling gives pσ = 0.8/π and pₐ = 0.12/π m⁻². The area expression is (0.6/π) × 0.12 ÷ (0.12/π) = 0.6, exactly the directional expression. Double the distance: G and pₐ both fall by four, and the weight stays 0.6. This checks the cancellation; it does not say the larger scene receives the same irradiance.</p></div>
+
+<h3 id="path-derivation-adjoint">8. Separate path ordering from the direction of computation</h3>
+<p>The completed path has one physical contribution regardless of whether we discovered it from the camera, from a light, or by connecting both. That does <em>not</em> mean we can reverse every material call without changing its transport convention. Sensor importance is an adjoint quantity. The same integral can be evaluated from either endpoint only when the reversed computation uses the corresponding adjoint operator.</p>
+<details class="implementation-detail"><summary>Derive the adjoint identity and locate the shading-normal correction</summary>
+<p>On surface-pair ray space, use the geometric pairing</p>
+\[
+\langle W,L\rangle_G=\int_{\mathcal M^2}W(x\to z)L(x\to z)
+G(x\leftrightarrow z)dA(x)dA(z).
+\]
+<p>Expanding \(\langle W,\mathcal TL\rangle_G\) gives a triple integral. Group its factors by L instead of by W:</p>
+\[
+\begin{aligned}
+&\langle W,\mathcal TL\rangle_G\\
+&\quad=\int_{\mathcal M^3}W(x\to z)L(y\to x)f_s(y\to x\to z)\\
+&\qquad\qquad\times G(y\leftrightarrow x)G(x\leftrightarrow z)dA(y)dA(x)dA(z)\\
+&\quad=\int_{\mathcal M^2}L(y\to x)G(y\leftrightarrow x)\\
+&\qquad\qquad\times
+ \left[\int_{\mathcal M}f_s(y\to x\to z)W(x\to z)G(x\leftrightarrow z)dA(z)\right]
+ dA(y)dA(x).
+\end{aligned}
+\]
+<p>The bracket defines \((\mathcal T^*W)(y\to x)\). Repeating this adjoint relation yields</p>
+\[
+I_j^{[k]}=\langle W_e^{(j)},\mathcal T^{k-1}L_e\rangle_G
+=\langle(\mathcal T^*)^{k-1}W_e^{(j)},L_e\rangle_G.
+\]
+<p>This is equality of measurements after transposing the transport operation, not an assertion that \(\mathcal T=\mathcal T^*\). The sensor influence travels backward through the original scattering kernel. A reverse-direction sampler must represent that kernel correctly. In fixed-index media with reciprocal geometric-normal BSDFs, exchanging directions is simple. Refraction and shading normals make a naive swap wrong. Veach's <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=143">general adjoint construction in §4.6</a> and <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=231">self-adjoint formulation in Chapter 7</a> distinguish general transport from formulations with stronger symmetry assumptions.</p>
+<p>For a concrete opaque example, suppose an implementation evaluates a reciprocal shading-frame BRDF \(f_{\rm sh}\) and multiplies it by the shading cosine. Relative to the geometric projected measure used in this chapter, its effective scattering kernel is</p>
+\[
+B(\omega_i\to\omega_o)=f_{\rm sh}(\omega_i,\omega_o)
+\frac{|n_s\cdot\omega_i|}{|n_g\cdot\omega_i|}.
+\]
+<p>Indeed, multiplying B by the geometric cosine reproduces the implemented shading cosine. For this implementation convention, the integral's fₛ must mean B. Its reverse, adjoint scattering kernel is \(B^*(\omega_i\to\omega_o)=B(\omega_o\to\omega_i)\). Where the denominators and supported responses are nonzero,</p>
+\[
+\frac{B^*(\omega_i\to\omega_o)}{B(\omega_i\to\omega_o)}
+=\frac{|n_s\cdot\omega_o|\,|n_g\cdot\omega_i|}
+{|n_g\cdot\omega_o|\,|n_s\cdot\omega_i|}.
+\]
+<p>This example states its BRDF convention explicitly; it is not a correction to multiply blindly into every library's BSDF. Libraries may already include the correction or choose the opposite transport mode. Reject unsupported geometric sides and handle grazing limits. For a camera-only radiance walk the existing shading-cosine update implements B; a light/importance walk needs the corresponding adjoint convention. Refractive-index scaling at transmission is another transport-mode responsibility, separate from this opaque example.</p>
+</details>
+
+<h3 id="path-derivation-singular">9. Know where ordinary path densities stop being sufficient</h3>
+<p>An area light, a rough BSDF, and a finite aperture can use the regular area-product derivation directly. A point light, ideal directional light, perfect mirror, or pinhole camera imposes a constraint of lower dimension. Their contribution cannot be represented by a finite-valued density with respect to the same unconstrained area product. Increasing an ordinary density to a very large number is not a mathematical replacement for a delta distribution.</p>
+<details class="implementation-detail"><summary>Delta events, environment endpoints, and Veach's local-sampling limitation</summary>
+<p>For an ideal mirror, fixing the outgoing direction fixes the incoming direction. A random ordinary hemisphere sample hits that exact direction with probability zero. A mirror sampler instead chooses the constrained reflection event with a discrete probability and propagates along its determined direction. In a material containing both rough and delta lobes, keep the continuous density and the discrete event mass distinct. A delta event has no competing ordinary-density sample in an MIS comparison. Its throughput follows the integrated delta event and its selection probability, not a division of two informal “infinities.”</p>
+<p>A pinhole endpoint similarly has no finite area density. The camera implementation below conditions on that endpoint and samples the pixel's image-plane coordinates. A point source uses a discrete source identity and radiant intensity; an ideal directional source uses its beam direction and irradiance. An environment has a directional emission measure rather than a finite surface point at infinity. Each replaces the appropriate endpoint integral and PDF. These choices extend the transport model; they must be declared before combining estimates.</p>
+<p>To classify endpoints as carefully as interior scattering, split a regular emitter into a spatial strength and a directional profile, following Veach's equations (8.12)–(8.13):</p>
+\[
+\begin{aligned}
+L_e^{(0)}(x)&=\int_{S^2}L_e(x,\omega)d\sigma_x^\perp(\omega),\\
+L_e^{(1)}(x,\omega)&=\frac{L_e(x,\omega)}{L_e^{(0)}(x)},\qquad
+\int_{S^2}L_e^{(1)}d\sigma_x^\perp=1.
+\end{aligned}
+\]
+<p>The quotient is used where the spatial strength is positive. Lₑ⁽⁰⁾ is radiant exitance, not a normalized probability over positions. Lₑ⁽¹⁾ is normalized with respect to projected solid angle. A position sampler still needs its own normalization over emitter area. Apply the analogous split to the sensor response. Now a point light has singular spatial support while an ideal directional emitter has singular directional support; these are different constraints. This distinction is why Veach's full-path classification adds endpoint information instead of describing only the interior BSDFs.</p>
+<p>Some constrained paths remain unreachable by a given family of local samplers even when individual delta events are implemented correctly. Consider an ideal point source seen through a perfect planar mirror by a pinhole camera. A camera ray can obey the mirror law, but its reflected ray hits the exact point source with probability zero. Connecting a randomly selected mirror location to both fixed endpoints will almost surely violate the reflection law. Solving for the mirror point using the reflected virtual source is a different, nonlocal construction: it uses both endpoints to satisfy the constraint.</p>
+<p>Veach's full-path notation makes endpoint constraints explicit. In <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=262">§8.3.2–8.3.4, especially Theorem 8.3</a>, D denotes an unconstrained, ordinary scattering relation and S a specular constraint; D includes finite glossy lobes, not only Lambertian diffuse reflection. After extending the classification to the light and sensor endpoints, his local-sampling family requires an adjacent DD connection between sampled vertices. This is not a claim that every camera tracer samples every such path, nor a rule that all mirror paths are impossible. A particular strategy can have stricter support. Narrow finite lights and nearly perfect mirrors replace an impossible singular case with a possible but potentially enormous-variance case.</p>
+<p>The practical conclusion is to inspect support before calling an estimator unbiased. A correct inverse PDF cannot recover a nonzero contribution on a path family that the algorithm never generates. Finite sample noise, missing sampling support, and changing the scene model to roughen a mirror are three different errors.</p>
+</details>
+<p>We can now connect the ideal derivation to Lumen without changing the meaning of a pixel. The primary material supplies the final interior BSDF. Direct-light evaluation estimates paths that reach an emitter after that interaction; longer prefixes contain indirect transport. A cached radiance value at an earlier surface approximates a whole sum of such prefixes. Visibility representations approximate G; cached material and directional lighting approximate other factors; temporal reuse approximates how those quantities evolve. The engineering chapters will identify these replacements individually. First, implement and test the sampling rules for the ideal integral we have just derived.</p>
+<h3 id="path-monte-carlo">From the path integral to a Monte Carlo renderer</h3>
+<p>The target integral specifies the image. A renderer additionally needs a random construction of paths, the probability of every choice in that construction, and a rule for accumulating the result. We will derive those three pieces in order. The estimator must account for camera samples, scattering directions, light selection, and path termination; none is an optional brightness correction.</p>
 <p>Consider any integral \(I=\int g(z)d\nu(z)\). Choose z with density p relative to the same measure ν. The random value \(g(z)/p(z)\) has expectation \(\int[g(z)/p(z)]p(z)d\nu(z)=I\), provided p is positive wherever g contributes. The probability in the numerator of that expectation cancels the sampling density in the estimator. Averaging N such values reduces variance; it does not change the expected answer.</p>
 \[
 \widehat I_N=\frac1N\sum_{s=1}^{N}\frac{g(z_s)}{p(z_s)},\qquad
 \operatorname{Var}(\widehat I_N)=\frac{\operatorname{Var}(g/p)}{N}
 \]
 <p>The variance expression assumes independent identically distributed samples. Stratification and low-discrepancy sampling change the error behavior, but not the requirement to account for the sampling measure. The familiar square-root convergence means that four times as many independent samples give about half the standard deviation. This is already a warning about trying to buy real-time stability using more independent paths alone.</p>
+<details class="implementation-detail"><summary>Derive the second moment and the ideal importance distribution</summary>
+<p>For a scalar channel, square the sample value before integrating against its probability. Subtract the square of the mean:</p>
+\[
+\operatorname{Var}(g(X)/p(X))=\int\frac{g(z)^2}{p(z)}d\nu(z)-I^2.
+\]
+<p>Unbiasedness needs an integrable contribution and adequate support. Finite variance additionally needs this second moment to be finite. A proposal that is tiny where g is large can therefore be unbiased yet produce unstable fireflies or even infinite variance. For nonnegative g, the formally ideal density is \(p^*(z)=g(z)/I\): every sample then returns I. We cannot generally draw from it because it requires the very visibility and global illumination we are trying to compute, together with their normalizing integral. For signed g, the variance-minimizing density is proportional to |g|, and zero variance is generally lost. RGB strategies usually optimize a scalar proxy and retain the exact componentwise weight.</p>
+<p>Practical proposals approximate factors of g. A BSDF proposal follows the scattering lobe but does not know all incoming lighting. A light proposal follows source energy and geometry but may ignore the material lobe or visibility. A learned guiding distribution approximates incident radiance. Importance sampling means correcting for the actual proposal; it does not permit replacing the integrand with the proposal's approximation.</p>
+</details>
+<p>For full paths, substitute g = fⱼ, ν = μ, and include the discrete length choice. The preceding path derivation already proved \(\widehat I_j=f_j/(q_kp_k)\). The next step turns this correct but abstract estimator into an incremental computation, where shared camera prefixes allow one walk to estimate many lengths.</p>
 <figure class="teaching-figure"><img src="assets/lumen-course/sampling.svg" alt="Uniform hemisphere samples and cosine-weighted samples estimate the same diffuse integral. Sample positions differ and the inverse-PDF weights compensate for that difference." loading="lazy"><figcaption>Importance sampling changes where work is spent. It must change the weight too. A dense set of directions around the normal is not itself a brighter hemisphere.</figcaption></figure>
 <p>For an opaque diffuse bounce, uniform hemisphere sampling has \(p_\sigma=1/(2\pi)\), so its local weight is \(f_s\cos\theta/p_\sigma=2\rho\cos\theta\). Cosine sampling has \(p_\sigma=\cos\theta/\pi\), giving the constant weight ρ. Generate the latter from two uniform variates \(u,v\in[0,1)\):</p>
 \[
@@ -160,48 +443,51 @@ r=\sqrt u,\quad\phi=2\pi v,\quad
 <div class="demo-plot" tabindex="0" role="region" aria-label="Interactive uniform and cosine-weighted sampling of a hemisphere; horizontally scrollable on narrow screens"><svg viewBox="0 0 900 440" role="img" aria-label="Interactive uniform and cosine-weighted sampling of a hemisphere"></svg></div>
 <output aria-live="polite"></output><p class="demo-caption">Change the count or seed. Uniform estimates fluctuate around 1.2. Cosine estimates stay at 1.2 because this particular integrand is proportional to the sampling density. With an occluding column or a small bright source, cosine sampling no longer has zero variance. This is an executable toy experiment, not an Unreal measurement.</p>
 <noscript><p>With JavaScript disabled, use the preceding sampling diagram and the downloadable numerical checks.</p></noscript></div>
-<h3>Implement the camera random walk</h3>
-<p>Maintain two RGB quantities. L is the accumulated estimate of radiance. β is a dimensionless weight for the partial path already sampled. Initialize β with the camera-sample weight defined below; it is one for our uniformly sampled, normalized pinhole pixel. At a non-emissive surface, sample a continuation direction and multiply β by \(f_s|n\cdot\omega_i|/p_\sigma\). The next ray supplies incident radiance; the product of these weights transports its contribution back to the camera.</p>
+<h3 id="path-prefix-estimator">Build a camera walk by conditioning on its prefix</h3>
+<p>Maintain two RGB quantities. L is the accumulated estimate and β is the weight of the already constructed camera prefix. Before roulette, each additional regular scattering event multiplies β by the BSDF/cosine/PDF ratio just derived. The prefix includes all probabilities already paid for; the new sample must pay only for its own conditional distribution.</p>
 <p>Make that camera contract explicit. Let Pⱼ be the pixel's region on the image plane and r(u,v) the pinhole ray through a sample in it. We choose a normalized box-filtered radiance measurement:</p>
 \[
 \overline I_j=\frac{1}{|P_j|}\int_{P_j}L(r(u,v))\,du\,dv,\qquad
 w_{\rm camera}(u,v)=\frac{1}{|P_j|\,p_{uv}(u,v)}.
 \]
-<p>Uniform sampling has pᵤᵥ = 1/|Pⱼ|, so wcamera = 1. A general normalized pixel filter replaces 1/|Pⱼ| with its filter weight. Lens transmission, vignetting, shutter sampling, and spectral response belong in a more general camera measurement and sampling weight; they are not extra factors to guess at a surface interaction. The finite-area Wₑ formulation above permits those sensor models, while this conditional pinhole measurement removes its singular endpoint from the sampled variables. See the <a href="https://pbr-book.org/4ed/Cameras_and_Film/Camera_Interface">PBR camera interface</a> for the corresponding ray-and-weight separation.</p>
-<pre><code>radiance = 0
-beta = camera_sample_weight
-ray = generate_camera_ray(pixel, lens_sample, time_sample)
-previous_pdf = 0
-previous_was_delta = true
+<p>Uniform sampling has pᵤᵥ = 1/|Pⱼ|, so wcamera = 1. A general normalized pixel filter replaces 1/|Pⱼ| with its filter weight. Lens transmission and vignetting belong in the camera response. Shutter and wavelength sampling additionally require time and spectral integration measures and their PDFs; our stationary, fixed-wavelength derivation suppresses those variables. This conditional pinhole measurement removes its singular position endpoint from the sampled variables. See the <a href="https://pbr-book.org/4ed/Cameras_and_Film/Camera_Interface">PBR camera interface</a> for the corresponding ray-and-weight separation.</p>
+<p>To describe a walk whose final length is not yet known, use temporary construction indices v₀, v₁, … starting at the camera. Once a complete path has k edges, \(v_d=x_{k-d}\); the physical x-ordering remains emitter-to-sensor. At \(v_d\), the outgoing direction toward the camera prefix is \(\omega_{v_dv_{d-1}}\). A sampled direction toward \(v_{d+1}\) has conditional PDF \(p_d\) and local weight</p>
+\[
+a_d=\frac{f_s(v_{d+1}\to v_d\to v_{d-1})
+ |n_g(v_d)\cdot\omega_{v_dv_{d+1}}|}{p_d(\omega_{v_dv_{d+1}})},\qquad
+\beta_1=w_{\rm camera},\quad\beta_{d+1}=\beta_da_d.
+\]
+<p>For a walk allowed to scatter at most M times, emission encountered at v₁ through \(v_{M+1}\) gives</p>
+\[
+\widehat I_{j,M}^{\rm walk}
+=\sum_{d=1}^{M+1}\beta_dL_e(v_d\to v_{d-1}),\qquad
+\mathbb E[\widehat I_{j,M}^{\rm walk}]
+=\sum_{k=1}^{M+1}I_j^{[k]}.
+\]
+<p>For the conditional pinhole camera, Iⱼ here means the normalized pixel measurement above, with its singular endpoint already removed. The regular finite-sensor version uses the previously derived camera weight. A miss that sees the environment is an emitting boundary event; a terminated or unsupported path contributes zero to subsequent terms. An emissive surface can also reflect, so encountering emission does not automatically require terminating the walk.</p>
+<details class="implementation-detail"><summary>Prove that the recursively sampled contribution has the correct expectation</summary>
+<p>Condition on the prefix ending at a surface \(v_d\). Let \(\widehat L_{\rm next}\) be an unbiased estimate of radiance from the next surface or boundary, conditional on the sampled direction. Then the tower rule of expectation gives</p>
+\[
+\begin{aligned}
+&\mathbb E[a_d\widehat L_{\rm next}\mid\text{prefix}]\\
+&\quad=\int_{S^2}p_d(\omega)
+ \frac{f_s(v_d;\omega\to\omega_o)|n_g\cdot\omega|}{p_d(\omega)}
+ \mathbb E[\widehat L_{\rm next}\mid\text{prefix},\omega]d\sigma(\omega)\\
+&\quad=\int_{S^2}f_s(v_d;\omega\to\omega_o)|n_g\cdot\omega|L_i(v_d,\omega)d\sigma(\omega).
+\end{aligned}
+\]
+<p>Adding local emission recovers the rendering equation. For a finite-depth walk, begin with the base case “return emission only” and apply this identity backward through each allowed scattering event. This proves the displayed finite sum. Shared prefixes make the different length estimates correlated, but linearity of expectation still permits their sum. An IID variance formula cannot be applied separately to those correlated length terms and then blindly added.</p>
+<p>A random-walk implementation does not choose an independent qₖ and divide by it at every depth. It estimates each reachable prefix's emission and later compensates for roulette survival. Multiplying in both a separate length-selection weight and roulette weights would describe a different construction and generally overcount.</p>
+</details>
 
-for depth = 0, 1, 2, ...:
-    hit = intersect_nearest(ray)
-    if hit is absent:
-        add_environment_with_emitter_hit_weight()
-        break
-
-    material = evaluate_material(hit, ray_footprint)
-    add_emission_with_emitter_hit_weight()
-    sample_and_add_one_direct_light_connection()
-
-    sample = material.sample_bsdf(outgoing = -ray.direction)
-    if sample.pdf == 0 or sample.f == 0: break
-    beta *= sample.f * abs(dot(hit.shading_normal, sample.wi)) / sample.pdf
-    previous_pdf = sample.pdf
-    previous_was_delta = sample.is_delta
-    previous_vertex = hit.position
-
-    if depth >= roulette_start:
-        survive = clamp(max_component(beta), 0.05, 0.95)
-        if random() >= survive: break
-        beta /= survive
-
-    ray = spawn_offset_ray(hit, sample.wi)
-
-return radiance</code></pre>
-<p>The offset in <code>spawn_offset_ray</code> prevents numerical self-intersection. It should be based on intersection error and geometric sidedness; a fixed large world-space offset can leak through thin walls. Intersection acceleration changes the cost of finding the nearest surface, not its intended identity. A BVH implementation must traverse child bounds and keep the nearest valid hit, respecting alpha masks and sidedness.</p>
-<p>The two named accumulation operations are important enough to derive next. Leaving them as “add lighting” would conceal the most common double-counting error in a path tracer.</p>
-<h3>Connect to a light instead of hoping to hit it</h3>
+<h3 id="path-next-event">Derive next-event estimation from the last edge</h3>
+<p>The pure walk is correct on its supported paths, but it may rarely hit a small emitter. At a fixed prefix ending at x, isolate the contribution whose <em>next</em> vertex emits. The rest of the prefix is already represented by β. Integrate that last edge directly:</p>
+\[
+D(x,\omega_o)=\sum_\ell\int_{A_\ell}
+ L_{e,\ell}(y\to x)f_s(y\to x\to z)G(x\leftrightarrow y)dA(y),
+\qquad\omega_o=\omega_{xz}.
+\]
+<p>The sum is over finite area emitters for this formula; the following paragraphs add the other endpoint measures. D is a local direct term, while βD contributes to the pixel. If x itself was reached after several earlier interactions, βD is an indirect camera contribution. Next-event estimation can therefore supply many path lengths, not just the primary surface's direct lighting.</p>
 <p>A small bright source occupies few directions. BSDF sampling often misses it. <em>Next-event estimation</em> chooses a light with probability \(P_\ell\), samples a point y on that light with area density \(p_A(y)\), and tests the segment from x to y. For an area emitter the direct contribution is</p>
 \[
 \widehat L_{\rm light}=\beta\,
@@ -215,15 +501,192 @@ return radiance</code></pre>
 \]
 <p>Here Vℓ tests the ray toward the source through the scene. There is no inverse-square attenuation for this ideal parallel beam, and no area PDF. A point source instead supplies radiant intensity Iℓ toward x; replace E⊥ by Iℓ/r². A finite angular sun disk needs a directional distribution over its disk and the corresponding PDF. Unreal's finite source angle and soft-shadow options must therefore be recorded; the delta formula is the zero-angle idealization. <a href="https://pbr-book.org/4ed/Light_Sources/Distant_Lights">Distant lights</a> and <a href="https://pbr-book.org/4ed/Light_Sources/Point_Lights">point lights</a> require distinct measure contracts even if a renderer exposes them through one sampling interface.</p>
 <p>For an ordinary environment distribution, sample ω with directional density pσ and evaluate β fₛ Lenv(ω) |n·ω| V(x,ω)/pσ, also accounting for light-selection probability if the environment is one selected source. A lat-long environment image has unequal solid angle per texel: a PDF built from image brightness must include the spherical Jacobian, proportional to sin θ. This differs from sampling a point on a finite area emitter.</p>
+<details class="implementation-detail"><summary>Choose lights and directions without hiding a probability</summary>
+<p>With Nₗ lights, uniform selection uses Pℓ = 1/Nₗ. Power-weighted selection uses each light's nonnegative importance proxy divided by the sum of proxies. A spatial light tree can make Pℓ depend on x. In every case, the estimator uses the <em>actual conditional selection probability at x</em>. If a heuristic assigns zero probability to a contributing source, another strategy must cover that source with compatible weights. The light's origin being outside the viewport does not remove its contribution or its selection probability.</p>
+<p>An area sampler may choose triangles proportional to area and then sample barycentric coordinates uniformly. Its complete area density includes the triangle-selection probability. A solid-angle sampler for an area light can avoid the later Jacobian in its interface, but must return its actual directional PDF. For an environment map with u = φ/(2π), v = θ/π,</p>
+\[
+d\sigma=2\pi^2\sin\theta\,du\,dv,\qquad
+p_\sigma(\omega)=\frac{p_{uv}(u,v)}{2\pi^2\sin\theta}.
+\]
+<p>Brightness times texel solid angle is a useful discrete selection weight. For finite lat-long rows, use their actual integrated solid angle rather than evaluating an unstable division exactly at a pole. A hierarchical map or alias table changes sampling cost, not the required normalization.</p>
+<p>Within a material, selecting a diffuse or glossy proposal with probabilities αᵣ gives \(p_b=\sum_r\alpha_rp_r\) for a regular direction. These are unconditional lobe-selection probabilities: if a delta branch is selected with probability αδ, the regular probabilities sum to 1−αδ, not one. Evaluate the <em>full</em> regular BSDF in the numerator. Selecting one proposal is not selecting a physical scattering term to discard from that numerator. Delta components have event masses in their separate measure. A path-guiding distribution can join the regular mixture, provided its current PDF is evaluable and the mixture retains support.</p>
+</details>
+
+<h3 id="path-mis">Combine light and BSDF strategies without counting emission twice</h3>
+<p>At the current receiver, split next-vertex incident radiance into its emitted part E(ω) and its scattered part R(ω). Let \(F(\omega)=f_s(x;\omega\to\omega_o)|n_g\cdot\omega|\). A light sample estimates ∫FE. A BSDF continuation estimates ∫F(E+R). They overlap on E only. Give that overlap complementary weights:</p>
+\[
+\begin{aligned}
+\widehat L_o={}&L_e(x,\omega_o)
++w_\ell(\omega_\ell)\frac{F(\omega_\ell)E(\omega_\ell)}{p_\ell(\omega_\ell)}\\
+&+\frac{F(\omega_b)}{p_b(\omega_b)}
+ \left[w_b(\omega_b)E(\omega_b)+\widehat R(\omega_b)\right].
+\end{aligned}
+\]
+<p>This expression is for regular source directions with one sample of each kind; discrete light selection is included in the light construction, and singular cases are handled separately. Taking expectations gives ∫FE(wℓ+wb)+∫FR. Since wℓ+wb=1, we recover the original scattering integral. This is the reason the MIS emitter-hit weight applies to the encountered <em>emission</em>, not to all radiance returned by the rest of the continuation. Multiplying the entire recursive result by wb would incorrectly suppress indirect lighting.</p>
 <p>There is a second way to discover the same light connection: sample the BSDF and hit the emitter on the next segment. Adding both full estimates counts the same direct contribution twice. Multiple importance sampling (MIS) weights them so that their weights sum to one for the same non-delta path. With one sample from each strategy, a common power heuristic is</p>
 \[
 w_\ell=\frac{p_{\ell,\sigma}^2}{p_{\ell,\sigma}^2+p_{b,\sigma}^2},\qquad
 w_b=1-w_\ell.
 \]
+<details class="implementation-detail"><summary>Derive MIS from the complete-path integral</summary>
+<p>Let strategy t generate nₜ samples with density pₜ relative to the same path-space measure. Each strategy can construct a path differently. Give its contribution a weight wₜ that is zero where pₜ is zero, and require \(\sum_t w_t(\bar x)=1\) wherever the integrand contributes. Then</p>
+\[
+\begin{aligned}
+\widehat I_j&=\sum_t\frac{1}{n_t}\sum_{s=1}^{n_t}
+ w_t(\bar X_{t,s})\frac{f_j(\bar X_{t,s})}{p_t(\bar X_{t,s})},\\
+\mathbb E[\widehat I_j]&=\sum_t\int_\Omega w_t(\bar x)f_j(\bar x)d\mu(\bar x)
+=I_j.
+\end{aligned}
+\]
+<p>The weights partition the contribution of each path, not the image or the set of lights. Choosing \(w_t=(n_tp_t)^2/\sum_r(n_rp_r)^2\) gives the power heuristic used above. The balance heuristic uses the first power. Neither can repair a path on which every strategy has zero support.</p>
+<p>For a direct connection from the same camera prefix, the prefix density is common to both strategies and cancels in their weight ratio. Converting both final-edge PDFs from solid angle to area multiplies them by the same target-cosine/distance factor, which also cancels. This is why the two directional PDFs suffice in the displayed local formula. Comparing one area PDF directly to one directional PDF would not be the same operation. The light-selection probability remains part of the light strategy's PDF. These are specializations of the <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=285">multi-sample model in Veach §9.2</a>.</p>
+</details>
 <p>An ideal delta light has no competing ordinary solid-angle BSDF sample for that connection, so its direct-light sample uses weight one after the light-selection probability is accounted for. Finite angular or area sources can have competing non-delta strategies and use the PDFs below.</p>
-<p>The light-sampled connection receives wℓ. If a BSDF continuation hits an emitter or the environment, evaluate the competing light PDF from the <em>previous</em> vertex and give that emission wb. A primary camera hit on an emitter has no competing direct-light sample and receives weight one. An ideal specular continuation also needs the delta-aware rule: an ordinary solid-angle light sample cannot generate the same constrained event. The exact treatment depends on the sampled event measure, not merely on a material being named “shiny.”</p>
+<p>The light-sampled connection receives wℓ. If a BSDF continuation hits an emitter or the environment, evaluate the competing light PDF from the <em>previous</em> vertex and give that emission wb. In this camera-walk estimator, a primary camera hit on an emitter has no competing direct-light sample and receives weight one. An ideal specular continuation also needs the delta-aware rule: an ordinary solid-angle light sample cannot generate the same constrained event. The exact treatment depends on the sampled event measure, not merely on a material being named “shiny.”</p>
 <figure class="teaching-figure"><img src="assets/lumen-course/mis.svg" alt="Two sampling routes generate the same surface-to-light segment. Their PDFs are expressed in solid angle and complementary MIS weights prevent double counting." loading="lazy"><figcaption>At a matte point below a small lamp, light sampling is valuable. On a nearly mirror-like surface, BSDF sampling is valuable. MIS lets each strategy dominate where it is effective while preserving the same integral.</figcaption></figure>
+<h4>Choose a sampling strategy, then choose the weighting model</h4>
+<p>“Use MIS” does not specify how many samples are drawn, which technique draws them, or how the result is normalized. The common cases below estimate the same integral but have different random experiments. Keep that experiment explicit before choosing a heuristic.</p>
+<details class="implementation-detail"><summary>Multiple samples: balance and power heuristics, with unequal sample counts</summary>
+<p>For nₜ samples from each technique, fixed before those samples are drawn, the general estimator above averages <em>within</em> each technique and sums the weighted averages. It does not divide their final sum by the number of techniques. The balance and power weights are</p>
+\[
+\begin{aligned}
+w_t^{\rm bal}(x)&=\frac{n_tp_t(x)}{\sum_r n_rp_r(x)},\\
+w_t^{\rm pow}(x)&=\frac{[n_tp_t(x)]^\gamma}{\sum_r[n_rp_r(x)]^\gamma},\quad\gamma=2\ \text{commonly}.
+\end{aligned}
+\]
+<p>The sample counts are inside the weights as well as in the estimator's 1/nₜ factors. Four light samples and one BSDF sample therefore do not use the same weights as one sample each. The balance heuristic pools techniques according to their effective sampling density. The power heuristic more strongly suppresses a technique where another has a much larger density, often reducing rare large weights. Neither is the universally smallest-variance strategy for every scene and cost budget. Source selection probabilities must already be inside pₜ; they are not the nₜ factors.</p>
+<p>Veach also describes cutoff and maximum heuristics: keep techniques whose nₜpₜ exceeds a chosen fraction of the maximum, then normalize the retained weights; the maximum case selects only a maximizer, splitting ties consistently. They still need weights that sum to one and vanish outside each technique's support. Aggressive rejection can throw away useful samples, so balance or power is a more straightforward starting point.</p>
+<p>With independent samples and fixed weights, the variance is \(\sum_t\operatorname{Var}_{p_t}(w_tf_j/p_t)/n_t\). Correlated subpaths add covariance terms. More samples from an expensive strategy may reduce variance per sample while worsening error per millisecond. Allocation and weighting solve different problems.</p>
+</details>
+<details class="implementation-detail"><summary>One-sample MIS: randomly choose one technique, then use its mixture</summary>
+<p>Choose a technique T with probability αₜ and draw one sample from pₜ. The joint density, with counting measure for the technique and μ for the path, is αₜpₜ. A valid one-sample MIS estimator is</p>
+\[
+\widehat I=\frac{w_T(X)f_j(X)}{\alpha_Tp_T(X)},\qquad
+\mathbb E[\widehat I]=\sum_t\int w_t(x)f_j(x)d\mu(x)=I_j.
+\]
+<p>Using the balance weights \(w_t=\alpha_tp_t/\sum_r\alpha_rp_r\) makes the selected-technique factors cancel:</p>
+\[
+p_{\rm mix}(x)=\sum_t\alpha_tp_t(x),\qquad
+\widehat I=\frac{f_j(X)}{p_{\rm mix}(X)}.
+\]
+<p>Every proposal must be evaluated at the generated sample, including proposals that did not generate it. Dividing by the selected pₜ alone is not mixture-density weighting. Dividing by αₜpₜ with no partition weight overcounts overlapping integrals when several techniques can independently estimate the whole contribution. For fixed mixture probabilities, the balance choice removes unnecessary variance from the hidden technique identity; a power weight is not a free improvement to this one-sample estimator. See <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=301">Veach §9.2.4</a>.</p>
+<p>This is useful when only one continuation ray is affordable. A diffuse/glossy mixture or BSDF/guiding mixture samples its full continuation integral once. By contrast, next-event estimation plus a continuing BSDF ray takes two kinds of samples and weights only their shared emission contribution. Choosing a light proposal instead of a BSDF continuation requires a separately defined estimator for the remaining indirect term; it cannot simply stop that term for free.</p>
+</details>
+<details class="implementation-detail"><summary>Bidirectional strategies: evaluate the density of each possible connection</summary>
+<p>For a path with k edges, choose s vertices from the emitter side and t from the sensor side, with s+t=k+1. For s,t≥1, the connecting edge joins xₛ₋₁ to xₛ. The light-side density uses forward construction PDFs; the sensor side uses reverse construction PDFs. For fixed length and split, a regular finite-endpoint construction has</p>
+\[
+\begin{aligned}
+p_{s,t}(\bar x)={}&p_{L,A}(x_0)p_{C,A}(x_k)\\
+&\times\prod_{i=0}^{s-2}p_{\to,A}(x_{i+1}\mid x_0,\ldots,x_i)\\
+&\times\prod_{i=s+1}^{k}p_{\leftarrow,A}(x_{i-1}\mid x_i,\ldots,x_k).
+\end{aligned}
+\]
+<p>The first ray on either side uses that endpoint's directional sampling rule; subsequent rays use its appropriate scattering/transport mode. All directional PDFs are converted to area at the newly generated vertex. The connection edge has visibility and G in fⱼ, but no sampled-direction factor in this construction density. Re-evaluate the density for alternative splits of the <em>same completed path</em>, including the correct reverse PDFs, and use their pₛ,ₜ values in MIS.</p>
+<p>If all selected splits are evaluated deterministically, use their sample counts in the multi-sample model. If one split is chosen randomly, its selection probability belongs in the joint density and denominator: \(P(s,t)p_{s,t}\). Use the one-sample weighting model derived above. The conditional density displayed here does not include that additional random choice.</p>
+<p>Camera-only emitter hits, light-to-camera connections, and splits with an empty subpath have endpoint-specific sampling rules; they are not obtained by substituting a negative product bound into this interior formula. Camera pixel selection, emitter choice, random length selection, and roulette must follow the actual construction. Specular endpoints can make a split impossible; assign that technique zero support and handle the relevant constrained measure. Reusing subpaths produces correlated samples, which preserves the expectation proof but changes variance calculations. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf#page=323">Veach Chapter 10</a> develops these endpoint cases.</p>
+<p>Bidirectional sampling can make a light-side caustic easier to discover than a camera-only walk. It still does not evade the local-sampling constraints established earlier. Metropolis light transport instead samples whole paths using a Markov chain and requires its own target normalization and transition rules; it is not another PDF to insert casually into the independent-sample formula.</p>
+</details>
+<div class="worked-example"><p><strong>A complete MIS calculation with two angular cells.</strong> Replace the hemisphere integral by two cell contributions g=(0.8,0.2), so the exact answer is 1. Let the light proposal choose the cells with probabilities (0.9,0.1), and the BSDF proposal with (0.2,0.8). For a sample in the first cell, one sample of each strategy gives light power weight 0.9²/(0.9²+0.2²)=0.952941 and BSDF weight 0.047059. Each weight multiplies its strategy's g/p estimate; the light term is not simply 0.952941 × g.</p></div>
+<figure class="teaching-figure"><img src="assets/lumen-course/mis-strategies.svg" alt="Two angular cells have target contributions 0.8 and 0.2. Light sampling chooses them with probabilities 0.9 and 0.1; BSDF sampling with 0.2 and 0.8. A half-and-half one-sample mixture has probabilities 0.55 and 0.45. Both cells retain support." loading="lazy"><figcaption>The bars are probabilities or declared cell contributions, not measured Unreal brightness. Enumerating both possible samples makes the expectation and variance exact. A single technique can favor one cell while a mixture covers both.</figcaption></figure>
+<details class="implementation-detail"><summary>Inspect the exact expectations and compare equal sample budgets</summary>
+<p>For each technique t and cell i, calculate \(a_{t,i}=w_t(i)g_i/p_t(i)\). Its mean is \(\sum_i p_t(i)a_{t,i}\); its variance is \(\sum_i p_t(i)a_{t,i}^2-\mathrm{mean}_t^2\). Add the two means and, for independent samples, their variances. All entries below come from finite enumeration, with no Monte Carlo noise.</p>
+<div class="table-wrap"><table><thead><tr><th>Estimator</th><th>Samples</th><th>Expected result</th><th>Variance</th></tr></thead><tbody>
+<tr><td>Light proposal alone, averaged</td><td>2</td><td>1</td><td>0.055556</td></tr>
+<tr><td>BSDF proposal alone, averaged</td><td>2</td><td>1</td><td>1.125000</td></tr>
+<tr><td>Independent 50/50 mixture samples, averaged</td><td>2</td><td>1</td><td>0.126263</td></tr>
+<tr><td>One light + one BSDF, balance MIS</td><td>2</td><td>1</td><td>0.063769</td></tr>
+<tr><td>One light + one BSDF, power MIS</td><td>2</td><td>1</td><td>0.060506</td></tr>
+</tbody></table></div>
+<p>Here light-only sampling happens to win. MIS improves robustness when the integrand changes; it does not promise to beat a technique already well matched to this particular target. Changing the cell contributions can reverse the ranking. The downloadable experiment verifies the means and variances and shows that summing two unweighted full estimators would instead have expectation 2.</p>
+</details>
+
+<h3 id="path-roulette">Replace a fixed cutoff with a compensated random tail</h3>
 <p>Russian roulette handles long paths. If a path survives with probability q, divide its surviving weight by q: \(q(\beta/q)+(1-q)0=\beta\). This removes work without changing the conditional expectation. A fixed maximum depth removes all longer paths and introduces truncation bias. For refractive paths, the survival heuristic should account for refractive-index scaling so that a temporary radiance-scale change does not terminate useful paths prematurely. Our opaque examples avoid that extra state.</p>
+<details class="implementation-detail"><summary>Derive the infinite-length estimator and its termination conditions</summary>
+<p>Let Bᵣ be the survival indicator at construction vertex vᵣ, with conditional survival probability qᵣ&gt;0. Let \(S_d=\prod_{r=1}^{d-1}B_r\) indicate that \(v_d\) is reached through roulette. Emission at \(v_d\) has the compensated prefix</p>
+\[
+\beta_d^{\rm RR}=w_{\rm camera}
+\prod_{r=1}^{d-1}\frac{B_ra_r}{q_r},\qquad
+\widehat I_j^{\rm RR}=\sum_{d=1}^{\infty}
+ \beta_d^{\rm RR}L_e(v_d\to v_{d-1}).
+\]
+<p>For each decision, conditional on its prefix, \(\mathbb E[B_r/q_r]=1\). Repeated conditional expectation removes the survival factors from the mean of every length term, recovering the same path integral. This proof requires no qᵣ factor for the emission already accumulated before that decision. The product is computed incrementally; a terminated walk never constructs its hypothetical future vertices.</p>
+<p>To ensure finite expected work, a sufficient practical rule is \(q_r\le q_{\max}&lt;1\) beyond a finite initial depth. Then the expected remaining count is bounded by a geometric series. A positive lower bound avoids extreme single-step compensation but does not by itself guarantee finite variance of the whole renderer. Roulette increases variance for a fixed number of initial walks; its value is saving work to spend on other walks. A hard emergency depth cap restores truncation bias and should be reported.</p>
+<p>With MIS, keep the placement of roulette explicit. The implementation below tests roulette <em>after</em> accumulating current emission and <em>before</em> both light sampling and BSDF continuation. That common survival factor scales both competing final-edge constructions and cancels in their local MIS ratio. Moving roulette to only one strategy requires re-deriving that strategy's probability or partition weights; it must not silently change one denominator.</p>
+</details>
+<h4>The complete estimator accumulated by one walk</h4>
+<p>Let \(\beta_d\) include the survival and scattering factors of the prefix before the current vertex's roulette decision. Let \(E_d\) be the emission seen on arrival at \(v_d\), and \(\widehat D_d\) the unweighted one-light estimate at that vertex, including source selection, visibility, and its measure conversion. The estimator implemented below is</p>
+\[
+\widehat I_j^{\rm PT+NEE}
+=\sum_{d\ge1}\left[
+ \beta_d w_{b,d}^{\rm hit}E_d
+ +\beta_d\frac{B_d}{q_d}w_{\ell,d}\widehat D_d
+\right],\qquad
+\beta_{d+1}=\beta_d\frac{B_d}{q_d}a_d.
+\]
+<p>The first hit has emission weight one; later regular emitter hits use the competing light PDF from the previous vertex. A miss contributes environment emission and ends the walk, with no direct term at that boundary. The emission weight is not multiplied into β: later scattered light has its own path contribution. Averaging independent complete walks gives \(\widehat I_{j,N}=N^{-1}\sum_{s=1}^N\widehat I_j^{(s)}\). Under the support, integrability, and termination conditions stated above, its expectation is the ideal pixel measurement. A finite bounce cap, clamping a sample's radiance, or substituting a biased cache changes that statement.</p>
+
+<h3 id="path-tracer-algorithm">Implement the estimator with explicit accumulation rules</h3>
+<p>This pseudocode uses one aggregate environment and identifiable area emitters, plus sampled point/directional lights. Ideal point/directional lights have no intersectable proxy geometry; they enter through their declared light-sampling interfaces. Scene and proposal distributions remain fixed during one walk. <code>f_geo</code> is the full regular BSDF relative to the geometric projected measure, including the convention needed for a shading-normal material. A regular BSDF sample returns <code>weight = f_geo * abs(n_geo·wi) / pdf_sigma_total</code>. Both <code>pdf_sigma_total</code> and the evaluation query include the full regular mixture with unconditional lobe-selection probabilities. A delta sample instead returns its integrated event weight divided by its event-selection probability. Neither interface substitutes an ordinary density for a delta mass.</p>
+<p>A light sample returns direction, target, and <code>incident_over_pdf</code>. For a regular source this is its incident emitted radiance divided by <code>P_light * pdf_sigma</code>; the same product is returned as <code>pdf_sigma_total</code>. For a directional delta it is E⊥/P_light, and for a point delta I/(r² P_light). Visibility is tested separately. The matching <code>light_pdf</code> operation evaluates that same construction for an emitter reached by a BSDF ray.</p>
+<pre><code>power(p, q):
+    # Called only for two densities in the same regular measure.
+    if p == 0 and q == 0: fail("MIS called without sampling support")
+    return p*p / (p*p + q*q)
+
+L = 0
+beta = camera_sample_weight
+ray = generate_camera_ray(pixel_sample)
+previous = none
+
+for depth = 1, 2, ...:
+    hit = intersect_nearest(ray)
+    if hit exists:
+        endpoint = hit.emitter
+        E = surface_emission(hit, toward = -ray.direction)
+    else:
+        endpoint = aggregate_environment
+        E = environment_radiance(ray.direction)
+
+    if E != 0:
+        if previous is none or previous.event_is_delta:
+            w_hit = 1
+        else:
+            p_light = light_pdf(previous.position, endpoint, ray.direction)
+            w_hit = power(previous.bsdf_pdf_sigma, p_light)
+        L += beta * w_hit * E
+
+    if hit is absent: break
+    material = evaluate_material(hit, ray_footprint)
+    wo = -ray.direction
+
+    # Current emission is already counted. Gate BOTH estimators below.
+    q = 1 if depth &lt; roulette_start else clamp(max_component(beta), 0.05, 0.95)
+    if random() >= q: break
+    beta /= q
+
+    if material.has_regular_scattering:
+        light = sample_one_light(hit.position, random_sample)
+        if light.valid:
+            f = material.f_geo(wo, light.wi)
+            c = abs(dot(hit.geometric_normal, light.wi))
+            p_bsdf = material.pdf_sigma(wo, light.wi)  # full regular mixture
+            w_light = 1 if light.is_delta else power(light.pdf_sigma_total, p_bsdf)
+            if visible_segment_or_environment(hit, light):
+                L += beta * w_light * f * c * light.incident_over_pdf
+
+    bsdf = material.sample(wo, random_sample)
+    if not bsdf.valid or bsdf.weight == 0: break
+    beta *= bsdf.weight
+    previous = {position: hit.position,
+                bsdf_pdf_sigma: 0 if bsdf.is_delta else bsdf.pdf_sigma_total,
+                event_is_delta: bsdf.is_delta}
+    ray = spawn_offset_ray(hit, bsdf.wi)
+
+return L</code></pre>
+<p>A nonemitting hit returns E=0. A surface's emission is evaluated toward the previous vertex, while the environment map is queried along the ray's forward direction toward the sky. A valid regular sample must have positive total PDF; null light/BSDF samples remain zero outcomes. Do not redraw until success without adjusting their PDFs. The light PDF queried at an emitter hit includes its selection probability and is evaluated from the previous receiver using the sampling state that applied there. If one technique could not generate that endpoint, its PDF is zero and the competing supported technique gets weight one. Both PDFs being zero for a contributing event is a support/implementation error, not permission to evaluate 0/0.</p>
+<p>The offset in <code>spawn_offset_ray</code> prevents numerical self-intersection. Base it on intersection error and geometric sidedness; a large constant offset can leak through thin walls. Trace shadow segments to just before their sampled emitter, accounting for intersection uncertainty. A BVH changes the cost of finding the nearest valid surface, not the intended visibility. It must respect sidedness and alpha masks. None of these operations justifies discarding off-screen lights or geometry in the ideal renderer.</p>
+<p>Stratifying pixel samples or using randomized low-discrepancy sequences can improve coverage without changing these weights. Store independent dimensions for camera, light choice, light coordinates, BSDF choice, BSDF coordinates, and roulette. Reusing the same number for unrelated choices can change the intended joint distribution. For error bars, use independent complete walks or independent randomized replicates; correlated samples within a walk or a sequence do not obey the simple IID variance formula.</p>
 <div class="worked-example"><p><strong>Trace the numbers.</strong> A cosine-sampled diffuse interaction with reflectance 0.6 changes β from 1 to 0.6. A second with reflectance 0.5 changes it to 0.3. If roulette then survives with q=0.4, the surviving path carries β=0.75, and otherwise contributes zero. The expected weight remains 0.3. If the next event is an emission value of 8 with no competing strategy, its expected camera contribution is 2.4. This arithmetic tests path weighting; it does not stand in for the visibility and sampling probabilities of an entire Sponza pixel.</p></div>
 <p><a href="assets/lumen-course/experiments.json">The executable numerical examples</a> check the Jacobian, diffuse integral, PDFs, MIS partition, roulette, and cache iteration introduced in this article. The <a href="lumen-reference.html#reference-scene">small CPU path tracer</a> remains available to step through a complete renderer. Sponza's image reference is rendered by Unreal's path tracer with the same scene setup; the two renderers serve different tests.</p>
 <div class="capture-pair">

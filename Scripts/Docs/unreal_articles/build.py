@@ -28,7 +28,7 @@ ARTICLES = [
          deck='Build, select, stream, and rasterize virtual geometry: a source-guided essay with a computed Stanford bunny experiment and real Unreal Engine captures.'),
     dict(key='lumen', slug='lumen', title='Building Lumen: From Light Paths to a Real-Time Atrium',
          short='Lumen',
-         date='2026-11-15', date_label='15 November 2026', append_lab_sources=False,
+         date='2026-11-16', date_label='16 November 2026', append_lab_sources=False,
          authored_sources=['lumen-course.html', 'lumen-course-system.html',
                            'lumen-course-caches.html', 'lumen-course-reconstruction.html',
                            'lumen-course-evidence.html'],
