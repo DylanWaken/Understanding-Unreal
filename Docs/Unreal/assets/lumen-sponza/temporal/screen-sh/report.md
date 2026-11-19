@@ -26,7 +26,7 @@ with AO=1 and exponent=1.  This is the shader's `EvaluateSHIrradiance` without i
 
 Constant-radiance self-test: projected L0 = `0.282095000` (expected `0.282095000`), max other coefficient = `1.047e-02`, exact-basis max |D-1| = `1.476e-06`, captured-8x8-quadrature max |D-1| = `2.051e-02` over 256 normals.  Normalization: **PASS**.
 
-The exact-basis test is the normalization check.  The captured 8x8 equi-area projection leaves a small higher-band residual (`max other coefficient` above); that is the shader's discrete quadrature, not a decoder error, and is reported rather than hidden.
+The exact-basis test is the normalization check.  The captured 8x8 equi-area projection leaves a small higher-band residual (`max other coefficient` above); that is the shader's discrete quadrature, not a decoder error.
 
 ## Placement and projection checks
 
@@ -61,9 +61,9 @@ Per-state distances, normal dots, actual matched world positions, signed coeffic
 
 ## Lobes and figures
 
-The projected lobes are real 3-D response surfaces: for each of 162 hypothetical receiver normals the signed RGB response is evaluated, negative display response is explicitly clamped to zero, and the vertex radius is `60.0 cm * clamp(L / 1.4454, 0, 1)` in world space.  The same world radius and luminance scale is used for every state and every focused probe; nothing is normalized per probe.  Vertices are projected with the captured view and depth-tested against the captured `SceneDepthZ`; visible quads are filled and depth-occluded quads are drawn as an explicit magenta x-ray function glyph (not a physical object).  The negative signed luminance fraction is `0.0258`; the display-saturated fraction is `0.0098`.
+The projected lobes are 3-D response surfaces: for each of 162 hypothetical receiver normals the signed RGB response is evaluated, negative display response is explicitly clamped to zero, and the vertex radius is `60.0 cm * clamp(L / 1.4454, 0, 1)` in world space.  The same world radius and luminance scale are used for every state and every focused probe; nothing is normalized per probe.  Vertices are projected with the captured view and depth-tested against the captured `SceneDepthZ`; visible quads are filled and depth-occluded quads are drawn as an explicit magenta x-ray function glyph (not a physical object).  The negative signed luminance fraction is `0.0258`; the display-saturated fraction is `0.0098`.
 
-Figures (no burned text; HTML labels are the collector's responsibility):
+Figures have no burned-in text; the HTML collector adds the labels:
 
 - `publish/figures/active_baseline.png`: captured screenshot + active placement (cyan uniform, orange adaptive).
 - `publish/figures/lobes_baseline.png`: captured screenshot + the 10 focused projected lobes (no all-active dot grid; magenta outline = depth-occluded x-ray function glyph).

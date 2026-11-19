@@ -1,15 +1,16 @@
 # Educational CPU reference path tracer
 
-**This is an original educational CPU renderer, not Unreal Engine, not a Lumen
-capture, and not a stand-in for the user's requested identical Unreal scene.**
-It exists to make the transport estimators in the Lumen/Veach math chapter
-executable on a CPU with no third-party dependencies. The rendered scene is a
-Lambertian-only reconstruction of the essay's 4 x 5 x 3 m CPU reference room
-(open front, red/green walls, two blocks, ceiling emitter); the PNG carries a
-burned-in label saying so, and `manifest.json` repeats the disclaimer.
+**This is an original educational CPU renderer. It is not Unreal Engine or a
+Lumen capture, and it is not a stand-in for the user's requested identical
+Unreal scene.** It exists to make the transport estimators in the Lumen/Veach
+math chapter executable on a CPU with no third-party dependencies. The rendered
+scene is a Lambertian-only reconstruction of the essay's 4 x 5 x 3 m CPU
+reference room (open front, red/green walls, two blocks, ceiling emitter); the
+PNG carries a burned-in label saying so, and `manifest.json` repeats the
+disclaimer.
 
-The implementation is written from scratch for this project. It contains no
-copied engine code, no GPU code, and no third-party renderer code.
+The implementation is written from scratch for this project and contains no
+copied engine code, GPU code, or third-party renderer code.
 
 ## Requirements
 
@@ -234,8 +235,8 @@ tolerance:
    must still return `rho * L_env`; the terminal path must not silently delete
    this source class while retaining direct area lights.
 
-The checks are not a proof of the renderer; they are executable evidence that
-the specific formulas used here are consistent. See
+The checks are executable evidence that the specific formulas used here are
+consistent. They do not prove that the renderer is correct. See
 `reports/reference-report.md` for the measured run, seed and tolerances.
 
 ## Files
@@ -257,9 +258,9 @@ the specific formulas used here are consistent. See
   tall right block is glossy/metallic in Unreal and Lambertian here.
 - RGB transport in arbitrary linear units; no claim of radiometric calibration.
 - Finite `--max-depth` means the result is biased relative to infinite
-  interreflection; this is stated explicitly rather than hidden.
+  interreflection.
 - The room dimensions, camera and block placements are aligned with the essay's
-  CPU lab, but the image is not an Unreal scene, not a capture, and does not
+  CPU lab, but the image is not an Unreal scene or capture, and it does not
   claim the Unreal glossy BRDF, lighting units, exposure or Lumen caches. It
   must not be presented as an identical Unreal render.
 - Rendering is single-threaded CPython. No GPU work is performed.

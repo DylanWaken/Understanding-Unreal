@@ -2,7 +2,7 @@
 
 `replay_cache_texel.py` reads a native or instrumented UE DumpGPU capture and independently recomputes `CombineLumenSceneLightingCS`. It writes a complete selected-texel arithmetic trace and compares packed output words for one texel from each of up to 512 dispatched tiles.
 
-Requirements: Python 3 and NumPy. Keep dependencies in a virtual environment. The checked run used Python 3.14 and NumPy 2.5.4 on Windows; this is CPU analysis and does not launch Unreal or modify the engine.
+It needs Python 3 and NumPy; keep dependencies in a virtual environment. The checked run used Python 3.14 and NumPy 2.5.4 on Windows. This is CPU analysis and does not launch Unreal or modify the engine.
 
 ```text
 python -m venv .venv
@@ -14,6 +14,6 @@ Optional `--pass-id N` selects a specific CombineLighting pass. The default choo
 
 To regenerate the prose, place `write_replay_chapter.py` beside the generated `cache-texel-replay.json` and run it. It creates `cache-texel-replay.md` from the actual recorded results.
 
-The script supports the captured equal-resolution lighting atlases, boost=1 branch, BC7/BC6H decoded readbacks and finite R11G11B10 values. It asserts its branch assumptions. It is not a general implementation of all UE shader permutations or all GPU floating-point conversion corner cases. Its output preserves missing capture operands as explicit provenance gaps; source-derived sampler construction is recorded separately from captured pointer bytes.
+The script covers the captured equal-resolution lighting atlases, the boost=1 branch, BC7/BC6H decoded readbacks and finite R11G11B10 values; it asserts its branch assumptions. It is not a general implementation of all UE shader permutations or all GPU floating-point conversion corner cases. Its output preserves missing capture operands as explicit provenance gaps; source-derived sampler construction is recorded separately from captured pointer bytes.
 
-No Unreal shader source is copied into this replay. Original CPU expressions implement the documented algorithms and name source anchors for comparison.
+This replay copies no Unreal shader source; its own CPU expressions implement the documented algorithms and name source anchors for comparison.

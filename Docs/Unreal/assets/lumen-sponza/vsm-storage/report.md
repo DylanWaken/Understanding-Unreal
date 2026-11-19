@@ -1,4 +1,4 @@
-# VSM storage decode — sponza-20261115-083654 (presented graph, native0004)
+# VSM storage decode: sponza-20261115-083654 (presented graph, native0004)
 
 Selected pass: **840 VirtualShadowMapProjection(Input:GBuffer)** (`00040000020c16c43fb0`), graph prefix `0004`. Earlier scene invocations are not used.
 
@@ -62,7 +62,7 @@ Base id `8192` (clip level 6), 17 contiguous levels 6..22, direction `[-0.212012
 - LODOffset semantics: for this directional clipmap the field selects a coarser clipmap level and the sampled mip stays 0; for local lights the same field can select a logical page-table mip.
 - LODOffset histogram (logical mip0): `{0: 99, 1: 116, 5: 3881, 6: 12288}`
 - PageFlags H0 nonzero 168; low6 categories `{'0x0': 16216, '0x1': 69, '0x1b': 99}`
-- PageFlags hardware mips 0..6 are the separate H0..H6 hierarchy (mipm parent at texel >> m); H7 is not generated. They are not the eight logical mips packed in PageTable hardware mip0.
+- PageFlags hardware mips 0..6 are the separate H0..H6 hierarchy (mip m parent at texel >> m); H7 is not generated. They are not the eight logical mips packed in PageTable hardware mip0.
 - Occupancy categories (4096 physical pages): `{'0': 3757, '2': 144, '4': 96, '1': 99}`
 - Metadata state categories: `{'0': 3757, '1': 243, '2': 96}`
 - Physical pages referenced by page-table mip0: 243
@@ -70,7 +70,7 @@ Base id `8192` (clip level 6), 17 contiguous levels 6..22, direction `[-0.212012
 
 Depth range over all 1622016 values of the 99 render-valid pages: min 0.499898583, max 0.500238657, mean 0.500076860, p01 0.499905556, p99 0.500231206, zeros 0.
 
-Display range for the selected projection: device Z **[0.49980000, 0.50030000]**, ramp navy→blue→teal→amber→white; t = (z−lo)/(hi−lo) is the invertible display coordinate. Invalid/masked are categorical, not depth.
+Display range for the selected projection: device Z **[0.49980000, 0.50030000]**, ramp navy→blue→teal→amber→white; t = (z−lo)/(hi−lo) is the invertible display coordinate. Invalid and masked texels are categorical, not depth.
 
 ## Receiver declared replay
 
@@ -79,25 +79,25 @@ Display range for the selected projection: device Z **[0.49980000, 0.50030000]**
 | A | 1.0 | 8196 | (0.49383,0.51341) | [63, 65] | `0xc000504f` | [79, 20] | [10138, 2651] | `0x3efff6f3` | 0.499930948 | 0.499930967 | -1.856e-08 | 0.000 |
 | B | 0.0 | 8196 | (0.50666,0.49444) | [64, 63] | `0xc0001017` | [23, 4] | [3053, 548] | `0x3f000db7` | 0.500209272 | 0.499937844 | +2.714e-04 | 1111.770 |
 
-The replay applies the captured clipmap-selection formula and page-table arithmetic only. SMRT ray directions, slope/normal bias, texel dither and per-lane hits are shader-local and are not replayed; the captured mask is reported but not reproduced. B's stored depth is greater than its receiver depth (occluder closer to the light), consistent with the captured shadowed mask; A's stored depth nearly equals its receiver projection (Δ = -1.856e-08, float32 roundoff; not exactly equal). This is a storage-address check, not a full shadow-mask explanation. The occluder-distance column applies the source clamp max(1e-6 cm, (receiverZ-storedZ)/m33); A's unclamped value is slightly negative (no occluder), B's is positive.
+The replay applies the captured clipmap-selection formula and page-table arithmetic only. SMRT ray directions, slope/normal bias, texel dither and per-lane hits are shader-local and are not replayed, and the captured mask is reported but not reproduced. B's stored depth is greater than its receiver depth (occluder closer to the light), consistent with the captured shadowed mask. A's stored depth nearly equals its receiver projection (Δ = -1.856e-08, float32 roundoff; not exactly equal). The replay is a storage-address check, not a full shadow-mask explanation. The occluder-distance column applies the source clamp max(1e-6 cm, (receiverZ-storedZ)/m33); A's unclamped value is slightly negative (no occluder), B's is positive.
 
 ## Figures
 
-- `publish/figures/vsm_pool_occupancy.png` — 1024×988 — physical_pool_occupancy_and_depth
-- `publish/figures/vsm_page_table_sun.png` — 1552×512 — sun_virtual_page_table_mip0
-- `publish/figures/vsm_depth_pages.png` — 784×520 — native_depth_page_closeups
-- `publish/figures/vsm_virtual_depth.png` — 1792×1536 — contiguous_virtual_depth_mosaic
+- `publish/figures/vsm_pool_occupancy.png` (1024×988): physical_pool_occupancy_and_depth
+- `publish/figures/vsm_page_table_sun.png` (1552×512): sun_virtual_page_table_mip0
+- `publish/figures/vsm_depth_pages.png` (784×520): native_depth_page_closeups
+- `publish/figures/vsm_virtual_depth.png` (1792×1536): contiguous_virtual_depth_mosaic
 
-Figure 3 tile order is listed exactly in `publish/data/vsm_storage.json` → `figures.vsm_depth_pages.tile_order` (row-major, 3 columns × 2 rows, 256 px tiles, 8 px gutters, 2× nearest scale, white cross = replay texel on A/B).
+Figure 3 tile order is listed in `publish/data/vsm_storage.json` → `figures.vsm_depth_pages.tile_order` (row-major, 3 columns × 2 rows, 256 px tiles, 8 px gutters, 2× nearest scale, white cross = replay texel on A/B).
 Figure 4 (`vsm_virtual_depth.png`) reassembles all 99 selected VSM-8196 mip0 pages at their virtual page coordinates, cropped to the active bbox [55, 58, 68, 69] (14×12 pages, 1792×1536 px, uniform scale 1.000000). It uses the same fixed device-Z range [0.4998, 0.5003]; coarser-clipmap fallback (69 page cells) and unmapped (0 page cells) positions are categorical, and no text is burned in. Page order, bbox, scale and mask are stored in JSON/NPZ.
 
 ## Limits
 
 - PageTable hardware mip0 packs all eight logical shadow-map mips 0..7 in each VSM 128×192 block. For selected VSM 8196, logical mip0 holds 99 render-valid pages and logical mips 1..7 are present but empty (all-zero entries); no logical page-table mip is missing from the capture.
-- PageFlags hardware mips 0..6 are a separate H0..H6 hierarchy (mipm parent at texel >> m); H7 is not generated. This hierarchy is not the eight logical mips packed in PageTable hardware mip0.
+- PageFlags hardware mips 0..6 are a separate H0..H6 hierarchy (mip m parent at texel >> m); H7 is not generated. This hierarchy is not the eight logical mips packed in PageTable hardware mip0.
 - The receiver chain is a declared replay, not an executed shader-local SMRT trace.
 - The page-table, PageFlags and pool files are pass-840 consumer snapshots versioned at the capture boundary; their last resource-level output bindings are earlier passes (page table 792, pool 811, PageFlags mip0 790 / mips1-6 791). Physical-page metadata is the pass-810 snapshot before the pass-840 consumer.
-- The 96 metadata records with flags 0x285b and LastRequestedSceneFrameNumber 3 are allocated slots not referenced in this snapshot; age alone does not prove them stale or invalid. Free/unallocated slots remain neutral gray. The selected99pages have no zero-valued depths; the compact atlas masks nonpositive values, while the native-page and mosaic views apply the declared ramp directly.
+- The 96 metadata records with flags 0x285b and LastRequestedSceneFrameNumber 3 are allocated slots not referenced in this snapshot; age alone does not prove them stale or invalid. Free/unallocated slots remain neutral gray. The 99 selected pages have no zero-valued depths; the compact atlas masks nonpositive values, while the native-page and mosaic views apply the declared ramp directly.
 - Full pool bytes (2 × 256 MiB) stay in the raw archive; all 99 current selected pages are duplicated as full 128×128 float32 + raw bits, plus the 64×64 compact thumbnails and the virtual-address mosaic.
 - Depth across different projections/clipmap levels is not globally comparable; one fixed range is used for selected VSM 8196.
 - AllocatedPageRectBounds/PageRectBounds, PageReceiverMasks, HZBPhysicalPagePool, NextVirtualShadowMapData and StatsBuffer are captured but not used for these point storage queries.

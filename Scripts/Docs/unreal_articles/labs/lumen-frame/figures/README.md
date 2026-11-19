@@ -7,8 +7,8 @@ capture at:
 D:\UnrealEngine\UnrealUnderstandingCapture\capture\buffers\gpudump\binary-20261112-153914
 ```
 
-The published package is the **graph 0001** decode. No GPU, engine or source
-work is performed. The raw dump is read-only.
+The published package is the **graph 0001** decode. Decoding performs no GPU,
+engine or source work, and the raw dump is read-only.
 
 ## Run
 
@@ -44,8 +44,8 @@ serif or system monospace. `Raster.draw_text` never paints pixels; it records a
 text overlay, and `Raster.blit`/`Raster.scaled` transform those overlays with
 the same geometry as the data.
 
-Layout is reserved before rendering: body text is 14 px, titles are 22 px, and
-panel headings sit in a separate 22 px band above their data, never over it.
+The decoder reserves layout before rendering: body text is 14 px, titles are 22 px,
+and panel headings sit in a separate 22 px band above their data, never over it.
 The decoder fails if an estimated text line is clipped or overlaps another line,
 or if its background is not a flat presentation colour (which proves no data is
 obscured). The verifier independently checks the SVG geometry and text nodes and
@@ -109,11 +109,11 @@ The decoder is driven by the exact `StoredFormat` and actual bytes per texel fro
 
 ## Card capture: one exact live pass
 
-`card-capture-layers` no longer reads the whole 512x512 atlas. For each
-`CardPage Commands:1` pass in graph 0001 it recovers that pass's own View
-`ViewRectMin` and `ViewSizeAndInvSize` from the pass-pointer -> View payload
-mapping, and requires the four card atlases to have a payload version whose
-version pointer is exactly that pass pointer.
+`card-capture-layers` locates the card in one live pass instead of decoding the
+whole 512x512 atlas. For each `CardPage Commands:1` pass in graph 0001 it
+recovers that pass's own View `ViewRectMin` and `ViewSizeAndInvSize` from the
+pass-pointer -> View payload mapping, and requires the four card atlases to have
+a payload version whose version pointer is exactly that pass pointer.
 
 The selected pass is the final live card of the frame:
 
@@ -137,11 +137,11 @@ inside the rect, and **0/0/0 outside**. Emissive is unchanged because every vali
 card emissive texel in this capture is exactly zero.
 
 The full 512x512 atlas is retained as `card-capture-atlas`. Its mask is the union
-of all **37** exact current-frame CardPage rectangles (**31424** texels), never a
-future rectangle. Outside that union the raw atlas still contains **148166**
+of all **37** exact current-frame CardPage rectangles (**31424** texels) and never
+includes a future rectangle. Outside that union the raw atlas still contains **148166**
 non-zero Target1.a bytes from stale/previous-frame content, but **0** of them
 exceed the 0.5 validity threshold; all are categorical navy in the explorer
-figure and are excluded from the material figure. Clear provenance is
+figure and are excluded from the material figure. The clear is
 `ClearCardCapture` pass 48, pointer `000100000228e8dd3730`.
 
 ## Surface cache: proven mapped page occupancy
@@ -157,7 +157,7 @@ The material and lighting figures use the GPU `Lumen.PageBuffer`
 - the shared crop is the bbox + 16 texels, `[0,0,1104,144]`, and the union of
   mapped page rectangles is **35072** texels (123904 off-page texels masked).
 
-All four material panels use that one exact 1:1 mask. No panel has its own
+All four material panels use that one exact 1:1 mask, and none runs its own
 nonzero test. Emissive is exactly zero on every mapped texel; surface depth
 value `1.0` is the `EncodeSurfaceCacheDepth` invalid sentinel and is categorical
 blue.
@@ -187,8 +187,8 @@ cross-panel radiometric comparison.
 
 ## Invalid values
 
-Invalid values are categorical and source-proved, never folded into a valid
-zero:
+Invalid values are categorical and source-proved, and the figures do not fold
+them into a valid zero:
 
 - card atlas: `Target1.a <= 0.5` or outside the exact pass rectangle = navy;
 - surface cache: unmapped PageBuffer page = navy; depth `1.0` = blue invalid;

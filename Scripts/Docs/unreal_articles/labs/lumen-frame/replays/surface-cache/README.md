@@ -1,7 +1,7 @@
 # Surface-cache tile replay against the new capture
 
-This directory reruns the reviewed cache-texel replay against the **new instrumented
-capture**, not the earlier native frame and not the old baseline IDs.
+This directory reruns the reviewed cache-texel replay against the new instrumented
+capture. The earlier native frame and the old baseline IDs do not carry over.
 
 - Capture: `binary-20261112-153914`
 - Pass: `CombineLighting CS`, Id 113, unique pointer `000100000225e8ce2600`
@@ -22,39 +22,38 @@ capture**, not the earlier native frame and not the old baseline IDs.
 | Nearest-model channel error (max / mean) | 0.0625 / 0.0018683349 |
 | Missing operands / RDG payload gaps for this texel | none |
 
-The selected texel is group 0, atlas texel `(1067, 4)`, page 35 at byte 2800,
-stored word `2212619335` decoding to `(4.4375, 3.875, 2.9375)`; both the truncating
-prediction and the actual packed word are `2212619335`.
+The selected texel is group 0, atlas texel `(1067, 4)`, page 35 at byte 2800; its
+stored word `2212619335` decodes to `(4.4375, 3.875, 2.9375)`. The truncating
+prediction and the actual packed word are both `2212619335`.
 
 ## Provenance decisions in this rerun
 
-- **Exact stored format.** Every texture operand is decoded from the
-  `SubresourceLayouts.json` entry for the exact `<resource>.v<version>.bin` file.
-  In this capture `Lumen.SceneAlbedo` (native `PF_BC7`) and `Lumen.SceneEmissive`
-  (native `PF_BC6H`) are stored as `PF_FloatRGBA`; the lighting atlases and the
-  output are stored as `PF_FloatR11G11B10`. The decoder also accepts
-  `PF_A32B32G32R32F`, `PF_R32_FLOAT`, `PF_R32_UINT` and `PF_R32_SINT`, so a BC view
-  exported as float32 would not be silently read as half.
-- **Captured RDG uniform payload.** `LumenCardScene` is read from the
-  `RDGUniformBufferParameters` mapping for the pass: content
-  `000100000228bb0fe610`, metadata `000100007ffb89269ff0`, 144 bytes, layout
-  `FLumenCardScene`. `PhysicalAtlasSize` = `(4096, 4096)` and
+- Every texture operand is decoded from the `SubresourceLayouts.json` entry for
+  the exact `<resource>.v<version>.bin` file. In this capture `Lumen.SceneAlbedo`
+  (native `PF_BC7`) and `Lumen.SceneEmissive` (native `PF_BC6H`) are stored as
+  `PF_FloatRGBA`; the lighting atlases and the output are stored as
+  `PF_FloatR11G11B10`. The decoder also accepts `PF_A32B32G32R32F`, `PF_R32_FLOAT`,
+  `PF_R32_UINT` and `PF_R32_SINT`, so a BC view exported as float32 would not be
+  silently read as half.
+- `LumenCardScene` is read from the `RDGUniformBufferParameters` mapping for the
+  pass: content `000100000228bb0fe610`, metadata `000100007ffb89269ff0`, 144 bytes,
+  layout `FLumenCardScene`. `PhysicalAtlasSize` = `(4096, 4096)` and
   `InvPhysicalAtlasSize` = `(0.000244140625, 0.000244140625)` were checked against
   the actual direct-lighting atlas. No allocation-inferred reciprocal is used.
   Null, missing and `ContentAvailable=false` mappings are handled explicitly and
   recorded as gaps if ever encountered; this pass has the captured payload.
-- **Same-run versions.** Each input is the most recent preceding writer of the same
-  render graph, resolved by unique resource ID; the output version is the pass
-  pointer. `Lumen.SceneDirectLighting` deliberately resolves to the pass-112
-  `Batched lights` version `0001000002292507f1f0`, not the later pass-122 version.
-- **Output route and indirect args.** Event `CombineLighting CS`, parameter struct
-  `FParameters`, output `Lumen.SceneFinalLighting`, all required input edges present.
-  Indirect args are `[9, 1, 1, 548, 1, 1]`; the kernel reads the second record at
-  byte offset 12, giving 548 groups against 8281 tile words.
-- **Per-pixel comparisons.** `comparisons` records each sampled texel's actual and
-  predicted packed words, match flags and channel errors. `tileValidation.pixels`
-  records the same for all 64 threads of the selected tile. Aggregate counts and
-  error metrics are recomputed from those arrays by `verify_replay.py`.
+- Each input is the most recent preceding writer of the same render graph,
+  resolved by unique resource ID; the output version is the pass pointer.
+  `Lumen.SceneDirectLighting` deliberately resolves to the pass-112 `Batched lights`
+  version `0001000002292507f1f0`, not the later pass-122 version.
+- The output route uses the `CombineLighting CS` event, parameter struct
+  `FParameters` and output `Lumen.SceneFinalLighting`, with all required input edges
+  present. Indirect args are `[9, 1, 1, 548, 1, 1]`, and the kernel reads the second
+  record at byte offset 12, giving 548 groups against 8281 tile words.
+- `comparisons` records each sampled texel's actual and predicted packed words,
+  match flags and channel errors. `tileValidation.pixels` records the same for all
+  64 threads of the selected tile. `verify_replay.py` recomputes aggregate counts
+  and error metrics from those arrays.
 
 ## Files
 
@@ -94,9 +93,9 @@ The capture records View.VTFeedbackBuffer as an unexported native UAV binding fo
 
 ## Limits
 
-This is CPU analysis; no GPU workload was executed. It samples one texel from each
-of 512 dispatched tiles and all 64 threads of one selected tile, not every pixel of
-every 4096x4096 atlas. The compact float encoder is validated only on the finite
-captured values here; it is not a general NaN/overflow/subnormal GPU conversion
-emulator. Capture-wide coverage gaps outside this texel's operand set are not
-substituted or claimed closed.
+This is CPU analysis; no GPU workload was executed. The replay samples one texel
+from each of 512 dispatched tiles and all 64 threads of one selected tile, not every
+pixel of every 4096x4096 atlas. The compact float encoder is validated only on the
+finite captured values here; it is not a general NaN/overflow/subnormal GPU
+conversion emulator. The replay leaves capture-wide coverage gaps outside this
+texel's operand set unfilled and does not claim to close them.

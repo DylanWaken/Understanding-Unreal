@@ -9,14 +9,15 @@ python Scripts/Docs/unreal_articles/labs/lumen-frame/tools/package_frame.py veri
 python Scripts/Docs/unreal_articles/labs/lumen-frame/tools/package_frame.py reconstruct --package Docs/Unreal/assets/lumen-frame --dest Captures/binary-20261112-153914
 ```
 
-The following implementation record describes the packer and its intermediate archive. The checked-in `publication/archive-manifest.json` verifies every extracted package file; the ZIP itself is not needed.
+The checked-in `publication/archive-manifest.json` verifies every extracted package file; the ZIP itself is not needed.
 
 ## Explorer implementation
 
-A portable static explorer and lossless packer for the instrumented resources of
-one captured Unreal render frame. The explorer is plain HTML, CSS and
-JavaScript: no CDN, no framework, no build step and no server-side code.
-`tools/package_frame.py` uses only the Python standard library.
+The explorer is a portable static viewer for the instrumented resources of one
+captured Unreal render frame, and `tools/package_frame.py` is a lossless packer
+for the same resources. The explorer uses plain HTML, CSS and JavaScript, with
+no CDN, framework, build step or server-side code. The packer uses only the
+Python standard library.
 
 ## Final evidence state
 
@@ -53,12 +54,12 @@ The package accounts for every input file:
 
 ### Viewport applicability
 
-`ViewRect` is **not** a property of every resource that happens to touch a
-camera pass. A resource gets a crop mapping only when all of the following are
-positively recorded:
+`ViewRect` is not a property of every resource that touches a camera pass. A
+resource gets a crop mapping only when all of the following are positively
+recorded:
 
-- a camera pass is identified by its own captured `View.View` rect **and** an
-  output binding to `SceneColor`, `SceneDepthZ` or `GBufferA`–`GBufferD`;
+- a camera pass is identified by its own captured `View.View` rect and an
+  output binding to `SceneColor`, `SceneDepthZ` or `GBufferA` through `GBufferD`;
 - the resource is an output of that exact pass (not merely an input);
 - the active mip-0 `SubresourceLayouts` record belongs to that pass version and
   its own `ExtentX`/`ExtentY` match the resource descriptor;
@@ -84,7 +85,7 @@ bindings, 29 declared schema coverage gaps, 14 format variants and 21
 `appliesToFormats`-gated fields. Source formulas are displayed with anchors and
 are never evaluated.
 
-Coverage is **not complete**: 2,644 explicit gaps remain and
+Coverage is not complete: 2,644 explicit gaps remain and
 `coverage.json.complete` is false. The capture does not contain pass draw counts
 (`Base/PassDrawCounts.json` is empty, so all 928 `drawCount` values stay `null`),
 874 buffers have no captured structure metadata, 512 resources have no matching
@@ -103,8 +104,8 @@ The ZIP contains exactly the 6,410 package-relative files (no absolute paths, no
 drive letters, no `..` entries). It was verified entry-by-entry against the
 built package, then extracted into a fresh system-temp directory and verified
 again with `tools/package_frame.py verify`; the temporary extraction was removed
-after success. The raw capture and all package chunks/payloads are read-only
-inputs; this step does not delete or rewrite them.
+after success. The raw capture and all package chunks and payloads stay
+read-only; the publication process never deletes or rewrites them.
 
 The published explorer is `Docs/Unreal/frame-explorer.html`, with its default
 package at `Docs/Unreal/assets/lumen-frame/`. Point it at another served
@@ -121,7 +122,7 @@ paths. The browser detects gzip from the response bytes, so a server that alread
 decodes an HTTP gzip response does not cause a second decompression. A missing
 file promised by the index, invalid JSON, or corrupt gzip is an error.
 
-This is a storage change. Every native file, every compressed payload chunk,
+Only the storage changes. Every native file, every compressed payload chunk,
 every reconstructed payload byte, and the decompressed source schema retain
 their identities. The converted room package is 343,709,844 bytes, compared with
 700,692,456 bytes for the raw-metadata container. No resource or pass is removed.
@@ -184,9 +185,9 @@ Each payload record exposes the sidecar facts used for addressing:
   `StagingByteSize` and every unknown field present in the capture.
 
 `StoredFormat` is authoritative for byte addressing. The native descriptor format
-is retained separately. This matters for the 168 converted subresources: for
-example, BC7/BC5/BC6H native textures were exported with `StoredFormat
-PF_FloatRGBA` (8 bytes/texel); the exported bytes are never interpreted with a
+is retained separately. The distinction affects the 168 converted subresources:
+for example, BC7/BC5/BC6H native textures were exported with `StoredFormat
+PF_FloatRGBA` (8 bytes/texel), and the exported bytes are never interpreted with a
 BC block size. 303 sidecars are bit-exact integer copies; 1,328 are
 value-preserving and 168 are explicitly not value-preserving. The explorer shows
 that qualification next to the numeric table.
@@ -257,7 +258,7 @@ All nested member paths, offsets, array counts, strides, pointers, export
 fields, skip reasons and unknown fields are preserved and shown as raw JSON in
 addition to the summary table.
 
-The top-level temporal facts are preserved, not upgraded:
+The top-level temporal facts are preserved as captured:
 
 - `OwnerPassExecutionDependencyClaimed=false`
 - `SourceStateProvenAtScheduling=false`
@@ -266,9 +267,9 @@ The top-level temporal facts are preserved, not upgraded:
 - `CrossUniformBufferAliasObservable=false`
 - `ReadOnlyBindingPolicy=NoTransitionPrivateStagingOutput`
 
-A successful file/hash proves completion only. This app does not claim
-owner-time value identity. A separate replay/source review may establish
-immutability for static LUT/BlueNoise inputs; that claim is not made here.
+A successful file/hash proves completion. It does not prove owner-time value
+identity. A separate replay/source review may establish immutability for static
+LUT/BlueNoise inputs; this app makes no such claim.
 Bindings with no captured bytes keep their descriptor, `DumpStatus` and reason
 (15,143 of 32,765 binding entries have no captured payload).
 
@@ -295,7 +296,7 @@ proven:
 `formatAlternatives` are source possibilities, not evidence of a captured
 permutation. A descriptive expression such as
 `Lumen::GetDirectLightingAtlasFormat() (R11G11B10 in this capture)` is retained
-and displayed, but it is **not** a packed-layout proof. Six texture schema
+and displayed, but it is not a packed-layout proof. Six texture schema
 instances (`cards.resource.resampled-card-capture-direct/indirect`) therefore
 keep every field visible with `formatProof: descriptive-only`,
 `primaryFieldsExtractable: false`, `extractionEligible: false`, and an explicit
@@ -328,7 +329,7 @@ mismatches, 12 buffer-size mismatches, 9 schema-format mismatches, 6
 format-proof-missing cases and smaller declared gaps. No gap is hidden by a
 successful preview.
 
-Pass draw counts are never fabricated: `Base/PassDrawCounts.json` is empty, so
+No pass draw count was captured: `Base/PassDrawCounts.json` is empty, so
 all 928 `drawCount` values are `null` with status `not-captured`.
 
 ## Chunk packing, verification and reconstruction
@@ -396,9 +397,9 @@ absolute paths and `..` traversal.
   resource and pass has a recorded display label.
 - Raw downloads are capped at 32 MiB in the browser; larger payloads must be
   reconstructed with the Python command.
-- The global-fetch receiver fix is retained: the store calls the current global
-  `fetch` with the global receiver, and the Node regression test uses a
-  receiver-sensitive fake to exercise the production path.
+- The store calls the current global `fetch` with the global receiver, and the
+  Node regression test uses a receiver-sensitive fake to exercise the production
+  path.
 
 ## Tests
 
@@ -447,8 +448,7 @@ static checks still run.
   machine-readable packed format; their numeric extraction is intentionally
   disabled while every field and the raw texture inspector remain available.
 - Pass draw counts are not captured and stay null. MSAA is not decoded.
-- The UI requires HTTP(S); `file://` fetch/decompression limitations are not
-  papered over.
+- The UI requires HTTP(S); `file://` fetch and decompression do not work.
 - The verified package is published as individual files under
   `Docs/Unreal/assets/lumen-frame/`; chunks are fetched on demand. The intermediate
   ZIP is not duplicated in this repository.

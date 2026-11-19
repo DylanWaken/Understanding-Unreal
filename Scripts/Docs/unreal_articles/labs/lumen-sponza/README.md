@@ -1,8 +1,8 @@
 # Sponza capture and numerical decoders
 
-The course prose is authored in `chapters/lumen-course*.html`. This laboratory holds capture provenance and the independent CPU decodes used beside that prose. The captured scene uses Unreal Engine, not a third-party glTF renderer.
+The Sponza images in the course come from Unreal Engine. This lab records how the frames were captured and how the CPU decoders recovered the values used in `chapters/lumen-course*.html`.
 
-See [the data package](../../../../../Data/Sponza/README.md) for lossless verification, reconstruction, capture coverage, and asset/engine identities. Reconstruct payloads and copy the package's `native/` contents into the same root before running decoders that consume a native DumpGPU directory. Viewing the published figures or checking their retained records requires no Unreal installation.
+See [the data package](../../../../../Data/Sponza/README.md) for lossless verification, reconstruction, capture coverage, and asset/engine identities. Reconstruct payloads and copy the package's `native/` contents into the same root before running decoders that consume a native DumpGPU directory. You can view the published figures and check their retained records without an Unreal installation.
 
 ## Checks without raw reconstruction
 
@@ -19,7 +19,7 @@ The package-copy check compares all published bytes against the independent sour
 
 ## Recompute from captured bytes
 
-The receiver decoder uses Python's standard library. The cache/context decoders additionally need NumPy and Pillow. They are CPU operations and do not launch Unreal.
+The receiver decoder uses Python's standard library. The cache/context decoders also need NumPy and Pillow. They are CPU operations and do not launch Unreal.
 
 Install the tested decoder versions with `python -m pip install -r Scripts/Docs/unreal_articles/labs/lumen-sponza/requirements.txt`. The context check validates 252 relationships covering camera projection, packed counters, active allocation bounds, SH normalization, ray-layout distinctions, figure dimensions and retained native arrays. Its `curation-notes.json` records interpretation-label corrections separately from captured numeric data.
 
@@ -49,7 +49,7 @@ The checker writes its results to that copy's `checks.json`. To regenerate from 
 python Scripts/Docs/unreal_articles/labs/lumen-sponza/decode_vsm_storage.py --dump D:/SponzaReconstructed --out D:/VSMDecode --all --engine D:/UnrealEngine --receivers Docs/Unreal/assets/lumen-sponza/receivers/data/receivers.json --view Docs/Unreal/assets/lumen-sponza/context/data/orientation.json --archive Data/Sponza/sponza-20261115-083654
 ```
 
-PageTable hardware mip 0 contains eight packed logical shadow-mip regions. PageFlags H0–H6 occupy a separate hardware mip chain. Physical metadata is an earlier pass-810 snapshot, while the table and depth pool were captured for consumer pass 840. The two receiver queries replay declared center-address arithmetic; they do not recover unrecorded SMRT sample directions or shader-local bias decisions.
+PageTable hardware mip 0 contains eight packed logical shadow-mip regions. PageFlags H0 to H6 occupy a separate hardware mip chain. Physical metadata is an earlier pass-810 snapshot, while the table and depth pool were captured for consumer pass 840. The two receiver queries replay declared center-address arithmetic; they do not recover unrecorded SMRT sample directions or shader-local bias decisions.
 
 ## Capture-source snapshot
 

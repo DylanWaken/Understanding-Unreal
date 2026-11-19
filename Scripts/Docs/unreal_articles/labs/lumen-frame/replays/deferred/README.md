@@ -1,7 +1,7 @@
-# Deferred direct-light replay — final capture, graph 0001 / pass 249 / pixel (640,650)
+# Deferred direct-light replay: final capture, graph 0001 / pass 249 / pixel (640,650)
 
-This directory contains the final-capture CPU replay and its verification for the one
-actual screen-space deferred rect-light pass:
+This directory contains the CPU replay of the final capture and its verification for
+the one actual screen-space deferred rect-light pass:
 
 - capture `binary-20261112-153914` (project `UnrealLab`, UE 5.8.1 Editor Development, D3D12 SM6, RTX PRO 6000 Blackwell);
 - graph `0001`, pass **249**, pointer `000100000228e3a88880`, event
@@ -9,11 +9,11 @@ actual screen-space deferred rect-light pass:
 - pixel **(640, 650)** in the 1280x720 view inside a 1280x888 buffer;
 - legacy `DefaultLit` GBuffer path, one rect area light, no Substrate/MegaLights.
 
-**Result:** the CPU contribution is `(1.2399915953, 1.2399915953, 1.1766082763)`;
-the observed FP16 delta is `(1.2392578125, 1.2392578125, 1.1767578125)`. The maximum
-unrounded residual is **0.7514 ULP** against a **1.0 ULP** tolerance, so the replay
-**passes**. The predicted FP16 codeword is +1 ULP in R/G and exact in B; the residual
-and the exact gaps are documented in `contract.md` / `numerical-report.md`.
+The CPU contribution is `(1.2399915953, 1.2399915953, 1.1766082763)`; the observed
+FP16 delta is `(1.2392578125, 1.2392578125, 1.1767578125)`. The maximum unrounded
+residual is 0.7514 ULP against a 1.0 ULP tolerance, so the replay passes. The
+predicted FP16 codeword is +1 ULP in R/G and exact in B; the residual and the exact
+gaps are documented in `contract.md` / `numerical-report.md`.
 
 ## Files
 
@@ -56,10 +56,10 @@ absolute capture path.
 
 **Actual captured bytes used:**
 
-- `PS.View` — `FViewUniformShaderParameters`, 6752 B, content `00010000022880566180`;
+- `PS.View` is `FViewUniformShaderParameters`, 6752 B, content `00010000022880566180`;
   exact `PreExposure = 0.0625`, `ScreenPositionScaleBias`, `ScreenToTranslatedWorld`,
   `InvDeviceZToWorldZTransform`.
-- `PS.DeferredLight` — `FDeferredLightUniformStruct`, 192 B, content
+- `PS.DeferredLight` is `FDeferredLightUniformStruct`, 192 B, content
   `000100000228e3a88830`; exact translated light position `(0,670,133)`, color
   `979.4150390625`, `InvRadius`, `SourceRadius/Length`, `ShadowedBits=3`,
   `ShadowMapChannelMask=(0,0,0,1)`.
@@ -85,17 +85,18 @@ absolute capture path.
 
 **Explicitly not replayed / not claimed:**
 
-- The VSM/SMRT producer (pass 248) is **not** replayed. Only the final quantized 4-bit
+- The VSM/SMRT producer (pass 248) is not replayed. Only the final quantized 4-bit
   `MaskBits` is consumed. Page table, page flags, page receiver masks, physical page pool,
   projection data, light grid, and culled-light grid are retained as operands in the
   contract but are not sampled. Visibility is exactly 1.0 only because `15/15 = 1.0`; the
   unquantized shadow factor is not independently proven (gap G2).
-- No GPU work, no engine edits, no evidence-repo edits. Capture access is read-only.
+- The replay does no GPU work and makes no engine or evidence-repo edits. Capture
+  access is read-only.
 
 ## Stored-format / provenance rule
 
 Every texture is decoded from its `SubresourceLayouts.StoredFormat` for the exact version
-file, **never** from the descriptor's `NativeFormat`. A BC/other native view that was
+file, never from the descriptor's `NativeFormat`. A BC/other native view that was
 exported as float32 is decoded as `PF_A32B32G32R32F`; ordinary captures that retain native
 half/float16 are decoded as `PF_FloatRGBA`/`PF_G16R16F`. `PF_B8G8R8A8` is decoded in memory
 order `B,G,R,A` and the GBuffer channel order is preserved. The LTC files are decoded as

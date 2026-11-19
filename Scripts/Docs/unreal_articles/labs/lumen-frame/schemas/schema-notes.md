@@ -1,4 +1,4 @@
-# Source schema dictionary notes — UE 5.8.1 Lumen / deferred / VSM
+# Source schema dictionary notes: UE 5.8.1 Lumen / deferred / VSM
 
 Engine: `D:/UnrealEngine`, `Engine/Build/Build.version` = 5.8.1, `HEAD` = `71fe36aac5a8df5ccd66c763ffc902b29b6a9c43`.
 All paths below are engine-relative and 1-based. Every scoped engine file (shader, shared header, and the explicit Renderer sources) is clean in `git status`; no engine file was modified.
@@ -17,9 +17,9 @@ Machine-readable outputs:
 
 ## 1. Source layout vs runtime permutation
 
-The schema is deliberately split into two layers:
+The schema has two layers:
 
-1. **Declarations** (`declaration-index.json`) are a source-only superset. A `SHADER_PARAMETER` declaration, or a plain `struct` field, proves the declaration exists at a path/line; it does **not** prove the binding is active in a captured frame.
+1. **Declarations** (`declaration-index.json`) are a source-only superset. A `SHADER_PARAMETER` declaration or a plain `struct` field proves that the declaration exists at a path/line. It does not prove that the binding is active in a captured frame.
 2. **Resolution** (`source-schema.json`) only asserts a decode where explicit shader pack/unpack or a format contract exists. Runtime-selected formats and permutations are named in `storage.formatAlternatives` and in `gaps`.
 
 Rules applied:
@@ -32,7 +32,7 @@ Rules applied:
 
 ---
 
-### 1.1 DumpGPU export contract (what the dump actually contains)
+### 1.1 DumpGPU export contract (what the dump contains)
 
 Source: `Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp`. `r.DumpGPU.PassParameters` defaults to 1 (`:88-91`); the pass dump path is `:2834-2895`, metadata/binary serialization `:708-834,2516-2592`.
 
@@ -42,10 +42,10 @@ Source: `Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp`. `r.DumpGPU.PassP
 | Pass parameter metadata | **yes**, JSON per metadata pointer | `Name`, `ShaderType`, `FileLine`, `Offset`, `BaseType`, `Precision`, `NumRows`, `NumColumns`, `NumElements`, `StructMetadata` |
 | `SHADER_PARAMETER_STRUCT_REF` (referenced UB, e.g. View/BlueNoise/DeferredLight/ReflectionCapture) | **only if** the RHI uniform-buffer content map has an entry | `DumpReferencedStructs` handles only `UBMT_REFERENCED_STRUCT` (`:2516-2592`); resolves `FUniformBufferBinding::GetUniformBuffer()` and `UE::RHI::UniformBufferContentMap::Get`, writes a separate `Structures/<UB-pointer>.bin`; missing content logs a warning and requires `r.RHI.UniformBufferContentMap.Enable=1` |
 | `SHADER_PARAMETER_RDG_UNIFORM_BUFFER` (e.g. `LumenCardScene`) | **not guaranteed** by this path | `DumpReferencedStructs` skips anything that is not `UBMT_REFERENCED_STRUCT` (`:2535-2540`); an RDG UB member is a binding. Treat `PhysicalAtlasSize`, card/page pointers in `LumenCardScene` as unresolved unless a separate capture provides them |
-| Resource pointers inside a UB (textures/SRVs/UAVs/buffers, e.g. BlueNoise texture arrays, LTC textures, system textures) | **no** — only binding handles, never the pointed-to resource bytes | The referenced-struct binary copies the UB scalar/struct members; resource members are handles. Join to the dump resource inventory for those |
+| Resource pointers inside a UB (textures/SRVs/UAVs/buffers, e.g. BlueNoise texture arrays, LTC textures, system textures) | **no**: only binding handles, never the pointed-to resource bytes | The referenced-struct binary copies the UB scalar/struct members; resource members are handles. Join to the dump resource inventory for those |
 | Shader locals / computed values (`AtlasUV`, `Albedo_linear`, `FinalLighting`, sampler object internals) | **no** | Not members of the pass parameter struct; must be reconstructed by the equations in §3 |
 | Sampler RHI object | **no initializer** | `BilinearClampedSampler` is a pointer; the static `TStaticSamplerState` construction must be derived from source (§6.1) |
-| Buffers with `ERDGBufferFlags::SkipTracking` | **no binary** | `DumpGPU.cpp:1709-1713` logs “Not dumping ... because has ERDGBufferFlags::SkipTracking.” Default/Sentinel buffers (`DefaultBuffer`, `DefaultByteAddressBuffer`, `DefaultStructuredBuffer`, `VirtualTexture_FeedbackBuffer`, etc.) may be omitted; do not assert binding closure from metadata alone |
+| Buffers with `ERDGBufferFlags::SkipTracking` | **no binary** | `DumpGPU.cpp:1709-1713` logs "Not dumping ... because has ERDGBufferFlags::SkipTracking." Default/Sentinel buffers (`DefaultBuffer`, `DefaultByteAddressBuffer`, `DefaultStructuredBuffer`, `VirtualTexture_FeedbackBuffer`, etc.) may be omitted; do not assert binding closure from metadata alone |
 | Textures with `ERDGTextureFlags::SkipTracking` | read through a preprocess shader rather than skipped | `:940-942`; presence does not imply the same transition state as a normal resource |
 | Staging cap | per-resource size cap | `r.DumpGPU.MaxStagingSize` default 64 MB; oversized resources are skipped with a warning (source map / `:1698`) |
 | `Passes.json` shape | concatenated JSON objects, not a JSON array | `DumpGPU.cpp:2845` appends each pass object to the file; readers must stream/split multiple RDG graph instances and pass IDs |
@@ -53,10 +53,10 @@ Source: `Engine/Source/Runtime/RenderCore/Private/DumpGPU.cpp`. `r.DumpGPU.PassP
 Consequences for replay:
 
 - Pass bytes can supply `CachedLightingPreExposure`, `TargetFormatQuantizationError`, `DiffuseColorBoost`, dispatch sizes, and inline structs **when those members are in the parameter struct**.
-- `View.StateFrameIndexMod8` / `View.PreExposure` are only available if the View referenced-UB content is actually captured; the metadata record alone is not a value.
+- `View.StateFrameIndexMod8` / `View.PreExposure` are only available if the capture includes the View referenced-UB content; the metadata record alone is not a value.
 - `LumenCardScene` physical atlas size and card/page buffer handles are not proven by the pass binary; the source schema names them but marks them as gaps for dump-only replay.
 - Sampler state is not serialized as bytes; derive it from the static construction in §6.1 and keep any runtime-created/dynamic sampler unresolved.
-- SkipTracking/sentinel resources and resource pointers inside UBs mean **do not assert active-frame closure from parameter metadata alone**.
+- SkipTracking/sentinel resources may be missing from the dump, and resource members inside UBs are handles, so parameter metadata alone cannot establish active-frame closure.
 
 ### 1.2 Active-frame coverage claim
 
@@ -175,10 +175,10 @@ Quantization error per format: `2^-mantissa` per channel; R11G11B10 = 6/6/5 mant
 
 These are required for byte-exact reconstruction but are not present in the raw atlas bytes:
 
-1. `View.StateFrameIndexMod8` (or `FrameIndex`) — needed for the dither seed. Without it, `E` is unknown and the quantized value cannot be reproduced exactly.
-2. `CachedLightingPreExposure` (or the EyeAdaptation EV/CVar) — needed to de-preexpose.
-3. `View.DiffuseOverrideParameter`, `DiffuseColorBoost` — needed for albedo reconstruction.
-4. `PhysicalAtlasSize` / `InvPhysicalAtlasSize` — not stored in the card page stream; from `LumenCardScene` uniform buffer.
+1. `View.StateFrameIndexMod8` (or `FrameIndex`): needed for the dither seed. Without it, `E` is unknown and the quantized value cannot be reproduced exactly.
+2. `CachedLightingPreExposure` (or the EyeAdaptation EV/CVar): needed to de-preexpose.
+3. `View.DiffuseOverrideParameter`, `DiffuseColorBoost`: needed for albedo reconstruction.
+4. `PhysicalAtlasSize` / `InvPhysicalAtlasSize`: not stored in the card page stream; both come from the `LumenCardScene` uniform buffer.
 5. Exact `BilinearClampedSampler` state and hardware bilinear/edge behavior; including sub-texel precision.
 6. Actual `FinalLightingAtlas` format (`PF_FloatR11G11B10` vs `PF_FloatRGBA` vs `PF_A32B32G32R32F`) and therefore `TargetFormatQuantizationError`.
 7. Compressed surface-cache permutation (BC7/BC5/BC6H): block layout is not expanded; use the uncompressed path only when the capture provides uncompressed layers.
@@ -186,7 +186,7 @@ These are required for byte-exact reconstruction but are not present in the raw 
 9. Stale/persistent atlas state: `SessionFinalLightingAtlas` is a persistent feedback atlas; the capture must include its previous contents for frame-to-frame history, although the combine itself is stateless for one texel.
 10. The indirect lighting atlas may be null (black) on the first frame / when radiosity is disabled; treat as 0.
 
-No raw numbers are fabricated here: the equations are source text, the constants are stated CVar/format defaults.
+The equations are source text, and the constants are stated CVar/format defaults.
 
 ---
 
@@ -213,7 +213,7 @@ MRT targets are named GBufferA..E but target indices shift when Velocity/Tangent
 | `Lumen.SceneDepth` | `PF_G16` | card ortho depth; `EncodeSurfaceCacheDepth` clamps to `(0xFFFF-1-0.5)/0xFFFF` and reserves 1.0 invalid (LumenSurfaceCache.ush:13-24). `LocalZ=-(2D-1)*Extent.z` (LumenCardCommon.ush:315-324). |
 | `Lumen.SceneEmissive` | `PF_FloatR11G11B10` (BC6H optional) | `Emissive * CachedLightingPreExposure` (LumenCardBasePass.ush:147); decode `* OneOverCachedLightingPreExposure`. |
 
-Card capture targets are RGBA8 albedo/normal and R11G11B10 emissive (`LumenSceneCardCapture.cpp:486-535`). The capture view axes are the card OBB axes (`LumenSceneCardCapture.cpp:720-742`), which is why the view-space normal written at `LumenCardBasePass.ush:141` equals card space; the comment says “local card space”. The final on-disk capture uses BC7/BC5/BC6H for these layers (§6.5), so `Lumen.SceneNormal` and `Lumen.SceneEmissive` are `partial` until those blocks are decoded.
+Card capture targets are RGBA8 albedo/normal and R11G11B10 emissive (`LumenSceneCardCapture.cpp:486-535`). The capture view axes are the card OBB axes (`LumenSceneCardCapture.cpp:720-742`), which is why the view-space normal written at `LumenCardBasePass.ush:141` equals card space; the comment says "local card space". The final on-disk capture uses BC7/BC5/BC6H for these layers (§6.5), so `Lumen.SceneNormal` and `Lumen.SceneEmissive` are `partial` until those blocks are decoded.
 
 ### 4.3 Direct/Indirect/Final units
 
@@ -254,7 +254,7 @@ Lighting = TraceRadiance.Load(...) * SampleWeight
 if max(Lighting) > MaxRayIntensity: Lighting *= MaxRayIntensity / max(Lighting)
 ```
 
-`SampleWeight` is the mip/solid-angle resampling prior (`(GatherRes/MipSize)^2`) and `MaxRayIntensity` is applied **after** it (`:82-85`). It is not the BSDF PDF (`BRDFProbabilityDensityFunctionSH` is a separate input, `LumenScreenProbeImportanceSamplingShared.ush:5-8`).
+`SampleWeight` is the mip/solid-angle resampling prior (`(GatherRes/MipSize)^2`), and `MaxRayIntensity` is applied **after** it (`:82-85`). The BSDF PDF is a separate input (`BRDFProbabilityDensityFunctionSH`, `LumenScreenProbeImportanceSamplingShared.ush:5-8`).
 
 ### 4.7 Virtual Shadow Maps are depth pages, not variance maps
 
@@ -303,7 +303,7 @@ if max(Lighting) > MaxRayIntensity: Lighting *= MaxRayIntensity / max(Lighting)
   4. Lumen uniforms: `PhysicalAtlasSize`, `InvPhysicalAtlasSize`, `CachedLightingPreExposure`, `TargetFormatQuantizationError`, cardinality of `CardTiles` dispatch;
   5. CVars: `r.Lumen.LightingDataFormat`, `r.EyeAdaptation.CachedLightingPreExposure`, `r.Lumen.DiffuseColorBoost` (post-process), `r.GBufferDiffuseSampleOcclusion`, surface-cache compression mode, `r.Substrate`.
 
-Without items 3-5 the byte-exact value is underdetermined; these are recorded as gaps rather than guessed.
+Without items 3-5 the byte-exact value is underdetermined, so these are recorded as gaps.
 
 ---
 

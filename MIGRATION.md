@@ -1,8 +1,8 @@
 # Migration record: Ardashader → Understanding Unreal
 
-This records the initial migration snapshot. Later Lumen rewrites and capture additions are separate changes; the counts below describe the migration, not every later revision.
+The counts in this record describe the initial migration. Later revisions rewrote Lumen and added new captures.
 
-After that copy was verified, the migrated essays, authoring files, and assets were removed from Ardashir in commit `061db67e95360fa3af07f051f254372bd375e4f9`. Commit `256b2fd` also removed the homepage's relocation notice and external Unreal navigation. No redirect pages remain in Ardashir. The user's unrelated working-tree changes were preserved. The read-only-copy statements below describe the initial migration stage, before this requested cleanup.
+After the copied tree was verified, the migrated essays, authoring files and assets were removed from Ardashir in commit `061db67e95360fa3af07f051f254372bd375e4f9`. Commit `256b2fd` also removed the homepage's relocation notice and external Unreal navigation. No redirect pages remain in Ardashir. The user's unrelated working-tree changes were preserved. The read-only-copy statements below describe the initial migration stage, before this requested cleanup.
 
 ## Source snapshot
 
@@ -15,7 +15,7 @@ After that copy was verified, the migrated essays, authoring files, and assets w
 
 ### Dirty-working-tree caveat
 
-The source commit alone does **not** reproduce this migration. The working tree was dirty:
+The source commit alone does not reproduce this migration: the working tree was dirty.
 
 - `git status --porcelain=v1 --untracked-files=all` reported **1,076** entries repository-wide.
 - **369** of those entries were under the selected paths (`Docs/Unreal`, `Scripts/Docs/unreal_articles`, `Docs/glossary.html` and the three shared `Docs/assets` files).
@@ -24,11 +24,11 @@ The source commit alone does **not** reproduce this migration. The working tree 
 - `Docs/glossary.html`, `Docs/assets/site.css` and `Docs/assets/site.js` had **modified** shared-site files.
 - The tracked `Docs/Unreal` tree still contained deleted Arda-era scene pages and assets; those deletions were not resurrected.
 
-This migration therefore captures the working tree as inspected, not merely the commit. The current source checkout was not changed: HEAD remains `4f55fb953f65ca9db3014e76ffcff2ccd1d89297`, and a post-migration status check still reports 1,076 entries (369 under the selected paths). No source-writing command was run.
+The migration captures the working tree as inspected, not the commit alone. The current source checkout was not changed: HEAD remains `4f55fb953f65ca9db3014e76ffcff2ccd1d89297`, and a post-migration status check still reports 1,076 entries (369 under the selected paths). No source-writing command was run.
 
 ## Scope and essay discovery
 
-`Docs/` was inventoried for Unreal analysis material.
+The migration inventoried `Docs/` for Unreal analysis material.
 
 Migrated:
 
@@ -40,12 +40,12 @@ Migrated:
 - The legacy combined-essay route `Docs/Unreal/nanite-and-lumen.html`, `legacy-routing.js` and its preserved chapter anchors.
 - All essay figures, diagrams, math assets/fonts, lab evidence and site dependencies.
 
-Also present under `Docs/`, but intentionally **not** migrated as independent Unreal essays:
+Also present under `Docs/`, but intentionally not migrated as independent Unreal essays:
 
 - `Docs/ArdaBackend/unreal-rhi-audit.html` and `Docs/ArdaBackend/unreal-rhi-parity-plan.html` are ArdaBackend module documents about that backend's Unreal RHI integration audit and parity plan. They are not independent Unreal rendering analyses and were excluded with the unrelated Arda module documentation.
 - `Docs/Essays/arda-graph-and-inductor.html` is an Arda render-graph essay, not an Unreal analysis.
 
-No other independent Unreal analysis essay was found under `Docs/`. The four migrated essays are therefore the complete applicable set. Comparative Arda material embedded in the essay prose is preserved verbatim; only the shared shell and the two Nanite laboratory source links were changed.
+No other independent Unreal analysis essay was found under `Docs/`, so the four migrated essays are the complete applicable set. Comparative Arda material embedded in the essay prose is preserved verbatim; the migration changed only the shared shell and the two Nanite laboratory source links.
 
 ## Source → destination mapping
 
@@ -64,7 +64,7 @@ The authoring layout remains `Scripts/Docs/unreal_articles/chapters`, `evidence`
 
 ## Manifest
 
-Hashes are SHA-256 over a deterministic stream of `repo-relative path`, a NUL byte, the SHA-256 of the file, and a newline, with paths sorted. The manifest below was computed after the final build and cache cleanup. It covers every file currently present in the named trees.
+Hashes are SHA-256 over a deterministic stream of `repo-relative path`, a NUL byte, the SHA-256 of the file, and a newline, with paths sorted. The manifest was computed after the final build and cache cleanup and covers every file currently present in the named trees.
 
 | Tree | Files | Bytes | Aggregate SHA-256 |
 | --- | ---: | ---: | --- |
@@ -76,7 +76,7 @@ Hashes are SHA-256 over a deterministic stream of `repo-relative path`, a NUL by
 
 The six shell/glossary files are `Docs/index.html`, `Docs/glossary.html`, `Docs/.nojekyll`, `Docs/assets/glossary-data.js`, `Docs/assets/site.css` and `Docs/assets/site.js`.
 
-**Published site size:** 258 files, 48,896,488 bytes (46.63 MiB). The full working tree is about 51.4 MB; the difference is repository documentation, workflow and `.gitignore`. The largest published file is `Docs/Unreal/assets/lumen-lab/computed-data.npz` at 3,014,845 bytes. **No file is 100 MB or larger.** All 60 KaTeX font files, `katex.min.css`, `math.css` and the KaTeX license are under `Docs/Unreal/assets/math/`; the vendored renderer remains under `Scripts/Docs/unreal_articles/vendor/katex/`.
+**Published site size:** 258 files, 48,896,488 bytes (46.63 MiB). The full working tree is about 51.4 MB; the difference is repository documentation, workflow and `.gitignore`. The largest published file is `Docs/Unreal/assets/lumen-lab/computed-data.npz` at 3,014,845 bytes. No file is 100 MB or larger. All 60 KaTeX font files, `katex.min.css`, `math.css` and the KaTeX license are under `Docs/Unreal/assets/math/`; the vendored renderer remains under `Scripts/Docs/unreal_articles/vendor/katex/`.
 
 ## Excluded files and directories
 
@@ -96,13 +96,13 @@ Temporary, local or generated material:
 - Unreal project `Binaries/`, `Build/`, `Intermediate/`, `Saved/` and `DerivedDataCache/` output
 - Raw GPU captures, temporary logs and temporary browser-QA output
 
-No full Unreal Engine source tree and no compiled Unreal project binaries are included. The only Unreal project code is the small authored `labs/unreal/Source/ArdaLabCapture` editor bridge (a C++ header/implementation plus its build rule), the `UnrealLab.uproject` descriptor, `DefaultEngine.ini`, and the capture scripts. These are laboratory source, not engine source or a compiled product.
+No full Unreal Engine source tree and no compiled Unreal project binaries are included. The only Unreal project code is laboratory source: the small authored `labs/unreal/Source/ArdaLabCapture` editor bridge (a C++ header/implementation plus its build rule), the `UnrealLab.uproject` descriptor, `DefaultEngine.ini`, and the capture scripts.
 
 ## Rebranding and link policy
 
 - `Scripts/Docs/unreal_articles/build.py` now emits the **Understanding Unreal** masthead, page titles, navigation labels, footer and legacy-redirect page. Article prose is otherwise untouched.
 - `Docs/index.html` is a new branded homepage linking every independent essay, its scope, the glossary, reproducibility material and the companion project.
-- `Docs/glossary.html` retains all glossary entries and anchors, including comparative “In Ardashir” notes, but its shell is branded Understanding Unreal and its navigation no longer links to Arda module pages.
+- `Docs/glossary.html` retains all glossary entries and anchors, including comparative "In Ardashir" notes, but its shell is branded Understanding Unreal and its navigation no longer links to Arda module pages.
 - Cross-project glossary links to `ArdaBackend/…` and `ArdaRDG/…` now target `https://dylanwaken.github.io/Ardashir/` with the original relative paths and fragments preserved.
 - The two Nanite laboratory source links now target `https://github.com/DylanWaken/Understanding-Unreal` on `main`, where the migrated authoring tree lives.
 - Epic Games documentation/source links, Stanford references, paper citations and all other external provenance links are unchanged.
@@ -131,7 +131,7 @@ Validation results:
 - 12 Unreal room screenshots, attachment transforms, 30 instances, 68-bone skeleton and reproduction source hashes.
 - An additional destination-wide HTML link/fragment check found no broken internal links across the seven published HTML files.
 
-`validate.py` was deliberately run without `--unreal-root`: the Unreal source is not published here. The source-hash path remains available for a local checkout. `validate_labs.py` checks the frozen laboratory inventory and numerical evidence, not a GPU rerun. Nothing was removed from the checks to compensate for missing assets.
+`validate.py` was deliberately run without `--unreal-root`: the Unreal source is not published here. The source-hash path remains available for a local checkout. `validate_labs.py` checks the frozen laboratory inventory and numerical evidence, not a GPU rerun.
 
 The Pages workflow in `.github/workflows/pages.yml`:
 

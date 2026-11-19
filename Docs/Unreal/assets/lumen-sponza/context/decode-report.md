@@ -1,8 +1,8 @@
-# Sponza static context decoder — decode report
+# Sponza static context decoder: decode report
 
 Run: `sponza-20261115-083654` (frame 302). Raw dump: `output/gpu-dump/raw/sponza-20261115-083654` (read-only).
 Decoder: `scripts/decode_context.py`; rerun with `python scripts/decode_context.py --stage all`.
-All native values below are captured bytes/words from the named resource versions or shader parameter payloads. Display rasters are regenerated from the same native values; no value in this report is estimated from an image.
+Every native value below comes from captured bytes or words in the named resource versions or shader parameter payloads. Display rasters are regenerated from those values; nothing here is estimated from an image.
 
 ## Acceptance checks
 
@@ -29,9 +29,9 @@ All native values below are captured bytes/words from the named resource version
 
 ## Figure inventory
 
-22 figures are listed in `data/figure-manifest.json`. Each entry carries `source`, `mapping`, `native_units`, `native_stats`, `finite`, `nonempty`, and a `native_npz` (except the captured screenshot). No raster image contains embedded text.
+22 figures are listed in `data/figure-manifest.json`. Each entry has `source`, `mapping`, `native_units`, `native_stats`, `finite`, `nonempty`, and a `native_npz` (except the captured screenshot). No raster image contains embedded text.
 
-## Truthful unavailable evidence / gaps
+## Unavailable evidence / gaps
 
 - No shader-local per-thread adaptive-placement dispatch is captured. Activity is bounded by the captured `NumAdaptiveScreenProbes` count and independently corroborated by the pass-706 header tile map; per-index tile membership is validated as a bijection, not read from a captured per-index assignment table.
 - The pass-706 `NumAdaptiveScreenProbes` 4-byte buffer has no `DumpReadbackStatus` record; the payload file exists in `Resources`, is hashed, and agrees with the header sum. The pass-707 six dispatch groups are captured as raw words but are not individually labelled, so they are not used to infer activity.
@@ -41,7 +41,7 @@ All native values below are captured bytes/words from the named resource version
 - Reflection `NumFramesAccumulated` is an encoded UNORM byte; only the decoded effective value is recovered. The encoder cannot distinguish values that quantize to the same byte.
 - The raw GPU capture/package was not modified. No GPU work was executed in this step.
 
-Observed-vs-replay: all ray directions, SH evaluations and cache queries in these records are declared-query replays from captured inputs; only the named captured resource words and shader parameters are observed values.
+Observed-vs-replay: all ray directions, SH evaluations, and cache queries in these records are declared-query replays of captured inputs; only the named captured resource words and shader parameters are observed values.
 
 
 ## Machine verification

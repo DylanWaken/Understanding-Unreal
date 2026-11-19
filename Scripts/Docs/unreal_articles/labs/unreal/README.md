@@ -6,7 +6,7 @@ The recorded run used the locally built Unreal **5.8.1-0+UE5**, Direct3D 12, `PC
 
 ## Reproduce
 
-Prerequisites: this Unreal source build and its Windows C++ toolchain, Python for downloading the Stanford data, and NumPy/Pillow for decoding the optional GPU readback. No engine source edits are required. The project-local `ArdaLabCapture` editor module exposes the small API gap between Python and actual viewport rendering.
+Prerequisites: this Unreal source build and its Windows C++ toolchain, Python for downloading the Stanford data, and NumPy/Pillow for decoding the optional GPU readback. No engine source edits are required. The project-local `ArdaLabCapture` editor module exposes the small API needed to bridge the gap between Python and actual viewport rendering.
 
 From the repository root in PowerShell:
 
@@ -33,7 +33,7 @@ python Scripts/Docs/unreal_articles/labs/unreal/publish_captures.py `
 
 `run.ps1` accepts `-EngineRoot` and `-LabRoot`. The Stanford downloader uses the default lab root; copy its generated `shared/bunny.obj` if choosing another root. Run the room script before the bunny script to provide the shared neutral floor material, and before the GPU dump to save `/Game/Labs/LumenRoom`. Run the GPU dump once in a fresh output directory if comparing multiple executions. Each run opens a hidden, offscreen, unattended editor process and exits after the script completes. First-run shader compilation and asset generation take longer.
 
-The reusable project is created outside the repository at `%LOCALAPPDATA%/Temp/arda-unreal-lab/UnrealLab`. It contains `/Game/Labs/LumenRoom`, `/Game/Labs/NaniteBunny`, generated materials and the actual Nanite asset. Engine binaries, Derived Data Cache, raw GPU dumps, and Stanford source geometry are not committed. Stanford provenance and source usage terms are recorded in `../nanite/provenance.json`.
+The reusable project is created outside the repository at `%LOCALAPPDATA%/Temp/arda-unreal-lab/UnrealLab`. It contains `/Game/Labs/LumenRoom`, `/Game/Labs/NaniteBunny`, generated materials and the actual Nanite asset. The repository does not commit engine binaries, Derived Data Cache, raw GPU dumps, or Stanford source geometry. Stanford provenance and source usage terms are recorded in `../nanite/provenance.json`.
 
 ## What is measured
 
@@ -53,15 +53,15 @@ displacement = magnitude * (h - center)
 magnitude = 2 cm; center = 0.5
 ```
 
-The period is 20 cm and signed displacement ranges from -1 to +1 cm along the surface normal. The material uses world position excluding material offsets. The Patches, Triangles, and Tessellation captures are produced after compiling and applying that real material. Baseline bunny captures use an ordinary clay material without displacement.
+The period is 20 cm and signed displacement ranges from -1 to +1 cm along the surface normal. The material uses world position excluding material offsets. The Patches, Triangles, and Tessellation captures come after the material compiles and is applied. Baseline bunny captures use an ordinary clay material without displacement.
 
 ## Capture semantics
 
-The editor's `FSceneViewport` is explicitly drawn at 1280×720, using a persistent piloted camera. `FScreenshotRequest` saves the ordinary viewport without UI. There are 200 initial draw requests and 90 requests after each camera, material, or mode change. These counts are warm-up instructions, not evidence of complete convergence. Stochastic lighting noise remains. No screenshot pixels are composited, repainted, or synthesized.
+The editor explicitly draws its `FSceneViewport` at 1280×720 with a persistent piloted camera. `FScreenshotRequest` saves the ordinary viewport without UI. The capture issues 200 initial draw requests and 90 after each camera, material, or mode change. These counts are warm-up instructions, not evidence of complete convergence. Stochastic lighting noise remains. The capture does not composite, repaint, or synthesize screenshot pixels.
 
 BaseColor, WorldNormal, Roughness and Metallic use native `VMI_VisualizeBuffer` targets. Wireframe and bounds are native viewport modes. `scene-depth.png` instead uses a native postprocess material evaluating **SceneDepth in centimeters divided by 1000**, after tonemapping; white corresponds to 10 meters. It is a readable linear-distance display, not raw hardware device-Z. The manifest and report preserve that distinction.
 
-`lumen-capture-report.json` records commands in execution order. Commands are incremental, so a later capture inherits the recorded earlier settings unless explicitly reset. The hardware-tracing image has screen traces disabled by the preceding diagnostic; it is not a default-quality benchmark against the first lit image. `lumen-screen-probes.png` requires all three of `r.ShaderPrint.Enable=1`, `r.Lumen.ScreenProbeGather.Debug=1`, and `r.Lumen.ScreenProbeGather.Debug.ProbePlacement=1`. Its native counters show 3600 uniform probes and zero adaptive probes for this view; it does not demonstrate adaptive placement. `lumen-probe-traces.png`, `lumen-radiance-cache.png`, and `lumen-radiosity-probes.png` visualize different probe families and should not be interchanged.
+`lumen-capture-report.json` records commands in execution order. Commands are incremental, so a later capture inherits the recorded earlier settings unless explicitly reset. The preceding diagnostic leaves screen traces disabled, so the hardware-tracing image is not a default-quality benchmark against the first lit image. `lumen-screen-probes.png` requires all three of `r.ShaderPrint.Enable=1`, `r.Lumen.ScreenProbeGather.Debug=1`, and `r.Lumen.ScreenProbeGather.Debug.ProbePlacement=1`. Its native counters show 3600 uniform probes and zero adaptive probes for this view; it does not demonstrate adaptive placement. `lumen-probe-traces.png`, `lumen-radiance-cache.png`, and `lumen-radiosity-probes.png` visualize different probe families and should not be interchanged.
 
 ## Actual GPU readback displays
 
@@ -69,7 +69,7 @@ BaseColor, WorldNormal, Roughness and Metallic use native `VMI_VisualizeBuffer` 
 
 The seven exported images are the surface albedo, packed surface normal, card-space depth, final surface lighting, radiance-cache final radiance, screen-probe trace radiance, and filtered screen-probe radiance. `gpu-atlas-report.json` gives each engine resource name, pixel format, full texture extent, active-area crop, selected raw resource/version, raw SHA-256, and display transform. All arrays use mip zero. When duplicate resource names represent different cache families, the exporter chooses the largest texture. It follows RDG pass order to select the last written version; hexadecimal pass addresses are not treated as chronological timestamps.
 
-Stored 8-bit channels are shown directly. The packed normal atlas displays RG with blue zero; it is not decoded into world normals. Card depth is stored normalized depth, not camera distance. Radiance uses Unreal's R11G11B10 unsigned-float decoding, a per-texture exposure placing the positive-channel 95th percentile at one, Reinhard `x/(1+x)`, and the IEC sRGB transfer. Brightness therefore cannot be compared numerically between different atlas PNGs. Empty margins are cropped with a four-pixel border; full extents and crop coordinates remain in the report. These figures are labeled **measured GPU array displays**, distinct from camera screenshots.
+Stored 8-bit channels are shown directly. The packed normal atlas displays RG with blue zero; it is not decoded into world normals. Card depth is stored normalized depth, not camera distance. Radiance uses Unreal's R11G11B10 unsigned-float decoding, a per-texture exposure placing the positive-channel 95th percentile at one, Reinhard `x/(1+x)`, and the IEC sRGB transfer. Brightness therefore cannot be compared numerically between different atlas PNGs. The exporter crops empty margins with a four-pixel border and keeps full extents and crop coordinates in the report. These figures are labeled **measured GPU array displays**, distinct from camera screenshots.
 
 ## Source landmarks
 

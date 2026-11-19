@@ -3168,8 +3168,8 @@ def write_report(out_dir: Path, sequence_results, checks_doc, ds_meta, figure_in
     lines.append("The 4096-float4 GPU allocation is 585 full 7-float4 cards plus one trailing float4 that is not a "
                  "card. The valid range is inferred as the contiguous nonzero uploaded payload 0..521; the tail 63 "
                  "slots are zero in origin/axes/mesh-extent/flags. The `FLumenCardScene.NumCards` uniform is not "
-                 "exported, so this is structural identity evidence, not a guessed capacity. Capacity is therefore "
-                 "not the card count.")
+                 "exported, so this is structural identity evidence, not a guessed capacity; capacity is not "
+                 "the card count.")
     lines.append("")
     lines.append("Fixed-camera audit: baseline and lightstep-001 have 371 included cards / 385 low-res pages; "
                  "lightstep-008/032/064 have 522 included cards / 626 pages. The exact static geometry hash is "
@@ -3261,7 +3261,7 @@ def write_report(out_dir: Path, sequence_results, checks_doc, ds_meta, figure_in
                  "deterministic representative subset (up to 24 typical-size cards with 8×6 screen-cell diversity) "
                  "thick; all numeric cards are retained in `cards.json`/`cards.npz`. The xray image is a separate "
                  "low-alpha image of centre-depth-occluded cards. Worldcache markers use fixed per-clipmap colours "
-                 "and radii; xray is separate.")
+                 "and radii.")
     lines.append("")
     lines.append("## Projection / depth checks")
     lines.append("")
@@ -3631,8 +3631,8 @@ def write_report_v2(out_dir, states_by_kind, tracks_by_kind, checks_doc, ds_meta
     lines.append("The 4096-float4 GPU allocation is 585 full 7-float4 cards plus one trailing float4 that is not a "
                  "card. The valid range is inferred as the contiguous nonzero uploaded payload 0..521; the tail 63 "
                  "slots are zero in origin/axes/mesh-extent/flags. The `FLumenCardScene.NumCards` uniform is not "
-                 "exported, so this is structural identity evidence, not a guessed capacity. Capacity is therefore "
-                 "not the card count.")
+                 "exported, so this is structural identity evidence, not a guessed capacity; capacity is not "
+                 "the card count.")
     lines.append("")
     lines.append("Fixed-camera audit: baseline and lightstep-001 have 371 included cards / 385 low-res pages; "
                  "lightstep-008/032/064 have 522 included cards / 626 pages. The exact static geometry hash is "
@@ -3725,7 +3725,7 @@ def write_report_v2(out_dir, states_by_kind, tracks_by_kind, checks_doc, ds_meta
                  "deterministic representative subset (up to 24 typical-size cards with 8×6 screen-cell diversity) "
                  "thick; all numeric cards are retained in `cards.json`/`cards.npz`. The xray image is a separate "
                  "low-alpha image of centre-depth-occluded cards. Worldcache markers use fixed per-clipmap colours "
-                 "and radii; xray is separate.")
+                 "and radii.")
     lines.append("")
     lines.append("## Projection / depth checks")
     lines.append("")

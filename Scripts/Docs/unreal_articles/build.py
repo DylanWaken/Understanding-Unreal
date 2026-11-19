@@ -22,20 +22,20 @@ OUT = ROOT / 'Docs' / 'Unreal'
 ARTICLES = [
     dict(key='scene', slug='scene-representation', title='Scene Representation in Unreal Engine',
          short='Scene representation',
-         deck='Follow one indoor room from shared geometry and placed components through animation, GPU records, visible surfaces, and lighting representations—with real Unreal captures.'),
+         deck='Follow the objects in one room from shared geometry and placed components into GPU memory. Unreal captures show how animation changes the surfaces the renderer draws and the geometry it uses for lighting.'),
     dict(key='nanite', slug='nanite', title='Nanite: From a Scanned Bunny to Visible Pixels',
          short='Nanite',
-         deck='Build, select, stream, and rasterize virtual geometry: a source-guided essay with a computed Stanford bunny experiment and real Unreal Engine captures.'),
+         deck='Build a cluster hierarchy from the Stanford bunny, then follow the clusters Nanite selects, streams and rasterizes. Compare the experiment with Unreal Engine source and captures.'),
     dict(key='lumen', slug='lumen', title='Building Lumen: From Light Paths to a Real-Time Atrium',
          short='Lumen',
          date='2026-11-16', date_label='16 November 2026', append_lab_sources=False,
          authored_sources=['lumen-course.html', 'lumen-course-system.html',
                            'lumen-course-caches.html', 'lumen-course-reconstruction.html',
                            'lumen-course-evidence.html'],
-         deck='Build a path tracer from geometric optics, give it a frame budget, and design the caches, probes, shadows, and reflections that make Lumen practical—with experiments inside Unreal’s Sponza atrium.'),
+         deck='Build a path tracer from geometric optics, then give it a real-time frame budget. Experiments in the Sponza atrium show where Lumen reuses lighting and how its caches, probes, shadows and reflections fit together.'),
     dict(key='material', slug='material-compiler', title='How Unreal Compiles a Material Graph',
          short='Material graph compilation',
-         deck='Follow an expression graph from the Material Editor through analysis, shader generation, caching, compilation, and the GPU programs used to shade a surface.'),
+         deck='Follow an expression graph from the Material Editor to the GPU programs that shade a surface. See what Unreal analyzes, which shaders it generates and compiles, and when it can reuse a cached result.'),
 ]
 
 # Keep the detailed, reproducible room capture available as a separately named
@@ -43,7 +43,7 @@ ARTICLES = [
 REFERENCES = [dict(key='lumen', slug='lumen-reference', short='Lumen reference',
                    title='Lumen Implementation Reference and Controlled Room Capture',
                    date='2026-11-15', date_label='15 November 2026', append_lab_sources=False,
-                   deck='Detailed source contracts, buffer inventories, and numerical replays from the controlled Unreal 5.8.1 room capture. Read the Sponza teaching article for the forward design narrative.')]
+                   deck='Inspect the buffers from a controlled room in Unreal 5.8.1, find the code that reads them and replay the calculations. The companion Sponza article explains how the lighting system fits together.')]
 
 
 class Headings(HTMLParser):
@@ -493,7 +493,7 @@ def render(article, body):
 <main id="article" tabindex="-1"><article class="prose">
 {body}
 </article></main>
-<footer class="article-footer"><p>Written against the local Unreal 5.8.1 source snapshot <code>71fe36aac5a8</code>. Historical screenshots and older presentations are identified in their captions. Engine source links require access to Epic’s Unreal Engine repository.</p><p><a href="#top">Back to the beginning</a> · <a href="../glossary.html">Graphics glossary</a> · <a href="../index.html">All essays</a></p></footer>
+<footer class="article-footer"><p>This study uses Unreal 5.8.1 at commit <code>71fe36aac5a8</code>. Captions identify older screenshots and presentations. You need access to Epic’s Unreal Engine repository to open the source links.</p><p><a href="#top">Back to the beginning</a> · <a href="../glossary.html">Graphics glossary</a> · <a href="../index.html">All essays</a></p></footer>
 </body></html>'''
     return '\n'.join(line.rstrip() for line in page.splitlines()) + '\n', count, len(parsed.items)
 
@@ -505,10 +505,10 @@ def article_source(article):
     body = (HERE / 'chapters' / (article['key'] + '.html')).read_text(encoding='utf-8')
     if article['slug'] == 'lumen-reference':
         body = ('<aside class="reference-note"><p><strong>Controlled room reference.</strong> '
-                'This page preserves the detailed source and raw-data study from the room capture. '
-                'Its images and measurements are not Sponza. Start with '
+                'The images, measurements and source references here come from a controlled room. '
+                'For the experiments in Sponza, read '
                 '<a href="lumen.html">Building Lumen: From Light Paths to a Real-Time Atrium</a> '
-                'for the continuous teaching sequence and Sponza experiments.</p></aside>\n' + body)
+                'for a step-by-step account of the lighting system.</p></aside>\n' + body)
     placements = HERE / (article['key'] + '-placements.json')
     if placements.exists():
         for item in json.loads(placements.read_text(encoding='utf-8')):
@@ -551,7 +551,7 @@ def article_source(article):
         if evidence.exists():
             records = json.loads(evidence.read_text(encoding='utf-8'))
             if isinstance(records, dict): records = records.get('evidence', records.get('sources', []))
-            body += '\n<section class="chapter" id="source-lab-notes"><h2>Source evidence and reproducibility</h2><p>The source ranges below were inspected in the local Unreal 5.8.1 checkout. Their exact hashes are recorded beside the laboratory source. These are implementation anchors for the worked examples, not a claim that the reduced reference code reproduces every engine path.</p><ol class="source-list">'
+            body += '\n<section class="chapter" id="source-lab-notes"><h2>Source evidence and reproducibility</h2><p>The worked examples cover the Unreal 5.8.1 code paths listed below. Each link identifies the inspected lines. The lab source includes their hashes so you can check that a local copy matches. The reduced examples cover only a subset of the engine paths.</p><ol class="source-list">'
             for record in records:
                 url = 'https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/' + record['path'] + f'#L{record["line"]}-L{record["end_line"]}'
                 body += f'<li id="source-{escape(record["id"])}"><a href="{url}">{escape(record["path"])}, lines {record["line"]}–{record["end_line"]}</a><p>{escape(record.get("claim", record.get("note", "Inspected implementation range.")))}</p></li>'
@@ -596,9 +596,9 @@ def migration_page():
 <link rel="stylesheet" href="articles.css"><script src="legacy-routing.js" defer></script></head><body>
 <header class="masthead"><a class="wordmark" href="../index.html">Understanding Unreal</a></header>
 <main class="prose"><h1>Two independent essays</h1>
-<p>The former combined article has been replaced by two expanded, independently readable studies.</p>
-<p><a href="nanite.html">Nanite: From a Scanned Bunny to Visible Pixels</a> follows an actual mesh through building, LOD selection, rasterization, tessellation and shading.</p>
-<p><a href="lumen.html">Building Lumen: From Light Paths to a Real-Time Atrium</a> develops the physics, estimators, and engineering decisions in a continuous teaching sequence with Sponza experiments.</p>
+<p>The original Nanite and Lumen article is now two essays. Each goes further into its subject and can be read on its own.</p>
+<p><a href="nanite.html">Nanite: From a Scanned Bunny to Visible Pixels</a> follows the Stanford bunny through the Nanite build, LOD selection, rasterization, tessellation and shading.</p>
+<p><a href="lumen.html">Building Lumen: From Light Paths to a Real-Time Atrium</a> uses experiments in Sponza to show how the physics of light transport and the cost of estimating it shape Lumen.</p>
 <p><a href="../index.html">Return to the Understanding Unreal homepage</a>.</p>''' + marker + '\n</main></body></html>\n'
 
 

@@ -24,13 +24,13 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
 </style>
 </head><body>
 <header><h1>Unreal final capture: decoded GPU figures</h1>
-<div class="small">Selected graph <b>0001</b> by exact 1280x720 FViewUniformShaderParameters bytes; all graphs remain browsable below. Figure labels are SVG vector text over lossless data pixels.</div>
+<div class="small">The 1280x720 FViewUniformShaderParameters bytes identify graph <b>0001</b> by exact match. You can browse every graph below. The SVG labels sit above the lossless data pixels.</div>
 <p><a href="../../../frame-explorer.html">Open the full frame explorer</a></p>
 </header><main>
 
 <p class='small'>Dump: <code>binary-20261112-153914</code><br>Run: <code>D:\UnrealUnderstanding\Scripts\Docs\unreal_articles\labs\lumen-frame\figures\evidence\run.json</code><br>Selected View: <code>00010000022880566180</code> sha256 <code>0ce9aefbd724dd7861e95e81a389b12d19a5a62ca0ae534b72d06b2b288c6944</code> | rect [0.0, 0.0, 0.0, 0.0] | size [1280.0, 720.0, 0.0007812500116415322, 0.0013888889225199819] | max pass 288</p>
 <h2>Figures (34)</h2>
-<p class='small'>Every card renders the same-slug SVG: vector text over the lossless, text-free PNG data backing. The PNG remains available as an exact data view.</p>
+<p class='small'>Each figure links to an SVG with the same slug. It places labels over the lossless PNG. Open the PNG to see the data pixels without the text.</p>
 <div class='grid'>
 <figure id='card-capture-atlas'><a href='svg/card-capture-atlas.svg'><img loading='lazy' src='svg/card-capture-atlas.svg' alt='Lumen card capture: full atlas live-rect union' width='640' height='898'></a><figcaption><b>Lumen card capture: full atlas live-rect union</b> <span class='badge'>SVG vector text</span><br><span class='small'>graph 0001 | 37 exact CardPage rects, 31424 live texels | green = selected pass 85 rect [320, 64, 64, 64]</span><br><span class='small'>resource <code>000100000229355de8d0</code> (Lumen.CardCaptureAlbedoAtlas) | pass 85 CardPage Commands:1 | stored PF_R8G8B8A8 (4 B/texel)</span><br><span class='small'><a href='../../../frame-explorer.html#resource/000100000229355de8d0'>Raw explorer</a> · <a href='svg/card-capture-atlas.svg'>Vector SVG</a> · <a href='figure-manifest.json'>manifest record</a></span></figcaption></figure>
 <figure id='card-capture-layers'><a href='svg/card-capture-layers.svg'><img loading='lazy' src='svg/card-capture-layers.svg' alt='Lumen card capture: one exact live CardPage pass' width='816' height='1316'></a><figcaption><b>Lumen card capture: one exact live CardPage pass</b> <span class='badge'>SVG vector text</span><br><span class='small'>graph 0001 | pass 85 CardPage Commands:1 | exact rect [320, 64, 64, 64] | Target1.a mask | 4096/6400 common texels</span><br><span class='small'>resource <code>000100000229355de8d0</code> (Lumen.CardCaptureAlbedoAtlas) | pass 85 CardPage Commands:1 | stored PF_R8G8B8A8 (4 B/texel)</span><br><span class='small'><a href='../../../frame-explorer.html#resource/000100000229355de8d0'>Raw explorer</a> · <a href='svg/card-capture-layers.svg'>Vector SVG</a> · <a href='figure-manifest.json'>manifest record</a></span></figcaption></figure>
@@ -9365,7 +9365,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
 }</pre></details>
 </details>
 <h2>Root explorer: all scene graphs</h2>
-<p class='small'>Every graph and every resource/pass record from the final dump is listed here. Only the selected graph has decoded figures; the other graphs remain addressable by exact resource id/pass id for numerical replay.</p>
+<p class='small'>This list includes every graph, resource and pass in the final dump. The figures cover the selected graph. To replay a value from another graph, use its exact resource or pass ID.</p>
 <p><input id='q' placeholder='filter resource name / id / pass event'></p>
 <div id='graphs'></div>
 <script>

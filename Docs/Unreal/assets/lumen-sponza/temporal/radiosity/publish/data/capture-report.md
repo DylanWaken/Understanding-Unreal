@@ -6,7 +6,7 @@ Run: `20261115-105951`; five same-process states; all paths read from `D:\Unreal
 
 ## 1. What was decoded
 
-For every mapped Lumen card page that has an indirect-lighting update, the decoder walks the exact probe grid the radiosity shader walks:
+For every mapped Lumen card page with an indirect-lighting update, the decoder walks the same probe grid as the radiosity shader:
 
 * page `CoordInCardPage = (ix,iy)*ProbeSpacingInCardTexels + GetProbeJitter(page.IndirectLightingTemporalIndex)`;
 * surface-atlas UV `AtlasUV = PhysicalAtlasUVRect.xy + InvPhysicalAtlasSize*(CoordInCardPage+0.5)` (`LumenRadiosity.ush` `GetRadiosityTexel`);
@@ -18,7 +18,7 @@ For every mapped Lumen card page that has an indirect-lighting update, the decod
 
 Probes with uninitialised `NumFramesAccumulatedAtlas` (raw byte 0), a page with `LastIndirectLightingUpdateFrameIndex == 0`, an invalid depth texel, or an out-of-bounds atlas address are rejected. All rejected counts are in the state records.
 
-Grid anchor vs accumulated history: the captured `FixedJitterIndex` is -1 in all states, so `GetProbeJitter` uses `page.IndirectLightingTemporalIndex % MaxFramesAccumulated` (MaxFramesAccumulated=4) for the current jittered grid anchor. `LumenRadiosityConvertToSH` writes the four coefficients from that frame's `TraceRadianceAtlas`; the SH atlas is not itself temporally accumulated. Temporal accumulation lives in `LumenRadiosityIntegrateCS`, which lerps `HistoryRadiosity` with the new radiosity by `alpha = 1/(1+NumFramesAccumulated)` and writes the counter atlas. Therefore a probe's position/jitter is the current grid anchor for the page's last update, its four coefficients are the last written hemispherical projection at that atlas texel, and `nf_raw`/`last_indirect` are the recorded counter/update fields. Inactive probes retain the last written SH; the decoder does not assert that it equals the current frame's trace.
+Jitter anchor and accumulated history: the captured `FixedJitterIndex` is -1 in all states, so `GetProbeJitter` uses `page.IndirectLightingTemporalIndex % MaxFramesAccumulated` (MaxFramesAccumulated=4) as the jittered grid anchor for the current frame. `LumenRadiosityConvertToSH` writes the four coefficients from that frame's `TraceRadianceAtlas`; the SH atlas is not itself temporally accumulated. Temporal accumulation happens in `LumenRadiosityIntegrateCS`, which lerps `HistoryRadiosity` with the new radiosity by `alpha = 1/(1+NumFramesAccumulated)` and writes the counter atlas. A probe's position and jitter therefore come from the current grid anchor at the page's last update, its four coefficients are the last hemispherical projection written at that atlas texel, and `nf_raw`/`last_indirect` are the recorded counter and update fields. Inactive probes keep the last written SH, which the decoder does not assert equals the current frame's trace.
 
 ## 2. Constant-input SH normalisation (no 4, no 4pi)
 
@@ -38,9 +38,9 @@ Cache pre-exposure: the captured `Batched lights` payload carries `CachedLightin
 | `camera-001` | 0004 | 757 | `[-850.0, -150.0, 90.0]` | 123316 | 9412 | 48261 | 43710 | 0.0089 | 0.1094 | 107327 |
 | `camera-064` | 0004 | 943 | `[-850.0, -150.0, 90.0]` | 104728 | 5532 | 44032 | 38217 | 0.0086 | 0.0692 | 93880 |
 
-`Frame field` is the FPackedView frame counter at byte 1044; it is not relabelled as the capture target update. The capture's actual target updates are in the manifest (`baseline` 1, `light-001` 1, `light-064` 63 of target 64, `camera-001` 1, `camera-064` 63 of target 64). Sun 80000 -> 20000 -> 80000 lux (64 warm draws) then camera -Y150 cm, EV100 11.0 fixed, as reported by the capture manifest.
+`Frame field` is the FPackedView frame counter at byte 1044, not the capture target update. The capture's actual target updates are in the manifest (`baseline` 1, `light-001` 1, `light-064` 63 of target 64, `camera-001` 1, `camera-064` 63 of target 64). Sun 80000 -> 20000 -> 80000 lux (64 warm draws) then camera -Y150 cm, EV100 11.0 fixed, as reported by the capture manifest.
 
-Visible counts are not forced to be constant across states: each state's card/page set and primary-depth visibility differ (the light change re-captures/updates a different set of pages). The arrays keep every valid probe; the figures draw only the declared primary-depth-visible subset.
+Visible counts vary across states because each state's card/page set and primary-depth visibility differ; the light change, for example, re-captures and updates a different set of pages. The arrays keep every valid probe, and the figures draw only the declared primary-depth-visible subset.
 
 SH corroboration against the captured `SceneIndirectLighting` (surface-texel comparison, not an independent per-probe trace):
 
@@ -64,9 +64,9 @@ Temporal change for stable `(page,card,grid_xy)` keys (descriptive; page allocat
 
 ## 4. Graph/version selection
 
-Each state contains three render-graph prefixes (`0001`, `0003`, `0004`) with three consecutive FPackedView frame fields. The decoder selects the highest-frame prefix and uses only operands from that prefix: `Lumen.Cards`, `Lumen.PageBuffer`, `Lumen.PageTable`, `Lumen.CardTiles` (the 16384-byte CardTileData; the separate 33124-byte static buffer is recorded but not used for placement), `Lumen.SceneDepth`, `Lumen.SceneNormal`, the three SH atlases, `NumFramesAccumulatedAtlas`, `SceneIndirectLighting`, `FilteredTraceRadianceAtlas`, `SceneDepthZ`, `ViewData.PrimaryViews`, and the `BuildRadiosityTiles`/`ConvertToSH`/`Integrate`/`Batched lights` parameter payloads. No resource is taken from a different prefix or from a global first match.
+Each state contains three render-graph prefixes (`0001`, `0003`, `0004`) with three consecutive FPackedView frame fields. The decoder selects the highest-frame prefix and uses only operands from that prefix: `Lumen.Cards`, `Lumen.PageBuffer`, `Lumen.PageTable`, `Lumen.CardTiles` (the 16384-byte CardTileData; the separate 33124-byte static buffer is recorded but not used for placement), `Lumen.SceneDepth`, `Lumen.SceneNormal`, the three SH atlases, `NumFramesAccumulatedAtlas`, `SceneIndirectLighting`, `FilteredTraceRadianceAtlas`, `SceneDepthZ`, `ViewData.PrimaryViews`, and the `BuildRadiosityTiles`/`ConvertToSH`/`Integrate`/`Batched lights` parameter payloads. Every operand comes from that prefix.
 
-`RadiosityTileData`/`RadiosityTileAllocator` are not among the 16 captured required resources, so the decoder does not claim to know the exact per-frame radiosity tile list. `card_tile_in_capture` marks the probes whose 8x8 card tile appears in the captured `Lumen.CardTiles` buffer; the numeric array itself is the complete set of mapped, indirect-initialised, depth-valid probes in the persistent atlas.
+The 16 captured required resources do not include `RadiosityTileData`/`RadiosityTileAllocator`, so the decoder cannot know the exact per-frame radiosity tile list. `card_tile_in_capture` marks the probes whose 8x8 card tile appears in the captured `Lumen.CardTiles` buffer; the numeric array itself is the complete set of mapped, indirect-initialised, depth-valid probes in the persistent atlas.
 
 * `baseline`: prefix `0004`; graph variants [{"prefix": "0001", "view_uid": "00010000026046775e60", "view_file": "00010000026046775e60.v00000000000000000000.bin", "frame_index_field": 363, "camera_world_cm": [-850.0, 0.0, 90.0]}, {"prefix": "0003", "view_uid": "0003000002604473e440", "view_file": "0003000002604473e440.v00000000000000000000.bin", "frame_index_field": 364, "camera_world_cm": [-850.0, 0.0, 90.0]}, {"prefix": "0004", "view_uid": "000400000260466ae440", "view_file": "000400000260466ae440.v00000000000000000000.bin", "frame_index_field": 365, "camera_world_cm": [-850.0, 0.0, 90.0]}].
 * `light-001`: prefix `0004`; graph variants [{"prefix": "0001", "view_uid": "000100000260656d5e60", "view_file": "000100000260656d5e60.v00000000000000000000.bin", "frame_index_field": 369, "camera_world_cm": [-850.0, 0.0, 90.0]}, {"prefix": "0003", "view_uid": "0003000002604676e440", "view_file": "0003000002604676e440.v00000000000000000000.bin", "frame_index_field": 370, "camera_world_cm": [-850.0, 0.0, 90.0]}, {"prefix": "0004", "view_uid": "0004000002604849e440", "view_file": "0004000002604849e440.v00000000000000000000.bin", "frame_index_field": 371, "camera_world_cm": [-850.0, 0.0, 90.0]}].
@@ -79,10 +79,10 @@ Each state contains three render-graph prefixes (`0001`, `0003`, `0004`) with th
 Figures are standalone RGB composites with no baked text. Legends, colours, scales and root prose live in `publish/data/figure-legend.json` and this report.
 
 * `placement-<state>.png`: native `Base/Screenshot.png` plus visible probes coloured by normal class (floor/up green, ceiling/down orange, wall X blue, wall Y red), with two fixed-frame orthographic panels (XY and XZ) showing all valid probes. The panels use fixed world bounds and a white camera marker.
-* `placement-xray-<state>.png`: visible probes cyan, hidden probes magenta `x`. Hidden means it failed the primary-depth test, not that it is absent from the array.
+* `placement-xray-<state>.png`: visible probes cyan, hidden probes magenta `x`. Hidden here means the probe failed the primary-depth test; it is still in the array.
 * `sh-lobes-<state>.png`: native screenshot plus up to 10 visible probes with projected 3D SH4 response lobes. Lobe radius is fixed at 75.0 cm and colour/radius use the global fixed radiance scale below; zero responses are clamped to zero and values above the scale saturate.
 
-Native background: for every state, `Base/Screenshot.png` SHA-256 equals the capture manifest `native_screenshot.sha256` and `same_frame_as_dump` is true. The composites therefore use the native same-frame view; no post-lit or depth-mode image is used as the scene background.
+Native background: for every state, `Base/Screenshot.png` SHA-256 equals the capture manifest `native_screenshot.sha256` and `same_frame_as_dump` is true. The composites therefore use the native same-frame view, not a post-lit or depth-mode image.
 
 Fixed scales across states: `{"lobe_radiance_max": 20000.0, "radiance_units": "unit-albedo Lambertian outgoing radiance = e_normal_radiance/pi, scene-referred after /CachedLightingPreExposure", "zero_clamp": "evaluated SH response is clamped to >= 0 before colour/radius", "saturation": "values above lobe_radiance_max saturate; no per-state or per-probe normalisation", "lobe_radius_cm": 75.0, "placement_dot_radius_px": 1, "plan_bounds_cm": {"x": [-1536.7568115234376, 1439.9265380859374], "y": [-946.2457153320313, 884.3408325195312], "z": [-101.15400085449215, 1143.5465866088869]}}`.
 
@@ -93,9 +93,9 @@ Depth test: `view_z <= near/SceneDepthZ + max(10.0 cm, 0.02*scene_depth_cm)`, sa
 * The probes visibly follow walls, floor, arches and curtains in the composite; the numeric arrays cover the whole captured card set, not just the drawn subset.
 * `Lumen.SceneNormal` was captured as `PF_BC5` expanded to `PF_FloatRGBA`; the stored values are decoded numeric values, not the original BC bits. X/Y are source-decoded; Z is reconstructed from the unit-length constraint.
 * `Lumen.SceneDepth` is the native `PF_G16` storage (`NativeFormatExpanded=False`, `StoredBytesAreNativeStorage=True`, 33,554,432 bytes); `Lumen.SceneNormal` is the exporter-expanded `PF_FloatRGBA` readback (`NativeFormatExpanded=True`, `StoredBytesAreNativeStorage=False`, 134,217,728 bytes). These format contracts are copied unchanged into `manifest.json` under each state's `formats`.
-* No independent per-ray trace atlas was captured for radiosity; `FilteredTraceRadianceAtlas` is the filtered result, not raw per-hemisphere trace radiance. The SH normalisation is therefore source-derived and constant-input tested; `SceneIndirectLighting` correlation is reported as corroboration only, not as equality.
-* Trace origins are not asserted beyond the recorded probe coords: the shader adds `SurfaceBias` along the normal and a second bias along each ray (`LumenRadiosity.usf`), and those offsets are not present in the dump.
-* The capture's `r.RHI.UniformBufferContentMap.Enable` readback is true in this run, but the decoder does not rely on uniform-buffer contents: every parameter value comes from a dumped pass parameter payload (`CachedLightingPreExposure` at FParameters offset 204 and the nested `FLumenRadiosityTexelTraceParameters`). The observability gap is preserved: if the flag were unset, no uniform contents would be fabricated.
+* The capture has no independent per-ray trace atlas for radiosity: `FilteredTraceRadianceAtlas` is filtered, not raw per-hemisphere trace radiance. The SH normalisation is therefore source-derived and constant-input tested. `SceneIndirectLighting` correlation is corroboration only, not equality.
+* The decoder knows trace origins only as far as the recorded probe coords: the shader adds `SurfaceBias` along the normal and a second bias along each ray (`LumenRadiosity.usf`), and those offsets are not present in the dump.
+* The capture's `r.RHI.UniformBufferContentMap.Enable` readback is true in this run, but the decoder does not rely on uniform-buffer contents: every parameter value comes from a dumped pass parameter payload (`CachedLightingPreExposure` at FParameters offset 204 and the nested `FLumenRadiosityTexelTraceParameters`). If the flag were unset, the decoder would not fabricate uniform contents.
 * Raw source SHA-256 before/after is recorded in `checks.json` and `manifest.json`; no raw file was written or modified.
 
 ## 7. Files

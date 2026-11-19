@@ -36,15 +36,15 @@ render, but it is explicitly labelled **NOT AN UNREAL CAPTURE**.
 
 ## CPU reference
 
-The original PNG has a burned-in 5x7 bitmap footer in rows 165–199. This lab
+The original PNG has a burned-in 5x7 bitmap footer in rows 165 to 199. This lab
 reads the checked-in `reference_linear.pfm` bottom-up (PFM row order), reverses
 it to top-down, and applies the original `path_tracer.py` `tone_map` at exposure
 0.6. It writes a clean 280x200 PNG, embeds that lossless PNG in the SVG, and
 draws the caption with native SVG text.
 
 The generator verifies that the reconstructed image pixels match the original
-PNG rows 0–164 exactly. It does not modify the frozen PFM, PNG, path tracer, or
-their hashes.
+PNG rows 0 to 164 exactly. It does not modify the frozen PFM, PNG, path tracer,
+or their hashes.
 
 ## Determinism
 

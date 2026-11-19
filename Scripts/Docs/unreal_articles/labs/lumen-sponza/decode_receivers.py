@@ -1682,8 +1682,8 @@ def write_report(out_dir: Path, recv, manifest, verify=None):
     lines.append("# Sponza receiver decode")
     lines.append("")
     lines.append(
-        f"Status: **{status}**. Read-only decode of the frozen native dump; no GPU work, "
-        "no engine/repo/Sponza writes, and no acceleration-structure claims."
+        f"Status: **{status}**. This is a read-only decode of the frozen native dump. It does no GPU work, "
+        "writes nothing to the engine, repo, or Sponza, and makes no acceleration-structure claims."
     )
     lines.append("")
     lines.append("## Source")
@@ -1731,8 +1731,8 @@ def write_report(out_dir: Path, recv, manifest, verify=None):
     )
     lines.append("")
     lines.append(
-        "Nominal approved identity is origin `(-850,0,90)` cm, HFOV `70` deg, pitch `13` deg, "
-        "yaw `0` deg; the decoded float values above agree within `1e-5` deg.  The "
+        "The approved nominal identity is origin `(-850,0,90)` cm, HFOV `70` deg, pitch `13` deg, "
+        "yaw `0` deg. The decoded float values above agree within `1e-5` deg. The "
         "`1280x720` ViewRect is the presented sub-rect of the `1280x888` allocation; only rows "
         "`0..719` are presented and decoded."
     )
@@ -1789,7 +1789,7 @@ def write_report(out_dir: Path, recv, manifest, verify=None):
             )
         )
     lines.append("")
-    lines.append("C authored roughness .08 decodes to code **20/255 = 0.0784313725**; the table reports the actual decoded value.")
+    lines.append("C's authored roughness of .08 decodes to code **20/255 = 0.0784313725**; the table reports the actual decoded value.")
     lines.append("")
     cv = recv["gbuffer_semantics"]["console_variables"]
     lines.append(
@@ -1830,7 +1830,7 @@ def write_report(out_dir: Path, recv, manifest, verify=None):
             )
         )
     lines.append("")
-    lines.append("Payload hashes are in `data/receivers.json`; every consumed consumer version was byte-identical to its producer version for the GBuffers, depth, and VSM mask.")
+    lines.append("Payload hashes are in `data/receivers.json`; for the GBuffers, depth, and VSM mask, every version read by a consumer pass was byte-identical to its producer version.")
     lines.append("")
     lines.append("## Direct light and VSM shadow")
     lines.append("")
@@ -1890,8 +1890,8 @@ def write_report(out_dir: Path, recv, manifest, verify=None):
         )
     lines.append("")
     lines.append(
-        "Every PNG is a 1280x720 RGB8 data raster with no raster text, arrows, legends, "
-        "or invented background.  Invalid/sky masks are the declared colours in the manifest."
+        "Every PNG is a 1280x720 RGB8 data raster with no raster text, arrows, or legends, "
+        "and no invented background. Invalid/sky pixels use the colours declared in the manifest."
     )
     lines.append("")
     lines.append("## Checks")

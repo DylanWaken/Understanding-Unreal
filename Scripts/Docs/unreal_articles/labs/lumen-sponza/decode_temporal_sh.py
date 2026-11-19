@@ -1694,7 +1694,7 @@ def write_report(out_dir, states, focus, summary, vals, manifest):
     A("")
     A("The exact-basis test is the normalization check.  The captured 8x8 equi-area projection "
       "leaves a small higher-band residual (`max other coefficient` above); that is the shader's "
-      "discrete quadrature, not a decoder error, and is reported rather than hidden.")
+      "discrete quadrature, not a decoder error.")
     A("")
     A("## Placement and projection checks")
     A("")
@@ -1739,10 +1739,10 @@ def write_report(out_dir, states, focus, summary, vals, manifest):
     A("")
     A("## Lobes and figures")
     A("")
-    A("The projected lobes are real 3-D response surfaces: for each of %d hypothetical receiver "
+    A("The projected lobes are 3-D response surfaces: for each of %d hypothetical receiver "
       "normals the signed RGB response is evaluated, negative display response is explicitly clamped "
       "to zero, and the vertex radius is `%s cm * clamp(L / %s, 0, 1)` in world space.  "
-      "The same world radius and luminance scale is used for every state and every focused probe; "
+      "The same world radius and luminance scale are used for every state and every focused probe; "
       "nothing is normalized per probe.  Vertices are projected with the captured view and depth-tested "
       "against the captured `SceneDepthZ`; visible quads are filled and depth-occluded quads are drawn "
       "as an explicit magenta x-ray function glyph (not a physical object).  The negative signed luminance "
@@ -1750,7 +1750,7 @@ def write_report(out_dir, states, focus, summary, vals, manifest):
       (summary["lobe_directions"], LOBE_RADIUS_WORLD_CM, summary["lobe_max_luminance"],
        summary["lobe_negative_signed_fraction"], summary["lobe_display_saturated_fraction"]))
     A("")
-    A("Figures (no burned text; HTML labels are the collector's responsibility):")
+    A("Figures have no burned-in text; the HTML collector adds the labels:")
     A("")
     for n in state_order:
         A(f"- `publish/figures/active_{n}.png`: captured screenshot + active placement (cyan uniform, orange adaptive).")

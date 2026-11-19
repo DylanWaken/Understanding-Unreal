@@ -1,6 +1,6 @@
 # Reproduce the captured arithmetic
 
-Run these commands from the repository root. Python 3.14.6 and NumPy 2.5.4 were used for the numerical replays. Package verification, reconstruction and the static site do not require NumPy or a GPU.
+Run these commands from the repository root. The numerical replays used Python 3.14.6 and NumPy 2.5.4. Package verification, reconstruction and the static site do not require NumPy or a GPU.
 
 ## Inspect or reconstruct the frame
 
@@ -36,11 +36,11 @@ python Scripts/Docs/unreal_articles/labs/lumen-frame/replays/world-cache/verify_
 python Scripts/Docs/unreal_articles/labs/lumen-frame/replays/gdf/replay_gdf_march.py --capture Captures/reconstructed-frame --output Captures/replays/gdf
 ```
 
-Each script reads numerical inputs from the reconstructed capture. Frozen records provide source annotations and historical run metadata, not replacement numerical operands. An optional pinned engine checkout enables fresh source checks; the portable numerical replay uses the captured LTC textures directly.
+Each script reads numerical inputs from the reconstructed capture. Frozen records supply source annotations and historical run metadata only. An optional pinned engine checkout enables fresh source checks; the portable numerical replay uses the captured LTC textures directly.
 
 | Example | Compared boundary |
 |---|---|
-| Deferred area light | One DefaultLit pixel, actual native LTC values and the captured final VSM mask; the floating-point contribution is within one FP16 store ULP of the observed delta. This does not rerun the SMRT mask producer. |
+| Deferred area light | One DefaultLit pixel, actual native LTC values and the captured final VSM mask; the floating-point contribution is within one FP16 store ULP of the observed delta. The replay does not rerun the SMRT mask producer. |
 | Surface cache | Dispatch, card-page addressing, material/lighting samples, pre-exposed combine, dither and packed output. The selected packed word matches exactly. |
 | World cache | Actual compacted ray, BlueNoise direction, eight neighbors, 32 radiance taps, parallax correction and nested interpolation; the decoded cache hit distance matches exactly. |
 | Global distance field | The preceding march, interval, page address and all interpolation taps under the recorded earlier native snapshot. The final hit word matches; radiance is compared within one store ULP. Native snapshot timing remains conditional. |

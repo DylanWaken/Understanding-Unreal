@@ -1,19 +1,19 @@
 # Understanding Unreal
 
-Independent, source-backed essays on Unreal Engine rendering. The site source lives in [`Docs/`](Docs/) and is published at [Understanding Unreal](https://dylanwaken.github.io/Understanding-Unreal/).
+These essays trace rendering decisions through Unreal Engine source code and GPU captures. Browse the pages in [`Docs/`](Docs/) or read them on [Understanding Unreal](https://dylanwaken.github.io/Understanding-Unreal/).
 
-The collection contains four standalone long-form articles:
+Each of the four articles starts with a rendering problem and can be read on its own.
 
-- **Scene Representation in Unreal Engine** — one room from shared assets and components through render proxies, GPU Scene, animation, raster passes and lighting representations.
-- **Nanite: From a Scanned Bunny to Visible Pixels** — a measured replacement hierarchy, streaming, visibility, rasterization and shading, with a computed Stanford bunny laboratory and real engine captures.
-- **Building Lumen: From Light Paths to a Real-Time Atrium** — geometric optics and path sampling, followed by a forward design of deferred shading, VSMs, surface caches, probes, reflections and reconstruction. Original diagrams and interactive numerical experiments accompany the concepts. The detailed controlled-room capture remains a separate implementation reference.
-- **How Unreal Compiles a Material Graph** — graph analysis, HLSL translation, shader compilation, permutations, caching and GPU material programs.
+- **Scene Representation in Unreal Engine** follows one room from shared assets and placed components into render proxies and GPU Scene. A moving door and an animated mannequin show how the raster passes and lighting representations use that data.
+- **Nanite: From a Scanned Bunny to Visible Pixels** builds a replacement hierarchy from the Stanford bunny and measures it. The lab and Unreal captures show how streaming and visibility determine which geometry reaches rasterization and shading.
+- **Building Lumen: From Light Paths to a Real-Time Atrium** starts with geometric optics and path sampling. Original diagrams and interactive experiments explain why a real-time renderer needs deferred shading, VSMs, surface caches and probes, and how it computes reflections and reconstructs the image. A separate implementation reference documents the controlled-room capture.
+- **How Unreal Compiles a Material Graph** follows an expression graph into HLSL and on to the material program that runs on the GPU. It covers graph analysis, shader compilation, permutations and caching.
 
-A shared [graphics glossary](Docs/glossary.html), the site shell and the old combined-essay redirect are published alongside them. The legacy `nanite-and-lumen.html` page preserves old chapter bookmarks by forwarding to the independent essays.
+The articles share a site shell and a [graphics glossary](Docs/glossary.html). Old chapter bookmarks still work through `nanite-and-lumen.html`, which forwards readers to the corresponding essay.
 
 The Lumen course uses Sponza imported into Unreal, with matched path-traced comparisons and contextual GBuffer, direct-light, shadow, card-cache, screen-probe, world-cache, reflection and history examples. Its [Sponza frame explorer](https://dylanwaken.github.io/Understanding-Unreal/Unreal/frame-explorer.html?package=https%3A%2F%2Fraw.githubusercontent.com%2FDylanWaken%2FUnderstanding-Unreal%2Fmain%2FData%2FSponza%2Fsponza-20261115-083654%2F) exposes 886 passes, 1,529 normalized resource identities and 11,446 binary payloads. The lossless package reconstructs 95.2 GB of exported payload data; [verification and reproduction instructions](Data/Sponza/README.md) state what was and was not captured.
 
-The [complete frame flowchart](https://dylanwaken.github.io/Understanding-Unreal/Unreal/lumen.html#frame-execution-flow) connects direct lighting and VSM shadows to card lighting, radiosity, screen probes, world caches, reflections, history and composition. Scene-anchored temporal controls beside those concepts show placement and update behavior over thirteen native observations. Their [lossless temporal archive](Data/Sponza/temporal-native/README.md) retains 27.1 GB of selected capture files in a 1.96 GB package, with full numerical arrays and reconstruction checks.
+The [complete frame flowchart](https://dylanwaken.github.io/Understanding-Unreal/Unreal/lumen.html#frame-execution-flow) connects direct lighting and VSM shadows to card lighting, radiosity, screen probes, world caches, reflections, history and composition. Scene-anchored temporal controls beside those concepts show placement and update behavior over thirteen native observations. A [lossless temporal archive](Data/Sponza/temporal-native/README.md) retains 27.1 GB of selected capture files in a 1.96 GB package, with full numerical arrays and reconstruction checks.
 
 Dedicated [Direct Lighting](https://dylanwaken.github.io/Understanding-Unreal/Unreal/lumen.html#direct-lighting) and [Reflections](https://dylanwaken.github.io/Understanding-Unreal/Unreal/lumen.html#reflections) chapters explain the light and BRDF integrals, shadow projections, moving-light invalidation, off-screen casters, reflection sampling, and reconstruction. The [VSM storage walkthrough](https://dylanwaken.github.io/Understanding-Unreal/Unreal/lumen.html#vsm-storage) follows actual sun page-table entries to captured physical depth texels, with complete selected records and a portable decoder.
 
@@ -35,7 +35,7 @@ The chapter HTML under `Scripts/Docs/unreal_articles/chapters/` is the prose sou
 
 ## Prerequisites
 
-- Python 3.14 is used by CI and the Sponza evidence decoders.
+- CI and the Sponza evidence decoders use Python 3.14.
 - Node.js on `PATH` for the offline equation check and for regenerating the math cache.
 - The article builder uses Python's standard library. Install the Sponza decoder dependencies from `Scripts/Docs/unreal_articles/labs/lumen-sponza/requirements.txt` for the complete workflow checks; other labs retain their own requirements.
 
@@ -117,13 +117,13 @@ python Scripts/Docs/unreal_articles/labs/nanite/run.py --rebuild
 ./Scripts/Docs/unreal_articles/labs/unreal/run.ps1 -Script capture_gpu.py
 ```
 
-Raw Stanford downloads, virtual environments, cached hierarchies and in-repository Unreal build output are covered by `.gitignore`; raw GPU dumps stay in the local temporary directory. Only reviewable, hashed figures and evidence records are published. The small project-local Unreal editor bridge under `labs/unreal/Source/` is authored laboratory code, not Unreal Engine source. No engine source tree or compiled Unreal binaries are included.
+Raw Stanford downloads, virtual environments, cached hierarchies and in-repository Unreal build output are covered by `.gitignore`; raw GPU dumps stay in the local temporary directory. Only reviewable, hashed figures and evidence records are published. The small project-local Unreal editor bridge under `labs/unreal/Source/` is authored laboratory code. No engine source tree or compiled Unreal binaries are included.
 
 The exact engine-capture scripts, modes, camera settings and limitations are documented in `Scripts/Docs/unreal_articles/labs/unreal/README.md` and `scene-room-README.md`. The visible figures are not color-corrected or composited; the GPU atlas displays are labelled as measured array displays and their display transform is recorded in `gpu-atlas-report.json`.
 
 ## Deployment
 
-`.github/workflows/pages.yml` runs on pushes to `main` and on `workflow_dispatch`. It checks the generated essays, the offline equation cache, the frozen laboratory evidence and the published links, then uploads the validated `Docs/` artifact. Publication uses the configured `gh-pages` branch and GitHub's built-in Pages build and deployment. Pushing `main` validates and packages the site; publishing requires the branch update below. The `github-pages` environment permits `gh-pages` and rejects direct deployment from `main`, so the validation workflow does not attempt that rejected deployment. `.nojekyll` is included so Pages serves the asset paths directly.
+`.github/workflows/pages.yml` runs on pushes to `main` and on `workflow_dispatch`. It checks the generated essays, the offline equation cache, the frozen laboratory evidence and the published links, then uploads the validated `Docs/` artifact. Publication uses the configured `gh-pages` branch and GitHub's built-in Pages build and deployment. Pushing `main` validates and packages the site; publishing requires the branch update below. The `github-pages` environment only permits `gh-pages`, so the validation workflow does not deploy from `main`. `.nojekyll` is included so Pages serves the asset paths directly.
 
 The site is live at [dylanwaken.github.io/Understanding-Unreal](https://dylanwaken.github.io/Understanding-Unreal/). The first publication on 12 November 2026 used the `gh-pages` branch, containing exactly the `Docs/` subtree. GitHub's Pages build and deployment completed successfully.
 

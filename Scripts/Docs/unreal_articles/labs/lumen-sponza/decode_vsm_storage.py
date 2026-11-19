@@ -2818,7 +2818,7 @@ def build_report(ctx) -> str:
     sel = ctx["selected"]
     r = ctx["receivers"]
     lines = []
-    lines.append(f"# VSM storage decode — {ctx['dump'].root.name} (presented graph, native{int(ctx['passes']['graph_prefix'], 16):04d})\n")
+    lines.append(f"# VSM storage decode: {ctx['dump'].root.name} (presented graph, native{int(ctx['passes']['graph_prefix'], 16):04d})\n")
     lines.append(f"Selected pass: **{ctx['passes']['vsm_projection']['Id']} "
                  f"{ctx['passes']['vsm_projection']['EventName']}** "
                  f"(`{ctx['passes']['vsm_projection']['Pointer']}`), graph prefix "
@@ -2886,7 +2886,7 @@ def build_report(ctx) -> str:
                  "for local lights the same field can select a logical page-table mip.")
     lines.append(f"- LODOffset histogram (logical mip0): `{ctx['lod_histogram']}`")
     lines.append(f"- PageFlags H0 nonzero {c['page_flags_nonzero']}; low6 categories `{c['page_flags_categories']}`")
-    lines.append("- PageFlags hardware mips 0..6 are the separate H0..H6 hierarchy (mipm parent at texel >> m); H7 is not generated. "
+    lines.append("- PageFlags hardware mips 0..6 are the separate H0..H6 hierarchy (mip m parent at texel >> m); H7 is not generated. "
                  "They are not the eight logical mips packed in PageTable hardware mip0.")
     lines.append(f"- Occupancy categories (4096 physical pages): `{ctx['occupancy_counts']}`")
     lines.append(f"- Metadata state categories: `{ctx['meta_state_counts']}`")
@@ -2900,7 +2900,7 @@ def build_report(ctx) -> str:
                  f"p01 {stats['p01']:.9f}, p99 {stats['p99']:.9f}, zeros {stats['zeros']}.\n")
     lines.append(f"Display range for the selected projection: device Z **[{ctx['depth_display_lo']:.8f}, "
                  f"{ctx['depth_display_hi']:.8f}]**, ramp navy→blue→teal→amber→white; "
-                 f"t = (z−lo)/(hi−lo) is the invertible display coordinate. Invalid/masked are categorical, not depth.\n")
+                 f"t = (z−lo)/(hi−lo) is the invertible display coordinate. Invalid and masked texels are categorical, not depth.\n")
     lines.append("## Receiver declared replay\n")
     lines.append("| rcvr | mask | clipmap | UV | vpage | entry | phys page | phys texel | raw depth | depth | receiver Z | Δ | occ dist cm |")
     lines.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
@@ -2916,18 +2916,18 @@ def build_report(ctx) -> str:
                      f"{rec['occluder_distance_ortho_cm']:.3f} |")
     lines.append("")
     lines.append("The replay applies the captured clipmap-selection formula and page-table arithmetic only. "
-                 "SMRT ray directions, slope/normal bias, texel dither and per-lane hits are shader-local and are not replayed; "
-                 "the captured mask is reported but not reproduced. B's stored depth is greater than its receiver depth "
-                 "(occluder closer to the light), consistent with the captured shadowed mask; A's stored depth nearly equals "
+                 "SMRT ray directions, slope/normal bias, texel dither and per-lane hits are shader-local and are not replayed, "
+                 "and the captured mask is reported but not reproduced. B's stored depth is greater than its receiver depth "
+                 "(occluder closer to the light), consistent with the captured shadowed mask. A's stored depth nearly equals "
                  "its receiver projection (Δ = -1.856e-08, float32 roundoff; not exactly equal). "
-                 "This is a storage-address check, not a full shadow-mask explanation. "
+                 "The replay is a storage-address check, not a full shadow-mask explanation. "
                  "The occluder-distance column applies the source clamp max(1e-6 cm, (receiverZ-storedZ)/m33); "
                  "A's unclamped value is slightly negative (no occluder), B's is positive.\n")
     lines.append("## Figures\n")
     for k, f in ctx["figures"].items():
-        lines.append(f"- `{f['file']}` — {f['width']}×{f['height']} — {f['kind']}")
+        lines.append(f"- `{f['file']}` ({f['width']}×{f['height']}): {f['kind']}")
     lines.append("")
-    lines.append("Figure 3 tile order is listed exactly in `publish/data/vsm_storage.json` → `figures.vsm_depth_pages.tile_order` "
+    lines.append("Figure 3 tile order is listed in `publish/data/vsm_storage.json` → `figures.vsm_depth_pages.tile_order` "
                  "(row-major, 3 columns × 2 rows, 256 px tiles, 8 px gutters, 2× nearest scale, white cross = replay texel on A/B).")
     mm = ctx["virtual_depth_meta"]
     lines.append(f"Figure 4 (`vsm_virtual_depth.png`) reassembles all {mm['selected_pages']} selected VSM-8196 mip0 pages "
@@ -2940,10 +2940,10 @@ def build_report(ctx) -> str:
     lines.append("## Limits\n")
     for lim in [
         "PageTable hardware mip0 packs all eight logical shadow-map mips 0..7 in each VSM 128×192 block. For selected VSM 8196, logical mip0 holds 99 render-valid pages and logical mips 1..7 are present but empty (all-zero entries); no logical page-table mip is missing from the capture.",
-        "PageFlags hardware mips 0..6 are a separate H0..H6 hierarchy (mipm parent at texel >> m); H7 is not generated. This hierarchy is not the eight logical mips packed in PageTable hardware mip0.",
+        "PageFlags hardware mips 0..6 are a separate H0..H6 hierarchy (mip m parent at texel >> m); H7 is not generated. This hierarchy is not the eight logical mips packed in PageTable hardware mip0.",
         "The receiver chain is a declared replay, not an executed shader-local SMRT trace.",
         "The page-table, PageFlags and pool files are pass-840 consumer snapshots versioned at the capture boundary; their last resource-level output bindings are earlier passes (page table 792, pool 811, PageFlags mip0 790 / mips1-6 791). Physical-page metadata is the pass-810 snapshot before the pass-840 consumer.",
-        "The 96 metadata records with flags 0x285b and LastRequestedSceneFrameNumber 3 are allocated slots not referenced in this snapshot; age alone does not prove them stale or invalid. Free/unallocated slots remain neutral gray. The selected99pages have no zero-valued depths; the compact atlas masks nonpositive values, while the native-page and mosaic views apply the declared ramp directly.",
+        "The 96 metadata records with flags 0x285b and LastRequestedSceneFrameNumber 3 are allocated slots not referenced in this snapshot; age alone does not prove them stale or invalid. Free/unallocated slots remain neutral gray. The 99 selected pages have no zero-valued depths; the compact atlas masks nonpositive values, while the native-page and mosaic views apply the declared ramp directly.",
         "Full pool bytes (2 × 256 MiB) stay in the raw archive; all 99 current selected pages are duplicated as full 128×128 float32 + raw bits, plus the 64×64 compact thumbnails and the virtual-address mosaic.",
         "Depth across different projections/clipmap levels is not globally comparable; one fixed range is used for selected VSM 8196.",
         "AllocatedPageRectBounds/PageRectBounds, PageReceiverMasks, HZBPhysicalPagePool, NextVirtualShadowMapData and StatsBuffer are captured but not used for these point storage queries.",

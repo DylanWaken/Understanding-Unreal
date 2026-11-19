@@ -1,8 +1,8 @@
 # Computed room laboratory
 
 This is an educational CPU renderer, not Unreal Engine's Lumen implementation.
-Its output label is embedded in the rendered figures. The independently
-captured Unreal project has separate provenance.
+The rendered figures carry its output label. The Unreal project was captured
+independently and has its own provenance.
 
 From the repository root:
 
@@ -33,20 +33,20 @@ Outputs in `Docs/Unreal/assets/lumen-lab/` include:
 - `computed-data.npz`: positions, normals, albedo, direct and cached radiance,
   directional probe radiance, irradiance, screen-probe values, and SDF slice.
 
-Limitations are part of the experiment: all cards are resident; material
-captures use exact planar parameterization; geometry is static; transport
-is Lambertian; rays are exact rectangle queries; the SDF diagnostic is not
-the lighting visibility backend; world and screen probes are separate
-experiments rather than a composed trace hierarchy; reflection reads a
-diffuse cache and uses full-NDF GGX sampling rather than Unreal's visible-GGX
-sampler. The script has no screen-space ray marcher, hardware RT, sparse
-atlas residency, large-world clipmaps, stochastic budget scheduler, or
-complete production denoiser. Every comparison states its reference.
+The experiment has these limits: all cards are resident; material captures
+use exact planar parameterization; geometry is static; transport is
+Lambertian; rays are exact rectangle queries. The SDF diagnostic is not the
+lighting visibility backend. World and screen probes are separate experiments
+rather than a composed trace hierarchy. Reflection reads a diffuse cache and
+uses full-NDF GGX sampling rather than Unreal's visible-GGX sampler. The
+script has no screen-space ray marcher, hardware RT, sparse atlas residency,
+large-world clipmaps, stochastic budget scheduler, or complete production
+denoiser. Every comparison states its reference.
 
 Assertions check sphere-trace agreement for 256 horizontal rays, spherical
 solid-angle normalization, finite/nonnegative radiance, and convergence of
 the frozen sampled operator. A small residual is not a proof of unbiased
-continuum light transport. Keep these distinctions when extending the lab.
+continuum light transport.
 
 `prepare.py` orders the authored essay and updates evidence hashes from
 `D:/UnrealEngine`. It is an authoring helper, not a public build dependency.

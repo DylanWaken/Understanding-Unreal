@@ -1,11 +1,10 @@
 # Temporal decoder reproduction runbook
 
-This is a technical runbook for running the two published temporal decoders from
-explicit inputs. It is not article prose and does not define new interpretation.
+Use these commands to run the two published temporal decoders with explicit inputs. The resulting files reproduce the existing interpretation of the captures.
 
 ## Packaged files
 
-The lab directory now contains the decoder dependencies it imports:
+The lab directory contains the decoder dependencies it imports:
 
 | File | Role |
 |---|---|
@@ -33,15 +32,15 @@ Capture metadata defaults for radiosity come from:
 - `Data/Sponza/evidence/temporal-captures/radiosity/capture-report.md`
 - `Data/Sponza/evidence/temporal-captures/radiosity/parameter-verification.json`
 
-The historical producer snapshots remain unchanged and are not imported by the
-lab decoders:
+The lab decoders do not import the historical producer snapshots, which remain
+unchanged:
 
 - `Data/Sponza/evidence/temporal-captures/producer-scripts/decode_placements.py`
 - `Data/Sponza/evidence/temporal-captures/producer-scripts/decode_radiosity.py`
 
-Neither decoder reads engine shader files. Source-anchor strings in the
-radiosity report and constants remain provenance; there is no `--engine-root`
-option because no shader file is opened.
+Neither decoder opens an engine shader file, so there is no `--engine-root`
+option. Source-anchor strings in the radiosity report and constants remain
+provenance.
 
 ## Reconstruct the two representative raw states
 
@@ -192,8 +191,8 @@ Matching published and decoded SHA-256 values:
 | `placements/.../pages.npz` (both) | `69e9fcda71e2cbd4e9bbaa7469cb19be88a641b1c14df4c3dd0e1ca37c5062c9` |
 | `placements/.../worldcache.npz` (both) | `ede0408c4c9ae9ca6cd49984b55203b0211d4ae1beaa6353bfa365907eb9d935` |
 
-The exact array equality is evidence that the path/CLI packaging did not change
-the decode algorithms or the selected numerical operands.
+Identical arrays indicate that the path/CLI packaging did not change the decode
+algorithms or the selected numerical operands.
 
 ## Source snapshots and write boundary
 
@@ -222,9 +221,9 @@ b543cf94afb25ed7782f7b9f32cb8b6e1f0c0b625d40248f2d1ddc6b6f621078  Scripts/Docs/u
 
 The check run wrote its temporary outputs under
 `Scripts/Docs/unreal_articles/labs/lumen-sponza/temporal-reproduction-check/`
-(`logs/`, `radiosity/`, `placement/`). No authored chapter, `Docs/` asset,
-published baseline, historical producer script, or raw source file was
-modified by this packaging step. Its reconstruction and duplicate decode trees
-are temporary and are removed after validation. The retained evidence directory
-contains the comparison scripts, numerical results, command logs, and hashes;
-the published NPZ files remain the canonical decoded outputs.
+(`logs/`, `radiosity/`, `placement/`). This packaging step modified no authored
+chapter, `Docs/` asset, published baseline, historical producer script, or raw
+source file. Its reconstruction and duplicate decode trees are temporary and are
+removed after validation. The retained evidence directory contains the
+comparison scripts, numerical results, command logs, and hashes; the published
+NPZ files remain the canonical decoded outputs.

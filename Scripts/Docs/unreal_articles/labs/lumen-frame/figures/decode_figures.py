@@ -4121,7 +4121,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
 </style>
 </head><body>
 <header><h1>Unreal final capture: decoded GPU figures</h1>
-<div class="small">Selected graph <b>__SELECTED__</b> by exact 1280x720 FViewUniformShaderParameters bytes; all graphs remain browsable below. Figure labels are SVG vector text over lossless data pixels.</div>
+<div class="small">The 1280x720 FViewUniformShaderParameters bytes identify graph <b>__SELECTED__</b> by exact match. You can browse every graph below. The SVG labels sit above the lossless data pixels.</div>
 <p><a href="../../../frame-explorer.html">Open the full frame explorer</a></p>
 </header><main>
 """.replace("__SELECTED__", esc(ctx.selected_graph)))
@@ -4131,8 +4131,8 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
                      esc(ctx.selected_view["bin_sha256"]), esc(ctx.selected_view["view_rect_min"]),
                      esc(ctx.selected_view["view_size_and_inv_size"]), esc(ctx.selected_view["max_pass_id"])))
     parts.append("<h2>Figures (%d)</h2>" % len(manifest["figures"]))
-    parts.append("<p class='small'>Every card renders the same-slug SVG: vector text over the "
-                 "lossless, text-free PNG data backing. The PNG remains available as an exact data view.</p>")
+    parts.append("<p class='small'>Each figure links to an SVG with the same slug. It places labels over the lossless PNG. "
+                 "Open the PNG to see the data pixels without the text.</p>")
     parts.append("<div class='grid'>")
     for f in manifest["figures"]:
         vec = f.get("vector_image")
@@ -4191,8 +4191,8 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere}
                      esc(json.dumps(f, indent=2, ensure_ascii=False)))
         parts.append("</details>")
     parts.append("<h2>Root explorer: all scene graphs</h2>")
-    parts.append("<p class='small'>Every graph and every resource/pass record from the final dump is listed here. "
-                 "Only the selected graph has decoded figures; the other graphs remain addressable by exact resource id/pass id for numerical replay.</p>")
+    parts.append("<p class='small'>This list includes every graph, resource and pass in the final dump. "
+                 "The figures cover the selected graph. To replay a value from another graph, use its exact resource or pass ID.</p>")
     parts.append("<p><input id='q' placeholder='filter resource name / id / pass event'></p>")
     parts.append("<div id='graphs'></div>")
     parts.append("""<script>

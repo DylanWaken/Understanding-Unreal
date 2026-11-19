@@ -60,7 +60,7 @@ The 72×24×24 group is rejected as the translucency-volume cache: its `MarkRadi
 | camera-001 | 585 | 522 | 395 | 395 | 408 | `f0423fcf93bd0cb9…` |
 | camera-064 | 585 | 522 | 395 | 395 | 408 | `f0423fcf93bd0cb9…` |
 
-The 4096-float4 GPU allocation is 585 full 7-float4 cards plus one trailing float4 that is not a card. The valid range is inferred as the contiguous nonzero uploaded payload 0..521; the tail 63 slots are zero in origin/axes/mesh-extent/flags. The `FLumenCardScene.NumCards` uniform is not exported, so this is structural identity evidence, not a guessed capacity. Capacity is therefore not the card count.
+The 4096-float4 GPU allocation is 585 full 7-float4 cards plus one trailing float4 that is not a card. The valid range is inferred as the contiguous nonzero uploaded payload 0..521; the tail 63 slots are zero in origin/axes/mesh-extent/flags. The `FLumenCardScene.NumCards` uniform is not exported, so this is structural identity evidence, not a guessed capacity; capacity is not the card count.
 
 Fixed-camera audit: baseline and lightstep-001 have 371 included cards / 385 low-res pages; lightstep-008/032/064 have 522 included cards / 626 pages. The exact static geometry hash is identical across all five light states, so this is an inclusion/visibility flag plus matching page residency change, not geometry motion. `sequence.json` lists every changed card index.
 
@@ -124,7 +124,7 @@ Each state has `base.png` (byte-identical copy of the raw `Base/Screenshot.png`)
 | motion | camera-001 | 24 | 316 | 135 | 511 |
 | motion | camera-064 | 24 | 315 | 135 | 418 |
 
-The card overlay is the projected convex hull of the 8 OBB corners. The primary image draws a deterministic representative subset (up to 24 typical-size cards with 8×6 screen-cell diversity) thick; all numeric cards are retained in `cards.json`/`cards.npz`. The xray image is a separate low-alpha image of centre-depth-occluded cards. Worldcache markers use fixed per-clipmap colours and radii; xray is separate.
+The card overlay is the projected convex hull of the 8 OBB corners. The primary image draws a deterministic representative subset (up to 24 typical-size cards with 8×6 screen-cell diversity) thick; all numeric cards are retained in `cards.json`/`cards.npz`. The xray image is a separate low-alpha image of centre-depth-occluded cards. Worldcache markers use fixed per-clipmap colours and radii.
 
 ## Projection / depth checks
 
