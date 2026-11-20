@@ -12,7 +12,7 @@
 <rect width="1100" height="780" fill="#fffdf8"/>
 <g font-family="Segoe UI, Arial, sans-serif">
 <rect x="36" y="2" width="252" height="22" rx="4" fill="#f0f1e9" stroke="#93661e" stroke-width="1.5" opacity="1"/>
-<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC · NOT CAPTURED GEOMETRY</text>
+<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC</text>
 <text x="36" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#22312d" font-weight="600" text-anchor="start">A hit becomes card UV, a page-table entry, and an atlas texel</text>
 <text x="36" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#586760" font-weight="400" text-anchor="start">World point → card space → virtual page → physical atlas → four weighted taps. One real texel is resolved in the replay.</text>
 <rect x="36" y="104" width="560" height="448" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
@@ -84,7 +84,7 @@
 <text x="820" y="236" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#286788" font-weight="600" text-anchor="start">physical atlas (one page shown)</text>
 <path d="M930 212L904 244" fill="none" stroke="#286788" stroke-width="2" marker-end="url(#arrow-blue)"/>
 <text x="178" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">mapped fallback</text>
-<text x="646" y="354" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">A zero mapped X resolution is invalid, not black lighting.</text>
+<text x="646" y="354" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Zero mapped X resolution marks an invalid entry.</text>
 <rect x="620" y="386" width="444" height="166" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
 <path d="M630 387H1054" stroke="#286788" stroke-width="4"/>
 <text x="636" y="416" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#286788" font-weight="600" text-anchor="start">2D · four taps, depth validity, one value</text>
@@ -97,8 +97,8 @@
 <rect x="704" y="490" width="46" height="46" rx="2" fill="#fffdf8" stroke="#586760" stroke-width="1.5" opacity="1"/>
 <text x="727" y="518" font-family="Cascadia Code, Consolas, monospace" font-size="15" fill="#586760" font-weight="600" text-anchor="middle">0.0</text>
 <text x="778" y="456" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#22312d" font-weight="600" text-anchor="start">β_i · depth validity v_i</text>
-<text x="778" y="478" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">invalid texels contribute 0 to w_i,</text>
-<text x="778" y="496" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">not a valid black radiance.</text>
+<text x="778" y="478" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">An invalid texel has zero weight.</text>
+<text x="778" y="496" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">A valid black texel can still carry weight.</text>
 <rect x="778" y="512" width="238" height="30" rx="5" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1" opacity="1"/>
 <text x="790" y="536" font-family="Cascadia Code, Consolas, monospace" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">L = Σ w_i L_i / Σ w_i / e_c</text>
 <rect x="36" y="572" width="1028" height="144" rx="8" fill="#f0f1e9" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
@@ -129,5 +129,5 @@
 <text x="54" y="688" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Schematic simplifies to one card and four taps. The replay resolves card page 35 at 8×8 texels.</text>
 <text x="54" y="706" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Atlas coordinate (1067, 4); bilinear weights (1, 0, 0, 0); unrelated pages are omitted.</text>
 <path d="M36 736L1064 736" fill="none" stroke="#c4cec7" stroke-width="1"/>
-<text x="36" y="760" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">Schematic. Real atlas is 4096² and sparse; the diagram draws one page and omits unrelated pages. Not captured geometry.</text>
+<text x="36" y="760" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#586760" font-weight="400" text-anchor="start">The schematic follows one page of the sparse 4096² atlas.</text>
 </g></svg>

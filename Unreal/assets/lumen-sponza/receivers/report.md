@@ -1,6 +1,6 @@
 # Sponza receiver decode
 
-Status: **pass**. Read-only decode of the frozen native dump; no GPU work, no engine/repo/Sponza writes, and no acceleration-structure claims.
+Status: **pass**. This is a read-only decode of the frozen native dump. It does no GPU work, writes nothing to the engine, repo, or Sponza, and makes no acceleration-structure claims.
 
 ## Source
 
@@ -34,7 +34,7 @@ Status: **pass**. Read-only decode of the frozen native dump; no GPU work, no en
 | FPackedView offsets | SVPositionToTranslatedWorld 0, ViewToTranslatedWorld 64, TranslatedWorldToView 128, TranslatedWorldToClip 192, ViewToClip 256, ViewRect 640, ViewSizeAndInvSize 656 |
 | Offset 192 note | `TranslatedWorldToClip`, not `TranslatedWorldToView`; the uniform `ViewToClip` at 448 and the packed `ViewToClip` at 256 agree exactly |
 
-Nominal approved identity is origin `(-850,0,90)` cm, HFOV `70` deg, pitch `13` deg, yaw `0` deg; the decoded float values above agree within `1e-5` deg.  The `1280x720` ViewRect is the presented sub-rect of the `1280x888` allocation; only rows `0..719` are presented and decoded.
+The approved nominal identity is origin `(-850,0,90)` cm, HFOV `70` deg, pitch `13` deg, yaw `0` deg. The decoded float values above agree within `1e-5` deg. The `1280x720` ViewRect is the presented sub-rect of the `1280x888` allocation; only rows `0..719` are presented and decoded.
 
 ## Receiver values
 
@@ -52,7 +52,7 @@ Exact raw material bytes and codes:
 | B | [228, 255, 0, 177] | 228 | 0 | 255 | 177 | [106, 124, 135, 255] | [135, 124, 106] | 0x7ff80e02 | [0, 0, 0, 0] | [128, 127, 0, 127] |
 | C | [20, 128, 255, 161] | 20 | 255 | 128 | 161 | [157, 227, 255, 255] | [255, 227, 157] | 0x61f90805 | [0, 0, 0, 0] | [127, 127, 127, 127] |
 
-C authored roughness .08 decodes to code **20/255 = 0.0784313725**; the table reports the actual decoded value.
+C's authored roughness of .08 decodes to code **20/255 = 0.0784313725**; the table reports the actual decoded value.
 
 GBuffer semantics: legacy path (`r.Substrate=0`, `r.GBufferFormat=1`); GBufferC alpha is AO (`r.AllowStaticLighting=0`, `r.GBufferDiffuseSampleOcclusion=0`); GBufferC target is sRGB; TAA upsampling `r.TemporalAA.Upsampling=1`; VSM `r.Shadow.Virtual.Enable=1`.
 
@@ -70,7 +70,7 @@ GBuffer semantics: legacy path (`r.Substrate=0`, `r.GBufferFormat=1`); GBufferC 
 | scene_color_post | SceneColor `00040000020b9d700490` | 842 `00040000020c16c4eef0` | 842 `00040000020c16c4eef0` | 0 | 10240 | PF_FloatRGBA | True |
 | vsm_shadow_mask | ShadowMaskTexture `00040000020c948b7fa0` | 841 `00040000020c16c4de70` | 842 `00040000020c16c4eef0` | 0 | 5120 | PF_B8G8R8A8 | True |
 
-Payload hashes are in `data/receivers.json`; every consumed consumer version was byte-identical to its producer version for the GBuffers, depth, and VSM mask.
+Payload hashes are in `data/receivers.json`; for the GBuffers, depth, and VSM mask, every version read by a consumer pass was byte-identical to its producer version.
 
 ## Direct light and VSM shadow
 
@@ -97,7 +97,7 @@ Supported statements: the sun pass is the only light in the captured `SponzaTeac
 | `figures/direct_rgb.png` | L = SceneColor(pass 842)-SceneColor(pass 840) per RGB half channel; tone=L/(1+L) for L>0; sRGB OETF; round(255*x); no exposure multiply; black=zero direct | [0, 0, 0] .. [55.90625, 43.59375, 32.375], mean [0.14759347, 0.10186634, 0.065730419] | 921600/921600 | 921600 |
 | `figures/vsm_shadow.png` | R=ShadowMaskTexture.mem[2]; G=mem[1]; s=(R/255)^2; RGB8=round(255*s); no gamma; invalid/sky -> (128,128,128) | [0, 0, 0] .. [1, 1, 1], mean [0.54372372, 0.54717442, 0.54372372] | 913871/913871 | 913871 |
 
-Every PNG is a 1280x720 RGB8 data raster with no raster text, arrows, legends, or invented background.  Invalid/sky masks are the declared colours in the manifest.
+Every PNG is a 1280x720 RGB8 data raster with no raster text, arrows, or legends, and no invented background. Invalid/sky pixels use the colours declared in the manifest.
 
 ## Checks
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 792" width="1100" height="792" role="img" aria-labelledby="title desc" data-schematic="true">
-<title id="title">Reproject the previous sample; reject what does not correspond</title>
-<desc id="desc">A current pixel is reprojected into the previous frame and tested against a 2x2 depth footprint and normal. Accepted history is exposure-corrected and blended by a count-dependent alpha; rejected history is not used. A 3D inset shows a disocclusion. Schematic; the real history buffers and validity masks are separate captures.</desc>
+<title id="title">Reprojecting a sample and testing its history</title>
+<desc id="desc">A current pixel is reprojected into the previous frame and tested against a 2x2 depth footprint and normal. Only valid history enters the blend, after exposure correction and with a count-dependent weight. A 3D inset shows a disocclusion. Schematic; the real history buffers and validity masks are separate captures.</desc>
 <defs>
 <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286c56"/></marker>
 <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#286788"/></marker>
@@ -12,8 +12,8 @@
 <rect width="1100" height="792" fill="#fffdf8"/>
 <g font-family="Segoe UI, Arial, sans-serif">
 <rect x="36" y="2" width="252" height="22" rx="4" fill="#f0f1e9" stroke="#93661e" stroke-width="1.5" opacity="1"/>
-<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC · NOT CAPTURED GEOMETRY</text>
-<text x="36" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#22312d" font-weight="600" text-anchor="start">Reproject the previous sample; reject what does not correspond</text>
+<text x="46" y="18" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#93661e" font-weight="600" text-anchor="start">SCHEMATIC</text>
+<text x="36" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#22312d" font-weight="600" text-anchor="start">Reprojecting a sample and testing its history</text>
 <text x="36" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#586760" font-weight="400" text-anchor="start">Reprojection gives a candidate; depth, normal and validity decide whether it is usable history.</text>
 <rect x="36" y="104" width="430" height="456" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
 <path d="M46 105H456" stroke="#286788" stroke-width="4"/>
@@ -46,7 +46,7 @@
 <text x="90" y="320" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">depth Δ ≤ threshold</text>
 <text x="90" y="340" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">normal dot ≥ cos(45°)</text>
 <text x="90" y="450" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Accepted taps are exposure-corrected before blending.</text>
-<text x="90" y="474" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#aa5343" font-weight="400" text-anchor="start">A rejected tap is not zero radiance; it is no usable history.</text>
+<text x="90" y="474" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#aa5343" font-weight="400" text-anchor="start">A rejected tap contributes zero weight to history.</text>
 <rect x="480" y="104" width="300" height="456" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
 <path d="M490 105H770" stroke="#93661e" stroke-width="4"/>
 <text x="496" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#93661e" font-weight="600" text-anchor="start">2D · count-dependent blend</text>
@@ -89,8 +89,8 @@
 <text x="858" y="222" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286c56" font-weight="400" text-anchor="start">same plane</text>
 <path d="M882 232L920 232" fill="none" stroke="#286c56" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow-green)"/>
 <text x="900" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#286c56" font-weight="400" text-anchor="start">accept</text>
-<text x="806" y="490" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">History is correlated reconstruction state,</text>
-<text x="806" y="512" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">not another independent Monte Carlo sample.</text>
+<text x="806" y="490" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">History carries estimates from earlier frames.</text>
+<text x="806" y="512" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#586760" font-weight="400" text-anchor="start">Repeated use can correlate successive estimates.</text>
 <rect x="36" y="584" width="320" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
 <text x="52" y="612" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">What is rejected</text>
 <text x="52" y="640" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">depth difference above the relative threshold</text>
@@ -100,7 +100,7 @@
 <text x="406" y="612" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">What is retained</text>
 <text x="406" y="640" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">the reprojected coordinate and 2×2 taps</text>
 <text x="406" y="663" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">the previous count and exposure ratio</text>
-<text x="406" y="686" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">the validity mask, not just a color</text>
+<text x="406" y="686" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">the validity mask for each tap</text>
 <rect x="744" y="584" width="320" height="152" rx="8" fill="#f8f8f2" stroke="#c4cec7" stroke-width="1.5" opacity="1"/>
 <text x="760" y="612" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#286c56" font-weight="600" text-anchor="start">What to inspect</text>
 <text x="760" y="640" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#22312d" font-weight="400" text-anchor="start">validity mask and previous count</text>

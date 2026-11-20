@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Inspect every captured Unreal render-graph pass, resource, parameter block, binding, schema anchor and explicit decoding gap without fabricated bytes or formats.">
+<meta name="description" content="Inspect captured Unreal render-graph passes, resources, parameter blocks, bindings and schema anchors. See which bytes the explorer can decode and which formats are unknown.">
 <title>Unreal frame explorer · Understanding Unreal</title>
 <link rel="stylesheet" href="assets/frame-explorer.css">
 <script src="assets/frame-codec.js" defer></script>
@@ -13,9 +13,9 @@
 <a class="skip-link" href="#main">Skip to explorer</a>
 <header class="site-header">
   <div class="site-header-text">
-    <p class="eyebrow">Unreal Engine 5 · captured computation</p>
+    <p class="eyebrow">Unreal Engine 5 GPU capture</p>
     <h1>Frame explorer</h1>
-    <p class="lede">Every captured pass, resource, parameter block, binding and gap. Raw bytes are read from the package on demand. Missing data is shown as missing, never as zero.</p>
+    <p class="lede">Select a pass to see its parameters and resource bindings, or select a resource to inspect its bytes. The explorer reads bytes on demand and marks gaps in the capture so you can distinguish a missing value from a recorded zero.</p>
   </div>
   <div class="header-actions">
     <a class="button-link" href="../index.html">Understanding Unreal</a>
@@ -32,7 +32,7 @@
   <section id="fatal-error" class="fatal" hidden aria-labelledby="fatal-title">
     <h2 id="fatal-title">The package could not be loaded</h2>
     <p id="fatal-message"></p>
-    <p>Expected a static package at <code>assets/lumen-frame/index.json</code>. The explorer does not invent records or bytes when that file is absent.</p>
+    <p>The explorer needs the package manifest at <code>assets/lumen-frame/index.json</code> to display records and read their bytes.</p>
     <p>Generate one from a captured DumpGPU directory with <code>python tools/package_frame.py build --input &lt;dump&gt; --output site/assets/lumen-frame --schema &lt;source-schema.json&gt;</code>.</p>
   </section>
 
@@ -83,7 +83,7 @@
             <h2 id="passes-heading">Passes</h2>
             <span id="pass-count" class="count-pill">0</span>
           </div>
-          <p class="list-note">Every captured pass. Search includes parameter member names.</p>
+          <p class="list-note">Search for a pass by name or by the name of a parameter member.</p>
           <ol id="pass-list" class="record-list" aria-live="off"></ol>
           <button type="button" class="more-button" id="pass-more" hidden>Show more passes</button>
         </section>
@@ -92,7 +92,7 @@
             <h2 id="resources-heading">Resources</h2>
             <span id="resource-count" class="count-pill">0</span>
           </div>
-          <p class="list-note">Every captured texture, buffer and unknown-kind resource.</p>
+          <p class="list-note">The list includes textures, buffers and resources whose type the capture did not record.</p>
           <ol id="resource-list" class="record-list" aria-live="off"></ol>
           <button type="button" class="more-button" id="resource-more" hidden>Show more resources</button>
         </section>
@@ -100,8 +100,8 @@
       <section class="detail-pane" id="detail" aria-label="Selected record detail" aria-live="polite">
         <div class="empty-detail">
           <h2>Select a pass or resource</h2>
-          <p>The detail view shows complete native metadata, producer/consumer links, views/mips/slices, schema joins, numeric probes and raw byte pages. Fetching is limited to the chunks that cover the requested range.</p>
-          <p class="muted">Nothing on this page is synthesized. If a field has no explicit format or offset basis, it stays raw and is counted as a gap.</p>
+          <p>Follow a resource from the pass that wrote it to the passes that read it. The detail view includes the native metadata, views, mips, slices and matching schema records. To inspect a number or page through raw bytes, it fetches only the chunks that contain the requested range.</p>
+          <p class="muted">If the capture omits a field’s format or the basis for its offset, the explorer shows the raw bytes and counts the field as a gap.</p>
         </div>
       </section>
     </div>
@@ -127,12 +127,12 @@
 </main>
 
 <footer class="site-footer">
-  <p>Static, dependency-free explorer. No CDN, analytics or installed frontend framework. <span id="footer-package"></span></p>
+  <p>This static viewer runs without a CDN or an installed frontend framework. It collects no analytics. <span id="footer-package"></span></p>
   <p><a data-package-file="inventory.json" href="assets/lumen-frame/inventory.json.gz">Download inventory.json.gz</a> · <a data-package-file="coverage.json" href="assets/lumen-frame/coverage.json.gz">Download coverage.json.gz</a> · <a data-package-file="capture.json" href="assets/lumen-frame/capture.json.gz">Download capture.json.gz</a></p>
 </footer>
 
 <noscript>
-  <p class="noscript">This explorer needs JavaScript to decode and lazily fetch raw chunks. The package JSON files and raw chunks remain downloadable without it.</p>
+  <p class="noscript">Enable JavaScript to fetch and decode individual chunks as you browse. You can also download the package JSON and raw chunks directly.</p>
 </noscript>
 </body>
 </html>

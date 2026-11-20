@@ -1,9 +1,9 @@
-# Sponza cache queries — surface cache and world radiance cache
+# Sponza cache queries: surface cache and world radiance cache
 
 Two CPU replays over the raw hero capture
 `D:\UnrealUnderstanding-Sponza\output\gpu-dump\raw\sponza-20261115-083654`.
 Both use the **presented scene graph**: 3 scene graphs + 1 Slate graph, presented
-graph index 3, pass pointers prefixed `0004` (passes 593–885). Camera
+graph index 3, pass pointers prefixed `0004` (passes 593-885). Camera
 `(-850, 0, 90) cm`, pitch 13°, HFOV 70°, ViewRect 1280×720. No GPU work, no
 engine changes, no repository writes outside this directory.
 
@@ -37,11 +37,11 @@ Frame 302`), pointer `00040000020bef0630a0`, parameters
 Radiosity combine that reads both lighting atlases and writes
 `Lumen.SceneFinalLighting`.
 
-Selected declared query (rule: mapped page, tile inside page, atlas inside
-4096², non-zero encoded albedo, non-emissive-dominated cached-pre-exposed
-final; prefer a floor-like card visible in the hero view, then a visible valid
-card with non-zero captured direct lighting, then lower-half visible cards, then
-luminance):
+Selected declared query. Selection rule: mapped page, tile inside page, atlas
+inside 4096², non-zero encoded albedo, non-emissive-dominated cached-pre-exposed
+final; of those, prefer a floor-like card visible in the hero view, then a
+visible valid card with non-zero captured direct lighting, then lower-half
+visible cards, then luminance.
 
 | Operand | Value |
 | --- | --- |
@@ -88,10 +88,10 @@ The tile check uses the captured `TargetFormatQuantizationError`
 `(0.015625, 0.015625, 0.03125)`, PCG16 seed `(atlasX, atlasY, StateFrameIndexMod8+2)`,
 and the captured output words.
 
-Independence from the primary-floor receiver decode in
+The surface query is independent of the primary-floor receiver decode in
 `D:\UnrealUnderstanding-Review\sponza-receivers`: receiver A at `(500,680)`
 decodes to world `(-19.718, -120.314, -2.005)`, while this card texel is
-`(570.143, -191.739, 405.944)` — a different surface, 590 cm away in X and 408 cm
+`(570.143, -191.739, 405.944)`, a different surface 590 cm away in X and 408 cm
 higher. The surface operands are Lumen card/page/atlas records, not the GBuffer
 or SceneDepth at `(500,680)`/`(720,680)`.
 
@@ -135,9 +135,9 @@ the cache atlas's `CachedLightingPreExposure` (1/16), so `cacheRadiance` is
 **un-pre-exposed** cached-lighting radiance. `LumenScreenProbeTracing.usf:851`
 then multiplies the trace result by `View.PreExposure` (1/2048) before the
 `TraceRadiance` store, so the forward model is **view-pre-exposed scene-linear**,
-not display-linear. The three spaces are kept distinct: stored cache atlas
-(cache-pre-exposed) → `cacheRadiance` (un-pre-exposed) → `TraceRadiance`
-(view-pre-exposed). The forward model is within the captured quantization
+not display-linear. The three spaces are kept distinct: the stored cache atlas
+is cache-pre-exposed, `cacheRadiance` is un-pre-exposed, and `TraceRadiance`
+is view-pre-exposed. The forward model is within the captured quantization
 tolerance on all three channels (`0.00102 ≤ 0.00349`, `0.00083 ≤ 0.00310`,
 `0.00013 ≤ 0.00525`). This is a forward consistency check, not an equality
 claim: the preceding GDF/voxel result, skylight leaking, height fog and final
@@ -190,7 +190,7 @@ atlas tile is `tile = (probeIndex & 127, probeIndex >> 7)`.
 
 ## Reproduction
 
-The published world-neighborhood preview places the two z planes in separate panels (564×276 pixels), retaining all eight tiles. The original exploratory preview overwrote one z plane with the other. The corrected generator records all eight distinct tile rectangles in `figures/world-cache-preview-metrics.json`, and the verifier checks their uniqueness, corner coverage, and PNG dimensions. Captured operands and replay results are unchanged. The captured quantized final texel (240,174,122), unlike the pre-store estimate above, converts to view-pre-exposed (1.875,1.359375,0.953125).
+The published world-neighborhood preview puts the two z planes in separate panels (564×276 pixels), so all eight tiles stay visible. The original exploratory preview overwrote one z plane with the other. The corrected generator records all eight distinct tile rectangles in `figures/world-cache-preview-metrics.json`, and the verifier checks their uniqueness, corner coverage, and PNG dimensions. Captured operands and replay results are unchanged. The captured quantized final texel (240,174,122), unlike the pre-store estimate above, converts to view-pre-exposed (1.875,1.359375,0.953125).
 
 ```powershell
 cd D:/UnrealUnderstanding-Tools/sponza-cache-queries
