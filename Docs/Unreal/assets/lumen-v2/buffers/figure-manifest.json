@@ -2939,11 +2939,11 @@
       },
       "channel_mapping": [
         "albedo: square(Target0.rgb), sRGB OETF",
-        "navy: not written by any current-frame CardPage pass"
+        "navy: outside current-frame CardPage writes"
       ],
       "invalid": {
         "rule": "outside current-frame CardPage rect union",
-        "semantics": "navy includes stale previous-frame bytes, not live data",
+        "semantics": "navy masks texels outside current writes, including stale bytes",
         "color": "#12183C",
         "source": "Semantics are stated in the figure notes and channel mapping; no sentinel is inferred."
       },
@@ -2985,7 +2985,7 @@
           "color": "#B4B4B4"
         },
         {
-          "label": "not written this frame (masked)",
+          "label": "outside this frame's writes",
           "color": "#12183C"
         },
         {
@@ -3004,8 +3004,8 @@
       },
       "vector_image": {
         "file": "svg/card-capture-atlas.svg",
-        "bytes": 14598,
-        "sha256": "46425e556780b5456c09d25d14077f4cd959ee5d9031bd0ce2dec0ab3d3e52c0",
+        "bytes": 14600,
+        "sha256": "e861249049d0659383a3b70393029b9b3bc41b4509bc39a0578f37339582bb55",
         "width": 640,
         "height": 898,
         "format": "SVG with embedded lossless PNG data",
@@ -3137,7 +3137,7 @@
       ],
       "invalid": {
         "rule": "outside exact pass rect OR Target1.a<=0.5",
-        "semantics": "navy is not this pass's live card data; black is a valid zero",
+        "semantics": "navy marks excluded texels and black marks a valid zero",
         "color": "#12183C",
         "source": "ClearCardCapture clears the card atlases; Target1.a is the source-proved valid flag (LumenCardBasePass.ush:146). A=0 is no card data, not black albedo."
       },
@@ -3255,24 +3255,24 @@
       ],
       "image": {
         "file": "png/card-capture-layers.png",
-        "bytes": 12705,
-        "sha256": "05ef1ce708b042d4b6aa1d11ba73dd6a57a235bd5d160b711390c7ea4d2b05bb",
+        "bytes": 12613,
+        "sha256": "199d9358e498ab01720110fdc50d70688758e476ae31369b905d9be00d669a2b",
         "width": 816,
-        "height": 1316,
+        "height": 1296,
         "mode": "RGB8",
         "pixel_text": "none; text is vector in the SVG"
       },
       "vector_image": {
         "file": "svg/card-capture-layers.svg",
-        "bytes": 27044,
-        "sha256": "f434cac7645d95ea40f97d968b30b0703bda876a53f2ac98c7979c90f8ac770e",
+        "bytes": 26544,
+        "sha256": "fa9d25e05e8f64810da3f5e08020dfe1a1e58745309c24e03d236b35d592b0f6",
         "width": 816,
-        "height": 1316,
+        "height": 1296,
         "format": "SVG with embedded lossless PNG data",
         "pixel_text": "none; all labels are SVG <text>",
         "text": {
           "is_vector": true,
-          "elements": 24,
+          "elements": 23,
           "min_font_px": 14,
           "max_font_px": 22,
           "title_lines": [
@@ -4071,7 +4071,7 @@
         "name": "WorldNormal",
         "units": "unit vector encoded 0..1",
         "domain": "world space",
-        "description": "RGB = normalized world-space normal * 0.5 + 0.5; not octahedral."
+        "description": "RGB = normalized world-space normal * 0.5 + 0.5 (signed components)."
       },
       "channel_mapping": [
         "R = 10-bit UNORM low bits",
@@ -4081,7 +4081,7 @@
       ],
       "invalid": {
         "rule": "packed word == 0",
-        "semantics": "cleared/background pixel; not a normal",
+        "semantics": "cleared or background pixel",
         "color": "#12183C",
         "source": "GBufferClear clears GBufferA to 0; EncodeGBuffer writes OutGBufferA=0 for the unlit/background branch (DeferredShadingCommon.ush:984-988). A zero packed word is not a valid normal."
       },
@@ -4137,8 +4137,8 @@
       },
       "vector_image": {
         "file": "svg/gbuffer-a-world-normal.svg",
-        "bytes": 31089,
-        "sha256": "74b6323cc70009675a4c22e864dfe6e1806127d790398558dc8e577f331fa7e6",
+        "bytes": 31021,
+        "sha256": "b6a58dc6f79d037b4da8f2830b75ff15fe295edb9c63df4f1ca5afce79cde7c6",
         "width": 1280,
         "height": 894,
         "format": "SVG with embedded lossless PNG data",
@@ -4254,7 +4254,7 @@
       ],
       "invalid": {
         "rule": "A byte == 0",
-        "semantics": "background/cleared; not a valid material value",
+        "semantics": "cleared material entry",
         "color": "#12183C",
         "source": "GBufferB is cleared to 0 by GBufferClear; valid material pixels have a non-zero packed shading-model byte (EncodeGBuffer, DeferredShadingCommon.ush:1007-1010)."
       },
@@ -4420,7 +4420,7 @@
       ],
       "invalid": {
         "rule": "A byte == 0",
-        "semantics": "background/cleared; not a valid material value",
+        "semantics": "cleared material entry",
         "color": "#12183C",
         "source": "GBufferB is cleared to 0 by GBufferClear; valid material pixels have a non-zero packed shading-model byte (EncodeGBuffer, DeferredShadingCommon.ush:1007-1010)."
       },
@@ -4579,14 +4579,14 @@
         "name": "SelectiveOutputMask",
         "units": "4-bit mask",
         "domain": "material",
-        "description": "EncodeShadingModelIdAndSelectiveOutputMask: high nibble = SelectiveOutputMask; individual engine mask bits are not re-derived here."
+        "description": "EncodeShadingModelIdAndSelectiveOutputMask: high nibble = SelectiveOutputMask; the figure groups the whole mask value."
       },
       "channel_mapping": [
         "PF_B8G8R8A8 byte 3 = packed shading model (low nibble) + selective output mask (high nibble)"
       ],
       "invalid": {
         "rule": "packed byte == 0",
-        "semantics": "background/cleared; not a valid shading-model value",
+        "semantics": "cleared shading-model entry",
         "color": "#12183C",
         "source": "GBufferB is cleared to 0 by GBufferClear; EncodeShadingModelIdAndSelectiveOutputMask produces 0 only for a zero shading model/mask, which is the cleared background here."
       },
@@ -4634,8 +4634,8 @@
       },
       "vector_image": {
         "file": "svg/gbuffer-b-selective-mask.svg",
-        "bytes": 18249,
-        "sha256": "26aa1c3eee1b3354712f3eb175eabf57a661709669321d209c2a1815ca07ca27",
+        "bytes": 18211,
+        "sha256": "250dd7f1213c61e9da3ee6a29f59e1320e980bd4de41dac5dc40344bbb30ec03",
         "width": 1280,
         "height": 894,
         "format": "SVG with embedded lossless PNG data",
@@ -4751,7 +4751,7 @@
       ],
       "invalid": {
         "rule": "packed byte == 0",
-        "semantics": "background/cleared; not a valid shading-model value",
+        "semantics": "cleared shading-model entry",
         "color": "#12183C",
         "source": "GBufferB is cleared to 0 by GBufferClear; EncodeShadingModelIdAndSelectiveOutputMask produces 0 only for a zero shading model/mask, which is the cleared background here."
       },
@@ -4799,8 +4799,8 @@
       },
       "vector_image": {
         "file": "svg/gbuffer-b-shading-model.svg",
-        "bytes": 18774,
-        "sha256": "babe91d8aa783e6ccb3278b8d9e146a71be31faca7d0a4b3deddd898060ebdad",
+        "bytes": 18762,
+        "sha256": "e3450bc21d6dbd9132687864fd2e49fda944a89436bfea19ab1df8e4d755384e",
         "width": 1280,
         "height": 914,
         "format": "SVG with embedded lossless PNG data",
@@ -4916,7 +4916,7 @@
       ],
       "invalid": {
         "rule": "A byte == 0",
-        "semantics": "background/cleared; not a valid material value",
+        "semantics": "cleared material entry",
         "color": "#12183C",
         "source": "GBufferB is cleared to 0 by GBufferClear; valid material pixels have a non-zero packed shading-model byte (EncodeGBuffer, DeferredShadingCommon.ush:1007-1010)."
       },
@@ -5081,7 +5081,7 @@
         "R = shader .r (memory byte 2)",
         "G = shader .g (memory byte 1)",
         "B = shader .b (memory byte 0)",
-        "A = GBufferAO / occlusion byte (not shown)"
+        "A = GBufferAO / occlusion byte (omitted from the display)"
       ],
       "invalid": {
         "rule": "RGB all zero",
@@ -5134,8 +5134,8 @@
       },
       "vector_image": {
         "file": "svg/gbuffer-c-basecolor.svg",
-        "bytes": 28651,
-        "sha256": "d96f9ca5a92da7c4af5e5739cb0d91b8cc7c9924d04b97635fe55a5c69900d00",
+        "bytes": 28587,
+        "sha256": "6a2318b3630f6f1091c7cc175e04714ff27f4bfecc434badd8917d53e0058c5a",
         "width": 1280,
         "height": 934,
         "format": "SVG with embedded lossless PNG data",
@@ -5309,8 +5309,8 @@
       },
       "vector_image": {
         "file": "svg/reflection-resolved-depth.svg",
-        "bytes": 53332,
-        "sha256": "6474bec006166f23d73bde79310860ec90ea09f7a09b04213e0ce63917cb6e1c",
+        "bytes": 53300,
+        "sha256": "c88c0c2541addf895881297ae6a4610a08adfd3062e955b24398344195314461",
         "width": 1280,
         "height": 920,
         "format": "SVG with embedded lossless PNG data",
@@ -5429,7 +5429,7 @@
       ],
       "invalid": {
         "rule": "exact INVALID_LIGHTING triple",
-        "semantics": "invalid/empty reflection tile, not radiance=0",
+        "semantics": "invalid or empty reflection tile",
         "color": "#FF00FF",
         "source": "StochasticLightingCommon.ush:189-193 defines INVALID_LIGHTING = half3(65024,65024,64512) and IsLightingValid = !all(V == INVALID_LIGHTING); LumenReflectionResolve.usf:111-112 writes it for missing lighting. Valid zero is a different value."
       },
@@ -5496,24 +5496,24 @@
       ],
       "image": {
         "file": "png/reflection-resolved-radiance.png",
-        "bytes": 27784,
-        "sha256": "ceb045b9bc9c35dbf217da1ff29866bc5f053b02ade15e4ecaf384946bd4571d",
+        "bytes": 27623,
+        "sha256": "d4854d5be572fc0d0440644dd7b95476519baad98a08c28faaeb3cadf451d877",
         "width": 1280,
-        "height": 960,
+        "height": 940,
         "mode": "RGB8",
         "pixel_text": "none; text is vector in the SVG"
       },
       "vector_image": {
         "file": "svg/reflection-resolved-radiance.svg",
-        "bytes": 42104,
-        "sha256": "eb868d6d03301bd02909f8b7b7bed9e111907d9bba44f0a6a7537467b6481ee6",
+        "bytes": 41539,
+        "sha256": "b4d4901c90756d18c3bb8c0eaf34becc1763917486c12f2c9ee34886b4a06843",
         "width": 1280,
-        "height": 960,
+        "height": 940,
         "format": "SVG with embedded lossless PNG data",
         "pixel_text": "none; all labels are SVG <text>",
         "text": {
           "is_vector": true,
-          "elements": 11,
+          "elements": 10,
           "min_font_px": 14,
           "max_font_px": 22,
           "title_lines": [
@@ -5617,13 +5617,13 @@
         "name": "ReflectionTraceHit",
         "units": "Unreal units (cm); sign = hit/miss",
         "domain": "reflection ray texels",
-        "description": "Signed ray distance from LumenReflectionTracing; not a depth buffer."
+        "description": "Signed distance along the ray from LumenReflectionTracing."
       },
       "channel_mapping": [
         "R = PF_R16F signed ray distance (negative = hit, positive = miss)"
       ],
       "invalid": {
-        "rule": "value +0 and not negative-zero",
+        "rule": "positive zero (sign bit clear)",
         "semantics": "unused/cleared trace tile",
         "color": "#12183C",
         "source": "LumenReflectionCommon.ush:89-99: negative = hit, positive = miss; +0 is cleared/unused. Sign is preserved bit-exactly; |distance| < 0.1 cm is categorical unused/self-intersection, not a heat value."
@@ -5681,8 +5681,8 @@
       },
       "vector_image": {
         "file": "svg/reflection-trace-hit.svg",
-        "bytes": 115315,
-        "sha256": "7f4a2a40d28742d770a1e417605d144e5cc522f2d6489924e79683422238c5f8",
+        "bytes": 115329,
+        "sha256": "523fa419832437a2472babf867b5fa6fa848ec5593c9ba0e7b5bfbc21cc9c907",
         "width": 1280,
         "height": 940,
         "format": "SVG with embedded lossless PNG data",
@@ -5800,7 +5800,7 @@
       ],
       "invalid": {
         "rule": "TraceHit +0 / non-finite",
-        "semantics": "unused trace tile, not zero radiance",
+        "semantics": "unused trace tile",
         "color": "#12183C",
         "source": "LumenReflectionCommon.ush:89-99: EncodeRayDistance = HitDistance * (-1 if hit else +1); +0 is the cleared/unused tile. INVALID_LIGHTING = (65024,65024,64512) from StochasticLightingCommon.ush:189-193. |distance| < 0.1 cm is treated as a cleared/self-intersection trace, not a radiance measurement."
       },
@@ -5842,7 +5842,7 @@
           "color": "#C8AA78"
         },
         {
-          "label": "unused trace tile (hit=+0, radiance is not a measurement)",
+          "label": "unused trace tile (hit=+0)",
           "color": "#12183C"
         },
         {
@@ -5869,8 +5869,8 @@
       },
       "vector_image": {
         "file": "svg/reflection-trace-radiance.svg",
-        "bytes": 94799,
-        "sha256": "415fb3641aea84cce45a0712094a027f0a1c0fb8eb61f461653ea233f6217db8",
+        "bytes": 94713,
+        "sha256": "80a97d1ddfb5cc5274aace3f48a54936da77071c884f0f2c31e8d23e343507a6",
         "width": 1280,
         "height": 986,
         "format": "SVG with embedded lossless PNG data",
@@ -5984,7 +5984,7 @@
       },
       "channel_mapping": [
         "R/G/B = half-float linear radiance",
-        "A decoded but not used for display"
+        "A decoded and omitted from display"
       ],
       "invalid": {
         "rule": "non-finite",
@@ -6269,8 +6269,8 @@
       },
       "vector_image": {
         "file": "svg/scene-color-before-after.svg",
-        "bytes": 423957,
-        "sha256": "bf409014b9f440069a37b89493b02b12ce0e41f90c21a94cf01c16cd499fff77",
+        "bytes": 423951,
+        "sha256": "1d716a42383fb1748aec136cc0561b048c7678c0890b9a244a1841b5e20d2769",
         "width": 1280,
         "height": 596,
         "format": "SVG with embedded lossless PNG data",
@@ -6387,7 +6387,7 @@
       },
       "channel_mapping": [
         "R/G/B = half-float linear radiance",
-        "A decoded but not used for display"
+        "A decoded and omitted from display"
       ],
       "invalid": {
         "rule": "non-finite",
@@ -6632,8 +6632,8 @@
       },
       "vector_image": {
         "file": "svg/scene-depth-device-z.svg",
-        "bytes": 28600,
-        "sha256": "c57b35f0aa541c416635ab74dc9e88a3487f33d1d077cc6012ce065897213b0b",
+        "bytes": 28474,
+        "sha256": "421b29fde0c9d6c7ecfbfbb60ebe759fcb109a7545b100ee55119bfa849c4e00",
         "width": 1280,
         "height": 914,
         "format": "SVG with embedded lossless PNG data",
@@ -6812,8 +6812,8 @@
       },
       "vector_image": {
         "file": "svg/scene-depth-linear-view.svg",
-        "bytes": 29189,
-        "sha256": "bc60694c02de6d470bf5756c0c3ff584805e33d35211a41de54b53e623f309db",
+        "bytes": 29079,
+        "sha256": "0c3c252a0e7650082da2745237c3215d5594a1409dfd30fa64299a17df6ca38b",
         "width": 1280,
         "height": 934,
         "format": "SVG with embedded lossless PNG data",
@@ -6972,8 +6972,8 @@
       },
       "vector_image": {
         "file": "svg/scene-stencil.svg",
-        "bytes": 7987,
-        "sha256": "267e2ec22c73f4bf2d308af6f418cea005db7eaf99a31fa3d18038c2827c1d9d",
+        "bytes": 7949,
+        "sha256": "b7c498bab186c10ed2e0fbfaa1bbea6a1631c302c4bfecfae64479db8645935d",
         "width": 1280,
         "height": 894,
         "format": "SVG with embedded lossless PNG data",
@@ -7091,7 +7091,7 @@
       ],
       "invalid": {
         "rule": "exact INVALID_LIGHTING triple",
-        "semantics": "invalid tile, not zero",
+        "semantics": "invalid tile",
         "color": "#FF00FF",
         "source": "The screen-probe temporal path uses the same INVALID_LIGHTING triple (LumenScreenProbeGatherTemporal.usf:19); the exact triple is categorical invalid, not zero irradiance."
       },
@@ -7280,7 +7280,7 @@
       ],
       "invalid": {
         "rule": "exact INVALID_LIGHTING triple",
-        "semantics": "invalid probe texel, not radiance=0",
+        "semantics": "invalid probe texel",
         "color": "#FF00FF",
         "source": "StochasticLightingCommon.ush:189-193 INVALID_LIGHTING = (65024,65024,64512); exact triple is categorical invalid, not radiance=0."
       },
@@ -7351,8 +7351,8 @@
       },
       "vector_image": {
         "file": "svg/screen-probe-filtered-radiance.svg",
-        "bytes": 406460,
-        "sha256": "893750860f3252de5e9142e92e4990530730f0df8011a081418805b6f60fc4f5",
+        "bytes": 406386,
+        "sha256": "1f57baf61cf27cfa885d89b54dfebf82d33a30c199577af5cc065236d19a52b6",
         "width": 656,
         "height": 984,
         "format": "SVG with embedded lossless PNG data",
@@ -7514,24 +7514,24 @@
       ],
       "image": {
         "file": "png/screen-probe-hit-distance.png",
-        "bytes": 96443,
-        "sha256": "f56798f369c51c595d9741e0bdc53a90bfd65d38fd8baaa147c7a7022d23b832",
+        "bytes": 96365,
+        "sha256": "a644f81869824187c8c225e87a4ecd568e1b0820536b4f7338f1b61e50fa67dd",
         "width": 656,
-        "height": 998,
+        "height": 978,
         "mode": "RGB8",
         "pixel_text": "none; text is vector in the SVG"
       },
       "vector_image": {
         "file": "svg/screen-probe-hit-distance.svg",
-        "bytes": 134051,
-        "sha256": "42c8a5e8bab52d8103e43ebaeace4831c0c3d3113504a8279d93a53776de9b72",
+        "bytes": 133566,
+        "sha256": "4ec82ace67fa0d7b945ada8cd0e900f65b67992c207d65d3313e0047852fb7d8",
         "width": 656,
-        "height": 998,
+        "height": 978,
         "format": "SVG with embedded lossless PNG data",
         "pixel_text": "none; all labels are SVG <text>",
         "text": {
           "is_vector": true,
-          "elements": 13,
+          "elements": 12,
           "min_font_px": 14,
           "max_font_px": 22,
           "title_lines": [
@@ -7641,7 +7641,7 @@
       ],
       "invalid": {
         "rule": "value < 0, > 1, or non-finite",
-        "semantics": "out of the source-proved normalized PDF range; categorical, not clamped",
+        "semantics": "out of the source-proved normalized PDF range; displayed by category",
         "color": "#FF00FF",
         "source": "The PDF is a half-float importance-sampling value; negative and non-finite halves occur in unused/accumulation texels. They are marked invalid, not clamped into the PDF."
       },
@@ -7697,24 +7697,24 @@
       ],
       "image": {
         "file": "png/screen-probe-lighting-pdf.png",
-        "bytes": 292609,
-        "sha256": "4b0283908d6d23bcaa1cdaead2a7539505c9e4a50c943f1e60055db1c16847b0",
+        "bytes": 292516,
+        "sha256": "9ca0c508a54588c87be0740822b647f6fcbc168c3cd038d4bccf110a3ec487f5",
         "width": 656,
-        "height": 1090,
+        "height": 1070,
         "mode": "RGB8",
         "pixel_text": "none; text is vector in the SVG"
       },
       "vector_image": {
         "file": "svg/screen-probe-lighting-pdf.svg",
-        "bytes": 397154,
-        "sha256": "62bf82f4e17c9194969d41cf679e891c9ec80385ec067db7d880d6d920011f98",
+        "bytes": 396622,
+        "sha256": "358988b8ef9206d57e2bb17a97f59c0bc4f92912a3a011403c156211996be400",
         "width": 656,
-        "height": 1090,
+        "height": 1070,
         "format": "SVG with embedded lossless PNG data",
         "pixel_text": "none; all labels are SVG <text>",
         "text": {
           "is_vector": true,
-          "elements": 17,
+          "elements": 16,
           "min_font_px": 14,
           "max_font_px": 22,
           "title_lines": [
@@ -7824,7 +7824,7 @@
       ],
       "invalid": {
         "rule": "exact INVALID_LIGHTING triple",
-        "semantics": "invalid probe texel, not radiance=0",
+        "semantics": "invalid probe texel",
         "color": "#FF00FF",
         "source": "StochasticLightingCommon.ush:189-193 INVALID_LIGHTING = (65024,65024,64512); exact triple is categorical invalid, not radiance=0 (LumenScreenProbeGatherTemporal.usf:19)."
       },
@@ -7895,8 +7895,8 @@
       },
       "vector_image": {
         "file": "svg/screen-probe-radiance.svg",
-        "bytes": 336584,
-        "sha256": "6fd5ffa5019e8f2ec197f8b8a1cd574adec4c2c465f509a81da1462d150b0918",
+        "bytes": 336518,
+        "sha256": "e6d5954fd1004f5f76c4b397d1a1a7fb0c4a0f445f6632c68fe9813cb793e11b",
         "width": 656,
         "height": 984,
         "format": "SVG with embedded lossless PNG data",
@@ -8014,7 +8014,7 @@
       ],
       "invalid": {
         "rule": "exact INVALID_LIGHTING triple",
-        "semantics": "invalid tile, not zero",
+        "semantics": "invalid tile",
         "color": "#FF00FF",
         "source": "The screen-probe temporal path uses the same INVALID_LIGHTING triple (LumenScreenProbeGatherTemporal.usf:19); the exact triple is categorical invalid, not zero radiance."
       },
@@ -8258,8 +8258,8 @@
       },
       "vector_image": {
         "file": "svg/screen-probe-scene-depth.svg",
-        "bytes": 14450,
-        "sha256": "be1f9236feb9ce0ad9cfcffb182087ae643bf8d553b50645fa25cd616ca91ce1",
+        "bytes": 14328,
+        "sha256": "dedfc23e0f7e250c29b5e842c38ef16f4c48a6c6402c193f68f716f972d3d414",
         "width": 656,
         "height": 798,
         "format": "SVG with embedded lossless PNG data",
@@ -8437,24 +8437,24 @@
       ],
       "image": {
         "file": "png/screen-probe-trace-hit.png",
-        "bytes": 237782,
-        "sha256": "463eb7ed966973959cfb43a9cade95dcfcbc9ea3fc439b96dda24edebbdb27e7",
+        "bytes": 237691,
+        "sha256": "ad591253062f7a8ed9c7e3b5fd1a6963c6ec4b857650c3e5e081ced6ccc00171",
         "width": 656,
-        "height": 990,
+        "height": 970,
         "mode": "RGB8",
         "pixel_text": "none; text is vector in the SVG"
       },
       "vector_image": {
         "file": "svg/screen-probe-trace-hit.svg",
-        "bytes": 322036,
-        "sha256": "babc2028a722a80dc02dad02b93797412256667e65d371af6cad804a67dfa363",
+        "bytes": 321593,
+        "sha256": "f6e6172c1ecd5e664e99afcc0c7a31c52d4194460aa2ea8d71ac3bec83076560",
         "width": 656,
-        "height": 990,
+        "height": 970,
         "format": "SVG with embedded lossless PNG data",
         "pixel_text": "none; all labels are SVG <text>",
         "text": {
           "is_vector": true,
-          "elements": 12,
+          "elements": 11,
           "min_font_px": 14,
           "max_font_px": 22,
           "title_lines": [
@@ -8565,7 +8565,7 @@
       ],
       "invalid": {
         "rule": "probe scene depth <= 0",
-        "semantics": "invalid probe; normal is not a direction",
+        "semantics": "invalid probe with stale normal bytes",
         "color": "#FF00FF",
         "source": "Probe validity is the same scene-depth test (LumenScreenProbeCommon.ush:92); stale normal bytes of invalid probes are not decoded as a direction."
       },
@@ -8619,8 +8619,8 @@
       },
       "vector_image": {
         "file": "svg/screen-probe-world-normal.svg",
-        "bytes": 14959,
-        "sha256": "107d41fa893e8b5fad2bea4ad3fa0faa0c77075cde9dcf5b0648b6ddf789c97e",
+        "bytes": 14883,
+        "sha256": "9fdffa42eae2a312a7e0aabf8aee7d077a4a1b3bf4da3fd8ee576348706eaa29",
         "width": 656,
         "height": 818,
         "format": "SVG with embedded lossless PNG data",
@@ -8741,7 +8741,7 @@
       ],
       "invalid": {
         "rule": "scene: unmapped Lumen.PageBuffer page; resampled: outside exact current-frame CardPage rects; black is valid zero",
-        "semantics": "navy is not data; black is a valid zero",
+        "semantics": "navy marks excluded texels and black marks a valid zero",
         "color": "#12183C",
         "source": "Unallocated surface-cache pages are cleared to 0; validity is taken from the corresponding Lumen.SceneAlbedo page. Navy = no page, black = valid zero lighting."
       },
@@ -8870,24 +8870,24 @@
       ],
       "image": {
         "file": "png/surface-cache-lighting.png",
-        "bytes": 100808,
-        "sha256": "6fa595fd0aedf15bc234379e20d76c77a0a199ce53bd093d8b56b93e36581c75",
+        "bytes": 100689,
+        "sha256": "a7ef88dbbecbe72aadc1eff8b04887826ed0bc11e46348a4dbb2cf78fe6b498a",
         "width": 1120,
-        "height": 1186,
+        "height": 1166,
         "mode": "RGB8",
         "pixel_text": "none; text is vector in the SVG"
       },
       "vector_image": {
         "file": "svg/surface-cache-lighting.svg",
-        "bytes": 142734,
-        "sha256": "90b6f877cb8dedaaa83f04fc5f35be3ccd622f717fe5abf5b00fafa4b1c95e1c",
+        "bytes": 142218,
+        "sha256": "3c158a557acb4780eba942686f83e03fee708114f0cca78f6d4d7a1fd8815194",
         "width": 1120,
-        "height": 1186,
+        "height": 1166,
         "format": "SVG with embedded lossless PNG data",
         "pixel_text": "none; all labels are SVG <text>",
         "text": {
           "is_vector": true,
-          "elements": 19,
+          "elements": 18,
           "min_font_px": 14,
           "max_font_px": 22,
           "title_lines": [
@@ -10011,7 +10011,7 @@
       ],
       "invalid": {
         "rule": "unmapped Lumen.CardPageData page (SizeInTexels.x==0) is masked navy; depth value 1.0 is invalid blue",
-        "semantics": "navy is no mapped page, not a valid zero",
+        "semantics": "navy marks an unmapped page",
         "color": "#12183C",
         "source": "Unallocated surface-cache pages are cleared to 0; Lumen.SceneAlbedo all-zero is the empty-page marker. Validity is taken from the albedo page, not guessed from normal/emissive alpha."
       },
@@ -10136,8 +10136,8 @@
       },
       "vector_image": {
         "file": "svg/surface-cache-material-layers.svg",
-        "bytes": 26175,
-        "sha256": "bf88be6aa6cbe342455551005377a14470509b55558c193d03c202b9465b8f60",
+        "bytes": 26123,
+        "sha256": "ded5a09c09ffbf84abec6cf3d209f90ea3b14150daba41036347a9895f924d13",
         "width": 1120,
         "height": 1044,
         "format": "SVG with embedded lossless PNG data",
@@ -11386,8 +11386,8 @@
       },
       "vector_image": {
         "file": "svg/vsm-maskbits-nibbles.svg",
-        "bytes": 18723,
-        "sha256": "7b58edf584f95a88927299fd38c8499c956d4fc31f57fc2a15fd318fa02ac8cb",
+        "bytes": 18695,
+        "sha256": "9cd57f684585e02657fee385d69a341c561bd3264c1c3ebf8fa4628d9bc641d4",
         "width": 1280,
         "height": 1002,
         "format": "SVG with embedded lossless PNG data",
@@ -11497,7 +11497,7 @@
         "name": "Shadow.Virtual.PageTable",
         "units": "packed virtual page state",
         "domain": "VSM page table",
-        "description": "Packed page table mapping and flags, not physical page contents."
+        "description": "Packed page-table mapping and flags."
       },
       "channel_mapping": [
         "bits 0..9 physical X",
@@ -11579,8 +11579,8 @@
       },
       "vector_image": {
         "file": "svg/vsm-page-table-state.svg",
-        "bytes": 13893,
-        "sha256": "d202089b24766366b5f57d0cea864635f2b6f438096054afe7337f1b0c1c779a",
+        "bytes": 13821,
+        "sha256": "3b6fcff1630d5d31bdea7c5d2a19842d710cc7a1910a9bfbd9eb008de19392b3",
         "width": 1280,
         "height": 562,
         "format": "SVG with embedded lossless PNG data",
@@ -11691,7 +11691,7 @@
         "name": "RadianceProbeIndirection",
         "units": "packed uint32 (probe index + adaptive count)",
         "domain": "world radiance cache clipmaps",
-        "description": "Probe indirection page state, not radiance."
+        "description": "Probe indirection page state."
       },
       "channel_mapping": [
         "low 16 bits = ProbeIndex",
@@ -11851,7 +11851,7 @@
     {
       "item": "Lumen screen-probe interpolation weights",
       "reason": "NotStoredAsAResource",
-      "evidence": "The 4-probe bilinear/plane weights are computed inside ScreenProbeIntegrateCS from depth/normal/depth weights and are not a dumped RDG resource. The PDF and hit-distance inputs are included."
+      "evidence": "The 4-probe bilinear/plane weights are computed inside ScreenProbeIntegrateCS from depth/normal/depth weights and remain local to the shader. The PDF and hit-distance inputs are included."
     },
     {
       "item": "GBufferE / GBufferVelocity",

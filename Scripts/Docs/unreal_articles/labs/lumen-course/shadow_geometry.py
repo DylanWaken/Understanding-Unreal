@@ -52,7 +52,7 @@ def shadow_geometry(Drawing):
     projection = d.finish()
 
     d = Drawing('An off-screen caster can shadow a visible receiver',
-                'A point light and an intervening caster both lie outside the primary camera frustum, yet the caster blocks the light connection to a visible surface point. Visible receiver demand does not restrict casters to camera-visible geometry.')
+                'A point light and an intervening caster both lie outside the primary camera frustum, yet the caster blocks the light connection to a visible surface point.')
     d.poly([(600, 510), (450, 110), (1050, 110)], blue, '#142840')
     d.text(695, 155, 'camera-visible region', 22, blue)
     # The light-to-receiver segment intersects the caster at (400,239.66).

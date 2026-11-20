@@ -190,9 +190,9 @@ class SVG:
 
     def badge(self, x, y):
         self.rect(x, y, 252, 22, fill=WASH, stroke=GOLD, rx=4)
-        self.text(x + 10, y + 16, 'SCHEMATIC · NOT CAPTURED GEOMETRY', 11, GOLD, True)
+        self.text(x + 10, y + 16, 'SCHEMATIC', 11, GOLD, True)
 
-    def footer(self, note='Schematic diagram. Not captured geometry and not a dump of GPU sample directions.'):
+    def footer(self, note='Schematic of the sampling geometry.'):
         self.line(36, self.height - 44, self.width - 36, self.height - 44, RULE, 1)
         self.text(36, self.height - 20, note, 13, MUTED)
         self.parts.append('</g></svg>')
@@ -306,7 +306,7 @@ def surface_patch(s, x, y, w, h, label, color=GREEN):
 def solid_angle() -> SVG:
     s = SVG(
         'Projected area becomes solid angle; a sample is a cone',
-        'A 2D side view maps a small patch at y to a projected solid angle at x. A 3D view shows the same patch as a cone on the sphere. Area measure, solid-angle measure, and the two cosine factors stay distinct. Schematic; one patch and one direction, not captured geometry.',
+        'A 2D side view maps a small patch at y to a projected solid angle at x. A 3D view shows the same patch as a cone on the sphere. Area measure, solid-angle measure, and the two cosine factors stay distinct. The schematic follows one patch and one direction.',
         1100, 760, subtitle='One patch, two measures: area dA and projected solid angle dσ. The cosines belong to different endpoints.',
     )
     surface_patch(s, 36, 104, 500, 404, '2D side view · one differential patch')
@@ -365,7 +365,7 @@ def solid_angle() -> SVG:
     s.line(cx, cy, q1[0], q1[1], BLUE, 1.5, dash=True)
     s.line(cx, cy, q3[0], q3[1], BLUE, 1.5, dash=True)
     # hemisphere labels
-    s.text(640, 420, 'The cone is a set of directions, not a surface point.', 15, MUTED)
+    s.text(640, 420, 'The cone contains every direction that reaches the patch.', 15, MUTED)
     s.formula(640, 441, 'projected solid angle weights by |n_x · ω|', 390, 34, size=14)
 
     # Bottom: three distinct measures.
@@ -379,7 +379,7 @@ def solid_angle() -> SVG:
         s.text(x + 16, 560, title, 18, GREEN, True)
         for i, line in enumerate(lines):
             s.text(x + 16, 590 + i * 24, line, 14, INK)
-    s.footer('Schematic. One patch, one direction. The matched Lumen/path-traced pair is a convergence comparison, not a sample dump.')
+    s.footer('Use the matched Lumen and path-traced renders to compare the integrated result.')
     return s
 
 
@@ -414,8 +414,8 @@ def sampling_mis() -> SVG:
     s.line(310, 304, 118, 350, BLUE, 3, arrow=True)
     s.circle(118, 350, 4, BLUE)
     s.text(176, 366, 'BSDF sample · p_B', 14, BLUE, True)
-    s.text(70, 486, 'Both arrows estimate the same direct contribution F at x;', 14, MUTED)
-    s.text(70, 505, 'the two proposals are not two different physical paths.', 14, MUTED)
+    s.text(70, 486, 'Both arrows estimate the same direct contribution F at x.', 14, MUTED)
+    s.text(70, 505, 'Their sampling densities differ.', 14, MUTED)
     s.formula(70, 418, 'C = β f_s(x;ω→ω_o) L_e(y→x) V |n_x·ω| / p', 436, 34, size=13)
     # 3D inset: the same two directions on the hemisphere at x.
     cx, cy = 482, 194
@@ -466,20 +466,20 @@ def sampling_mis() -> SVG:
     s.line(790, 474, 852, 474, BLUE, 2, arrow=True)
     s.formula(858, 414, '∫ F dσ', 170, 34, size=16)
     s.text(858, 472, 'w_L + w_B = 1', 15, GOLD, True)
-    s.text(604, 500, 'zero support ⇒ zero weight; a delta branch carries mass, not a density.', 12, MUTED)
+    s.text(604, 500, 'Zero support gives zero weight. A delta branch carries probability mass.', 12, MUTED)
 
     # Bottom notes
     rows = [
         (36, 'Common measure', ['p_L and p_B must both be solid-angle densities', 'at the same receiver and for the same emitter']),
         (390, 'Support', ['more samples cannot repair a technique with zero support', 'MIS only combines what each sampler can generate']),
-        (744, 'Delta events', ['a mirror direction is not a finite density', 'use its branch mass, not a huge p_B value']),
+        (744, 'Delta events', ['a mirror selects one direction', 'weight by its branch probability']),
     ]
     for x, title, lines in rows:
         s.rect(x, 532, 320, 152, fill=PALE)
         s.text(x + 16, 560, title, 18, GREEN, True)
         for i, line in enumerate(lines):
             s.text(x + 16, 590 + i * 24, line, 13, INK)
-    s.footer('Schematic. The real convergence comparison is the matched Lumen path-traced pair; these arrows are not captured sample directions.')
+    s.footer('The arrows illustrate the two proposals. For convergence, compare the matched Lumen and path-traced images.')
     return s
 
 
@@ -544,7 +544,7 @@ def surface_cache_lookup() -> SVG:
     s.text(ax, ay - 8, 'physical atlas (one page shown)', 13, BLUE, True)
     s.line(930, 212, 904, 244, BLUE, 2, arrow=True)
     s.text(178, 246, 'mapped fallback', 12, MUTED)
-    s.text(646, 354, 'A zero mapped X resolution is invalid, not black lighting.', 12, MUTED)
+    s.text(646, 354, 'Zero mapped X resolution marks an invalid entry.', 12, MUTED)
 
     # Taps + formula.
     surface_patch(s, 620, 386, 444, 166, '2D · four taps, depth validity, one value', BLUE)
@@ -556,8 +556,8 @@ def surface_cache_lookup() -> SVG:
         s.rect(x, y, 46, 46, fill=(WASH if color == GREEN else PAPER), stroke=color, rx=2, width=1.5)
         s.text(x + 23, y + 28, w, 15, color, True, anchor='middle', mono=True)
     s.text(tx + 128, ty + 20, 'β_i · depth validity v_i', 13, INK, True)
-    s.text(tx + 128, ty + 42, 'invalid texels contribute 0 to w_i,', 12, MUTED)
-    s.text(tx + 128, ty + 60, 'not a valid black radiance.', 12, MUTED)
+    s.text(tx + 128, ty + 42, 'An invalid texel has zero weight.', 12, MUTED)
+    s.text(tx + 128, ty + 60, 'A valid black texel can still carry weight.', 12, MUTED)
     s.formula(128 + tx, ty + 76, 'L = Σ w_i L_i / Σ w_i / e_c', 238, 30, size=12)
 
     # Chain across bottom.
@@ -574,7 +574,7 @@ def surface_cache_lookup() -> SVG:
         x += w + 14
     s.text(54, 688, 'Schematic simplifies to one card and four taps. The replay resolves card page 35 at 8×8 texels.', 12, MUTED)
     s.text(54, 706, 'Atlas coordinate (1067, 4); bilinear weights (1, 0, 0, 0); unrelated pages are omitted.', 12, MUTED)
-    s.footer('Schematic. Real atlas is 4096² and sparse; the diagram draws one page and omits unrelated pages. Not captured geometry.')
+    s.footer('The schematic follows one page of the sparse 4096² atlas.')
     return s
 
 
@@ -585,7 +585,7 @@ def screen_probe_angular() -> SVG:
     s = SVG(
         'Screen probes: a square direction map and a compacted ray list',
         'A screen-space probe grid is reconstructed at pixels; each probe traces an equal-area square direction map and fallback stages run on a compacted list of remaining misses. Schematic; the real probe, PDF and trace buffers are captured separately.',
-        1100, 780, subtitle='The trace atlas keeps every probe; fallback reads only the compacted misses. A cell is a cone, not a blur.',
+        1100, 780, subtitle='The trace atlas keeps every probe. Fallback reads the compacted misses. Each cell covers an angular region.',
     )
     surface_patch(s, 36, 104, 330, 404, '2D · screen grid and nearest probes')
     # screen rectangle and probe grid
@@ -638,7 +638,7 @@ def screen_probe_angular() -> SVG:
     s.text(hitx + 8, hity - 8, 'ω', 14, GOLD, True)
     s.line(ox + side + 4, oy + side / 2, cx + 76, cy + 20, MUTED, 2, arrow=True)
     s.text(ox + 10, oy + side + 22, 'each cell has solid angle 4π/N²', 12, MUTED)
-    s.text(ox + 10, oy + side + 42, 'a jittered cell is a cone, not one exact direction', 12, MUTED)
+    s.text(ox + 10, oy + side + 42, 'a ray samples a direction within the cell', 12, MUTED)
 
     surface_patch(s, 744, 104, 320, 404, '2D · compacted misses feed fallback', GOLD)
     # trace atlas 8x8 with H/M
@@ -669,7 +669,7 @@ def screen_probe_angular() -> SVG:
     # Bottom: formulas and cautions.
     items = [
         (36, 'Direction', ['ω = P_oct⁻¹(u, v)', 'square cell → sphere direction', 'one direction per trace texel']),
-        (286, 'Cone', ['α = acos(1 − 1/N²)', 'used by SDF cone tracing', 'not a screen-space blur radius']),
+        (286, 'Cone', ['α = acos(1 − 1/N²)', 'used by SDF cone tracing', 'angular footprint at the probe']),
         (536, 'PDF', ['jittered cell: N²/(4π) inside', 'uniform cell choice: 1/(4π)', 'cell-center: quadrature weight 4π/N²']),
         (786, 'What to inspect', ['trace hit flag and distance', 'PDF is a separate normalized buffer', 'radiance atlas is sampled directions']),
     ]
@@ -678,7 +678,7 @@ def screen_probe_angular() -> SVG:
         s.text(x + 14, 560, title, 16, GREEN, True)
         for i, line in enumerate(lines):
             s.text(x + 14, 588 + i * 23, line, 12, INK)
-    s.footer('Schematic. Real 8×8 trace directions and 6×6 irradiance maps are captured buffers; this diagram does not draw their stochastic samples.')
+    s.footer('See the captured 8×8 trace and 6×6 irradiance maps for the native buffer layouts.')
     return s
 
 
@@ -738,7 +738,7 @@ def radiance_cache() -> SVG:
     s.text(880, oy + 18, 'final map 34×34 with border', 12, MUTED)
     s.text(880, oy + 48, 'one cell → a cone', 12, MUTED)
     s.text(880, oy + 70, 'cone α = acos(1 − 1/N²)', 12, MUTED)
-    s.text(706, oy + side + 22, 'Sampling is not one exact ray at the cell center.', 12, MUTED)
+    s.text(706, oy + side + 22, 'A ray can land away from its cell center.', 12, MUTED)
 
     # Eight probes -> radiance.
     surface_patch(s, 660, 384, 404, 184, '2D · eight neighbors become one value', GOLD)
@@ -770,8 +770,8 @@ def radiance_cache() -> SVG:
 # ---------------------------------------------------------------------------
 def temporal_history() -> SVG:
     s = SVG(
-        'Reproject the previous sample; reject what does not correspond',
-        'A current pixel is reprojected into the previous frame and tested against a 2x2 depth footprint and normal. Accepted history is exposure-corrected and blended by a count-dependent alpha; rejected history is not used. A 3D inset shows a disocclusion. Schematic; the real history buffers and validity masks are separate captures.',
+        'Reprojecting a sample and testing its history',
+        'A current pixel is reprojected into the previous frame and tested against a 2x2 depth footprint and normal. Only valid history enters the blend, after exposure correction and with a count-dependent weight. A 3D inset shows a disocclusion. Schematic; the real history buffers and validity masks are separate captures.',
         1100, 792, subtitle='Reprojection gives a candidate; depth, normal and validity decide whether it is usable history.',
     )
     surface_patch(s, 36, 104, 430, 456, '2D · reproject into the previous frame', BLUE)
@@ -800,7 +800,7 @@ def temporal_history() -> SVG:
     s.text(90, 320, 'depth Δ ≤ threshold', 12, MUTED)
     s.text(90, 340, 'normal dot ≥ cos(45°)', 12, MUTED)
     s.text(90, 450, 'Accepted taps are exposure-corrected before blending.', 12, MUTED)
-    s.text(90, 474, 'A rejected tap is not zero radiance; it is no usable history.', 12, RED)
+    s.text(90, 474, 'A rejected tap contributes zero weight to history.', 12, RED)
 
     surface_patch(s, 480, 104, 300, 456, '2D · count-dependent blend', GOLD)
     steps = [
@@ -842,13 +842,13 @@ def temporal_history() -> SVG:
     s.text(858, 222, 'same plane', 11, GREEN)
     s.line(882, 232, 920, 232, GREEN, 2, dash=True, arrow=True)
     s.text(900, 212, 'accept', 11, GREEN)
-    s.text(806, 490, 'History is correlated reconstruction state,', 12, MUTED)
-    s.text(806, 512, 'not another independent Monte Carlo sample.', 12, MUTED)
+    s.text(806, 490, 'History carries estimates from earlier frames.', 12, MUTED)
+    s.text(806, 512, 'Repeated use can correlate successive estimates.', 12, MUTED)
 
     # Bottom notes.
     rows = [
         (36, 'What is rejected', ['depth difference above the relative threshold', 'normal dot below the normal threshold', 'invalid current sample changes the blend']),
-        (390, 'What is retained', ['the reprojected coordinate and 2×2 taps', 'the previous count and exposure ratio', 'the validity mask, not just a color']),
+        (390, 'What is retained', ['the reprojected coordinate and 2×2 taps', 'the previous count and exposure ratio', 'the validity mask for each tap']),
         (744, 'What to inspect', ['validity mask and previous count', 'exposure correction and clamp bounds', 'alpha and the effective history length']),
     ]
     for x, title, lines in rows:
@@ -866,8 +866,8 @@ def temporal_history() -> SVG:
 def deferred_direct_cached() -> SVG:
     s = SVG(
         'One visible point, two lighting owners',
-        'A deferred G-buffer supplies the primary surface; direct lights evaluate one path family and Lumen cached lighting supplies another. A 3D view separates direct light at x from light bounced through a secondary point y. Schematic; not a captured G-buffer or a measured pass cost.',
-        1100, 760, subtitle='Direct light at x and cached indirect light through y are different path families, not duplicate terms.',
+        'A deferred G-buffer supplies the primary surface; direct lights evaluate one path family and Lumen cached lighting supplies another. A 3D view separates direct light at x from light bounced through a secondary point y.',
+        1100, 760, subtitle='Direct light reaches x from the source. The cached path bounces at y first.',
     )
     surface_patch(s, 36, 104, 520, 424, '2D · primary G-buffer and two owners', GREEN)
     layers = [
@@ -891,7 +891,7 @@ def deferred_direct_cached() -> SVG:
     s.text(384, 334, 'cached secondary', 11, MUTED)
     s.formula(66, 414, 'L_o(x) = L_e + (ρ/π)(E_direct(x) + E_indirect(x))', 466, 30, size=12)
     s.formula(66, 450, 'E_indirect(x) = ∫ (ρ(y)/π) E_direct(y) G dA(y)', 466, 30, size=12)
-    s.text(66, 504, 'Different path families: do not subtract cached direct at y', 12, RED)
+    s.text(66, 504, 'Keep light that reaches x after bouncing at y.', 12, RED)
     s.text(66, 520, 'as if it duplicated the direct pass at x.', 12, RED)
 
     surface_patch(s, 580, 104, 484, 424, '3D · direct at x versus indirect through y', BLUE)
@@ -921,7 +921,7 @@ def deferred_direct_cached() -> SVG:
 
     # Bottom GBuffer triplet note.
     s.rect(36, 552, 1028, 152, fill=WASH, stroke=RULE, rx=8)
-    s.text(54, 580, 'The GBuffer triplet is an input, not the lighting result', 17, GREEN, True)
+    s.text(54, 580, 'Material inputs from the GBuffer', 17, GREEN, True)
     items = [
         ('metallic', 'selects F0 / metal workflow'),
         ('roughness', 'shapes the specular lobe width'),
@@ -932,7 +932,7 @@ def deferred_direct_cached() -> SVG:
         s.chip(x, 600, title, RED, width=142, size=12)
         s.text(x, 646, note, 12, INK)
     s.text(54, 686, 'Inspect the captured metallic, roughness and specular channel views together; they parameterize f_s, while the lighting integral is evaluated later.', 12, MUTED)
-    s.footer('Schematic. The actual channel views and pass identities are in the captured GBuffer figures; this is not a captured G-buffer.')
+    s.footer('See the captured GBuffer figures for the individual material channels and their producer passes.')
     return s
 
 
@@ -1055,14 +1055,14 @@ def build_cpu_reference():
 
     payload = base64.b64encode(clean_png).decode('ascii')
     s = SVG(
-        'Educational CPU reference · not an Unreal capture',
-        'This is the original educational CPU path tracer rendered from the checked-in linear PFM. The burned-in bitmap footer is removed; the caption below is native SVG text. It is NOT an Unreal scene, NOT an Unreal capture, and NOT the matched path-traced reference.',
+        'Educational CPU path tracer',
+        'The educational CPU path tracer rendered this scene. The image comes from the checked-in linear PFM, with an SVG caption replacing the original bitmap footer.',
         760, 640, badge=False, header=False, schematic=False,
     )
     s.rect(24, 20, 342, 24, fill='#f8e9e5', stroke=RED, rx=4)
     s.text(34, 37, 'EDUCATIONAL CPU REFERENCE', 12, RED, True)
     s.rect(378, 20, 358, 24, fill='#f8e9e5', stroke=RED, rx=4)
-    s.text(388, 37, 'NOT AN UNREAL CAPTURE', 12, RED, True)
+    s.text(388, 37, 'STANDALONE CPU RENDER', 12, RED, True)
     s.text(24, 78, 'Educational CPU reference', 26, INK, True)
     s.text(24, 104, f'seed {SEED} · {SPP} spp · max depth {MAX_DEPTH} · exposure {EXPOSURE}', 16, MUTED)
     s.rect(92, 122, 576, 412, fill=WASH, stroke=RULE, rx=6, width=1.5)
@@ -1072,10 +1072,10 @@ def build_cpu_reference():
     )
     s.rect(100, 130, 560, 400, fill='none', stroke=INK, rx=0, width=1)
     s.text(24, 552, 'Image: reference_linear.pfm → path_tracer.py tone map at exposure 0.6.', 11, MUTED)
-    s.text(24, 570, 'PFM rows reversed bottom-up → top-down; the original PNG footer is not included.', 11, MUTED)
+    s.text(24, 570, 'The linear PFM is stored bottom-up. Its rows are reversed for display.', 11, MUTED)
     s.text(24, 588, f'Image region checked against original PNG rows 0–{compared - 1}; footer rows {compared}–{height - 1}.', 11, MUTED)
-    s.text(24, 606, 'Lambertian-only CPU scene; the tall right block is deliberately diffuse, not the Unreal glossy block.', 11, MUTED)
-    s.text(24, 624, 'NOT Unreal. NOT a substitute for the matched Lumen / path-traced reference pair.', 11, RED, True)
+    s.text(24, 606, 'This CPU scene uses Lambertian materials throughout, including the tall block on the right.', 11, MUTED)
+    s.text(24, 624, 'For the Unreal comparison, use the matched Lumen and path-traced renders.', 11, RED, True)
     s.parts.append('</g></svg>')
     return s.render(), {
         'pfm_sha256': sha256_file(PFM),
@@ -1094,7 +1094,7 @@ def build_cpu_reference():
 CONCEPTS = [
     dict(slug='solid-angle-sampling', builder=solid_angle,
          placement='lumen.html, #path-geometry, after the M09–M10 projected-solid-angle paragraph',
-         evidence='Adjacent matched Lumen/path-traced image pair (also discussed in §08) is a convergence/path comparison, not a sample-direction dump.'),
+         evidence='Adjacent matched Lumen/path-traced image pair (also discussed in §08) compares convergence and visible path contributions.'),
     dict(slug='sampling-mis', builder=sampling_mis,
          placement='lumen.html, #sampling-and-mis, after the M29 MIS partition proof',
          evidence='M27 selected NEE sample (0.159154943) and M28 power-heuristic weights; no new numeric claim.'),

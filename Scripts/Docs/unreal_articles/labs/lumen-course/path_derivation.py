@@ -53,14 +53,14 @@ def path_derivation(Drawing):
     d.line(370, 265, 428, 265, muted, 3, True)
     d.line(770, 265, 828, 265, muted, 3, True)
     d.text(600, 457, 'Multiply by the BSDF:   βnew = βold × fₛ × cₓ / pσ', 29, fg, 'middle')
-    d.text(600, 514, 'A farther patch is hit less often. Its successful sample does not pay falloff twice.', 22, muted, 'middle')
+    d.text(600, 514, 'Distance reduces the chance of hitting the patch. The geometry factor cancels in the hit weight.', 22, muted, 'middle')
     output['path-density.svg'] = d.finish()
 
     d = Drawing('Different proposals, one measured integral',
                 'A two-cell example: the target integral has cell contributions 0.8 and '
                 '0.2. Light sampling has probabilities 0.9 and 0.1; BSDF sampling 0.2 '
-                'and 0.8; a half-and-half mixture 0.55 and 0.45. All rows sum to one, '
-                'but the first row is the target, not a sampling distribution.')
+                'and 0.8; a half-and-half mixture 0.55 and 0.45. All rows sum to one. '
+                'The first gives the target contributions. The others give sampling probabilities.')
     d.text(40, 105, 'Blue: cell 1     Green: cell 2     Target contributions and probabilities are distinct.', 22, muted)
     for y, title, left, right in [(160, 'Target contribution', .8, .2),
                                  (245, 'Light probability', .9, .1),

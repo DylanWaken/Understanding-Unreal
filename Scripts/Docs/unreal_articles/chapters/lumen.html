@@ -1,9 +1,9 @@
 <p>Light leaves the ceiling emitter, bounces off the colored walls and objects, and reaches the camera. A surface path tracer samples those paths directly. Lumen has a fixed budget per frame, so it stores lighting in forms that many queries can reuse. The path tracer gives us a reference as we follow data through an Unreal frame and examine what each representation approximates.</p>
 <p>The argument has three parts: <a href="#light-quantities">the path integral and a working renderer</a>; <a href="#lumen-approximation">the mathematical approximation and its cost</a>; and <a href="#deferred-frame">deferred shading, shadows, and the complete Lumen pipeline</a>. The scene comparisons are actual Unreal renders; the smaller CPU reference is labeled separately. Numerical inspection of the resources supplies what a colored atlas cannot: an address, PDF, history weight, or invalid bit.</p>
-<p>The mathematical reference is stationary, unpolarized geometric optics in vacuum, with opaque surfaces unless an extension is explicitly introduced. Those assumptions limit the reference problem; they do not describe every feature of Unreal Engine.</p>
+<p>The mathematical reference is stationary, unpolarized geometric optics in vacuum, with opaque surfaces unless an extension is explicitly introduced.</p>
 <p>The path notation follows the light-to-sensor convention of Eric Veach's thesis. In particular, the arrow in the three-point notation follows <strong>light</strong>, even in a sensor-response expression: \(W_e^{(j)}(x\to x&#x27;)\) is importance emitted from the sensor at \(x&#x27;\) toward \(x\). Veach defines this explicitly in §8.1, printed pp. 220–222. The derivations and numerical examples below are original explanations using that convention. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, full thesis</a></p><section class="chapter" id="light-quantities">
 <h2>Part I · Fix the quantities before tracing a ray</h2>
-<p>Let \(\mathcal M\) be the union of <strong>all</strong> participating surface domains, including emitters and the sensor. An emitter can also scatter light; it is not removed from \(\mathcal M\). The emitted-radiance function \(L_e\) is zero where there is no emission, and the sensor response \(W_e^{(j)}\) is zero outside the sensor domain for measurement \(j\).</p>
+<p>Let \(\mathcal M\) be the union of <strong>all</strong> participating surface domains, including emitters and the sensor. An emitter remains part of \(\mathcal M\) and can also scatter light. The emitted-radiance function \(L_e\) is zero where there is no emission, and the sensor response \(W_e^{(j)}\) is zero outside the sensor domain for measurement \(j\).</p>
 <div class="table-scroll"><table class="data-table">
 <thead>
 <tr>
@@ -62,7 +62,7 @@
 </tr>
 <tr>
 <td>\(\beta\)</td>
-<td>Running camera-path weight; not a radiance buffer.</td>
+<td>Running weight along the camera path.</td>
 </tr>
 </tbody>
 </table></div>
@@ -99,20 +99,20 @@ L_o(x,\omega_o)=L_e(x,\omega_o)+
 \int_{S^2}f_s(x;\omega_i\to\omega_o)L_i(x,\omega_i)\,d\sigma_x^\perp(\omega_i).
 \tag{M05}
 \]
-<p>For an opaque one-sided reflector, \(f_s\) is zero on unsupported direction pairs, so the integral reduces to the incident hemisphere. The sphere notation also accommodates transmission when its BSDF and medium conventions have been specified. Absolute cosines by themselves do not make a one-sided material two-sided.</p>
+<p>For an opaque one-sided reflector, \(f_s\) is zero on unsupported direction pairs, so the integral reduces to the incident hemisphere. The sphere notation also accommodates transmission when its BSDF and medium conventions have been specified. The material determines which hemisphere it supports even when the cosine appears inside an absolute value.</p>
 <p>In vacuum, radiance remains constant along an unobstructed ray. If \(y\) is the first intersection from \(x\) in direction \(\omega_i\), then</p>
 \[
 L_i(x,\omega_i)=L_o(y,-\omega_i).
 \tag{M06}
 \]
-<p>There is no inverse-square factor in (M06). Inverse-square dilution appears when a finite source area is converted into the solid angle it occupies, not when evaluating radiance along one ray. A miss returns the environment radiance. For the surface-only derivation, an environment can be represented by an enclosing emitting boundary and a limiting construction; practical code uses a separate directional endpoint.</p>
+<p>There is no inverse-square factor in (M06). Inverse-square dilution comes from converting a finite source area to the solid angle it occupies. Radiance along each unobstructed ray stays constant. A miss returns the environment radiance. For the surface-only derivation, an environment can be represented by an enclosing emitting boundary and a limiting construction; practical code uses a separate directional endpoint.</p>
 <p>For a Lambertian reflector with reflectance \(\rho\), \(f_s=\rho/\pi\). Under a prescribed constant incident radiance \(L_0\),</p>
 \[
 L_o-L_e=\frac{\rho}{\pi}\int_{H^2}L_0\cos\theta\,d\sigma=\rho L_0.
 \tag{M07}
 \]
-<p>For \(\rho=0.8\) and \(L_0=2\), the reflected radiance is exactly \(1.6\ \mathrm{W\,m^{-2}\,sr^{-1}}\). This is a local constant-environment check. It does not assert that an arbitrary enclosed interreflection scene has the same incident field.</p>
-<h3>The normal used by the material is not the geometric normal</h3>
+<p>For \(\rho=0.8\) and \(L_0=2\), the reflected radiance is exactly \(1.6\ \mathrm{W\,m^{-2}\,sr^{-1}}\). This is a local constant-environment check. In an enclosed scene, interreflection can change the incident field.</p>
+<h3>Geometric and shading normals</h3>
 <p>Surface area, visibility, and the solid-angle Jacobian depend on \(\mathbf n_g\). A normal map changes the angular scattering model. Suppose a renderer wants a reciprocal local shading-frame function \(b_s\) multiplied by \(|\mathbf n_s\cdot\omega_i|\). It can express that convention using the geometric measure in (M05) by defining an effective radiance BSDF</p>
 \[
 f_s^{\rm eff}(\omega_i\to\omega_o)=
@@ -120,7 +120,7 @@ b_s(\omega_i\to\omega_o)
 \frac{|\mathbf n_s\cdot\omega_i|}{|\mathbf n_g\cdot\omega_i|},
 \tag{M08}
 \]
-<p>on valid direction pairs with nonzero denominator. The product \(f_s^{\rm eff}|\mathbf n_g\cdot\omega_i|\) then reproduces the intended shading cosine. This is an algebraic description of a shading-normal convention, <strong>not</strong> a proof that the resulting model conserves energy. Geometric-hemisphere tests and grazing-angle handling still matter; normal mapping can break reciprocity and energy conservation.</p>
+<p>on valid direction pairs with nonzero denominator. The product \(f_s^{\rm eff}|\mathbf n_g\cdot\omega_i|\) then reproduces the intended shading cosine. This algebra specifies the shading-normal convention. Energy conservation requires a separate check. Geometric-hemisphere tests and grazing-angle handling still matter; normal mapping can break reciprocity and energy conservation.</p>
 <p>A camera path solves outgoing radiance toward the camera. At a surface with known camera-side direction \(\omega_o\), it samples a new light-side direction \(\omega_i\) and evaluates \(f_s(\omega_i\to\omega_o)\). Keep the BSDF directions in this order <strong>even when sampling the path backwards</strong>. The complementary light-tracing formulation needs the adjoint operator when it transports importance through nonsymmetric scattering. One must state the transported quantity and measure before applying a correction; the blanket instruction “camera tracing uses the adjoint BSDF” is unsafe. Veach's discussion of shading normals and adjoint transport is in chapters 4–5. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapters 4–5</a></p>
 </section>
 <section class="chapter" id="path-geometry">
@@ -140,11 +140,11 @@ G(x\leftrightarrow y)=V(x\leftrightarrow y)
 \]
 <p>For visible surface elements, \(d\sigma_x^\perp=G(x\leftrightarrow y)dA(y)\). Extending the integration over all scene surfaces requires the visibility factor to avoid counting surfaces behind the first intersection.</p>
 <div class="concept-comparison" id="concept-solid-angle">
-<figure id="diagram-solid-angle" class="concept-diagram"><img src="assets/lumen-reading/diagrams/solid-angle-sampling.svg" width="1100" height="760" loading="lazy" alt="Schematic: a 2D side view maps a patch area to projected solid angle, and a 3D sphere shows the same patch as a cone. The receiver and target cosines are labelled separately."><figcaption><strong>Schematic: area and projected solid angle.</strong> The left panel is a 2D side view of one receiving point x and one target patch y; the right panel is a 3D view of the same patch as a cone on the sphere. Inspect which cosine belongs to which endpoint: <code>dσ = |n_y · (−ω)| dA / r²</code> is the target-area projection, while <code>dσ_x⊥ = |n_x · ω| dσ</code> is the receiver cosine. The two do not collapse into one generic cosine. This diagram is one patch and one direction; the real renders contain many stochastic paths and different geometry.</figcaption></figure>
-<p class="evidence-note"><strong>What to inspect in the real pair.</strong> The two actual Unreal renders below are the matched pair discussed in §08. They are convergence and path comparisons, not dumps of sample directions. They can show the integral's visible result, including soft indirect gradients and finite-sample structure, but not the schematic's individual cone arrows. The replay data later in the essay supplies the exact cache quantities; this diagram only fixes the measure they use.</p>
+<figure id="diagram-solid-angle" class="concept-diagram"><img src="assets/lumen-reading/diagrams/solid-angle-sampling.svg" width="1100" height="760" loading="lazy" alt="Schematic: a 2D side view maps a patch area to projected solid angle, and a 3D sphere shows the same patch as a cone. The receiver and target cosines are labelled separately."><figcaption><strong>Schematic: area and projected solid angle.</strong> The left panel is a 2D side view of one receiving point x and one target patch y; the right panel is a 3D view of the same patch as a cone on the sphere. Inspect which cosine belongs to which endpoint: <code>dσ = |n_y · (−ω)| dA / r²</code> is the target-area projection, while <code>dσ_x⊥ = |n_x · ω| dσ</code> is the receiver cosine. Keep the geometric and shading cosines distinct. This diagram is one patch and one direction; the real renders contain many stochastic paths and different geometry.</figcaption></figure>
+<p class="evidence-note"><strong>What to inspect in the real pair.</strong> The two actual Unreal renders below are the matched pair discussed in §08. The images compare paths and convergence. Individual sample directions would require a trace log. Look for soft indirect gradients and finite-sample noise in the image. The individual cone arrows belong to the schematic. The replay data later in the essay supplies the exact cache quantities; this diagram only fixes the measure they use.</p>
 <div class="buffer-grid" id="solid-angle-convergence-pair">
-<figure><a href="assets/lumen-v2/lumen-lit.png"><img src="assets/lumen-v2/lumen-lit.png" width="1280" height="720" loading="lazy" alt="Actual Unreal Engine Lumen rendering of the controlled room"></a><figcaption><strong>Actual Lumen render.</strong> Same scene and camera as the path-traced comparison. Display-referred; this is a convergence/path comparison, not a sample-direction dump.</figcaption></figure>
-<figure><a href="assets/lumen-v2/pathtracer-1024spp-8bounces.png"><img src="assets/lumen-v2/pathtracer-1024spp-8bounces.png" width="1280" height="720" loading="lazy" alt="Actual Unreal path-traced rendering of the identical controlled room at 1024 samples per pixel"></a><figcaption><strong>Actual Unreal path tracer, 1,024 spp, eight bounces.</strong> The finite samples and finite depth remain approximations to the integral. This is not a cache trace and not a dump of sample directions.</figcaption></figure>
+<figure><a href="assets/lumen-v2/lumen-lit.png"><img src="assets/lumen-v2/lumen-lit.png" width="1280" height="720" loading="lazy" alt="Actual Unreal Engine Lumen rendering of the controlled room"></a><figcaption><strong>Actual Lumen render.</strong> Same scene and camera as the path-traced comparison. Display-referred comparison of paths and convergence.</figcaption></figure>
+<figure><a href="assets/lumen-v2/pathtracer-1024spp-8bounces.png"><img src="assets/lumen-v2/pathtracer-1024spp-8bounces.png" width="1280" height="720" loading="lazy" alt="Actual Unreal path-traced rendering of the identical controlled room at 1024 samples per pixel"></a><figcaption><strong>Actual Unreal path tracer, 1,024 spp, eight bounces.</strong> The finite samples and finite depth remain approximations to the integral. The image shows the final visible result.</figcaption></figure>
 </div>
 </div>
 <p>Writing the BSDF at \(x\) as \(f_s(y\to x\to z)\) gives the three-point equation</p>
@@ -179,7 +179,7 @@ L=L_e+TL.
 L=L_e+TL_e+T^2L_e+\cdots.
 \tag{M15}
 \]
-<p>Each application of \(T\) adds one scattering event. A sufficient convergence condition is \(\|T\|&lt;1\) in a suitable norm. Absorption and escape can provide it; an enclosed, perfectly reflecting system with continuously injected energy need not have a finite steady solution. Convergence assumptions are part of the model, not a consequence of writing an infinite sum.</p>
+<p>Each application of \(T\) adds one scattering event. A sufficient convergence condition is \(\|T\|&lt;1\) in a suitable norm. Absorption or escape can supply the energy loss. Continuous emission in a closed, perfectly reflecting system can prevent a finite steady solution. The infinite sum requires explicit assumptions for convergence.</p>
 <p>Insert (M15) into (M12). For \(\bar x=(x_0,\ldots,x_k)\), set</p>
 \[
 \begin{aligned}
@@ -191,17 +191,17 @@ d\mu_k(\bar x)={}&amp;dA(x_0)\cdots dA(x_k).
 \end{aligned}
 \tag{M16}
 \]
-<p>The empty BSDF product for \(k=1\) is 1. That term is emission seen directly by the sensor. \(k=2\) has one scattering event, and \(k=3\) has two. The sensor is not counted as a material-scattering event here.</p>
+<p>The empty BSDF product for \(k=1\) is 1. That term is emission seen directly by the sensor. \(k=2\) has one scattering event, and \(k=3\) has two. We count scattering only at material interactions.</p>
 <p>Let \(\Omega\) be the disjoint union of the \(\Omega_k\), and define \(\mu(D)=\sum_k\mu_k(D\cap\Omega_k)\). The final expression is</p>
 \[
 I_j=\sum_{k=1}^{\infty}\int_{\Omega_k}f_j(\bar x)\,d\mu_k(\bar x)
 =\int_\Omega f_j(\bar x)\,d\mu(\bar x).
 \tag{M17}
 \]
-<p>This is a reorganization of the rendering equation, not a new physical model. It exposes every factor that a renderer can approximate: emission, geometry and visibility, scattering, and sensor response. The ordering and contribution-function construction correspond to Veach §8.2. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapter 8</a></p>
-<p>The dimensions also provide a check. Ignoring the dimensionless SI angle unit, \(L_e\) contributes \(\mathrm{W/m^2}\), the \(k\) geometric factors contribute \(\mathrm{m^{-2k}}\), and the area measure contributes \(\mathrm{m^{2(k+1)}}\); their product is watts. \(W_e^{(j)}\) converts that power to the desired measurement unit. Its units are a chosen sensor convention, not universally inverse watts. If steradians are retained as bookkeeping labels, each angular integration supplies the angle factor that its BSDF density requires.</p>
+<p>This rearranges the same rendering equation. It exposes every factor that a renderer can approximate: emission, geometry and visibility, scattering, and sensor response. The ordering and contribution-function construction correspond to Veach §8.2. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapter 8</a></p>
+<p>The dimensions also provide a check. Ignoring the dimensionless SI angle unit, \(L_e\) contributes \(\mathrm{W/m^2}\), the \(k\) geometric factors contribute \(\mathrm{m^{-2k}}\), and the area measure contributes \(\mathrm{m^{2(k+1)}}\); their product is watts. \(W_e^{(j)}\) converts that power to the desired measurement unit. The sensor convention determines its units. If steradians are retained as bookkeeping labels, each angular integration supplies the angle factor that its BSDF density requires.</p>
 <h3>Singular paths require their own measures</h3>
-<p>The ordinary area-product expression is simplest for finite-area endpoints and nonsingular scattering. A pinhole camera, point light, or ideal mirror introduces a delta constraint. A delta is not an enormous finite BSDF or a tiny area with an arbitrary PDF. It is a different measure component, with probability mass or a constrained sampling map.</p>
+<p>The ordinary area-product expression is simplest for finite-area endpoints and nonsingular scattering. A pinhole camera, point light, or ideal mirror introduces a delta constraint. Model a delta event with discrete mass on its constraint. Finite BSDF values and ordinary area PDFs describe regular events. It is a different measure component, with probability mass or a constrained sampling map.</p>
 <p>A camera tracer can sample a glossy or diffuse receiver, follow a specular reflection, and hit a <strong>finite-area</strong> emitter with nonzero probability. Therefore “camera path tracing cannot render caustics” is too broad. A configuration requiring a continuously sampled direction to hit a mathematical point emitter after an exact specular constraint can instead have zero probability under that sampler. The practical test is support: can this sampler generate the contributing family under its appropriate measure? Specialized connections, bidirectional methods, or manifold methods can expand support; more samples cannot repair exactly zero support.</p>
 </section>
 <section class="chapter" id="monte-carlo">
@@ -213,7 +213,7 @@ I_j=\sum_{k=1}^{\infty}\int_{\Omega_k}f_j(\bar x)\,d\mu_k(\bar x)
 \tag{M18}
 \]
 <p>Its expectation is \(I_j\) because integrating \(f_j/p\) against \(p\,d\mu\) cancels the sampling density. This requires integrability and sampling support wherever the contribution is nonzero, up to measure-zero sets. Finite variance is an additional requirement for the usual variance-over-\(N\) error formula. Independence is convenient for that variance formula; unbiasedness follows from the expectation of each correctly weighted sample.</p>
-<p>If complete paths are sampled by first choosing length \(k\), the length PMF is part of \(p\). A practical path tracer instead reuses one random walk to estimate contributions at several lengths. Linearity of expectation permits this reuse; those contributions need not be independent.</p>
+<p>If complete paths are sampled by first choosing length \(k\), the length PMF is part of \(p\). A practical path tracer instead reuses one random walk to estimate contributions at several lengths. Linearity of expectation allows reuse even when the contributions are correlated.</p>
 <p>At a surface \(x\), fix the outgoing direction \(\omega_o\) toward the already constructed camera subpath. Sample the incident direction from a solid-angle density \(p_\sigma(\omega_i\mid x,\omega_o)\). Equation (M05) yields the throughput update</p>
 \[
 \beta_{\rm next}=\beta\,
@@ -227,21 +227,21 @@ p_A(y\mid x)=p_\sigma(\omega_{xy}\mid x)\,
 \frac{|\mathbf n_g(y)\cdot(-\omega_{xy})|}{\|y-x\|^2}.
 \tag{M20}
 \]
-<p>In \(f_j/p\), the target cosine and inverse-square factor in \(G\) cancel those in (M20), leaving precisely the receiving cosine in (M19). This cancellation explains why an ordinary ray-path loop does not explicitly multiply \(1/r^2\) at every bounce.</p>
+<p>In \(f_j/p\), the target cosine and inverse-square factor in \(G\) cancel those in (M20), leaving precisely the receiving cosine in (M19). The change of measure already accounts for \(1/r^2\) in an ordinary ray-path loop.</p>
 <p>Cosine sampling is obtained from \(u,v\) uniform on \([0,1)^2\):</p>
 \[
 \omega_i=\left(\sqrt u\cos(2\pi v),\sqrt u\sin(2\pi v),\sqrt{1-u}\right),
 \qquad p_\sigma(\omega_i)=\frac{\cos\theta}{\pi}.
 \tag{M21}
 \]
-<p>Rotate this local direction into the surface frame. For Lambertian scattering with matching normals, (M19) simplifies to \(\beta_{\rm next}=\beta\rho\). In the constant-environment example, every sample returns \(0.8\times2=1.6\); the local directional estimator has zero variance. A visible emitter occupying a small part of the hemisphere is a different integrand and will not have zero variance.</p>
+<p>Rotate this local direction into the surface frame. For Lambertian scattering with matching normals, (M19) simplifies to \(\beta_{\rm next}=\beta\rho\). In the constant-environment example, every sample returns \(0.8\times2=1.6\); the local directional estimator has zero variance. When the emitter covers only a small part of the hemisphere, some samples miss it and the variance becomes nonzero.</p>
 <h3>What does a unit-weight pinhole ray measure?</h3>
 <p>A physical sensor integrates optical power over aperture, pixel area, wavelength, and time. Its weighting belongs in \(W_e^{(j)}\). A common teaching renderer deliberately uses a simpler normalized measurement:</p>
 \[
 \overline I_j=\frac1{|P_j|}\int_{P_j}L_{\rm ray}(u,v)\,du\,dv,
 \tag{M22}
 \]
-<p>where \(P_j\) is the pixel's film-coordinate footprint and \(L_{\rm ray}\) is radiance arriving along its pinhole ray. Uniform subpixel sampling then permits \(\beta=1\). The camera position is conditioned on; it is not assigned a finite ordinary area PDF. This specialization avoids dividing by a fictitious pinhole area.</p>
+<p>where \(P_j\) is the pixel's film-coordinate footprint and \(L_{\rm ray}\) is radiance arriving along its pinhole ray. Uniform subpixel sampling then permits \(\beta=1\). We condition on the fixed camera position. This specialization avoids dividing by a fictitious pinhole area.</p>
 <p>For a vertical field of view \(\theta_v\), aspect \(a=W/H\), camera forward \(\mathbf f\), right \(\mathbf r\), and up \(\mathbf u\), a jittered pixel \((i,j)\) gives</p>
 \[
 \begin{aligned}
@@ -251,8 +251,8 @@ s_y&amp;=\left(1-2\frac{j+\xi_y}{H}\right)\tan(\theta_v/2),\\
 \end{aligned}
 \tag{M23}
 \]
-<p>Each pixel must include its own \(i,j\); sampling \(\xi_x,\xi_y\) over the entire image for every pixel produces an image of the scene's average rather than a camera image. In a right-handed convention, \(\mathbf r=\operatorname{normalize}(\mathbf f\times\mathbf u_{world})\) and \(\mathbf u=\mathbf r\times\mathbf f\).</p>
-<p>To see why (M22) is not automatically physical sensor irradiance, consider a small planar aperture of area \(A_l\), parallel to a film at axial distance \(f\). At film angle \(\theta\), its solid angle is approximately \(A_l\cos\theta/r^2\). Multiplying by the film receiving cosine and using \(r=f/\cos\theta\) gives</p>
+<p>Include the pixel coordinates \(i,j\) when using \(\xi_x,\xi_y\). Sampling the entire image for each pixel would give every pixel the same scene-wide average in expectation. In a right-handed convention, \(\mathbf r=\operatorname{normalize}(\mathbf f\times\mathbf u_{world})\) and \(\mathbf u=\mathbf r\times\mathbf f\).</p>
+<p>To relate (M22) to physical sensor irradiance, consider a small planar aperture of area \(A_l\), parallel to a film at axial distance \(f\). At film angle \(\theta\), its solid angle is approximately \(A_l\cos\theta/r^2\). Multiplying by the film receiving cosine and using \(r=f/\cos\theta\) gives</p>
 \[
 E_{film}\simeq L\frac{A_l}{f^2}\cos^4\theta.
 \tag{M24}
@@ -280,7 +280,7 @@ C_L=\beta\,
 C_L=\frac{(0.8/\pi)10}{16}=\frac1{2\pi}=0.159154943.
 \tag{M27}
 \]
-<p>This is one sample's contribution, not the exact integral over the finite emitter. Other sampled points have different distance and cosines. If this same light is selected with probability \(1/2\) among two lights, its selected-sample value doubles; it is selected half as often. Omitting \(P_\ell\) changes the expected result.</p>
+<p>This is one sample’s estimate of the finite-emitter integral. Other sampled points have different distance and cosines. If this same light is selected with probability \(1/2\) among two lights, its selected-sample value doubles; it is selected half as often. Omitting \(P_\ell\) changes the expected result.</p>
 <p>The BSDF continuation can also hit this emitter. Adding both complete direct-light estimates doubles the same path family. Multiple importance sampling combines them. For one light sample and one BSDF sample, a useful choice is the power heuristic</p>
 \[
 w_L(\omega)=\frac{p_L(\omega)^2}{p_L(\omega)^2+p_B(\omega)^2},
@@ -296,28 +296,28 @@ w_B(X_B)\frac{F(X_B)}{p_B(X_B)}\right]
 =\int(w_L+w_B)F\,d\sigma=\int F\,d\sigma.
 \tag{M29}
 \]
-<p>The weights partition the contribution: where a technique has zero support its weight must be zero, and where only one technique can generate the path its weight is one. MIS is described in Veach chapter 9; the exponent-two choice here is one instance, not the only valid combination. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapter 9</a></p>
+<p>The weights partition the contribution: where a technique has zero support its weight must be zero, and where only one technique can generate the path its weight is one. Veach’s chapter 9 describes MIS. Here we use exponent two. <a href="https://graphics.stanford.edu/papers/veach_thesis/thesis.pdf">Veach, chapter 9</a></p>
 <div class="concept-comparison" id="concept-sampling-mis">
 <figure id="diagram-sampling-mis" class="concept-diagram"><img src="assets/lumen-reading/diagrams/sampling-mis.svg" width="1100" height="760" loading="lazy" alt="Schematic: a 2D receiver and emitter with a light-sampling connection and a BSDF continuation, a density plot with two overlapping proposals, and the power-heuristic estimator."><figcaption><strong>Schematic: two proposals for one contribution.</strong> The plan view shows a light connection and a BSDF continuation reaching the same emitter from x; the density plot shows where both techniques have support. Inspect the overlap: MIS partitions F only where both can generate the same path under the same measure. The weights add to one, and a technique with zero support gets zero weight. Why it differs from a capture: the diagram is one receiver and one emitter, while the real path-traced image is a convergence result after many paths. Neither is a sample-direction dump.</figcaption></figure>
-<p class="evidence-note"><strong>Real numerical anchor.</strong> M27's selected NEE sample is <code>1/(2π) = 0.159154943</code> for the stated emitter and geometry; M28 defines the two power-heuristic weights. The CPU reference in §08 exercises direct-light MIS, but its published image is a path/convergence comparison, not a visualization of these arrows. The later GPU replay is what turns cache terms into byte-level observations.</p>
+<p class="evidence-note"><strong>Real numerical anchor.</strong> M27's selected NEE sample is <code>1/(2π) = 0.159154943</code> for the stated emitter and geometry; M28 defines the two power-heuristic weights. The CPU reference in §08 exercises direct-light MIS. Its published image lets you compare paths and convergence. The later GPU replay is what turns cache terms into byte-level observations.</p>
 </div>
 <h3>Delta events and mixtures</h3>
-<p>An ideal mirror selects one deterministic reflected direction. Its discrete probability mass cannot be compared numerically with a density per steradian. A BSDF sample interface should return a transport weight, the applicable PDF or mass, and whether the sampled event is delta. A mirror event contributes its reflection factor divided by its branch-selection probability; its distributional BSDF must not be inserted as a finite number into (M19).</p>
-<p>For a diffuse-plus-glossy <strong>continuous</strong> mixture, evaluate the full continuous BSDF and its actual mixture density \(p_B=\sum_b P_b p_b\). If a delta branch is selected, use the corresponding discrete contribution and branch PMF. A mixed material can still have a continuous part worth sampling by NEE; skip NEE only when there is no connectable continuous component. An emitter reached through a previous delta event receives weight one against ordinary continuous emitter sampling. A very narrow but finite glossy lobe is not automatically a delta.</p>
+<p>An ideal mirror selects one deterministic reflected direction. Its discrete probability mass cannot be compared numerically with a density per steradian. A BSDF sample interface should return a transport weight, the applicable PDF or mass, and whether the sampled event is delta. A mirror event contributes its reflection factor divided by its branch-selection probability. Equation (M19) applies to finite BSDF values.</p>
+<p>For a diffuse-plus-glossy <strong>continuous</strong> mixture, evaluate the full continuous BSDF and its actual mixture density \(p_B=\sum_b P_b p_b\). If a delta branch is selected, use the corresponding discrete contribution and branch PMF. A mixed material can still have a continuous part worth sampling by NEE; skip NEE only when there is no connectable continuous component. An emitter reached through a previous delta event receives weight one against ordinary continuous emitter sampling. A glossy lobe with finite width still has an ordinary density.</p>
 <h3>Russian roulette removes work without deleting the tail in expectation</h3>
 <p>After local contributions, continue with probability \(q\in(0,1]\). On survival divide the future weight by \(q\). Conditional on the current history and any sampled variables used to choose \(q\),</p>
 \[
 \mathbb E\left[\mathbf1_{survive}\frac{Y}{q}\right]=Y.
 \tag{M30}
 \]
-<p>For a scalar future contribution 0.2 and \(q=0.25\), the randomized result is 0.8 with probability 0.25, otherwise zero; its mean is 0.2. Its variance is 0.12. Roulette can increase variance per path while reducing cost enough to improve efficiency per second. It is not a free variance reduction.</p>
+<p>For a scalar future contribution 0.2 and \(q=0.25\), the randomized result is 0.8 with probability 0.25, otherwise zero; its mean is 0.2. Its variance is 0.12. Roulette can increase variance per path while reducing cost enough to improve efficiency per second.</p>
 <p>A finite maximum scattering depth \(D\) is different: it deterministically removes a nonzero tail. If \(\|T\|\le a&lt;1\), truncating (M15) after \(T^D L_e\) gives the sufficient bound</p>
 \[
 \left\|L-\sum_{m=0}^{D}T^mL_e\right\|
 \le\frac{a^{D+1}}{1-a}\|L_e\|.
 \tag{M31}
 \]
-<p>This bound may be loose; it is not a measured error for an Unreal frame. Finite-depth path-traced images and denoised images must be identified accordingly rather than called exact ground truth.</p>
+<p>This theoretical bound can be loose. Measuring the error for an Unreal frame requires a reference. Label the path-depth limit and any denoising on reference images so the remaining sources of error are clear.</p>
 <h3>A complete endpoint sequence</h3>
 <p>The following algorithm evaluates emitted light at a newly reached endpoint <strong>before</strong> applying the scattering-depth cap. This permits the BSDF partner of the last allowed NEE sample to reach its emitter. Weighting NEE against a BSDF strategy that the loop never evaluates would undercount even the retained direct term.</p>
 <pre><code class="language-text">ray, beta = sample_normalized_pixel_camera(pixel, rng)
@@ -379,7 +379,7 @@ loop:
     ray = robust_spawn_ray(x, sample.direction, hit.geometric_normal)
 
 return result</code></pre>
-<p>Here <code>endpoint_mis</code> returns one when there is no competing NEE technique. A delta-direction light sample carries a discrete selection mass and an integrated incident strength, not an ordinary solid-angle PDF; its NEE weight is one against a continuous BSDF directional sampler. Continuous light and BSDF weights use complementary conditional sampling PDFs before roulette; survival compensation is applied to the continuation. Other choices are possible, but a survival probability must not be inserted into one weight and omitted from its complement. Ray-origin offsets change numerical intersection behavior; PDFs and geometry are evaluated at the logical, unoffset vertices. For transmissive paths, the offset side follows the sampled direction.</p>
+<p>Here <code>endpoint_mis</code> returns one when there is no competing NEE technique. A delta-direction light sample carries discrete selection mass and integrated incident strength. Its NEE weight is one against a continuous BSDF directional sampler. Continuous light and BSDF weights use complementary conditional sampling PDFs before roulette; survival compensation is applied to the continuation. Other choices work if both complementary weights use the survival probability consistently. Ray-origin offsets change numerical intersection behavior; PDFs and geometry are evaluated at the logical, unoffset vertices. For transmissive paths, the offset side follows the sampled direction.</p>
 </section>
 <section class="chapter" id="pbr-math">
 <h2>Put material evaluation in the same integral</h2>
@@ -392,25 +392,25 @@ f_g(\omega_i,\omega_o)=
 {4(\mathbf n_s\cdot\omega_i)(\mathbf n_s\cdot\omega_o)},
 \tag{M32}
 \]
-<p>where \(\mathbf h=\operatorname{normalize}(\omega_i+\omega_o)\) for reflection in one medium. \(D\) describes microfacet orientations, \(F\) their Fresnel reflection, and \(G_2\) masking and shadowing. The formula assumes a valid reflection pair; it is not a prescription for dividing by zero at the horizon.</p>
+<p>where \(\mathbf h=\operatorname{normalize}(\omega_i+\omega_o)\) for reflection in one medium. \(D\) describes microfacet orientations, \(F\) their Fresnel reflection, and \(G_2\) masking and shadowing. Apply the formula only to valid reflection pairs and handle the horizon separately.</p>
 <p>For an isotropic GGX distribution with width \(\alpha\),</p>
 \[
 D(\mathbf h)=\frac{\alpha^2}{\pi\left[(\mathbf n_s\cdot\mathbf h)^2(\alpha^2-1)+1\right]^2}.
 \tag{M33}
 \]
-<p>Many material models map an artist's perceptual roughness \(r\) to \(\alpha=r^2\). The exact remaps, minimum roughness, masking approximation, energy compensation, and layer rules are implementation choices that must be checked in the shader being analyzed. A simplified Schlick Fresnel is \(F=F_0+(1-F_0)(1-|\omega_i\cdot\mathbf h|)^5\). The historical Epic shading notes explain this family of choices; the engineering chapter checks the installed engine rather than treating a 2013 model as every current shader. <a href="https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf">Karis, Real Shading in Unreal Engine 4</a></p>
-<p>Sampling the half vector is not the same as sampling a reflected ray. The reflection mapping has Jacobian</p>
+<p>Many material models map an artist's perceptual roughness \(r\) to \(\alpha=r^2\). The exact remaps, minimum roughness, masking approximation, energy compensation, and layer rules are implementation choices that must be checked in the shader being analyzed. A simplified Schlick Fresnel is \(F=F_0+(1-F_0)(1-|\omega_i\cdot\mathbf h|)^5\). The historical Epic notes describe the 2013 model. The engineering chapter traces the shaders in the installed engine. <a href="https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf">Karis, Real Shading in Unreal Engine 4</a></p>
+<p>Convert the sampled half vector into a reflected direction and transform its density accordingly. The reflection mapping has Jacobian</p>
 \[
 p_\sigma(\omega_i)=\frac{p_h(\mathbf h)}{4|\omega_o\cdot\mathbf h|}.
 \tag{M34}
 \]
-<p>For a visible-normal sampler, \(p_h\) includes visibility from \(\omega_o\), not merely \(D\). Whatever sampler is selected, (M19) divides by its <strong>actual</strong> directional PDF. The lobes share one energy budget. Adding a full-strength Lambertian term to an arbitrary full-strength specular term can reflect more power than reaches the surface. Metallic workflow, Fresnel coupling, multiple scattering, and layered models determine how Unreal allocates that energy.</p>
+<p>For a visible-normal sampler, \(p_h\) accounts for visibility from \(\omega_o\) as well as \(D\). Whatever sampler is selected, (M19) divides by its <strong>actual</strong> directional PDF. The lobes share one energy budget. Adding a full-strength Lambertian term to an arbitrary full-strength specular term can reflect more power than reaches the surface. Metallic workflow, Fresnel coupling, multiple scattering, and layered models determine how Unreal allocates that energy.</p>
 </section>
 <section class="chapter" id="reference-scene">
 <h2>Working examples and the matched Unreal scene</h2>
-<p>The educational CPU program demonstrates ray intersections, normalized camera sampling, Lambertian BSDF sampling, NEE, complementary MIS, roulette, linear output, and explicit finite-depth truncation. It is not an implementation of every Unreal material model, and its images must be labeled separately from genuine Unreal captures. The Unreal path-traced reference uses the same Unreal scene, camera, and assets as the Lumen experiment; its finite samples, depth, denoiser, exposure, and post-processing belong in the capture manifest.</p>
-<p>Numerical comparison should use matching scene-linear quantities. Display PNGs are useful for reading shape and artifacts, but differences after exposure and tone mapping are not radiance error. For independent samples of a fixed reference scene, Monte Carlo variance decreases with sample count; a Lumen difference may include representation bias, finite sampling, filtering, lighting lag, and a mismatched reference configuration. Isolating one cause requires a measurement that holds the others fixed.</p>
-<p>Spectral transport would carry \(L_\lambda\), wavelength-dependent BSDFs, and sensor integration \(\int s_j(\lambda)L_\lambda\,d\lambda\). Independent RGB channels are a chosen approximation to that process. Transmission requires consistent refractive-index factors and delta/continuous measures; volumes add transmittance and volume scattering integrals. These extensions do not invalidate the surface derivation, but they cannot be implemented correctly by merely renaming an opaque BSDF or adding an ambient term.</p>
+<p>The educational CPU program demonstrates ray intersections, normalized camera sampling, Lambertian BSDF sampling, NEE, complementary MIS, roulette, linear output, and explicit finite-depth truncation. Figures from this renderer carry the educational CPU label. The Unreal path-traced reference uses the same Unreal scene, camera, and assets as the Lumen experiment; its finite samples, depth, denoiser, exposure, and post-processing belong in the capture manifest.</p>
+<p>Numerical comparison should use matching scene-linear quantities. Display PNGs reveal shapes and artifacts. Measure radiance error before exposure and tone mapping. For independent samples of a fixed reference scene, Monte Carlo variance decreases with sample count; a Lumen difference may include representation bias, finite sampling, filtering, lighting lag, and a mismatched reference configuration. Isolating one cause requires a measurement that holds the others fixed.</p>
+<p>Spectral transport would carry \(L_\lambda\), wavelength-dependent BSDFs, and sensor integration \(\int s_j(\lambda)L_\lambda\,d\lambda\). Independent RGB channels are a chosen approximation to that process. Transmission requires consistent refractive-index factors and delta/continuous measures; volumes add transmittance and volume scattering integrals. These extensions require their own transport and storage rules in addition to the surface derivation.</p>
 <p>The engineering chapter applies the same stages. Depth and G-buffer data identify the primary vertex and its material; shadow evaluation approximates selected source visibility; cached surface lighting approximates secondary outgoing radiance; probes sample and reconstruct incoming radiance; material integration weights that field into diffuse and glossy outgoing light; and composition applies the chosen path/source partition before exposure and display transforms.</p>
 <h3>Run the reference</h3>
 <p>The <a href="https://github.com/DylanWaken/Understanding-Unreal/tree/main/Scripts/Docs/unreal_articles/labs/lumen-pathtracer/reference">reference program</a> uses only Python's standard library. Run these commands from the cloned repository:</p>
@@ -419,11 +419,11 @@ python reference/check_chapter_math.py
 python reference/test_estimators.py --seed 20240601 --samples 200000
 python reference/path_tracer.py --width 280 --height 200 --samples 64 --seed 20240601 --max-depth 8 --exposure 0.6</code></pre>
 <p>The published image has 280 × 200 pixels, 64 samples per pixel, a maximum of eight surface vertices, and seed 20240601. Its Lambertian scene makes the estimator visible without introducing the production material system. The associated linear PFM is the numerical output; exposure and the display curve affect only the PNG. The checked-in tests exercise the estimators against independently evaluated integrals, including direct-light MIS and terminal environment handling.</p>
-<figure id="figure-cpu-reference"><img src="assets/lumen-reading/cpu-reference.svg" width="760" height="640" loading="lazy" alt="Educational CPU path-traced room with a red wall, green wall, two blocks and a ceiling emitter. Native SVG caption says EDUCATIONAL CPU REFERENCE and NOT AN UNREAL CAPTURE."><figcaption><strong>Educational CPU reference · not an Unreal capture.</strong> The 280 × 200 image was reconstructed from the checked-in linear PFM with the original <code>path_tracer.py</code> exposure-0.6 tone map; the burned-in bitmap footer is replaced by native SVG text. Seed 20240601, 64 samples per pixel, maximum depth 8. The right block is Lambertian here; it is glossy in the Unreal experiment. This demonstrates the estimator and is not the matched Unreal reference. <a href="assets/lumen-v2/reference_linear.pfm">Linear RGB PFM</a> · <a href="assets/lumen-v2/cpu-reference-manifest.json">Recorded configuration and hashes</a> · <a href="assets/lumen-v2/estimator-checks.json">Twelve numerical checks</a> · <a href="assets/lumen-reading/cpu-reference-render.png">Clean 280 × 200 display PNG</a>.</figcaption></figure>
+<figure id="figure-cpu-reference"><img src="assets/lumen-reading/cpu-reference.svg" width="760" height="640" loading="lazy" alt="Educational CPU path-traced room with a red wall, green wall, two blocks and a ceiling emitter. The image is labelled as an educational CPU render."><figcaption><strong>Educational CPU reference.</strong> The 280 × 200 image was reconstructed from the checked-in linear PFM with the original <code>path_tracer.py</code> exposure-0.6 tone map; the burned-in bitmap footer is replaced by native SVG text. Seed 20240601, 64 samples per pixel, maximum depth 8. The right block is Lambertian here; it is glossy in the Unreal experiment. Use the matched Unreal pair for the Lumen comparison. <a href="assets/lumen-v2/reference_linear.pfm">Linear RGB PFM</a> · <a href="assets/lumen-v2/cpu-reference-manifest.json">Recorded configuration and hashes</a> · <a href="assets/lumen-v2/estimator-checks.json">Twelve numerical checks</a> · <a href="assets/lumen-reading/cpu-reference-render.png">Clean 280 × 200 display PNG</a>.</figcaption></figure>
 
 <h3>The matched Unreal reference</h3>
-<p>The same Unreal level, camera, assets, material parameters, and exposure settings are rendered below using Lumen and the engine's path tracer. The path-tracer comparison accumulates 1,024 samples per pixel with eight bounces and denoising disabled. These display-referred images show the scene and visible differences; they are not a scene-linear error metric. The <a href="assets/lumen-v2/reference-image-map.json">reference record</a> identifies the exact images, camera, light and exposure; the <a href="https://github.com/DylanWaken/Understanding-Unreal/tree/main/Scripts/Docs/unreal_articles/labs/lumen-capture/baseline">portable Unreal project and capture scripts</a> reproduce the experiment.</p>
-<p>This is a finite production path-tracer reference. Its path-intensity setting was not overridden: the recorded console value of −1 selects the finalized post-process setting, whose recorded value is 24. That is source-backed configuration evidence rather than a direct readback of the path-tracing shader constant. The clamp and eight-bounce limit can introduce bias; increasing sample count alone does not remove it. The code selects this fallback in <a class="source-anchor" href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/PathTracing.cpp#L1029-L1035"><code>Engine/Source/Runtime/Renderer/Private/PathTracing.cpp:1029-1035</code></a>.</p>
+<p>The same Unreal level, camera, assets, material parameters, and exposure settings are rendered below using Lumen and the engine's path tracer. The path-tracer comparison accumulates 1,024 samples per pixel with eight bounces and denoising disabled. These display-referred images show where the scene looks different. A scene-linear metric requires data from before the display transform. The <a href="assets/lumen-v2/reference-image-map.json">reference record</a> identifies the exact images, camera, light and exposure; the <a href="https://github.com/DylanWaken/Understanding-Unreal/tree/main/Scripts/Docs/unreal_articles/labs/lumen-capture/baseline">portable Unreal project and capture scripts</a> reproduce the experiment.</p>
+<p>This is a finite production path-tracer reference. The recorded console value of −1 leaves path intensity at the finalized post-process setting, recorded as 24. The configuration and source establish how the renderer selects that value. The capture lacks a direct readback of the shader constant. The clamp and eight-bounce limit can introduce bias that persists as the sample count grows. The code selects this fallback in <a class="source-anchor" href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Source/Runtime/Renderer/Private/PathTracing.cpp#L1029-L1035"><code>Engine/Source/Runtime/Renderer/Private/PathTracing.cpp:1029-1035</code></a>.</p>
 <figure><img src="assets/lumen-v2/lumen-lit.png" width="1280" height="720" loading="lazy" alt="Actual Unreal Lumen rendering of the controlled room"><figcaption>Actual Unreal Engine Lumen rendering. The camera and scene are shared with the following path-traced image. Histogram exposure is locked with minimum and maximum EV100 both set to 4.</figcaption></figure>
 <figure><img src="assets/lumen-v2/pathtracer-1024spp-8bounces.png" width="1280" height="720" loading="lazy" alt="Actual Unreal path-traced rendering of the identical controlled room at 1024 samples per pixel"><figcaption>Actual Unreal path tracer: 1,024 samples per pixel, eight bounces, denoiser disabled. The live accumulation counter was checked before and after the screenshot. Finite sampling and finite path length remain approximations to the reference integral.</figcaption></figure>
 </section>
@@ -438,11 +438,11 @@ L_o=L_e+
 \int f_gL_{i,\mathcal R}\,d\sigma_x^\perp.
 \tag{M35}
 \]
-<p>This is an exact bookkeeping identity <strong>after the source sets are defined</strong>. A deferred local-light pass approximates the second term; Lumen diffuse gathering, reflection tracing, and the engine's selected sky/reflection paths approximate parts of the last two. Which pass owns a source set depends on the enabled flags, and (M35) does not assume every engine configuration uses identical passes.</p>
+<p>This is an exact bookkeeping identity <strong>after the source sets are defined</strong>. A deferred local-light pass approximates the second term; Lumen diffuse gathering, reflection tracing, and the engine's selected sky/reflection paths approximate parts of the last two. The enabled flags determine which pass owns each source set in (M35).</p>
 <p>If an emissive rectangle and an analytical rectangular light both represent the same intended physical lamp, enabling both as independent sources changes the scene's emitted energy unless an explicit sampling/representation partition removes the duplication. Adding the same estimator twice changes the estimate without changing the scene's emitted energy. The analytical light that illuminates a secondary wall and is then reflected toward the primary surface also follows a different path from the light that reaches the primary surface directly.</p>
 <h3>What deferred rendering changes</h3>
 <p>For the selected camera samples, rasterization supplies the first visible geometry and material attributes. A G-buffer caches that primary surface state so many lights and secondary-light estimators can reuse it. The arrangement changes where visibility and material work happen; the radiance integral is unchanged. Coverage, rasterized geometry, depth precision, stored material precision, and normal encoding can all introduce approximation.</p>
-<p>An exact direct-light estimator would use geometric visibility \(V\) in (M26). Unreal <strong>Virtual Shadow Maps</strong> store virtualized light-space depth, and their shadow evaluations approximate that visibility and the finite-source integral. This VSM is not Variance Shadow Mapping and implies no Chebyshev-moment formula. Paging, depth rasterization, bias, filtering, and Shadow Map Ray Tracing (SMRT) are separate steps; the engineering chapter examines them with the actual buffers.</p>
+<p>An exact direct-light estimator would use geometric visibility \(V\) in (M26). Unreal <strong>Virtual Shadow Maps</strong> store virtualized light-space depth, and their shadow evaluations approximate that visibility and the finite-source integral. Variance Shadow Mapping is a separate technique that uses moments. Here VSM means Virtual Shadow Maps. Paging, depth rasterization, bias, filtering, and Shadow Map Ray Tracing (SMRT) are separate steps; the engineering chapter examines them with the actual buffers.</p>
 <h3>What the diffuse Surface Cache stores</h3>
 <p>The installed-engine source audit identifies <code>CombineFinalLighting</code> in <code>Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCache.ush</code>: decoded albedo multiplies the sum of direct and indirect irradiance by \(1/\pi\), then emission is added. In the scene-linear notation of this chapter,</p>
 \[
@@ -457,7 +457,7 @@ E_{direct}^{\mathrm{pre},c}=e_c\widetilde E_{direct},\qquad
 E_{indirect}^{\mathrm{pre},c}=e_c\widetilde E_{indirect},\qquad
 L_e^{\mathrm{pre},c}=e_cL_e.
 \]
-<p>The combine shader applies (M36) to those consistently pre-exposed terms. The sampling shader multiplies the sampled atlas values by \(1/e_c\) before returning scene-linear radiance (<a class="source-anchor" href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCacheSampling.ush#L314-L325"><code>Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCacheSampling.ush:314-325</code></a>). Thus a raw final-lighting texel is not yet the \(\widetilde L_{cache}\) used by the transport integral. \(\rho\) is the cache's effective albedo: the card material pass folds a fully rough specular approximation into its diffuse color before encoding it. It is therefore not always the original material's diffuse albedo, particularly for metallic materials. The representation omits the full outgoing directional dependence of a general glossy BSDF.</p>
+<p>The combine shader applies (M36) to those consistently pre-exposed terms. The sampling shader multiplies the sampled atlas values by \(1/e_c\) before returning scene-linear radiance (<a class="source-anchor" href="https://github.com/EpicGames/UnrealEngine/blob/71fe36aac5a8df5ccd66c763ffc902b29b6a9c43/Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCacheSampling.ush#L314-L325"><code>Engine/Shaders/Private/Lumen/SurfaceCache/LumenSurfaceCacheSampling.ush:314-325</code></a>). Further decoding converts a raw final-lighting texel into the \(\widetilde L_{cache}\) used in the transport integral. \(\rho\) is the cache's effective albedo: the card material pass folds a fully rough specular approximation into its diffuse color before encoding it. This can make the value differ from the original diffuse albedo, particularly for metals. The representation omits the full outgoing directional dependence of a general glossy BSDF.</p>
 <p>The screen-probe integration output has a different normalization. In the audited baseline, LumenScreenProbeGather.usf multiplies integrated diffuse lighting by Diffuse_Lambert(1) before writing the diffuse-indirect output. That output is a unit-albedo diffuse response, \(E/\pi\); its stored value carries the view pre-exposure \(e_v=\text{View.PreExposure}\), so \(D^{\mathrm{pre},v}=e_vE/\pi\). The trace has already applied this view scale, and DiffuseIndirectComposite.usf later multiplies the response by the receiver's diffuse color. Dividing it by \(\pi\) again, or applying \(e_v\) a second time in the composite, would be an error. The card irradiance atlases, card final radiance, and screen \(E/\pi\) response therefore need distinct quantity and exposure labels in every visualization.</p>
 <p>Suppose a visible diffuse point \(x\) gathers the cached analytical direct lighting at a secondary point \(y\). Its contribution includes</p>
 \[
@@ -466,14 +466,14 @@ L_e^{\mathrm{pre},c}=e_cL_e.
 G(x\leftrightarrow y)\,dA(y).
 \tag{M37}
 \]
-<p>Equation (M37) uses scene-linear \(\widetilde E_{direct}=E_{direct}^{\mathrm{pre},c}/e_c\); substituting the raw pre-exposed atlas value would introduce an extra scale. There are two scattering factors, one at \(y\) and one at \(x\). Subtracting the secondary cache's direct lighting as a duplicate of the primary deferred direct pass would delete legitimate bounced light. Sky or emitter radiance reached directly from \(x\) has only the primary scattering factor. Which buffer supplied a value does not change how many scattering events the corresponding path contains.</p>
+<p>Equation (M37) uses scene-linear \(\widetilde E_{direct}=E_{direct}^{\mathrm{pre},c}/e_c\); substituting the raw pre-exposed atlas value would introduce an extra scale. There are two scattering factors, one at \(y\) and one at \(x\). Subtracting the secondary cache's direct lighting as a duplicate of the primary deferred direct pass would delete legitimate bounced light. Sky or emitter radiance reached directly from \(x\) has only the primary scattering factor. Count scattering events along the path regardless of which buffer supplied its value.</p>
 <h3>A reduced operator model for cache approximation</h3>
-<p>The model below explains discretization and reuse; it is <strong>not a claim that Epic implements a literal global matrix solve</strong>. Let \(P\) project a radiance field to finite cache coefficients and \(R\) reconstruct a field, with \(PR=I\) on coefficient space. Let \(T_h\) be an approximate transport operator using represented geometry, materials, and visibility. Define</p>
+<p>The matrix below models discretization and reuse. The engineering chapters describe how Epic implements those operations. Let \(P\) project a radiance field to finite cache coefficients and \(R\) reconstruct a field, with \(PR=I\) on coefficient space. Let \(T_h\) be an approximate transport operator using represented geometry, materials, and visibility. Define</p>
 \[
 K=P T_h R,\qquad b_c=P b_h,\qquad c=b_c+Kc,\qquad \widetilde L=Rc.
 \tag{M38}
 \]
-<p>The reduced coefficients can represent card texels, probe directional bins, or another explicitly chosen basis. Direction-independent diffuse cards and directional probes are different bases; they must not be silently identified. Relative to exact \(L^*=b+TL^*\), define reconstructed source \(\widetilde b=R b_c\), operator \(\widetilde T=RKP\), and current residual</p>
+<p>The reduced coefficients can represent card texels, probe directional bins, or another explicitly chosen basis. Diffuse cards use a direction-independent basis. Probes can retain directional variation. Relative to exact \(L^*=b+TL^*\), define reconstructed source \(\widetilde b=R b_c\), operator \(\widetilde T=RKP\), and current residual</p>
 \[
 \widetilde r=\widetilde b+\widetilde T\widetilde L-\widetilde L.
 \tag{M39}
@@ -491,14 +491,14 @@ K=P T_h R,\qquad b_c=P b_h,\qquad c=b_c+Kc,\qquad \widetilde L=Rc.
 \|(T-\widetilde T)\widetilde L\|+\|\widetilde r\|}{1-\|T\|}.
 \tag{M41}
 \]
-<p>The three terms separate source representation error, transport/representation error, and an unfinished or stale solve. More ray samples can reduce stochastic noise but cannot make coarse cards, missing geometry, or stale history exact. Nonlinear clipping, adaptive scheduling, and view-dependent reconstruction require additional analysis; (M38) is not the entire production renderer.</p>
+<p>The three terms separate source representation error, transport/representation error, and an unfinished or stale solve. More ray samples can reduce stochastic noise but cannot make coarse cards, missing geometry, or stale history exact. Equation (M38) models the linear part. Nonlinear clipping, adaptive scheduling and view-dependent reconstruction require additional analysis.</p>
 <p><strong>A two-patch transport example.</strong> With a dimensionless coupling matrix and source radiances</p>
 \[
 T=\begin{bmatrix}0&amp;0.2\\0.3&amp;0\end{bmatrix},\qquad
 b=\begin{bmatrix}1\\0\end{bmatrix},
 \tag{M42}
 \]
-<p>the exact solution is \(L^*=(1,0.3)^T/0.94=(1.063829787,0.319148936)^T\). Starting at \(b\), repeated substitution produces \((1,0)\), \((1,0.3)\), \((1.06,0.3)\), \((1.06,0.318)\), and so on. If a material/transport approximation changes the second coupling to 0.25, its converged solution is \((1,0.25)^T/0.95=(1.052631579,0.263157895)^T\). Infinite iterations remove its residual but do not remove its difference from the original scene. The calculation is algebra, not an Unreal measurement or a speed benchmark.</p>
+<p>the exact solution is \(L^*=(1,0.3)^T/0.94=(1.063829787,0.319148936)^T\). Starting at \(b\), repeated substitution produces \((1,0)\), \((1,0.3)\), \((1.06,0.3)\), \((1.06,0.318)\), and so on. If a material/transport approximation changes the second coupling to 0.25, its converged solution is \((1,0.25)^T/0.95=(1.052631579,0.263157895)^T\). At convergence its residual vanishes, but the solution still corresponds to the altered scene. This worked example uses values from the algebraic model.</p>
 <h3>Reconstruction and the work it removes</h3>
 <p>Sparse gathering replaces per-pixel directional integration with samples at selected probe positions. A generic reconstruction is</p>
 \[
@@ -506,16 +506,16 @@ b=\begin{bmatrix}1\\0\end{bmatrix},
 \qquad \sum_m a_m(x)=1.
 \tag{M43}
 \]
-<p>Normalization preserves a constant field, but it does not show that reconstruction is correct where the field varies across a depth discontinuity, because the samples sit at different positions. An exponential history update</p>
+<p>Normalization reproduces a constant field. At a depth discontinuity the samples lie at different positions and may receive different lighting. An exponential history update</p>
 \[
 H_t=(1-\alpha)H_{t-1}^{reprojected}+\alpha\widehat L_t
 \tag{M44}
 \]
-<p>can preserve the mean of a stationary, correctly reprojected field while lagging after a lighting change. Disocclusion, clamping, and invalid-history rejection change its behavior. Temporal reuse is not intrinsically biased in every static case, but production reuse and reconstruction can still introduce persistent spatial and temporal error.</p>
-<p>A simple reference path tracer costs approximately \(N_{pixels}N_{samples}\bar d\) continuation intersections, plus shadow connections, material evaluations, and acceleration-structure work. A sparse gather uses roughly \(N_{probes}N_{directions}\) initial queries plus its cache updates, filtering, and reconstruction. Reusing a secondary hit's cached material/lighting also avoids repeating the full material and light evaluation for every ray. Counts alone are not a speedup measurement: screen hits, compacted misses, distance-field steps, hardware traversal, cache misses, and asynchronous work have different costs. The captured dispatch sizes and timings have to establish the actual savings.</p>
-<p>The diffuse and glossy terms of (M35) also require different angular detail. A rough glossy lobe can reuse a low-frequency incident-radiance representation; a narrow lobe needs more directional detail or a dedicated ray. If two routes approximate the same glossy term, an exclusive selection or a defined blend \(wC_1+(1-w)C_2\) avoids adding that term twice. A roughness threshold does not by itself turn a finite glossy BRDF into a physical delta distribution. Source inspection must determine whether a threshold selects a representation, blends estimators, clamps a lobe, or changes the BSDF itself.</p>
+<p>can preserve the mean of a stationary, correctly reprojected field while lagging after a lighting change. Disocclusion, clamping, and invalid-history rejection change its behavior. Temporal reuse can be unbiased in a static case. Production reuse and reconstruction can introduce persistent spatial and temporal error.</p>
+<p>A simple reference path tracer costs approximately \(N_{pixels}N_{samples}\bar d\) continuation intersections, plus shadow connections, material evaluations, and acceleration-structure work. A sparse gather uses roughly \(N_{probes}N_{directions}\) initial queries plus its cache updates, filtering, and reconstruction. Reusing a secondary hit's cached material/lighting also avoids repeating the full material and light evaluation for every ray. A timing comparison must account for screen hits, compacted misses, distance-field steps, hardware traversal, cache misses and overlap with asynchronous work. The captured dispatch sizes and timings have to establish the actual savings.</p>
+<p>The diffuse and glossy terms of (M35) also require different angular detail. A rough glossy lobe can reuse a low-frequency incident-radiance representation; a narrow lobe needs more directional detail or a dedicated ray. If two routes approximate the same glossy term, an exclusive selection or a defined blend \(wC_1+(1-w)C_2\) avoids adding that term twice. A roughness threshold selects a rendering path. A finite glossy BRDF still has a finite lobe. Source inspection must determine whether a threshold selects a representation, blends estimators, clamps a lobe, or changes the BSDF itself.</p>
 <h3>Every reconstructed value has an input record</h3>
-<p>An RGB image does not show how its values were computed. Each captured probe, cache texel, or output pixel should be traceable to the fields below. The engineering inventory names the actual source buffers and shader expressions; the table gives their mathematical roles.</p>
+<p>Recovering how an RGB image was computed requires its intermediate values. Each captured probe, cache texel, or output pixel should be traceable to the fields below. The engineering inventory names the actual source buffers and shader expressions; the table gives their mathematical roles.</p>
 <div class="table-scroll"><table class="data-table">
 <thead>
 <tr>
@@ -533,7 +533,7 @@ H_t=(1-\alpha)H_{t-1}^{reprojected}+\alpha\widehat L_t
 <tr>
 <td>Geometric/shading normal and material</td>
 <td>Measure in (M05), BSDF in (M19), diffuse color in (M36)</td>
-<td>Decoded values, normal frame, validity, roughness and lobe-selection data; do not substitute an encoded normal byte for a direction.</td>
+<td>Decoded values, normal frame, validity, roughness and lobe-selection data. Decode the stored normal to recover a direction.</td>
 </tr>
 <tr>
 <td>Ray direction and sample identifier</td>
@@ -543,7 +543,7 @@ H_t=(1-\alpha)H_{t-1}^{reprojected}+\alpha\widehat L_t
 <tr>
 <td>Directional sampling weight</td>
 <td>\(p_\sigma\), discrete branch probability, or cell quadrature weight</td>
-<td>Which measure the stored number uses. An angular-cell weight is not automatically a BSDF PDF.</td>
+<td>Which measure the stored number uses. An angular-cell weight describes a region of directions. A BSDF PDF must encode the sampling law.</td>
 </tr>
 <tr>
 <td>Intersection and visibility</td>
@@ -590,5 +590,5 @@ H_t=(1-\alpha)H_{t-1}^{reprojected}+\alpha\widehat L_t
 b_m=w_{space,m}w_{depth,m}w_{normal,m}.
 \tag{M45}
 \]
-<p>\(\chi_m\) is a validity mask, and the individual \(w\)'s are nonnegative factors. This equation is an illustrative reconstruction, not Epic's exact kernel. To reproduce an actual pass, replace each factor with that shader's expression and record the value it used, including its zero-weight fallback. An all-invalid neighborhood is not “black lighting” unless the algorithm explicitly chooses that fallback. History blending is reproducible only when the reprojected sample, rejection tests, exposure conversion, clamp bounds, and effective weight are available. A debug view of the blended result alone omits all of them.</p>
+<p>\(\chi_m\) is a validity mask, and the individual \(w\)'s are nonnegative factors. This equation illustrates one way to reconstruct the field. To reproduce an actual pass, replace each factor with that shader's expression and record the value it used, including its zero-weight fallback. An all-invalid neighborhood invokes the algorithm’s fallback. It yields black only if the fallback explicitly chooses zero. History blending is reproducible only when the reprojected sample, rejection tests, exposure conversion, clamp bounds, and effective weight are available. A debug view of the blended result alone omits all of them.</p>
 </section>

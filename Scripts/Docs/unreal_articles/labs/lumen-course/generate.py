@@ -28,7 +28,7 @@ class Drawing:
                       f'<rect width="1200" height="620" rx="12" fill="{BG}"/>',
                       '<g font-family="Inter, Segoe UI, Arial, sans-serif">']
         self.text(40, 49, title, 28)
-        self.text(40, 588, 'SCHEMATIC · geometry and colors explain a model; this is not an Unreal buffer', 16, MUTED)
+        self.text(40, 588, 'SCHEMATIC', 16, MUTED)
 
     def text(self, x, y, value, size=23, color=FG, anchor='start'):
         self.labels.append(f'<text x="{x:g}" y="{y:g}" font-size="{size}" fill="{color}" text-anchor="{anchor}">{escape(str(value))}</text>')
@@ -114,14 +114,14 @@ def figures():
     d.lines(640,415,['Irradiance integrates over directions.','Radiance keeps those directions separate.'])
     save('radiance',d)
 
-    d=Drawing('Distance changes the cone, not radiance along a ray','Two source positions show the geometric origin of inverse-square irradiance.')
+    d=Drawing('How distance changes solid angle','Two source positions show the geometric origin of inverse-square irradiance.')
     for x,label in [(440,'distance r'),(740,'distance 2r')]:
         d.line(x,240,x,360,GOLD,8);d.line(140,300,x,240,BLUE,2);d.line(140,300,x,360,BLUE,2)
         d.text(x,200,'same area',21,GOLD,'middle');d.text(x,410,label,23,FG,'middle')
     d.circle(140,300,8,GREEN,GREEN);d.text(60,350,'receiver x',23,GREEN)
     d.path('M235 281 Q245 300 235 319',GOLD,4)
     d.lines(80,110,['Fixed source area: apparent solid angle ∝ 1 / r²'],FG,27)
-    d.lines(80,480,['Alternative positions of one source; they are not simultaneous occluders.','L stays fixed. At 2r, a small source occupies about one quarter the solid angle.'],MUTED,22)
+    d.lines(80,480,['The two outlines show the same source at different distances.','L stays fixed. At 2r, a small source occupies about one quarter the solid angle.'],MUTED,22)
     save('solid-angle',d)
 
     d=Drawing('One interaction adds contributions from many directions','Incoming radiance is multiplied by the BSDF and incoming cosine, then integrated.')
@@ -153,7 +153,7 @@ def figures():
         d.lines(start+20,445,['D: facet orientations','F: reflected fraction · G: visible facets'])
     save('microfacets',d)
 
-    d=Drawing('An interface changes the ray, not the accounting law','Physical propagation arrows reflect symmetrically or refract according to the stationary optical path and Snell law.')
+    d=Drawing('Reflection and refraction at an interface','Physical propagation arrows reflect symmetrically or refract according to the stationary optical path and Snell law.')
     d.rect(45,310,680,230,BLUE,'#17334a')
     d.line(45,310,725,310,BLUE,3)
     d.path('M390 100 L390 540',MUTED,2,dash=True)
@@ -218,7 +218,7 @@ def figures():
     d.lines(80,435,['The cost saved and the approximation introduced are different at each boundary.','Never describe all three as “a cheaper ray.”'],FG,25)
     save('budget',d)
 
-    d=Drawing('Convergence does not remove representation error','Two exact algebraic recurrences stabilize at different fixed points when a transport coefficient changes.')
+    d=Drawing('Changing the transport model changes the limit','Two exact algebraic recurrences stabilize at different fixed points when a transport coefficient changes.')
     d.line(115,475,1100,475,FG,2);d.line(115,475,115,130,FG,2)
     d.text(100,105,'second surface radiance',23);d.text(600,547,'iteration',22,FG,'middle')
     for i in [0,4,8,12]:d.text(115+i*78,505,str(i),18,FG,'middle')
@@ -290,7 +290,7 @@ def figures():
     d.text(280,205,'nearby ceiling bounds the early steps',21,BLUE)
     d.text(100,110,'step length ≈ distance to nearest surface',26,GREEN)
     d.text(990,260,'wall',23,BLUE)
-    d.lines(90,515,['Advance by one radius from each centre, not by the diameter.','A coarse or nonconservative field can step through a thin feature.'],FG,22)
+    d.lines(90,515,['Advance by one radius from each centre.','A coarse or nonconservative field can step through a thin feature.'],FG,22)
     save('sdf',d)
 
     d=Drawing('Cards cache surface material and diffuse outgoing light','Several secondary rays share one surface-lighting representation, addressed through oriented projections.')
@@ -300,7 +300,7 @@ def figures():
     for y in [170,310,470]:d.line(60,y,260,320,GOLD,3,True)
     d.circle(260,320,7,GREEN,GREEN)
     d.text(130,115,'mesh + useful capture projections',24)
-    d.box(765,175,360,280,'A card is not a mirror',['material: effective albedo','geometry: depth + normal','source: emissive radiance','lighting: direct + indirect','final: diffuse outgoing radiance'],GREEN)
+    d.box(765,175,360,280,'What one card stores',['material: effective albedo','geometry: depth + normal','source: emissive radiance','lighting: direct + indirect','final: diffuse outgoing radiance'],GREEN)
     save('cards',d)
 
     d=Drawing('Follow one hit all the way to its texel','Card transforms and virtual-to-physical mapping are required to decode a Surface Cache lookup.')
@@ -321,7 +321,7 @@ def figures():
     d.path('M1020 335 L1020 410 L190 410 L190 335',PURPLE,3)
     d.line(190,380,190,325,PURPLE,3,True)
     d.text(420,455,'persistent state and partial updates',25,PURPLE)
-    d.text(85,520,'One frame is not universally one completed bounce.',25)
+    d.text(85,520,'A frame updates only the selected tiles.',25)
     save('radiosity',d)
 
     d=Drawing('Sparse receiver samples need adaptive placement','A regular screen grid misses narrow depth features; adaptive probes represent otherwise uncovered geometry.')
@@ -359,7 +359,7 @@ def figures():
             d.line(x+10,y+10,x+35,y+35,RED,2);d.line(x+35,y+10,x+10,y+35,RED,2)
     d.lines(880,200,['rank by BRDF','and lighting guide','3 low slots +','1 high cell','→ 4 child cells'],GOLD,24)
     d.text(90,495,'×: trace slots reassigned to the four children',20,RED)
-    d.text(100,525,'Reconstruct the directional field; do not divide by the ranking PDF again.',25)
+    d.text(100,525,'Use the ranking PDF to select cells. Reconstruct from their radiance.',25)
     save('importance',d)
 
     d=Drawing('World probes share a distant directional field','Nested spatial grids have logical cells mapped to allocated physical probes, each holding directional lighting.')
@@ -372,10 +372,10 @@ def figures():
     d.line(390,330,390,135,GREEN,3,True);d.text(410,145,'vertical layers',22,GREEN)
     for x,y in [(335,300),(390,325),(440,350),(390,265),(495,300)]:d.circle(x,y,8,GOLD,GOLD)
     d.box(810,155,320,295,'Address the cache',['choose clipmap level','locate grid cell','read probe indirection','read position + depth','sample directional atlas','combine valid neighbors'],BLUE)
-    d.text(80,535,'A possible grid point is not necessarily an allocated, valid probe.',24)
+    d.text(80,535,'Check allocation and validity before reading a probe.',24)
     save('world-cache',d)
 
-    d=Drawing('Spatial proximity does not imply shared visibility','Probes separated by a wall cannot be mixed using distance alone; depth and directional validity are necessary.')
+    d=Drawing('Probe interpolation across a wall','Probes separated by a wall cannot be mixed using distance alone; depth and directional validity are necessary.')
     d.rect(555,135,45,330,FG,'#455165')
     for x in [180,350,800,980]:
         for y in [200,390]:d.circle(x,y,12,GOLD if x>600 else BLUE,GOLD if x>600 else BLUE)
@@ -386,7 +386,7 @@ def figures():
     d.circle(470,300,10,GREEN,GREEN)
     d.text(155,100,'shaded arcade',25,BLUE);d.text(800,100,'sunlit courtyard',25,GOLD)
     d.text(600,505,'Cross-wall candidates must be rejected',22,RED,'middle')
-    d.text(600,545,'Σ weights = 1 preserves constants, not walls.',27,GREEN,'middle')
+    d.text(600,545,'Normalized weights can still blend across a wall.',27,GREEN,'middle')
     save('cache-visibility',d)
 
     d=Drawing('Four different reconstruction operations','Directional reconstruction and integration precede receiver interpolation and valid temporal reuse.')
@@ -446,7 +446,7 @@ def figures():
     d.line(590,362,590,375,FG,2,True)
     d.box(390,380,400,95,'linear pre-exposed SceneColor',(),FG)
     d.line(805,425,895,425,FG,3,True);d.box(910,380,250,95,'display mapping',(),GOLD)
-    d.text(90,530,'A cache texel, albedo, irradiance, and final pixel are not interchangeable RGB.',24)
+    d.text(90,530,'Read each RGB buffer in the units its producer wrote.',24)
     save('composition',d)
 
     d=Drawing('A frame is a graph of dependencies','Card lighting retains its own state; direct primary lighting, reconstructed indirect lighting and dedicated reflections meet at composition.')

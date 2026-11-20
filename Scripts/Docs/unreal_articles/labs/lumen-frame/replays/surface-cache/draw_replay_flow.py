@@ -22,5 +22,5 @@ box(32,452,553,80,'PCG dither and formatted store',f'u = {s["pcg16"][0]} / 65536
 box(615,452,553,80,'Observed R11G11B10 output',fmt(s['outputRGB']),'#e6e8fc')
 arrow('M585 493 L615 493')
 text(32,565,f'Packed GPU word: {s["outputPacked"]}  |  CPU truncation model: {s["predictedTruncatedPacked"]}  |  samples: {v["truncationMatches"]}/{v["examinedTexels"]}  |  selected tile pixels: {v["selectedTile"]["truncationMatches"]}/{v["selectedTile"]["examinedPixels"]}','small')
-text(32,591,'Diagram of captured values, not a rendered scene. Stored formats, versions, raw records, per-pixel comparisons and hashes are in the replay JSON.','small')
+text(32,591,'The replay JSON gives the stored formats, resource versions, raw values, per-pixel comparisons and hashes for this texel.','small')
 svg.append('</svg>');(p/'cache-texel-flow.svg').write_text('\n'.join(svg),encoding='utf-8');print(p/'cache-texel-flow.svg')

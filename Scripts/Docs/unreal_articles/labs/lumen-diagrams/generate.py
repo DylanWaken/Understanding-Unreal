@@ -64,18 +64,18 @@ def path_space():
     return s.write('path-space.svg')
 
 def partition():
-    s=SVG('Partition contributions before assigning passes','The exact source and lobe partition has emission, selected analytical direct illumination, remaining diffuse, and remaining glossy terms. Lumen may include sky and emissive source connections, not only multibounce paths.',height=690)
+    s=SVG('Partition contributions before assigning passes','The exact source and lobe partition has emission, selected analytical direct illumination, remaining diffuse, and remaining glossy terms. Lumen can include sky and emissive source connections as well as multibounce paths.',height=690)
     s.box(390,90,420,92,'Outgoing radiance toward camera','Lₒ = emission + direct + remaining',GREEN)
     labels=[('Emission','Lₑ','Visible emitting material','Base-pass contribution'),('Analytical direct','∫ (f_d + f_g) Lᵢ,ᴬ dσ⊥','Selected local light set','Deferred lights + visibility'),('Remaining diffuse','∫ f_d Lᵢ,ᴿ dσ⊥','Sky, emitters, reflected light','Probe gathering + material'),('Remaining glossy','∫ f_g Lᵢ,ᴿ dσ⊥','Same remaining source field','Rough/dedicated reflections')]
     for i,(title,equation,source,route) in enumerate(labels):
         x=28+i*296;s.box(x,270,272,195,title,equation+'\n'+source+'\n'+route,[GREEN,BLUE,GOLD,RED][i]);s.line(x+136,260,450+i*100,196,[GREEN,BLUE,GOLD,RED][i],2,arrow=True)
     s.rect(55,515,1090,105,fill='#edf3ee')
     s.text(80,552,'A light → wall → receiver path is different from a light → receiver path.',23,GREEN,True)
-    s.text(80,589,'Keep secondary cached direct light. Blend overlapping glossy representations instead of adding them.',19)
+    s.text(80,589,'Keep secondary cached direct light. Blend overlapping glossy representations.',19)
     return s.write('transport-partition.svg')
 
 def dataflow():
-    s=SVG('From surface state to the composed image','A dependency diagram connects raster material state, card irradiance and final radiance, selected visibility, screen and world tracing, probe integration, dedicated reflections, and composition. Arrows describe data dependencies, not a single forced scheduling order.',width=1280,height=1060)
+    s=SVG('From surface state to the composed image','A dependency diagram connects raster material state, card irradiance and final radiance, selected visibility, screen and world tracing, probe integration, dedicated reflections, and composition. Arrows connect each producer to its consumers. Independent work can overlap.',width=1280,height=1060)
     cols=[40,460,880];w=360
     s.box(cols[0],100,w,130,'Rasterized primary surface','Depth + normal + material\nGBuffer: no incoming-light integral')
     s.box(cols[1],100,w,130,'Captured card material','Albedo, normal, emission, depth\nPage table locates persistent data')
@@ -118,7 +118,7 @@ def probes():
     s.text(450,455,'Uniform grid + adaptive positions\nDirectional radiance per probe\nFiltered → E/π and rough specular\nReconstructed at visible pixels',19)
     for j in range(3):s.rect(853+20*j,190+22*j,275-40*j,215-44*j,stroke=BLUE)
     for x,y in [(905,270),(960,255),(1015,270),(960,305),(905,325),(1015,325),(960,350),(960,290)]:s.circle(x,y,5,BLUE)
-    s.text(845,455,'Sparse positions in world clipmaps\nIndirection + offsets + age/budget\nEight-neighbor radiance lookup\nParallax proxy, not exact visibility',19)
+    s.text(845,455,'Sparse positions in world clipmaps\nIndirection + offsets + age/budget\nEight-neighbor radiance lookup\nApproximate parallax correction',19)
     s.text(50,690,'Each directional atlas cell also needs its direction, angular footprint, hit state, format, and exposure convention.',21)
     return s.write('probe-domains.svg')
 
@@ -130,12 +130,12 @@ def vsm():
     s.line(370,180,425,180,BLUE,arrow=True);s.line(770,180,825,180,BLUE,arrow=True)
     s.box(835,350,330,145,'Physical depth','Address physical page and texel\nRead light-space depth\nBias / slope / validity conventions',GOLD)
     s.box(435,350,330,145,'SMRT evaluation','Samples a finite source footprint\nMarches approximate shadow rays\nCombines visible-ray estimates',RED)
-    s.box(35,350,330,145,'Direct-light contribution','Visibility × light × material response\nVSM changes the connection term\nIt does not replace the BRDF',GREEN)
+    s.box(35,350,330,145,'Direct-light contribution','Visibility × light × material response\nVSM changes the connection term\nThe BRDF weights scattering',GREEN)
     s.line(1000,250,1000,340,GOLD,arrow=True);s.line(825,420,775,420,GOLD,arrow=True);s.line(425,420,375,420,RED,arrow=True)
     s.rect(35,565,1130,150,fill='#edf3ee')
     s.text(58,605,'Before projection: maintain the virtual representation',23,GREEN,True)
     s.text(58,648,'Mark required pages → allocate or reuse → invalidate changed geometry → rasterize depth → build hierarchy',20)
-    s.text(58,687,'A missing or invalid page is state to handle; it is not automatically a physically unoccluded light connection.',18,MUTED)
+    s.text(58,687,'A missing or invalid page leaves visibility unresolved. Apply the configured fallback.',18,MUTED)
     return s.write('vsm-addressing.svg')
 
 def history():
@@ -174,7 +174,7 @@ def convergence():
     s.text(155,490,'Exact coupling: converges to the reference solution',20,GREEN)
     s.text(110,690,'T = [[0, 0.2], [0.3, 0]]; changed model uses 0.25. Source vector b = [1, 0].',20)
     (OUT/'operator-convergence.json').write_text(json.dumps({'kind':'original computed mathematical example, not Unreal measurement','exact_solution':exact,'iterations':rows},indent=2)+'\n',encoding='utf-8')
-    return s.write('operator-convergence.svg','Computed from the stated two-patch equations. Logarithmic vertical axis; this is not a performance measurement.')
+    return s.write('operator-convergence.svg','Computed error for the two-patch equations, on a logarithmic vertical axis.')
 
 def sdf_addressing():
     s=SVG('Global distance field: clipmaps and physical pages','Source-derived addressing diagram. The coarse mip is the fallback. A valid page within the mip transition band provides distance and optional coverage. Page-table z includes the clipmap index; physical page atlases use different distance and coverage resolutions.',width=1280,height=1000)
@@ -203,7 +203,7 @@ def sdf_addressing():
         for ix in range(4):s.rect(990+ix*48,600+iy*48,47,47,fill='#f4e5df' if ix==3 or iy==3 else '#fff8f5',stroke=RULE,rx=0)
     s.text(650,850,'Distance: 8 × 8 texels\n7 unique intervals; overlap border\nUNORM8 distance step = 16h / 255',19)
     s.text(990,850,'Coverage: 4 × 4 texels\n3 unique intervals\nA separate scalar field',19)
-    return s.write('sdf-addressing.svg','Source-derived schematic, not a captured atlas. i: clipmap index; a: physical page coordinate; f: fractional local page coordinate.')
+    return s.write('sdf-addressing.svg','Atlas addressing from the pinned shader source. i: clipmap index; a: physical page coordinate; f: fractional local page coordinate.')
 
 def main():
     OUT.mkdir(parents=True,exist_ok=True)

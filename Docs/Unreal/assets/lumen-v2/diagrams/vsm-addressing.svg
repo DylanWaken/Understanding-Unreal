@@ -38,13 +38,13 @@
 <text x="53" y="385" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Direct-light contribution</text>
 <text x="53" y="419" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">Visibility × light × material response</text>
 <text x="53" y="447" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">VSM changes the connection term</text>
-<text x="53" y="475" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">It does not replace the BRDF</text>
+<text x="53" y="475" font-size="19" fill="#22312d" font-weight="400" text-anchor="start">The BRDF weights scattering</text>
 <path d="M1000 250L1000 340" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
 <path d="M825 420L775 420" fill="none" stroke="#93661e" stroke-width="2" marker-end="url(#arrow-2)"/>
 <path d="M425 420L375 420" fill="none" stroke="#aa5343" stroke-width="2" marker-end="url(#arrow-3)"/>
 <rect x="35" y="565" width="1130" height="150" rx="8" fill="#edf3ee" stroke="#c4cec7" stroke-width="1.5"/>
 <text x="58" y="605" font-size="23" fill="#286c56" font-weight="600" text-anchor="start">Before projection: maintain the virtual representation</text>
 <text x="58" y="648" font-size="20" fill="#22312d" font-weight="400" text-anchor="start">Mark required pages → allocate or reuse → invalidate changed geometry → rasterize depth → build hierarchy</text>
-<text x="58" y="687" font-size="18" fill="#586760" font-weight="400" text-anchor="start">A missing or invalid page is state to handle; it is not automatically a physically unoccluded light connection.</text>
+<text x="58" y="687" font-size="18" fill="#586760" font-weight="400" text-anchor="start">A missing or invalid page leaves visibility unresolved. Apply the configured fallback.</text>
 <text x="36" y="796" font-size="16" fill="#586760" font-weight="400" text-anchor="start">Original explanatory diagram; positions and colors are schematic.</text>
 </g></svg>

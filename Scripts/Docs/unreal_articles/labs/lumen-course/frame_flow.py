@@ -25,7 +25,7 @@ def frame_flow():
     def down(x,y1,y2,color=MUTED):
         path(f'M{x} {y1}V{y2}',color)
     text(40,45,'One deferred frame: direct light, shadows, and Lumen',30)
-    text(40,88,'A / B / C / H identify shared inputs; arrows show dependencies, not GPU timing.',21,MUTED)
+    text(40,88,'A / B / C / H mark shared inputs. Arrows run from producers to consumers.',21,MUTED)
     box('input',40,120,1120,125,'Frame inputs + retained state H',
         ['Camera, scene transforms, material programs, lights, and renderer settings',
          'H: cached lighting and allocation state; probe, diffuse, reflection, and upscaling histories'],PURPLE)
